@@ -8,6 +8,7 @@ namespace Textures
 {
 	enum ID
 	{
+		LOL
 	};
 }
 namespace Fonts
@@ -19,17 +20,23 @@ namespace Fonts
 class ResourceManager
 {
 public:
-	ResourceManager();
-	~ResourceManager();
 
-	void Load(Textures::ID id, const std::string &filename);
-	void Load(Fonts::ID id, const std::string &filename);
-	void Unload(Textures::ID id);
-	void Unload(Fonts::ID id);
-	sf::Texture& GetTexture(Textures::ID id) const;
-	sf::Font& GetFont(Fonts::ID id) const;
+	static ResourceManager &GetInstance();
+
+	~ResourceManager();
+	void Initialize();
+	void load(Textures::ID id, const std::string &filename);
+	void load(Fonts::ID id, const std::string &filename);
+	void unload(Textures::ID id);
+	void unload(Fonts::ID id);
+	sf::Texture& getTexture(Textures::ID id) const;
+	sf::Font& getFont(Fonts::ID id) const;
 
 private:
+	ResourceManager();
+	ResourceManager(const ResourceManager&);
+	void operator=(const ResourceManager&);
+
 	std::map<Textures::ID,
 		std::unique_ptr<sf::Texture >> mTextureMap;
 	std::map<Fonts::ID,
