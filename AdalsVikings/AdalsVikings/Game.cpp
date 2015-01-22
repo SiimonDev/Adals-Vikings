@@ -25,6 +25,7 @@ void Game::run()
 		timeSinceLastUpdate += clock.restart();
 		while (timeSinceLastUpdate >= frameTime)
 		{
+			timeSinceLastUpdate -= frameTime;
 			processEvents();
 			update(frameTime);
 		}
