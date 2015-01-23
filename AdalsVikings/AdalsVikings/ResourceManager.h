@@ -38,7 +38,7 @@ private:
 	void operator=(const ResourceManager&);
 
 	std::map<Textures::ID,
-		std::unique_ptr<sf::Texture >> mTextureMap;
+		std::unique_ptr<sf::Texture>> mTextureMap;
 	std::map<Fonts::ID,
 		std::unique_ptr<sf::Font >> mFontMap;
 };

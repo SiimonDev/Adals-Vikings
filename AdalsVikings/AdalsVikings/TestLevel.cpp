@@ -21,7 +21,6 @@ void TestLevel::render(sf::RenderWindow &window)
 }
 void TestLevel::load()
 {
-	
 }
 void TestLevel::unload()
 {
