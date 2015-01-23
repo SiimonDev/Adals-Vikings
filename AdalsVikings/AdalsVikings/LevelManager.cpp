@@ -1,5 +1,6 @@
 #include "LevelManager.h"
 #include "Level.h"
+#include "TestLevel.h"
 
 LevelManager &LevelManager::getInstance()
 {
@@ -11,6 +12,11 @@ LevelManager::LevelManager()
 }
 LevelManager::~LevelManager()
 {
+	delete mCurrentLevel;
+}
+void LevelManager::initialize()
+{
+	mCurrentLevel = new TestLevel();
 }
 void LevelManager::load()
 {

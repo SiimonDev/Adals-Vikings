@@ -9,6 +9,7 @@ Game::Game():
 mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
 {
 	mWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
+	LevelManager::getInstance().initialize();
 }
 
 Game::~Game()
@@ -66,12 +67,12 @@ void Game::resize(int width, int height)
 
 void Game::update(sf::Time gameTime)
 {
-
+	LevelManager::getInstance().update(gameTime);
 }
 
 void Game::render()
 {
 	mWindow.clear(sf::Color::Black);
-
+	LevelManager::getInstance().render(mWindow);
 	mWindow.display();
 }

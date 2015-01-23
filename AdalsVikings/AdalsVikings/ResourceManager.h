@@ -20,7 +20,7 @@ namespace Fonts
 class ResourceManager
 {
 public:
-
+	//uses Singleton to make the class global.
 	static ResourceManager &GetInstance();
 
 	~ResourceManager();
