@@ -25,6 +25,9 @@
     <Filter Include="Source Files\Logics">
       <UniqueIdentifier>{3728751e-f67c-4e7a-80ab-2a796424c0bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{4a90ee4b-7f0f-4739-9822-057ce088017a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Level.cpp">

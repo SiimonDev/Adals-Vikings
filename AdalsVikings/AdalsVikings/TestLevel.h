@@ -12,6 +12,6 @@ public:
 	void unload();
 
 private:
-	sf::RectangleShape mRectangle;
+	sf::Sprite mRectangle;
 };
 

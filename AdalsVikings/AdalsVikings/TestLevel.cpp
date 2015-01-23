@@ -1,5 +1,5 @@
 #include "TestLevel.h"
-
+#include <iostream>
 
 TestLevel::TestLevel()
 {
@@ -21,11 +21,9 @@ void TestLevel::render(sf::RenderWindow &window)
 }
 void TestLevel::load()
 {
-	mRectangle.setFillColor(sf::Color::Red);
-	mRectangle.setSize(sf::Vector2f(100, 100));
-	mRectangle.setPosition(sf::Vector2f(400, 300));
+	
 }
 void TestLevel::unload()
 {
-
+	
 }

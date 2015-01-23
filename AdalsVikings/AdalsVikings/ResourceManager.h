@@ -8,7 +8,7 @@ namespace Textures
 {
 	enum ID
 	{
-		LOL
+		TestImage
 	};
 }
 namespace Fonts
