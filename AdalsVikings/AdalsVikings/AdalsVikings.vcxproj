@@ -18,6 +18,7 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Mans\Dropbox\Spelprojekt1\AdalsVikings\AdalsVikings\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\Mans\Dropbox\Spelprojekt1\AdalsVikings\AdalsVikings\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="TestLevel.cpp" />
   </ItemGroup>
@@ -25,6 +26,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelManager.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="TestLevel.h" />
   </ItemGroup>

@@ -28,6 +28,12 @@
     <Filter Include="Assets">
       <UniqueIdentifier>{4a90ee4b-7f0f-4739-9822-057ce088017a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects">
+      <UniqueIdentifier>{1f26bc49-89c0-4c5a-8a02-e17f5a7c7227}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{4aa27730-b415-43be-8551-bed8949c19dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Level.cpp">
@@ -48,6 +54,9 @@
     <ClCompile Include="TestLevel.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Level.h">
@@ -64,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="LevelManager.h">
       <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
