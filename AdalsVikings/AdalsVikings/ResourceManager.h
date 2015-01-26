@@ -24,7 +24,6 @@ public:
 	static ResourceManager &GetInstance();
 
 	~ResourceManager();
-	void Initialize();
 	void load(Textures::ID id, const std::string &filename);
 	void load(Fonts::ID id, const std::string &filename);
 	void unload(Textures::ID id);
