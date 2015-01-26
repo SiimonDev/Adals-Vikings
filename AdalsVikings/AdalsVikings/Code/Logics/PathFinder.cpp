@@ -16,9 +16,12 @@ static int **closedNodes;
 static int **openNodes;
 static int **dirMap;
 
-Path PathFinder::getPath(TileMap &tileMap, const sf::Vector2i &startLocation, const sf::Vector2i &endLocation)
+Path PathFinder::getPath(TileMap &tileMap, const sf::Vector2f &startLoc, const sf::Vector2f &endLoc)
 {
 	Path path;
+	sf::Vector2i startLocation = getClosestFreeTile(tileMap, startLoc);
+	sf::Vector2i endLocation = getClosestFreeTile(tileMap, endLoc);
+
 	int mapWidth = tileMap.getMapSize().x;
 	int mapHeight = tileMap.getMapSize().y;
 
@@ -181,7 +184,7 @@ Path PathFinder::getPath(TileMap &tileMap, const sf::Vector2i &startLocation, co
 	return path;
 }
 
-sf::Vector2i PathFinder::getClosestNode(TileMap &tileMap, const sf::Vector2i &startLocation)
+sf::Vector2i PathFinder::getClosestFreeTile(TileMap &tileMap, const sf::Vector2f &pos)
 {
 	float radius = 1;
 	float maxRadius = 1000;
@@ -190,7 +193,7 @@ sf::Vector2i PathFinder::getClosestNode(TileMap &tileMap, const sf::Vector2i &st
 	while (radius <= maxRadius)
 	{
 		for (float angle = 0; angle <= 360; angle += 2){
-			sf::Vector2f searhLocation = sf::Vector2f(startLocation) + (sf::Vector2f(cos(angle), sin(angle)) * radius);
+			sf::Vector2f searhLocation = pos + (sf::Vector2f(cos(angle), sin(angle)) * radius);
 			sf::Vector2i tileLoc = tileMap.getClosestTile(searhLocation);
 			if (tileLoc != sf::Vector2i())
 			{
@@ -201,7 +204,6 @@ sf::Vector2i PathFinder::getClosestNode(TileMap &tileMap, const sf::Vector2i &st
 		}
 		radius += 20;
 	}
-
-
+	
 	return sf::Vector2i(0, 0);
 }

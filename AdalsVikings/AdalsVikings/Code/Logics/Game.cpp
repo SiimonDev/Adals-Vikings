@@ -92,18 +92,7 @@ void Game::update(sf::Time frameTime)
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
-		sf::Vector2i mousePos = PathFinder::getClosestNode(tileMap, MouseState::getInstance().getMousePosition());
-		sf::Vector2i playerPos = tileMap.getClosestTile(player.getPosition());
-
-		Path path = PathFinder::getPath(tileMap, playerPos, mousePos);
-
-		//cout << endl;
-		//for each (sf::Vertex pos in path){
-		//	cout << "X:" << pos.position.x << " Y:" << pos.position.y << endl;
-		//	cout << "R:" << float(pos.color.r) << " G:" << float(pos.color.g) << " B:" << float(pos.color.b) << " A:" << float(pos.color.a) << endl;
-		//}
-		//cout << endl;
-
+		Path path = PathFinder::getPath(tileMap, player.getPosition(), sf::Vector2f(MouseState::getInstance().getMousePosition()));
 		player.walkPath(path);
 	}
 
@@ -114,7 +103,7 @@ void Game::render()
 {
 	mWindow.clear(sf::Color::Black);
 
-	//LevelManager::getInstance().render(mWindow);
+	LevelManager::getInstance().render(mWindow);
 	mWindow.draw(bgSprite);
 	tileMap.draw(mWindow);
 	player.render(mWindow);
