@@ -187,7 +187,7 @@ Path PathFinder::getPath(TileMap &tileMap, const sf::Vector2f &startLoc, const s
 sf::Vector2i PathFinder::getClosestFreeTile(TileMap &tileMap, const sf::Vector2f &pos)
 {
 	float radius = 1;
-	float maxRadius = 1000;
+	float maxRadius = 1920;
 	int **squares = tileMap.getTileArray();
 
 	while (radius <= maxRadius)

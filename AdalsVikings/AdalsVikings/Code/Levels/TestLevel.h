@@ -1,5 +1,9 @@
 #pragma once
 #include "Level.h"
+#include "TileMap.h"
+#include "..\Logics\PathFinder.h"
+#include "..\Logics\MouseState.h"
+#include "..\Objects\Player.h"
 class TestLevel : public Level
 {
 public:
@@ -12,6 +16,10 @@ public:
 	void unload();
 
 private:
-	sf::Sprite mRectangle;
+	sf::Sprite mBackground;
+	sf::Image mImage;
+
+	Player mPlayer;
+	TileMap mTileMap;
 };
 

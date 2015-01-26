@@ -1,8 +1,9 @@
 #include "Player.h"
 #include <math.h>
+#include <iostream>
+#include "..\Logics\ResourceManager.h"
+#include "..\Logics\PathFinder.h"
 
-static sf::Texture mTexture;
-static sf::Sprite mSprite;
 
 sf::Vector2f Player::getPosition(){ return mPosition; }
 
@@ -21,19 +22,25 @@ Player::Player()
 
 	mScale = sf::Vector2f(1, 1);
 	mSpeed = 3.f;
-	mPosition = sf::Vector2f(750, 1000);
+	/*mPosition = sf::Vector2f(750, 1000);*/
 }
 
 Player::~Player(){
 
 }
 
-void Player::loadContent(){
-	mTexture.loadFromFile("Assets/Images/Asteroid3.png");
-	mTexture.setSmooth(true);
-	mSprite.setTexture(mTexture);
-}
+void Player::load(TileMap &tileMap, sf::Vector2f &spawnPosition){
 
+	mPosition.x = (PathFinder::getClosestFreeTile(tileMap, spawnPosition).x * tileMap.getTileSize().x) + tileMap.getTileSize().x / 2;
+	mPosition.y = (PathFinder::getClosestFreeTile(tileMap, spawnPosition).y * tileMap.getTileSize().y) + tileMap.getTileSize().y / 2;
+	ResourceManager::GetInstance().load(Textures::Player, "Assets/Images/Asteroid3.png");
+	ResourceManager::GetInstance().getTexture(Textures::Player).setSmooth(true);
+	mPlayerSprite.setTexture(ResourceManager::GetInstance().getTexture(Textures::Player));
+}
+void Player::unload()
+{
+	ResourceManager::GetInstance().unload(Textures::Player);
+}
 void Player::update(sf::Time &frameTime){
 	mRotation += rotationSpeed;
 	move(frameTime);
@@ -116,11 +123,11 @@ void Player::move(sf::Time &frameTime){
 
 void Player::render(sf::RenderWindow &window)
 {
-	mWidth = mTexture.getSize().x;
-	mHeight = mTexture.getSize().y;
-	mSprite.setOrigin(mWidth / 2, mHeight / 2);
-	mSprite.setPosition(mPosition);
-	mSprite.setRotation(mRotation);
-	mSprite.setScale(mScale);
-	window.draw(mSprite);
+	mWidth = ResourceManager::GetInstance().getTexture(Textures::Player).getSize().x;
+	mHeight = ResourceManager::GetInstance().getTexture(Textures::Player).getSize().y;
+	mPlayerSprite.setOrigin(mWidth / 2, mHeight / 2);
+	mPlayerSprite.setPosition(mPosition);
+	mPlayerSprite.setRotation(mRotation);
+	mPlayerSprite.setScale(mScale);
+	window.draw(mPlayerSprite);
 }

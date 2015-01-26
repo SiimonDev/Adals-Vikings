@@ -11,6 +11,6 @@ class PathFinder
 {
 public:
 	static Path getPath(TileMap &tileMap, const sf::Vector2f &startLoc, const sf::Vector2f &endLoc);
-private:
 	static sf::Vector2i getClosestFreeTile(TileMap &tileMap, const sf::Vector2f &startLoc);
+private:
 };

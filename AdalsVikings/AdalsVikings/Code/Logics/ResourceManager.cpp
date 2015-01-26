@@ -18,6 +18,8 @@ void ResourceManager::load(Textures::ID _id, const std::string& _filename)
 	std::unique_ptr<sf::Texture> texture(new sf::Texture());
 	texture->loadFromFile(_filename);
 	mTextureMap.insert(std::make_pair(_id, std::move(texture)));
+
+	//mIndexMap.insert(std::make_pair(_id, std::move(_index)));
 }
 void ResourceManager::load(Fonts::ID _id, const std::string& _filename)
 {
@@ -42,4 +44,9 @@ sf::Font& ResourceManager::getFont(Fonts::ID _id) const
 {
 	auto found = mFontMap.find(_id);
 	return *found->second;
+}
+int& ResourceManager::getIndex(Textures::ID _id)
+{
+	auto found = mIndexMap.find(_id);
+	return found->second;
 }

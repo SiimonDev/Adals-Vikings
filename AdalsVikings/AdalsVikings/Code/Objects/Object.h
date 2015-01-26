@@ -2,7 +2,7 @@
 #include <SFML\Graphics.hpp>
 #include <string>
 #include <vector>
-#include "ResourceManager.h"
+#include "..\Logics\ResourceManager.h"
 
 
 class Object

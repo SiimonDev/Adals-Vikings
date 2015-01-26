@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-
+#include "..\Levels\TileMap.h"
 typedef std::vector<sf::Vertex> Path;
 
 class Player
@@ -10,7 +10,8 @@ public:
 	~Player();
 
 	sf::Vector2f getPosition();
-	static void loadContent();
+	void load(TileMap &tileMap, sf::Vector2f &spawnPosition);
+	void unload();
 	void move(sf::Time &frameTime);
 	void walkPath(Path &path);
 
@@ -25,6 +26,7 @@ private:
 
 	sf::Vector2f mPosition;
 	sf::Vector2f mScale;
+	sf::Sprite mPlayerSprite;
 
 	float mSpeed;
 	float scaleSpeed;
