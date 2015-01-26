@@ -21,6 +21,9 @@ public:
 	void load();
 	void unload();
 
+	bool interactWithItem(Object *object);
+
+	ObjID getObjID();
 private:
 	ObjID mObjectID;
 	std::string mFilePath;
@@ -28,5 +31,6 @@ private:
 	std::string mName, mLookAtDialog, mUsDialog, mCantUseDialog;
 	sf::Sprite mSprite;
 	bool mCanPickUp;
+	std::vector<ObjID> mInteractableWith;
 };
 

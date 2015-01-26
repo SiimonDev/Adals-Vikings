@@ -29,6 +29,21 @@ void Object::load()
 	mSprite.setTexture(ResourceManager::GetInstance().getTexture(mTextureID));
 }
 
-void Object::unload(){
+void Object::unload()
+{
 	ResourceManager::GetInstance().unload(mTextureID);
+}
+
+bool Object::interactWithItem(Object *object)
+{
+	if (std::find(mInteractableWith.begin(), mInteractableWith.end(), object->getObjID()) != mInteractableWith.end()){
+		return true;
+	}
+	return false;
+
+}
+
+Object::ObjID Object::getObjID()
+{
+	return mObjectID;
 }

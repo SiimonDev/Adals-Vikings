@@ -21,6 +21,7 @@
     <ClCompile Include="Code\Logics\ResourceManager.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\Objects\Object.cpp" />
+    <ClCompile Include="Code\Objects\ObjectHandler.cpp" />
     <ClCompile Include="Code\Objects\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +35,7 @@
     <ClInclude Include="Code\Logics\PathFinder.h" />
     <ClInclude Include="Code\Logics\ResourceManager.h" />
     <ClInclude Include="Code\Objects\Object.h" />
+    <ClInclude Include="Code\Objects\ObjectHandler.h" />
     <ClInclude Include="Code\Objects\Player.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
