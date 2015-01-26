@@ -36,45 +36,72 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Level.cpp">
+    <ClCompile Include="Code\Logics\Game.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Logics\LevelManager.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Logics\ResourceManager.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files\Logics</Filter>
+    <ClCompile Include="Code\Levels\TestLevel.cpp">
+      <Filter>Source Files\Levels</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files\Logics</Filter>
+    <ClCompile Include="Code\Objects\Object.cpp">
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>Source Files\Logics</Filter>
-    </ClCompile>
-    <ClCompile Include="LevelManager.cpp">
+    <ClCompile Include="Code\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestLevel.cpp">
+    <ClCompile Include="Code\Logics\MouseState.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Logics\PathFinder.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\TileMap.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
+    <ClCompile Include="Code\Objects\Player.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Level.h">
+    <ClInclude Include="Code\Logics\Game.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\LevelManager.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\ResourceManager.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files\Logics</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>Header Files\Logics</Filter>
-    </ClInclude>
-    <ClInclude Include="TestLevel.h">
+    <ClInclude Include="Code\Levels\TestLevel.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
-    <ClInclude Include="LevelManager.h">
+    <ClInclude Include="Code\Objects\Object.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\MouseState.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
+    <ClInclude Include="Code\Logics\Node.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\PathFinder.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\TileMap.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Objects\Player.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>

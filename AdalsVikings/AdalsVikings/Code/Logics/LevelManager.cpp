@@ -1,6 +1,6 @@
 #include "LevelManager.h"
-#include "Level.h"
-#include "TestLevel.h"
+#include "..\Levels\Level.h"
+#include "..\Levels\TestLevel.h"
 
 LevelManager &LevelManager::getInstance()
 {

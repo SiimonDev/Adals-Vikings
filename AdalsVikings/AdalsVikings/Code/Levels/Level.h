@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include "ResourceManager.h"
+#include "..\Logics\LevelManager.h"
 class Level
 {
 public:

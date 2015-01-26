@@ -1,6 +1,6 @@
 #include "Object.h"
 #include <SFML/Graphics.hpp>
-#include "ResourceManager.h"
+#include "..\Logics\LevelManager.h"
 
 
 Object::Object(ObjID objectID, std::string filePath, Textures::ID textureID) : mObjectID(objectID), mFilePath(filePath), mTextureID(textureID)

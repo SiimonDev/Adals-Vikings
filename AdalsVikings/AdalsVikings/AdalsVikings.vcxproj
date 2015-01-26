@@ -11,24 +11,30 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Level.cpp" />
-    <ClCompile Include="LevelManager.cpp" />
-    <ClCompile Include="main.cpp">
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\Users\Mans\Dropbox\Spelprojekt1\AdalsVikings\AdalsVikings\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\Mans\Dropbox\Spelprojekt1\AdalsVikings\AdalsVikings\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
-    <ClCompile Include="TestLevel.cpp" />
+    <ClCompile Include="Code\Levels\Level.cpp" />
+    <ClCompile Include="Code\Levels\TestLevel.cpp" />
+    <ClCompile Include="Code\Levels\TileMap.cpp" />
+    <ClCompile Include="Code\Logics\Game.cpp" />
+    <ClCompile Include="Code\Logics\LevelManager.cpp" />
+    <ClCompile Include="Code\Logics\MouseState.cpp" />
+    <ClCompile Include="Code\Logics\PathFinder.cpp" />
+    <ClCompile Include="Code\Logics\ResourceManager.cpp" />
+    <ClCompile Include="Code\main.cpp" />
+    <ClCompile Include="Code\Objects\Object.cpp" />
+    <ClCompile Include="Code\Objects\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Level.h" />
-    <ClInclude Include="LevelManager.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="ResourceManager.h" />
-    <ClInclude Include="TestLevel.h" />
+    <ClInclude Include="Code\Levels\Level.h" />
+    <ClInclude Include="Code\Levels\TestLevel.h" />
+    <ClInclude Include="Code\Levels\TileMap.h" />
+    <ClInclude Include="Code\Logics\Game.h" />
+    <ClInclude Include="Code\Logics\LevelManager.h" />
+    <ClInclude Include="Code\Logics\MouseState.h" />
+    <ClInclude Include="Code\Logics\Node.h" />
+    <ClInclude Include="Code\Logics\PathFinder.h" />
+    <ClInclude Include="Code\Logics\ResourceManager.h" />
+    <ClInclude Include="Code\Objects\Object.h" />
+    <ClInclude Include="Code\Objects\Player.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9E6078BF-5E94-40B5-8F88-6FBDC7F73B99}</ProjectGuid>
