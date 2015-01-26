@@ -2,21 +2,31 @@
 #include <SFML\Graphics.hpp>
 #include <string>
 #include <vector>
+#include "ResourceManager.h"
+
 
 class Object
 {
 public:
-	Object(std::string objectID, std::string filePath);
+	enum ObjID{
+		Rock
+	};
+
+	Object(ObjID objectID, std::string filePath, Textures::ID textureID);
 	~Object();
 
 	void render(sf::RenderWindow &window);
 	void update(sf::Time &time);
 
+	void load();
+	void unload();
+
 private:
-	std::string filePath;
+	ObjID mObjectID;
+	std::string mFilePath;
+	Textures::ID mTextureID;
 	std::string mName, mLookAtDialog, mUsDialog, mCantUseDialog;
 	sf::Sprite mSprite;
 	bool mCanPickUp;
-
 };
 
