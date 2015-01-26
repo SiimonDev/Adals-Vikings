@@ -1,12 +1,24 @@
+defaultuse:
+defaultlookat:
+defaultdeny:
 --------------------------------------------
 $axe$
 name: Axe
-Use: What is this curious axe for?
-lookat:
+use: "chop chop chop" ~0.8
+lookat: "This is a nice axe" ~1.0
 combine: $stick$ $wood$
 interact: $tree$
 pickup: true
-Deny:
+deny: "This axe is really sharp I should be careful with it" ~2.0
+denywith: $Brynja$ "Woah Brynja would get mad if I did that" ~2.0
 --------------------------------------------
 $rock$
-description
+name: Rock
+use: 
+lookat: "Its a rock" ~0.5
+combine: $stick$ $axe$, $rock$ $pairofrocks$
+interact:
+pickup: true
+deny:
+denywith:
+--------------------------------------------

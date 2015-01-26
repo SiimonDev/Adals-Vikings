@@ -3,11 +3,32 @@
 #include "..\Logics\LevelManager.h"
 
 
-Object::Object(std::string objectID, std::string filePath)
+Object::Object(ObjID objectID, std::string filePath, Textures::ID textureID) : mObjectID(objectID), mFilePath(filePath), mTextureID(textureID)
 {
+	
 }
 
 
 Object::~Object()
 {
+}
+
+void Object::render(sf::RenderWindow &window)
+{
+	window.draw(mSprite);
+}
+
+void Object::update(sf::Time &time)
+{
+		
+}
+
+void Object::load()
+{
+	ResourceManager::GetInstance().load(mTextureID, mFilePath);
+	mSprite.setTexture(ResourceManager::GetInstance().getTexture(mTextureID));
+}
+
+void Object::unload(){
+	ResourceManager::GetInstance().unload(mTextureID);
 }
