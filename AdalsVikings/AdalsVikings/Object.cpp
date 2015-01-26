@@ -3,7 +3,7 @@
 #include "ResourceManager.h"
 
 
-Object::Object()
+Object::Object(std::string objectID, std::string filePath)
 {
 }
 
