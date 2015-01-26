@@ -1,4 +1,4 @@
-﻿Build started 2015-01-26 10:07:18.
+﻿Build started 2015-01-26 10:10:27.
      1>Project "C:\Users\Administrator\Dropbox\github\Adals-Vikings\AdalsVikings\AdalsVikings\AdalsVikings.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
          C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Iinclude /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp Level.cpp LevelManager.cpp Object.cpp ResourceManager.cpp TestLevel.cpp
@@ -9,6 +9,7 @@
          Level.cpp
          Game.cpp
          Generating Code...
+     1>cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
          C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\Mans\Dropbox\Spelprojekt1\AdalsVikings\AdalsVikings\include /Iinclude /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
        Link:
@@ -24,4 +25,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:08.05
+Time Elapsed 00:00:07.35
