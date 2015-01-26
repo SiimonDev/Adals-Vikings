@@ -1,0 +1,12 @@
+--------------------------------------------
+$axe$
+name: Axe
+Use: What is this curious axe for?
+lookat:
+combine: $stick$ $wood$
+interact: $tree$
+pickup: true
+Deny:
+--------------------------------------------
+$rock$
+description
