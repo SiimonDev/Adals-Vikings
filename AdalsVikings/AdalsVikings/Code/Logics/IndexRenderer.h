@@ -11,6 +11,7 @@ public:
 
 	void setWindow(sf::RenderWindow &window);
 	void addTexture(mv::ISprite &texture);
+	void clearTexture();
 	void display();
 
 private:

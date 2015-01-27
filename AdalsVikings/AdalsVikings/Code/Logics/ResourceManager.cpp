@@ -51,15 +51,18 @@ void ResourceManager::load(Folder::ID id, const std::string &directory)
 {
 	std::vector<std::string> filePaths = getAllBackgroundFilesFromFolder(directory);
 
-	FolderPtr textures;
 	for (int i = 0; i < filePaths.size(); i++)
 	{
-		TexturePtr texture(new sf::Texture());
-		texture->loadFromFile(filePaths.at(i));
-		textures->push_back(texture);
-		delete texture;
+		mFolderVector.push_back(new sf::Texture());
+		mFolderVector[i]->loadFromFile(filePaths.at(i));
 	}
-	mFolderMap.insert(std::make_pair(id, std::move(textures)));
+	mFolderMap.insert(std::make_pair(id, std::move(mFolderVector)));
+
+	for (int i = 0; i < mFolderVector.size(); i++)
+	{
+		delete mFolderVector[i];
+		mFolderVector.erase(mFolderVector.begin() + i);
+	}
 }
 void ResourceManager::load(Textures::ID id, const std::string& filename)
 {
@@ -90,6 +93,7 @@ void ResourceManager::unload(Fonts::ID id)
 FolderPtr &ResourceManager::getFolder(Folder::ID id)
 {
 	auto found = mFolderMap.find(id);
+
 	return found->second;
 }
 sf::Texture &ResourceManager::getTexture(Textures::ID id) const
@@ -101,10 +105,4 @@ sf::Font &ResourceManager::getFont(Fonts::ID id) const
 {
 	auto found = mFontMap.find(id);
 	return *found->second;
-}
-
-int &ResourceManager::getIndex(Textures::ID id)
-{
-	auto found = mIndexMap.find(id);
-	return found->second;
 }

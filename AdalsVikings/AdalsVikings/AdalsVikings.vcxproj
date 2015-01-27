@@ -15,6 +15,7 @@
     <ClCompile Include="Code\Levels\TestLevel.cpp" />
     <ClCompile Include="Code\Levels\TileMap.cpp" />
     <ClCompile Include="Code\Logics\Game.cpp" />
+    <ClCompile Include="Code\Logics\IndexRenderer.cpp" />
     <ClCompile Include="Code\Logics\LevelManager.cpp" />
     <ClCompile Include="Code\Logics\MouseState.cpp" />
     <ClCompile Include="Code\Logics\PathFinder.cpp" />
@@ -29,6 +30,8 @@
     <ClInclude Include="Code\Levels\TestLevel.h" />
     <ClInclude Include="Code\Levels\TileMap.h" />
     <ClInclude Include="Code\Logics\Game.h" />
+    <ClInclude Include="Code\Logics\IndexRenderer.h" />
+    <ClInclude Include="Code\Logics\ISprite.h" />
     <ClInclude Include="Code\Logics\LevelManager.h" />
     <ClInclude Include="Code\Logics\MouseState.h" />
     <ClInclude Include="Code\Logics\Node.h" />

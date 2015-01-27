@@ -25,10 +25,9 @@ void TestLevel::update(sf::Time &frametime)
 
 void TestLevel::render(IndexRenderer &iRenderer)
 {
-	for each (mv::ISprite bg in mBackgrounds){
-		iRenderer.addTexture(bg);
+	for (int i = 0; i < mBackgrounds.size(); i++){
+		iRenderer.addTexture(mBackgrounds[i]);
 	}
-	
 	mPlayer.render(iRenderer);
 	mTileMap.draw(iRenderer);
 }

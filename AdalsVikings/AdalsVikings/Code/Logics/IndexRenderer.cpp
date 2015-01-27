@@ -24,6 +24,11 @@ void IndexRenderer::addTexture(mv::ISprite &texture)
 {
 	mISprites.push_back(&texture);
 }
+void IndexRenderer::clearTexture()
+{
+	mISprites.clear();
+}
+
 
 void IndexRenderer::display()
 {

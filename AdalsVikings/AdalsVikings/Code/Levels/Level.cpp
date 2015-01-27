@@ -46,8 +46,8 @@ void Level::loadAllBackgrounds(std::string filepath)
 	mTileMap.setTiles(sf::Vector2i(20, 20), mRCImage);
 
 	ResourceManager::GetInstance().load(Folder::TestLevel, filepath);
-	for (int i = 0; i < ResourceManager::GetInstance().getFolder(Folder::TestLevel)->size(); i++)
+	for (int i = 0; i < ResourceManager::GetInstance().getFolder(Folder::TestLevel).size(); i++)
 	{
-		mBackgrounds.push_back(mv::ISprite(*ResourceManager::GetInstance().getFolder(Folder::TestLevel)->at(i), 0));
+		mBackgrounds.push_back(mv::ISprite(*ResourceManager::GetInstance().getFolder(Folder::TestLevel).at(i), i * 10));
 	}
 }

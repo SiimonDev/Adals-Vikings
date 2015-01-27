@@ -6,7 +6,7 @@
 #include <vector>
 
 typedef std::unique_ptr<sf::Texture> TexturePtr;
-typedef std::vector<TexturePtr>* FolderPtr;
+typedef std::vector<sf::Texture*> FolderPtr;
 typedef std::unique_ptr<sf::Font> FontPtr;
 
 namespace Folder
@@ -44,7 +44,6 @@ public:
 	void unload(Folder::ID id);
 	void unload(Textures::ID id);
 	void unload(Fonts::ID id);
-	void setIndex(Textures::ID id);
 
 	int& getIndex(Textures::ID id);
 	FolderPtr &getFolder(Folder::ID id);
@@ -56,10 +55,8 @@ private:
 	ResourceManager(const ResourceManager&);
 	void operator=(const ResourceManager&);
 
-	std::map<Textures::ID,
-		int> mIndexMap;
-
 	std::map<Textures::ID, TexturePtr> mTextureMap;
+	FolderPtr mFolderVector;
 	std::map<Folder::ID, FolderPtr> mFolderMap;
 	std::map<Fonts::ID, FontPtr> mFontMap;
 };
