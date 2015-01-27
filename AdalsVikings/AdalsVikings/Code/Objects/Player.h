@@ -34,8 +34,17 @@ private:
 	float scaleSpeed;
 	float rotationSpeed;
 
-	sf::Vertex lastTarget;
-	sf::Vertex currentTarget;
-	sf::Vector2f distanceToTarget;
-	Path currentPath;
+	sf::Vertex mLastTarget;
+	sf::Vertex mCurrentTarget;
+	sf::Vector2f mDistanceToTarget;
+	Path mCurrentPath;
+
+	bool mDestinationReached;
+	bool mTargetReached;
+	sf::Vector2f mVelocity;
+
+	int mStepsTaken;
+	int mTotalSteps;
+	float mAlphaPerStep;
+	float mCurrentAlpha;
 };
