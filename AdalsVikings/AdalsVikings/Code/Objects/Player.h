@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "..\Levels\TileMap.h"
+#include "..\Logics\IndexRenderer.h"
+
 typedef std::vector<sf::Vertex> Path;
 
 class Player
@@ -16,7 +18,7 @@ public:
 	void walkPath(Path &path);
 
 	void update(sf::Time &frameTime);
-	void render(sf::RenderWindow &window);
+	void render(IndexRenderer &iRenderer);
 
 private:
 	int mWidth;
@@ -26,7 +28,7 @@ private:
 
 	sf::Vector2f mPosition;
 	sf::Vector2f mScale;
-	sf::Sprite mPlayerSprite;
+	mv::ISprite mISprite;
 
 	float mSpeed;
 	float scaleSpeed;

@@ -3,38 +3,51 @@
 #include <vector>
 #include <string>
 
-
 Level::Level()
 {
 }
-
 
 Level::~Level()
 {
 }
 
-void Level::readFiles(std::string directory)
+std::string getCollisionFileFromFolder(const std::string &directory)
 {
 	DIR *dir;
-	std::vector<std::string> filePaths;
-
 	struct dirent *dirnt;
+	std::string filePath;
 
 	if ((dir = opendir(directory.c_str())) != NULL)
 	{
 		while ((dirnt = readdir(dir)) != NULL)
 		{
-			filePaths.push_back(dirnt->d_name);
+			std::string path = dirnt->d_name;
+			if (path.find("rc_") != std::string::npos)
+			{
+				filePath = directory + dirnt->d_name;
+				std::cout << "RCFile: " << filePath << " Loaded" << std::endl;
+				return filePath;
+			}
 		}
 		closedir(dir);
-
-		for each (std::string s in filePaths)
-		{
-			std::cout << s << std::endl;
-		}
 	}
-	else {
-		/* could not open directory */
+	else
+	{
 		std::cout << "Could not find dir" << std::endl;
+	}
+
+	std::cout << "No RC file found" << std::endl;
+	return "";
+}
+
+void Level::loadAllBackgrounds(std::string filepath)
+{
+	mRCImage.loadFromFile(getCollisionFileFromFolder(filepath));
+	mTileMap.setTiles(sf::Vector2i(20, 20), mRCImage);
+
+	ResourceManager::GetInstance().load(Folder::TestLevel, filepath);
+	for (int i = 0; i < ResourceManager::GetInstance().getFolder(Folder::TestLevel)->size(); i++)
+	{
+		mBackgrounds.push_back(mv::ISprite(*ResourceManager::GetInstance().getFolder(Folder::TestLevel)->at(i), 0));
 	}
 }

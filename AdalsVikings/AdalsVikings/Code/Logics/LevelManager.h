@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include "IndexRenderer.h"
+
 class Level;
 class LevelManager
 {
@@ -11,7 +13,7 @@ public:
 	void initialize();
 	void load();
 	void unload();
-	void render(sf::RenderWindow &window);
+	void render(IndexRenderer &iRenderer);
 	void update(sf::Time &frametime);
 
 private:

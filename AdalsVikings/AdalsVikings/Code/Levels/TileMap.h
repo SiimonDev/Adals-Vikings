@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <SFML\Graphics.hpp>
+#include "..\Logics\IndexRenderer.h"
 
 class TileMap
 {
@@ -14,7 +15,7 @@ public:
 
 	bool isYeallow(sf::Color &color);
 	void setTiles(sf::Vector2i &tileSize, sf::Image &image);
-	void draw(sf::RenderWindow &window);
+	void draw(IndexRenderer &iRenderer);
 
 private:
 	sf::Vertex *mVerts;

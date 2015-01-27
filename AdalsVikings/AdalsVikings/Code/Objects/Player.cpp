@@ -29,18 +29,24 @@ Player::~Player(){
 
 }
 
-void Player::load(TileMap &tileMap, sf::Vector2f &spawnPosition){
-
+void Player::load(TileMap &tileMap, sf::Vector2f &spawnPosition)
+{
 	mPosition.x = (PathFinder::getClosestFreeTile(tileMap, spawnPosition).x * tileMap.getTileSize().x) + tileMap.getTileSize().x / 2;
 	mPosition.y = (PathFinder::getClosestFreeTile(tileMap, spawnPosition).y * tileMap.getTileSize().y) + tileMap.getTileSize().y / 2;
 	ResourceManager::GetInstance().load(Textures::Player, "Assets/Images/Asteroid3.png");
 	ResourceManager::GetInstance().getTexture(Textures::Player).setSmooth(true);
-	mPlayerSprite.setTexture(ResourceManager::GetInstance().getTexture(Textures::Player));
+	mISprite.getSprite().setTexture(ResourceManager::GetInstance().getTexture(Textures::Player));
+	mISprite.setIndex(3);
+
+	mWidth = ResourceManager::GetInstance().getTexture(Textures::Player).getSize().x;
+	mHeight = ResourceManager::GetInstance().getTexture(Textures::Player).getSize().y;
 }
+
 void Player::unload()
 {
 	ResourceManager::GetInstance().unload(Textures::Player);
 }
+
 void Player::update(sf::Time &frameTime){
 	mRotation += rotationSpeed;
 	move(frameTime);
@@ -121,13 +127,11 @@ void Player::move(sf::Time &frameTime){
 	}
 }
 
-void Player::render(sf::RenderWindow &window)
+void Player::render(IndexRenderer &iRenderer)
 {
-	mWidth = ResourceManager::GetInstance().getTexture(Textures::Player).getSize().x;
-	mHeight = ResourceManager::GetInstance().getTexture(Textures::Player).getSize().y;
-	mPlayerSprite.setOrigin(mWidth / 2, mHeight / 2);
-	mPlayerSprite.setPosition(mPosition);
-	mPlayerSprite.setRotation(mRotation);
-	mPlayerSprite.setScale(mScale);
-	window.draw(mPlayerSprite);
+	mISprite.getSprite().setOrigin(mWidth / 2, mHeight / 2);
+	mISprite.getSprite().setPosition(mPosition);
+	mISprite.getSprite().setRotation(mRotation);
+	mISprite.getSprite().setScale(mScale);
+	iRenderer.addTexture(mISprite);
 }

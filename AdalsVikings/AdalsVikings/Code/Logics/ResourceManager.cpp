@@ -1,4 +1,8 @@
 #include "ResourceManager.h"
+#include <iostream>
+#include <vector>
+#include <string>
+#include <External\dirent.h>
 
 ResourceManager &ResourceManager::GetInstance()
 {
@@ -13,40 +17,94 @@ ResourceManager::~ResourceManager()
 {
 
 }
-void ResourceManager::load(Textures::ID _id, const std::string& _filename)
-{
-	std::unique_ptr<sf::Texture> texture(new sf::Texture());
-	texture->loadFromFile(_filename);
-	mTextureMap.insert(std::make_pair(_id, std::move(texture)));
 
-	//mIndexMap.insert(std::make_pair(_id, std::move(_index)));
-}
-void ResourceManager::load(Fonts::ID _id, const std::string& _filename)
+std::vector<std::string>getAllBackgroundFilesFromFolder(const std::string &directory)
 {
-	std::unique_ptr<sf::Font> font(new sf::Font());
-	font->loadFromFile(_filename);
-	mFontMap.insert(std::make_pair(_id, std::move(font)));
+	DIR *dir;
+	struct dirent *dirnt;
+	std::vector<std::string> filePaths;
+
+	if ((dir = opendir(directory.c_str())) != NULL)
+	{
+		while ((dirnt = readdir(dir)) != NULL)
+		{
+			std::string path = dirnt->d_name;
+			if (path.find("ml_") != std::string::npos) 
+			{
+				filePaths.push_back(directory + dirnt->d_name);
+			}
+		}
+		closedir(dir);
+
+		for each (std::string s in filePaths)
+			std::cout << s << " Loaded"<< std::endl;
+	}
+	else 
+	{
+		std::cout << "Could not find dir" << std::endl;
+	}
+
+	return filePaths;
 }
-void ResourceManager::unload(Textures::ID _id)
+
+void ResourceManager::load(Folder::ID id, const std::string &directory)
 {
-	mTextureMap.erase(_id);
+	std::vector<std::string> filePaths = getAllBackgroundFilesFromFolder(directory);
+
+	FolderPtr textures;
+	for (int i = 0; i < filePaths.size(); i++)
+	{
+		TexturePtr texture(new sf::Texture());
+		texture->loadFromFile(filePaths.at(i));
+		textures->push_back(texture);
+		delete texture;
+	}
+	mFolderMap.insert(std::make_pair(id, std::move(textures)));
 }
-void ResourceManager::unload(Fonts::ID _id)
+void ResourceManager::load(Textures::ID id, const std::string& filename)
 {
-	mFontMap.erase(_id);
+	TexturePtr texture(new sf::Texture());
+	texture->loadFromFile(filename);
+	mTextureMap.insert(std::make_pair(id, std::move(texture)));
 }
-sf::Texture& ResourceManager::getTexture(Textures::ID _id) const
+void ResourceManager::load(Fonts::ID id, const std::string& filename)
 {
-	auto found = mTextureMap.find(_id);
+	FontPtr font(new sf::Font());
+	font->loadFromFile(filename);
+	mFontMap.insert(std::make_pair(id, std::move(font)));
+}
+
+void ResourceManager::unload(Folder::ID id)
+{
+	mFolderMap.erase(id);
+}
+void ResourceManager::unload(Textures::ID id)
+{
+	mTextureMap.erase(id);
+}
+void ResourceManager::unload(Fonts::ID id)
+{
+	mFontMap.erase(id);
+}
+
+FolderPtr &ResourceManager::getFolder(Folder::ID id)
+{
+	auto found = mFolderMap.find(id);
+	return found->second;
+}
+sf::Texture &ResourceManager::getTexture(Textures::ID id) const
+{
+	auto found = mTextureMap.find(id);
 	return *found->second;
 }
-sf::Font& ResourceManager::getFont(Fonts::ID _id) const
+sf::Font &ResourceManager::getFont(Fonts::ID id) const
 {
-	auto found = mFontMap.find(_id);
+	auto found = mFontMap.find(id);
 	return *found->second;
 }
-int& ResourceManager::getIndex(Textures::ID _id)
+
+int &ResourceManager::getIndex(Textures::ID id)
 {
-	auto found = mIndexMap.find(_id);
+	auto found = mIndexMap.find(id);
 	return found->second;
 }

@@ -22,22 +22,23 @@ void TestLevel::update(sf::Time &frametime)
 
 	mPlayer.update(frametime);
 }
-void TestLevel::render(sf::RenderWindow &window)
+
+void TestLevel::render(IndexRenderer &iRenderer)
 {
-	window.draw(mBackground);
-	mPlayer.render(window);
-	mTileMap.draw(window);
+	for each (mv::ISprite bg in mBackgrounds){
+		iRenderer.addTexture(bg);
+	}
+	
+	mPlayer.render(iRenderer);
+	mTileMap.draw(iRenderer);
 }
+
 void TestLevel::load()
 {
-	ResourceManager::GetInstance().load(Textures::TestBackground, "Assets/MapFiles/Ship/BoatL1.png");
-	mImage.loadFromFile("Assets/MapFiles/Ship/BoatRC.png");
-	mTileMap.setTiles(sf::Vector2i(20, 20), mImage);
-	mBackground.setTexture(ResourceManager::GetInstance().getTexture(Textures::TestBackground));
+	loadAllBackgrounds("Assets/MapFiles/Ship/");
 	mPlayer.load(mTileMap, sf::Vector2f(100, 300));
-	readFiles("Assets/MapFiles/Ship");
-
 }
+
 void TestLevel::unload()
 {
 	

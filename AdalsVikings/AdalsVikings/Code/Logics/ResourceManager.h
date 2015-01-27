@@ -5,10 +5,21 @@
 #include <string>
 #include <vector>
 
-namespace Textures
+typedef std::unique_ptr<sf::Texture> TexturePtr;
+typedef std::vector<TexturePtr>* FolderPtr;
+typedef std::unique_ptr<sf::Font> FontPtr;
+
+namespace Folder
 {
 	enum ID
 	{
+		TestLevel
+	};
+};
+namespace Textures
+{
+	enum ID
+	{ 
 		TestBackground,
 		TestTileImage,
 		Player
@@ -27,13 +38,16 @@ public:
 	static ResourceManager &GetInstance();
 
 	~ResourceManager();
+	void load(Folder::ID id, const std::string &directory);
 	void load(Textures::ID id, const std::string &filename);
 	void load(Fonts::ID id, const std::string &filename);
+	void unload(Folder::ID id);
 	void unload(Textures::ID id);
 	void unload(Fonts::ID id);
 	void setIndex(Textures::ID id);
 
 	int& getIndex(Textures::ID id);
+	FolderPtr &getFolder(Folder::ID id);
 	sf::Texture& getTexture(Textures::ID id) const;
 	sf::Font& getFont(Fonts::ID id) const;
 
@@ -44,9 +58,9 @@ private:
 
 	std::map<Textures::ID,
 		int> mIndexMap;
-	std::map<Textures::ID,
-		std::unique_ptr<sf::Texture>> mTextureMap;
-	std::map<Fonts::ID,
-		std::unique_ptr<sf::Font >> mFontMap;
+
+	std::map<Textures::ID, TexturePtr> mTextureMap;
+	std::map<Folder::ID, FolderPtr> mFolderMap;
+	std::map<Fonts::ID, FontPtr> mFontMap;
 };
 

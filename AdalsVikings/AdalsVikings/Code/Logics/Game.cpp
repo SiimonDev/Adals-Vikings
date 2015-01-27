@@ -4,11 +4,14 @@
 #include "Node.h"
 #include "PathFinder.h"
 #include "MouseState.h"
+#include "IndexRenderer.h"
 
 sf::Time frameTime = sf::seconds(1.f / 60.f);
 
 int mWidth = 1280;
 int mHeight = 720;
+
+IndexRenderer indexRenderer;
 
 Game::Game():
 mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
@@ -16,6 +19,7 @@ mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
 	mWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
 	LevelManager::getInstance().initialize();
 	MouseState::getInstance().initialize(mWindow);
+	indexRenderer.setWindow(mWindow);
 }
 
 Game::~Game()
@@ -80,6 +84,7 @@ void Game::update(sf::Time frameTime)
 void Game::render()
 {
 	mWindow.clear(sf::Color::Black);
-	LevelManager::getInstance().render(mWindow);
+	LevelManager::getInstance().render(indexRenderer);
+	indexRenderer.display();
 	mWindow.display();
 }

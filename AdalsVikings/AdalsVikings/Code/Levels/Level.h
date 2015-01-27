@@ -1,7 +1,15 @@
 #pragma once
+#include <vector>
 #include <SFML\Graphics.hpp>
-#include "..\Logics\LevelManager.h"
 #include <External\dirent.h>
+#include "..\Logics\LevelManager.h"
+#include "..\Logics\ResourceManager.h"
+#include "..\Logics\PathFinder.h"
+#include "..\Logics\MouseState.h"
+#include "..\Objects\Player.h"
+#include "..\Logics\ISprite.h"
+#include "TileMap.h"
+
 class Level
 {
 public:
@@ -9,9 +17,16 @@ public:
 	virtual ~Level();
 
 	virtual void update(sf::Time &frametime) = 0;
-	virtual void render(sf::RenderWindow &window) = 0;
+	virtual void render(IndexRenderer &iRenderer) = 0;
+	virtual void loadAllBackgrounds(std::string filepath);
 	virtual void load() = 0;
 	virtual void unload() = 0;
-	virtual void readFiles(std::string directory);
+
+protected:
+	std::vector<mv::ISprite> mBackgrounds;
+	sf::Image mRCImage;
+
+	Player mPlayer;
+	TileMap mTileMap;
 };
 
