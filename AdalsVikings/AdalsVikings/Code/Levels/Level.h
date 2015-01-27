@@ -16,7 +16,7 @@ public:
 	Level();
 	virtual ~Level();
 
-	virtual void update(sf::Time &frametime) = 0;
+	virtual void update(sf::Time &frametime);
 	virtual void render(IndexRenderer &iRenderer) = 0;
 	virtual void loadAllBackgrounds(std::string filepath);
 	virtual void load() = 0;

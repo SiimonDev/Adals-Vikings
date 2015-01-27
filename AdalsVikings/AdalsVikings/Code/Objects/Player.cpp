@@ -13,7 +13,6 @@ Player::Player()
 	, mAlphaPerStep(0)
 	, mCurrentAlpha(0)
 {
-	rotationSpeed = 3;
 
 	mScale = sf::Vector2f(1, 1);
 	mSpeed = 3.f;
@@ -33,7 +32,7 @@ void Player::load(TileMap &tileMap, sf::Vector2f &spawnPosition)
 {
 	mPosition.x = (PathFinder::getClosestFreeTile(tileMap, spawnPosition).x * tileMap.getTileSize().x) + tileMap.getTileSize().x / 2;
 	mPosition.y = (PathFinder::getClosestFreeTile(tileMap, spawnPosition).y * tileMap.getTileSize().y) + tileMap.getTileSize().y / 2;
-	ResourceManager::GetInstance().load(Textures::Player, "Assets/Images/Asteroid3.png");
+	ResourceManager::GetInstance().load(Textures::Player, "Assets/Images/character_ulfr_back.png");
 	ResourceManager::GetInstance().getTexture(Textures::Player).setSmooth(true);
 	mISprite.getSprite().setTexture(ResourceManager::GetInstance().getTexture(Textures::Player));
 	mISprite.setIndex(3);
@@ -48,7 +47,6 @@ void Player::unload()
 }
 
 void Player::update(sf::Time &frameTime){
-	mRotation += rotationSpeed;
 	move(frameTime);
 }
 
@@ -63,6 +61,11 @@ void Player::walkPath(Path &path){
 		mDestinationReached = false;
 		mTargetReached = true;
 	}
+}
+
+void Player::setIndex(int index)
+{
+	mISprite.setIndex(index);
 }
 
 void Player::move(sf::Time &frameTime){
@@ -131,7 +134,6 @@ void Player::render(IndexRenderer &iRenderer)
 {
 	mISprite.getSprite().setOrigin(mWidth / 2, mHeight / 2);
 	mISprite.getSprite().setPosition(mPosition);
-	mISprite.getSprite().setRotation(mRotation);
 	mISprite.getSprite().setScale(mScale);
 	iRenderer.addTexture(mISprite);
 }

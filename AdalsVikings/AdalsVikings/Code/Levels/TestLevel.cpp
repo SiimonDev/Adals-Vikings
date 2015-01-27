@@ -14,13 +14,9 @@ TestLevel::~TestLevel()
 
 void TestLevel::update(sf::Time &frametime)
 {
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-	{
-		Path path = PathFinder::getPath(mTileMap, mPlayer.getPosition(), sf::Vector2f(MouseState::getInstance().getMousePosition()));
-		mPlayer.walkPath(path);
-	}
-
 	mPlayer.update(frametime);
+
+	Level::update(frametime);
 }
 
 void TestLevel::render(IndexRenderer &iRenderer)

@@ -31,6 +31,7 @@ std::vector<std::string>getAllBackgroundFilesFromFolder(const std::string &direc
 			std::string path = dirnt->d_name;
 			if (path.find("ml_") != std::string::npos) 
 			{
+
 				filePaths.push_back(directory + dirnt->d_name);
 			}
 		}

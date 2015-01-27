@@ -11,6 +11,15 @@ Level::~Level()
 {
 }
 
+void Level::update(sf::Time &frametime)
+{
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		Path path = PathFinder::getPath(mTileMap, mPlayer.getPosition(), sf::Vector2f(MouseState::getInstance().getMousePosition()));
+		mPlayer.walkPath(path);
+	}
+}
+
 std::string getCollisionFileFromFolder(const std::string &directory)
 {
 	DIR *dir;

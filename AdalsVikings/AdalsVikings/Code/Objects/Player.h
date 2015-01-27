@@ -16,6 +16,7 @@ public:
 	void unload();
 	void move(sf::Time &frameTime);
 	void walkPath(Path &path);
+	void setIndex(int index);
 
 	void update(sf::Time &frameTime);
 	void render(IndexRenderer &iRenderer);
@@ -23,8 +24,6 @@ public:
 private:
 	int mWidth;
 	int mHeight;
-
-	float mRotation;
 
 	sf::Vector2f mPosition;
 	sf::Vector2f mScale;
