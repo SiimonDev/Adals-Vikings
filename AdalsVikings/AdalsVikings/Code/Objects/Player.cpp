@@ -32,6 +32,10 @@ void Player::load(TileMap &tileMap, sf::Vector2f &spawnPosition)
 {
 	mPosition.x = (PathFinder::getClosestFreeTile(tileMap, spawnPosition).x * tileMap.getTileSize().x) + tileMap.getTileSize().x / 2;
 	mPosition.y = (PathFinder::getClosestFreeTile(tileMap, spawnPosition).y * tileMap.getTileSize().y) + tileMap.getTileSize().y / 2;
+	sf::Color spawnColor = tileMap.getColorAt(sf::Vector2i(mPosition));
+	mScale.x = (1.f / 140.f) * float(spawnColor.a);
+	mScale.y = (1.f / 140.f) * float(spawnColor.a);
+
 	ResourceManager::GetInstance().load(Textures::Player, "Assets/Images/character_ulfr_back.png");
 	ResourceManager::GetInstance().getTexture(Textures::Player).setSmooth(true);
 	mISprite.getSprite().setTexture(ResourceManager::GetInstance().getTexture(Textures::Player));
@@ -118,8 +122,8 @@ void Player::move(sf::Time &frameTime){
 
 		// Incrementally reduce/increase the alpha every step.
 		mCurrentAlpha -= mAlphaPerStep;
-		mScale.x = (1.f / 100.f) * mCurrentAlpha;
-		mScale.y = (1.f / 100.f) * mCurrentAlpha;
+		mScale.x = (1.f / 140.f) * mCurrentAlpha;
+		mScale.y = (1.f / 140.f) * mCurrentAlpha;
 
 		// Check if the total number if steps has been taken
 		// if it has then set the target as reached and reset the stepcounter
@@ -132,7 +136,7 @@ void Player::move(sf::Time &frameTime){
 
 void Player::render(IndexRenderer &iRenderer)
 {
-	mISprite.getSprite().setOrigin(mWidth / 2, mHeight / 2);
+	mISprite.getSprite().setOrigin(mWidth / 2, (mHeight -10));
 	mISprite.getSprite().setPosition(mPosition);
 	mISprite.getSprite().setScale(mScale);
 	iRenderer.addTexture(mISprite);

@@ -52,7 +52,7 @@ std::string getCollisionFileFromFolder(const std::string &directory)
 void Level::loadAllBackgrounds(std::string filepath)
 {
 	mRCImage.loadFromFile(getCollisionFileFromFolder(filepath));
-	mTileMap.setTiles(sf::Vector2i(20, 20), mRCImage);
+	mTileMap.setTiles(sf::Vector2i(15, 15), mRCImage);
 
 	ResourceManager::GetInstance().load(Folder::TestLevel, filepath);
 	for (int i = 0; i < ResourceManager::GetInstance().getFolder(Folder::TestLevel).size(); i++)
