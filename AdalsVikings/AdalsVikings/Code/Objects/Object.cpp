@@ -289,7 +289,7 @@ void Object::readVariables()
 					{
 						segvector.push_back(segment);
 					}
-					mSpecificCantUseDialog[segvector[0]] = segvector[1];
+					
 				}
 			}
 		}
