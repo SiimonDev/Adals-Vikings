@@ -20,5 +20,6 @@ private:
 	void render();
 	
 	sf::RenderWindow mWindow;
+	LevelManager mLevelManager;
 };
 

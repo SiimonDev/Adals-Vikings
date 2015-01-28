@@ -11,6 +11,7 @@ public:
 	void render(IndexRenderer &iRenderer);
 	void load();
 	void unload();
+	//Portal& getPortal();
 
 private:
 	sf::Sprite mSprite;

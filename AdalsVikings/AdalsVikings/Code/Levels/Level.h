@@ -9,7 +9,7 @@
 #include "..\Objects\Player.h"
 #include "..\Logics\ISprite.h"
 #include "TileMap.h"
-
+#include "PortalLoader.h"
 class Level
 {
 public:
@@ -21,6 +21,7 @@ public:
 	virtual void loadAllBackgrounds(std::string filepath);
 	virtual void load() = 0;
 	virtual void unload() = 0;
+	//virtual Portal& getPortal() = 0;
 
 protected:
 	std::vector<mv::ISprite> mBackgrounds;
@@ -28,5 +29,7 @@ protected:
 
 	Player mPlayer;
 	TileMap mTileMap;
+
+	PortalLoader mPortalLoader;
 };
 
