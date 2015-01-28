@@ -4,6 +4,7 @@
 #include "Node.h"
 #include "PathFinder.h"
 #include "MouseState.h"
+#include "..\Objects\Object.h"
 
 sf::Time frameTime = sf::seconds(1.f / 60.f);
 
@@ -31,6 +32,12 @@ mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
 	bgSprite.setTexture(bg);
 
 	Player::loadContent();
+
+	Object *obj = new Object("axe", "", Textures::ID::TestImage);
+	std::cout << "UseDialog:" << obj->getUseDialog() << " Timer: " << obj->getUseDialogTimer() << std::endl;
+	std::cout << "ObjID:" << obj->getObjID() << std::endl;
+	std::cout << "LookAtDialog:" << obj->getLookAtDialog() << " Timer: " << obj->getLookAtDialogTimer() << std::endl;
+	std::cout << "CantUseDialog:" << obj->getCantUseDialog() << "Timer: " << obj->getCantUseDialogTimer() << std::endl;
 }
 
 Game::~Game()

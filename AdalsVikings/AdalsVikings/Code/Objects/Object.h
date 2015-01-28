@@ -3,16 +3,14 @@
 #include <string>
 #include <vector>
 #include "..\Logics\ResourceManager.h"
-
+#include "ObjectHandler.h"
 
 class Object
 {
 public:
-	enum ObjID{
-		Rock
-	};
+	
 
-	Object(ObjID objectID, std::string filePath, Textures::ID textureID);
+	Object(std::string objectID, std::string filePath, Textures::ID textureID);
 	~Object();
 
 	void render(sf::RenderWindow &window);
@@ -22,15 +20,29 @@ public:
 	void unload();
 
 	bool interactWithItem(Object *object);
+	std::string combineObjects(Object *object);
 
-	ObjID getObjID();
+	std::string getObjID();
+	std::string getName();
+	std::string getLookAtDialog();
+	float getLookAtDialogTimer();
+	std::string getUseDialog();
+	float getUseDialogTimer();
+	std::string getCantUseDialog();
+	float getCantUseDialogTimer();
+	bool getCanPickUp();
 private:
-	ObjID mObjectID;
+	std::string mObjectID;
+	std::string mFileID;
 	std::string mFilePath;
 	Textures::ID mTextureID;
-	std::string mName, mLookAtDialog, mUsDialog, mCantUseDialog;
+	std::string mName, mLookAtDialog, mUseDialog, mCantUseDialog;
+	float mLookAtDialogTimer, mUseDialogTimer, mCantUseDialogTimer;
 	sf::Sprite mSprite;
 	bool mCanPickUp;
-	std::vector<ObjID> mInteractableWith;
+	std::vector<std::string> mInteractableWith;
+	std::map<std::string, std::string> mCreatedObjects; //key: itemID of item combined with; value: itemID of created item
+	std::map<std::string, std::string> mSpecificCantUseDialog;
+	void readVariables();
 };
 
