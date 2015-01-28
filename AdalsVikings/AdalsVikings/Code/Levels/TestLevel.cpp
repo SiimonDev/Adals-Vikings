@@ -1,5 +1,6 @@
 #include "TestLevel.h"
 #include <iostream>
+#include "..\Logics\ResourceManager.h"
 
 TestLevel::TestLevel()
 {
@@ -13,15 +14,26 @@ TestLevel::~TestLevel()
 
 void TestLevel::update(sf::Time &frametime)
 {
-	mRectangle.move(100 * frametime.asSeconds(), 0);
+	mPlayer.update(frametime);
+
+	Level::update(frametime);
 }
-void TestLevel::render(sf::RenderWindow &window)
+
+void TestLevel::render(IndexRenderer &iRenderer)
 {
-	window.draw(mRectangle);
+	for (int i = 0; i < mBackgrounds.size(); i++){
+		iRenderer.addTexture(mBackgrounds[i]);
+	}
+	mPlayer.render(iRenderer);
+	mTileMap.draw(iRenderer);
 }
+
 void TestLevel::load()
 {
+	loadAllBackgrounds("Assets/MapFiles/Ship/");
+	mPlayer.load(mTileMap, sf::Vector2f(100, 300));
 }
+
 void TestLevel::unload()
 {
 	

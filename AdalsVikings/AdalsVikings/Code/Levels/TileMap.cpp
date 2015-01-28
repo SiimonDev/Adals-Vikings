@@ -83,7 +83,7 @@ void TileMap::setTiles(sf::Vector2i &tileSize, sf::Image &image){
 	}
 }
 
-void TileMap::draw(sf::RenderWindow &window)
+void TileMap::draw(IndexRenderer &iRenderer)
 {
-	//window.draw(mVerts, mMapSize.x * mMapSize.y, sf::Points);
+	iRenderer.getRenderWindow().draw(mVerts, mMapSize.x * mMapSize.y, sf::Points);
 }

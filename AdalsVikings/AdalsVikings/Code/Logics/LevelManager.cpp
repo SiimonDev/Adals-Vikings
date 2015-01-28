@@ -26,9 +26,9 @@ void LevelManager::unload()
 {
 	mCurrentLevel->unload();
 }
-void LevelManager::render(sf::RenderWindow &window)
+void LevelManager::render(IndexRenderer &iRenderer)
 {
-	mCurrentLevel->render(window);
+	mCurrentLevel->render(iRenderer);
 }
 void LevelManager::update(sf::Time &frametime)
 {

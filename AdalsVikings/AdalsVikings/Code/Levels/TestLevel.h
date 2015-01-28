@@ -1,5 +1,6 @@
 #pragma once
 #include "Level.h"
+
 class TestLevel : public Level
 {
 public:
@@ -7,11 +8,11 @@ public:
 	~TestLevel();
 
 	void update(sf::Time &frametime);
-	void render(sf::RenderWindow &window);
+	void render(IndexRenderer &iRenderer);
 	void load();
 	void unload();
 
 private:
-	sf::Sprite mRectangle;
+	sf::Sprite mSprite;
 };
 

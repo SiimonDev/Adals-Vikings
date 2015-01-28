@@ -72,6 +72,9 @@
     <ClCompile Include="Code\Objects\ObjectHandler.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Logics\IndexRenderer.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Logics\Game.h">
@@ -109,6 +112,12 @@
     </ClInclude>
     <ClInclude Include="Code\Objects\ObjectHandler.h">
       <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\IndexRenderer.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\ISprite.h">
+      <Filter>Header Files\Logics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
