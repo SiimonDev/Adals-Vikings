@@ -95,10 +95,9 @@ void Portal::playerCollision(Player &player)
 		&& mIsActive == true)
 	{
 		mSwitchPortal = true;
-		Path path = PathFinder::getPath(;
 		std::cout << "It's Working!" << std::endl;
 		player.setPosition(mConnectedPortal->getPosition());
-		player.walkPath(path);
+		
 		std::cout << player.getPosition().x << " " << player.getPosition().y << std::endl;
 	}
 }

@@ -4,40 +4,22 @@
 #include "Node.h"
 #include "PathFinder.h"
 #include "MouseState.h"
-#include "..\Objects\Object.h"
+#include "IndexRenderer.h"
 
 sf::Time frameTime = sf::seconds(1.f / 60.f);
 
 int mWidth = 1280;
 int mHeight = 720;
 
-Player player;
-TileMap tileMap;
+IndexRenderer indexRenderer;
 
-sf::Image image;
-sf::Texture bg;
-sf::Sprite bgSprite;
-
-Game::Game():
-mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
+Game::Game()
+	:mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
+	, mLevelManager()
 {
 	mWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
-	LevelManager::getInstance().initialize();
 	MouseState::getInstance().initialize(mWindow);
-
-	image.loadFromFile("Assets/MapFiles/Map1RC.png");
-	tileMap.setTiles(sf::Vector2i(20, 20), image);
-	//bg.loadFromImage(image);
-	bg.loadFromFile("Assets/MapFiles/Map1.png");
-	bgSprite.setTexture(bg);
-
-	Player::loadContent();
-
-	Object *obj = new Object("axe", "", Textures::ID::TestImage);
-	std::cout << "UseDialog:" << obj->getUseDialog() << " Timer: " << obj->getUseDialogTimer() << std::endl;
-	std::cout << "ObjID:" << obj->getObjID() << std::endl;
-	std::cout << "LookAtDialog:" << obj->getLookAtDialog() << " Timer: " << obj->getLookAtDialogTimer() << std::endl;
-	std::cout << "CantUseDialog:" << obj->getCantUseDialog() << "Timer: " << obj->getCantUseDialogTimer() << std::endl;
+	indexRenderer.setWindow(mWindow);
 }
 
 Game::~Game()
@@ -95,25 +77,14 @@ void Game::resize(int width, int height)
 
 void Game::update(sf::Time frameTime)
 {
-	LevelManager::getInstance().update(frameTime);
+	mLevelManager.update(frameTime);
 
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-	{
-		Path path = PathFinder::getPath(tileMap, player.getPosition(), sf::Vector2f(MouseState::getInstance().getMousePosition()));
-		player.walkPath(path);
-	}
-
-	player.update(frameTime);
 }
 
 void Game::render()
 {
 	mWindow.clear(sf::Color::Black);
-
-	LevelManager::getInstance().render(mWindow);
-	mWindow.draw(bgSprite);
-	tileMap.draw(mWindow);
-	player.render(mWindow);
-
+	mLevelManager.render(indexRenderer);
+	indexRenderer.display();
 	mWindow.display();
 }
