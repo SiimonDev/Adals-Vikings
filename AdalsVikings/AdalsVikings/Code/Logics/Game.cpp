@@ -13,11 +13,11 @@ int mHeight = 720;
 
 IndexRenderer indexRenderer;
 
-Game::Game():
-mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
+Game::Game()
+	:mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
+	, mLevelManager()
 {
 	mWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
-	LevelManager::getInstance().initialize();
 	MouseState::getInstance().initialize(mWindow);
 	indexRenderer.setWindow(mWindow);
 }
@@ -77,14 +77,14 @@ void Game::resize(int width, int height)
 
 void Game::update(sf::Time frameTime)
 {
-	LevelManager::getInstance().update(frameTime);
+	mLevelManager.update(frameTime);
 
 }
 
 void Game::render()
 {
 	mWindow.clear(sf::Color::Black);
-	LevelManager::getInstance().render(indexRenderer);
+	mLevelManager.render(indexRenderer);
 	indexRenderer.display();
 	mWindow.display();
 }

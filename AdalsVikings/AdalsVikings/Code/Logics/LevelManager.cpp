@@ -2,21 +2,13 @@
 #include "..\Levels\Level.h"
 #include "..\Levels\TestLevel.h"
 
-LevelManager &LevelManager::getInstance()
-{
-	static LevelManager instance;
-	return instance;
-}
 LevelManager::LevelManager()
 {
+	mCurrentLevel = new TestLevel();
 }
 LevelManager::~LevelManager()
 {
 	delete mCurrentLevel;
-}
-void LevelManager::initialize()
-{
-	mCurrentLevel = new TestLevel();
 }
 void LevelManager::load()
 {
@@ -33,4 +25,14 @@ void LevelManager::render(IndexRenderer &iRenderer)
 void LevelManager::update(sf::Time &frametime)
 {
 	mCurrentLevel->update(frametime);
+}
+void LevelManager::changeLevel()
+{
+	/*mNextLevel = mCurrentLevel->getPortal().getNextLevel();
+	mCurrentLevel->unload();
+	delete mCurrentLevel;
+	mCurrentLevel = mNextLevel;
+	mCurrentLevel->load();
+	delete mNextLevel;*/
+
 }

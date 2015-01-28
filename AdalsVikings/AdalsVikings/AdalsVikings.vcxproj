@@ -12,6 +12,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Levels\Level.cpp" />
+    <ClCompile Include="Code\Levels\Portal.cpp" />
+    <ClCompile Include="Code\Levels\PortalLoader.cpp" />
     <ClCompile Include="Code\Levels\TestLevel.cpp" />
     <ClCompile Include="Code\Levels\TileMap.cpp" />
     <ClCompile Include="Code\Logics\Game.cpp" />
@@ -27,6 +29,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Levels\Level.h" />
+    <ClInclude Include="Code\Levels\Portal.h" />
+    <ClInclude Include="Code\Levels\PortalLoader.h" />
     <ClInclude Include="Code\Levels\TestLevel.h" />
     <ClInclude Include="Code\Levels\TileMap.h" />
     <ClInclude Include="Code\Logics\Game.h" />

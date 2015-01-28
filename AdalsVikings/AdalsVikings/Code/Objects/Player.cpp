@@ -65,11 +65,20 @@ void Player::walkPath(Path &path){
 		mDestinationReached = false;
 		mTargetReached = true;
 	}
+	else
+	{
+		mDestinationReached = true;
+	}
 }
 
 void Player::setIndex(int index)
 {
 	mISprite.setIndex(index);
+}
+
+void Player::setPosition(sf::Vector2f position)
+{
+	mPosition = position;
 }
 
 void Player::move(sf::Time &frameTime){
