@@ -16,16 +16,23 @@ static int **closedNodes;
 static int **openNodes;
 static int **dirMap;
 
-Path PathFinder::getPath(TileMap &tileMap, const sf::Vector2f &startLoc, const sf::Vector2f &endLoc)
+static TileMap* mTileMap;
+
+void PathFinder::setTileMap(TileMap &tileMap)
+{
+	mTileMap = &tileMap;
+}
+
+Path PathFinder::getPath(const sf::Vector2f &startLoc, const sf::Vector2f &endLoc)
 {
 	Path path;
-	sf::Vector2i startLocation = getClosestFreeTile(tileMap, startLoc);
-	sf::Vector2i endLocation = getClosestFreeTile(tileMap, endLoc);
+	sf::Vector2i startLocation = getClosestFreeTile(startLoc);
+	sf::Vector2i endLocation = getClosestFreeTile(endLoc);
 
-	int mapWidth = tileMap.getMapSize().x;
-	int mapHeight = tileMap.getMapSize().y;
+	int mapWidth = mTileMap->getMapSize().x;
+	int mapHeight = mTileMap->getMapSize().y;
 
-	int **squares = tileMap.getTileArray();
+	int **squares = mTileMap->getTileArray();
 
 	// This part checks if the size of the map has changed.
 	// If it has then update the size of the arrays that hold the map-data
@@ -96,9 +103,9 @@ Path PathFinder::getPath(TileMap &tileMap, const sf::Vector2f &startLoc, const s
 			{
 				//cout << "row, col=" << row << "," << col << endl;
 				sf::Vector2f pos(
-					float((xPos * tileMap.getTileSize().x) + (tileMap.getTileSize().x / 2)), 
-					float((yPos * tileMap.getTileSize().y) + (tileMap.getTileSize().y / 2)));
-				path.push_back(sf::Vertex(pos, tileMap.getColorAt(sf::Vector2i(pos))));
+					float((xPos * mTileMap->getTileSize().x) + (mTileMap->getTileSize().x / 2)),
+					float((yPos * mTileMap->getTileSize().y) + (mTileMap->getTileSize().y / 2)));
+				path.push_back(sf::Vertex(pos, mTileMap->getColorAt(sf::Vector2i(pos))));
 
 				j = dirMap[xPos][yPos];
 				xPos += iDir[j];
@@ -106,9 +113,9 @@ Path PathFinder::getPath(TileMap &tileMap, const sf::Vector2f &startLoc, const s
 			}
 			// Push back the start location
 			sf::Vector2f pos(
-				float((startLocation.x * tileMap.getTileSize().x) + (tileMap.getTileSize().x / 2)), 
-				float((startLocation.y * tileMap.getTileSize().y) + (tileMap.getTileSize().y / 2)));
-			path.push_back(sf::Vertex(pos, tileMap.getColorAt(sf::Vector2i(pos))));
+				float((startLocation.x * mTileMap->getTileSize().x) + (mTileMap->getTileSize().x / 2)),
+				float((startLocation.y * mTileMap->getTileSize().y) + (mTileMap->getTileSize().y / 2)));
+			path.push_back(sf::Vertex(pos, mTileMap->getColorAt(sf::Vector2i(pos))));
 
 			// garbage collection
 			delete tempNode1;
@@ -184,17 +191,17 @@ Path PathFinder::getPath(TileMap &tileMap, const sf::Vector2f &startLoc, const s
 	return path;
 }
 
-sf::Vector2i PathFinder::getClosestFreeTile(TileMap &tileMap, const sf::Vector2f &pos)
+sf::Vector2i PathFinder::getClosestFreeTile(const sf::Vector2f &pos)
 {
 	float radius = 1;
 	float maxRadius = 1920;
-	int **squares = tileMap.getTileArray();
+	int **squares = mTileMap->getTileArray();
 
 	while (radius <= maxRadius)
 	{
 		for (float angle = 0; angle <= 360; angle += 2){
 			sf::Vector2f searhLocation = pos + (sf::Vector2f(cos(angle), sin(angle)) * radius);
-			sf::Vector2i tileLoc = tileMap.getClosestTile(searhLocation);
+			sf::Vector2i tileLoc = mTileMap->getClosestTile(searhLocation);
 			if (tileLoc != sf::Vector2i())
 			{
 				if (squares[tileLoc.x][tileLoc.y] == 0){

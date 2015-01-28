@@ -22,7 +22,8 @@ namespace Textures
 	{ 
 		TestBackground,
 		TestTileImage,
-		Player
+		Player,
+		Button1
 	};
 }
 namespace Fonts

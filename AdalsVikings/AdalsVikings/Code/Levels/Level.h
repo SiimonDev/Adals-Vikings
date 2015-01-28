@@ -28,5 +28,6 @@ protected:
 
 	Player mPlayer;
 	TileMap mTileMap;
+	MouseState mouseState;
 };
 

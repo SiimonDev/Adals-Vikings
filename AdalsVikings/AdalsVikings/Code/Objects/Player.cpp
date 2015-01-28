@@ -13,7 +13,6 @@ Player::Player()
 	, mAlphaPerStep(0)
 	, mCurrentAlpha(0)
 {
-
 	mScale = sf::Vector2f(1, 1);
 	mSpeed = 3.f;
 	/*mPosition = sf::Vector2f(750, 1000);*/
@@ -30,8 +29,8 @@ sf::Vector2f Player::getPosition()
 
 void Player::load(TileMap &tileMap, sf::Vector2f &spawnPosition)
 {
-	mPosition.x = (PathFinder::getClosestFreeTile(tileMap, spawnPosition).x * tileMap.getTileSize().x) + tileMap.getTileSize().x / 2;
-	mPosition.y = (PathFinder::getClosestFreeTile(tileMap, spawnPosition).y * tileMap.getTileSize().y) + tileMap.getTileSize().y / 2;
+	mPosition.x = (PathFinder::getClosestFreeTile(spawnPosition).x * tileMap.getTileSize().x) + tileMap.getTileSize().x / 2;
+	mPosition.y = (PathFinder::getClosestFreeTile(spawnPosition).y * tileMap.getTileSize().y) + tileMap.getTileSize().y / 2;
 	sf::Color spawnColor = tileMap.getColorAt(sf::Vector2i(mPosition));
 	mScale.x = (1.f / 140.f) * float(spawnColor.a);
 	mScale.y = (1.f / 140.f) * float(spawnColor.a);
@@ -50,11 +49,13 @@ void Player::unload()
 	ResourceManager::GetInstance().unload(Textures::Player);
 }
 
-void Player::update(sf::Time &frameTime){
+void Player::update(sf::Time &frameTime)
+{
 	move(frameTime);
 }
 
-void Player::walkPath(Path &path){
+void Player::walkPath(Path &path)
+{
 	if (path.size() > 0)
 	{
 		mCurrentPath = path;
@@ -64,6 +65,10 @@ void Player::walkPath(Path &path){
 
 		mDestinationReached = false;
 		mTargetReached = true;
+	}
+	else
+	{
+		mDestinationReached = true;
 	}
 }
 
@@ -139,5 +144,5 @@ void Player::render(IndexRenderer &iRenderer)
 	mISprite.getSprite().setOrigin(mWidth / 2, (mHeight -10));
 	mISprite.getSprite().setPosition(mPosition);
 	mISprite.getSprite().setScale(mScale);
-	iRenderer.addTexture(mISprite);
+	iRenderer.addISprite(mISprite);
 }

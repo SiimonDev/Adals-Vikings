@@ -13,9 +13,9 @@ Level::~Level()
 
 void Level::update(sf::Time &frametime)
 {
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	if (mouseState.isReleased(sf::Mouse::Left, 1))
 	{
-		Path path = PathFinder::getPath(mTileMap, mPlayer.getPosition(), sf::Vector2f(MouseState::getInstance().getMousePosition()));
+		Path path = PathFinder::getPath(mPlayer.getPosition(), sf::Vector2f(MouseState::getMousePosition()));
 		mPlayer.walkPath(path);
 	}
 }

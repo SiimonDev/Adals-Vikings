@@ -34,6 +34,12 @@
     <Filter Include="Source Files\Objects">
       <UniqueIdentifier>{4aa27730-b415-43be-8551-bed8949c19dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Interface">
+      <UniqueIdentifier>{03b0e2e5-196f-493e-9cf5-5750854df630}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interface">
+      <UniqueIdentifier>{3e0c6d22-894c-4c2e-b031-dec465360ecb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Logics\Game.cpp">
@@ -74,6 +80,12 @@
     </ClCompile>
     <ClCompile Include="Code\Logics\IndexRenderer.cpp">
       <Filter>Source Files\Logics</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Interface\Button.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Interface\ActionWheel.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +130,12 @@
     </ClInclude>
     <ClInclude Include="Code\Logics\ISprite.h">
       <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Interface\Button.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Interface\ActionWheel.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -20,15 +20,20 @@ void IndexRenderer::setWindow(sf::RenderWindow &window)
 	mWindow = &window;
 }
 
-void IndexRenderer::addTexture(mv::ISprite &texture)
+void IndexRenderer::addISprite(mv::ISprite &texture)
 {
 	mISprites.push_back(&texture);
 }
-void IndexRenderer::clearTexture()
+
+void IndexRenderer::addText(sf::Text &text)
+{
+	mTexts.push_back(&text);
+}
+
+void IndexRenderer::clear()
 {
 	mISprites.clear();
 }
-
 
 void IndexRenderer::display()
 {
@@ -37,5 +42,8 @@ void IndexRenderer::display()
 	{
 		mWindow->draw(iSprite->getSprite());
 	}
-	mISprites.clear();
+	for each (sf::Text* text in mTexts)
+	{
+		mWindow->draw(*text);
+	}
 }

@@ -13,6 +13,6 @@ public:
 	void unload();
 
 private:
-	sf::Sprite mSprite;
+
 };
 

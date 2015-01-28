@@ -11,6 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Interface\ActionWheel.cpp" />
+    <ClCompile Include="Code\Interface\Button.cpp" />
     <ClCompile Include="Code\Levels\Level.cpp" />
     <ClCompile Include="Code\Levels\TestLevel.cpp" />
     <ClCompile Include="Code\Levels\TileMap.cpp" />
@@ -26,6 +28,8 @@
     <ClCompile Include="Code\Objects\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Interface\ActionWheel.h" />
+    <ClInclude Include="Code\Interface\Button.h" />
     <ClInclude Include="Code\Levels\Level.h" />
     <ClInclude Include="Code\Levels\TestLevel.h" />
     <ClInclude Include="Code\Levels\TileMap.h" />

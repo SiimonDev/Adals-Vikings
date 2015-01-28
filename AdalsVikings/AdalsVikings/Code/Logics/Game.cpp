@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "..\Objects\Player.h"
 #include "..\Levels\TileMap.h"
+#include "..\Interface\ActionWheel.h"
 #include "Node.h"
 #include "PathFinder.h"
 #include "MouseState.h"
@@ -12,14 +13,16 @@ int mWidth = 1280;
 int mHeight = 720;
 
 IndexRenderer indexRenderer;
+ActionWheel actionWheel;
 
 Game::Game():
 mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
 {
 	mWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
 	LevelManager::getInstance().initialize();
-	MouseState::getInstance().initialize(mWindow);
+	MouseState::initialize(mWindow);
 	indexRenderer.setWindow(mWindow);
+	actionWheel.load();
 }
 
 Game::~Game()
@@ -78,13 +81,15 @@ void Game::resize(int width, int height)
 void Game::update(sf::Time frameTime)
 {
 	LevelManager::getInstance().update(frameTime);
-
+	actionWheel.update();
 }
 
 void Game::render()
 {
 	mWindow.clear(sf::Color::Black);
+	indexRenderer.clear();
 	LevelManager::getInstance().render(indexRenderer);
+	actionWheel.render(indexRenderer);
 	indexRenderer.display();
 	mWindow.display();
 }

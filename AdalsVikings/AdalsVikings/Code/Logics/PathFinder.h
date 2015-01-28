@@ -10,7 +10,11 @@ typedef std::vector<sf::Vertex> Path;
 class PathFinder
 {
 public:
-	static Path getPath(TileMap &tileMap, const sf::Vector2f &startLoc, const sf::Vector2f &endLoc);
-	static sf::Vector2i getClosestFreeTile(TileMap &tileMap, const sf::Vector2f &startLoc);
+	static void setTileMap(TileMap &tileMap);
+	static Path getPath(const sf::Vector2f &startLoc, const sf::Vector2f &endLoc);
+	static sf::Vector2i getClosestFreeTile(const sf::Vector2f &startLoc);
 private:
+	PathFinder(){}
+	PathFinder(const PathFinder&){}
+	void operator=(const PathFinder&){}
 };
