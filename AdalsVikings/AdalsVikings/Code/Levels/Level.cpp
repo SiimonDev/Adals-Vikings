@@ -60,3 +60,7 @@ void Level::loadAllBackgrounds(std::string filepath)
 		mBackgrounds.push_back(mv::ISprite(*ResourceManager::GetInstance().getFolder(Folder::TestLevel).at(i), i * 10));
 	}
 }
+//Portal& Level::getPortal()
+//{
+//	return mPortals.getPortal(Testportal1);
+//}

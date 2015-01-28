@@ -17,6 +17,7 @@ public:
 	void move(sf::Time &frameTime);
 	void walkPath(Path &path);
 	void setIndex(int index);
+	void setPosition(sf::Vector2f position);
 
 	void update(sf::Time &frameTime);
 	void render(IndexRenderer &iRenderer);

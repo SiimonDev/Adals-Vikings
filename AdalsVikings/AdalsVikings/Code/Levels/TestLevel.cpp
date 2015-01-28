@@ -6,6 +6,7 @@
 TestLevel::TestLevel()
 {
 	load();
+	mPortalLoader.getPortal(Portal1).setRightWorld(true);
 }
 
 
@@ -16,7 +17,7 @@ TestLevel::~TestLevel()
 void TestLevel::update(sf::Time &frametime)
 {
 	mPlayer.update(frametime);
-
+	mPortalLoader.getPortal(Portal1).update(frametime, mPlayer);
 	Level::update(frametime);
 }
 
@@ -40,3 +41,7 @@ void TestLevel::unload()
 {
 	
 }
+//Portal& TestLevel::getPortal()
+//{
+//	return mPortals.getPortal(Testportal1);
+//}

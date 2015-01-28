@@ -77,6 +77,11 @@ void Player::setIndex(int index)
 	mISprite.setIndex(index);
 }
 
+void Player::setPosition(sf::Vector2f position)
+{
+	mPosition = position;
+}
+
 void Player::move(sf::Time &frameTime){
 
 	if (mTargetReached && !mDestinationReached)
