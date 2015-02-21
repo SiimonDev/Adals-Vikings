@@ -2,30 +2,44 @@
 #include <SFML\Graphics.hpp>
 #include "..\Logics\ParallelLoader.h"
 #include "..\Logics\IndexRenderer.h"
+#include "..\Interface\Menus\MenuHandler.h"
 
 #define LSI LoadingScreen::getInstance()
+typedef std::unique_ptr<sf::Thread> ThreadPtr;
+
+enum LoadTask
+{
+	StartGame,
+	LoadBoat,
+	LoadAct1,
+	LoadMenu,
+};
 
 class LoadingScreen
 {
 public:
 	static LoadingScreen &getInstance();
 
-	void initialize();
-	void finish();
 	void render(IndexRenderer &iRenderer);
 	bool update(sf::Time dt);
-	bool handleEvent(const sf::Event& event);
-	void setDone(bool value);
-	void setStarted(bool value);
-	void startLoading(std::string task);
+
+	void startLoading(LoadTask task);
 
 	bool &getIsDone();
 	bool &getIsStarted();
 
 private:
-	LoadingScreen();
-	sf::Text mLoadingText;
-	bool mIsDone, mStart;
+	void runTask();
 
-	ParallelLoader mLoadingTask;
+	LoadingScreen();
+	LoadingScreen(LoadingScreen&);
+	void operator=(LoadingScreen&);
+
+	sf::Text mLoadingText;
+	sf::Font mFont;
+
+	ThreadPtr mThread;
+	LoadTask mTask;
+	bool mFinished, mStarted;
+	bool mIsDone, mStart;
 };

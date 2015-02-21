@@ -24,7 +24,6 @@ void Beach_level::render(IndexRenderer &iRenderer)
 
 void Beach_level::load()
 {
-
 	/* ==== Load Npcs and set right position, dialogue, scale and so on... ===== */
 	mNpcs["Yngvarr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
 	mNpcs["Dagny"] = LNpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
@@ -39,6 +38,7 @@ void Beach_level::load()
 	mNpcs["Yngvarr"]->setPosition(sf::Vector2f(350, 680));
 	mNpcs["Yngvarr"]->setInteractionPosition(sf::Vector2f(400, 770));
 	mNpcs["Yngvarr"]->setDialogue("Yngvarr");
+	mNpcs["Yngvarr"]->setIndex(5);
 
 	/* ==== Yngvarr ===== */
 	mNpcs["Dagny"]->setRightWay(true);
@@ -46,6 +46,7 @@ void Beach_level::load()
 	mNpcs["Dagny"]->setPosition(sf::Vector2f(250, 700));
 	mNpcs["Dagny"]->setInteractionPosition(sf::Vector2f(400, 770));
 	mNpcs["Dagny"]->setDialogue("Dagny");
+	mNpcs["Dagny"]->setIndex(5);
 
 	/* ==== Alfr ===== */
 	mNpcs["Alfr"]->setRightWay(false);
@@ -53,6 +54,7 @@ void Beach_level::load()
 	mNpcs["Alfr"]->setPosition(sf::Vector2f(1250, 500));
 	mNpcs["Alfr"]->setInteractionPosition(sf::Vector2f(1200, 570));
 	mNpcs["Alfr"]->setDialogue("Alfr");
+	mNpcs["Alfr"]->setIndex(5);
 
 	/* ==== Leifr ===== */
 	RMI.unload(Textures::LeifrIdle);
@@ -66,6 +68,7 @@ void Beach_level::load()
 	mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 500));
 	mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(750, 570));
 	mNpcs["Leifr"]->setDialogue("Leifr");
+	mNpcs["Leifr"]->setIndex(5);
 
 	/* ==== Finnr ===== */
 	mNpcs["Finnr"]->setRightWay(false);
@@ -73,6 +76,7 @@ void Beach_level::load()
 	mNpcs["Finnr"]->setPosition(sf::Vector2f(1600, 450));
 	mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(1550, 530));
 	mNpcs["Finnr"]->setDialogue("Finnr");
+	mNpcs["Finnr"]->setIndex(5);
 
 	/* ==== Valdis ===== */
 	mNpcs["Valdis"]->setRightWay(true);
@@ -80,12 +84,13 @@ void Beach_level::load()
 	mNpcs["Valdis"]->setPosition(sf::Vector2f(400, 1000));
 	mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(450, 1070));
 	mNpcs["Valdis"]->setDialogue("Valdis");
+	mNpcs["Valdis"]->setIndex(5);
 
 	/* ================================================================ */
 
 	RMI.load(Textures::Wave, "Assets/MapFiles/Beach/waves.png");
 	mWaveAnimation.load(RMI.getTexture(Textures::Wave), sf::Vector2i(10, 9), sf::seconds(7), sf::seconds(12), true);
-	mWaveAnimation.setIndex(99999999);
+	mWaveAnimation.setIndex(4);
 	mWaveAnimation.setProportions(sf::Vector2f(1170, 640));
 	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
 	mWaveAnimation.setPadding(1);

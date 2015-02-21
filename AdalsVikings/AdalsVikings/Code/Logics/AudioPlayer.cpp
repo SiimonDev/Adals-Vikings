@@ -8,7 +8,7 @@ static bool mMute = false;
 // 0.0 - 1.0
 static double masterSoundScale = 1.0;
 static double soundEffectsScale = 0.5;
-static double musicScale = 0.7;
+static double musicScale = 0.2;
 
 AudioPlayer::AudioPlayer()
 {

@@ -15,7 +15,6 @@ int mWidth = 1280;
 int mHeight = 720;
 
 IndexRenderer indexRenderer;
-MenuHandler menuHandler;
 
 bool debugMode = false;
 bool runGame = false;
@@ -28,9 +27,9 @@ Game::Game()
 	mWindow.setVerticalSyncEnabled(false);
 
 	OBHI.initialize();
+	FadeI.initialize();
 	KeyboardState::initialize();
 	MouseState::initialize(mWindow);
-	Fade::getInstance().initialize();
 }
 
 Game::~Game()
@@ -59,46 +58,33 @@ void Game::update(sf::Time frameTime)
 		if (KeyboardState::isPressed(sf::Keyboard::F1))
 			debugMode = (!debugMode);
 
-		if (menuHandler.getEvent() == MenuEvent::NewGamePressed)
-		{
-			LSI.startLoading("StartGame");
-			menuHandler.unload(MenuID::MainMenu);
-			menuHandler.load(MenuID::PauseMenu);
-			runGame = true;
-		}
-		else if (menuHandler.getEvent() == MenuEvent::ExitGamePressed)
-		{
-			mWindow.close();
-		}
-
-		menuHandler.update(frameTime);
+		MHI.update(frameTime);
 		if (runGame)
 		{
-			if (menuHandler.getEvent() == MenuEvent::MainMenuPressed)
-			{
-				LVLMI.unload();
-				menuHandler.unload(MenuID::PauseMenu);
-
-				/* ==== Quick fix for bad unloads ===== */
-				RMI.truncateTextures();
-				RMI.truncateImages();
-				RMI.truncateSounds();
-				RMI.truncateFolders();
-				RMI.truncateFonts();
-				/* ==================================== */
-				menuHandler.load(MenuID::MainMenu);
-				runGame = false;
-				LSI.setDone(false);
-				LSI.setStarted(false);
-				LVLMI.setActivate(false);
-			}
-			else if (menuHandler.getEvent() == MenuEvent::ResumePressed)
-			{
-				menuHandler.popMenu();
-			}
-
-			if (!menuHandler.hasActiveMenu())
+			if (!MHI.hasActiveMenu())
 				LVLMI.update(frameTime);
+
+			// Check for pause menu events
+			if (MHI.getEvent() == MenuEvent::MainMenuPressed)
+			{
+				LSI.startLoading(LoadTask::LoadMenu);
+				runGame = false;
+			}
+			else if (MHI.getEvent() == MenuEvent::ResumePressed)
+			{
+				MHI.popMenu();
+			}
+		}
+
+		// Check for main menu events
+		if (MHI.getEvent() == MenuEvent::NewGamePressed)
+		{
+			LSI.startLoading(LoadTask::StartGame);
+			runGame = true;
+		}
+		else if (MHI.getEvent() == MenuEvent::ExitGamePressed)
+		{
+			mWindow.close();
 		}
 
 		// Always Last
@@ -119,7 +105,7 @@ void Game::render()
 	}
 	else
 	{
-		menuHandler.render(indexRenderer);
+		MHI.render(indexRenderer);
 		if (runGame){
 			LVLMI.render(indexRenderer);
 		}
@@ -169,4 +155,5 @@ void Game::run()
 		}
 		render();
 	}
+	AudioPlayer::unload();
 }

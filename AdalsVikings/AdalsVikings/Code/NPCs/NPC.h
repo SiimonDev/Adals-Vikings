@@ -4,12 +4,15 @@
 #include "..\Logics\Animation.h"
 using namespace pugi;
 
-enum AnimationState
+namespace AnimationState
 {
-	Idle,
-	Talking,
-	PlayerTalking
-};
+	enum ID
+	{
+		Idle,
+		Talking,
+		PlayerTalking
+	};
+}
 class Npc
 {
 public:
@@ -63,7 +66,7 @@ private:
 	sf::Vector2i mSize;
 	sf::IntRect mCollisionRect;
 
-	AnimationState mAnimation;
+	AnimationState::ID mAnimation;
 	sf::Color mColor;
 
 	bool mFlip;

@@ -16,17 +16,16 @@ LevelManager &LevelManager::getInstance()
 
 LevelManager::LevelManager()
 : mLoadedPlayer(false)
-, mActivate(false)
 {
 }
 
 LevelManager::~LevelManager()
 {
-	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
-	{
-		delete it->second;
-	}
-	mLevelMap.clear();
+	//for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
+	//{
+	//	delete it->second;
+	//}
+	//mLevelMap.clear();
 }
 
 void LevelManager::load()
@@ -42,7 +41,7 @@ void LevelManager::load()
 	mPlayer.setPosition(sf::Vector2f(1400, 750));
 	mActionWheel.load();
 	
-	loadAct1();
+	loadBoatScene();
 }
 
 void LevelManager::unload()
@@ -61,6 +60,8 @@ void LevelManager::unloadCurrentAct()
 	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
 	{
 		it->second->unload();
+		delete it->second;
+		it = mLevelMap.begin();
 	}
 	AudioPlayer::unload();
 	mLevelMap.clear();
@@ -68,20 +69,14 @@ void LevelManager::unloadCurrentAct()
 
 void LevelManager::update(sf::Time &frametime)
 {
-	if (mActivate)
-	{
-		mCurrentLevel->update(frametime);
-		DialogWindow::update(frametime);
-	}
+	mCurrentLevel->update(frametime);
+	DialogWindow::update(frametime);
 }
 
 void LevelManager::render(IndexRenderer &iRenderer)
 {
-	if (mActivate)
-	{
-		mCurrentLevel->render(iRenderer);
-		DialogWindow::render(iRenderer);
-	}
+	mCurrentLevel->render(iRenderer);
+	DialogWindow::render(iRenderer);
 }
 
 void LevelManager::changeLevel(LevelID id)
@@ -102,9 +97,8 @@ void LevelManager::loadBoatScene()
 {
 	BoatEvents::initialize();
 	if (mLevelMap.size() != 0)
-	{
-		mLevelMap.clear();
-	}
+		unloadCurrentAct();
+
 	mLevelMap[Ship_1] = LevelPtr(new Ship_level_1(mPlayer, mActionWheel));
 	mLevelMap[Ship_2] = LevelPtr(new Ship_level_2(mPlayer, mActionWheel));
 
@@ -119,10 +113,10 @@ void LevelManager::loadBoatScene()
 
 void LevelManager::loadAct1()
 {
+	// If there are still maps loaded then unload them
 	if (mLevelMap.size() != 0)
-	{
-		mLevelMap.clear();
-	}
+		unloadCurrentAct();
+
 	mLevelMap[Beach] = LevelPtr(new Beach_level(mPlayer, mActionWheel));
 
 	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
@@ -132,9 +126,4 @@ void LevelManager::loadAct1()
 	}
 	mCurrentLevel = mLevelMap[Beach];
 	PathFinder::setTileMap(mCurrentLevel->getTileMap());
-}
-
-void LevelManager::setActivate(bool value)
-{
-	mActivate = value;
 }

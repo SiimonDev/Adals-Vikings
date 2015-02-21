@@ -21,13 +21,12 @@ void Ship_level_1::update(sf::Time &frametime)
 	{
 		if (!mGameStart)
 		{
-			FDI.fadeIn(frametime);
-			if (FDI.getFaded())
+			FadeI.fadeIn(frametime);
+			if (FadeI.getFaded())
 			{
 				DialogHandler::getDialogue("IntroUlfr").startDialogue();
 				mGameStart = true;
-				FDI.setAlpha(1);
-
+				FadeI.setAlpha(1);
 			}
 		}
 		if (DialogHandler::getDialogue("IntroUlfr").getHasStopped())
@@ -53,8 +52,8 @@ void Ship_level_1::update(sf::Time &frametime)
 	{
 		if (mStartBrynja == false)
 		{
-			FDI.setAlpha(1);
-			FDI.setFadeDuration(sf::seconds(1));
+			FadeI.setAlpha(1);
+			FadeI.setFadeDuration(sf::seconds(1));
 			DialogHandler::getDialogue("Leifr").disableOption(2);
 			DialogHandler::getDialogue("Alfr").disableOption(3);
 			mPlayer->removeItemFromInventory("flute");
@@ -64,14 +63,14 @@ void Ship_level_1::update(sf::Time &frametime)
 
 		if (DialogHandler::getDialogue("BrynjaFlute").getHasStopped() && !mBrynjaFade1)
 		{
-			FDI.fadeOut(frametime);
-			if (FDI.getFaded())
+			FadeI.fadeOut(frametime);
+			if (FadeI.getFaded())
 			{
 				RMI.unload(Textures::BrynjaIdle);
 				RMI.unload(Textures::BrynjaTalk);
 				RMI.load(Textures::BrynjaIdle, "assets/Images/Brynja/character_brynja_blink.png");
 				RMI.load(Textures::BrynjaTalk, "assets/Images/Brynja/character_brynja_talk.png");
-				FDI.setAlpha(254);
+				FadeI.setAlpha(254);
 
 				mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaIdle, "assets/Images/Brynja/character_brynja_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 				mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaTalk, "assets/Images/Brynja/character_brynja_talk.png", sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
@@ -82,12 +81,12 @@ void Ship_level_1::update(sf::Time &frametime)
 		}
 		else if (mBrynjaFade1 && !mBrynjaFade2)
 		{
-			FDI.setFadeDuration(sf::seconds(2));
-			FDI.fadeIn(frametime);
+			FadeI.setFadeDuration(sf::seconds(2));
+			FadeI.fadeIn(frametime);
 
-			if (FDI.getFaded())
+			if (FadeI.getFaded())
 			{
-				FDI.setAlpha(0);
+				FadeI.setAlpha(0);
 				mBrynjaFade2 = true;
 			}
 		}

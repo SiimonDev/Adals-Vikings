@@ -93,11 +93,11 @@ void Player::update(sf::Time &frameTime)
 	if (mAnimationStyle == AnimationStyle::PlayerPickup && mPlayerAnimation.getStopped())
 	{
 		std::cout << "PICK IT  UP!!" << std::endl;
-		setAnimationStyle("Idle");
+		setAnimationStyle(AnimationType::Idle);
 	}
 	if (mAnimationStyle == AnimationStyle::PlayerStop && mPlayerAnimation.getStopped())
 	{
-		setAnimationStyle("Idle");
+		setAnimationStyle(AnimationType::Idle);
 	}
 	// Animate the player
 	mPlayerAnimation.animate(frameTime);
@@ -190,7 +190,7 @@ void Player::move(sf::Time &frameTime)
 			mVelocity = sf::Vector2f(0, 0);
 		}
 	}
-	setAnimationStyle("Movement");
+	setAnimationStyle(AnimationType::Movement);
 }
 
 sf::Sprite Player::getSprite()
@@ -206,7 +206,7 @@ std::string Player::getDroppedObjectID()
 	return mInventory.getDroppedObjectID();
 }
 
-Intention Player::getIntention()
+Intention::ID Player::getIntention()
 {
 	return mIntention;
 }
@@ -225,63 +225,59 @@ void Player::setPosition(sf::Vector2f &position)
 	mPosition = position;
 }
 
-void Player::setIntention(Intention intention)
+void Player::setIntention(Intention::ID intention)
 {
 	mIntention = intention;
 }
 
-void Player::setAnimationStyle(std::string style)
+void Player::setAnimationStyle(AnimationType::ID type)
 {
-	if (style == "Movement" && !mDestinationReached && mVelocity.x > 0.4 && mAnimationStyle != AnimationStyle::Right)
+	if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x > 0.4 && mAnimationStyle != AnimationStyle::Right)
 	{
 		mPlayerAnimation.flip(true);
 		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
-
 		mAnimationStyle = AnimationStyle::Right;
 	}
-	else if (style == "Movement" && !mDestinationReached && mVelocity.x < -0.4 && mAnimationStyle != AnimationStyle::Left)
+	else if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x < -0.4 && mAnimationStyle != AnimationStyle::Left)
 	{
 		mPlayerAnimation.flip(false);
 		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
-
 		mAnimationStyle = AnimationStyle::Left;
 	}
-	else if (style == "Movement" && mDestinationReached && mAnimationStyle != AnimationStyle::PlayerStop && mAnimationStyle != AnimationStyle::PlayerIdle && mAnimationStyle != AnimationStyle::PlayerPickup)
+	else if (type == AnimationType::Movement && mDestinationReached && mAnimationStyle != AnimationStyle::PlayerStop && mAnimationStyle != AnimationStyle::PlayerIdle && mAnimationStyle != AnimationStyle::PlayerPickup)
 	{
 		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrStop), Frames(5, 5), sf::milliseconds(1300), sf::Time::Zero, false);
 		mAnimationStyle = AnimationStyle::PlayerStop;
 	}
-	else if (style == "Idle" && (mAnimationStyle != AnimationStyle::PlayerIdle))
+	else if (type == AnimationType::Idle && (mAnimationStyle != AnimationStyle::PlayerIdle))
 	{
-		
 		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrIdle), Frames(6, 3), sf::milliseconds(1300), sf::seconds(7), true);
 		mAnimationStyle = AnimationStyle::PlayerIdle;
 	}
-	else if (style == "Movement" && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y < 0 && mAnimationStyle != AnimationStyle::Up)
+	else if (type == AnimationType::Movement && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y < 0 && mAnimationStyle != AnimationStyle::Up)
 	{
 		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
-
 		mAnimationStyle = AnimationStyle::Up;
 	}
-	else if (style == "Movement" && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y > 0 && mAnimationStyle != AnimationStyle::Down)
+	else if (type == AnimationType::Movement && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y > 0 && mAnimationStyle != AnimationStyle::Down)
 	{
 		
 		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
 		mAnimationStyle = AnimationStyle::Down;
 	}
-	else if (style == "TalkToNpc" && mAnimationStyle != AnimationStyle::PlayerTalk)
+	else if (type == AnimationType::TalkToNpc && mAnimationStyle != AnimationStyle::PlayerTalk)
 	{
 		mPlayerAnimation.flip(mFlip);
 		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrTalkToNpc), Frames(5, 2), sf::milliseconds(800), sf::Time::Zero, true);
 		mAnimationStyle = AnimationStyle::PlayerTalk;
 	}
-	else if (style == "TalkToPlayer" && mAnimationStyle != AnimationStyle::PlayerMonolog)
+	else if (type == AnimationType::TalkToPlayer && mAnimationStyle != AnimationStyle::PlayerMonolog)
 	{
 		mPlayerAnimation.flip(false);
 		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrFront), Frames(4, 1), sf::milliseconds(600), sf::seconds(0), true);
 		mAnimationStyle = AnimationStyle::PlayerMonolog;
 	}
-	else if (style == "Pickup" && mAnimationStyle != AnimationStyle::PlayerPickup)
+	else if (type == AnimationType::Pickup && mAnimationStyle != AnimationStyle::PlayerPickup)
 	{
 		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrPickup), Frames(5, 5), sf::milliseconds(1400), sf::seconds(0), false);
 		mAnimationStyle = AnimationStyle::PlayerPickup;

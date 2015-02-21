@@ -4,9 +4,9 @@
 
 ActionWheel::ActionWheel()
 {
-	button1Position = sf::Vector2f(0, -80);
-	button2Position = sf::Vector2f(80, 80);
-	button3Position = sf::Vector2f(-80, 80);
+	button1Position = sf::Vector2f(0, -60);
+	button2Position = sf::Vector2f(60, 60);
+	button3Position = sf::Vector2f(-60, 60);
 
 	mIndex = 9999999;
 }

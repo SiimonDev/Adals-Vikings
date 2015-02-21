@@ -73,7 +73,7 @@ void Level::updateObjectActionWheel()
 			DialogWindow::displayDialog(dialog);
 			if (mObjects[mObjIndex]->isPickupable())
 			{
-				mPlayer->setAnimationStyle("Pickup");
+				mPlayer->setAnimationStyle(AnimationType::Pickup);
 				if (mPlayer->getAnimation().getStopped())
 				{
 					mPlayer->addItemToInventory(mObjects[mObjIndex]->getObjID());
@@ -191,7 +191,7 @@ void Level::updateDialog(sf::Time frameTime)
 				{
 					iz->second->setRightWay(it->second->getFacing());
 					iz->second->setAnimationStyle("Npc");
-					mPlayer->setAnimationStyle("Idle");
+					mPlayer->setAnimationStyle(AnimationType::Idle);
 					it->second->setTextPosition(sf::Vector2f(iz->second->getAnimation().getSprite().getGlobalBounds().left +
 						iz->second->getAnimation().getSprite().getGlobalBounds().width / 2,
 						iz->second->getAnimation().getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
@@ -200,7 +200,7 @@ void Level::updateDialog(sf::Time frameTime)
 				}
 				else if (it->second->getCharacter() == mPlayer->getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
 				{
-					mPlayer->setAnimationStyle("TalkToPlayer");
+					mPlayer->setAnimationStyle(AnimationType::TalkToPlayer);
 					iz->second->setAnimationStyle("Idle");
 					it->second->setTextPosition(sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left +
 						mPlayer->getSprite().getGlobalBounds().width / 2,
@@ -209,7 +209,7 @@ void Level::updateDialog(sf::Time frameTime)
 				}
 				else if (it->second->getCharacter() == mPlayer->getName() && !it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
 				{
-					mPlayer->setAnimationStyle("TalkToNpc");
+					mPlayer->setAnimationStyle(AnimationType::TalkToNpc);
 					iz->second->setAnimationStyle("Idle");
 					mPlayer->setFlip(it->second->getFacing());
 					it->second->setTextPosition(sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left +
@@ -221,7 +221,7 @@ void Level::updateDialog(sf::Time frameTime)
 				else if (it->second->getCharacter() != iz->second->getName() || it->second->getPrintText().getString() == "")
 				{
 					iz->second->setAnimationStyle("Idle");
-					mPlayer->setAnimationStyle("Idle");
+					mPlayer->setAnimationStyle(AnimationType::Idle);
 				}
 			}
 		}
@@ -280,7 +280,7 @@ void Level::render(IndexRenderer &iRenderer)
 {
 	mActionWheel->render(iRenderer);
 	mPlayer->render(iRenderer);
-	FDI.render(iRenderer);
+	FadeI.render(iRenderer);
 
 	// Render all the backgrounds
 	for (int i = 0; i < mBackgrounds.size(); i++)

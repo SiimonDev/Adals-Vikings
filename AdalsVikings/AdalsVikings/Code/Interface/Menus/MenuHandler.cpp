@@ -1,6 +1,16 @@
 #include "MenuHandler.h"
 #include "..\..\Logics\KeyboardState.h"
 
+MenuHandler &MenuHandler::getInstance()
+{
+	static MenuHandler* instance;
+
+	if (instance == NULL)
+		instance = new MenuHandler();
+
+	return *instance;
+}
+
 MenuHandler::MenuHandler()
 {
 	mMainMenuPanel = new MainMenuPanel(mActiveMenuPanels);

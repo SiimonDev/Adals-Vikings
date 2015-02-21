@@ -18,6 +18,7 @@ enum LevelID
 
 class Level;
 typedef Level* LevelPtr;
+
 class LevelManager
 {
 public:
@@ -29,7 +30,6 @@ public:
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);
 	void changeLevel(LevelID id);
-	void setActivate(bool value);
 
 	void loadBoatScene();
 	void loadAct1();
@@ -45,6 +45,6 @@ private:
 	Level *mCurrentLevel, *mNextLevel;
 
 	std::map<LevelID, LevelPtr> mLevelMap;
-	bool mLoadedPlayer, mActivate;
+	bool mLoadedPlayer;
 };
 

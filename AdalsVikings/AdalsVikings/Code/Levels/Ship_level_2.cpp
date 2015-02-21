@@ -49,11 +49,9 @@ void Ship_level_2::update(sf::Time &frametime)
 		}
 		if (DialogHandler::getDialogue("GivenMapToBrandr").getHasStopped())
 		{
-			FDI.fadeOut(frametime);
-			if (FDI.getFaded())
+			FadeI.fadeOut(frametime);
+			if (FadeI.getFaded())
 			{
-				LSI.setStarted(false);
-				LSI.setDone(false);
 				BoatEvents::handleEvent(BoatEvent::GivenMapToBrandr);
 			}
 		}
@@ -124,7 +122,7 @@ void Ship_level_2::changeLevel(sf::Time &frameTime)
 	}
 	else if (BoatEvents::hasBeenHandled(BoatEvent::GivenMapToBrandr) && BoatEvents::hasBeenTriggered(BoatEvent::GivenMapToBrandr))
 	{
-		LSI.startLoading("LoadAct1");
+		LSI.startLoading(LoadTask::LoadAct1);
 	}
 	else if (BoatEvents::hasBeenHandled(BoatEvent::StartDialogue) && BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
 		LVLMI.changeLevel(Ship_1);
@@ -136,16 +134,16 @@ void Ship_level_2::runCutscene(sf::Time &frameTime)
 	{
 		if (!mDone)
 		{
-			FDI.setAlpha(1);
+			FadeI.setAlpha(1);
 			DialogHandler::getDialogue("Intro").startDialogue();
 			mDone = true;
 		}
 		if (DialogHandler::getDialogue("Intro").getHasStopped())
 		{
-			FDI.fadeOut(frameTime);
-			if (FDI.getFaded())
+			FadeI.fadeOut(frameTime);
+			if (FadeI.getFaded())
 			{
-				FDI.setAlpha(254);
+				FadeI.setAlpha(254);
 				BoatEvents::handleEvent(BoatEvent::StartDialogue);
 			}
 		}

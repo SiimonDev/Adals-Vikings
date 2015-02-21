@@ -130,31 +130,31 @@ void Npc::setCollisionRect(sf::IntRect &rect)
 	mCollisionRect = rect;
 }
 
-void Npc::setAnimationStyle(std::string style)
+void Npc::setAnimationStyle(std::string type)
 {
-	if (style == "Npc" && mAnimation != Talking)
+	if (type == "Npc" && mAnimation != AnimationState::Talking)
 	{
 		mNpcAnimation.flip(mFlip);
 		mNpcAnimation.load(RMI.getTexture(mTalkTexture), mTalkFrames, mTalkDuration, mTalkWaitTime, true);
 		mSize.x = abs(mNpcAnimation.getSprite().getTextureRect().width);
 		mSize.y = abs(mNpcAnimation.getSprite().getTextureRect().height);
-		mAnimation = Talking;
+		mAnimation = AnimationState::Talking;
 	}
-	else if (style == "Player" &&  mAnimation != PlayerTalking)
+	else if (type == "Player" &&  mAnimation != AnimationState::PlayerTalking)
 	{
 		mNpcAnimation.flip(mFlip);
 		mNpcAnimation.load(RMI.getTexture(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
 		mSize.x = abs(mNpcAnimation.getSprite().getTextureRect().width);
 		mSize.y = abs(mNpcAnimation.getSprite().getTextureRect().height);
-		mAnimation = PlayerTalking;
+		mAnimation = AnimationState::PlayerTalking;
 	}
-	else if (style == "Idle" && mAnimation != Idle)
+	else if (type == "Idle" && mAnimation != AnimationState::Idle)
 	{
 		mNpcAnimation.flip(mFlip);
 		mNpcAnimation.load(RMI.getTexture(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
 		mSize.x = abs(mNpcAnimation.getSprite().getTextureRect().width);
 		mSize.y = abs(mNpcAnimation.getSprite().getTextureRect().height);
-		mAnimation = Idle;
+		mAnimation = AnimationState::Idle;
 	}
 }
 

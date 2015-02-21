@@ -6,9 +6,14 @@
 
 ResourceManager &ResourceManager::getInstance()
 {
-	static ResourceManager instance;
-	return instance;
+	static ResourceManager* instance;
+
+	if (instance == NULL)
+		instance = new ResourceManager();
+
+	return *instance;
 }
+
 ResourceManager::ResourceManager()
 {
 

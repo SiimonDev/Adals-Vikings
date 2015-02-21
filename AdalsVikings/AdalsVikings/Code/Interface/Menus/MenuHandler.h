@@ -2,6 +2,8 @@
 #include "MainMenuPanel.h"
 #include "PauseMenuPanel.h"
 
+#define MHI MenuHandler::getInstance()
+
 enum MenuID
 {
 	MainMenu,
@@ -11,7 +13,7 @@ enum MenuID
 class MenuHandler
 {
 public:
-	MenuHandler();
+	static MenuHandler &getInstance();
 
 	void load(MenuID menuID);
 	void unload(MenuID menuID);
@@ -24,6 +26,10 @@ public:
 	MenuEvent getEvent();
 
 private:
+	MenuHandler();
+	MenuHandler(MenuHandler&);
+	void operator=(MenuHandler&);
+
 	MenuID mCurrentID;
 
 	MenuPanels mActiveMenuPanels;

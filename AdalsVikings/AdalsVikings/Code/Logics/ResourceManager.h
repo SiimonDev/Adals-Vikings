@@ -20,8 +20,7 @@ namespace Images
 {
 	enum ID
 	{
-		//TileMap,
-		//IndexMap
+
 	};
 }
 namespace Folder

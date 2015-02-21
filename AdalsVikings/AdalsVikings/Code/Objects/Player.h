@@ -7,27 +7,45 @@
 
 typedef std::vector<sf::Vertex> Path;
 
-enum Intention
+namespace Intention
 {
-	None,
-	PickUp,
-	Talk,
-	Look,
-	Interact
-};
+	enum ID
+	{
+		None,
+		PickUp,
+		Talk,
+		Look,
+		Interact
+	};
+}
 
-enum AnimationStyle
+namespace AnimationStyle
 {
-	Right,
-	Left,
-	Up,
-	Down,
-	PlayerStop,
-	PlayerTalk,
-	PlayerMonolog,
-	PlayerIdle,
-	PlayerPickup
-};
+	enum ID
+	{
+		Right,
+		Left,
+		Up,
+		Down,
+		PlayerStop,
+		PlayerTalk,
+		PlayerMonolog,
+		PlayerIdle,
+		PlayerPickup
+	};
+}
+
+namespace AnimationType
+{
+	enum ID
+	{
+		Movement,
+		Idle,
+		TalkToNpc,
+		TalkToPlayer,
+		Pickup
+	};
+}
 
 class Player
 {
@@ -53,13 +71,13 @@ public:
 	std::string getDroppedObjectID();
 	Animation &getAnimation();
 
-	Intention getIntention();
+	Intention::ID getIntention();
 	bool isDestinationReached();
 
 	void setIndex(int index);
 	void setPosition(sf::Vector2f &position);
-	void setIntention(Intention intention);
-	void setAnimationStyle(std::string style);
+	void setIntention(Intention::ID intention);
+	void setAnimationStyle(AnimationType::ID type);
 	void setFlip(bool value);
 
 	std::string &getName();
@@ -96,6 +114,6 @@ private:
 
 	Inventory mInventory;
 	Animation mPlayerAnimation;
-	Intention mIntention;
-	AnimationStyle mAnimationStyle;
+	Intention::ID mIntention;
+	AnimationStyle::ID mAnimationStyle;
 };

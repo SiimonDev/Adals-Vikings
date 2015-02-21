@@ -1,7 +1,7 @@
 #pragma once
 #include "IndexRenderer.h"
 
-#define FDI Fade::getInstance()
+#define FadeI Fade::getInstance()
 class Fade
 {
 public:

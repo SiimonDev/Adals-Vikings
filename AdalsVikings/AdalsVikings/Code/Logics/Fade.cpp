@@ -12,8 +12,12 @@ Fade::Fade()
 
 Fade &Fade::getInstance()
 {
-	static Fade instance;
-	return instance;
+	static Fade* instance;
+
+	if (instance == NULL)
+		instance = new Fade();
+
+	return *instance;
 }
 void Fade::initialize()
 {
