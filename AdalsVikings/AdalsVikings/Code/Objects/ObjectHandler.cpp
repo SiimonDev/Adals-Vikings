@@ -1,13 +1,12 @@
 #include "ObjectHandler.h"
+#include "Object.h"
+#include <External\dirent.h>
+#include <iostream>
+#include <fstream>
 
 ObjectHandler::ObjectHandler()
 {
-	
-}
-
-ObjectHandler::~ObjectHandler()
-{
-
+	mFolderPath = "Assets/objects/";
 }
 
 ObjectHandler &ObjectHandler::getInstance()
@@ -16,11 +15,42 @@ ObjectHandler &ObjectHandler::getInstance()
 	return instance;
 }
 
-std::vector<Item*>& ObjectHandler::getItems(){
-	
-	return items;
+Object &ObjectHandler::getObject(std::string objID)
+{	
+	return *mObjects.at(objID);
 }
 
-void ObjectHandler::initialize(){
-	//Create all items from the text file here
+std::vector<std::string> getAllObjectsFromFolder(const std::string &directory)
+{
+	DIR *dir;
+	struct dirent *dirnt;
+	std::vector<std::string> filePaths;
+
+	if ((dir = opendir(directory.c_str())) != NULL)
+	{
+		while ((dirnt = readdir(dir)) != NULL)
+		{
+			std::string path = dirnt->d_name;
+			if (path.find("obj_") != std::string::npos){
+				filePaths.push_back(directory + dirnt->d_name);
+			}
+		}
+		closedir(dir);
+	}
+	else{
+		std::cout << "Could not find dir" << std::endl;
+	}
+
+	return filePaths;
+}
+
+void ObjectHandler::initialize()
+{
+	std::vector<std::string> objects = getAllObjectsFromFolder(mFolderPath);
+
+	for each (std::string file in objects)
+	{
+		Object* obj = new Object(file, mFolderPath);
+		mObjects[obj->getObjID()] = obj;
+	}
 }

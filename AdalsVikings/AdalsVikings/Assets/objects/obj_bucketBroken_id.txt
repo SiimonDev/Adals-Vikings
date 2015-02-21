@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $bucketBroken$
+*Name: bucketBroken
+*ispickupable: False
+*pickup: "This might come in handy" ~2,0
+*lookat: "That's nice..." ~1,5
+*deny: "I can't do that" ~1,5
+*denywith: $Leifr$ "He just broke it!" ~2,0; 
+*combine: 
+*interact: 
+*texture: "img_bucketBroken_id.png"

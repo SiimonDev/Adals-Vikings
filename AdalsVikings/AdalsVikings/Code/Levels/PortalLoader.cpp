@@ -1,31 +1,29 @@
 #include "PortalLoader.h"
 
+static std::map<PortalId, PortalPtr> mPortalMap;
 
 PortalLoader::PortalLoader()
 {
-	load();
 }
 
-
-PortalLoader::~PortalLoader()
+void PortalLoader::initialize()
 {
-}
+	mPortalMap.clear();
 
-void PortalLoader::load()
-{
-	Portal TestPortal1(sf::Vector2f(50, 1080), sf::Vector2f(500, 0));
-	Portal TestPortal2(sf::Vector2f(30, 30), sf::Vector2f(0, 700));
-
-	mPortalMap.insert(std::make_pair(Portal1, std::move(TestPortal1)));
-	mPortalMap.insert(std::make_pair(Portal2, std::move(TestPortal2)));
+	mPortalMap[Portal1] = PortalPtr(new Portal(sf::Vector2f(80, 1080), sf::Vector2f(0, 0), sf::Vector2f(200, 750), sf::Vector2f(0, 750)));
+	mPortalMap[Portal2] = PortalPtr(new Portal(sf::Vector2f(80, 1080), sf::Vector2f(1840, 0), sf::Vector2f(1700, 750), sf::Vector2f(1900, 750)));
 	
-	auto found = mPortalMap.find(Portal1);
-	auto found1 = mPortalMap.find(Portal2);
-	found->second.setGateway(&found1->second);
-
+	//needed for first Portal
+	mPortalMap[Portal1]->setGateway(&*mPortalMap[Portal2]);
+	mPortalMap[Portal2]->setGateway(&*mPortalMap[Portal1]);
 }
-Portal& PortalLoader::getPortal(PortalId id)
+
+std::map<PortalId, PortalPtr> &PortalLoader::getPortals()
 {
-	auto found = mPortalMap.find(id);
-	return found->second;
+	return mPortalMap;
+}
+
+Portal &PortalLoader::getPortal(PortalId id)
+{
+	return *mPortalMap[id];
 }

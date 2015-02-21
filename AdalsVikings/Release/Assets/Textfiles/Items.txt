@@ -1,0 +1,34 @@
+defaultuse:
+defaultlookat:
+defaultdeny:
+--------------------------------------------
+$axe$
+name: Axe
+use: "chop chop chop" ~0.8
+lookat: "This is a nice axe" ~1.0
+combine: $stick$ $wood$
+interact: $stick$
+pickup: true
+deny: "This axe is really sharp I should be careful with it" ~2.0
+denywith: $Brynja$ "Woah Brynja would get mad if I did that" ~2.0
+--------------------------------------------
+$rock$
+name: Rock
+use: "err ma geerd" ~0.8
+lookat: "Its a rock" ~0.5
+combine: $stick$ $axe$
+interact: $tree$
+pickup: true
+deny: "This axe is really sharp I should be careful with it" ~2.0
+denywith: $Brynja$ "Woah Brynja would get mad if I did that" ~2.0
+--------------------------------------------
+$stick$
+name: Stick
+use: "Aww daym!" ~0.8
+lookat: "It's a stick..." ~0.5
+combine: $rock$ $axe$
+interact: $tree$
+pickup: true
+deny: "It's a stick, nothing special about it..." ~2.0
+denywith: $Brynja$ "Woah Brynja would get mad if I did that" ~2.0
+--------------------------------------------

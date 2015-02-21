@@ -1,62 +1,131 @@
 #include "Player.h"
-#include <math.h>
-#include <iostream>
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\PathFinder.h"
+#include "..\Logics\MouseState.h"
+#include "..\Logics\KeyboardState.h"
+#include <iostream>
+#include <math.h>
 
 Player::Player()
 	: mDestinationReached(true)
 	, mTargetReached(true)
 	, mVelocity()
-	, mStepsTaken(0)
-	, mTotalSteps(0)
-	, mAlphaPerStep(0)
 	, mCurrentAlpha(0)
+	, mPlayerAnimation()
+	, mName("Ulfr")
+	, mIntention(Intention::None)
 {
-	mScale = sf::Vector2f(1, 1);
 	mSpeed = 3.f;
-	/*mPosition = sf::Vector2f(750, 1000);*/
+	mProportions = sf::Vector2f(285.7f, 512.f);
 }
 
-Player::~Player(){
-
-}
-
-sf::Vector2f Player::getPosition()
-{ 
-	return mPosition; 
-}
-
-void Player::load(TileMap &tileMap, sf::Vector2f &spawnPosition)
+void Player::load()
 {
-	mPosition.x = (PathFinder::getClosestFreeTile(spawnPosition).x * tileMap.getTileSize().x) + tileMap.getTileSize().x / 2;
-	mPosition.y = (PathFinder::getClosestFreeTile(spawnPosition).y * tileMap.getTileSize().y) + tileMap.getTileSize().y / 2;
-	sf::Color spawnColor = tileMap.getColorAt(sf::Vector2i(mPosition));
-	mScale.x = (1.f / 140.f) * float(spawnColor.a);
-	mScale.y = (1.f / 140.f) * float(spawnColor.a);
+	mInventory.load();
 
-	ResourceManager::GetInstance().load(Textures::Player, "Assets/Images/character_ulfr_back.png");
-	ResourceManager::GetInstance().getTexture(Textures::Player).setSmooth(true);
-	mISprite.getSprite().setTexture(ResourceManager::GetInstance().getTexture(Textures::Player));
-	mISprite.setIndex(3);
+	RMI.load(Textures::UlfrIdle, "Assets/images/ulfr/character_ulfr_idle.png");
+	RMI.load(Textures::UlfrBack, "Assets/images/ulfr/character_ulfr_back.png");
+	RMI.load(Textures::UlfrFront, "Assets/images/ulfr/character_ulfr_front.png");
+	RMI.load(Textures::UlfrWalk, "Assets/images/ulfr/character_ulfr_walk.png");
+	RMI.load(Textures::UlfrTalkToNpc, "Assets/images/ulfr/character_ulfr_talk.png");
+	RMI.load(Textures::UlfrTalkToPlayer, "Assets/images/ulfr/character_ulfr_front.png");
+	RMI.load(Textures::UlfrStop, "assets/images/ulfr/character_ulfr_stop.png");
+	RMI.load(Textures::UlfrPickup, "assets/images/ulfr/character_ulfr_pickup.png");
 
-	mWidth = ResourceManager::GetInstance().getTexture(Textures::Player).getSize().x;
-	mHeight = ResourceManager::GetInstance().getTexture(Textures::Player).getSize().y;
+	mPlayerAnimation.flip(false);
+	mPlayerAnimation.load(RMI.getTexture(Textures::UlfrIdle), Frames(6, 3), sf::milliseconds(1300), sf::seconds(7), true);
+	mPlayerAnimation.setIndex(3);
+	mPlayerAnimation.setProportions(mProportions);
+
+	mWidth = mPlayerAnimation.getSprite().getTextureRect().width;
+	mHeight = mPlayerAnimation.getSprite().getTextureRect().height;
 }
 
 void Player::unload()
 {
-	ResourceManager::GetInstance().unload(Textures::Player);
+	mInventory.unload();
+	RMI.unload(Textures::UlfrBack);
+	RMI.unload(Textures::UlfrFront);
+	RMI.unload(Textures::UlfrWalk);
+	RMI.unload(Textures::UlfrIdle);
+	RMI.unload(Textures::UlfrTalkToNpc);
+	RMI.unload(Textures::UlfrTalkToPlayer);
+	RMI.unload(Textures::UlfrStop);
+	RMI.unload(Textures::UlfrPickup);
+}
+
+bool Player::addItemToInventory(std::string objID)
+{
+	return mInventory.addItemToInventory(objID);
+}
+
+bool Player::hasItemInInventory(std::string objID)
+{
+	return mInventory.hasItemInInventory(objID);
+}
+
+bool Player::removeItemFromInventory(std::string objID)
+{
+	return mInventory.removeItemFromInventory(objID);
+}
+
+void Player::saveInventory()
+{
+	mInventory.saveInventoryToFile();
+}
+void Player::refreshInventory()
+{
+	mInventory.unloadObjects();
+	mInventory.loadObjects();
+}
+void Player::clearInventory()
+{
+	mInventory.clearInventory();
 }
 
 void Player::update(sf::Time &frameTime)
 {
-	move(frameTime);
+	if (KeyboardState::isPressed(sf::Keyboard::I))
+		mInventory.toggleInventory();
+
+	mInventory.update(frameTime);
+
+	if (mAnimationStyle == AnimationStyle::PlayerPickup && mPlayerAnimation.getStopped())
+	{
+		std::cout << "PICK IT  UP!!" << std::endl;
+		setAnimationStyle("Idle");
+	}
+	if (mAnimationStyle == AnimationStyle::PlayerStop && mPlayerAnimation.getStopped())
+	{
+		setAnimationStyle("Idle");
+	}
+	// Animate the player
+	mPlayerAnimation.animate(frameTime);
+	mPlayerAnimation.setIndex(PathFinder::getIndexAt(mPosition));
+
+	// Set player alpha
+	float newAlpha = PathFinder::getAlphaAt(mPosition);
+	if (newAlpha > 0)
+		mCurrentAlpha = newAlpha;
+
+	// Update the player scale
+	mScale.x = ((0.35 / 120.f) * mCurrentAlpha);
+	mScale.y = (0.35 / 120.f) * mCurrentAlpha;
+}
+
+void Player::render(IndexRenderer &iRenderer)
+{
+	mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height);
+	mPlayerAnimation.setScaleFromHeight(mProportions.y * mScale.y);
+	mPlayerAnimation.setPosition(mPosition);
+	mPlayerAnimation.render(iRenderer);
+	mInventory.render(iRenderer);
 }
 
 void Player::walkPath(Path &path)
 {
-	if (path.size() > 0)
+	mCurrentPath.clear();
+	if (path.size() > 2)
 	{
 		mCurrentPath = path;
 
@@ -69,49 +138,47 @@ void Player::walkPath(Path &path)
 	else
 	{
 		mDestinationReached = true;
+		mVelocity = sf::Vector2f(0, 0);
 	}
 }
 
-void Player::setIndex(int index)
+void Player::move(sf::Time &frameTime)
 {
-	mISprite.setIndex(index);
-}
+	if (MouseState::isReleased(sf::Mouse::Left, 0.5) && !mInventory.isActive())
+		walkPath(PathFinder::getPath(getPosition(), sf::Vector2f(MouseState::getMousePosition())));
 
-void Player::setPosition(sf::Vector2f position)
-{
-	mPosition = position;
-}
+	if (!mTargetReached && !mDestinationReached)
+	{
+		mVelocity = mVelocity - (mVelocity * mAcceleration);
 
-void Player::move(sf::Time &frameTime){
+		mPosition += mVelocity;
+		mDistanceTraveled += sqrt((mVelocity.x * mVelocity.x) + (mVelocity.y * mVelocity.y));
+
+		if (mDistanceTraveled >= mTotalDistance)
+		{
+			mTargetReached = true;
+			mVelocity = sf::Vector2f(0, 0);
+		}
+	}
 
 	if (mTargetReached && !mDestinationReached)
 	{
 		if (!mCurrentPath.empty())
 		{
 			mCurrentTarget = mCurrentPath.at(mCurrentPath.size() - 1);
+			sf::Vector2f distanceToTarget;
+			distanceToTarget.x = mCurrentTarget.position.x - mPosition.x;
+			distanceToTarget.y = mCurrentTarget.position.y - mPosition.y + 10;
+			float targetAngle = (float)atan2(distanceToTarget.y, distanceToTarget.x);
+			mTotalDistance = sqrt((distanceToTarget.x * distanceToTarget.x) + (distanceToTarget.y * distanceToTarget.y));
 
-			// Calculate what speed the player should be moving at.
-			// First we see what baspeed the player has (based on tha alpha of the current position).
-			// After this we calculate the difference in alpha between the current position and the target position.
-			// Last we determine the speed based on how long the player have to trawel (how big the alpha-difference is)
-			float bSpeed = ((mSpeed * mCurrentTarget.color.a) / 255);
-			float alphaDiff = float(mLastTarget.color.a) - float(mCurrentTarget.color.a);
-			float speed = bSpeed - (abs(alphaDiff) / 255);
+			mCurrentSpeed = ((mSpeed * mLastTarget.color.a) / 255);
+			mTargetSpeed = ((mSpeed * mCurrentTarget.color.a) / 255);
+			float deltaSpeed = mCurrentSpeed - mTargetSpeed;
+			mAcceleration = deltaSpeed / mTotalDistance;
+			mVelocity = sf::Vector2f(cos(targetAngle), sin(targetAngle)) * mCurrentSpeed;
 
-			// Calculate the angle toward the next target
-			// and then use this angle to create a mVelocity (the size of and angle of a "step")
-			mDistanceToTarget.x = mCurrentTarget.position.x - mPosition.x;
-			mDistanceToTarget.y = mCurrentTarget.position.y - mPosition.y;
-			float pointAngle = (float)atan2(mDistanceToTarget.y, mDistanceToTarget.x);
-			mVelocity = sf::Vector2f(cos(pointAngle), sin(pointAngle)) * speed;
-
-			// Calculate how many steps that has to be taken to reach the goal
-			// using pythagoras algorithm (the lenth of the distance vector / the length of the mVelocity vector)
-			float distanceLength = sqrt((mDistanceToTarget.x * mDistanceToTarget.x) + (mDistanceToTarget.y * mDistanceToTarget.y));
-			float mVelocityLength = sqrt(((mVelocity.x * mVelocity.x) + (mVelocity.y * mVelocity.y)));
-			mTotalSteps = distanceLength / mVelocityLength;
-			mAlphaPerStep = (alphaDiff / float(mTotalSteps));
-			mCurrentAlpha = float(mLastTarget.color.a);
+			mDistanceTraveled = 0;
 
 			mLastTarget = mCurrentTarget;
 			mTargetReached = false;
@@ -120,34 +187,122 @@ void Player::move(sf::Time &frameTime){
 		else
 		{
 			mDestinationReached = true;
+			mVelocity = sf::Vector2f(0, 0);
 		}
 	}
+	setAnimationStyle("Movement");
+}
 
-	if (!mTargetReached && !mDestinationReached)
+sf::Sprite Player::getSprite()
+{
+	return mPlayerAnimation.getSprite();
+}
+sf::Vector2f Player::getPosition()
+{
+	return mPosition;
+}
+std::string Player::getDroppedObjectID()
+{ 
+	return mInventory.getDroppedObjectID();
+}
+
+Intention Player::getIntention()
+{
+	return mIntention;
+}
+bool Player::isDestinationReached()
+{
+	return mDestinationReached;
+}
+
+void Player::setIndex(int index)
+{
+	mPlayerAnimation.setIndex(index);
+}
+
+void Player::setPosition(sf::Vector2f &position)
+{
+	mPosition = position;
+}
+
+void Player::setIntention(Intention intention)
+{
+	mIntention = intention;
+}
+
+void Player::setAnimationStyle(std::string style)
+{
+	if (style == "Movement" && !mDestinationReached && mVelocity.x > 0.4 && mAnimationStyle != AnimationStyle::Right)
 	{
-		mStepsTaken++;
+		mPlayerAnimation.flip(true);
+		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
 
-		// Take a step (position + the angle and lenths of a step (mVelocity))
-		mPosition += mVelocity;
+		mAnimationStyle = AnimationStyle::Right;
+	}
+	else if (style == "Movement" && !mDestinationReached && mVelocity.x < -0.4 && mAnimationStyle != AnimationStyle::Left)
+	{
+		mPlayerAnimation.flip(false);
+		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
 
-		// Incrementally reduce/increase the alpha every step.
-		mCurrentAlpha -= mAlphaPerStep;
-		mScale.x = (1.f / 140.f) * mCurrentAlpha;
-		mScale.y = (1.f / 140.f) * mCurrentAlpha;
+		mAnimationStyle = AnimationStyle::Left;
+	}
+	else if (style == "Movement" && mDestinationReached && mAnimationStyle != AnimationStyle::PlayerStop && mAnimationStyle != AnimationStyle::PlayerIdle && mAnimationStyle != AnimationStyle::PlayerPickup)
+	{
+		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrStop), Frames(5, 5), sf::milliseconds(1300), sf::Time::Zero, false);
+		mAnimationStyle = AnimationStyle::PlayerStop;
+	}
+	else if (style == "Idle" && (mAnimationStyle != AnimationStyle::PlayerIdle))
+	{
+		
+		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrIdle), Frames(6, 3), sf::milliseconds(1300), sf::seconds(7), true);
+		mAnimationStyle = AnimationStyle::PlayerIdle;
+	}
+	else if (style == "Movement" && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y < 0 && mAnimationStyle != AnimationStyle::Up)
+	{
+		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
 
-		// Check if the total number if steps has been taken
-		// if it has then set the target as reached and reset the stepcounter
-		if (mStepsTaken >= mTotalSteps){
-			mTargetReached = true;
-			mStepsTaken = 0;
-		}
+		mAnimationStyle = AnimationStyle::Up;
+	}
+	else if (style == "Movement" && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y > 0 && mAnimationStyle != AnimationStyle::Down)
+	{
+		
+		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		mAnimationStyle = AnimationStyle::Down;
+	}
+	else if (style == "TalkToNpc" && mAnimationStyle != AnimationStyle::PlayerTalk)
+	{
+		mPlayerAnimation.flip(mFlip);
+		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrTalkToNpc), Frames(5, 2), sf::milliseconds(800), sf::Time::Zero, true);
+		mAnimationStyle = AnimationStyle::PlayerTalk;
+	}
+	else if (style == "TalkToPlayer" && mAnimationStyle != AnimationStyle::PlayerMonolog)
+	{
+		mPlayerAnimation.flip(false);
+		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrFront), Frames(4, 1), sf::milliseconds(600), sf::seconds(0), true);
+		mAnimationStyle = AnimationStyle::PlayerMonolog;
+	}
+	else if (style == "Pickup" && mAnimationStyle != AnimationStyle::PlayerPickup)
+	{
+		mPlayerAnimation.load(RMI.getTexture(Textures::UlfrPickup), Frames(5, 5), sf::milliseconds(1400), sf::seconds(0), false);
+		mAnimationStyle = AnimationStyle::PlayerPickup;
 	}
 }
 
-void Player::render(IndexRenderer &iRenderer)
+std::string & Player::getName()
 {
-	mISprite.getSprite().setOrigin(mWidth / 2, (mHeight -10));
-	mISprite.getSprite().setPosition(mPosition);
-	mISprite.getSprite().setScale(mScale);
-	iRenderer.addISprite(mISprite);
+	return mName;
+}
+
+float & Player::getCurrentAlpha()
+{
+	return mCurrentAlpha;
+}
+
+void Player::setFlip(bool value)
+{
+	mFlip = value;
+}
+Animation &Player::getAnimation()
+{
+	return mPlayerAnimation;
 }

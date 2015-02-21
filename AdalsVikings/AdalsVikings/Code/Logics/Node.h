@@ -11,9 +11,20 @@ class Node
 	int FValue;
 
 public:
+	Node()
+	{
+		pos.x = 0;
+		pos.y = 0;
+		GValue = 0;
+		FValue = 0;
+	}
+
 	Node(const sf::Vector2i &loc, int g, int f)
 	{
-		pos.x = loc.x; pos.y = loc.y; GValue = g; FValue = f;
+		pos.x = loc.x;
+		pos.y = loc.y;
+		GValue = g;
+		FValue = f;
 	}
 
 	sf::Vector2i getLocation() const { return pos; }

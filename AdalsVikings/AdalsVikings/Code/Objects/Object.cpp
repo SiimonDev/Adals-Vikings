@@ -1,298 +1,454 @@
 #include "Object.h"
-#include <SFML/Graphics.hpp>
-#include "..\Logics\LevelManager.h"
+#include "..\Logics\ResourceManager.h"
+#include "..\Logics\KeyboardState.h"
+#include <SFML\Graphics.hpp>
+#include <iostream>
 #include <sstream>
 #include <fstream>
 #include <algorithm>
-#include <iostream>
 #include <vector>
 
-static std::string itemFilePath = "Assets\\Textfiles\\Items.txt";
-
-Object::Object(std::string objectID, std::string filePath, Textures::ID textureID) : mObjectID(objectID), mFilePath(filePath), mTextureID(textureID)
+Object::Object(std::string filePath, std::string folderPath) :
+mDocPath(filePath), mFolderPath(folderPath), mCollision(true), debuggMode(false)
 {
-	readVariables();
-}
-
-
-Object::~Object()
-{
-}
-
-void Object::render(sf::RenderWindow &window)
-{
-	window.draw(mSprite);
-}
-
-void Object::update(sf::Time &time)
-{
-	
+	readVariablesFromFile();
 }
 
 void Object::load()
 {
-	ResourceManager::GetInstance().load(mTextureID, mFilePath);
-	mSprite.setTexture(ResourceManager::GetInstance().getTexture(mTextureID));
+	if (mType == ObjectType::Standard){
+		RMI.loadTexture(mImagePath);
+		mSprite.setTexture(RMI.getNonIDTexture(mImagePath));
+		mSize.x = RMI.getNonIDTexture(mImagePath).getSize().x;
+		mSize.y = RMI.getNonIDTexture(mImagePath).getSize().y;
+		mSprite.setOrigin(sf::Vector2f(mSize.x / 2, mSize.y / 2));
+	}
+	else if (mType == ObjectType::Animated){
+		RMI.loadTexture(mImagePath);
+		mAnimation.setSpriteSize(RMI.getNonIDTexture(mImagePath), mAnimation.getFrames());
+		mSize.x = abs(mAnimation.getSprite().getTextureRect().width);
+		mSize.y = abs(mAnimation.getSprite().getTextureRect().height);
+		mAnimation.getSprite().setOrigin(mSize.x / 2, mSize.y / 2);
+	}
+	else if (mType == ObjectType::Invisible)
+	{
+		mRect = sf::RectangleShape(sf::Vector2f(mSize.x, mSize.y));
+		mRect.setFillColor(sf::Color(255, 0, 0, 255));
+	}
+
+	float objWidth = float(mSize.x * mScale.x);
+	float objHeight = float(mSize.y * mScale.y);
+	float xPos = mPosition.x - (objWidth / 2);
+	float yPos = mPosition.y + ((objHeight / 2) - objHeight * 0.2f);
+
+	if (mCollision)
+		mCollisionRect = sf::IntRect(sf::IntRect(xPos, yPos, objWidth, objHeight * 0.2f));
+	else
+		mCollisionRect = sf::IntRect(sf::IntRect(0, 0, 0, 0));
 }
 
 void Object::unload()
 {
-	ResourceManager::GetInstance().unload(mTextureID);
+	RMI.unloadTexture(mImagePath);
 }
 
-bool Object::interactWithItem(Object *object)
+void Object::update(sf::Time &frameTime)
 {
-	if (std::find(mInteractableWith.begin(), mInteractableWith.end(), object->getObjID()) != mInteractableWith.end()){
-		return true;
-	}
-	return false;
+	if (KeyboardState::isPressed(sf::Keyboard::F1))
+		debuggMode = (!debuggMode);
 
+	if (mType == ObjectType::Animated)
+		mAnimation.animate(frameTime);
 }
 
-std::string Object::combineObjects(Object *object){
-	
-	std::map<std::string, std::string>::iterator search = mCreatedObjects.find(object->getObjID());
-	if (search != mCreatedObjects.end()){
-		return search->second;
+void Object::render(IndexRenderer &iRenderer)
+{
+	if (mType == ObjectType::Standard){
+		mSprite.setScale(mScale);
+		mSprite.setPosition(mPosition);
+		iRenderer.addSprite(mSprite, mIndex);
 	}
-	return "";
+	else if (mType == ObjectType::Animated){
+		mAnimation.setScaleFromHeight(mScale.x * mSize.x);
+		mAnimation.setPosition(mPosition);
+		mAnimation.render(iRenderer);
+	}
+	else if (mType == ObjectType::Invisible){
+		if (debuggMode){
+			mRect.setPosition(sf::Vector2f(mPosition.x - (mSize.x / 2), mPosition.y - (mSize.y / 2)));
+			iRenderer.addRectangle(mRect, mIndex);
+		}
+	}
+}
+
+void Object::setInteractionPosition(sf::Vector2f &interPos)
+{
+	mInteractionPosition = interPos;
+}
+
+void Object::setIndex(int index)
+{
+	mIndex = index;
+	mAnimation.setIndex(mIndex);
+}
+
+void Object::setPosition(sf::Vector2f &position)
+{
+	mPosition = position;
+}
+
+void Object::setCollisionRect(sf::IntRect &rect)
+{
+	mCollisionRect = rect;
+}
+
+void Object::setScale(sf::Vector2f &scale)
+{
+	mScale = scale;
+}
+
+void Object::enableCollision(bool active)
+{
+	mCollision = active;
 }
 
 std::string Object::getName()
 {
 	return mName;
 }
-
 std::string Object::getObjID()
 {
 	return mObjectID;
 }
 
-std::string Object::getLookAtDialog()
+Dialog Object::interactWithObject(std::string id)
+{
+	for (std::map<std::string, Dialog>::iterator it = mInteractDialogs.begin(); it != mInteractDialogs.end(); ++it)
+	{
+		if (it->first == id){
+			return mInteractDialogs[id];
+		}
+	}
+
+	return getDenyDialog(id);
+}
+CombineDialog Object::combineWithObject(std::string id)
+{
+	CombineDialog dialog;
+	for (std::map<std::string, CombineDialog>::iterator it = mCombineObjects.begin(); it != mCombineObjects.end(); ++it)
+	{
+		if (it->first == id){
+			return mCombineObjects[id];
+		}
+	}
+	dialog.mDialog = getDenyDialog(id).mDialog;
+	dialog.mTimer = getDenyDialog(id).mTimer;
+	return dialog;
+}
+Dialog Object::getPickupDialog()
+{
+	return mPickupDialog;
+}
+Dialog Object::getDenyDialog(std::string id)
+{
+	for (std::map<std::string, Dialog>::iterator it = mDenyDialogs.begin(); it != mDenyDialogs.end(); ++it)
+	{
+		if (it->first == id){
+			return mDenyDialogs[id];
+		}
+	}
+
+	return mDenyDialog;
+}
+Dialog Object::getLookAtDialog()
 {
 	return mLookAtDialog;
 }
 
-float Object::getLookAtDialogTimer()
+sf::Vector2f &Object::getPosition()
 {
-	return mLookAtDialogTimer;
+	return mPosition;
 }
 
-std::string Object::getUseDialog()
+sf::Vector2f &Object::getInteractionPosition()
 {
-	return mUseDialog;
+	return mPosition + mInteractionPosition;
 }
 
-float Object::getUseDialogTimer()
+sf::Vector2f Object::getScale()
 {
-	return mUseDialogTimer;
+	return mScale;
 }
 
-std::string Object::getCantUseDialog()
+sf::IntRect &Object::getCollisionRect()
 {
-	return mCantUseDialog;
+	return mCollisionRect;
 }
 
-float Object::getCantUseDialogTimer()
+sf::Sprite &Object::getSprite()
 {
-	return mCantUseDialogTimer;
+	return mSprite;
 }
 
-bool Object::getCanPickUp()
+int Object::getIndex()
+{
+	return mIndex;
+}
+
+bool Object::isInside(sf::Vector2i &pos)
+{
+	return
+		mPosition.x - ((mSize.x * mScale.x) / 2) <= pos.x  &&
+		pos.x <= mPosition.x + ((mSize.x * mScale.x) / 2) &&
+		mPosition.y - ((mSize.y * mScale.y) / 2) <= pos.y &&
+		pos.y <= mPosition.y + ((mSize.y * mScale.y) / 2);
+}
+bool Object::isPickupable()
 {
 	return mCanPickUp;
 }
 
-void Object::readVariables()
+bool Object::hasCollision()
 {
-	std::ifstream itemFile(itemFilePath);
-	std::string line = "";
-	std::string word = "";
-	std::stringstream ss;
-	
-	std::string  itemID = "$" + mObjectID + "$";
-	while (itemFile.good())
+	return mCollision;
+}
+
+void Object::readVariablesFromFile()
+{
+	std::cout << "--- LOADING ITEM! ---" << std::endl;
+	std::ifstream itemFile(mDocPath);
+	std::string line;
+	while (std::getline(itemFile, line))
 	{
-		std::getline(itemFile, line);
-		if (line == itemID)
+		if (line.find("*Type:") != std::string::npos)
 		{
-
-			/*********************************************************/
-			/*					mName							 	 */
-			/*********************************************************/
-			std::getline(itemFile, line); //set the variable mName
-			line.erase(0, 5);
-			mName = line;
-
-			/*********************************************************/
-			/*					mUseDialog						 	 */
-			/*********************************************************/
-			std::getline(itemFile, line);
-			line.erase(0, 5);
-			line.erase(std::remove(line.begin(), line.end(), '"'), line.end());
-			if (line != "")
-			{
-				std::string segment = "";
-				std::vector<std::string> segvector;
-				std::stringstream linestream;
-				linestream << line;
-
-				while (std::getline(linestream, segment, '~')) //splits the  line at ~
-				{
-					segvector.push_back(segment);
-				}
-
-				mUseDialog = segvector[0];
-				mUseDialogTimer = std::stof(segvector[1]);
-			}
-			else
-			{
-				mUseDialog = "Default use dialog";
-				mUseDialogTimer = 0.7;
-			}
-
-			/*********************************************************/
-			/*					mLookAtDialog					 	 */
-			/*********************************************************/
-			std::getline(itemFile, line); //set the lookatdialog
 			line.erase(0, 7);
-			line.erase(std::remove(line.begin(), line.end(), '"'), line.end());
-			if (line != "")
-			{
-				std::string segment = "";
-				std::vector<std::string> segvector;
-				std::stringstream linestream;
-				linestream << line;
+			std::string type = line;
 
-				while (std::getline(linestream, segment, '~')) //splits the  line at ~
+			if (type == "standard")
+				mType = ObjectType::Standard;
+			else if (type == "animated")
+				mType = ObjectType::Animated;
+			else if (type == "invisible")
+				mType = ObjectType::Invisible;
+
+			std::cout << "Type: " << type << std::endl;
+		}
+		else if (line.find("*ID:") != std::string::npos)
+		{
+			int start = line.find("$", 0);
+			int end = line.find("$", start + 1);
+			std::string subString = line.substr(start + 1, (end - start) - 1);
+
+			mObjectID = subString;
+			std::cout << "ID: " << mObjectID << std::endl;
+		}
+		else if (line.find("*Name:") != std::string::npos)
+		{
+			line.erase(0, 7);
+			mName = line;
+			std::cout << "Name: " << mName << std::endl;
+		}
+		else if (line.find("*ispickupable:") != std::string::npos)
+		{
+			line.erase(0, 15);
+			mCanPickUp = (line == "True");
+			std::cout << "isPickupable: " << mCanPickUp << std::endl;
+		}
+		else if (line.find("*pickup:") != std::string::npos)
+		{
+			int start = line.find("\"", 0);
+			int end = line.find("\"", start + 1);
+			std::string dialogText = line.substr(start + 1, (end - start) - 1);
+
+			start = line.find("~", 0);
+			std::string dialogTimer = line.substr(start + 1, (line.size() - start) - 1);
+
+			mPickupDialog.mDialog = dialogText;
+			mPickupDialog.mTimer = atof(dialogTimer.c_str());
+
+			std::cout << "pickUpDialog: " << dialogText << "~" << mPickupDialog.mTimer << std::endl;
+		}
+		else if (line.find("*lookat:") != std::string::npos)
+		{
+			int start = line.find("\"", 0);
+			int end = line.find("\"", start + 1);
+			std::string dialogText = line.substr(start + 1, (end - start) - 1);
+
+			start = line.find("~", 0);
+			std::string dialogTimer = line.substr(start + 1, (line.size() - start) - 1);
+
+			mLookAtDialog.mDialog = dialogText;
+			mLookAtDialog.mTimer = atof(dialogTimer.c_str());
+
+			std::cout << "lookatDialog: " << dialogText << "~" << mLookAtDialog.mTimer << std::endl;
+		}
+		else if (line.find("*deny:") != std::string::npos)
+		{
+			int start = line.find("\"", 0);
+			int end = line.find("\"", start + 1);
+			std::string dialogText = line.substr(start + 1, (end - start) - 1);
+
+			start = line.find("~", 0);
+			std::string dialogTimer = line.substr(start + 1, (line.size() - start) - 1);
+
+			mDenyDialog.mDialog = dialogText;
+			mDenyDialog.mTimer = atof(dialogTimer.c_str());
+
+			std::cout << "denyDialog: " << dialogText << "~" << mDenyDialog.mTimer << std::endl;
+		}
+		else if (line.find("*denywith:") != std::string::npos)
+		{
+			std::string segment = "";
+			std::stringstream linestream;
+			linestream << line;
+
+			while (std::getline(linestream, segment, ';')) //splits the  line at ;
+			{
+				if (segment.find("$") != std::string::npos)
 				{
-					segvector.push_back(segment);
-				}
+					// Get the ID
+					int start = segment.find("$", 0);
+					int end = segment.find("$", start + 1);
+					std::string denyID = segment.substr(start + 1, (end - start) - 1);
 
-				mLookAtDialog = segvector[0];
-				mLookAtDialogTimer = std::stof(segvector[1]);
-			}
-			else
-			{
-				mLookAtDialog = "Default look at dialog";
-				mLookAtDialogTimer = 0.7;
-			}
+					// Get the text
+					start = segment.find("\"", 0);
+					end = segment.find("\"", start + 1);
+					std::string dialogText = segment.substr(start + 1, (end - start) - 1);
 
-			/*********************************************************/
-			/*					mCombineItems					 	 */
-			/*********************************************************/
-			std::string combinedWithItem;
-			std::string createdItem;
-			std::getline(itemFile, line);
-			line.erase(0, 9);
-			ss << line;
-			std::cout << "mCombineWith: " << line << std::endl;
-			if (line != "")
-			{
-				for (int i = 1; ss >> combinedWithItem; i += 2)
-				{
-					combinedWithItem.erase(std::remove(combinedWithItem.begin(), combinedWithItem.end(), '$'), combinedWithItem.end());
-					std::cout << "combineItems: " << combinedWithItem << std::endl;
-					ss >> createdItem;
-					createdItem.erase(std::remove(createdItem.begin(), createdItem.end(), '$'), createdItem.end());
-					std::cout << "combineItems: " << createdItem << std::endl;
-					mCreatedObjects[combinedWithItem] = createdItem;
-				}
-			}
+					start = segment.find("~", 0);
+					std::string dialogTimer = segment.substr(start + 1, (segment.size() - start) - 1);
 
+					Dialog dialog;
+					dialog.mDialog = dialogText;
+					dialog.mTimer = atof(dialogTimer.c_str());
 
-			/*********************************************************/
-			/*					mInteractableWIth				 	 */
-			/*********************************************************/
-			std::getline(itemFile, line);//set variables mInteractableWith
-			line.erase(0, 10);
-			ss << line;
-			
-			if (line != "")
-			{
-				for (int i = 1; ss >> word; i++)
-				{
-					word.erase(std::remove(word.begin(), word.end(), '$'), word.end());
-					mInteractableWith.push_back(word);
-					std::cout << "interactable: " << word << std::endl;
-				}
-			}
+					mDenyDialogs[denyID] = dialog;
 
-			/*********************************************************/
-			/*					mCanPickUp						 	 */
-			/*********************************************************/
-			std::getline(itemFile, line); //set variable mCanPickUp
-			line.erase(0, 8);
-			if (line == "true")
-			{
-				mCanPickUp = true;
-				std::cout << "This item can be picked up" << std::endl;
-			} 
-			else
-			{
-				mCanPickUp = false;
-				std::cout << "This item can not be picked up" << std::endl;
-			}
-
-			/*********************************************************/
-			/*					mCantUseDialog					 	 */
-			/*********************************************************/
-			std::getline(itemFile, line); //set variable mCantUseDialog
-			line.erase(0, 4);
-			//removes the " from the line
-			line.erase(std::remove(line.begin(), line.end(), '"'), line.end());
-			if (line != "")
-			{
-				std::string segment = "";
-				std::vector<std::string> segvector;
-				std::stringstream linestream;
-				linestream << line;
-
-				while (std::getline(linestream, segment, '~')) //splits the  line at ~
-				{
-					segvector.push_back(segment);
-				}
-
-				mCantUseDialog = segvector[0];
-				mCantUseDialogTimer = std::stof(segvector[1]);
-			}
-			else
-			{
-				mCantUseDialog = "Default cant use dialog";
-				mCantUseDialogTimer = 0.7;
-			}
-
-			/*********************************************************/
-			/*					mDenyWith						 	 */
-			/*********************************************************/
-			std::getline(itemFile, line);
-			//implement the code for getting the denywith map
-			line.erase(0, 10);
-			std::cout << "mDenyWith: " << line << std::endl;
-			if (line != "")
-			{	
-				if (line.find('|') != std::string::npos)
-				{
-					std::cout << "Found a |" << std::endl;
-
-						
-				}
-				else
-				{
-					std::cout << "did not find a | " << std::endl;
-					std::string segment = "";
-					std::vector<std::string> segvector;
-					std::stringstream linestream;
-					linestream << line;
-
-					while (std::getline(linestream, segment, '~')) //splits the  line at ~
-					{
-						segvector.push_back(segment);
-					}
-					
+					std::cout << "denyWith: denyID: " << "$" << denyID << "$ " << dialogText << "~" << dialog.mTimer << std::endl;
 				}
 			}
 		}
+		else if (line.find("*combine:") != std::string::npos)
+		{
+			std::string segment = "";
+			std::stringstream linestream;
+			linestream << line;
+
+			while (std::getline(linestream, segment, ';')) //splits the  line at ;
+			{
+				if (segment.find("$") != std::string::npos)
+				{
+					// Get the Object ID
+					int start = segment.find("$", 0);
+					int end = segment.find("$", start + 1);
+					std::string combineID = segment.substr(start + 1, (end - start) - 1);
+
+					// Get the Result ID
+					start = segment.find("$", end + 1);
+					end = segment.find("$", start + 1);
+					std::string resultID = segment.substr(start + 1, (end - start) - 1);
+
+					// Get the text
+					start = segment.find("\"", 0);
+					end = segment.find("\"", start + 1);
+					std::string dialogText = segment.substr(start + 1, (end - start) - 1);
+
+					start = segment.find("~", 0);
+					std::string dialogTimer = segment.substr(start + 1, (segment.size() - start) - 1);
+
+					CombineDialog dialog;
+					dialog.mResultID = resultID;
+					dialog.mDialog = dialogText;
+					dialog.mTimer = atof(dialogTimer.c_str());
+
+					mCombineObjects[combineID] = dialog;
+
+					std::cout << "Combine: combineID: $" << combineID << "$ " << " Resulting ID: $" << dialog.mResultID << "$ " << dialogText << "~" << dialog.mTimer << std::endl;
+				}
+			}
+		}
+		else if (line.find("*interact:") != std::string::npos)
+		{
+			std::string segment = "";
+			std::stringstream linestream;
+			linestream << line;
+
+			while (std::getline(linestream, segment, ';')) //splits the  line at ;
+			{
+				if (segment.find("$") != std::string::npos)
+				{
+					// Get the ID
+					int start = segment.find("$", 0);
+					int end = segment.find("$", start + 1);
+					std::string interactID = segment.substr(start + 1, (end - start) - 1);
+
+					// Get the text
+					start = segment.find("\"", 0);
+					end = segment.find("\"", start + 1);
+					std::string dialogText = segment.substr(start + 1, (end - start) - 1);
+
+					start = segment.find("~", 0);
+					std::string dialogTimer = segment.substr(start + 1, (segment.size() - start) - 1);
+
+					Dialog dialog;
+					dialog.mDialog = dialogText;
+					dialog.mTimer = atof(dialogTimer.c_str());
+
+					mInteractDialogs[interactID] = dialog;
+
+					std::cout << "Interact: InteractID: $" << interactID << "$ " << dialogText << "~" << dialog.mTimer << std::endl;
+				}
+			}
+		}
+		if (mType == ObjectType::Standard || mType == ObjectType::Animated)
+		{
+			if (line.find("*texture:") != std::string::npos)
+			{
+				int start = line.find("\"", 0);
+				int end = line.find("\"", start + 1);
+				std::string subString = line.substr(start + 1, (end - start) - 1);
+
+				mImagePath = mFolderPath + subString;
+				std::cout << "Image: \"" << mImagePath << "\"" << std::endl;
+			}
+		}
+		if (mType == ObjectType::Animated && line.find("*animation:") != std::string::npos)
+		{
+			int start = line.find("X:", 0);
+			int end = line.find(" Y:", start + 1);
+			std::string animeX = line.substr(start + 2, (end - start) - 1);
+
+			start = line.find("Y:", 0);
+			end = line.find(" ~", start + 1);
+			std::string animeY = line.substr(start + 2, (end - start) - 1);
+
+			mAnimation.setFrames(sf::Vector2i(atof(animeX.c_str()), atof(animeY.c_str())));
+
+			start = line.find("~", 0);
+			end = line.find(" ~", start + 1);
+			double animeTime = atof(line.substr(start + 1, (end - start) - 1).c_str());
+			mAnimation.setDuration(sf::seconds(animeTime));
+
+			start = end + 1;
+			end = line.size();
+			double animeIdle = atof(line.substr(start + 1, (end - start) - 1).c_str());
+			mAnimation.setIdleDuration(sf::seconds(animeIdle));
+		}
+		if (mType == ObjectType::Invisible && line.find("*invisible:") != std::string::npos)
+		{
+			int start = line.find("X:", 0);
+			int end = line.find(" Y:", start + 1);
+			std::string invisibleWidth = line.substr(start + 2, (end - start) - 1);
+			mSize.x = atof(invisibleWidth.c_str());
+
+			start = line.find("Y:", 0);
+			end = line.size() - 1;
+			std::string invisibleHeight = line.substr(start + 2, (end - start) - 1);
+			mSize.y = atof(invisibleHeight.c_str());
+		}
 	}
-	
+	std::cout << std::endl;
+	itemFile.close();
 }

@@ -1,0 +1,19 @@
+############
+*id: $axe
+position: $X:500 $Y:680
+interactPosition: $X:-30 $Y:50
+index: $14
+isActive: $true
+############
+*id: $rock
+position: $X:600 $Y:680
+interactPosition: $X:-30 $Y:50
+index: $14
+isActive: $true
+############
+*id: $axe
+position: $X:700 $Y:680
+interactPosition: $X:-30 $Y:50
+index: $14
+isActive: $true
+############

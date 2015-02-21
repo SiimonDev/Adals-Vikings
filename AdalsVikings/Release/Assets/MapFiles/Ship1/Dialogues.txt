@@ -1,0 +1,9 @@
+Alfr assets/textfiles/Dialogue_alfr_ship.xml
+Leifr assets/textfiles/Dialogue_finnr_leifr_ship.xml
+Finnr assets/textfiles/Dialogue_finnr_leifr_ship.xml
+Valdis assets/textfiles/Dialogue_valdis_ship.xml
+Brynja assets/textfiles/Dialogue_brynja_ship.xml
+IntroUlfr assets/textfiles/Dialogue_intro_Ulfr.xml
+BucketDialogue assets/textfiles/Dialogue_leifr_bucket.xml
+BrynjaFlute assets/textfiles/Dialogue_WakeUp_Brynja.xml
+BrynjaConversation assets/textfiles/Dialogue_Brynja_Ulfr.xml

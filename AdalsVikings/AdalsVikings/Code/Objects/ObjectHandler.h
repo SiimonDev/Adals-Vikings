@@ -1,27 +1,24 @@
 #pragma once
+#include "Object.h"
 #include <vector>
-class Item;
+#include <map>
 
-namespace ObjectID{
-	enum ObjID{
-		NONE,
-		Rock
-	};
-}
-
+#define OBHI ObjectHandler::getInstance()
 
 class ObjectHandler
 {
 public:
 	static ObjectHandler &getInstance();
-	~ObjectHandler();
-	std::vector<Item*>& getItems();
 	void initialize();
+
+	Object &getObject(std::string objID);
 
 private:
 	ObjectHandler();
 	ObjectHandler(const ObjectHandler &objHandler);
 	void operator=(const ObjectHandler &objHandler);
-	std::vector<Item*> items;
-};
 
+	std::string mFolderPath;
+
+	std::map<std::string, Object*> mObjects;
+};

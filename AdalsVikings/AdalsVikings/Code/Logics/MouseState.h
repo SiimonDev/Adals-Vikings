@@ -5,20 +5,16 @@ class MouseState
 {
 public:
 	static void initialize(sf::RenderWindow &window);
+	static void update(sf::Time frameTime);
+	static void checkEvents(sf::Event::EventType event);
 	static sf::Vector2i getMousePosition();
-	bool isDown(sf::Mouse::Button button, double seconds);
-	bool isDown(sf::Mouse::Button button);
-	bool isClicked(sf::Mouse::Button button);
-	bool isReleased(sf::Mouse::Button button, double seconds);
-	bool isReleased(sf::Mouse::Button button);
 
+	static bool isClicked(sf::Mouse::Button button);
+	static bool isReleased(sf::Mouse::Button button);
+	static bool isReleased(sf::Mouse::Button button, double seconds);
+	static bool isPressed(sf::Mouse::Button button, double seconds = 0);
 private:
-	bool oldIsButtonHeld = false;
-	bool oldIsButtonPressed = false;
-
-	sf::Clock holdClock;
-	sf::Clock releaseClock;
-
-	double holdTimePassed;
-	double releaseTimePassed;
+	MouseState();
+	MouseState(const MouseState&);
+	void operator=(const MouseState&);
 };

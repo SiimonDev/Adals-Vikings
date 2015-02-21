@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $axeHead$
+*Name: axeHead
+*ispickupable: False
+*pickup: "This might come in handy" ~2,0
+*lookat: "This is useless without a shaft." ~1,5
+*deny: "I can't do that" ~1,5
+*denywith: 
+*combine: $cross$ $axeUnfinished$ "This looks sturdy enough, now i just need something to hold this together." ~2,0; 
+*interact: 
+*texture: "img_axeHead_id.png"

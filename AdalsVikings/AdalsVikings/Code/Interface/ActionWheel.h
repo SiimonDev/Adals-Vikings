@@ -1,12 +1,18 @@
 #pragma once
 #include "Button.h"	
 
-
 class ActionWheel
 {
 public:
 	ActionWheel();
-	~ActionWheel();
+
+	bool isButtonSelected();
+	bool isTalkSelected();
+	bool isPickUpSelected();
+	bool isLookSelected();
+	void setfalse();
+
+	sf::Vector2f getPosition();
 
 	void load();
 	void unload();
@@ -23,8 +29,13 @@ private:
 	sf::Vector2f button3Position;
 	sf::Vector2f mPosition;
 
-	MouseState mouseState;
+	int mIndex;
 
 	bool mIsActive;
-};
+	bool mIsReleased;
 
+	bool mButtonSelected;
+	bool mTalkSelected;
+	bool mPickUpSelected;
+	bool mLookSelected;
+};

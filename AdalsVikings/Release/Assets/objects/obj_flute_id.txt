@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $flute$
+*Name: flute
+*ispickupable: False
+*pickup: "This might come in handy" ~2,0
+*lookat: "It's a well carved bone flute" ~1,5
+*deny: "I can't do that" ~1,5
+*denywith: $$ "" ~0; $Brandr$ "I don't think Brandr would appreciate my flute playing." ~1,5; $Valdis$ "I want to wake Brynja up, not annoy Valdis." ~0; $bucket$ "What would i gain from putting a flute in a bucket? " ~1,7; $map$ "That would just be silly" ~1,5; 
+*combine: 
+*interact: $Brynja$ "bo bee boo baa" ~3,0; 
+*texture: "img_flute_id.png"

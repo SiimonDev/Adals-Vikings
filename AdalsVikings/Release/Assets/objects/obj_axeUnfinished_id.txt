@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $axeUnfinished$
+*Name: axeUnfinished
+*ispickupable: False
+*pickup: "This might come in handy" ~2,0
+*lookat: "This will fall apart if I don't get something to keep it together." ~1,5
+*deny: "This will break if i use it, I need something that will hold it together." ~2,0
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_axeUnfinished_id.png"

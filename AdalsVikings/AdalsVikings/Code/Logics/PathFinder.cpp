@@ -2,6 +2,8 @@
 #include <cassert>
 #include <iostream>
 #include <queue>
+#include <memory>
+#include "ResourceManager.h"
 
 using namespace std;
 
@@ -9,105 +11,119 @@ using namespace std;
 const int iDir[8] = { 1, 1, 0, -1, -1, -1, 0, 1 };
 const int jDir[8] = { 0, 1, 1, 1, 0, -1, -1, -1 };
 
-static int lastMapWidth = 0;
-static int lastMapHeight = 0;
+static int **mClosedNodes;
+static int **mOpenNodes;
+static int **mDirMap;
+static int **mSquares;
 
-static int **closedNodes;
-static int **openNodes;
-static int **dirMap;
+static int mMapWidth = 0;
+static int mMapHeight = 0;
 
 static TileMap* mTileMap;
+
+void PathFinder::load()
+{
+
+}
+
+void PathFinder::unload()
+{
+	for (size_t i = 0; i < mMapWidth; i++){
+		delete[] mClosedNodes[i];
+		delete[] mOpenNodes[i];
+		delete[] mDirMap[i];
+	}
+	delete[] mClosedNodes;
+	delete[] mOpenNodes;
+	delete[] mDirMap;
+
+	mClosedNodes = NULL;
+	mOpenNodes = NULL;
+	mDirMap = NULL;
+	mMapWidth = 0;
+	mMapHeight = 0;
+}
 
 void PathFinder::setTileMap(TileMap &tileMap)
 {
 	mTileMap = &tileMap;
+
+	unload();
+	mMapWidth = mTileMap->getMapSize().x;
+	mMapHeight = mTileMap->getMapSize().y;
+	mSquares = mTileMap->getTileArray();
+
+	mClosedNodes = new int*[mMapWidth];
+	mOpenNodes = new int*[mMapWidth];
+	mDirMap = new int*[mMapWidth];
+
+	for (size_t x = 0; x < mMapWidth; x++){
+		mClosedNodes[x] = new int[mMapHeight];
+		mOpenNodes[x] = new int[mMapHeight];
+		mDirMap[x] = new int[mMapHeight];
+	}
 }
 
 Path PathFinder::getPath(const sf::Vector2f &startLoc, const sf::Vector2f &endLoc)
 {
 	Path path;
+	Node tempNode1;
+	Node tempNode2;
+
+	int queueIndex = 0;
+	int i, j, xPos, yPos, iNext, jNext;
+
 	sf::Vector2i startLocation = getClosestFreeTile(startLoc);
 	sf::Vector2i endLocation = getClosestFreeTile(endLoc);
-
-	int mapWidth = mTileMap->getMapSize().x;
-	int mapHeight = mTileMap->getMapSize().y;
-
-	int **squares = mTileMap->getTileArray();
-
-	// This part checks if the size of the map has changed.
-	// If it has then update the size of the arrays that hold the map-data
-	if (lastMapWidth != mapWidth && lastMapHeight != mapHeight)
-	{
-		closedNodes = new int*[mapWidth];
-		openNodes = new int*[mapWidth];
-		dirMap = new int*[mapWidth];
-
-		for (size_t x = 0; x < mapWidth; x++){
-			closedNodes[x] = new int[mapHeight];
-			openNodes[x] = new int[mapHeight];
-			dirMap[x] = new int[mapHeight];
-		}
-	}
-
-	lastMapWidth = mapWidth;
-	lastMapHeight = mapHeight;
 
 	// list of open (not-yet-checked-out) nodes
 	priority_queue<Node> closedNodesQueue[2];
 
-	// Queue index
-	int queueIndex;
-
-	Node* tempNode1;
-	Node* tempNode2;
-	int i, j, xPos, yPos, iNext, jNext;
-	queueIndex = 0;
+	// create the start node and push into list of open nodes
+	tempNode1 = Node(startLocation, 0, 0);
+	tempNode1.calculateFValue(endLocation);
+	closedNodesQueue[queueIndex].push(tempNode1);
 
 	// reset the Node lists to zero
-	for (j = 0; j < mapHeight; j++)
+	for (j = 0; j < mMapHeight; j++)
 	{
-		for (i = 0; i < mapWidth; i++) 
+		for (i = 0; i < mMapWidth; i++)
 		{
-			closedNodes[i][j] = 0;
-			openNodes[i][j] = 0;
+			mClosedNodes[i][j] = 0;
+			mOpenNodes[i][j] = 0;
 		}
 	}
 
-	// create the start node and push into list of open nodes
-	tempNode1 = new Node(startLocation, 0, 0);
-	tempNode1->calculateFValue(endLocation);
-	closedNodesQueue[queueIndex].push(*tempNode1);
-
 	// A* search
-	while (!closedNodesQueue[queueIndex].empty()) 
+	while (!closedNodesQueue[queueIndex].empty())
 	{
 		// get the current node w/ the lowest FValue
 		// from the list of open nodes
-		tempNode1 = new Node(closedNodesQueue[queueIndex].top().getLocation(), closedNodesQueue[queueIndex].top().getGValue(), closedNodesQueue[queueIndex].top().getFValue());
+		tempNode1 = Node(closedNodesQueue[queueIndex].top().getLocation(), closedNodesQueue[queueIndex].top().getGValue(), closedNodesQueue[queueIndex].top().getFValue());
 
-		xPos = tempNode1->getLocation().x;
-		yPos = tempNode1->getLocation().y;
+		xPos = tempNode1.getLocation().x;
+		yPos = tempNode1.getLocation().y;
 
 		// remove the node from the open list
 		closedNodesQueue[queueIndex].pop();
-		openNodes[xPos][yPos] = 0;
+		mOpenNodes[xPos][yPos] = 0;
 
 		// mark it on the closed nodes list
-		closedNodes[xPos][yPos] = 1;
+		mClosedNodes[xPos][yPos] = 1;
 
 		// stop searching when the goal state is reached
-		if (xPos == endLocation.x && yPos == endLocation.y) 
+		if (xPos == endLocation.x && yPos == endLocation.y)
 		{
 			// generate the path from finish to start from dirMap
-			while (!(xPos == startLocation.x && yPos == startLocation.y)) 
+			while (!(xPos == startLocation.x && yPos == startLocation.y))
 			{
 				//cout << "row, col=" << row << "," << col << endl;
 				sf::Vector2f pos(
 					float((xPos * mTileMap->getTileSize().x) + (mTileMap->getTileSize().x / 2)),
 					float((yPos * mTileMap->getTileSize().y) + (mTileMap->getTileSize().y / 2)));
-				path.push_back(sf::Vertex(pos, mTileMap->getColorAt(sf::Vector2i(pos))));
+				path.push_back(sf::Vertex(pos, mTileMap->getColorAt(pos)));
 
-				j = dirMap[xPos][yPos];
+				j = mDirMap[xPos][yPos];
 				xPos += iDir[j];
 				yPos += jDir[j];
 			}
@@ -115,10 +131,7 @@ Path PathFinder::getPath(const sf::Vector2f &startLoc, const sf::Vector2f &endLo
 			sf::Vector2f pos(
 				float((startLocation.x * mTileMap->getTileSize().x) + (mTileMap->getTileSize().x / 2)),
 				float((startLocation.y * mTileMap->getTileSize().y) + (mTileMap->getTileSize().y / 2)));
-			path.push_back(sf::Vertex(pos, mTileMap->getColorAt(sf::Vector2i(pos))));
-
-			// garbage collection
-			delete tempNode1;
+			path.push_back(sf::Vertex(pos, mTileMap->getColorAt(pos)));
 
 			// empty the leftover nodes
 			while (!closedNodesQueue[queueIndex].empty())
@@ -133,34 +146,34 @@ Path PathFinder::getPath(const sf::Vector2f &startLoc, const sf::Vector2f &endLo
 			jNext = yPos + jDir[i];
 
 			// if not wall (obstacle) nor in the closed list
-			if (!(iNext < 0 || iNext > mapWidth - 1 || jNext < 0 || jNext > mapHeight - 1 || squares[iNext][jNext] == 1 || closedNodes[iNext][jNext] == 1))
+			if (!(iNext < 0 || iNext > mMapWidth - 1 || jNext < 0 || jNext > mMapHeight - 1 || mSquares[iNext][jNext] == 1 || mClosedNodes[iNext][jNext] == 1))
 			{
 				// generate a child node
-				tempNode2 = new Node(sf::Vector2i(iNext, jNext), tempNode1->getGValue(), tempNode1->getFValue());
-				tempNode2->updateGValue(i);
-				tempNode2->calculateFValue(endLocation);
+				tempNode2 = Node(sf::Vector2i(iNext, jNext), tempNode1.getGValue(), tempNode1.getFValue());
+				tempNode2.updateGValue(i);
+				tempNode2.calculateFValue(endLocation);
 
 				// if it is not in the open list then add into that
-				if (openNodes[iNext][jNext] == 0) {
-					openNodes[iNext][jNext] = tempNode2->getFValue();
-					closedNodesQueue[queueIndex].push(*tempNode2);
+				if (mOpenNodes[iNext][jNext] == 0) {
+					mOpenNodes[iNext][jNext] = tempNode2.getFValue();
+					closedNodesQueue[queueIndex].push(tempNode2);
 					// mark its parent node direction
-					dirMap[iNext][jNext] = (i + 8 / 2) % 8;
+					mDirMap[iNext][jNext] = (i + 8 / 2) % 8;
 				}
 
 				// already in the open list
-				else if (openNodes[iNext][jNext] > tempNode2->getFValue()) 
+				else if (mOpenNodes[iNext][jNext] > tempNode2.getFValue())
 				{
 					// update the FValue info
-					openNodes[iNext][jNext] = tempNode2->getFValue();
+					mOpenNodes[iNext][jNext] = tempNode2.getFValue();
 
 					// update the parent direction info,  mark its parent node direction
-					dirMap[iNext][jNext] = (i + 8 / 2) % 8;
+					mDirMap[iNext][jNext] = (i + 8 / 2) % 8;
 
 					// replace the node by emptying one q to the other one
 					// except the node to be replaced will be ignored
 					// and the new node will be pushed in instead
-					while (!(closedNodesQueue[queueIndex].top().getLocation().x == iNext && closedNodesQueue[queueIndex].top().getLocation().y == jNext)) 
+					while (!(closedNodesQueue[queueIndex].top().getLocation().x == iNext && closedNodesQueue[queueIndex].top().getLocation().y == jNext))
 					{
 						closedNodesQueue[1 - queueIndex].push(closedNodesQueue[queueIndex].top());
 						closedNodesQueue[queueIndex].pop();
@@ -180,12 +193,10 @@ Path PathFinder::getPath(const sf::Vector2f &startLoc, const sf::Vector2f &endLo
 					queueIndex = 1 - queueIndex;
 
 					// add the better node instead
-					closedNodesQueue[queueIndex].push(*tempNode2);
+					closedNodesQueue[queueIndex].push(tempNode2);
 				}
-				else delete tempNode2;
 			}
 		}
-		delete tempNode1;
 	}
 	// no path found
 	return path;
@@ -213,4 +224,19 @@ sf::Vector2i PathFinder::getClosestFreeTile(const sf::Vector2f &pos)
 	}
 	
 	return sf::Vector2i(0, 0);
+}
+
+TileMap &PathFinder::getCurrentTileMap()
+{
+	return *mTileMap;
+}
+
+int PathFinder::getIndexAt(sf::Vector2f &pos)
+{
+	return mTileMap->getIndexAt(pos);
+}
+
+float PathFinder::getAlphaAt(sf::Vector2f &pos)
+{
+	return float(mTileMap->getColorAt(pos).a);
 }

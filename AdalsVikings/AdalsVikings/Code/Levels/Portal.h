@@ -1,33 +1,36 @@
 #pragma once
-#include "SFML\Graphics.hpp"
 #include "..\Objects\Player.h"
-#include <map>
-#include <memory>
+#include "..\Logics\PathFinder.h"
+#include "..\Logics\IndexRenderer.h"
+#include <SFML\Graphics.hpp>
 
 class Portal
 {
 public:
-	Portal();
-	Portal(Portal *portal);
-	Portal(sf::Vector2f area, sf::Vector2f position);
-	Portal(sf::Vector2f area, sf::Vector2f position, Portal *portal);
-	~Portal();
+	Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn);
+	Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn, Portal *portal);
 
-	void render(sf::RenderWindow &window);
+	void render(IndexRenderer &iRenderer);
 	void update(sf::Time &frametime, Player &player);
+	void unload();
 	void setGateway(Portal *portal);
-	void setArea(sf::Vector2f area);
-	void setPosition(sf::Vector2f position);
-	bool setRightWorld(bool value);
+	void setArea(sf::Vector2f &area);
+	void setPosition(sf::Vector2f &position);
+	void setWalkable(bool value);
+	void setActivate(bool value);
 	void setActive();
-	void playerCollision(Player &player);
+	void portalTravel(Player &player);
+	void walkPath(Player &player);
 
-	sf::Vector2f getPosition();
+	bool &getActivated();
+	bool &getWalkAble();
+	sf::Vector2f &getSpawn();
 
 private:
 	sf::RectangleShape mArea;
-	TileMap mTileMap;
 	Portal* mConnectedPortal;
-	bool mIsActive, mSwitchPortal, mRightWorld;
+
+	bool mIsActive, mSwitchPortal, mWalkable;
+	sf::Vector2f mPortalMovement, mPlayerSpawn;
 };
 

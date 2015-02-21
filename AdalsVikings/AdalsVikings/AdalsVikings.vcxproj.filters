@@ -1,111 +1,152 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Header Files\Levels">
-      <UniqueIdentifier>{f010f400-e12a-48b8-a2c5-56aa669cffea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Logics">
-      <UniqueIdentifier>{7d6494a3-1ebf-40bc-ab71-9955d0ff6e1f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Levels">
-      <UniqueIdentifier>{2902b8ea-c720-4603-bd22-178e5771d51e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Logics">
-      <UniqueIdentifier>{3728751e-f67c-4e7a-80ab-2a796424c0bd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Assets">
-      <UniqueIdentifier>{4a90ee4b-7f0f-4739-9822-057ce088017a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Objects">
-      <UniqueIdentifier>{1f26bc49-89c0-4c5a-8a02-e17f5a7c7227}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Objects">
-      <UniqueIdentifier>{4aa27730-b415-43be-8551-bed8949c19dd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Interface">
-      <UniqueIdentifier>{03b0e2e5-196f-493e-9cf5-5750854df630}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Interface">
-      <UniqueIdentifier>{3e0c6d22-894c-4c2e-b031-dec465360ecb}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
+    <ClCompile Include="Code\main.cpp" />
+    <ClCompile Include="code\Interface\ActionWheel.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Logics\Animation.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
+    <ClCompile Include="code\Interface\Button.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
     <ClCompile Include="Code\Logics\Game.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Logics\LevelManager.cpp">
+    <ClCompile Include="Code\Logics\IndexRenderer.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Logics\ResourceManager.cpp">
+    <ClCompile Include="Code\Interface\Inventory.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Interface\InvTile.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Logics\KeyboardState.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
     <ClCompile Include="Code\Levels\Level.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Levels\TestLevel.cpp">
-      <Filter>Source Files\Levels</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Objects\Object.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Logics\MouseState.cpp">
       <Filter>Source Files\Logics</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Logics\PathFinder.cpp">
-      <Filter>Source Files\Logics</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Levels\TileMap.cpp">
-      <Filter>Source Files\Levels</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Objects\Player.cpp">
-      <Filter>Source Files\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Code\Objects\ObjectHandler.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Logics\IndexRenderer.cpp">
+    <ClCompile Include="Code\Logics\PathFinder.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Interface\Button.cpp">
+    <ClCompile Include="Code\Objects\Player.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Portal.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\PortalLoader.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Logics\ResourceManager.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Interface\TextButton.cpp">
       <Filter>Source Files\Interface</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Interface\ActionWheel.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Code\Levels\TileMap.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Dialog\DialogueTree.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Dialog\pugixml.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Objects\Object.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\NPCs\NPC.cpp">
+      <Filter>Source Files\NPCs</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\NPCs\NpcHandler.cpp">
+      <Filter>Source Files\NPCs</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Logics\AudioPlayer.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Dialog\DialogHandler.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Ship_level_2.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Logics\Fade.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Beach_Level.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\LevelManager.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Ship_level_1.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Interface\Menus\MenuHandler.cpp">
+      <Filter>Source Files\Interface\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Interface\Menus\MenuPanel.cpp">
+      <Filter>Source Files\Interface\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Interface\Menus\MainMenuPanel.cpp">
+      <Filter>Source Files\Interface\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Interface\Menus\PauseMenuPanel.cpp">
+      <Filter>Source Files\Interface\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Logics\BoatEvents.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Dialog\DialogWindow.cpp">
+      <Filter>Source Files\Dialog</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Interface\LoadingScreen.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Logics\ParallelLoader.cpp">
+      <Filter>Source Files\Logics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Dialog\Dialog.h">
+      <Filter>Header Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Interface\ActionWheel.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\Animation.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="code\Interface\Button.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
     <ClInclude Include="Code\Logics\Game.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Logics\LevelManager.h">
+    <ClInclude Include="Code\Logics\IndexRenderer.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Logics\ResourceManager.h">
+    <ClInclude Include="Code\Interface\Inventory.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Interface\InvTile.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\KeyboardState.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
     <ClInclude Include="Code\Levels\Level.h">
       <Filter>Header Files\Levels</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Levels\TestLevel.h">
-      <Filter>Header Files\Levels</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Objects\Object.h">
-      <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Code\Logics\MouseState.h">
       <Filter>Header Files\Logics</Filter>
@@ -113,29 +154,158 @@
     <ClInclude Include="Code\Logics\Node.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Objects\Object.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Objects\ObjectHandler.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
     <ClInclude Include="Code\Logics\PathFinder.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Levels\TileMap.h">
+    <ClInclude Include="Code\Objects\Player.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Portal.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Objects\Player.h">
-      <Filter>Header Files\Objects</Filter>
+    <ClInclude Include="Code\Levels\PortalLoader.h">
+      <Filter>Header Files\Levels</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Objects\ObjectHandler.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Logics\IndexRenderer.h">
+    <ClInclude Include="Code\Logics\ResourceManager.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Logics\ISprite.h">
-      <Filter>Header Files\Logics</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Interface\Button.h">
+    <ClInclude Include="Code\Interface\TextButton.h">
       <Filter>Header Files\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Interface\ActionWheel.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Code\Levels\TileMap.h">
+      <Filter>Header Files\Logics</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Dialog\DialogueTree.h">
+      <Filter>Header Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Dialog\pugiconfig.hpp">
+      <Filter>Header Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Dialog\pugixml.hpp">
+      <Filter>Header Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\NPCs\NPC.h">
+      <Filter>Header Files\NPCs</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\NPCs\NpcHandler.h">
+      <Filter>Header Files\NPCs</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\AudioPlayer.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Dialog\DialogWindow.h">
+      <Filter>Header Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Dialog\DialogHandler.h">
+      <Filter>Header Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Ship_level_2.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\Fade.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Beach_Level.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\LevelManager.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Ship_level_1.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Interface\Menus\MenuHandler.h">
+      <Filter>Header Files\Interface\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Interface\Menus\MenuPanel.h">
+      <Filter>Header Files\Interface\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Interface\Menus\MainMenuPanel.h">
+      <Filter>Header Files\Interface\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Interface\Menus\PauseMenuPanel.h">
+      <Filter>Header Files\Interface\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\BoatEvents.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Interface\LoadingScreen.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\ParallelLoader.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{eddcae44-7c8a-48ad-bd8a-8a9f81c15e34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{350c7962-2ccd-4bf9-b9f4-f76b9d839cfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Dialog">
+      <UniqueIdentifier>{ee01d6ba-5029-4e60-a5ce-9c781e75b598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface">
+      <UniqueIdentifier>{7ea24b36-5f55-4d1c-a724-1889ca174b16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Levels">
+      <UniqueIdentifier>{d1cada4f-c59d-491d-8e7e-631c8d51d4e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Logics">
+      <UniqueIdentifier>{70adf534-8992-461d-95e6-335ce82a7f7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object">
+      <UniqueIdentifier>{92d8013d-f9d5-4741-9d0e-fc1f025e81dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Dialog">
+      <UniqueIdentifier>{ea832b5f-14bd-4f60-95fe-b0bf743e5f1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interface">
+      <UniqueIdentifier>{1b30aaef-d5f5-49f7-9348-8c516e69fbc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Levels">
+      <UniqueIdentifier>{70f62f8b-0653-4243-b3bf-70a40bf32b7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Logics">
+      <UniqueIdentifier>{539a88f0-9e07-4eee-8787-992607540229}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{756e01f3-fe18-4d1a-ad10-ec431f75ad1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\NPCs">
+      <UniqueIdentifier>{ac0cdee6-ab20-48e5-a0d5-a5caf737045d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\NPCs">
+      <UniqueIdentifier>{7757169e-9f5e-40c7-8a0d-e4a2a76cbcdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interface\Menus">
+      <UniqueIdentifier>{e26ca1c6-1a41-4393-89e6-b1860eb08fbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interface\Menus">
+      <UniqueIdentifier>{eb98a294-0ced-412e-a9bf-7f3e1246bf29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{3b9551c4-eec9-44df-a658-018362658d55}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AdalsVikings.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

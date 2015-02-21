@@ -2,22 +2,27 @@
 #include "Portal.h"
 #include <map>
 
+typedef std::unique_ptr<Portal> PortalPtr;
+
 enum PortalId
 {
 	Portal1,
-	Portal2
+	Portal2,
+	Portal3,
+	durr,
+	PortalToBoat
 };
 class PortalLoader
 {
 public:
-	PortalLoader();
-	~PortalLoader();
+	static void initialize();
 
-	void load();
-	Portal& getPortal(PortalId id);
+	static std::map<PortalId, PortalPtr> &getPortals();
+	static Portal &getPortal(PortalId id);
 
 private:
-	//std::vector<Portal> mPortalVector;
-	std::map<PortalId, Portal> mPortalMap;
+	PortalLoader();
+	PortalLoader(PortalLoader&);
+	void operator=(PortalLoader&);
 };
 
