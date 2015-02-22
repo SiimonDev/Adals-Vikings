@@ -1,6 +1,5 @@
 #include "Ship_Level_1.h"
-#include "..\Logics\ResourceManager.h"
-#include "..\Logics\AudioPlayer.h"
+#include "..\Logics\BoatEvents.h"
 #include <iostream>
 
 Ship_level_1::Ship_level_1(Player &player, ActionWheel &actionWheel)
@@ -130,7 +129,7 @@ void Ship_level_1::update(sf::Time &frametime)
 
 void Ship_level_1::render(IndexRenderer &iRenderer)
 {
-	iRenderer.getRenderWindow().setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
+	CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
 	Level::render(iRenderer);
 }
 

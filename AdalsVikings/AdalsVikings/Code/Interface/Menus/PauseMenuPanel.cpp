@@ -1,6 +1,7 @@
 #include "PauseMenuPanel.h"
 #include "..\..\Logics\AudioPlayer.h"
 #include "..\..\Logics\KeyboardState.h"
+#include "..\..\Logics\WindowState.h"
 
 PauseMenuPanel::PauseMenuPanel(MenuPanels &activeMenuPanels):
 mMenuPanels(&activeMenuPanels)

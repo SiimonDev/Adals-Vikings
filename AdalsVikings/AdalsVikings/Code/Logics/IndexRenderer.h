@@ -41,11 +41,7 @@ class IndexRenderer
 {
 public:
 	IndexRenderer();
-	IndexRenderer(sf::RenderWindow &window);
 
-	sf::RenderWindow &getRenderWindow();
-
-	void setWindow(sf::RenderWindow &window);
 	void addSprite(sf::Sprite &sprite, int index);
 	void addRectangle(sf::RectangleShape &rectangle, int index);
 	void addText(sf::Text &text, int index);
@@ -56,7 +52,6 @@ public:
 
 	sf::View getLetterboxView(sf::View view);
 private:
-	sf::RenderWindow* mWindow;
 	int mAlphaValue;
 	std::vector<IndexObject> mIndexObjects;
 };

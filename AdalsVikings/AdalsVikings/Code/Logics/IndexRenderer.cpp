@@ -1,7 +1,6 @@
 #include "IndexRenderer.h"
+#include "WindowState.h"
 #include <iostream>
-
-sf::RenderWindow &IndexRenderer::getRenderWindow(){ return *mWindow; }
 
 bool myCompFunction(IndexObject &a, IndexObject &b)
 { 
@@ -12,15 +11,6 @@ IndexRenderer::IndexRenderer()
 : mAlphaValue(255)
 {
 
-}
-
-IndexRenderer::IndexRenderer(sf::RenderWindow &window){
-	mWindow = &window;
-}
-
-void IndexRenderer::setWindow(sf::RenderWindow &window)
-{
-	mWindow = &window;
 }
 
 void IndexRenderer::addSprite(sf::Sprite &sprite, int index)
@@ -43,19 +33,19 @@ void IndexRenderer::clear()
 
 void IndexRenderer::display()
 {
-	mWindow->setView(getLetterboxView(mWindow->getView()));
+	CurrentWindow.setView(getLetterboxView(CurrentWindow.getView()));
 	std::sort(mIndexObjects.begin(), mIndexObjects.end(), myCompFunction);
 	for each (IndexObject iObj in mIndexObjects)
 	{
 		if (iObj.mObjType == IndObjType::Sprite)
 		{
 			iObj.mSprite->setColor(sf::Color(255, 255, 255, mAlphaValue));
-			mWindow->draw(*iObj.mSprite);
+			CurrentWindow.draw(*iObj.mSprite);
 		}
 		else if (iObj.mObjType == IndObjType::Rectangle)
-			mWindow->draw(*iObj.mRectangle);
+			CurrentWindow.draw(*iObj.mRectangle);
 		else if (iObj.mObjType == IndObjType::Text)
-			mWindow->draw(*iObj.mText);
+			CurrentWindow.draw(*iObj.mText);
 	}
 }
 
@@ -71,7 +61,7 @@ void IndexRenderer::setAlpha(int alpha)
 
 sf::View IndexRenderer::getLetterboxView(sf::View view)
 {
-	float windowRatio = mWindow->getSize().x / (float)mWindow->getSize().y;
+	float windowRatio = CurrentWindow.getSize().x / (float)CurrentWindow.getSize().y;
 	float viewRatio = view.getSize().x / (float)view.getSize().y;
 	float sizeX = 1;
 	float sizeY = 1;

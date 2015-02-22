@@ -2,7 +2,9 @@
 #include "..\Objects\ObjectHandler.h"
 #include "..\Levels\LevelManager.h"
 #include "..\Logics\Fade.h"
+#include "..\Logics\WindowState.h"
 #include "..\Interface\Menus\MenuHandler.h"
+#include "..\Interface\LoadingScreen.h"
 #include "BoatEvents.h"
 #include "MouseState.h"
 #include "KeyboardState.h"
@@ -23,13 +25,14 @@ Game::Game()
 	:mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
 {
 	mWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
-	indexRenderer.setWindow(mWindow);
 	mWindow.setVerticalSyncEnabled(false);
+	mWindow.setMouseCursorVisible(false);
 
+	WinState.initialize(mWindow);
 	OBHI.initialize();
 	FadeI.initialize();
 	KeyboardState::initialize();
-	MouseState::initialize(mWindow);
+	MouseState::initialize();
 }
 
 Game::~Game()
@@ -89,9 +92,9 @@ void Game::update(sf::Time frameTime)
 
 		// Always Last
 		AudioPlayer::update(frameTime);
-		KeyboardState::update(frameTime);
-		MouseState::update(frameTime);
 	}
+	KeyboardState::update(frameTime);
+	MouseState::update(frameTime);
 }
 
 void Game::render()
@@ -114,6 +117,7 @@ void Game::render()
 			PathFinder::getCurrentTileMap().render(indexRenderer);
 		}
 	}
+	MouseState::render();
 	mWindow.display();
 }
 

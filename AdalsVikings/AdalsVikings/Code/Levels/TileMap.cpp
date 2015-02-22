@@ -1,4 +1,5 @@
 #include "TileMap.h"
+#include "..\Logics\WindowState.h"
 #include <cassert>
 #include <iostream>
 
@@ -24,7 +25,7 @@ void TileMap::unload()
 
 void TileMap::render(IndexRenderer &iRenderer)
 {
-	iRenderer.getRenderWindow().draw(mVerts, mMapSize.x * mMapSize.y, sf::Points);
+	CurrentWindow.draw(mVerts, mMapSize.x * mMapSize.y, sf::Points);
 }
 
 void TileMap::setTiles(sf::Vector2i &tileSize, sf::Image &tileMap)

@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <SFML\Graphics.hpp>
-#include "..\Interface\LoadingScreen.h"
 
 using namespace std;
 

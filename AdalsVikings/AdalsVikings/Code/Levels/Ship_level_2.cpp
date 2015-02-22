@@ -1,5 +1,4 @@
 #include "Ship_level_2.h"
-#include "..\Interface\LoadingScreen.h"
 #include "..\Logics\BoatEvents.h"
 #include <iostream>
 
@@ -65,11 +64,11 @@ void Ship_level_2::render(IndexRenderer &iRenderer)
 {
 	if (!BoatEvents::hasBeenHandled(BoatEvent::StartDialogue))
 	{
-		iRenderer.getRenderWindow().setView(mCutsceneView);
+		CurrentWindow.setView(mCutsceneView);
 	}
 	else
 	{
-		iRenderer.getRenderWindow().setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
+		CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
 	}
 	Level::render(iRenderer);
 }

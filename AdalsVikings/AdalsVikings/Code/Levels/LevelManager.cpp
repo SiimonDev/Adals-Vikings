@@ -1,11 +1,11 @@
 #include "LevelManager.h"
-#include "PortalLoader.h"
+#include "..\Dialog\DialogWindow.h"
+#include "..\Logics\BoatEvents.h"
 #include "Level.h"
 #include "Ship_level_1.h"
 #include "Ship_level_2.h"
 #include "Beach_Level.h"
-#include "..\Dialog\DialogWindow.h"
-#include "..\Logics\AudioPlayer.h"
+#include "PortalLoader.h"
 #include <iostream>
 
 LevelManager &LevelManager::getInstance()

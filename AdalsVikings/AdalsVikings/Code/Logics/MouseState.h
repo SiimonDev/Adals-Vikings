@@ -4,8 +4,9 @@
 class MouseState
 {
 public:
-	static void initialize(sf::RenderWindow &window);
+	static void initialize();
 	static void update(sf::Time frameTime);
+	static void render();
 	static void checkEvents(sf::Event::EventType event);
 	static sf::Vector2i getMousePosition();
 

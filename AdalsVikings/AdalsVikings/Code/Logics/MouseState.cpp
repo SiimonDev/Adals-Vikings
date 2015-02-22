@@ -1,17 +1,20 @@
 #include "MouseState.h"
+#include "WindowState.h"
 #include <iostream>
 #include <map>
 
 #define MouseSize int(5)
 
-static sf::RenderWindow *mWindow;
 static bool hasFocus;
 
 static std::map<int, bool> buttonStates;
 static std::map<int, bool> oldButtonStates;
 static std::map<int, double> timeDown;
 
-void MouseState::initialize(sf::RenderWindow &window)
+static sf::Texture mCursorTexture;
+static sf::Sprite mSprite;
+
+void MouseState::initialize()
 {
 	for (size_t i = 0; i <= MouseSize; i++)
 	{
@@ -20,7 +23,8 @@ void MouseState::initialize(sf::RenderWindow &window)
 		timeDown.insert(std::make_pair(i, 0));
 	}
 
-	mWindow = &window;
+	mCursorTexture.loadFromFile("assets/images/cursor.png");
+	mSprite.setTexture(mCursorTexture);
 	hasFocus = true;
 }
 
@@ -37,6 +41,12 @@ void MouseState::update(sf::Time frameTime)
 	}
 	for (int i = 0; i <= MouseSize; i++)
 		buttonStates[i] = sf::Mouse::isButtonPressed(static_cast<sf::Mouse::Button>(i));
+}
+
+void MouseState::render()
+{
+	mSprite.setPosition(sf::Vector2f(getMousePosition()));
+	CurrentWindow.draw(mSprite);
 }
 
 void MouseState::checkEvents(sf::Event::EventType event)
@@ -76,17 +86,17 @@ sf::Vector2f getLetterboxScale(sf::View view, int windowWidth, int windowHeight)
 
 sf::Vector2i MouseState::getMousePosition()
 {
-	sf::Vector2i mousePos = sf::Mouse::getPosition(*mWindow);
-	sf::Vector2f letterBoxScale = getLetterboxScale(mWindow->getView(), mWindow->getSize().x, mWindow->getSize().y);
+	sf::Vector2i mousePos = sf::Mouse::getPosition(CurrentWindow);
+	sf::Vector2f letterBoxScale = getLetterboxScale(CurrentWindow.getView(), CurrentWindow.getSize().x, CurrentWindow.getSize().y);
 
-	float virtualRenderWidth = mWindow->getView().getSize().x;
-	float virtualRenderHeight = mWindow->getView().getSize().y;
+	float virtualRenderWidth = 1920; //mWindow->getView().getSize().x;
+	float virtualRenderHeight = 1080; //mWindow->getView().getSize().y;
 
-	float blackXBarSize = mWindow->getSize().x * letterBoxScale.x;
-	float blackYBarSize = mWindow->getSize().y * letterBoxScale.y;
+	float blackXBarSize = CurrentWindow.getSize().x * letterBoxScale.x;
+	float blackYBarSize = CurrentWindow.getSize().y * letterBoxScale.y;
 
-	float physicalRenderWidth = mWindow->getSize().x - (blackXBarSize * 2);
-	float physicalRenderHeight = mWindow->getSize().y - (blackYBarSize * 2);
+	float physicalRenderWidth = CurrentWindow.getSize().x - (blackXBarSize * 2);
+	float physicalRenderHeight = CurrentWindow.getSize().y - (blackYBarSize * 2);
 
 	sf::Vector2f scale;
 	scale.x = virtualRenderWidth / physicalRenderWidth;
