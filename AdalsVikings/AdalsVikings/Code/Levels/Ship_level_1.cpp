@@ -14,6 +14,7 @@ Ship_level_1::Ship_level_1(Player &player, ActionWheel &actionWheel)
 	mFolderPath = "Assets/MapFiles/Ship1/";
 	mLevelID = Folder::ShipLevel1;
 }
+
 void Ship_level_1::update(sf::Time &frametime)
 {
 	if (BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
@@ -44,7 +45,6 @@ void Ship_level_1::update(sf::Time &frametime)
 	if (BoatEvents::hasBeenTriggered(BoatEvent::FluteFromAlfr) && !BoatEvents::hasBeenHandled(BoatEvent::FluteFromAlfr))
 	{
 		mPlayer->addItemToInventory("flute");
-
 		BoatEvents::handleEvent(BoatEvent::FluteFromAlfr);
 	}
 	if (BoatEvents::hasBeenTriggered(BoatEvent::DroppedFluteOnBrynja) && !BoatEvents::hasBeenHandled(BoatEvent::DroppedFluteOnBrynja))
@@ -98,7 +98,6 @@ void Ship_level_1::update(sf::Time &frametime)
 		if (DialogHandler::getDialogue("BrynjaConversation").getHasStopped() && mBrynjaConv)
 		{
 			mPlayer->addItemToInventory("fluteBroken");
-
 			mPlayer->addItemToInventory("map");
 			DialogHandler::getDialogue("Brandr").disableOption(2);
 			BoatEvents::handleEvent(BoatEvent::GottenMap);
@@ -117,10 +116,10 @@ void Ship_level_1::update(sf::Time &frametime)
 		DialogHandler::getDialogue("Finnr").enableOption(2);
 		DialogHandler::getDialogue("Leifr").enableOption(2);
 		DialogHandler::getDialogue("Alfr").enableOption(3);
+
 		if (!mPlayer->hasItemInInventory("bucket"))
-		{
 			DialogHandler::getDialogue("Dagny").enableOption(2);
-		}
+
 		BoatEvents::handleEvent(BoatEvent::TalkedToValdis);
 	}
 	Level::update(frametime);
@@ -135,13 +134,13 @@ void Ship_level_1::render(IndexRenderer &iRenderer)
 
 void Ship_level_1::load()
 {
-	mPortals[Portal1] = LPortalPtr(&PortalLoader::getPortal(Portal1));
+	mPortals[Portal1] = PortalPtr(&PortalLoader::getPortal(Portal1));
 
-	mNpcs["Valdis"] = LNpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
-	mNpcs["Leifr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
-	mNpcs["Finnr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
-	mNpcs["Brynja"] = LNpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
-	mNpcs["Alfr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
+	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
+	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
+	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
+	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
 
 	if (!mStartBrynja)
 	{
@@ -190,6 +189,7 @@ void Ship_level_1::checkEvents()
 	// Event for asking Alfr to help you wake up Brynja
 	if (BoatEvents::hasBeenHandled(BoatEvent::TalkedToValdis) && DialogHandler::getDialogue("Alfr").getIsOptionDisabled(3) && !BoatEvents::hasBeenTriggered(BoatEvent::FluteFromAlfr))
 		BoatEvents::triggerEvent(BoatEvent::FluteFromAlfr);
+
 	if (!BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && BoatEvents::hasBeenHandled(BoatEvent::StartDialogue))
 		BoatEvents::triggerEvent(BoatEvent::UlfrStartDialogue);
 }

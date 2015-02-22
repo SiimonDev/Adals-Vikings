@@ -47,12 +47,10 @@ public:
 	void addText(sf::Text &text, int index);
 	void clear();
 	void display();
-	void setAlpha(int alpha);
 	void resize(int width, int height);
 
 	sf::View getLetterboxView(sf::View view);
 private:
-	int mAlphaValue;
 	std::vector<IndexObject> mIndexObjects;
 };
 

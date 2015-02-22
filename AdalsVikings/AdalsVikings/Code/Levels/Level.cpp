@@ -104,7 +104,7 @@ void Level::updateObjectActionWheel()
 
 void Level::updateNPCs(sf::Time frameTime)
 {
-	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
+	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 	{
 		it->second->update(frameTime);
 
@@ -185,7 +185,7 @@ void Level::updateDialog(sf::Time frameTime)
 		{
 			mIsInConversation = true;
 			it->second->update(frameTime);
-			for (std::map<std::string, LNpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
+			for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
 			{
 				if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() != "")
 				{
@@ -232,7 +232,7 @@ void Level::updateDialog(sf::Time frameTime)
 			it->second->setEndConversation(false);
 			mIsInConversation = false;
 
-			for (std::map<std::string, LNpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
+			for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
 				iz->second->setAnimationStyle("Idle");
 		}
 	}
@@ -251,7 +251,7 @@ void Level::update(sf::Time &frameTime)
 		object->update(frameTime);
 
 	// Update the portals
-	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+	for (std::map<PortalId, PortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 	{
 		if (!it->second->getWalkAble()){
 			it->second->update(frameTime, *mPlayer);
@@ -282,11 +282,11 @@ void Level::render(IndexRenderer &iRenderer)
 		iRenderer.addSprite(mBackgrounds[i], mBackgroundsIndexes[i]);
 
 	// Render all the portals
-	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+	for (std::map<PortalId, PortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 		it->second->render(iRenderer);
 
 	// Render all the NPCs
-	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
+	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 		it->second->render(iRenderer);
 
 	// Render all the dialogues
@@ -410,7 +410,7 @@ void Level::resetLevel()
 void Level::refreshLevel()
 {
 	// Reset Portals
-	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+	for (std::map<PortalId, PortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 		it->second->setActivate(false);
 }
 
@@ -426,7 +426,7 @@ void Level::load()
 	DialogHandler::load(mFolderPath + "Dialogues.txt");
 
 	// Load NPCs
-	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
+	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 		it->second->load();
 
 	// Load Objects
@@ -448,7 +448,7 @@ void Level::unload()
 	RMI.unload(mLevelID);
 
 	// Unload and delete all NPCs
-	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
+	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 		it->second->unload();
 	mNpcs.clear();
 
@@ -462,9 +462,6 @@ void Level::unload()
 		mObjects.pop_back();
 	}
 
-	// Unload and delete all portals
-	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
-		it->second->unload();
 	mPortals.clear();
 }
 

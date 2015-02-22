@@ -25,12 +25,12 @@ void Beach_level::render(IndexRenderer &iRenderer)
 void Beach_level::load()
 {
 	/* ==== Load Npcs and set right position, dialogue, scale and so on... ===== */
-	mNpcs["Yngvarr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
-	mNpcs["Dagny"] = LNpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
-	mNpcs["Alfr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
-	mNpcs["Leifr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
-	mNpcs["Finnr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
-	mNpcs["Valdis"] = LNpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
+	mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
+	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
+	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
+	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
+	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
 
 	/* ==== Yngvarr ===== */
 	mNpcs["Yngvarr"]->setRightWay(false);

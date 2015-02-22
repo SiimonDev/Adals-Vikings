@@ -5,7 +5,6 @@
 class Fade
 {
 public:
-
 	static Fade &getInstance();
 	void initialize();
 

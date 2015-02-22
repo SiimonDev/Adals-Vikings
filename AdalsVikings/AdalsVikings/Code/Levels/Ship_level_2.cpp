@@ -77,15 +77,15 @@ void Ship_level_2::load()
 {
 
 	DialogHandler::load("assets/mapfiles/Ship2/Dialogues.txt");
-	mPortals[Portal2] = LPortalPtr(&PortalLoader::getPortal(Portal2));
+	mPortals[Portal2] = PortalPtr(&PortalLoader::getPortal(Portal2));
 
-	mNpcs["Dagny"] = LNpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
+	mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
 	mNpcs["Dagny"]->setIndex(11);
 
-	mNpcs["Brandr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
+	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
 	mNpcs["Brandr"]->setIndex(13);
 
-	mNpcs["Yngvarr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
+	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
 	mNpcs["Yngvarr"]->setIndex(13);
 
 	if (!BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue))

@@ -3,24 +3,24 @@
 #include <iostream>
 
 bool myCompFunction(IndexObject &a, IndexObject &b)
-{ 
+{
 	return (a.mIndex < b.mIndex);
 }
 
 IndexRenderer::IndexRenderer()
-: mAlphaValue(255)
 {
-
 }
 
 void IndexRenderer::addSprite(sf::Sprite &sprite, int index)
 {
 	mIndexObjects.push_back(IndexObject(sprite, index));
 }
+
 void IndexRenderer::addRectangle(sf::RectangleShape &rectangle, int index)
 {
 	mIndexObjects.push_back(IndexObject(rectangle, index));
 }
+
 void IndexRenderer::addText(sf::Text &text, int index)
 {
 	mIndexObjects.push_back(IndexObject(text, index));
@@ -38,10 +38,7 @@ void IndexRenderer::display()
 	for each (IndexObject iObj in mIndexObjects)
 	{
 		if (iObj.mObjType == IndObjType::Sprite)
-		{
-			iObj.mSprite->setColor(sf::Color(255, 255, 255, mAlphaValue));
 			CurrentWindow.draw(*iObj.mSprite);
-		}
 		else if (iObj.mObjType == IndObjType::Rectangle)
 			CurrentWindow.draw(*iObj.mRectangle);
 		else if (iObj.mObjType == IndObjType::Text)
@@ -52,11 +49,6 @@ void IndexRenderer::display()
 void IndexRenderer::resize(int width, int height)
 {
 
-}
-
-void IndexRenderer::setAlpha(int alpha)
-{
-	mAlphaValue = alpha;
 }
 
 sf::View IndexRenderer::getLetterboxView(sf::View view)

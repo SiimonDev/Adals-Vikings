@@ -36,7 +36,6 @@ public:
 
 private:
 	LevelManager();
-	~LevelManager();
 	LevelManager(const LevelManager&);
 	void operator=(const LevelManager&);
 

@@ -17,21 +17,12 @@ LevelManager &LevelManager::getInstance()
 LevelManager::LevelManager()
 : mLoadedPlayer(false)
 {
-}
-
-LevelManager::~LevelManager()
-{
-	//for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
-	//{
-	//	delete it->second;
-	//}
-	//mLevelMap.clear();
+	PortalLoader::initialize();
 }
 
 void LevelManager::load()
 {
 	NpcHandler::initialize();
-	PortalLoader::initialize();
 	DialogWindow::load();
 	DialogWindow::setTextSize(30);
 	DialogWindow::setTextStyle(sf::Text::Bold);
@@ -66,7 +57,6 @@ void LevelManager::unloadCurrentAct()
 		it = mLevelMap.begin();
 	}
 	AudioPlayer::unload();
-	mLevelMap.clear();
 }
 
 void LevelManager::update(sf::Time &frametime)
@@ -83,7 +73,8 @@ void LevelManager::render(IndexRenderer &iRenderer)
 
 void LevelManager::changeLevel(LevelID id)
 {
-	std::cout << std::endl << "==========================" << std::endl;
+	std::cout << std::endl;
+	std::cout << "==========================" << std::endl;
 	std::cout << "===== Changing Level =====" << std::endl;
 	std::cout << "==========================" << std::endl;
 
