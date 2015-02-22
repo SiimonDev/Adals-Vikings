@@ -250,29 +250,24 @@ void Level::update(sf::Time &frameTime)
 	for each (Object* object in mObjects)
 		object->update(frameTime);
 
-	// Do the portal thing
+	// Update the portals
 	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 	{
-		if (it->second->getWalkAble())
+		if (!it->second->getWalkAble()){
+			it->second->update(frameTime, *mPlayer);
+			it->second->portalTravel(*mPlayer);
+		}
+		else
 			it->second->walkPath(*mPlayer);
 	}
 
+	// Only update the movement of the player and the action wheel if the player is not in a conversation
 	if (!mIsInConversation && !mOldIsInConversation)
 	{
 		mPlayer->move(frameTime);
 		updateObjectActionWheel();
-
-		for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
-		{
-			if (!it->second->getWalkAble())
-			{
-				it->second->update(frameTime, *mPlayer);
-				it->second->portalTravel(*mPlayer);
-			}
-			else if (it->second->getWalkAble())
-				it->second->walkPath(*mPlayer);
-		}
 	}
+
 	mOldIsInConversation = mIsInConversation;
 }
 
@@ -315,11 +310,10 @@ void Level::loadAllBackgrounds(std::string filepath)
 
 	mTileMap.load(sf::Vector2i(15, 15), RMI.getNonIDImage(mTileMapFilePath), RMI.getNonIDImage(mIndexMapFilePath));
 	
-	// Load all the backgrounds
+	// Load all the backgrounds and assign them an index
 	RMI.load(mLevelID, filepath);
 
-	for (int i = 0; i < RMI.getFolder(mLevelID).size(); i++)
-	{
+	for (int i = 0; i < RMI.getFolder(mLevelID).size(); i++){
 		mBackgrounds.push_back(sf::Sprite(*RMI.getFolder(mLevelID).at(i)));
 		mBackgroundsIndexes.push_back(i * 10);
 	}
@@ -417,9 +411,7 @@ void Level::refreshLevel()
 {
 	// Reset Portals
 	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
-	{
 		it->second->setActivate(false);
-	}
 }
 
 void Level::load()
@@ -455,11 +447,9 @@ void Level::unload()
 	mBackgrounds.clear();
 	RMI.unload(mLevelID);
 
-	// Unload NPCs
+	// Unload and delete all NPCs
 	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
-	{
 		it->second->unload();
-	}
 	mNpcs.clear();
 
 	DialogHandler::unload();
@@ -471,10 +461,10 @@ void Level::unload()
 		delete mObjects.at(mObjects.size() - 1);
 		mObjects.pop_back();
 	}
+
+	// Unload and delete all portals
 	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
-	{
 		it->second->unload();
-	}
 	mPortals.clear();
 }
 
@@ -482,6 +472,7 @@ void Level::checkInteractEvents()
 {
 
 }
+
 void Level::checkEvents()
 {
 

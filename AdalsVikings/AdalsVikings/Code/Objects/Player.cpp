@@ -2,6 +2,7 @@
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\PathFinder.h"
 #include "..\Logics\MouseState.h"
+#include "..\Logics\WindowState.h"
 #include "..\Logics\KeyboardState.h"
 #include <iostream>
 #include <math.h>

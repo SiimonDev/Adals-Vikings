@@ -55,12 +55,14 @@ void LevelManager::unload()
 
 	unloadCurrentAct();
 }
+
 void LevelManager::unloadCurrentAct()
 {
 	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
 	{
 		it->second->unload();
 		delete it->second;
+		mLevelMap.erase(it);
 		it = mLevelMap.begin();
 	}
 	AudioPlayer::unload();

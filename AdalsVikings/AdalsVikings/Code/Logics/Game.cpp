@@ -11,12 +11,10 @@
 #include "IndexRenderer.h"
 #include "AudioPlayer.h"
 
-sf::Time frameTime = sf::seconds(1.f / 60.f);
-
 int mWidth = 1280;
 int mHeight = 720;
 
-IndexRenderer indexRenderer;
+IndexRenderer iRenderer;
 
 bool debugMode = false;
 bool runGame = false;
@@ -45,7 +43,7 @@ void Game::resize(int width, int height)
 	mWidth = width;
 	mHeight = height;
 
-	indexRenderer.resize(width, height);
+	iRenderer.resize(width, height);
 
 	cout << "---- Window Resized! ----" << endl;
 	cout << "Width: " << mWidth << endl;
@@ -100,21 +98,21 @@ void Game::update(sf::Time frameTime)
 void Game::render()
 {
 	mWindow.clear(sf::Color::Black);
-	indexRenderer.clear();
+	iRenderer.clear();
 	if (!LSI.getIsDone() && LSI.getIsStarted())
 	{
-		LSI.render(indexRenderer);
-		indexRenderer.display();
+		LSI.render(iRenderer);
+		iRenderer.display();
 	}
 	else
 	{
-		MHI.render(indexRenderer);
+		MHI.render(iRenderer);
 		if (runGame){
-			LVLMI.render(indexRenderer);
+			LVLMI.render(iRenderer);
 		}
-		indexRenderer.display();
+		iRenderer.display();
 		if (debugMode){
-			PathFinder::getCurrentTileMap().render(indexRenderer);
+			PathFinder::getCurrentTileMap().render(iRenderer);
 		}
 	}
 	MouseState::render();
@@ -148,6 +146,7 @@ void Game::run()
 {
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
+	sf::Time frameTime = sf::seconds(1.f / 60.f);
 	while (mWindow.isOpen())
 	{
 		timeSinceLastUpdate += clock.restart();
