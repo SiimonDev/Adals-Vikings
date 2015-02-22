@@ -9,6 +9,11 @@ Beach_level::Beach_level(Player &player, ActionWheel &actionWheel)
 	mFolderPath = "Assets/MapFiles/Beach/";
 }
 
+Beach_level::~Beach_level()
+{
+
+}
+
 void Beach_level::update(sf::Time &frametime)
 {
 	mWaveAnimation.animate(frametime);
@@ -110,9 +115,11 @@ void Beach_level::unload()
 	RMI.unload(Textures::Wave);
 	Level::unload();
 }
+
 void Beach_level::changeLevel()
 {
 }
+
 void Beach_level::checkInteractEvents()
 {
 

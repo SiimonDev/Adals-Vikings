@@ -56,6 +56,10 @@ void Game::update(sf::Time frameTime)
 		LSI.update(frameTime);
 	else
 	{
+		AudioPlayer::update(frameTime);
+		KeyboardState::update(frameTime);
+		MouseState::update(frameTime);
+
 		if (KeyboardState::isPressed(sf::Keyboard::F1))
 			debugMode = (!debugMode);
 
@@ -87,12 +91,7 @@ void Game::update(sf::Time frameTime)
 		{
 			mWindow.close();
 		}
-
-		// Always Last
-		AudioPlayer::update(frameTime);
 	}
-	KeyboardState::update(frameTime);
-	MouseState::update(frameTime);
 }
 
 void Game::render()
@@ -112,7 +111,7 @@ void Game::render()
 		}
 		iRenderer.display();
 		if (debugMode){
-			PathFinder::getCurrentTileMap().render(iRenderer);
+			PathFinderI.getCurrentTileMap().render(iRenderer);
 		}
 	}
 	MouseState::render();

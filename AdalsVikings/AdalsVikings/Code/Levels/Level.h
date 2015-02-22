@@ -26,7 +26,7 @@ class Level
 {
 public:
 	Level(Player &player, ActionWheel &ActionWheel);
-
+	virtual ~Level();
 	virtual void updateObjectActionWheel();
 	virtual void updateNPCs(sf::Time frameTime);
 	virtual void updateDialog(sf::Time frameTime);
@@ -60,7 +60,7 @@ protected:
 	Player *mPlayer;
 	TileMap mTileMap;
 
-	std::string mTileMapFilePath;
+	std::string mRCMapFilePath;
 	std::string mIndexMapFilePath;
 
 	Folder::ID mLevelID;

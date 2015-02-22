@@ -10,19 +10,23 @@
 
 LevelManager &LevelManager::getInstance()
 {
-	static LevelManager instance;
-	return instance;
+	static LevelManager* instance;
+
+	if (instance == NULL)
+		instance = new LevelManager();
+
+	return *instance;
 }
 
 LevelManager::LevelManager()
 : mLoadedPlayer(false)
 {
+	NpcHandler::initialize();
 	PortalLoader::initialize();
 }
 
 void LevelManager::load()
 {
-	NpcHandler::initialize();
 	DialogWindow::load();
 	DialogWindow::setTextSize(30);
 	DialogWindow::setTextStyle(sf::Text::Bold);
@@ -32,17 +36,17 @@ void LevelManager::load()
 	mPlayer.setPosition(sf::Vector2f(1400, 750));
 	mActionWheel.load();
 	
-	loadBoatScene();
+	loadAct1();
 }
 
 void LevelManager::unload()
 {
-	NpcHandler::unload();
+	//NpcHandler::unload();
 	DialogWindow::unload();
 
 	mPlayer.unload();
 	mActionWheel.unload();
-	PathFinder::unload();
+	PathFinderI.unload();
 
 	unloadCurrentAct();
 }
@@ -50,12 +54,9 @@ void LevelManager::unload()
 void LevelManager::unloadCurrentAct()
 {
 	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
-	{
 		it->second->unload();
-		delete it->second;
-		mLevelMap.erase(it);
-		it = mLevelMap.begin();
-	}
+	mLevelMap.clear();
+
 	AudioPlayer::unload();
 }
 
@@ -83,7 +84,7 @@ void LevelManager::changeLevel(LevelID id)
 	mPlayer.refreshInventory();
 	mCurrentLevel = mLevelMap[id];
 	mCurrentLevel->refreshLevel();
-	PathFinder::setTileMap(mCurrentLevel->getTileMap());
+	PathFinderI.setTileMap(mCurrentLevel->getTileMap());
 }
 
 void LevelManager::loadBoatScene()
@@ -101,7 +102,7 @@ void LevelManager::loadBoatScene()
 		it->second->resetLevel();
 	}
 	mCurrentLevel = mLevelMap[Ship_2];
-	PathFinder::setTileMap(mCurrentLevel->getTileMap());
+	PathFinderI.setTileMap(mCurrentLevel->getTileMap());
 }
 
 void LevelManager::loadAct1()
@@ -118,5 +119,5 @@ void LevelManager::loadAct1()
 		it->second->resetLevel();
 	}
 	mCurrentLevel = mLevelMap[Beach];
-	PathFinder::setTileMap(mCurrentLevel->getTileMap());
+	PathFinderI.setTileMap(mCurrentLevel->getTileMap());
 }

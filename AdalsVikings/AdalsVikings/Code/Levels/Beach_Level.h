@@ -6,6 +6,7 @@ class Beach_level : public Level
 {
 public:
 	Beach_level(Player &player, ActionWheel &actionWheel);
+	~Beach_level();
 
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);

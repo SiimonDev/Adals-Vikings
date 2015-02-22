@@ -11,8 +11,10 @@ ObjectHandler::ObjectHandler()
 
 ObjectHandler &ObjectHandler::getInstance()
 {
-	static ObjectHandler instance;
-	return instance;
+	static ObjectHandler* instance;
+	if (instance == NULL)
+		instance = new ObjectHandler();
+	return *instance;
 }
 
 Object &ObjectHandler::getObject(std::string objID)

@@ -7,6 +7,10 @@ TileMap::TileMap()
 {
 
 }
+TileMap::~TileMap()
+{
+	unload();
+}
 
 void TileMap::load(sf::Vector2i &tileSize, sf::Image &tileMap, sf::Image &indexMap)
 {
@@ -16,11 +20,17 @@ void TileMap::load(sf::Vector2i &tileSize, sf::Image &tileMap, sf::Image &indexM
 
 void TileMap::unload()
 {
-	for (size_t i = 0; i < mMapSize.x; i++){
-		delete[] mTiles[i];
+	if (mTiles != NULL && mVerts != NULL)
+	{
+		for (size_t i = 0; i < mMapSize.x; i++){
+			delete[] mTiles[i];
+		}
+		delete[] mTiles;
+		delete mVerts;
+
+		mTiles = NULL;
+		mVerts = NULL;
 	}
-	delete[] mTiles;
-	delete mVerts;
 }
 
 void TileMap::render(IndexRenderer &iRenderer)

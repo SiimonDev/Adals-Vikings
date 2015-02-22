@@ -11,6 +11,11 @@ Level::Level(Player& player, ActionWheel &ActionWheel)
 	mActionWheel = &ActionWheel;
 }
 
+Level::~Level()
+{
+
+}
+
 void Level::updateObjectActionWheel()
 {
 	if (mActionWheel->isButtonSelected())
@@ -29,7 +34,7 @@ void Level::updateObjectActionWheel()
 				else if (mActionWheel->isPickUpSelected())
 					mPlayer->setIntention(Intention::PickUp);
 
-				Path path = PathFinder::getPath(mPlayer->getPosition(), mObjects[mObjIndex]->getInteractionPosition());
+				Path path = PathFinderI.getPath(mPlayer->getPosition(), mObjects[mObjIndex]->getInteractionPosition());
 				mPlayer->walkPath(path);
 			}
 		}
@@ -46,7 +51,7 @@ void Level::updateObjectActionWheel()
 
 				mPlayer->setIntention(Intention::Interact);
 
-				Path path = PathFinder::getPath(mPlayer->getPosition(), mObjects[mObjIndex]->getInteractionPosition());
+				Path path = PathFinderI.getPath(mPlayer->getPosition(), mObjects[mObjIndex]->getInteractionPosition());
 				mPlayer->walkPath(path);
 			}
 		}
@@ -77,7 +82,7 @@ void Level::updateObjectActionWheel()
 				if (mPlayer->getAnimation().getStopped())
 				{
 					mPlayer->addItemToInventory(mObjects[mObjIndex]->getObjID());
-					PathFinder::getCurrentTileMap().removeCollision(mObjects[mObjIndex]->getCollisionRect());
+					PathFinderI.getCurrentTileMap().removeCollision(mObjects[mObjIndex]->getCollisionRect());
 					delete mObjects[mObjIndex];
 					mObjects.erase(mObjects.begin() + mObjIndex);
 					mPlayer->setIntention(Intention::None);
@@ -125,7 +130,7 @@ void Level::updateNPCs(sf::Time frameTime)
 				else if (mActionWheel->isPickUpSelected())
 					mPlayer->setIntention(Intention::PickUp);
 
-				Path path = PathFinder::getPath(mPlayer->getPosition(), it->second->getInteractionPosition());
+				Path path = PathFinderI.getPath(mPlayer->getPosition(), it->second->getInteractionPosition());
 				mPlayer->walkPath(path);
 			}
 		}
@@ -139,7 +144,7 @@ void Level::updateNPCs(sf::Time frameTime)
 
 				mPlayer->setIntention(Intention::Interact);
 
-				Path path = PathFinder::getPath(mPlayer->getPosition(), it->second->getInteractionPosition());
+				Path path = PathFinderI.getPath(mPlayer->getPosition(), it->second->getInteractionPosition());
 				mPlayer->walkPath(path);
 			}
 		}
@@ -301,14 +306,14 @@ void Level::render(IndexRenderer &iRenderer)
 void Level::loadAllBackgrounds(std::string filepath)
 {
 	// Load TileMap
-	mTileMapFilePath = RMI.getRCFileFromFolder(mFolderPath);	 // Find the filepath of the TileMap File
-	RMI.loadImage(mTileMapFilePath);							 // Load the TileMap File
+	mRCMapFilePath = RMI.getRCFileFromFolder(mFolderPath);	 // Find the filepath of the TileMap File
+	RMI.loadImage(mRCMapFilePath);							 // Load the TileMap File
 
 	// Load IndexMap
 	mIndexMapFilePath = RMI.getIndexFileFromFolder(filepath);	// Find the filepath of the indexfile
 	RMI.loadImage(mIndexMapFilePath);							// Load the indexfile
 
-	mTileMap.load(sf::Vector2i(15, 15), RMI.getNonIDImage(mTileMapFilePath), RMI.getNonIDImage(mIndexMapFilePath));
+	mTileMap.load(sf::Vector2i(15, 15), RMI.getNonIDImage(mRCMapFilePath), RMI.getNonIDImage(mIndexMapFilePath));
 	
 	// Load all the backgrounds and assign them an index
 	RMI.load(mLevelID, filepath);
@@ -441,7 +446,7 @@ void Level::load()
 
 void Level::unload()
 {
-	RMI.unloadImage(mTileMapFilePath);
+	RMI.unloadImage(mRCMapFilePath);
 	RMI.unloadImage(mIndexMapFilePath);
 	mTileMap.unload();
 	mBackgrounds.clear();
@@ -455,12 +460,11 @@ void Level::unload()
 	DialogHandler::unload();
 	
 	// Unload and delete all the objects
-	while (!mObjects.empty())
-	{
-		mObjects.at(mObjects.size() - 1)->unload();
-		delete mObjects.at(mObjects.size() - 1);
-		mObjects.pop_back();
+	for each (Object* object in mObjects){
+		object->unload();
+		delete object;
 	}
+	mObjects.clear();
 
 	mPortals.clear();
 }

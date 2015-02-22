@@ -102,10 +102,10 @@ void Player::update(sf::Time &frameTime)
 	}
 	// Animate the player
 	mPlayerAnimation.animate(frameTime);
-	mPlayerAnimation.setIndex(PathFinder::getIndexAt(mPosition));
+	mPlayerAnimation.setIndex(PathFinderI.getIndexAt(mPosition));
 
 	// Set player alpha
-	float newAlpha = PathFinder::getAlphaAt(mPosition);
+	float newAlpha = PathFinderI.getAlphaAt(mPosition);
 	if (newAlpha > 0)
 		mCurrentAlpha = newAlpha;
 
@@ -146,7 +146,7 @@ void Player::walkPath(Path &path)
 void Player::move(sf::Time &frameTime)
 {
 	if (MouseState::isReleased(sf::Mouse::Left, 0.5) && !mInventory.isActive())
-		walkPath(PathFinder::getPath(getPosition(), sf::Vector2f(MouseState::getMousePosition())));
+		walkPath(PathFinderI.getPath(getPosition(), sf::Vector2f(MouseState::getMousePosition())));
 
 	if (!mTargetReached && !mDestinationReached)
 	{

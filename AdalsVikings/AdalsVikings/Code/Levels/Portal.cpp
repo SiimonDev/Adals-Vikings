@@ -102,7 +102,7 @@ void Portal::portalTravel(Player &player)
 
 void Portal::walkPath(Player &player)
 {
-	player.walkPath(PathFinder::getPath(player.getPosition(), mPortalMovement));
+	player.walkPath(PathFinderI.getPath(player.getPosition(), mPortalMovement));
 	setWalkable(false);
 }
 

@@ -29,7 +29,7 @@ bool compareLX(std::string &a, std::string &b)
 
 std::vector<std::string> ResourceManager::getAllBackgroundFilesFromFolder(const std::string &directory)
 {
-	DIR *dir;
+	DIR* dir;
 	struct dirent *dirnt;
 	std::vector<std::string> filePaths;
 
@@ -63,7 +63,7 @@ std::vector<std::string> ResourceManager::getAllBackgroundFilesFromFolder(const 
 
 std::string ResourceManager::getRCFileFromFolder(const std::string &directory)
 {
-	DIR *dir;
+	DIR* dir;
 	struct dirent *dirnt;
 	std::string filePath;
 
@@ -84,15 +84,14 @@ std::string ResourceManager::getRCFileFromFolder(const std::string &directory)
 	{
 		std::cout << "Could not find RC dir" << std::endl;
 	}
-
 	std::cout << "No RC file found" << std::endl;
 	return "";
 }
 
 std::string ResourceManager::getIndexFileFromFolder(const std::string &directory)
 {
-	DIR *dir;
-	struct dirent *dirnt;
+	DIR* dir;
+	struct dirent* dirnt;
 	std::string filePath;
 
 	if ((dir = opendir(directory.c_str())) != NULL)
@@ -112,8 +111,8 @@ std::string ResourceManager::getIndexFileFromFolder(const std::string &directory
 	{
 		std::cout << "Could not find Index dir" << std::endl;
 	}
-
 	std::cout << "No Index file found" << std::endl;
+
 	return "";
 }
 
@@ -213,9 +212,19 @@ void ResourceManager::truncateTextures()
 	mTextureMap.clear();
 }
 
+void ResourceManager::truncateNonIDTextures()
+{
+	mNonIDTextures.clear();
+}
+
 void ResourceManager::truncateImages()
 {
 	mImageMap.clear();
+}
+
+void ResourceManager::truncateNonIDImages()
+{
+	mNonIDImages.clear();
 }
 
 void ResourceManager::truncateFolders()

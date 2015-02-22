@@ -11,15 +11,21 @@ using namespace std;
 const int iDir[8] = { 1, 1, 0, -1, -1, -1, 0, 1 };
 const int jDir[8] = { 0, 1, 1, 1, 0, -1, -1, -1 };
 
-static int **mClosedNodes;
-static int **mOpenNodes;
-static int **mDirMap;
-static int **mSquares;
+PathFinder::PathFinder() :
+mMapWidth(0),
+mMapHeight(0)
+{
+}
 
-static int mMapWidth = 0;
-static int mMapHeight = 0;
+PathFinder &PathFinder::getInstance()
+{
+	static PathFinder* instance;
 
-static TileMap* mTileMap;
+	if (instance == NULL)
+		instance = new PathFinder();
+
+	return *instance;
+}
 
 void PathFinder::load()
 {

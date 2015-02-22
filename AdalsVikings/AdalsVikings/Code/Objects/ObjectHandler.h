@@ -1,9 +1,12 @@
 #pragma once
 #include "Object.h"
+#include <memory>
 #include <vector>
 #include <map>
 
 #define OBHI ObjectHandler::getInstance()
+
+typedef std::unique_ptr<Object> ObjectPtr;
 
 class ObjectHandler
 {

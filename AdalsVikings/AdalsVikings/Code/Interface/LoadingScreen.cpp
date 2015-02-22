@@ -32,7 +32,6 @@ void LoadingScreen::render(IndexRenderer &iRenderer)
 
 bool LoadingScreen::update(sf::Time frameTime)
 {
-
 	if (mFinished)
 		mIsDone = true;
 	else
@@ -74,7 +73,9 @@ void LoadingScreen::runTask()
 
 		/* ==== Quick fix for bad unloads ===== */
 		RMI.truncateTextures();
+		RMI.truncateNonIDTextures();
 		RMI.truncateImages();
+		RMI.truncateNonIDImages();
 		RMI.truncateSounds();
 		RMI.truncateFolders();
 		RMI.truncateFonts();

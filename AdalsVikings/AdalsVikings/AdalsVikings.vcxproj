@@ -24,8 +24,7 @@
     <ClCompile Include="Code\Interface\Menus\MenuHandler.cpp" />
     <ClCompile Include="Code\Interface\Menus\MenuPanel.cpp" />
     <ClCompile Include="Code\Interface\Menus\PauseMenuPanel.cpp" />
-    <ClCompile Include="Code\Interface\TextButton.cpp" />
-    <ClCompile Include="Code\Levels\Beach_Level.cpp" />
+    <ClCompile Include="Code\Levels\Beach_level.cpp" />
     <ClCompile Include="Code\Levels\Level.cpp" />
     <ClCompile Include="Code\Levels\Portal.cpp" />
     <ClCompile Include="Code\Levels\PortalLoader.cpp" />
@@ -68,7 +67,6 @@
     <ClInclude Include="Code\Interface\Menus\MenuHandler.h" />
     <ClInclude Include="Code\Interface\Menus\MenuPanel.h" />
     <ClInclude Include="Code\Interface\Menus\PauseMenuPanel.h" />
-    <ClInclude Include="Code\Interface\TextButton.h" />
     <ClInclude Include="Code\Levels\Beach_Level.h" />
     <ClInclude Include="Code\Levels\Level.h" />
     <ClInclude Include="Code\Levels\Portal.h" />

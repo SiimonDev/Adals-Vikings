@@ -7,7 +7,7 @@ class TileMap
 {
 public:
 	TileMap();
-
+	~TileMap();
 	void load(sf::Vector2i &tileSize, sf::Image &tileMap, sf::Image &indexMap);
 	void unload();
 	void render(IndexRenderer &iRenderer);
