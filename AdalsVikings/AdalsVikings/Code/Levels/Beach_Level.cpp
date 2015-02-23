@@ -1,6 +1,8 @@
 #include "Beach_Level.h"
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\AudioPlayer.h"
+#include "..\Interface\LoadingScreen.h"
+#include "..\Logics\KeyboardState.h"
 #include <iostream>
 
 Beach_level::Beach_level(Player &player, ActionWheel &actionWheel)
@@ -9,13 +11,10 @@ Beach_level::Beach_level(Player &player, ActionWheel &actionWheel)
 	mFolderPath = "Assets/MapFiles/Beach/";
 }
 
-Beach_level::~Beach_level()
-{
-
-}
-
 void Beach_level::update(sf::Time &frametime)
 {
+	if (KeyboardState::isPressed(sf::Keyboard::J))
+		LSI.startLoading(LoadTest);
 	mWaveAnimation.animate(frametime);
 	Level::update(frametime);
 	changeLevel();
@@ -29,13 +28,15 @@ void Beach_level::render(IndexRenderer &iRenderer)
 
 void Beach_level::load()
 {
+
+	mPortals[Portal3] = LPortalPtr(new Portal(PortalLoader::getPortal(Portal3)));
 	/* ==== Load Npcs and set right position, dialogue, scale and so on... ===== */
-	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
-	mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
-	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
-	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
-	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
-	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+	mNpcs["Yngvarr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
+	mNpcs["Dagny"] = LNpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
+	mNpcs["Alfr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
+	mNpcs["Leifr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
+	mNpcs["Finnr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
+	mNpcs["Valdis"] = LNpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
 
 	/* ==== Yngvarr ===== */
 	mNpcs["Yngvarr"]->setRightWay(false);
@@ -94,7 +95,7 @@ void Beach_level::load()
 	/* ================================================================ */
 
 	RMI.load(Textures::Wave, "Assets/MapFiles/Beach/waves.png");
-	mWaveAnimation.load(RMI.getTexture(Textures::Wave), sf::Vector2i(10, 9), sf::seconds(7), sf::seconds(12), true);
+	mWaveAnimation.load(RMI.getTexture(Textures::Wave), sf::Vector2i(10, 9), sf::seconds(7), sf::seconds(5), true);
 	mWaveAnimation.setIndex(4);
 	mWaveAnimation.setProportions(sf::Vector2f(1170, 640));
 	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
@@ -115,11 +116,13 @@ void Beach_level::unload()
 	RMI.unload(Textures::Wave);
 	Level::unload();
 }
-
 void Beach_level::changeLevel()
 {
+	if (mPortals[Portal3]->getActivated())
+	{
+		LSI.startLoading(LoadTest);
+	}
 }
-
 void Beach_level::checkInteractEvents()
 {
 

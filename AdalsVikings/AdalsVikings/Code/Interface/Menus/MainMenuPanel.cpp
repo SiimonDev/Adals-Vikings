@@ -2,7 +2,7 @@
 #include "..\..\Logics\AudioPlayer.h"
 
 MainMenuPanel::MainMenuPanel(MenuPanels &activeMenuPanels) :
-mMenuPanels(&activeMenuPanels), mAnimationTime(sf::milliseconds(500)), mTimePassed(sf::Time::Zero)
+mMenuPanels(activeMenuPanels), mAnimationTime(sf::milliseconds(500)), mTimePassed(sf::Time::Zero)
 {
 	mCurrentEvent = MenuEvent::NONE;
 	mAxeAnimation.restart();
@@ -16,7 +16,7 @@ void MainMenuPanel::load()
 	RMI.load(Textures::MainMenuQuitButton, "assets/images/interface/MainMenu/button_quit.png");
 	RMI.load(Textures::MainMenuBackground, "assets/images/Interface/MainMenu/menu_background.png");
 	RMI.load(Textures::AxeAnimation, "assets/images/Interface/MainMenu/flying_axe.png");
-	AudioPlayerI.playMusic("assets/sounds/music/Theme3.ogg", "mainMenu", true, 20);
+	//AudioPlayer::playMusic("assets/sounds/music/Theme3.ogg", "mainMenu", true, 20);
 
 	mBackground.setTexture(RMI.getTexture(Textures::MainMenuBackground));
 
@@ -67,7 +67,7 @@ void MainMenuPanel::unload()
 	RMI.unload(Textures::MainMenuQuitButton);
 	RMI.unload(Textures::MainMenuBackground);
 	RMI.unload(Textures::AxeAnimation);
-	AudioPlayerI.stopMusic("mainMenu");
+	//AudioPlayer::stopMusic("mainMenu");
 }
 
 void MainMenuPanel::update(sf::Time frameTime)

@@ -24,7 +24,8 @@
     <ClCompile Include="Code\Interface\Menus\MenuHandler.cpp" />
     <ClCompile Include="Code\Interface\Menus\MenuPanel.cpp" />
     <ClCompile Include="Code\Interface\Menus\PauseMenuPanel.cpp" />
-    <ClCompile Include="Code\Levels\Beach_level.cpp" />
+    <ClCompile Include="Code\Interface\TextButton.cpp" />
+    <ClCompile Include="Code\Levels\Beach_Level.cpp" />
     <ClCompile Include="Code\Levels\Level.cpp" />
     <ClCompile Include="Code\Levels\Portal.cpp" />
     <ClCompile Include="Code\Levels\PortalLoader.cpp" />
@@ -51,6 +52,7 @@
     <ClCompile Include="Code\Objects\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\Desktop\AdalsVikings\AdalsVikings\Code\Logics\WindowState.h" />
     <ClInclude Include="Code\Dialog\Dialog.h" />
     <ClInclude Include="Code\Dialog\DialogHandler.h" />
     <ClInclude Include="Code\Dialog\DialogueTree.h" />
@@ -66,6 +68,7 @@
     <ClInclude Include="Code\Interface\Menus\MenuHandler.h" />
     <ClInclude Include="Code\Interface\Menus\MenuPanel.h" />
     <ClInclude Include="Code\Interface\Menus\PauseMenuPanel.h" />
+    <ClInclude Include="Code\Interface\TextButton.h" />
     <ClInclude Include="Code\Levels\Beach_Level.h" />
     <ClInclude Include="Code\Levels\Level.h" />
     <ClInclude Include="Code\Levels\Portal.h" />
@@ -85,7 +88,6 @@
     <ClInclude Include="Code\Logics\Node.h" />
     <ClInclude Include="Code\Logics\PathFinder.h" />
     <ClInclude Include="Code\Logics\ResourceManager.h" />
-    <ClInclude Include="Code\Logics\WindowState.h" />
     <ClInclude Include="Code\NPCs\NPC.h" />
     <ClInclude Include="Code\NPCs\NpcHandler.h" />
     <ClInclude Include="Code\Objects\Object.h" />

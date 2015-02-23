@@ -3,24 +3,22 @@
 #include <iostream>
 
 bool myCompFunction(IndexObject &a, IndexObject &b)
-{
+{ 
 	return (a.mIndex < b.mIndex);
 }
 
 IndexRenderer::IndexRenderer()
 {
-}
 
+}
 void IndexRenderer::addSprite(sf::Sprite &sprite, int index)
 {
 	mIndexObjects.push_back(IndexObject(sprite, index));
 }
-
 void IndexRenderer::addRectangle(sf::RectangleShape &rectangle, int index)
 {
 	mIndexObjects.push_back(IndexObject(rectangle, index));
 }
-
 void IndexRenderer::addText(sf::Text &text, int index)
 {
 	mIndexObjects.push_back(IndexObject(text, index));

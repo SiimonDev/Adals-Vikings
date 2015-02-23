@@ -2,16 +2,21 @@
 #include <SFML\Graphics.hpp>
 #include "..\Logics\IndexRenderer.h"
 #include "..\Interface\Menus\MenuHandler.h"
+#include <thread>
 
 #define LSI LoadingScreen::getInstance()
-typedef std::unique_ptr<sf::Thread> ThreadPtr;
+
+typedef std::unique_ptr<std::thread> ThreadPtr;
 
 enum LoadTask
 {
 	StartGame,
 	LoadBoat,
 	LoadAct1,
+	LoadTest,
 	LoadMenu,
+	None,
+	Finished,
 };
 
 class LoadingScreen
@@ -19,6 +24,7 @@ class LoadingScreen
 public:
 	static LoadingScreen &getInstance();
 
+	void initialize();
 	void render(IndexRenderer &iRenderer);
 	bool update(sf::Time dt);
 

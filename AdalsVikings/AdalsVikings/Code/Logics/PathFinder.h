@@ -5,39 +5,25 @@
 #include "..\Levels\TileMap.h"
 #include "Node.h"
 
-#define PathFinderI PathFinder::getInstance()
-
 typedef std::vector<sf::Vertex> Path;
 
 class PathFinder
 {
 public:
-	static PathFinder &getInstance();
+	static void load();
+	static void unload();
 
-	void load();
-	void unload();
+	static void setTileMap(TileMap &tileMap);
 
-	void setTileMap(TileMap &tileMap);
-
-	Path getPath(const sf::Vector2f &startLoc, const sf::Vector2f &endLoc);
-	sf::Vector2i getClosestFreeTile(const sf::Vector2f &startLoc);
+	static Path getPath(const sf::Vector2f &startLoc, const sf::Vector2f &endLoc);
+	static sf::Vector2i getClosestFreeTile(const sf::Vector2f &startLoc);
 	
-	TileMap &getCurrentTileMap();
-	int getIndexAt(sf::Vector2f &pos);
-	float getAlphaAt(sf::Vector2f &pos);
+	static TileMap &getCurrentTileMap();
+	static int getIndexAt(sf::Vector2f &pos);
+	static float getAlphaAt(sf::Vector2f &pos);
 
 private:
-	PathFinder();
+	PathFinder(){}
 	PathFinder(const PathFinder&){}
 	void operator=(const PathFinder&){}
-
-	int **mClosedNodes;
-	int **mOpenNodes;
-	int **mDirMap;
-	int **mSquares;
-
-	int mMapWidth;
-	int mMapHeight;
-
-	TileMap* mTileMap;
 };

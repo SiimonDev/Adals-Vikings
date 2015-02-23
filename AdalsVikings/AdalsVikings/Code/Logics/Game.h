@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <SFML\Graphics.hpp>
+#include "..\Interface\LoadingScreen.h"
 
 using namespace std;
 
@@ -13,9 +14,12 @@ public:
 	void run();
 
 private:
+	void loadGame();
+	void loadMenu();
 	void resize(int width, int height);
 	void update(sf::Time gameTime);
 	void render();
 	void processEvents();
 	sf::RenderWindow mWindow;
 };
+

@@ -130,8 +130,11 @@ void NpcHandler::unload()
 {
 	// Unload NPCs
 	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcMap.begin(); it != mNpcMap.end(); it++)
+	{
 		it->second->unload();
-	mNpcMap.clear();
+		mNpcMap.erase(it);
+		it = mNpcMap.begin();
+	}
 }
 
 std::map<std::string, NpcPtr> &NpcHandler::getNpcs()

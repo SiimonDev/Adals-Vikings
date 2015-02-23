@@ -27,7 +27,7 @@ DialogueTree::DialogueTree()
 }
 void DialogueTree::load()
 {
-	mParser = mDialogue.load_file(mFilePath.c_str());
+	mDialogue.load_file(mFilePath.c_str());
 	std::string copyFolder = "copy/";
 	if (mFilePath.find(copyFolder) == std::string::npos)
 	{
@@ -49,7 +49,7 @@ void DialogueTree::load()
 			mFilePath = tempStr;
 		}
 		mDialogue.save_file(mFilePath.c_str());
-		mParser = mDialogue.load_file(mFilePath.c_str());
+		mDialogue.load_file(mFilePath.c_str());
 	}
 	getUseText();
 	getLookText();
@@ -281,7 +281,7 @@ void DialogueTree::find_AllOptions()
 
 void DialogueTree::reloadConverstaion()
 {
-	mParser = mDialogue.load_file(mFilePath.c_str());
+	mDialogue.load_file(mFilePath.c_str());
 	mNode = mDialogue.first_child();
 }
 void DialogueTree::selectOption()
@@ -468,7 +468,7 @@ void DialogueTree::disableOption(int index)
 			{
 				mNode.attribute("disabled").set_value(true);
 				mDialogue.save_file(mFilePath.c_str());
-				mParser = mDialogue.load_file(mFilePath.c_str());
+				mDialogue.load_file(mFilePath.c_str());
 				mNode = mDialogue.first_child();
 				mStart = false;
 				return;
@@ -496,7 +496,7 @@ void DialogueTree::enableOption(int index)
 			{
 				mNode.attribute("disabled").set_value(false);
 				mDialogue.save_file(mFilePath.c_str());
-				mParser = mDialogue.load_file(mFilePath.c_str());
+				mDialogue.load_file(mFilePath.c_str());
 				mNode = mDialogue.first_child();
 				mStart = false;
 				return;

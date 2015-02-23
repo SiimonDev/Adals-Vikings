@@ -2,15 +2,15 @@
 <conversation>
 	<useText useText="Why would I use Alfr?" />
 	<lookText lookText="That's Alfr" />
-	<text character="Ulfr" disabled="true" default="false" say="Nice to see you in a good mood, Skald." timer="2.0" turned="true" />
-	<text character="Alfr" disabled="true" default="false" disablePrevious="" say="What can i say?" timer="1.4" turned="true" />
-	<text character="Alfr" disabled="true" default="false" disablePrevious="" say="It's a lovely day." timer="2.2" />
-	<text character="Ulfr" disabled="true" default="false" say="Er..." timer="0.8" />
-	<text character="Ulfr" disabled="true" default="false" say="The sun's not even up yet, Alfr." timer="1.6" />
-	<text character="Alfr" disabled="true" default="false" say="But the light shines through." timer="1.6" />
-	<text character="Ulfr" default="false" disabled="true" timer="1.4" say="Of course it does." />
-	<text character="Ulfr" default="true" disabled="false" say="Hey Alfr!" timer="1.4" />
-	<text character="Alfr" default="true" disabled="false" say="Hey!" timer="1.4" />
+	<text character="Ulfr" disabled="false" default="false" say="Nice to see you in a good mood, Skald." timer="2.0" turned="true" />
+	<text character="Alfr" disabled="false" default="false" disablePrevious="" say="What can i say?" timer="1.4" turned="true" />
+	<text character="Alfr" disabled="false" default="false" disablePrevious="" say="It's a lovely day." timer="2.2" />
+	<text character="Ulfr" disabled="false" default="false" say="Er..." timer="0.8" />
+	<text character="Ulfr" disabled="false" default="false" say="The sun's not even up yet, Alfr." timer="1.6" />
+	<text character="Alfr" disabled="false" default="false" say="But the light shines through." timer="1.6" />
+	<text character="Ulfr" default="false" disabled="false" timer="1.4" say="Of course it does." />
+	<text character="Ulfr" default="true" disabled="true" say="Hey Alfr!" timer="1.4" />
+	<text character="Alfr" default="true" disabled="true" say="Hey!" timer="1.4" />
 	<option_container disabled="false">
 		<option choice_text="What more things about Adal have you embellished?" disabled="false">
 			<text character="Ulfr" say="What more things about Adal have you embellished?" timer="1.5" turned="true" />
@@ -24,7 +24,7 @@
 			<text character="Alfr" say="No I am not." timer="1.2" disablePrevious="false" />
 			<gotoContainer />
 		</option>
-		<option choice_text="Have you seen Adal's map around here?" disabled="false">
+		<option choice_text="Have you seen Adal's map around here?" disabled="true">
 			<text character="Ulfr" say="Have you seen Adal's map around here?" timer="1.5" turned="true" />
 			<text character="Alfr" say="Why would Adal need a map?" timer="1.6" />
 			<text character="Alfr" say="I've sang songs of his deeds." timer="1.6" />

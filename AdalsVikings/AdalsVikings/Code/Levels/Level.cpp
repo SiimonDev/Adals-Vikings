@@ -6,14 +6,9 @@
 #include <string>
 
 Level::Level(Player& player, ActionWheel &ActionWheel)
+: mPlayer(player)
 {
-	mPlayer = &player;
 	mActionWheel = &ActionWheel;
-}
-
-Level::~Level()
-{
-
 }
 
 void Level::updateObjectActionWheel()
@@ -28,80 +23,80 @@ void Level::updateObjectActionWheel()
 				mWalkToObject = true;
 
 				if (mActionWheel->isLookSelected())
-					mPlayer->setIntention(Intention::Look);
+					mPlayer.setIntention(Intention::Look);
 				else if (mActionWheel->isTalkSelected())
-					mPlayer->setIntention(Intention::Talk);
+					mPlayer.setIntention(Intention::Talk);
 				else if (mActionWheel->isPickUpSelected())
-					mPlayer->setIntention(Intention::PickUp);
+					mPlayer.setIntention(Intention::PickUp);
 
-				Path path = PathFinderI.getPath(mPlayer->getPosition(), mObjects[mObjIndex]->getInteractionPosition());
-				mPlayer->walkPath(path);
+				Path path = PathFinder::getPath(mPlayer.getPosition(), mObjects[mObjIndex]->getInteractionPosition());
+				mPlayer.walkPath(path);
 			}
 		}
 	}
-	else if (mPlayer->getDroppedObjectID() != "")
+	else if (mPlayer.getDroppedObjectID() != "")
 	{
 		for (int i = 0; i < mObjects.size(); i++)
 		{
 			if (mObjects[i]->isInside(MouseState::getMousePosition()))
 			{
-				mDroppedItemID = mPlayer->getDroppedObjectID();
+				mDroppedItemID = mPlayer.getDroppedObjectID();
 				mObjIndex = i;
 				mWalkToObject = true;
 
-				mPlayer->setIntention(Intention::Interact);
+				mPlayer.setIntention(Intention::Interact);
 
-				Path path = PathFinderI.getPath(mPlayer->getPosition(), mObjects[mObjIndex]->getInteractionPosition());
-				mPlayer->walkPath(path);
+				Path path = PathFinder::getPath(mPlayer.getPosition(), mObjects[mObjIndex]->getInteractionPosition());
+				mPlayer.walkPath(path);
 			}
 		}
 	}
-	if (mWalkToObject && mPlayer->isDestinationReached())
+	if (mWalkToObject && mPlayer.isDestinationReached())
 	{
-		if (mPlayer->getIntention() == Intention::Look)
+		if (mPlayer.getIntention() == Intention::Look)
 		{
 			Dialog dialog = Dialog(mObjects[mObjIndex]->getLookAtDialog());
 			DialogWindow::displayDialog(dialog);
-			mPlayer->setIntention(Intention::None);
+			mPlayer.setIntention(Intention::None);
 			mWalkToObject = false;
 		}
-		else if (mPlayer->getIntention() == Intention::Talk)
+		else if (mPlayer.getIntention() == Intention::Talk)
 		{
 			Dialog dialog = (mObjects[mObjIndex]->interactWithObject("player"));
 			DialogWindow::displayDialog(dialog);
-			mPlayer->setIntention(Intention::None);
+			mPlayer.setIntention(Intention::None);
 			mWalkToObject = false;
 		}
-		else if (mPlayer->getIntention() == Intention::PickUp)
+		else if (mPlayer.getIntention() == Intention::PickUp)
 		{
 			Dialog dialog = Dialog(mObjects[mObjIndex]->getPickupDialog());
 			DialogWindow::displayDialog(dialog);
 			if (mObjects[mObjIndex]->isPickupable())
 			{
-				mPlayer->setAnimationStyle(AnimationType::Pickup);
-				if (mPlayer->getAnimation().getStopped())
+				mPlayer.setAnimationStyle(AnimationType::Pickup);
+				if (mPlayer.getAnimation().getStopped())
 				{
-					mPlayer->addItemToInventory(mObjects[mObjIndex]->getObjID());
-					PathFinderI.getCurrentTileMap().removeCollision(mObjects[mObjIndex]->getCollisionRect());
+					mPlayer.addItemToInventory(mObjects[mObjIndex]->getObjID());
+					PathFinder::getCurrentTileMap().removeCollision(mObjects[mObjIndex]->getCollisionRect());
 					delete mObjects[mObjIndex];
 					mObjects.erase(mObjects.begin() + mObjIndex);
-					mPlayer->setIntention(Intention::None);
+					mPlayer.setIntention(Intention::None);
 					mWalkToObject = false;
 				}
 			}
 		}
-		else if (mPlayer->getIntention() == Intention::Interact)
+		else if (mPlayer.getIntention() == Intention::Interact)
 		{
 			Dialog dialog = Dialog(OBHI.getObject(mDroppedItemID).interactWithObject(mObjects[mObjIndex]->getObjID()));
 			DialogWindow::displayDialog(dialog);
-			mPlayer->setIntention(Intention::None);
+			mPlayer.setIntention(Intention::None);
 			mWalkToObject = false;
 		}
 	}
 
 	if (MouseState::isPressed(sf::Mouse::Left))
 	{
-		mPlayer->setIntention(Intention::None);
+		mPlayer.setIntention(Intention::None);
 		mWalkToObject = false;
 	}
 	mActionWheel->update();
@@ -109,7 +104,7 @@ void Level::updateObjectActionWheel()
 
 void Level::updateNPCs(sf::Time frameTime)
 {
-	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
+	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 	{
 		it->second->update(frameTime);
 
@@ -121,54 +116,54 @@ void Level::updateNPCs(sf::Time frameTime)
 				mWalkToNPC = true;
 
 				if (mActionWheel->isLookSelected())
-					mPlayer->setIntention(Intention::Look);
+					mPlayer.setIntention(Intention::Look);
 				else if (mActionWheel->isTalkSelected())
 				{
-					mPlayer->setIntention(Intention::Talk);
+					mPlayer.setIntention(Intention::Talk);
 					mActionWheel->setfalse();
 				}
 				else if (mActionWheel->isPickUpSelected())
-					mPlayer->setIntention(Intention::PickUp);
+					mPlayer.setIntention(Intention::PickUp);
 
-				Path path = PathFinderI.getPath(mPlayer->getPosition(), it->second->getInteractionPosition());
-				mPlayer->walkPath(path);
+				Path path = PathFinder::getPath(mPlayer.getPosition(), it->second->getInteractionPosition());
+				mPlayer.walkPath(path);
 			}
 		}
-		else if (mPlayer->getDroppedObjectID() != "")
+		else if (mPlayer.getDroppedObjectID() != "")
 		{
 			if (it->second->isInside(MouseState::getMousePosition()))
 			{
-				mDroppedItemID = mPlayer->getDroppedObjectID();
+				mDroppedItemID = mPlayer.getDroppedObjectID();
 				mCurrentNPCID = it->first;
 				mWalkToNPC = true;
 
-				mPlayer->setIntention(Intention::Interact);
+				mPlayer.setIntention(Intention::Interact);
 
-				Path path = PathFinderI.getPath(mPlayer->getPosition(), it->second->getInteractionPosition());
-				mPlayer->walkPath(path);
+				Path path = PathFinder::getPath(mPlayer.getPosition(), it->second->getInteractionPosition());
+				mPlayer.walkPath(path);
 			}
 		}
 	}
 	
-	if (mWalkToNPC && mPlayer->isDestinationReached())
+	if (mWalkToNPC && mPlayer.isDestinationReached())
 	{
-		if (mPlayer->getIntention() == Intention::Look)
+		if (mPlayer.getIntention() == Intention::Look)
 		{
 			Dialog dialog = Dialog(mNpcs[mCurrentNPCID]->getLookText(), 2);
 			DialogWindow::displayDialog(dialog);
 		}
-		else if (mPlayer->getIntention() == Intention::Talk)
+		else if (mPlayer.getIntention() == Intention::Talk)
 		{
 			mNpcs[mCurrentNPCID]->startConversation();
 			mIsInConversation = true;
-			mPlayer->setIntention(Intention::None);
+			mPlayer.setIntention(Intention::None);
 		}
-		else if (mPlayer->getIntention() == Intention::PickUp)
+		else if (mPlayer.getIntention() == Intention::PickUp)
 		{
 			Dialog dialog = Dialog(mNpcs[mCurrentNPCID]->getUseText(), 2);
 			DialogWindow::displayDialog(dialog);
 		}
-		else if (mPlayer->getIntention() == Intention::Interact)
+		else if (mPlayer.getIntention() == Intention::Interact)
 		{
 			checkInteractEvents();
 			Dialog dialog = Dialog(OBHI.getObject(mDroppedItemID).interactWithObject(mCurrentNPCID));
@@ -177,7 +172,7 @@ void Level::updateNPCs(sf::Time frameTime)
 	}
 	if (MouseState::isPressed(sf::Mouse::Left))
 	{
-		mPlayer->setIntention(Intention::None);
+		mPlayer.setIntention(Intention::None);
 		mWalkToNPC = false;
 	}
 }
@@ -190,43 +185,43 @@ void Level::updateDialog(sf::Time frameTime)
 		{
 			mIsInConversation = true;
 			it->second->update(frameTime);
-			for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
+			for (std::map<std::string, LNpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
 			{
 				if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() != "")
 				{
 					iz->second->setRightWay(it->second->getFacing());
 					iz->second->setAnimationStyle("Npc");
-					mPlayer->setAnimationStyle(AnimationType::Idle);
+					mPlayer.setAnimationStyle(AnimationType::Idle);
 					it->second->setTextPosition(sf::Vector2f(iz->second->getAnimation().getSprite().getGlobalBounds().left +
 						iz->second->getAnimation().getSprite().getGlobalBounds().width / 2,
 						iz->second->getAnimation().getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
 					it->second->setTextColor(iz->second->getColor());
 					//it->second->enableDraw(true);
 				}
-				else if (it->second->getCharacter() == mPlayer->getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
+				else if (it->second->getCharacter() == mPlayer.getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
 				{
-					mPlayer->setAnimationStyle(AnimationType::TalkToPlayer);
+					mPlayer.setAnimationStyle(AnimationType::TalkToPlayer);
 					iz->second->setAnimationStyle("Idle");
-					it->second->setTextPosition(sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left +
-						mPlayer->getSprite().getGlobalBounds().width / 2,
-						mPlayer->getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
+					it->second->setTextPosition(sf::Vector2f(mPlayer.getSprite().getGlobalBounds().left +
+						mPlayer.getSprite().getGlobalBounds().width / 2,
+						mPlayer.getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
 					it->second->setTextColor(sf::Color::White);
 				}
-				else if (it->second->getCharacter() == mPlayer->getName() && !it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
+				else if (it->second->getCharacter() == mPlayer.getName() && !it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
 				{
-					mPlayer->setAnimationStyle(AnimationType::TalkToNpc);
+					mPlayer.setAnimationStyle(AnimationType::TalkToNpc);
 					iz->second->setAnimationStyle("Idle");
-					mPlayer->setFlip(it->second->getFacing());
-					it->second->setTextPosition(sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left +
-												mPlayer->getSprite().getGlobalBounds().width / 2,
-												mPlayer->getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
+					mPlayer.setFlip(it->second->getFacing());
+					it->second->setTextPosition(sf::Vector2f(mPlayer.getSprite().getGlobalBounds().left +
+												mPlayer.getSprite().getGlobalBounds().width / 2,
+												mPlayer.getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
 					it->second->setTextColor(sf::Color::White);
 					//it->second->enableDraw(true);
 				}
 				else if (it->second->getCharacter() != iz->second->getName() || it->second->getPrintText().getString() == "")
 				{
 					iz->second->setAnimationStyle("Idle");
-					mPlayer->setAnimationStyle(AnimationType::Idle);
+					mPlayer.setAnimationStyle(AnimationType::Idle);
 				}
 			}
 		}
@@ -237,7 +232,7 @@ void Level::updateDialog(sf::Time frameTime)
 			it->second->setEndConversation(false);
 			mIsInConversation = false;
 
-			for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
+			for (std::map<std::string, LNpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
 				iz->second->setAnimationStyle("Idle");
 		}
 	}
@@ -249,37 +244,42 @@ void Level::update(sf::Time &frameTime)
 	updateDialog(frameTime);
 	checkEvents();
 	updateNPCs(frameTime);
-	mPlayer->update(frameTime);
+	mPlayer.update(frameTime);
 
 	// Upate all the objects
 	for each (Object* object in mObjects)
 		object->update(frameTime);
 
-	// Update the portals
-	for (std::map<PortalId, PortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+	// Do the portal thing
+	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 	{
-		if (!it->second->getWalkAble()){
-			it->second->update(frameTime, *mPlayer);
-			it->second->portalTravel(*mPlayer);
-		}
-		else
-			it->second->walkPath(*mPlayer);
+		if (it->second->getWalkAble())
+			it->second->walkPath(mPlayer);
 	}
 
-	// Only update the movement of the player and the action wheel if the player is not in a conversation
 	if (!mIsInConversation && !mOldIsInConversation)
 	{
-		mPlayer->move(frameTime);
+		mPlayer.move(frameTime);
 		updateObjectActionWheel();
-	}
 
+		for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+		{
+			if (!it->second->getWalkAble())
+			{
+				it->second->update(frameTime, mPlayer);
+				it->second->portalTravel(mPlayer);
+			}
+			else if (it->second->getWalkAble())
+				it->second->walkPath(mPlayer);
+		}
+	}
 	mOldIsInConversation = mIsInConversation;
 }
 
 void Level::render(IndexRenderer &iRenderer)
 {
 	mActionWheel->render(iRenderer);
-	mPlayer->render(iRenderer);
+	mPlayer.render(iRenderer);
 	FadeI.render(iRenderer);
 
 	// Render all the backgrounds
@@ -287,11 +287,11 @@ void Level::render(IndexRenderer &iRenderer)
 		iRenderer.addSprite(mBackgrounds[i], mBackgroundsIndexes[i]);
 
 	// Render all the portals
-	for (std::map<PortalId, PortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 		it->second->render(iRenderer);
 
 	// Render all the NPCs
-	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
+	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 		it->second->render(iRenderer);
 
 	// Render all the dialogues
@@ -306,19 +306,20 @@ void Level::render(IndexRenderer &iRenderer)
 void Level::loadAllBackgrounds(std::string filepath)
 {
 	// Load TileMap
-	mRCMapFilePath = RMI.getRCFileFromFolder(mFolderPath);	 // Find the filepath of the TileMap File
-	RMI.loadImage(mRCMapFilePath);							 // Load the TileMap File
+	mTileMapFilePath = RMI.getRCFileFromFolder(mFolderPath);	 // Find the filepath of the TileMap File
+	RMI.loadImage(mTileMapFilePath);							 // Load the TileMap File
 
 	// Load IndexMap
 	mIndexMapFilePath = RMI.getIndexFileFromFolder(filepath);	// Find the filepath of the indexfile
 	RMI.loadImage(mIndexMapFilePath);							// Load the indexfile
 
-	mTileMap.load(sf::Vector2i(15, 15), RMI.getNonIDImage(mRCMapFilePath), RMI.getNonIDImage(mIndexMapFilePath));
+	mTileMap.load(sf::Vector2i(15, 15), RMI.getNonIDImage(mTileMapFilePath), RMI.getNonIDImage(mIndexMapFilePath));
 	
-	// Load all the backgrounds and assign them an index
+	// Load all the backgrounds
 	RMI.load(mLevelID, filepath);
 
-	for (int i = 0; i < RMI.getFolder(mLevelID).size(); i++){
+	for (int i = 0; i < RMI.getFolder(mLevelID).size(); i++)
+	{
 		mBackgrounds.push_back(sf::Sprite(*RMI.getFolder(mLevelID).at(i)));
 		mBackgroundsIndexes.push_back(i * 10);
 	}
@@ -415,8 +416,10 @@ void Level::resetLevel()
 void Level::refreshLevel()
 {
 	// Reset Portals
-	for (std::map<PortalId, PortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+	{
 		it->second->setActivate(false);
+	}
 }
 
 void Level::load()
@@ -431,7 +434,7 @@ void Level::load()
 	DialogHandler::load(mFolderPath + "Dialogues.txt");
 
 	// Load NPCs
-	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
+	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 		it->second->load();
 
 	// Load Objects
@@ -446,34 +449,38 @@ void Level::load()
 
 void Level::unload()
 {
-	RMI.unloadImage(mRCMapFilePath);
+	RMI.unloadImage(mTileMapFilePath);
 	RMI.unloadImage(mIndexMapFilePath);
 	mTileMap.unload();
 	mBackgrounds.clear();
 	RMI.unload(mLevelID);
 
-	// Unload and delete all NPCs
-	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
+	// Unload NPCs
+	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
+	{
 		it->second->unload();
+	}
 	mNpcs.clear();
 
 	DialogHandler::unload();
+
+	//Unload Portals
+	mPortals.clear();
 	
 	// Unload and delete all the objects
-	for each (Object* object in mObjects){
-		object->unload();
-		delete object;
+	while (!mObjects.empty())
+	{
+		mObjects.at(mObjects.size() - 1)->unload();
+		delete mObjects.at(mObjects.size() - 1);
+		mObjects.pop_back();
 	}
-	mObjects.clear();
-
-	mPortals.clear();
+	mActionWheel = 0;
 }
 
 void Level::checkInteractEvents()
 {
 
 }
-
 void Level::checkEvents()
 {
 
@@ -481,12 +488,17 @@ void Level::checkEvents()
 
 void Level::setDialogPosition()
 {
-	DialogWindow::setPosition(sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left +
-		mPlayer->getSprite().getGlobalBounds().width / 2,
-		mPlayer->getSprite().getGlobalBounds().top));
+	DialogWindow::setPosition(sf::Vector2f(mPlayer.getSprite().getGlobalBounds().left +
+		mPlayer.getSprite().getGlobalBounds().width / 2,
+		mPlayer.getSprite().getGlobalBounds().top));
 }
 
 TileMap &Level::getTileMap()
 {
 	return mTileMap;
+}
+
+Level::~Level()
+{
+
 }

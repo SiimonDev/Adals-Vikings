@@ -30,18 +30,24 @@ Portal::Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMove
 
 void Portal::render(IndexRenderer &iRenderer)
 {
-	iRenderer.addRectangle(mArea, 99999);
+		iRenderer.addRectangle(mArea, 99999);
 }
 
 void Portal::update(sf::Time &frametime, Player &player)
 {
-	setActive();
+		setActive();
 }
+
+void Portal::load()
+{
+}
+
 
 void Portal::unload()
 {
 	mIsActive = false;
 	mSwitchPortal = false;
+	mConnectedPortal = 0;
 }
 
 void Portal::setGateway(Portal *portal2)
@@ -102,7 +108,7 @@ void Portal::portalTravel(Player &player)
 
 void Portal::walkPath(Player &player)
 {
-	player.walkPath(PathFinderI.getPath(player.getPosition(), mPortalMovement));
+	player.walkPath(PathFinder::getPath(player.getPosition(), mPortalMovement));
 	setWalkable(false);
 }
 

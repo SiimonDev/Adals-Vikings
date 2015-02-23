@@ -1,4 +1,7 @@
 #include "Ship_level_2.h"
+#include "..\Interface\LoadingScreen.h"
+#include "..\Logics\KeyboardState.h"
+#include "..\Logics\WindowState.h"
 #include "..\Logics\BoatEvents.h"
 #include <iostream>
 
@@ -20,9 +23,9 @@ Ship_level_2::Ship_level_2(Player &player, ActionWheel &actionWheel)
 
 void Ship_level_2::update(sf::Time &frametime)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+	if (KeyboardState::isPressed(sf::Keyboard::F))
 	{
-		mPlayer->addItemToInventory("map");
+		mPlayer.addItemToInventory("map");
 	}
 	if (BoatEvents::hasBeenTriggered(BoatEvent::PickedUpBucket) && !BoatEvents::hasBeenHandled(BoatEvent::PickedUpBucket))
 	{
@@ -41,6 +44,7 @@ void Ship_level_2::update(sf::Time &frametime)
 	}
 	if (!BoatEvents::hasBeenHandled(BoatEvent::GivenMapToBrandr) && BoatEvents::hasBeenTriggered(BoatEvent::GivenMapToBrandr))
 	{
+		mPlayer.removeItemFromInventory("map");
 		if (!mStartedGiveDialogue)
 		{
 			DialogHandler::getDialogue("GivenMapToBrandr").startDialogue();
@@ -77,15 +81,15 @@ void Ship_level_2::load()
 {
 
 	DialogHandler::load("assets/mapfiles/Ship2/Dialogues.txt");
-	mPortals[Portal2] = PortalPtr(&PortalLoader::getPortal(Portal2));
+	mPortals[Portal2] = LPortalPtr(new Portal(PortalLoader::getPortal(Portal2)));
 
-	mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
+	mNpcs["Dagny"] = LNpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
 	mNpcs["Dagny"]->setIndex(11);
 
-	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
+	mNpcs["Brandr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
 	mNpcs["Brandr"]->setIndex(13);
 
-	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
+	mNpcs["Yngvarr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
 	mNpcs["Yngvarr"]->setIndex(13);
 
 	if (!BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue))
@@ -121,6 +125,7 @@ void Ship_level_2::changeLevel(sf::Time &frameTime)
 	}
 	else if (BoatEvents::hasBeenHandled(BoatEvent::GivenMapToBrandr) && BoatEvents::hasBeenTriggered(BoatEvent::GivenMapToBrandr))
 	{
+		LVLMI.setIsActive(false);
 		LSI.startLoading(LoadTask::LoadAct1);
 	}
 	else if (BoatEvents::hasBeenHandled(BoatEvent::StartDialogue) && BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))

@@ -2,7 +2,6 @@
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\PathFinder.h"
 #include "..\Logics\MouseState.h"
-#include "..\Logics\WindowState.h"
 #include "..\Logics\KeyboardState.h"
 #include <iostream>
 #include <math.h>
@@ -102,10 +101,10 @@ void Player::update(sf::Time &frameTime)
 	}
 	// Animate the player
 	mPlayerAnimation.animate(frameTime);
-	mPlayerAnimation.setIndex(PathFinderI.getIndexAt(mPosition));
+	mPlayerAnimation.setIndex(PathFinder::getIndexAt(mPosition));
 
 	// Set player alpha
-	float newAlpha = PathFinderI.getAlphaAt(mPosition);
+	float newAlpha = PathFinder::getAlphaAt(mPosition);
 	if (newAlpha > 0)
 		mCurrentAlpha = newAlpha;
 
@@ -146,7 +145,7 @@ void Player::walkPath(Path &path)
 void Player::move(sf::Time &frameTime)
 {
 	if (MouseState::isReleased(sf::Mouse::Left, 0.5) && !mInventory.isActive())
-		walkPath(PathFinderI.getPath(getPosition(), sf::Vector2f(MouseState::getMousePosition())));
+		walkPath(PathFinder::getPath(getPosition(), sf::Vector2f(MouseState::getMousePosition())));
 
 	if (!mTargetReached && !mDestinationReached)
 	{

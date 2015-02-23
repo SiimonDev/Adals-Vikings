@@ -2,9 +2,8 @@
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\PathFinder.h"
 #include "..\Logics\MouseState.h"
+#include "..\Logics\BoatEvents.h"
 #include "..\Logics\KeyboardState.h"
-#include "..\Logics\WindowState.h"
-#include "..\Logics\AudioPlayer.h"
 #include "..\Logics\Fade.h"
 #include "..\Interface\ActionWheel.h"
 #include "..\Objects\Player.h"
@@ -12,7 +11,6 @@
 #include "..\Dialog\DialogWindow.h"
 #include "..\Dialog\DialogHandler.h"
 #include "..\NPCs\NpcHandler.h"
-#include "..\Interface\LoadingScreen.h"
 #include "LevelManager.h"
 #include "TileMap.h"
 #include "PortalLoader.h"
@@ -20,8 +18,8 @@
 #include <SFML\Graphics.hpp>
 #include <vector>
 
-//typedef std::unique_ptr<Npc> LNpcPtr;
-//typedef std::unique_ptr<Portal> LPortalPtr;
+typedef std::unique_ptr<Npc> LNpcPtr;
+typedef std::unique_ptr<Portal> LPortalPtr;
 class Level
 {
 public:
@@ -49,18 +47,18 @@ protected:
 	std::vector<int> mBackgroundsIndexes;
 	std::vector<sf::Sprite> mBackgrounds;
 	std::vector<Object*> mObjects;
-	std::map<std::string, NpcPtr> mNpcs;
-	std::map<PortalId, PortalPtr> mPortals;
+	std::map<std::string, LNpcPtr> mNpcs;
+	std::map<PortalId, LPortalPtr> mPortals;
 
 	std::string mFolderPath;
 	std::string mDroppedItemID;
 	std::string mCurrentNPCID;
 
 	ActionWheel *mActionWheel;
-	Player *mPlayer;
+	Player &mPlayer;
 	TileMap mTileMap;
 
-	std::string mRCMapFilePath;
+	std::string mTileMapFilePath;
 	std::string mIndexMapFilePath;
 
 	Folder::ID mLevelID;

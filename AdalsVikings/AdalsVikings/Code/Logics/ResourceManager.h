@@ -135,9 +135,7 @@ public:
 	void unloadImage(const std::string &filename);
 
 	void truncateTextures();
-	void truncateNonIDTextures();
 	void truncateImages();
-	void truncateNonIDImages();
 	void truncateFolders();
 	void truncateSounds();
 	void truncateFonts();

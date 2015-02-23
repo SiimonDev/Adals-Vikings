@@ -1,5 +1,6 @@
 #include "Fade.h"
 #include <iostream>
+#include <memory>
 
 Fade::Fade()
 : mDuration(sf::Time::Zero)
@@ -12,8 +13,12 @@ Fade::Fade()
 
 Fade &Fade::getInstance()
 {
-	static Fade instance;
-	return instance;
+	static std::unique_ptr<Fade> instance;
+
+	if (instance == NULL)
+		instance = std::unique_ptr<Fade>(new Fade());
+
+	return *instance;
 }
 void Fade::initialize()
 {

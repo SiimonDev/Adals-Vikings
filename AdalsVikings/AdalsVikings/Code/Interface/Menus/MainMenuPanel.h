@@ -17,7 +17,7 @@ public:
 	virtual MenuEvent getEvent();
 
 private:
-	MenuPanels* mMenuPanels;
+	MenuPanels &mMenuPanels;
 
 	Button playButton;
 	Button optionButton;

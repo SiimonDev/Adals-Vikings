@@ -3,19 +3,26 @@
 #include "..\Logics\KeyboardState.h"
 #include "..\Logics\ResourceManager.h"
 #include "..\Levels\LevelManager.h"
+#include "..\Levels\PortalLoader.h"
 #include <iostream>
+#include <memory>
 
 LoadingScreen::LoadingScreen()
 : mIsDone(false)
- ,mStart(false)
+ , mStart(false)
+ , mTask(None)
 {
 	mFont.loadFromFile("Assets/fonts/font1.ttf");
 }
 
 LoadingScreen & LoadingScreen::getInstance()
 {
-	static LoadingScreen instance;
-	return instance;
+	static std::unique_ptr<LoadingScreen> instance;
+
+	if (instance == NULL)
+		instance = std::unique_ptr<LoadingScreen>(new LoadingScreen());
+
+	return *instance;
 }
 
 void LoadingScreen::render(IndexRenderer &iRenderer)
@@ -28,6 +35,7 @@ void LoadingScreen::render(IndexRenderer &iRenderer)
 
 bool LoadingScreen::update(sf::Time frameTime)
 {
+
 	if (mFinished)
 		mIsDone = true;
 	else
@@ -40,8 +48,6 @@ void LoadingScreen::startLoading(LoadTask task)
 	mStart = true;
 	mFinished = false;
 	mTask = task;
-	mThread = ThreadPtr(new sf::Thread(&LoadingScreen::runTask, this));
-	mThread->launch();
 }
 
 bool &LoadingScreen::getIsDone()
@@ -56,36 +62,71 @@ bool &LoadingScreen::getIsStarted()
 
 void LoadingScreen::runTask()
 {
-	if (mTask == LoadTask::StartGame)
+	sf::Clock clock;
+	sf::Time timeSinceLastUpdate = sf::Time::Zero;
+	sf::Time frameTime = sf::seconds(1.f / 60.f);
+	while (mTask != LoadTask::Finished)
 	{
-		MHI.unload(MenuID::MainMenu);
-		MHI.load(MenuID::PauseMenu);
-		LVLMI.load();
-	}
-	else if (mTask == LoadTask::LoadMenu)
-	{
-		LVLMI.unload();
-		MHI.unload(MenuID::PauseMenu);
+		timeSinceLastUpdate += clock.restart();
+		while (timeSinceLastUpdate >= frameTime)
+		{
+			timeSinceLastUpdate -= frameTime;
+			if (mTask == LoadTask::None)
+			{
+				;
+			}
+			if (mTask == LoadTask::StartGame)
+			{
+				//std::cout << "HELLO" << std::endl;
+				LVLMI.setIsActive(false);
+				MHI.unload(MenuID::MainMenu);
+				MHI.load(MenuID::PauseMenu);
+				LVLMI.load();
+				LVLMI.loadAct1();
+				LVLMI.setIsActive(true);
+				mStart = false;
+				mFinished = true;
+			}
+			else if (mTask == LoadTask::LoadMenu)
+			{
+				LVLMI.setIsActive(false);
+				LVLMI.unload();
+				LVLMI.unloadCurrentAct();
+				MHI.unload(MenuID::PauseMenu);
 
-		/* ==== Quick fix for bad unloads ===== */
-		RMI.truncateTextures();
-		RMI.truncateNonIDTextures();
-		RMI.truncateImages();
-		RMI.truncateNonIDImages();
-		RMI.truncateSounds();
-		RMI.truncateFolders();
-		RMI.truncateFonts();
-		/* ==================================== */
+				/* ==== Quick fix for bad unloads ===== */
+				RMI.truncateTextures();
+				RMI.truncateImages();
+				RMI.truncateSounds();
+				RMI.truncateFolders();
+				RMI.truncateFonts();
+				/* ==================================== */
 
-		MHI.load(MenuID::MainMenu);
+				MHI.load(MenuID::MainMenu);
+				mStart = false;
+				mFinished = true;
+			}
+			else if (mTask == LoadTask::LoadAct1)
+			{
+				/*LVLMI.setIsActive(false);
+				LVLMI.unloadCurrentAct();
+				LVLMI.loadAct1();
+				LVLMI.setIsActive(true);*/
+			}
+			else if (mTask == LoadTask::LoadTest)
+			{
+				/*LVLMI.setIsActive(false);
+				LVLMI.unloadCurrentAct();
+				LVLMI.loadBoatScene();
+				LVLMI.setIsActive(true);*/
+			}
+			mTask = LoadTask::None;
+		}
 	}
-	else if (mTask == LoadTask::LoadAct1)
-	{
-		LVLMI.unloadCurrentAct();
-		LVLMI.loadAct1();
-	}
+}
 
-	mStart = false;
-	mFinished = true;
-	mThread->terminate();
+void LoadingScreen::initialize()
+{
+	mThread = ThreadPtr(new std::thread(&LoadingScreen::runTask, this));
+	mThread->detach();
 }

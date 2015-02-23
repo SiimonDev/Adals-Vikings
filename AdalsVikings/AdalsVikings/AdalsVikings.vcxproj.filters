@@ -50,6 +50,9 @@
     <ClCompile Include="Code\Logics\ResourceManager.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Interface\TextButton.cpp">
+      <Filter>Source Files\Interface</Filter>
+    </ClCompile>
     <ClCompile Include="Code\Levels\TileMap.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
@@ -80,6 +83,9 @@
     <ClCompile Include="Code\Logics\Fade.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Levels\Beach_Level.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
     <ClCompile Include="Code\Levels\LevelManager.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
@@ -109,9 +115,6 @@
     </ClCompile>
     <ClCompile Include="Code\Logics\WindowState.cpp">
       <Filter>Source Files\Logics</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Levels\Beach_level.cpp">
-      <Filter>Source Files\Levels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +174,9 @@
     </ClInclude>
     <ClInclude Include="Code\Logics\ResourceManager.h">
       <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Interface\TextButton.h">
+      <Filter>Header Files\Interface</Filter>
     </ClInclude>
     <ClInclude Include="Code\Levels\TileMap.h">
       <Filter>Header Files\Logics</Filter>
@@ -235,7 +241,7 @@
     <ClInclude Include="Code\Interface\LoadingScreen.h">
       <Filter>Header Files\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Logics\WindowState.h">
+    <ClInclude Include="..\..\..\..\..\Desktop\AdalsVikings\AdalsVikings\Code\Logics\WindowState.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
   </ItemGroup>

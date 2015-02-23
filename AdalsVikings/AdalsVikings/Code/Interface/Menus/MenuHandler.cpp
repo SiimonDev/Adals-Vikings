@@ -3,23 +3,25 @@
 
 MenuHandler &MenuHandler::getInstance()
 {
-	static MenuHandler instance;
-	return instance;
+	static std::unique_ptr<MenuHandler> instance;
+
+	if (instance == NULL)
+		instance = std::unique_ptr<MenuHandler>(new MenuHandler());
+
+	return *instance;
 }
 
 MenuHandler::MenuHandler()
 {
 	mMainMenuPanel = new MainMenuPanel(mActiveMenuPanels);
 	mPauseMenuPanel = new PauseMenuPanel(mActiveMenuPanels);
-
 	// Main Menu Section
-	mMainMenuPanels.push_back(mMainMenuPanel);
+	//mMainMenuPanels.push_back(mMainMenuPanel);
 
 	// Pause Menu Section
-	mPauseMenuPanels.push_back(mPauseMenuPanel);
+	//mPauseMenuPanels.push_back(mPauseMenuPanel);
 
 	load(MenuID::MainMenu);
-	mActiveMenuPanels.push_back(mMainMenuPanel);
 }
 
 void MenuHandler::load(MenuID menuID)
@@ -27,30 +29,23 @@ void MenuHandler::load(MenuID menuID)
 	mCurrentID = menuID;
 	mActiveMenuPanels.clear();
 	if (menuID == MenuID::MainMenu){
-		for each (MenuPanel* panel in mMainMenuPanels){
-			panel->load();
-		}
+		mMainMenuPanel->load();
 		mActiveMenuPanels.push_back(mMainMenuPanel);
 	}
 	if (menuID == MenuID::PauseMenu){
-		for each (MenuPanel* panel in mPauseMenuPanels){
-			panel->load();
-		}
+		mPauseMenuPanel->load();
 	}
 }
 void MenuHandler::unload(MenuID menuID)
 {
+	mActiveMenuPanels.clear();
+
 	if (menuID == MenuID::MainMenu){
-		for each (MenuPanel* panel in mMainMenuPanels){
-			panel->unload();
-		}
+		mMainMenuPanel->unload();
 	}
 	if (menuID == MenuID::PauseMenu){
-		for each (MenuPanel* panel in mPauseMenuPanels){
-			panel->unload();
-		}
+		mPauseMenuPanel->unload();
 	}
-	mActiveMenuPanels.clear();
 }
 
 void MenuHandler::update(sf::Time frameTime)
@@ -73,8 +68,8 @@ void MenuHandler::update(sf::Time frameTime)
 }
 void MenuHandler::render(IndexRenderer &iRenderer)
 {
-	for each (MenuPanel* panel in mActiveMenuPanels){
-		panel->render(iRenderer);
+	for (int i = 0; i < mActiveMenuPanels.size(); i++){
+		mActiveMenuPanels[i]->render(iRenderer);
 	}
 }
 

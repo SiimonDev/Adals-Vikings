@@ -106,5 +106,5 @@ void InvTile::render(IndexRenderer &iRenderer)
 		mObject->setScale(mScale);
 		mObject->render(iRenderer);
 	}
-	//iRenderer.addRectangle(mRectangle, 99999999);
+	//iRenderer.addRectangle(mRectangle);
 }

@@ -69,7 +69,6 @@ private:
 		mIsTalking, mStopConversation, mDraw, mEndConversation, mFaceWay, mFacePlayer;
 
 	xml_document mDialogue;
-	xml_parse_result mParser;
 	xml_node mNode;
 };
 

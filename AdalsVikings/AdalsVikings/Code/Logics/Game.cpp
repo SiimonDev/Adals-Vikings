@@ -1,15 +1,16 @@
 #include "Game.h"
 #include "..\Objects\ObjectHandler.h"
 #include "..\Levels\LevelManager.h"
-#include "..\Logics\Fade.h"
-#include "..\Logics\WindowState.h"
 #include "..\Interface\Menus\MenuHandler.h"
-#include "..\Interface\LoadingScreen.h"
 #include "BoatEvents.h"
 #include "MouseState.h"
 #include "KeyboardState.h"
+#include "WindowState.h"
 #include "IndexRenderer.h"
 #include "AudioPlayer.h"
+#include "Fade.h"
+
+sf::Time frameTime = sf::seconds(1.f / 60.f);
 
 int mWidth = 1280;
 int mHeight = 720;
@@ -29,6 +30,7 @@ Game::Game()
 	WinState.initialize(mWindow);
 	OBHI.initialize();
 	FadeI.initialize();
+	LSI.initialize();
 	KeyboardState::initialize();
 	MouseState::initialize();
 }
@@ -53,13 +55,13 @@ void Game::resize(int width, int height)
 void Game::update(sf::Time frameTime)
 {
 	if (!LSI.getIsDone() && LSI.getIsStarted())
+	{
+		runGame = false;
 		LSI.update(frameTime);
+	}
 	else
 	{
-		AudioPlayerI.update(frameTime);
-		KeyboardState::update(frameTime);
-		MouseState::update(frameTime);
-
+		runGame = true;
 		if (KeyboardState::isPressed(sf::Keyboard::F1))
 			debugMode = (!debugMode);
 
@@ -91,6 +93,11 @@ void Game::update(sf::Time frameTime)
 		{
 			mWindow.close();
 		}
+
+		// Always Last
+		AudioPlayer::update(frameTime);
+		KeyboardState::update(frameTime);
+		MouseState::update(frameTime);
 	}
 }
 
@@ -111,7 +118,7 @@ void Game::render()
 		}
 		iRenderer.display();
 		if (debugMode){
-			PathFinderI.getCurrentTileMap().render(iRenderer);
+			PathFinder::getCurrentTileMap().render(iRenderer);
 		}
 	}
 	MouseState::render();
@@ -145,7 +152,6 @@ void Game::run()
 {
 	sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
-	sf::Time frameTime = sf::seconds(1.f / 60.f);
 	while (mWindow.isOpen())
 	{
 		timeSinceLastUpdate += clock.restart();
@@ -157,5 +163,5 @@ void Game::run()
 		}
 		render();
 	}
-	AudioPlayerI.unload();
+	AudioPlayer::unload();
 }

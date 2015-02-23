@@ -16,6 +16,7 @@ class PortalLoader
 {
 public:
 	static void initialize();
+	static void unload();
 
 	static std::map<PortalId, PortalPtr> &getPortals();
 	static Portal &getPortal(PortalId id);

@@ -11,8 +11,12 @@ ObjectHandler::ObjectHandler()
 
 ObjectHandler &ObjectHandler::getInstance()
 {
-	static ObjectHandler instance;
-	return instance;
+	static std::unique_ptr<ObjectHandler> instance;
+
+	if (instance == NULL)
+		instance = std::unique_ptr<ObjectHandler>(new ObjectHandler());
+
+	return *instance;
 }
 
 Object &ObjectHandler::getObject(std::string objID)
@@ -53,4 +57,14 @@ void ObjectHandler::initialize()
 		Object* obj = new Object(file, mFolderPath);
 		mObjects[obj->getObjID()] = obj;
 	}
+}
+
+void ObjectHandler::unload()
+{
+	for (std::map<std::string, Object*>::const_iterator it = mObjects.begin(); it != mObjects.end(); it++)
+	{
+		it->second->unload();
+	}
+	mObjects.clear();
+
 }

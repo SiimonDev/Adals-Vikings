@@ -1,10 +1,9 @@
 #include "PauseMenuPanel.h"
 #include "..\..\Logics\AudioPlayer.h"
 #include "..\..\Logics\KeyboardState.h"
-#include "..\..\Logics\WindowState.h"
 
 PauseMenuPanel::PauseMenuPanel(MenuPanels &activeMenuPanels):
-mMenuPanels(&activeMenuPanels)
+mMenuPanels(activeMenuPanels)
 {
 	mIndex = 9999999;
 	mCurrentEvent = MenuEvent::NONE;

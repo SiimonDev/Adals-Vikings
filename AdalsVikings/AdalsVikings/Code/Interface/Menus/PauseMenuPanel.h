@@ -19,7 +19,7 @@ public:
 private:
 	int mIndex;
 
-	MenuPanels* mMenuPanels;
+	MenuPanels &mMenuPanels;
 
 	Button resumeButton;
 	Button saveButton;

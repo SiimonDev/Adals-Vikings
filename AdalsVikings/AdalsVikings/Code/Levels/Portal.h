@@ -12,6 +12,7 @@ public:
 
 	void render(IndexRenderer &iRenderer);
 	void update(sf::Time &frametime, Player &player);
+	void load();
 	void unload();
 	void setGateway(Portal *portal);
 	void setArea(sf::Vector2f &area);

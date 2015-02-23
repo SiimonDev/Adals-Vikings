@@ -70,12 +70,12 @@ sf::Vector2f getLetterboxScale(sf::View view, int windowWidth, int windowHeight)
 	if (windowRatio < viewRatio)
 		horizontalSpacing = false;
 
-	if (horizontalSpacing) 
+	if (horizontalSpacing)
 	{
 		sizeX = viewRatio / windowRatio;
 		posX = (1 - sizeX) / 2.0;
 	}
-	else 
+	else
 	{
 		sizeY = windowRatio / viewRatio;
 		posY = (1 - sizeY) / 2.0;

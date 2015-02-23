@@ -10,18 +10,16 @@ using namespace std;
 // Possible directions
 const int iDir[8] = { 1, 1, 0, -1, -1, -1, 0, 1 };
 const int jDir[8] = { 0, 1, 1, 1, 0, -1, -1, -1 };
+typedef std::unique_ptr<int> intPtr;
+static int **mClosedNodes;
+static int **mOpenNodes;
+static int **mDirMap;
+static int **mSquares;
 
-PathFinder::PathFinder() :
-mMapWidth(0),
-mMapHeight(0)
-{
-}
+static int mMapWidth = 0;
+static int mMapHeight = 0;
 
-PathFinder &PathFinder::getInstance()
-{
-	static PathFinder instance;
-	return  instance;
-}
+static TileMap* mTileMap;
 
 void PathFinder::load()
 {

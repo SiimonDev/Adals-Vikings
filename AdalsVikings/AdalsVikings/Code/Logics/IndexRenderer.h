@@ -42,6 +42,7 @@ class IndexRenderer
 public:
 	IndexRenderer();
 
+	void setWindow(sf::RenderWindow &window);
 	void addSprite(sf::Sprite &sprite, int index);
 	void addRectangle(sf::RectangleShape &rectangle, int index);
 	void addText(sf::Text &text, int index);

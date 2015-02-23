@@ -6,6 +6,7 @@
 #include "..\NPCs\NpcHandler.h"
 #include <SFML\Graphics.hpp>
 #include <map>
+#include <memory>
 
 #define LVLMI LevelManager::getInstance()
 
@@ -15,9 +16,14 @@ enum LevelID
 	Ship_2,
 	Beach
 };
+enum Act
+{
+	Ship,
+	Act1
+};
 
 class Level;
-typedef Level* LevelPtr;
+typedef std::unique_ptr<Level> LevelPtr;
 
 class LevelManager
 {
@@ -30,9 +36,12 @@ public:
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);
 	void changeLevel(LevelID id);
+	void setIsActive(bool value);
 
 	void loadBoatScene();
 	void loadAct1();
+
+	Act &getCurrentAct();
 
 private:
 	LevelManager();
@@ -41,9 +50,10 @@ private:
 
 	Player mPlayer;
 	ActionWheel mActionWheel;
-	Level *mCurrentLevel, *mNextLevel;
+	LevelID mCurrentID;
+	Act mCurrentAct;
 
 	std::map<LevelID, LevelPtr> mLevelMap;
-	bool mLoadedPlayer;
+	bool mLoadedPlayer, mIsActive;
 };
 

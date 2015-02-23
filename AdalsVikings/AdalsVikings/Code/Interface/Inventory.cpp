@@ -170,7 +170,7 @@ bool Inventory::addItemToInventory(std::string objectID)
 	{
 		BoatEvents::triggerEvent(BoatEvent::PickedUpBucket);
 	}
-	AudioPlayerI.playSound(Sound::PickUpItem, "pickUpItem", false);
+	AudioPlayer::playSound(Sound::PickUpItem, "pickUpItem", false);
 	for (int x = 0; x < invWidth; x++)
 	{
 		for (int y = 0; y < invHeight; y++)
@@ -259,9 +259,9 @@ void Inventory::clearInventory()
 void Inventory::toggleInventory()
 {
 	if (mDisplay)
-		AudioPlayerI.playSound(Sound::InventoryClose, "closeInv", false);
+		AudioPlayer::playSound(Sound::InventoryClose, "closeInv", false);
 	else
-		AudioPlayerI.playSound(Sound::InventoryOpen, "openInv", false);
+		AudioPlayer::playSound(Sound::InventoryOpen, "openInv", false);
 	
 	mDisplay = !mDisplay;
 }
