@@ -56,12 +56,10 @@ void Game::update(sf::Time frameTime)
 {
 	if (!LSI.getIsDone() && LSI.getIsStarted())
 	{
-		runGame = false;
 		LSI.update(frameTime);
 	}
 	else
 	{
-		runGame = true;
 		if (KeyboardState::isPressed(sf::Keyboard::F1))
 			debugMode = (!debugMode);
 

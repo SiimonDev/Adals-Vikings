@@ -125,7 +125,6 @@ void Ship_level_2::changeLevel(sf::Time &frameTime)
 	}
 	else if (BoatEvents::hasBeenHandled(BoatEvent::GivenMapToBrandr) && BoatEvents::hasBeenTriggered(BoatEvent::GivenMapToBrandr))
 	{
-		LVLMI.setIsActive(false);
 		LSI.startLoading(LoadTask::LoadAct1);
 	}
 	else if (BoatEvents::hasBeenHandled(BoatEvent::StartDialogue) && BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))

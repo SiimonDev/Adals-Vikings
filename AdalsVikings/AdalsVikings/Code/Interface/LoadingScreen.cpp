@@ -73,7 +73,7 @@ void LoadingScreen::runTask()
 			timeSinceLastUpdate -= frameTime;
 			if (mTask == LoadTask::None)
 			{
-				;
+
 			}
 			if (mTask == LoadTask::StartGame)
 			{
@@ -81,8 +81,6 @@ void LoadingScreen::runTask()
 				MHI.load(MenuID::PauseMenu);
 				LVLMI.load();
 				LVLMI.loadAct1();
-				mStart = false;
-				mFinished = true;
 			}
 			else if (mTask == LoadTask::LoadMenu)
 			{
@@ -99,8 +97,6 @@ void LoadingScreen::runTask()
 				/* ==================================== */
 
 				MHI.load(MenuID::MainMenu);
-				mStart = false;
-				mFinished = true;
 			}
 			else if (mTask == LoadTask::LoadAct1)
 			{
@@ -117,6 +113,9 @@ void LoadingScreen::runTask()
 				LVLMI.setIsActive(true);*/
 			}
 			mTask = LoadTask::None;
+
+			mStart = false;
+			mFinished = true;
 		}
 	}
 }
