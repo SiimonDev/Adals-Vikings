@@ -25,7 +25,7 @@ LevelManager::LevelManager()
 
 void LevelManager::load()
 {
-	NpcHandler::initialize();
+	NpcHandler::load();
 	DialogWindow::load();
 	DialogWindow::setTextSize(30);
 	DialogWindow::setTextStyle(sf::Text::Bold);
@@ -48,9 +48,7 @@ void LevelManager::unload()
 void LevelManager::unloadCurrentAct()
 {
 	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
-	{
 		it->second->unload();
-	}
 	mLevelMap.clear();
 	AudioPlayer::unload();
 	PortalLoader::unload();
@@ -85,7 +83,7 @@ void LevelManager::changeLevel(LevelID id)
 void LevelManager::loadBoatScene()
 {
 	mCurrentAct = Ship;
-	PortalLoader::initialize();
+	PortalLoader::load();
 	BoatEvents::initialize();
 	if (mLevelMap.size() != 0)
 		unloadCurrentAct();
@@ -104,8 +102,8 @@ void LevelManager::loadBoatScene()
 
 void LevelManager::loadAct1()
 {
+	PortalLoader::load();
 	mCurrentAct = Act1;
-	PortalLoader::initialize();
 	// If there are still maps loaded then unload them
 	if (mLevelMap.size() != 0)
 		unloadCurrentAct();
