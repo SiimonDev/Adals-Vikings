@@ -36,7 +36,6 @@ public:
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);
 	void changeLevel(LevelID id);
-	void setIsActive(bool value);
 
 	void loadBoatScene();
 	void loadAct1();
@@ -54,6 +53,6 @@ private:
 	Act mCurrentAct;
 
 	std::map<LevelID, LevelPtr> mLevelMap;
-	bool mLoadedPlayer, mIsActive;
+	bool mLoadedPlayer;
 };
 

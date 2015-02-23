@@ -20,7 +20,6 @@ LevelManager &LevelManager::getInstance()
 
 LevelManager::LevelManager()
 : mLoadedPlayer(false)
-, mIsActive(false)
 {
 }
 
@@ -59,20 +58,14 @@ void LevelManager::unloadCurrentAct()
 
 void LevelManager::update(sf::Time &frametime)
 {
-	if (mIsActive)
-	{
-		mLevelMap[mCurrentID]->update(frametime);
-		DialogWindow::update(frametime);
-	}
+	mLevelMap[mCurrentID]->update(frametime);
+	DialogWindow::update(frametime);
 }
 
 void LevelManager::render(IndexRenderer &iRenderer)
 {
-	if (mIsActive)
-	{
-		mLevelMap[mCurrentID]->render(iRenderer);
-		DialogWindow::render(iRenderer);
-	}
+	mLevelMap[mCurrentID]->render(iRenderer);
+	DialogWindow::render(iRenderer);
 }
 
 void LevelManager::changeLevel(LevelID id)
@@ -126,11 +119,6 @@ void LevelManager::loadAct1()
 	}
 	mCurrentID = Beach;
 	PathFinder::setTileMap(mLevelMap[mCurrentID]->getTileMap());
-}
-
-void LevelManager::setIsActive(bool value)
-{
-	mIsActive = value;
 }
 
 Act & LevelManager::getCurrentAct()

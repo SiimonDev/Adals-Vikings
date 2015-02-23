@@ -77,19 +77,15 @@ void LoadingScreen::runTask()
 			}
 			if (mTask == LoadTask::StartGame)
 			{
-				//std::cout << "HELLO" << std::endl;
-				LVLMI.setIsActive(false);
 				MHI.unload(MenuID::MainMenu);
 				MHI.load(MenuID::PauseMenu);
 				LVLMI.load();
 				LVLMI.loadAct1();
-				LVLMI.setIsActive(true);
 				mStart = false;
 				mFinished = true;
 			}
 			else if (mTask == LoadTask::LoadMenu)
 			{
-				LVLMI.setIsActive(false);
 				LVLMI.unload();
 				LVLMI.unloadCurrentAct();
 				MHI.unload(MenuID::PauseMenu);
