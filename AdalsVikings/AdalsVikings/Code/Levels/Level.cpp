@@ -318,9 +318,9 @@ void Level::loadAllBackgrounds(std::string filepath)
 	// Load all the backgrounds
 	RMI.load(mLevelID, filepath);
 
-	for (int i = 0; i < RMI.getFolder(mLevelID).size(); i++)
+	for (int i = 0; i < RMI.getTextureFolder(mLevelID).size(); i++)
 	{
-		mBackgrounds.push_back(sf::Sprite(*RMI.getFolder(mLevelID).at(i)));
+		mBackgrounds.push_back(sf::Sprite(*RMI.getTextureFolder(mLevelID).at(i)));
 		mBackgroundsIndexes.push_back(i * 10);
 	}
 }

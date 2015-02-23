@@ -18,7 +18,7 @@ Ship_level_2::Ship_level_2(Player &player, ActionWheel &actionWheel)
 	mFolderPath = "Assets/MapFiles/Ship2/";
 	mFadeRectangle.setSize(sf::Vector2f(1920, 1080));
 	mFadeRectangle.setFillColor(sf::Color(0, 0, 0, mAlpha));
-	mLevelID = Folder::ShipLevel2;
+	mLevelID = TextureFolder::ShipLevel2;
 }
 
 void Ship_level_2::update(sf::Time &frametime)

@@ -61,7 +61,7 @@ protected:
 	std::string mTileMapFilePath;
 	std::string mIndexMapFilePath;
 
-	Folder::ID mLevelID;
+	TextureFolder::ID mLevelID;
 
 	int mObjIndex;
 

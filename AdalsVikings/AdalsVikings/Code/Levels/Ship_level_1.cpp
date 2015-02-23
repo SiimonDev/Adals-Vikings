@@ -14,7 +14,7 @@ Ship_level_1::Ship_level_1(Player &player, ActionWheel &actionWheel)
 	, mBrynjaConv(false)
 {
 	mFolderPath = "Assets/MapFiles/Ship1/";
-	mLevelID = Folder::ShipLevel1;
+	mLevelID = TextureFolder::ShipLevel1;
 }
 void Ship_level_1::update(sf::Time &frametime)
 {

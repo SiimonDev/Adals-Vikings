@@ -92,7 +92,7 @@ void LoadingScreen::runTask()
 				RMI.truncateTextures();
 				RMI.truncateImages();
 				RMI.truncateSounds();
-				RMI.truncateFolders();
+				RMI.truncateTextureFolders();
 				RMI.truncateFonts();
 				/* ==================================== */
 
