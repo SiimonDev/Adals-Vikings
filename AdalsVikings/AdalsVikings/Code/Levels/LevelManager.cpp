@@ -10,12 +10,8 @@
 
 LevelManager &LevelManager::getInstance()
 {
-	static LevelManager* instance;
-
-	if (instance == NULL)
-		instance = new LevelManager();
-
-	return *instance;
+	static LevelManager instance;
+	return instance;
 }
 
 LevelManager::LevelManager()
@@ -36,7 +32,7 @@ void LevelManager::load()
 	mPlayer.setPosition(sf::Vector2f(1400, 750));
 	mActionWheel.load();
 	
-	loadAct1();
+	loadBoatScene();
 }
 
 void LevelManager::unload()
@@ -57,7 +53,7 @@ void LevelManager::unloadCurrentAct()
 		it->second->unload();
 	mLevelMap.clear();
 
-	AudioPlayer::unload();
+	AudioPlayerI.unload();
 }
 
 void LevelManager::update(sf::Time &frametime)

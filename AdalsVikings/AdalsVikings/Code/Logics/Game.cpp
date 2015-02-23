@@ -56,7 +56,7 @@ void Game::update(sf::Time frameTime)
 		LSI.update(frameTime);
 	else
 	{
-		AudioPlayer::update(frameTime);
+		AudioPlayerI.update(frameTime);
 		KeyboardState::update(frameTime);
 		MouseState::update(frameTime);
 
@@ -157,5 +157,5 @@ void Game::run()
 		}
 		render();
 	}
-	AudioPlayer::unload();
+	AudioPlayerI.unload();
 }

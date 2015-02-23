@@ -3,12 +3,8 @@
 
 MenuHandler &MenuHandler::getInstance()
 {
-	static MenuHandler* instance;
-
-	if (instance == NULL)
-		instance = new MenuHandler();
-
-	return *instance;
+	static MenuHandler instance;
+	return instance;
 }
 
 MenuHandler::MenuHandler()

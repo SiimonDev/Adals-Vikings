@@ -1,6 +1,5 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include "..\Logics\ParallelLoader.h"
 #include "..\Logics\IndexRenderer.h"
 #include "..\Interface\Menus\MenuHandler.h"
 

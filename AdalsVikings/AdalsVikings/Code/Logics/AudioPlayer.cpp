@@ -1,17 +1,17 @@
 #include "AudioPlayer.h"
 #include <iostream>
 
-static std::map<std::string, sf::Sound*> mSounds;
-static std::map<std::string, sf::Music*> mMusic;
-static bool mMute = false;
-
-// 0.0 - 1.0
-static double masterSoundScale = 1.0;
-static double soundEffectsScale = 0.5;
-static double musicScale = 0.0;
+AudioPlayer &AudioPlayer::getInstance()
+{
+	static AudioPlayer instance;
+	return instance;
+}
 
 AudioPlayer::AudioPlayer()
 {
+	masterSoundScale = 1.0;
+	soundEffectsScale = 0.5;
+	musicScale = 0.7;
 }
 
 void AudioPlayer::playSound(Sound::ID id, std::string audioID, bool loop, float volume)

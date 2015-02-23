@@ -16,7 +16,7 @@ void MainMenuPanel::load()
 	RMI.load(Textures::MainMenuQuitButton, "assets/images/interface/MainMenu/button_quit.png");
 	RMI.load(Textures::MainMenuBackground, "assets/images/Interface/MainMenu/menu_background.png");
 	RMI.load(Textures::AxeAnimation, "assets/images/Interface/MainMenu/flying_axe.png");
-	AudioPlayer::playMusic("assets/sounds/music/Theme3.ogg", "mainMenu", true, 20);
+	AudioPlayerI.playMusic("assets/sounds/music/Theme3.ogg", "mainMenu", true, 20);
 
 	mBackground.setTexture(RMI.getTexture(Textures::MainMenuBackground));
 
@@ -67,7 +67,7 @@ void MainMenuPanel::unload()
 	RMI.unload(Textures::MainMenuQuitButton);
 	RMI.unload(Textures::MainMenuBackground);
 	RMI.unload(Textures::AxeAnimation);
-	AudioPlayer::stopMusic("mainMenu");
+	AudioPlayerI.stopMusic("mainMenu");
 }
 
 void MainMenuPanel::update(sf::Time frameTime)

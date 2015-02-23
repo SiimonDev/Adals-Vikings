@@ -14,12 +14,8 @@ LoadingScreen::LoadingScreen()
 
 LoadingScreen & LoadingScreen::getInstance()
 {
-	static LoadingScreen* instance;
-
-	if (instance == NULL)
-		instance = new LoadingScreen();
-
-	return *instance;
+	static LoadingScreen instance;
+	return instance;
 }
 
 void LoadingScreen::render(IndexRenderer &iRenderer)

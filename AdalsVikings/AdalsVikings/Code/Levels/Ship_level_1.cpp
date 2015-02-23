@@ -164,8 +164,8 @@ void Ship_level_1::load()
 	mTileMap.addCollision(mNpcs["Alfr"]->getCollisionRect());
 
 	RMI.load(Sound::BoatAmbient, "assets/sounds/Boat.wav");
-	AudioPlayer::playSound(Sound::BoatAmbient, "boatAmbient", true);
-	AudioPlayer::playMusic("assets/sounds/music/Theme2.ogg", "boat1", true, 20);
+	AudioPlayerI.playSound(Sound::BoatAmbient, "boatAmbient", true);
+	AudioPlayerI.playMusic("assets/sounds/music/Theme2.ogg", "boat1", true, 20);
 }
 
 void Ship_level_1::unload()

@@ -19,12 +19,8 @@ mMapHeight(0)
 
 PathFinder &PathFinder::getInstance()
 {
-	static PathFinder* instance;
-
-	if (instance == NULL)
-		instance = new PathFinder();
-
-	return *instance;
+	static PathFinder instance;
+	return  instance;
 }
 
 void PathFinder::load()

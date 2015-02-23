@@ -107,9 +107,6 @@
     <ClCompile Include="Code\Interface\LoadingScreen.cpp">
       <Filter>Source Files\Interface</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Logics\ParallelLoader.cpp">
-      <Filter>Source Files\Logics</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Logics\WindowState.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
@@ -237,9 +234,6 @@
     </ClInclude>
     <ClInclude Include="Code\Interface\LoadingScreen.h">
       <Filter>Header Files\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Logics\ParallelLoader.h">
-      <Filter>Header Files\Logics</Filter>
     </ClInclude>
     <ClInclude Include="Code\Logics\WindowState.h">
       <Filter>Header Files\Logics</Filter>

@@ -6,12 +6,8 @@ WindowState::WindowState()
 
 WindowState &WindowState::getInstance()
 {
-	static WindowState* instance;
-
-	if (instance == NULL)
-		instance = new WindowState();
-
-	return *instance;
+	static WindowState instance;
+	return instance;
 }
 
 void WindowState::initialize(sf::RenderWindow &window)

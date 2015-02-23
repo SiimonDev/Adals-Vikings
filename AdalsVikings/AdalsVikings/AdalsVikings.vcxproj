@@ -40,7 +40,6 @@
     <ClCompile Include="Code\Logics\KeyboardState.cpp" />
     <ClCompile Include="Code\Levels\LevelManager.cpp" />
     <ClCompile Include="Code\Logics\MouseState.cpp" />
-    <ClCompile Include="Code\Logics\ParallelLoader.cpp" />
     <ClCompile Include="Code\Logics\PathFinder.cpp" />
     <ClCompile Include="Code\Logics\ResourceManager.cpp" />
     <ClCompile Include="Code\Logics\WindowState.cpp" />
@@ -84,7 +83,6 @@
     <ClInclude Include="Code\Levels\LevelManager.h" />
     <ClInclude Include="Code\Logics\MouseState.h" />
     <ClInclude Include="Code\Logics\Node.h" />
-    <ClInclude Include="Code\Logics\ParallelLoader.h" />
     <ClInclude Include="Code\Logics\PathFinder.h" />
     <ClInclude Include="Code\Logics\ResourceManager.h" />
     <ClInclude Include="Code\Logics\WindowState.h" />
