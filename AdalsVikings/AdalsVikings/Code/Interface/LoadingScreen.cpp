@@ -104,10 +104,10 @@ void LoadingScreen::runTask()
 			}
 			else if (mTask == LoadTask::LoadAct1)
 			{
-				/*LVLMI.setIsActive(false);
 				LVLMI.unloadCurrentAct();
 				LVLMI.loadAct1();
-				LVLMI.setIsActive(true);*/
+				mStart = false;
+				mFinished = true;
 			}
 			else if (mTask == LoadTask::LoadTest)
 			{

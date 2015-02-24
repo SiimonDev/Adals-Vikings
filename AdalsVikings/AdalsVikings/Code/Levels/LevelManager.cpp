@@ -106,6 +106,7 @@ void LevelManager::loadAct1()
 {
 	mCurrentAct = Act1;
 	PortalLoader::initialize();
+	Act1Events::initialize();
 	// If there are still maps loaded then unload them
 	if (mLevelMap.size() != 0)
 		unloadCurrentAct();

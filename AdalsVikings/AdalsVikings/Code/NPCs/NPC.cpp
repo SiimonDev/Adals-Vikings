@@ -11,7 +11,7 @@ Npc::Npc()
 
 void Npc::render(IndexRenderer &iRenderer)
 {
-	mNpcAnimation.getSprite().setOrigin(sf::Vector2f(mSize.x / 2, mSize.y / 2));
+	mNpcAnimation.getSprite().setOrigin(sf::Vector2f(mSize.x / 2, mSize.y));
 	mNpcAnimation.setScaleFromHeight(mProportions.y * mScale.y);
 	mNpcAnimation.setPosition(mPosition);
 	mNpcAnimation.render(iRenderer);
@@ -54,11 +54,14 @@ bool Npc::getActiveConversation()
 
 bool Npc::isInside(sf::Vector2i &pos)
 {
-	return 
-		(mPosition.x - mNpcAnimation.getSprite().getGlobalBounds().width / 2 <= pos.x  &&
+	std::cout << "Mouse Position y: " << pos.y << std::endl;
+	std::cout << "IDK Top Position y?: " << mPosition.y - mSize.y << std::endl;
+	std::cout << "IDK Bottom Position y?: " << mPosition.y + mSize.y << std::endl;
+	return
+		(pos.x >= mPosition.x - mNpcAnimation.getSprite().getGlobalBounds().width / 2 &&
 		pos.x <= mPosition.x + mNpcAnimation.getSprite().getGlobalBounds().width / 2 &&
-		mPosition.y - mNpcAnimation.getSprite().getGlobalBounds().height / 2 <= pos.y &&
-		pos.y <=  mPosition.y + mNpcAnimation.getSprite().getGlobalBounds().height / 2);
+		pos.y >= mPosition.y - mNpcAnimation.getSprite().getGlobalBounds().height &&
+		pos.y <= mPosition.y);
 }
 
 std::string & Npc::getUseText()
@@ -192,4 +195,9 @@ std::string Npc::getDialogueString()
 {
 	std::string string = DialogHandler::getDialogue(mDialogue).getPrintText().getString();
 	return string;
+}
+
+void Npc::UpdateAnimation()
+{
+	mAnimation = AnimationState::Update;
 }

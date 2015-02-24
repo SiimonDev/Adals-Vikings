@@ -32,6 +32,7 @@
     <ClCompile Include="Code\Levels\Ship_level_1.cpp" />
     <ClCompile Include="Code\Levels\Ship_level_2.cpp" />
     <ClCompile Include="Code\Levels\TileMap.cpp" />
+    <ClCompile Include="Code\Logics\Act1Events.cpp" />
     <ClCompile Include="Code\Logics\BoatEvents.cpp" />
     <ClCompile Include="Code\Logics\Animation.cpp" />
     <ClCompile Include="Code\Logics\AudioPlayer.cpp" />
@@ -76,6 +77,7 @@
     <ClInclude Include="Code\Levels\Ship_level_1.h" />
     <ClInclude Include="Code\Levels\Ship_level_2.h" />
     <ClInclude Include="Code\Levels\TileMap.h" />
+    <ClInclude Include="Code\Logics\Act1Events.h" />
     <ClInclude Include="Code\Logics\BoatEvents.h" />
     <ClInclude Include="Code\Logics\Animation.h" />
     <ClInclude Include="Code\Logics\AudioPlayer.h" />

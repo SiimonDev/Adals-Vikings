@@ -2,43 +2,43 @@
 <conversation>
 	<useText useText="I Really can't pick her up... Too heavy." />
 	<lookText lookText="Looks like Brynja is sleeping tight." />
-	<text character="Ulfr" default="false" disabled="true" say="I found the map. " timer="1.3" />
-	<text character="Brandr" default="false" disabled="true" say="Well, give it to me!" timer="1.6" />
-	<text character="Brandr" default="false" disabled="true" say="Now let's see..." timer="1.6" />
+	<text character="Ulfr" default="false" disabled="true" say="I found the map. " timer="1.7" />
+	<text character="Brandr" default="false" disabled="true" say="Well, give it to me!" timer="2.0" />
+	<text character="Brandr" default="false" disabled="true" say="Now let's see..." timer="2.2" />
 	<text character="Brandr" default="false" disabled="true" say="YNGVARR!" timer="1.6" />
-	<text character="Yngvarr" default="false" disabled="true" say="Yes Brandr?" timer="1.6" />
-	<text character="Brandr" default="false" disabled="true" say="Look at this, what do you see?" timer="1.6" />
+	<text character="Yngvarr" default="false" disabled="true" say="Yes Brandr?" timer="2.0" />
+	<text character="Brandr" default="false" disabled="true" say="Look at this, what do you see?" timer="2.6" />
 	<text character="Yngvarr" default="false" disabled="true" say="I-" timer="1.2" />
 	<text character="Yngvarr" default="false" disabled="true" say="Uh..." timer="1.3" />
 	<text character="Yngvarr" default="false" disabled="true" say="I see..." timer="1.4" />
-	<text character="Yngvarr" default="false" disabled="true" say="I see two lines?" timer="1.6" />
-	<text character="Yngvarr" default="false" disabled="true" say="Two lines and an arrow!" timer="1.6" />
+	<text character="Yngvarr" default="false" disabled="true" say="I see two lines?" timer="1.8" />
+	<text character="Yngvarr" default="false" disabled="true" say="Two lines and an arrow!" timer="2.0" />
 	<text character="Brandr" default="false" disabled="true" say="You fool! " timer="1.6" />
-	<text character="Brandr" default="false" disabled="true" say="These are no lines!" timer="1.6" />
-	<text character="Brandr" default="false" disabled="true" say="These are two coasts!" timer="1.6" />
-	<text character="Brandr" default="false" disabled="true" say="One of my father and one of the Angle!" timer="1.7" />
+	<text character="Brandr" default="false" disabled="true" say="These are no lines!" timer="2.2" />
+	<text character="Brandr" default="false" disabled="true" say="These are two coasts!" timer="2.4" />
+	<text character="Brandr" default="false" disabled="true" say="One of my father and one of the Angle!" timer="3.0" />
 	<text character="Ulfr" default="false" disabled="true" say="And an arrow in between." timer="1.3" />
-	<text character="Brandr" default="false" disabled="true" say="You shut your face." timer="1.7" />
-	<text character="Brandr" default="false" disabled="true" say="I will lead this vessel to its destination." timer="1.7" />
-	<text character="Brandr" default="false" disabled="true" say="Even if it's the last thing i'll ever do!" timer="2.2" />
+	<text character="Brandr" default="false" disabled="true" say="You shut your face." timer="1.8" />
+	<text character="Brandr" default="false" disabled="true" say="I will lead this vessel to its destination." timer="2.6" />
+	<text character="Brandr" default="false" disabled="true" say="Even if it's the last thing i'll ever do!" timer="2.7" />
 	<text character="Brandr" default="false" disabled="true" say="Now let's see..." timer="1.7" />
 	<text character="Brandr" default="false" disabled="true" say="..." timer="1.7" />
-	<text character="Ulfr" default="false" disabled="true" say="Maybe it is upside down?" timer="1.3" />
+	<text character="Ulfr" default="false" disabled="true" say="Maybe it is upside down?" timer="1.8" />
 	<text character="Brandr" default="false" disabled="true" say="Uh..." timer="1.7" />
 	<text character="Brandr" default="false" disabled="true" say="..." timer="1.7" />
-	<text character="Brandr" default="false" disabled="true" say="WHAT did i JUST tell you!?" timer="1.7" />
+	<text character="Brandr" default="false" disabled="true" say="WHAT did i JUST tell you!?" timer="2.0" />
 	<text character="Brandr" default="false" disabled="true" say="You maggot!" timer="1.7" />
 	<text character="Brandr" default="false" disabled="true" say="YOU WORM!" timer="1.7" />
 	<text character="Ulfr" default="false" disabled="true" say="Rather a worm than a-" timer="1.0" />
 	<text character="Brandr" default="false" disabled="true" say="SHUT UP." timer="1.7" />
-	<text character="Brandr" default="false" disabled="true" say="I am the leader of this raid!" timer="1.7" />
-	<text character="Brandr" default="false" disabled="true" say="My father chose ME to lead us to victory!" timer="1.7" />
-	<text character="Brandr" default="false" disabled="true" say="And so i shall!" timer="1.7" />
+	<text character="Brandr" default="false" disabled="true" say="I am the leader of this raid!" timer="2.2" />
+	<text character="Brandr" default="false" disabled="true" say="My father chose ME to lead us to victory!" timer="3.0" />
+	<text character="Brandr" default="false" disabled="true" say="And so i shall!" timer="2.2" />
 	<text character="Yngvarr" default="false" disabled="true" say="Um... Brandr-" timer="1.2" />
-	<text character="Brandr" default="false" disabled="true" say="Don't dare to question me, Ulfr, or I'll have you thrown in the waters!" timer="1.7" />
-	<text character="Brandr" default="false" disabled="true" say="Or maybe you want to swim to shore?!" timer="1.7" />
+	<text character="Brandr" default="false" disabled="true" say="Don't dare to question me, Ulfr, or I'll have you thrown in the waters!" timer="3.5" />
+	<text character="Brandr" default="false" disabled="true" say="Or maybe you want to swim to shore?!" timer="2.8" />
 	<text character="Ulfr" default="false" disabled="true" say="Uh, Brandr." timer="1.0" />
-	<text character="Ulfr" default="false" disabled="true" say="I doubt i'd have to. " timer="1.0" />
+	<text character="Ulfr" default="false" disabled="true" say="I doubt i'd have to. " timer="1.4" />
 	<text character="Brandr" default="false" disabled="true" say="Is that?" timer="1.4" />
 	<stopConversation />
 </conversation>

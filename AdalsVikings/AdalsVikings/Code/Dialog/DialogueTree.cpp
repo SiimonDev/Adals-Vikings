@@ -8,6 +8,7 @@
 #include <sstream>
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\KeyboardState.h"
+#include "..\Logics\WindowState.h"
 
 
 DialogueTree::DialogueTree()
@@ -137,7 +138,8 @@ void DialogueTree::startDialogue()
 				std::string tmpStr2 = mNode.attribute("say").as_string();
 				mPrintText.setString(as_utf8(mNode.attribute("say").as_string()));
 
-				if (mPrintText.getGlobalBounds().left + mPrintText.getGlobalBounds().width > 1920)
+				if (mPrintText.getGlobalBounds().left + mPrintText.getGlobalBounds().width > (CurrentWindow.getView().getCenter().x + CurrentWindow.getView().getSize().x / 2) ||
+					mPrintText.getGlobalBounds().left < (CurrentWindow.getView().getCenter().x - CurrentWindow.getView().getSize().x / 2))
 				{
 					int index = 0;
 					int cnt = 0;
@@ -147,15 +149,19 @@ void DialogueTree::startDialogue()
 						if (isspace(tmpStr[i]))
 							cnt++;
 					}
-					if (cnt <= 5)
+					if (cnt <= 6)
 					{
 						for (int i = 0; i < cnt - 2; i++)
 							index = tmpStr.find_first_of(' ', index + 1);
+						if (index != 0)
+							index += 1;
 					}
 					else
 					{
 						for (int i = 0; i < cnt / 2; i++)
 							index = tmpStr.find_first_of(' ', index + 1);
+						if (index != 0)
+							index += 1;
 					}
 					size_t found = tmpStr2.find(tmpStr.substr(index));
 					if (found != std::string::npos)
@@ -371,7 +377,8 @@ void DialogueTree::startConverstation()
 				std::string tmpStr = mNode.attribute("say").as_string();
 				std::string tmpStr2 = mNode.attribute("say").as_string();
 				mPrintText.setString(as_utf8(mNode.attribute("say").as_string()));
-				if (mPrintText.getGlobalBounds().left + mPrintText.getGlobalBounds().width > 1920)
+				if (mPrintText.getGlobalBounds().left + mPrintText.getGlobalBounds().width > (CurrentWindow.getView().getCenter().x + CurrentWindow.getView().getSize().x / 2) ||
+					mPrintText.getGlobalBounds().left < (CurrentWindow.getView().getCenter().x - CurrentWindow.getView().getSize().x / 2))
 				{
 					int index = 0;
 					int cnt = 0;
@@ -381,15 +388,19 @@ void DialogueTree::startConverstation()
 						if (isspace(tmpStr[i]))
 							cnt++;
 					}
-					if (cnt <= 5)
+					if (cnt <= 6)
 					{
 						for (int i = 0; i < cnt - 2; i++)
 							index = tmpStr.find_first_of(' ', index + 1);
+						if (index != 0)
+							index += 1;
 					}
 					else
 					{
 						for (int i = 0; i < cnt / 2; i++)
 							index = tmpStr.find_first_of(' ', index + 1);
+						if (index != 0)
+							index += 1;
 					}
 					size_t found = tmpStr2.find(tmpStr.substr(index));
 					if (found != std::string::npos)

@@ -10,7 +10,8 @@ namespace AnimationState
 	{
 		Idle,
 		Talking,
-		PlayerTalking
+		PlayerTalking,
+		Update
 	};
 }
 class Npc
@@ -38,6 +39,7 @@ public:
 	void setColor(sf::Color color);
 	void setDialogue(std::string dialogue);
 	void setInteractionPosition(sf::Vector2f &interactpos);
+	void UpdateAnimation();
 
 	bool isInside(sf::Vector2i &pos);
 	bool getActiveConversation();
@@ -69,6 +71,6 @@ private:
 	AnimationState::ID mAnimation;
 	sf::Color mColor;
 
-	bool mFlip;
+	bool mFlip, mUpdateAnimation;
 };
 

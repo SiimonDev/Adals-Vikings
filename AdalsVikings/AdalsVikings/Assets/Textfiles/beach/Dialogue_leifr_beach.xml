@@ -12,7 +12,7 @@
 	<text character="Ulfr" say="We're not going to stay too long, are we?" timer="3.3" turned="false"></text>
 	<text character="Leifr" say="Not to my knowledge, no." timer="3" turned="true"></text>
 	<text timer="2.2"></text>
-	<text character="Ulfr" say="... Where do you think it is then?" timer="3.3" turned="true"></text>
+	<text character="Ulfr" say="... Where do you think it is then?" timer="3.3" turned="false"></text>
 	<text character="Leifr" say="The gold?" timer="1.8" turned="true"></text>
 	<text character="Leifr" say="I would guess in that big tall fortress by the sea." timer="3.3" turned="true"></text>
 	<text character="Leifr" timer="5" turned="true" say="Though it’ll probably take one hell of a feat to attack something like that."></text>
