@@ -328,6 +328,7 @@ float & Player::getCurrentAlpha()
 void Player::setFlip(bool value)
 {
 	mFlip = value;
+	mPlayerAnimation.flip(mFlip);
 }
 
 void Player::setFootsteps(SoundFolder::ID footsteps)

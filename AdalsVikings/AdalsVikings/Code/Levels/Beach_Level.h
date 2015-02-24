@@ -5,6 +5,7 @@
 class Beach_level : public Level
 {
 public:
+	//General Functions
 	Beach_level(Player &player, ActionWheel &actionWheel);
 
 	void update(sf::Time &frametime);
@@ -13,6 +14,9 @@ public:
 	void unload();
 	void changeLevel();
 	void checkInteractEvents();
+	void checkEvents();
+
+	//specific Functions
 	void introCutscene(sf::Time &frameTime);
 	void talkToNpcs();
 	void endingCutscene(sf::Time &frameTime);

@@ -36,6 +36,7 @@ void Beach_level::render(IndexRenderer &iRenderer)
 
 void Beach_level::load()
 {
+	mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro) && !Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
 	{
 		mCutSceneView.setCenter(1920 / 2 - 450, 1080 / 2 + 270);
@@ -138,6 +139,7 @@ void Beach_level::load()
 		mTileMap.addCollision(mNpcs["Yngvarr"]->getCollisionRect());
 
 		// Add Index from every NPC to the map
+		mTileMap.setIndexOnMap(mNpcs["Brandr"]->getIndexRect(), mNpcs["Brandr"]->getIndex() - 1);
 		mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
 		mTileMap.setIndexOnMap(mNpcs["Leifr"]->getIndexRect(), mNpcs["Leifr"]->getIndex() - 1);
 		mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 1);
@@ -163,8 +165,16 @@ void Beach_level::unload()
 
 void Beach_level::changeLevel()
 {
+	if (mPortals[BeachToRoad]->getActivated())
+	{
+		LVLMI.changeLevel(Road);
+	}
 }
 void Beach_level::checkInteractEvents()
+{
+
+}
+void Beach_level::checkEvents()
 {
 
 }
@@ -234,49 +244,55 @@ void Beach_level::endingCutscene(sf::Time &frameTime)
 
 				mNpcs["Brynja"]->setRightWay(true);
 				mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
-				mNpcs["Brynja"]->setPosition(sf::Vector2f(580, 600));
+				mNpcs["Brynja"]->setPosition(sf::Vector2f(580, 760));
 				mNpcs["Brynja"]->setIndex(4);
 				mNpcs["Brynja"]->UpdateAnimation();
 
 				mNpcs["Brandr"]->setRightWay(true);
 				mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
-				mNpcs["Brandr"]->setPosition(sf::Vector2f(600, 620));
+				mNpcs["Brandr"]->setPosition(sf::Vector2f(600, 800));
 				mNpcs["Brandr"]->setIndex(5);
 				mNpcs["Brandr"]->UpdateAnimation();
 
 				mNpcs["Valdis"]->setRightWay(false);
-				mNpcs["Valdis"]->setPosition(sf::Vector2f(700, 550));
-				mNpcs["Valdis"]->setIndex(4);
+				mNpcs["Valdis"]->setPosition(sf::Vector2f(700, 680));
+				mNpcs["Valdis"]->setIndex(3);
 				mNpcs["Valdis"]->UpdateAnimation();
 
 				mNpcs["Finnr"]->setRightWay(false);
-				mNpcs["Finnr"]->setPosition(sf::Vector2f(720, 580));
-				mNpcs["Finnr"]->setIndex(5);
+				mNpcs["Finnr"]->setPosition(sf::Vector2f(720, 720));
+				mNpcs["Finnr"]->setIndex(4);
 				mNpcs["Finnr"]->UpdateAnimation();
 
 				mNpcs["Leifr"]->setRightWay(false);
-				mNpcs["Leifr"]->setPosition(sf::Vector2f(740, 610));
-				mNpcs["Leifr"]->setIndex(6);
+				mNpcs["Leifr"]->setPosition(sf::Vector2f(740, 760));
+				mNpcs["Leifr"]->setIndex(5);
 				mNpcs["Leifr"]->UpdateAnimation();
 
 				mNpcs["Alfr"]->setRightWay(false);
-				mNpcs["Alfr"]->setPosition(sf::Vector2f(740, 670));
-				mNpcs["Alfr"]->setIndex(8);
+				mNpcs["Alfr"]->setPosition(sf::Vector2f(740, 840));
+				mNpcs["Alfr"]->setIndex(7);
 				mNpcs["Alfr"]->UpdateAnimation();
 
 				mNpcs["Yngvarr"]->setRightWay(false);
-				mNpcs["Yngvarr"]->setPosition(sf::Vector2f(720, 700));
-				mNpcs["Yngvarr"]->setIndex(9);
+				mNpcs["Yngvarr"]->setPosition(sf::Vector2f(720, 880));
+				mNpcs["Yngvarr"]->setIndex(8);
 				mNpcs["Yngvarr"]->UpdateAnimation();
 
 				mNpcs["Dagny"]->setRightWay(false);
-				mNpcs["Dagny"]->setPosition(sf::Vector2f(700, 730));
-				mNpcs["Dagny"]->setIndex(10);
+				mNpcs["Dagny"]->setPosition(sf::Vector2f(700, 920));
+				mNpcs["Dagny"]->setIndex(9);
 				mNpcs["Dagny"]->UpdateAnimation();
 
-				mPlayer.setPosition(sf::Vector2f(790, 720));
+				mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
+				mTileMap.setIndexOnMap(mNpcs["Leifr"]->getIndexRect(), mNpcs["Leifr"]->getIndex() - 1);
+				mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 1);
+				mTileMap.setIndexOnMap(mNpcs["Dagny"]->getIndexRect(), mNpcs["Dagny"]->getIndex() - 1);
+				mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 1);
+				mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 1);
+
+				mPlayer.setPosition(sf::Vector2f(760, 800));
 				mPlayer.setFlip(false);
-				mPlayer.setIndex(7);
 				mPlayer.setAnimationStyle(AnimationType::Idle);
 
 				for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)

@@ -6,11 +6,12 @@ typedef std::unique_ptr<Portal> PortalPtr;
 
 enum PortalId
 {
-	Portal1,
-	Portal2,
-	Portal3,
-	durr,
-	PortalToBoat
+	Ship1ToShip2,
+	Ship2ToShip1,
+	BeachToRoad,
+	BeachToBeachHill,
+	BeachToHill,
+	RoadToBeach
 };
 class PortalLoader
 {

@@ -31,6 +31,7 @@ namespace TextureFolder
 		ShipLevel1,
 		ShipLevel2,
 		BeachLevel,
+		RoadLevel.
 		SIZE
 	};
 };

@@ -201,14 +201,25 @@ void Level::updateDialog(sf::Time frameTime)
 					it->second->setTextColor(iz->second->getColor());
 					//it->second->enableDraw(true);
 				}
+				else if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() == "")
+				{
+					iz->second->setRightWay(it->second->getFacing());
+					iz->second->setAnimationStyle("Idle");
+				}
 				else if (it->second->getCharacter() == mPlayer.getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
 				{
+					mPlayer.setFlip(it->second->getFacing());
 					mPlayer.setAnimationStyle(AnimationType::TalkToPlayer);
 					iz->second->setAnimationStyle("Idle");
 					it->second->setTextPosition(sf::Vector2f(mPlayer.getSprite().getGlobalBounds().left +
 						mPlayer.getSprite().getGlobalBounds().width / 2,
 						mPlayer.getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
 					it->second->setTextColor(sf::Color::White);
+				}
+				else if (it->second->getCharacter() == mPlayer.getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() == "")
+				{
+					mPlayer.setFlip(it->second->getFacing());
+					mPlayer.setAnimationStyle(AnimationType::Idle);
 				}
 				else if (it->second->getCharacter() == mPlayer.getName() && !it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
 				{
@@ -221,7 +232,7 @@ void Level::updateDialog(sf::Time frameTime)
 					it->second->setTextColor(sf::Color::White);
 					//it->second->enableDraw(true);
 				}
-				else if (it->second->getCharacter() != iz->second->getName() || it->second->getPrintText().getString() == "")
+				else if (it->second->getCharacter() != iz->second->getName() && it->second->getCharacter() != mPlayer.getName())
 				{
 					iz->second->setAnimationStyle("Idle");
 					mPlayer.setAnimationStyle(AnimationType::Idle);
