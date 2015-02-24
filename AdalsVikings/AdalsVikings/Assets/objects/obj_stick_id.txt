@@ -2,9 +2,9 @@
 *ID: $stick$
 *Name: stick
 *ispickupable: True
-*pickup: "This might come in handy" ~2,0
-*lookat: "That's nice..." ~1,5
-*deny: "I can't do that" ~1,5
+*pickup: "An Anglian stick! Looks just like a nordic stick." ~2,0
+*lookat: "Not really too sturdy..." ~1,5
+*deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 

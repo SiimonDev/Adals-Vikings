@@ -79,6 +79,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Textures::FinnrTalk] = "assets/images/finnr/character_finnr_talk.png";
 	mTexturePathMap[Textures::BrynjaIdle] = "assets/images/Brynja/character_brynja_blink.png";
 	mTexturePathMap[Textures::BrynjaTalk] = "assets/images/Brynja/character_brynja_talk.png";
+	mTexturePathMap[Textures::BrynjaSleeping] = "assets/images/Brynja/character_brynja_sleeping.png";
 	mTexturePathMap[Textures::AlfrIdle] = "assets/images/Alfr/character_alfr.png";
 	mTexturePathMap[Textures::AlfrTalk] = "assets/images/Alfr/character_alfr_talk.png";
 	mTexturePathMap[Textures::DagnyIdle] = "assets/images/Dagny/character_dagny_blink.png";

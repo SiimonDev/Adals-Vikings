@@ -63,6 +63,7 @@ namespace Textures
 		FinnrTalk,
 		BrynjaIdle,
 		BrynjaTalk,
+		BrynjaSleeping,
 		AlfrIdle,
 		AlfrTalk,
 		DagnyIdle,

@@ -1,11 +1,11 @@
-*Type: standard
+*Type: invisible
 *ID: $rope$
-*Name: rope
+*Name: Rope
 *ispickupable: True
-*pickup: "This might come in handy" ~2,0
-*lookat: "That's nice..." ~1,5
-*deny: "I can't do that" ~1,5
+*pickup: "I should leave it here in case I want to come back later." ~3,5
+*lookat: "It's a strong Viking rope." ~2,0
+*deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*texture: "img_rope_id.png"
+*invisible: X: Y:

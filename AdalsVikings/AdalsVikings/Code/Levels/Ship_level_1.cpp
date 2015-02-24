@@ -19,6 +19,11 @@ Ship_level_1::Ship_level_1(Player &player, ActionWheel &actionWheel)
 
 void Ship_level_1::update(sf::Time &frametime)
 {
+	if (KeyboardState::isPressed(sf::Keyboard::F))
+	{
+		mPlayer.addItemToInventory("flute");
+	}
+
 	if (BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
 	{
 		if (!mGameStart)
@@ -55,7 +60,6 @@ void Ship_level_1::update(sf::Time &frametime)
 		if (mStartBrynja == false)
 		{
 			FadeI.setAlpha(1);
-			FadeI.setFadeDuration(sf::seconds(1));
 			DialogHandler::getDialogue("Leifr").disableOption(2);
 			DialogHandler::getDialogue("Alfr").disableOption(3);
 			mPlayer.removeItemFromInventory("flute");
@@ -68,23 +72,19 @@ void Ship_level_1::update(sf::Time &frametime)
 			FadeI.fadeOut(frametime);
 			if (FadeI.getFaded())
 			{
-				RMI.unloadResource(Textures::BrynjaIdle);
-				RMI.unloadResource(Textures::BrynjaTalk);
-				RMI.loadResource(Textures::BrynjaIdle);
-				RMI.loadResource(Textures::BrynjaTalk);
 				FadeI.setAlpha(254);
-
+				RMI.unloadResource(Textures::BrynjaSleeping);
 				mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 				mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
 				mNpcs["Brynja"]->setProportions(sf::Vector2f(290, 452));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
 				mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
+				//FadeI.setFadeDuration(sf::milliseconds(20000));
 				mBrynjaFade1 = true;
 			}
 		}
 		else if (mBrynjaFade1 && !mBrynjaFade2)
 		{
-			FadeI.setFadeDuration(sf::seconds(2));
 			FadeI.fadeIn(frametime);
 
 			if (FadeI.getFaded())
@@ -151,12 +151,19 @@ void Ship_level_1::load()
 
 	if (!mStartBrynja)
 	{
-		RMI.unloadResource(Textures::BrynjaIdle);
-		RMI.unloadResource(Textures::BrandrTalk);
+		//RMI.unloadResource(Textures::BrynjaIdle);
+		//RMI.unloadResource(Textures::BrandrTalk);
+		//RMI.loadResource(Textures::BrynjaIdle);
+		//RMI.loadResource(Textures::BrynjaTalk);
+		//mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaIdle, sf::Vector2i(3, 4), sf::milliseconds(1200), sf::milliseconds(2000));
+		//mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaTalk, sf::Vector2i(3, 4), sf::milliseconds(1400), sf::milliseconds(2000));
+
 		RMI.loadResource(Textures::BrynjaIdle);
 		RMI.loadResource(Textures::BrynjaTalk);
-		mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaIdle, sf::Vector2i(3, 4), sf::milliseconds(1200), sf::milliseconds(2000));
-		mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaTalk, sf::Vector2i(3, 4), sf::milliseconds(1400), sf::milliseconds(2000));
+		RMI.loadResource(Textures::BrynjaSleeping);
+		mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaSleeping, sf::Vector2i(3, 4), sf::milliseconds(1200), sf::milliseconds(2000));
+		mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaSleeping, sf::Vector2i(3, 4), sf::milliseconds(1400), sf::milliseconds(2000));
+
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 720));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(900, 710));
 		mNpcs["Brynja"]->setProportions(sf::Vector2f(504, 160));

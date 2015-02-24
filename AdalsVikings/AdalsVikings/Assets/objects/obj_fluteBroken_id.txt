@@ -2,9 +2,9 @@
 *ID: $fluteBroken$
 *Name: fluteBroken
 *ispickupable: False
-*pickup: "This might come in handy" ~2,0
-*lookat: "I don't think Alfr would want this back..." ~1,5
-*deny: "I can't do that" ~1,5
+*pickup: "" ~2,0
+*lookat: "...this doesn't seem playable." ~1,5
+*deny: "What can I even use this for?" ~1,5
 *denywith: 
 *combine: 
 *interact: 
