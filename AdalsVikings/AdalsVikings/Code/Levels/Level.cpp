@@ -29,7 +29,8 @@ void Level::updateObjectActionWheel()
 				else if (mActionWheel->isPickUpSelected())
 					mPlayer.setIntention(Intention::PickUp);
 
-				Path path = PathFinder::getPath(mPlayer.getPosition(), mObjects[mObjIndex]->getInteractionPosition());
+				sf::Vector2f interactPos = mObjects[mObjIndex]->getPosition() + mObjects[mObjIndex]->getInteractionPosition();
+				Path path = PathFinder::getPath(mPlayer.getPosition(), interactPos);
 				mPlayer.walkPath(path);
 			}
 		}
@@ -46,7 +47,8 @@ void Level::updateObjectActionWheel()
 
 				mPlayer.setIntention(Intention::Interact);
 
-				Path path = PathFinder::getPath(mPlayer.getPosition(), mObjects[mObjIndex]->getInteractionPosition());
+				sf::Vector2f interactPos = mObjects[mObjIndex]->getPosition() + mObjects[mObjIndex]->getInteractionPosition();
+				Path path = PathFinder::getPath(mPlayer.getPosition(), interactPos);
 				mPlayer.walkPath(path);
 			}
 		}
@@ -169,6 +171,7 @@ void Level::updateNPCs(sf::Time frameTime)
 			Dialog dialog = Dialog(OBHI.getObject(mDroppedItemID).interactWithObject(mCurrentNPCID));
 			DialogWindow::displayDialog(dialog);
 		}
+		mWalkToNPC = false;
 	}
 	if (MouseState::isPressed(sf::Mouse::Left))
 	{
@@ -382,9 +385,9 @@ void Level::saveObjects()
 	{
 		file << "*id: $" << obj->getObjID() << std::endl;
 		file << "position: $X:" << obj->getPosition().x << " $Y:" << obj->getPosition().y << std::endl;
-		file << "interactPosition: $X:" << obj->getInteractionPosition().x - obj->getPosition().x << " $Y:" << obj->getInteractionPosition().y - obj->getPosition().y << std::endl;
+		file << "interactPosition: $X:" << obj->getInteractionPosition().x << " $Y:" << obj->getInteractionPosition().y << std::endl;
 		file << "index: $" << obj->getIndex() << std::endl;
-		file << "scale: $" << obj->getScale().x;
+		file << "scale: $" << obj->getScale().x << std::endl;
 		file << "hascollision: ";
 
 		if (obj->hasCollision())
