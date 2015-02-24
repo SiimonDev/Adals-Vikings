@@ -121,7 +121,7 @@ void Beach_level::load()
 		mNpcs["Finnr"]->setPosition(sf::Vector2f(1600, 520));
 		mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(1550, 520));
 		mNpcs["Finnr"]->setDialogue("Finnr");
-		mNpcs["Finnr"]->setIndex(5);
+		mNpcs["Finnr"]->setIndex(3);
 
 		//mPortals[Portal3] = &PortalLoader::getPortal(Portal3); // This does not create a new portal it only references the one in PortalLoader
 
@@ -130,7 +130,6 @@ void Beach_level::load()
 		Level::load();
 
 		// Add collision from every NPC to the map
-		mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
 		mTileMap.addCollision(mNpcs["Leifr"]->getCollisionRect());
 		mTileMap.addCollision(mNpcs["Finnr"]->getCollisionRect());
 		mTileMap.addCollision(mNpcs["Dagny"]->getCollisionRect());
@@ -202,6 +201,9 @@ void Beach_level::introCutscene(sf::Time &frameTime)
 				mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(1550, 720));
 				mNpcs["Valdis"]->UpdateAnimation();
 				mNpcs["Valdis"]->setAnimationStyle("Idle");
+
+				mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
+				mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
 
 				mIntroFade2 = true;
 			}

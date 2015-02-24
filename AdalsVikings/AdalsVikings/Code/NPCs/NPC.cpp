@@ -35,12 +35,12 @@ void Npc::load()
 	float npcWith = float(mSize.x * mScale.x);
 	float npcHeight = float(mSize.y * mScale.y);
 	float xPos = mPosition.x - (npcWith / 2);
-	float yPos = mPosition.y + ((npcHeight / 2) - npcHeight * 0.2f);
+	float yPos = mPosition.y - ((npcHeight * 0.2f) / 2);
 	mCollisionRect = sf::IntRect(xPos, yPos, npcWith, npcHeight * 0.2f);
 
-	yPos = mPosition.y - ((npcHeight / 2) + npcHeight * 0.2f);
+	yPos = mPosition.y - (npcHeight * 1.2f);
 	xPos = mPosition.x - ((npcWith * 1.5f) / 2);
-	mIndexRect = sf::IntRect(xPos, yPos, npcWith * 1.5f, npcHeight + npcHeight * 0.2f);
+	mIndexRect = sf::IntRect(xPos, yPos, npcWith * 1.5f, npcHeight * 1.2f);
 
 	setAnimationStyle("Idle");
 }
@@ -191,10 +191,22 @@ Animation &Npc::getAnimation()
 }
 sf::IntRect &Npc::getCollisionRect()
 {
+	float npcWith = float(mSize.x * mScale.x);
+	float npcHeight = float(mSize.y * mScale.y);
+	float xPos = mPosition.x - (npcWith / 2);
+	float yPos = mPosition.y - ((npcHeight * 0.2f) / 2);
+	mCollisionRect = sf::IntRect(xPos, yPos, npcWith, npcHeight * 0.2f);
+
 	return mCollisionRect;
 }
 sf::IntRect &Npc::getIndexRect()
 {
+	float npcWith = float(mSize.x * mScale.x);
+	float npcHeight = float(mSize.y * mScale.y);
+	float yPos = mPosition.y - (npcHeight * 1.2f);
+	float xPos = mPosition.x - ((npcWith * 1.5f) / 2);
+	mIndexRect = sf::IntRect(xPos, yPos, npcWith * 1.5f, npcHeight * 1.2f);
+
 	return mIndexRect;
 }
 sf::Color &Npc::getColor()
