@@ -43,9 +43,9 @@ void Beach_level::load()
 
 		FadeI.setAlpha(254);
 
-		mNpcs["Brandr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
-		mNpcs["Brynja"] = LNpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
-		mNpcs["Valdis"] = LNpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
+		mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
+		mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
 
 		mPlayer.setPosition(sf::Vector2f(410, 1070));
 		mPlayer.setFlip(true);
@@ -71,11 +71,11 @@ void Beach_level::load()
 		Act1Events::triggerEvent(Act1Event::Beach_Intro);
 
 		/* ==== Load Npcs and set right position, dialogue, scale and so on... ===== */
-		mNpcs["Yngvarr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
-		mNpcs["Dagny"] = LNpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
-		mNpcs["Alfr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
-		mNpcs["Leifr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
-		mNpcs["Finnr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
+		mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
+		mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
+		mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
+		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
+		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
 
 		/* ==== Yngvarr ===== */
 		mNpcs["Yngvarr"]->setRightWay(false);
@@ -121,7 +121,7 @@ void Beach_level::load()
 		mNpcs["Finnr"]->setPosition(sf::Vector2f(1600, 520));
 		mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(1550, 520));
 		mNpcs["Finnr"]->setDialogue("Finnr");
-		mNpcs["Finnr"]->setIndex(5);
+		mNpcs["Finnr"]->setIndex(3);
 
 		//mPortals[Portal3] = &PortalLoader::getPortal(Portal3); // This does not create a new portal it only references the one in PortalLoader
 
@@ -130,7 +130,6 @@ void Beach_level::load()
 		Level::load();
 
 		// Add collision from every NPC to the map
-		mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
 		mTileMap.addCollision(mNpcs["Leifr"]->getCollisionRect());
 		mTileMap.addCollision(mNpcs["Finnr"]->getCollisionRect());
 		mTileMap.addCollision(mNpcs["Dagny"]->getCollisionRect());
@@ -202,6 +201,9 @@ void Beach_level::introCutscene(sf::Time &frameTime)
 				mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(1550, 720));
 				mNpcs["Valdis"]->UpdateAnimation();
 				mNpcs["Valdis"]->setAnimationStyle("Idle");
+
+				mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
+				mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
 
 				mIntroFade2 = true;
 			}
@@ -276,7 +278,7 @@ void Beach_level::endingCutscene(sf::Time &frameTime)
 				mPlayer.setIndex(7);
 				mPlayer.setAnimationStyle(AnimationType::Idle);
 
-				for (std::map<std::string, LNpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
+				for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
 				{
 					iz->second->setAnimationStyle("Idle");
 				}
