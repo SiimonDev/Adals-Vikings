@@ -16,24 +16,21 @@ ResourceManager &ResourceManager::getInstance()
 
 ResourceManager::ResourceManager()
 {
-	// Set all the loads to zero
+	/* =========== Set all the Loads Counts to Zero =========== */
 	for (int i = 0; i < Textures::SIZE; i++)
 		mTextureCountMap[static_cast<Textures::ID>(i)] = 0;
-
 	for (int i = 0; i < Images::SIZE; i++)
 		mImageCountMap[static_cast<Images::ID>(i)] = 0;
-
 	for (int i = 0; i < Fonts::SIZE; i++)
 		mFontCountMap[static_cast<Fonts::ID>(i)] = 0;
-
 	for (int i = 0; i < Sound::SIZE; i++)
 		mSoundCountMap[static_cast<Sound::ID>(i)] = 0;
-
 	for (int i = 0; i < Backgrounds::SIZE; i++)
 		mBackgroundsCountMap[static_cast<Backgrounds::ID>(i)] = 0;
-
 	for (int i = 0; i < Footsteps::SIZE; i++)
 		mFootstepsCountMap[static_cast<Footsteps::ID>(i)] = 0;
+	/* ======================================================== */
+
 
 	/* ========== Set Texture File paths ========== */
 	mTexturePathMap[Textures::UlfrWalk] = "assets/images/ulfr/character_ulfr_walk.png";
@@ -393,6 +390,7 @@ sf::Image &ResourceManager::getNonIDImage(const std::string &filename) const
 	return *found->second;
 }
 
+
 /* ====== Get FilePath Functions ======== */
 std::string ResourceManager::getFilePath(Textures::ID id)
 {
@@ -418,6 +416,7 @@ std::string ResourceManager::getFilePath(Footsteps::ID id)
 {
 	return mFootstepsPathMap[id];
 }
+
 
 /* ====== Helper Functions ===== */
 bool compareLX(std::string &a, std::string &b)
