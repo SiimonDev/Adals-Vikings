@@ -15,6 +15,7 @@ public:
 	void setTiles(sf::Vector2i &tileSize, sf::Image &image);
 	void addCollision(const sf::IntRect &rect);
 	void removeCollision(sf::IntRect &rect);
+	void setIndexOnMap(const sf::IntRect &rect, sf::Uint8 index = 1);
 	void refreshVertices();
 	
 	sf::Color getColorAt(sf::Vector2f &texCoord);

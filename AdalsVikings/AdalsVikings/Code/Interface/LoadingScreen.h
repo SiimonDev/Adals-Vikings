@@ -29,6 +29,7 @@ public:
 	bool update(sf::Time dt);
 
 	void startLoading(LoadTask task);
+	void terminate();
 
 	bool &getIsDone();
 	bool &getIsStarted();

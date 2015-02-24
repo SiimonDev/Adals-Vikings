@@ -32,7 +32,6 @@ void LevelManager::load()
 
 	mPlayer.load();
 	mPlayer.clearInventory();
-	mPlayer.setPosition(sf::Vector2f(1400, 750));
 	mActionWheel.load();
 }
 
@@ -45,6 +44,7 @@ void LevelManager::unload()
 	mActionWheel.unload();
 	PathFinder::unload();
 }
+
 void LevelManager::unloadCurrentAct()
 {
 	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
@@ -69,7 +69,8 @@ void LevelManager::render(IndexRenderer &iRenderer)
 void LevelManager::changeLevel(LevelID id)
 {
 	mCurrentID = id;
-	std::cout << std::endl << "==========================" << std::endl;
+	std::cout << std::endl;
+	std::cout << "==========================" << std::endl;
 	std::cout << "===== Changing Level =====" << std::endl;
 	std::cout << "==========================" << std::endl;
 
@@ -85,14 +86,17 @@ void LevelManager::loadBoatScene()
 	mCurrentAct = Ship;
 	PortalLoader::load();
 	BoatEvents::initialize();
+
+	// onödig komentar
 	if (mLevelMap.size() != 0)
 		unloadCurrentAct();
 
+	// Assign all the levels
 	mLevelMap[Ship_1] = std::move(LevelPtr(new Ship_level_1(mPlayer, mActionWheel)));
 	mLevelMap[Ship_2] = std::move(LevelPtr(new Ship_level_2(mPlayer, mActionWheel)));
 
-	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
-	{
+	// Load all the levels
+	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it){
 		it->second->load();
 		it->second->resetLevel();
 	}
@@ -102,16 +106,18 @@ void LevelManager::loadBoatScene()
 
 void LevelManager::loadAct1()
 {
-	PortalLoader::load();
 	mCurrentAct = Act1;
-	// If there are still maps loaded then unload them
+	PortalLoader::load();
+
+
 	if (mLevelMap.size() != 0)
 		unloadCurrentAct();
 
+	// Assing all the levels
 	mLevelMap[Beach] = LevelPtr(new Beach_level(mPlayer, mActionWheel));
 
-	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
-	{
+	// Load all the levels
+	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it){
 		it->second->load();
 		it->second->resetLevel();
 	}
@@ -119,7 +125,7 @@ void LevelManager::loadAct1()
 	PathFinder::setTileMap(mLevelMap[mCurrentID]->getTileMap());
 }
 
-Act & LevelManager::getCurrentAct()
+Act &LevelManager::getCurrentAct()
 {
 	return mCurrentAct;
 }

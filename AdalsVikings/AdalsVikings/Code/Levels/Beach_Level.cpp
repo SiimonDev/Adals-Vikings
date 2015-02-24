@@ -28,15 +28,15 @@ void Beach_level::render(IndexRenderer &iRenderer)
 
 void Beach_level::load()
 {
+	mPortals[Portal3] = &PortalLoader::getPortal(Portal3); // This does not create a new portal it only references the one in PortalLoader
 
-	mPortals[Portal3] = LPortalPtr(new Portal(PortalLoader::getPortal(Portal3)));
 	/* ==== Load Npcs and set right position, dialogue, scale and so on... ===== */
-	mNpcs["Yngvarr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
-	mNpcs["Dagny"] = LNpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
-	mNpcs["Alfr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
-	mNpcs["Leifr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
-	mNpcs["Finnr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
-	mNpcs["Valdis"] = LNpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
+	mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
+	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
+	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
+	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
+	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
 
 	/* ==== Yngvarr ===== */
 	mNpcs["Yngvarr"]->setRightWay(false);
@@ -91,7 +91,6 @@ void Beach_level::load()
 	mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(450, 1070));
 	mNpcs["Valdis"]->setDialogue("Valdis");
 	mNpcs["Valdis"]->setIndex(5);
-
 	/* ================================================================ */
 
 	RMI.load(Textures::Wave, "Assets/MapFiles/Beach/waves.png");
@@ -103,12 +102,23 @@ void Beach_level::load()
 	mWaveAnimation.setPosition(sf::Vector2f(1920 + 3, 1080 + 3));
 	Level::load();
 
+	// Add collision from every NPC to the map
 	mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
 	mTileMap.addCollision(mNpcs["Leifr"]->getCollisionRect());
 	mTileMap.addCollision(mNpcs["Finnr"]->getCollisionRect());
 	mTileMap.addCollision(mNpcs["Dagny"]->getCollisionRect());
 	mTileMap.addCollision(mNpcs["Alfr"]->getCollisionRect());
 	mTileMap.addCollision(mNpcs["Yngvarr"]->getCollisionRect());
+
+	// Add Index from every NPC to the map
+	mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
+	mTileMap.setIndexOnMap(mNpcs["Leifr"]->getIndexRect(), mNpcs["Leifr"]->getIndex() - 1);
+	mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 1);
+	mTileMap.setIndexOnMap(mNpcs["Dagny"]->getIndexRect(), mNpcs["Dagny"]->getIndex() - 1);
+	mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 1);
+	mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 1);
+
+	mPlayer.setPosition(sf::Vector2f(1400, 750));
 }
 
 void Beach_level::unload()
@@ -116,6 +126,7 @@ void Beach_level::unload()
 	RMI.unload(Textures::Wave);
 	Level::unload();
 }
+
 void Beach_level::changeLevel()
 {
 	if (mPortals[Portal3]->getActivated())
@@ -123,6 +134,7 @@ void Beach_level::changeLevel()
 		LSI.startLoading(LoadTest);
 	}
 }
+
 void Beach_level::checkInteractEvents()
 {
 

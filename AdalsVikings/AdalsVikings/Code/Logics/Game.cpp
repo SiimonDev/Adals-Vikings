@@ -162,4 +162,5 @@ void Game::run()
 		render();
 	}
 	AudioPlayer::unload();
+	LSI.terminate();
 }

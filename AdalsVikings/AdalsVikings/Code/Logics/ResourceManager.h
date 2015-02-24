@@ -37,7 +37,9 @@ namespace SoundFolder
 {
 	enum ID
 	{
-
+		Default,
+		Hardwood,
+		Grass
 	};
 };
 

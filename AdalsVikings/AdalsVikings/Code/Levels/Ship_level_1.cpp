@@ -16,6 +16,7 @@ Ship_level_1::Ship_level_1(Player &player, ActionWheel &actionWheel)
 	mFolderPath = "Assets/MapFiles/Ship1/";
 	mLevelID = TextureFolder::ShipLevel1;
 }
+
 void Ship_level_1::update(sf::Time &frametime)
 {
 	if (BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
@@ -137,13 +138,15 @@ void Ship_level_1::render(IndexRenderer &iRenderer)
 
 void Ship_level_1::load()
 {
-	mPortals[Portal1] = LPortalPtr(new Portal(PortalLoader::getPortal(Portal1)));
+	mPortals[Portal1] = &PortalLoader::getPortal(Portal1); // This does not create a new portal it only references the one in PortalLoader
 
-	mNpcs["Valdis"] = LNpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
-	mNpcs["Leifr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
-	mNpcs["Finnr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
-	mNpcs["Brynja"] = LNpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
-	mNpcs["Alfr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
+	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+	mNpcs["Valdis"]->setIndex(14);
+	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
+	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
+	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
+	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
+	mNpcs["Alfr"]->setIndex(16);
 
 	if (!mStartBrynja)
 	{
@@ -160,19 +163,34 @@ void Ship_level_1::load()
 
 	Level::load();
 
+	RMI.load(Sound::BoatAmbient, "assets/sounds/Boat.wav");
+	RMI.load(SoundFolder::Hardwood, "assets/sounds/footsteps/Hardwood/");
+	mCurrentStepSound = SoundFolder::Hardwood;
+
+	AudioPlayer::playSound(Sound::BoatAmbient, "boatAmbient", true);
+	AudioPlayer::playMusic("assets/sounds/music/Theme2.ogg", "boat1", true, 20);
+
+	// Add Collision from every NPC to the map
 	mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
 	mTileMap.addCollision(mNpcs["Leifr"]->getCollisionRect());
 	mTileMap.addCollision(mNpcs["Finnr"]->getCollisionRect());
 	mTileMap.addCollision(mNpcs["Brynja"]->getCollisionRect());
 	mTileMap.addCollision(mNpcs["Alfr"]->getCollisionRect());
 
-	RMI.load(Sound::BoatAmbient, "assets/sounds/Boat.wav");
-	AudioPlayer::playSound(Sound::BoatAmbient, "boatAmbient", true);
-	AudioPlayer::playMusic("assets/sounds/music/Theme2.ogg", "boat1", true, 20);
+	// Add Index from every NPC to the map
+	mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
+	mTileMap.setIndexOnMap(mNpcs["Leifr"]->getIndexRect(), mNpcs["Leifr"]->getIndex() - 1);
+	mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 1);
+	mTileMap.setIndexOnMap(mNpcs["Brynja"]->getIndexRect(), mNpcs["Brynja"]->getIndex() - 1);
+	mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 1);
+
+	mPlayer.setPosition(sf::Vector2f(1400, 750));
 }
 
 void Ship_level_1::unload()
 {
+	RMI.unload(Sound::BoatAmbient);
+	RMI.unload(SoundFolder::Hardwood);
 	Level::unload();
 }
 
@@ -192,6 +210,8 @@ void Ship_level_1::checkEvents()
 	// Event for asking Alfr to help you wake up Brynja
 	if (BoatEvents::hasBeenHandled(BoatEvent::TalkedToValdis) && DialogHandler::getDialogue("Alfr").getIsOptionDisabled(3) && !BoatEvents::hasBeenTriggered(BoatEvent::FluteFromAlfr))
 		BoatEvents::triggerEvent(BoatEvent::FluteFromAlfr);
+
+	// Check if ulfrs startdialogue has been triggered
 	if (!BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && BoatEvents::hasBeenHandled(BoatEvent::StartDialogue))
 		BoatEvents::triggerEvent(BoatEvent::UlfrStartDialogue);
 }

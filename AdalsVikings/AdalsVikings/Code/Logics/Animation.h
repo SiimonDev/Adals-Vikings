@@ -34,6 +34,8 @@ public:
 	const sf::Vector2i &getSpriteSize();
 	sf::Sprite &getSprite();
 	sf::Vector2i &getFrames();
+	int getCurrentFrame();
+	int getIndex();
 	bool isRepeating();
 	bool &getFinished();
 	bool &getStopped();

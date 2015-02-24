@@ -25,13 +25,12 @@ LoadingScreen & LoadingScreen::getInstance()
 	return *instance;
 }
 
-void LoadingScreen::render(IndexRenderer &iRenderer)
+void LoadingScreen::initialize()
 {
-	mLoadingText.setFont(mFont);
-	mLoadingText.setString("Loading Resources");
-	mLoadingText.setPosition(1920 / 2.f, 1080 / 2.f + 50.f);
-	iRenderer.addText(mLoadingText, 99999);
+	mThread = ThreadPtr(new std::thread(&LoadingScreen::runTask, this));
+	mThread->detach();
 }
+
 
 bool LoadingScreen::update(sf::Time frameTime)
 {
@@ -43,11 +42,24 @@ bool LoadingScreen::update(sf::Time frameTime)
 	return mIsDone;
 }
 
+void LoadingScreen::render(IndexRenderer &iRenderer)
+{
+	mLoadingText.setFont(mFont);
+	mLoadingText.setString("Loading Resources");
+	mLoadingText.setPosition(1920 / 2.f, 1080 / 2.f + 50.f);
+	iRenderer.addText(mLoadingText, 99999);
+}
+
 void LoadingScreen::startLoading(LoadTask task)
 {
 	mStart = true;
 	mFinished = false;
 	mTask = task;
+}
+
+void LoadingScreen::terminate()
+{
+	mTask = LoadTask::Finished;
 }
 
 bool &LoadingScreen::getIsDone()
@@ -75,12 +87,12 @@ void LoadingScreen::runTask()
 			{
 
 			}
-			if (mTask == LoadTask::StartGame)
+			else if (mTask == LoadTask::StartGame)
 			{
 				MHI.unload(MenuID::MainMenu);
 				MHI.load(MenuID::PauseMenu);
 				LVLMI.load();
-				LVLMI.loadAct1();
+				LVLMI.loadBoatScene();
 			}
 			else if (mTask == LoadTask::LoadMenu)
 			{
@@ -100,17 +112,13 @@ void LoadingScreen::runTask()
 			}
 			else if (mTask == LoadTask::LoadAct1)
 			{
-				/*LVLMI.setIsActive(false);
-				LVLMI.unloadCurrentAct();
-				LVLMI.loadAct1();
-				LVLMI.setIsActive(true);*/
+				/*LVLMI.unloadCurrentAct();
+				LVLMI.loadAct1();*/
 			}
 			else if (mTask == LoadTask::LoadTest)
 			{
-				/*LVLMI.setIsActive(false);
-				LVLMI.unloadCurrentAct();
-				LVLMI.loadBoatScene();
-				LVLMI.setIsActive(true);*/
+				/*LVLMI.unloadCurrentAct();
+				LVLMI.loadBoatScene();*/
 			}
 			mTask = LoadTask::None;
 
@@ -118,10 +126,4 @@ void LoadingScreen::runTask()
 			mFinished = true;
 		}
 	}
-}
-
-void LoadingScreen::initialize()
-{
-	mThread = ThreadPtr(new std::thread(&LoadingScreen::runTask, this));
-	mThread->detach();
 }

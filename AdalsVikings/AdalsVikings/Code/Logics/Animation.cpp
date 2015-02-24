@@ -226,6 +226,14 @@ sf::Vector2i &Animation::getFrames()
 {
 	return mFrames;
 }
+int Animation::getCurrentFrame()
+{
+	return mCurrentFrame;
+}
+int Animation::getIndex()
+{
+	return mIndex;
+}
 bool Animation::isRepeating()
 {
 	return mIsRepeated;

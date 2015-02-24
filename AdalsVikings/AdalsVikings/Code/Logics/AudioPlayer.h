@@ -5,6 +5,7 @@ class AudioPlayer
 {
 public:
 	static void playSound(Sound::ID id, std::string audioID, bool loop, float volume = 50);
+	static void playRandomSound(SoundFolder::ID id, float volume = 50);
 	static void stopSound(std::string audioID);
 
 	static void playMusic(std::string path, std::string musicID, bool loop, float volume = 50);

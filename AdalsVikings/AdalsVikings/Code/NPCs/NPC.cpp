@@ -4,7 +4,7 @@
 
 Npc::Npc()
 : mName("Hero")
-, mPosition(sf::Vector2f(0,0))
+, mPosition(sf::Vector2f(0, 0))
 , mFlip(false)
 {
 }
@@ -36,9 +36,13 @@ void Npc::load()
 	float npcHeight = float(mSize.y * mScale.y);
 	float xPos = mPosition.x - (npcWith / 2);
 	float yPos = mPosition.y + ((npcHeight / 2) - npcHeight * 0.2f);
-	setAnimationStyle("Idle");
+	mCollisionRect = sf::IntRect(xPos, yPos, npcWith, npcHeight * 0.2f);
 
-	mCollisionRect = sf::IntRect(sf::IntRect(xPos, yPos, npcWith, npcHeight * 0.2f));
+	yPos = mPosition.y - ((npcHeight / 2) + npcHeight * 0.2f);
+	xPos = mPosition.x - ((npcWith * 1.5f) / 2);
+	mIndexRect = sf::IntRect(xPos, yPos, npcWith * 1.5f, npcHeight + npcHeight * 0.2f);
+
+	setAnimationStyle("Idle");
 }
 
 void Npc::unload()
@@ -59,6 +63,11 @@ bool Npc::isInside(sf::Vector2i &pos)
 		pos.x <= mPosition.x + mNpcAnimation.getSprite().getGlobalBounds().width / 2 &&
 		mPosition.y - mNpcAnimation.getSprite().getGlobalBounds().height / 2 <= pos.y &&
 		pos.y <=  mPosition.y + mNpcAnimation.getSprite().getGlobalBounds().height / 2);
+}
+
+int Npc::getIndex()
+{
+	return mNpcAnimation.getIndex();
 }
 
 std::string & Npc::getUseText()
@@ -129,6 +138,10 @@ void Npc::setCollisionRect(sf::IntRect &rect)
 {
 	mCollisionRect = rect;
 }
+void Npc::setIndexRect(sf::IntRect &rect)
+{
+	mIndexRect = rect;
+}
 
 void Npc::setAnimationStyle(std::string type)
 {
@@ -179,6 +192,10 @@ Animation &Npc::getAnimation()
 sf::IntRect &Npc::getCollisionRect()
 {
 	return mCollisionRect;
+}
+sf::IntRect &Npc::getIndexRect()
+{
+	return mIndexRect;
 }
 sf::Color &Npc::getColor()
 {

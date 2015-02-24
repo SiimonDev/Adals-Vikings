@@ -1,14 +1,16 @@
 #include "AudioPlayer.h"
 #include <iostream>
 
+static std::vector<sf::Sound*> mNonLoopSounds;
+
 static std::map<std::string, sf::Sound*> mSounds;
 static std::map<std::string, sf::Music*> mMusic;
 static bool mMute = false;
 
 // 0.0 - 1.0
 static double masterSoundScale = 1.0;
-static double soundEffectsScale = 0.5;
-static double musicScale = 0.2;
+static double soundEffectsScale = 0.1;
+static double musicScale = 0.1;
 
 AudioPlayer::AudioPlayer()
 {
@@ -30,6 +32,18 @@ void AudioPlayer::playSound(Sound::ID id, std::string audioID, bool loop, float 
 		mSounds.erase(audioID);
 		mSounds[audioID] = sound;
 	}
+}
+
+void AudioPlayer::playRandomSound(SoundFolder::ID id, float volume)
+{
+	int index = rand() % RMI.getSoundFolder(id).size();
+
+	sf::Sound* sound = new sf::Sound();
+	sound->setBuffer(*RMI.getSoundFolder(id).at(index));
+	sound->setVolume(100 * masterSoundScale/* * soundEffectsScale*/);
+	sound->setLoop(false);
+	sound->play();
+	mNonLoopSounds.push_back(sound);
 }
 
 void AudioPlayer::stopSound(std::string audioID)
@@ -70,7 +84,20 @@ void AudioPlayer::stopMusic(std::string musicID)
 
 void AudioPlayer::update(sf::Time frameTime)
 {
+	// Delete all NonLoop sound that has been stopped
 	std::vector<std::string> deleteID;
+	for (std::map<std::string, sf::Sound*>::iterator it = mSounds.begin(); it != mSounds.end(); ++it){
+		if (it->second->getStatus() == sf::Sound::Status::Stopped){
+			deleteID.push_back(it->first);
+		}
+	}
+	for (size_t i = 0; i < deleteID.size(); i++){
+		delete mNonLoopSounds.at(i);
+		mNonLoopSounds.erase(mNonLoopSounds.begin() + i);
+	}
+
+	// Delete all sounds that has been stopped
+	deleteID.clear();
 	for (std::map<std::string, sf::Sound*>::iterator it = mSounds.begin(); it != mSounds.end(); ++it){
 		if (it->second->getStatus() == sf::Sound::Status::Stopped){
 			deleteID.push_back(it->first);
@@ -81,6 +108,7 @@ void AudioPlayer::update(sf::Time frameTime)
 		mSounds.erase(sound);
 	}
 
+	// Delete all music that has been stopped
 	deleteID.clear();
 	for (std::map<std::string, sf::Music*>::iterator it = mMusic.begin(); it != mMusic.end(); ++it){
 		if (it->second->getStatus() == sf::Sound::Status::Stopped){
@@ -95,6 +123,13 @@ void AudioPlayer::update(sf::Time frameTime)
 
 void AudioPlayer::unload()
 {
+	// Delete all NonLoop sounds
+	for each (sf::Sound* sound in mNonLoopSounds){
+		delete sound;
+	}
+	mNonLoopSounds.clear();
+
+	// Delete all sounds
 	std::vector<std::string> deleteID;
 	for (std::map<std::string, sf::Sound*>::iterator it = mSounds.begin(); it != mSounds.end(); ++it){
 			deleteID.push_back(it->first);
@@ -104,6 +139,7 @@ void AudioPlayer::unload()
 		mSounds.erase(sound);
 	}
 
+	// Delete all the Music
 	deleteID.clear();
 	for (std::map<std::string, sf::Music*>::iterator it = mMusic.begin(); it != mMusic.end(); ++it){
 		deleteID.push_back(it->first);

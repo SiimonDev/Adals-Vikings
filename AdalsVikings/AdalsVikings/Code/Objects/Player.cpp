@@ -3,6 +3,7 @@
 #include "..\Logics\PathFinder.h"
 #include "..\Logics\MouseState.h"
 #include "..\Logics\KeyboardState.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 #include <math.h>
 
@@ -111,6 +112,8 @@ void Player::update(sf::Time &frameTime)
 	// Update the player scale
 	mScale.x = ((0.35 / 120.f) * mCurrentAlpha);
 	mScale.y = (0.35 / 120.f) * mCurrentAlpha;
+
+	playFootstepSound();
 }
 
 void Player::render(IndexRenderer &iRenderer)
@@ -120,26 +123,6 @@ void Player::render(IndexRenderer &iRenderer)
 	mPlayerAnimation.setPosition(mPosition);
 	mPlayerAnimation.render(iRenderer);
 	mInventory.render(iRenderer);
-}
-
-void Player::walkPath(Path &path)
-{
-	mCurrentPath.clear();
-	if (path.size() > 2)
-	{
-		mCurrentPath = path;
-
-		mLastTarget = mCurrentPath.at(mCurrentPath.size() - 1);
-		mCurrentPath.pop_back();
-
-		mDestinationReached = false;
-		mTargetReached = true;
-	}
-	else
-	{
-		mDestinationReached = true;
-		mVelocity = sf::Vector2f(0, 0);
-	}
 }
 
 void Player::move(sf::Time &frameTime)
@@ -193,6 +176,40 @@ void Player::move(sf::Time &frameTime)
 	setAnimationStyle(AnimationType::Movement);
 }
 
+void Player::walkPath(Path &path)
+{
+	mCurrentPath.clear();
+	if (path.size() > 2)
+	{
+		mCurrentPath = path;
+
+		mLastTarget = mCurrentPath.at(mCurrentPath.size() - 1);
+		mCurrentPath.pop_back();
+
+		mDestinationReached = false;
+		mTargetReached = true;
+	}
+	else
+	{
+		mDestinationReached = true;
+		mVelocity = sf::Vector2f(0, 0);
+	}
+}
+
+void Player::playFootstepSound()
+{
+	if (mAnimationStyle == AnimationStyle::Left || mAnimationStyle == AnimationStyle::Right || mAnimationStyle == AnimationStyle::Up || mAnimationStyle == AnimationStyle::Down)
+	{
+		if (mPlayerAnimation.getCurrentFrame() == 0 || mPlayerAnimation.getCurrentFrame() == 14)
+		{
+			if (RMI.getSoundFolder(mFootsteps).size() > 0)
+				AudioPlayer::playRandomSound(mFootsteps);
+			else
+				AudioPlayer::playRandomSound(SoundFolder::Default);
+		}
+	}
+}
+
 sf::Sprite Player::getSprite()
 {
 	return mPlayerAnimation.getSprite();
@@ -205,7 +222,10 @@ std::string Player::getDroppedObjectID()
 { 
 	return mInventory.getDroppedObjectID();
 }
-
+Animation &Player::getAnimation()
+{
+	return mPlayerAnimation;
+}
 Intention::ID Player::getIntention()
 {
 	return mIntention;
@@ -298,7 +318,8 @@ void Player::setFlip(bool value)
 {
 	mFlip = value;
 }
-Animation &Player::getAnimation()
+
+void Player::setFootsteps(SoundFolder::ID footsteps)
 {
-	return mPlayerAnimation;
+	mFootsteps = footsteps;
 }

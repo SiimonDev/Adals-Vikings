@@ -18,8 +18,6 @@
 #include <SFML\Graphics.hpp>
 #include <vector>
 
-typedef std::unique_ptr<Npc> LNpcPtr;
-typedef std::unique_ptr<Portal> LPortalPtr;
 class Level
 {
 public:
@@ -47,8 +45,8 @@ protected:
 	std::vector<int> mBackgroundsIndexes;
 	std::vector<sf::Sprite> mBackgrounds;
 	std::vector<Object*> mObjects;
-	std::map<std::string, LNpcPtr> mNpcs;
-	std::map<PortalId, LPortalPtr> mPortals;
+	std::map<std::string, NpcPtr> mNpcs;
+	std::map<PortalId, Portal*> mPortals;
 
 	std::string mFolderPath;
 	std::string mDroppedItemID;
@@ -62,6 +60,7 @@ protected:
 	std::string mIndexMapFilePath;
 
 	TextureFolder::ID mLevelID;
+	SoundFolder::ID mCurrentStepSound;
 
 	int mObjIndex;
 
