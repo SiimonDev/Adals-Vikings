@@ -58,9 +58,6 @@ bool Npc::getActiveConversation()
 
 bool Npc::isInside(sf::Vector2i &pos)
 {
-	std::cout << "Mouse Position y: " << pos.y << std::endl;
-	std::cout << "IDK Top Position y?: " << mPosition.y - mSize.y << std::endl;
-	std::cout << "IDK Bottom Position y?: " << mPosition.y + mSize.y << std::endl;
 	return
 		(pos.x >= mPosition.x - mNpcAnimation.getSprite().getGlobalBounds().width / 2 &&
 		pos.x <= mPosition.x + mNpcAnimation.getSprite().getGlobalBounds().width / 2 &&
