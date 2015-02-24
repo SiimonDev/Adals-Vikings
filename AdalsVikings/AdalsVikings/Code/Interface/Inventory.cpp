@@ -23,11 +23,11 @@ Inventory::Inventory()
 
 void Inventory::load()
 {
-	RMI.load(Sound::PickUpItem, "assets/sounds/Pick_up_item.wav");
-	RMI.load(Sound::InventoryOpen, "assets/sounds/Inventory(open).wav");
-	RMI.load(Sound::InventoryClose, "assets/sounds/Inventory(close).wav");
-	RMI.load(Textures::InventoryBackground, "assets/images/Interface/inventory.png");
-	mSprite.setTexture(RMI.getTexture(Textures::InventoryBackground));
+	RMI.loadResource(Sound::PickUpItem, "assets/sounds/Pick_up_item.wav");
+	RMI.loadResource(Sound::InventoryOpen, "assets/sounds/Inventory(open).wav");
+	RMI.loadResource(Sound::InventoryClose, "assets/sounds/Inventory(close).wav");
+	RMI.loadResource(Textures::InventoryBackground, "assets/images/Interface/inventory.png");
+	mSprite.setTexture(RMI.getResource(Textures::InventoryBackground));
 	mIndex = 999999;
 
 	// tileShit
@@ -50,10 +50,10 @@ void Inventory::load()
 
 void Inventory::unload()
 {
-	RMI.unload(Sound::PickUpItem);
-	RMI.unload(Sound::InventoryOpen);
-	RMI.unload(Sound::InventoryClose);
-	RMI.unload(Textures::InventoryBackground);
+	RMI.unloadResource(Sound::PickUpItem);
+	RMI.unloadResource(Sound::InventoryOpen);
+	RMI.unloadResource(Sound::InventoryClose);
+	RMI.unloadResource(Textures::InventoryBackground);
 	unloadObjects();
 }
 

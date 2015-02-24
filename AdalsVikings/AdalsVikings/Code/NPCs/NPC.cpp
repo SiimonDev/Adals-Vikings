@@ -24,10 +24,10 @@ void Npc::update(sf::Time &frametime)
 
 void Npc::load()
 {
-	RMI.load(mIdleTexture, mIdlePath);
-	RMI.load(mTalkTexture, mTalkPath);
+	RMI.loadResource(mIdleTexture, mIdlePath);
+	RMI.loadResource(mTalkTexture, mTalkPath);
 	mNpcAnimation.flip(mFlip);
-	mNpcAnimation.load(RMI.getTexture(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
+	mNpcAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
 	mSize.x = mNpcAnimation.getSpriteSize().x;
 	mSize.y = mNpcAnimation.getSpriteSize().y;
 	mNpcAnimation.setProportions(mProportions);
@@ -47,8 +47,8 @@ void Npc::load()
 
 void Npc::unload()
 {
-	RMI.unload(mIdleTexture);
-	RMI.unload(mTalkTexture);
+	RMI.unloadResource(mIdleTexture);
+	RMI.unloadResource(mTalkTexture);
 }
 
 bool Npc::getActiveConversation()
@@ -148,7 +148,7 @@ void Npc::setAnimationStyle(std::string type)
 	if (type == "Npc" && mAnimation != AnimationState::Talking)
 	{
 		mNpcAnimation.flip(mFlip);
-		mNpcAnimation.load(RMI.getTexture(mTalkTexture), mTalkFrames, mTalkDuration, mTalkWaitTime, true);
+		mNpcAnimation.load(RMI.getResource(mTalkTexture), mTalkFrames, mTalkDuration, mTalkWaitTime, true);
 		mSize.x = abs(mNpcAnimation.getSprite().getTextureRect().width);
 		mSize.y = abs(mNpcAnimation.getSprite().getTextureRect().height);
 		mAnimation = AnimationState::Talking;
@@ -156,7 +156,7 @@ void Npc::setAnimationStyle(std::string type)
 	else if (type == "Player" &&  mAnimation != AnimationState::PlayerTalking)
 	{
 		mNpcAnimation.flip(mFlip);
-		mNpcAnimation.load(RMI.getTexture(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
+		mNpcAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
 		mSize.x = abs(mNpcAnimation.getSprite().getTextureRect().width);
 		mSize.y = abs(mNpcAnimation.getSprite().getTextureRect().height);
 		mAnimation = AnimationState::PlayerTalking;
@@ -164,7 +164,7 @@ void Npc::setAnimationStyle(std::string type)
 	else if (type == "Idle" && mAnimation != AnimationState::Idle)
 	{
 		mNpcAnimation.flip(mFlip);
-		mNpcAnimation.load(RMI.getTexture(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
+		mNpcAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
 		mSize.x = abs(mNpcAnimation.getSprite().getTextureRect().width);
 		mSize.y = abs(mNpcAnimation.getSprite().getTextureRect().height);
 		mAnimation = AnimationState::Idle;

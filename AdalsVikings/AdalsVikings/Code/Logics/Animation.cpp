@@ -92,38 +92,31 @@ void Animation::animate(sf::Time &frameTime)
 					textureRect.top += textureRect.height;
 				}
 
-				if (true) // !?!? D:
+				mCurrentFrame = (mCurrentFrame + 1) % (mFrames.x * mFrames.y);
+				if (mCurrentFrame == 0)
 				{
-					mCurrentFrame = (mCurrentFrame + 1) % (mFrames.x * mFrames.y);
-					if (mCurrentFrame == 0)
+					if (mIsFlipped)
+						textureRect = sf::IntRect(mSpriteSize.x, 0, -mSpriteSize.x, mSpriteSize.y);
+					else
+						textureRect = sf::IntRect(0, 0, mSpriteSize.x, mSpriteSize.y);
+
+					mIdleTime = mIdleDuration;
+
+					if (idle(frameTime))
 					{
-						if (mIsFlipped)
-							textureRect = sf::IntRect(mSpriteSize.x, 0, -mSpriteSize.x, mSpriteSize.y);
-						else
-							textureRect = sf::IntRect(0, 0, mSpriteSize.x, mSpriteSize.y);
-
-						mIdleTime = mIdleDuration;
-
-						if (idle(frameTime))
+						for (int i = 0; i < ((mIdleFrame.x - 1) * mIdleFrame.y); i++)
 						{
-							for (int i = 0; i < ((mIdleFrame.x - 1) * mIdleFrame.y); i++)
+							textureRect.left += abs(textureRect.width);
+							if (textureRect.left + abs(textureRect.width) > textureBounds.x + mFlipOffset)
 							{
-								textureRect.left += abs(textureRect.width);
-								if (textureRect.left + abs(textureRect.width) > textureBounds.x + mFlipOffset)
-								{
-									textureRect.left = mFlipOffset;
-									textureRect.top += textureRect.height;
-								}
+								textureRect.left = mFlipOffset;
+								textureRect.top += textureRect.height;
 							}
 						}
-
-						if (!mIsRepeated)
-							mStop = true;
 					}
-				}
-				else
-				{
-					mCurrentFrame++;
+
+					if (!mIsRepeated)
+						mStop = true;
 				}
 
 				mSprite.setTextureRect(sf::IntRect(textureRect.left + mPadding, textureRect.top + mPadding, textureRect.width - (mPadding * 2), textureRect.height - (mPadding * 2)));

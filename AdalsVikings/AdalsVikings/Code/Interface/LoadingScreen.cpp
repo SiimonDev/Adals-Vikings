@@ -92,20 +92,19 @@ void LoadingScreen::runTask()
 				MHI.unload(MenuID::MainMenu);
 				MHI.load(MenuID::PauseMenu);
 				LVLMI.load();
-				LVLMI.loadAct1();
+				LVLMI.loadBoatScene();
 			}
 			else if (mTask == LoadTask::LoadMenu)
 			{
 				LVLMI.unload();
-				LVLMI.unloadCurrentAct();
 				MHI.unload(MenuID::PauseMenu);
 
 				/* ==== Quick fix for bad unloads ===== */
-				RMI.truncateTextures();
-				RMI.truncateImages();
-				RMI.truncateSounds();
-				RMI.truncateTextureFolders();
-				RMI.truncateFonts();
+				//RMI.truncateTextures();
+				//RMI.truncateImages();
+				//RMI.truncateSounds();
+				//RMI.truncateTextureFolders();
+				//RMI.truncateFonts();
 				/* ==================================== */
 
 				MHI.load(MenuID::MainMenu);

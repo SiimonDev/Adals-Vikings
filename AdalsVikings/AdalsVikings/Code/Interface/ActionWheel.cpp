@@ -20,10 +20,10 @@ sf::Vector2f ActionWheel::getPosition(){ return mPosition; }
 
 void ActionWheel::load()
 {
-	RMI.load(Fonts::ActionWheelDescription, "assets/fonts/font1.ttf");
-	RMI.load(Textures::LookButton, "assets/images/interface/buttons/interface_look.png");
-	RMI.load(Textures::TakeButton, "assets/images/interface/buttons/interface_take.png");
-	RMI.load(Textures::TalkButton, "assets/images/interface/buttons/interface_talk.png");
+	RMI.loadResource(Fonts::ActionWheelDescription, "assets/fonts/font1.ttf");
+	RMI.loadResource(Textures::LookButton, "assets/images/interface/buttons/interface_look.png");
+	RMI.loadResource(Textures::TakeButton, "assets/images/interface/buttons/interface_take.png");
+	RMI.loadResource(Textures::TalkButton, "assets/images/interface/buttons/interface_talk.png");
 
 	button1 = Button(Textures::TalkButton, Fonts::ActionWheelDescription, sf::Vector2f(), " Talk");
 	button1.setScale(sf::Vector2f(0.6f, 0.6f));
@@ -46,10 +46,10 @@ void ActionWheel::load()
 
 void ActionWheel::unload()
 {
-	RMI.unload(Textures::LookButton);
-	RMI.unload(Textures::TakeButton);
-	RMI.unload(Textures::TalkButton);
-	RMI.unload(Fonts::ActionWheelDescription);
+	RMI.unloadResource(Textures::LookButton);
+	RMI.unloadResource(Textures::TakeButton);
+	RMI.unloadResource(Textures::TalkButton);
+	RMI.unloadResource(Fonts::ActionWheelDescription);
 }
 
 void ActionWheel::update()

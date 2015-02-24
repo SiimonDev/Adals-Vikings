@@ -21,7 +21,7 @@ namespace Images
 {
 	enum ID
 	{
-
+		SIZE
 	};
 }
 namespace TextureFolder
@@ -31,7 +31,8 @@ namespace TextureFolder
 		ShipLevel1,
 		ShipLevel2,
 		BeachLevel,
-		RoadLevel
+		RoadLevel.
+		SIZE
 	};
 };
 namespace SoundFolder
@@ -40,7 +41,8 @@ namespace SoundFolder
 	{
 		Default,
 		Hardwood,
-		Grass
+		Grass,
+		SIZE
 	};
 };
 
@@ -102,6 +104,7 @@ namespace Textures
 		DagnyTalk,
 		YngvarrIdle,
 		YngvarrTalk,
+		SIZE
 	};
 }
 namespace Fonts
@@ -110,7 +113,8 @@ namespace Fonts
 	{
 		ActionWheelDescription,
 		DialogWindow,
-		MenuButtons
+		MenuButtons,
+		SIZE
 	};
 }
 namespace Sound
@@ -121,7 +125,8 @@ namespace Sound
 		InventoryClose,
 		PickUpItem,
 
-		BoatAmbient
+		BoatAmbient,
+		SIZE
 	};
 }
 class ResourceManager
@@ -130,21 +135,21 @@ public:
 	//uses Singleton to make the class global.
 	static ResourceManager &getInstance();
 
-	void load(Images::ID id, const std::string &directory);
-	void load(TextureFolder::ID id, const std::string &directory);
-	void load(SoundFolder::ID id, const std::string &directory);
-	void load(Textures::ID id, const std::string &filename);
-	void load(Fonts::ID id, const std::string &filename);
-	void load(Sound::ID id, const std::string &filename);
+	void loadResource(Images::ID id, const std::string &directory);
+	void loadResource(TextureFolder::ID id, const std::string &directory);
+	void loadResource(SoundFolder::ID id, const std::string &directory);
+	void loadResource(Textures::ID id, const std::string &filename);
+	void loadResource(Fonts::ID id, const std::string &filename);
+	void loadResource(Sound::ID id, const std::string &filename);
 	void loadTexture(const std::string &filename);
 	void loadImage(const std::string &filename);
 
-	void unload(Images::ID id);
-	void unload(TextureFolder::ID id);
-	void unload(SoundFolder::ID id);
-	void unload(Textures::ID id);
-	void unload(Fonts::ID id);
-	void unload(Sound::ID id);
+	void unloadResource(Images::ID id);
+	void unloadResource(TextureFolder::ID id);
+	void unloadResource(SoundFolder::ID id);
+	void unloadResource(Textures::ID id);
+	void unloadResource(Fonts::ID id);
+	void unloadResource(Sound::ID id);
 	void unloadTexture(const std::string &filename);
 	void unloadImage(const std::string &filename);
 
@@ -155,12 +160,13 @@ public:
 	void truncateSounds();
 	void truncateFonts();
 
-	sf::Image &getImage(Images::ID id);
-	TextureFolderPtr &getTextureFolder(TextureFolder::ID id);
-	SoundFolderPtr &getSoundFolder(SoundFolder::ID id);
-	sf::Texture &getTexture(Textures::ID id) const;
-	sf::Font &getFont(Fonts::ID id) const;
-	sf::SoundBuffer &getSoundBuffer(Sound::ID id) const;
+	const TextureFolderPtr &getResource(TextureFolder::ID id) const;
+	const SoundFolderPtr &getResource(SoundFolder::ID id) const;
+	sf::Texture &getResource(Textures::ID id) const;
+	sf::Image &getResource(Images::ID id) const;
+	sf::Font &getResource(Fonts::ID id) const;
+	sf::SoundBuffer &getResource(Sound::ID id) const;
+
 	sf::Texture &getNonIDTexture(const std::string &filename) const;
 	sf::Image &getNonIDImage(const std::string &filename) const;
 
@@ -174,14 +180,21 @@ private:
 	ResourceManager(const ResourceManager&);
 	void operator=(const ResourceManager&);
 
-	TextureFolderPtr mFolderVector;
-	SoundFolderPtr mSoundVector;
+	// Resource Maps
 	std::map<Textures::ID, TexturePtr> mTextureMap;
+	std::map<Images::ID, ImagePtr> mImageMap;
+	std::map<Fonts::ID, FontPtr> mFontMap;
+	std::map<Sound::ID, SoundPtr> mSoundMap;
 	std::map<TextureFolder::ID, TextureFolderPtr> mTextureFolderMap;
 	std::map<SoundFolder::ID, SoundFolderPtr> mSoundFolderMap;
-	std::map<Fonts::ID, FontPtr> mFontMap;
-	std::map<Images::ID, ImagePtr> mImageMap;
-	std::map<Sound::ID, SoundPtr> mSoundMap;
+
+	// Load Count Maps
+	std::map<Textures::ID, int> mTextureCountMap;
+	std::map<Images::ID, int> mImageCountMap;
+	std::map<Fonts::ID, int> mFontCountMap;
+	std::map<Sound::ID, int> mSoundCountMap;
+	std::map<TextureFolder::ID, int> mTextureFolderCountMap;
+	std::map<SoundFolder::ID, int> mSoundFolderCountMap;
 
 	// Dynamic texture loading
 	std::map<std::string, TexturePtr> mNonIDTextures;
