@@ -68,10 +68,10 @@ void Ship_level_1::update(sf::Time &frametime)
 			FadeI.fadeOut(frametime);
 			if (FadeI.getFaded())
 			{
-				RMI.unload(Textures::BrynjaIdle);
-				RMI.unload(Textures::BrynjaTalk);
-				RMI.load(Textures::BrynjaIdle, "assets/Images/Brynja/character_brynja_blink.png");
-				RMI.load(Textures::BrynjaTalk, "assets/Images/Brynja/character_brynja_talk.png");
+				RMI.unloadResource(Textures::BrynjaIdle);
+				RMI.unloadResource(Textures::BrynjaTalk);
+				RMI.loadResource(Textures::BrynjaIdle, "assets/Images/Brynja/character_brynja_blink.png");
+				RMI.loadResource(Textures::BrynjaTalk, "assets/Images/Brynja/character_brynja_talk.png");
 				FadeI.setAlpha(254);
 
 				mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaIdle, "assets/Images/Brynja/character_brynja_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
@@ -151,10 +151,10 @@ void Ship_level_1::load()
 
 	if (!mStartBrynja)
 	{
-		RMI.unload(Textures::BrynjaIdle);
-		RMI.unload(Textures::BrandrTalk);
-		RMI.load(Textures::BrynjaIdle, "assets/images/Brynja/character_brynja_sleeping.png");
-		RMI.load(Textures::BrynjaTalk, "assets/images/Brynja/character_brynja_sleeping.png");
+		RMI.unloadResource(Textures::BrynjaIdle);
+		RMI.unloadResource(Textures::BrandrTalk);
+		RMI.loadResource(Textures::BrynjaIdle, "assets/images/Brynja/character_brynja_sleeping.png");
+		RMI.loadResource(Textures::BrynjaTalk, "assets/images/Brynja/character_brynja_sleeping.png");
 		mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaIdle, "assets/images/Brynja/character_brynja_sleeping.png", sf::Vector2i(3, 4), sf::milliseconds(1200), sf::milliseconds(2000));
 		mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaTalk, "assets/images/Brynja/character_brynja_sleeping.png", sf::Vector2i(3, 4), sf::milliseconds(1400), sf::milliseconds(2000));
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 720));
@@ -165,8 +165,8 @@ void Ship_level_1::load()
 
 	Level::load();
 
-	RMI.load(Sound::BoatAmbient, "assets/sounds/Boat.wav");
-	RMI.load(SoundFolder::Hardwood, "assets/sounds/footsteps/Hardwood/");
+	RMI.loadResource(Sound::BoatAmbient, "assets/sounds/Boat.wav");
+	RMI.loadResource(SoundFolder::Hardwood, "assets/sounds/footsteps/Hardwood/");
 	mCurrentStepSound = SoundFolder::Hardwood;
 
 	AudioPlayer::playSound(Sound::BoatAmbient, "boatAmbient", true);
@@ -191,8 +191,8 @@ void Ship_level_1::load()
 
 void Ship_level_1::unload()
 {
-	RMI.unload(Sound::BoatAmbient);
-	RMI.unload(SoundFolder::Hardwood);
+	RMI.unloadResource(Sound::BoatAmbient);
+	RMI.unloadResource(SoundFolder::Hardwood);
 	Level::unload();
 }
 

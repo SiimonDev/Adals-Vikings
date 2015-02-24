@@ -22,7 +22,7 @@ void DialogWindow::setPosition(sf::Vector2f &pos)
 }
 void DialogWindow::setFont(Fonts::ID id)
 {
-	mText.setFont(RMI.getFont(id));
+	mText.setFont(RMI.getResource(id));
 }
 void DialogWindow::setText(std::string text)
 {
@@ -58,13 +58,13 @@ void DialogWindow::load()
 	setBackgroundSize(sf::Vector2f(700, 250));
 	setBackgroundColor(sf::Color(0, 0, 0, 200));
 
-	RMI.load(Fonts::DialogWindow, "Assets/fonts/font2.ttf");
-	mText.setFont(RMI.getFont(Fonts::DialogWindow));
+	RMI.loadResource(Fonts::DialogWindow, "Assets/fonts/font2.ttf");
+	mText.setFont(RMI.getResource(Fonts::DialogWindow));
 }
 
 void DialogWindow::unload()
 {
-	RMI.unload(Fonts::DialogWindow);
+	RMI.unloadResource(Fonts::DialogWindow);
 }
 
 void DialogWindow::displayDialog(Dialog &dialog)

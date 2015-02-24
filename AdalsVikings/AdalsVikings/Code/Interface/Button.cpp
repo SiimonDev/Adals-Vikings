@@ -37,11 +37,11 @@ mText(text), mPosition(position), mDescription(description), mOrigin(ButtonOrigi
 
 void Button::setSprites(Textures::ID id)
 {
-	sf::Texture* texture = &RMI.getTexture(id);
+	sf::Texture* texture = &RMI.getResource(id);
 	int texWidth = texture->getSize().x;
 	int texHeight = texture->getSize().y;
-	mSize.x = RMI.getTexture(id).getSize().x;
-	mSize.y = RMI.getTexture(id).getSize().y;
+	mSize.x = RMI.getResource(id).getSize().x;
+	mSize.y = RMI.getResource(id).getSize().y;
 
 	mSize.x = texWidth;
 	mSize.y = texHeight / 3;
@@ -162,8 +162,8 @@ void Button::setIndex(int index)
 
 void Button::setFont(Fonts::ID id)
 {
-	mButtonText.setFont(RMI.getFont(id));
-	mDescriptionText.setFont(RMI.getFont(id));
+	mButtonText.setFont(RMI.getResource(id));
+	mDescriptionText.setFont(RMI.getResource(id));
 }
 void Button::setText(std::string text)
 {

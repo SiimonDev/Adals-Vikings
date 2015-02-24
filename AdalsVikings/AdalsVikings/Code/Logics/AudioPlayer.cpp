@@ -10,7 +10,7 @@ static bool mMute = false;
 // 0.0 - 1.0
 static double masterSoundScale = 1.0;
 static double soundEffectsScale = 0.5;
-static double musicScale = 0.5;
+static double musicScale = 0.0;
 
 AudioPlayer::AudioPlayer()
 {
@@ -19,7 +19,7 @@ AudioPlayer::AudioPlayer()
 void AudioPlayer::playSound(Sound::ID id, std::string audioID, bool loop, float volume)
 {
 	sf::Sound* sound = new sf::Sound();
-	sound->setBuffer(RMI.getSoundBuffer(id));
+	sound->setBuffer(RMI.getResource(id));
 	sound->setVolume(volume * masterSoundScale * soundEffectsScale);
 	sound->setLoop(loop);
 	sound->play();
@@ -36,10 +36,10 @@ void AudioPlayer::playSound(Sound::ID id, std::string audioID, bool loop, float 
 
 void AudioPlayer::playRandomSound(SoundFolder::ID id, float volume)
 {
-	int index = rand() % RMI.getSoundFolder(id).size();
+	int index = rand() % RMI.getResource(id).size();
 
 	sf::Sound* sound = new sf::Sound();
-	sound->setBuffer(*RMI.getSoundFolder(id).at(index));
+	sound->setBuffer(*RMI.getResource(id).at(index));
 	sound->setVolume(100 * masterSoundScale/* * soundEffectsScale*/);
 	sound->setLoop(false);
 	sound->play();
@@ -85,19 +85,17 @@ void AudioPlayer::stopMusic(std::string musicID)
 void AudioPlayer::update(sf::Time frameTime)
 {
 	// Delete all NonLoop sound that has been stopped
-	std::vector<std::string> deleteID;
-	for (std::map<std::string, sf::Sound*>::iterator it = mSounds.begin(); it != mSounds.end(); ++it){
-		if (it->second->getStatus() == sf::Sound::Status::Stopped){
-			deleteID.push_back(it->first);
+	for (size_t i = 0; i < mNonLoopSounds.size(); i++)
+	{
+		if (mNonLoopSounds[i]->getStatus() == sf::Sound::Status::Stopped){
+			delete mNonLoopSounds[i];
+			mNonLoopSounds.erase(mNonLoopSounds.begin() + i);
+			i--;
 		}
-	}
-	for (size_t i = 0; i < deleteID.size(); i++){
-		delete mNonLoopSounds.at(i);
-		mNonLoopSounds.erase(mNonLoopSounds.begin() + i);
 	}
 
 	// Delete all sounds that has been stopped
-	deleteID.clear();
+	std::vector<std::string> deleteID;
 	for (std::map<std::string, sf::Sound*>::iterator it = mSounds.begin(); it != mSounds.end(); ++it){
 		if (it->second->getStatus() == sf::Sound::Status::Stopped){
 			deleteID.push_back(it->first);

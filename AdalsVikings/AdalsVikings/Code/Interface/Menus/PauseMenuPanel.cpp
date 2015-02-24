@@ -11,15 +11,15 @@ mMenuPanels(activeMenuPanels)
 
 void PauseMenuPanel::load()
 {
-	RMI.load(Fonts::MenuButtons, "assets/fonts/font1.ttf");
-	RMI.load(Textures::PauseMenuResumeButton, "assets/Images/interface/pauseManu/button_resume.png");
-	RMI.load(Textures::PauseMenuSaveButton, "assets/Images/interface/pauseManu/button_save.png");
-	RMI.load(Textures::PauseMenuOptionsButton, "assets/Images/interface/pauseManu/button_options.png");
-	RMI.load(Textures::PauseMenuMainMenuButton, "assets/Images/interface/pauseManu/button_main_menu.png");
-	RMI.load(Textures::PauseMenuExitButton, "assets/Images/interface/pauseManu/button_exit.png");
+	RMI.loadResource(Fonts::MenuButtons, "assets/fonts/font1.ttf");
+	RMI.loadResource(Textures::PauseMenuResumeButton, "assets/Images/interface/pauseManu/button_resume.png");
+	RMI.loadResource(Textures::PauseMenuSaveButton, "assets/Images/interface/pauseManu/button_save.png");
+	RMI.loadResource(Textures::PauseMenuOptionsButton, "assets/Images/interface/pauseManu/button_options.png");
+	RMI.loadResource(Textures::PauseMenuMainMenuButton, "assets/Images/interface/pauseManu/button_main_menu.png");
+	RMI.loadResource(Textures::PauseMenuExitButton, "assets/Images/interface/pauseManu/button_exit.png");
 
-	RMI.load(Textures::PauseMenuBackground, "assets/Images/interface/pauseManu/InGame_menu.png");
-	mBackground.setTexture(RMI.getTexture(Textures::PauseMenuBackground));
+	RMI.loadResource(Textures::PauseMenuBackground, "assets/Images/interface/pauseManu/InGame_menu.png");
+	mBackground.setTexture(RMI.getResource(Textures::PauseMenuBackground));
 	mBackground.setOrigin(mBackground.getTexture()->getSize().x / 2, mBackground.getTexture()->getSize().y / 2);
 	mBackground.setPosition(960, 540);
 
@@ -68,14 +68,14 @@ void PauseMenuPanel::load()
 
 void PauseMenuPanel::unload()
 {
-	RMI.unload(Fonts::MenuButtons);
-	RMI.unload(Textures::PauseMenuBackground);
+	RMI.unloadResource(Fonts::MenuButtons);
+	RMI.unloadResource(Textures::PauseMenuBackground);
 
-	RMI.unload(Textures::PauseMenuResumeButton);
-	RMI.unload(Textures::PauseMenuSaveButton);
-	RMI.unload(Textures::PauseMenuOptionsButton);
-	RMI.unload(Textures::PauseMenuMainMenuButton);
-	RMI.unload(Textures::PauseMenuExitButton);
+	RMI.unloadResource(Textures::PauseMenuResumeButton);
+	RMI.unloadResource(Textures::PauseMenuSaveButton);
+	RMI.unloadResource(Textures::PauseMenuOptionsButton);
+	RMI.unloadResource(Textures::PauseMenuMainMenuButton);
+	RMI.unloadResource(Textures::PauseMenuExitButton);
 }
 
 void PauseMenuPanel::update(sf::Time frameTime)

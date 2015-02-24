@@ -10,17 +10,17 @@ mMenuPanels(activeMenuPanels), mAnimationTime(sf::milliseconds(500)), mTimePasse
 
 void MainMenuPanel::load()
 {
-	RMI.load(Fonts::MenuButtons, "assets/fonts/font1.ttf");
-	RMI.load(Textures::MainMenuPlayButton, "assets/images/interface/MainMenu/button_play.png");
-	RMI.load(Textures::MainMenuOptionsButton, "assets/images/interface/MainMenu/button_options_disabled.png");
-	RMI.load(Textures::MainMenuQuitButton, "assets/images/interface/MainMenu/button_quit.png");
-	RMI.load(Textures::MainMenuBackground, "assets/images/Interface/MainMenu/menu_background.png");
-	RMI.load(Textures::AxeAnimation, "assets/images/Interface/MainMenu/flying_axe.png");
+	RMI.loadResource(Fonts::MenuButtons, "assets/fonts/font1.ttf");
+	RMI.loadResource(Textures::MainMenuPlayButton, "assets/images/interface/MainMenu/button_play.png");
+	RMI.loadResource(Textures::MainMenuOptionsButton, "assets/images/interface/MainMenu/button_options_disabled.png");
+	RMI.loadResource(Textures::MainMenuQuitButton, "assets/images/interface/MainMenu/button_quit.png");
+	RMI.loadResource(Textures::MainMenuBackground, "assets/images/Interface/MainMenu/menu_background.png");
+	RMI.loadResource(Textures::AxeAnimation, "assets/images/Interface/MainMenu/flying_axe.png");
 	//AudioPlayer::playMusic("assets/sounds/music/Theme3.ogg", "mainMenu", true, 20);
 
-	mBackground.setTexture(RMI.getTexture(Textures::MainMenuBackground));
+	mBackground.setTexture(RMI.getResource(Textures::MainMenuBackground));
 
-	mAxeAnimation.load(RMI.getTexture(Textures::AxeAnimation), Frames(5, 1), sf::milliseconds(400), sf::seconds(0.1), false);
+	mAxeAnimation.load(RMI.getResource(Textures::AxeAnimation), Frames(5, 1), sf::milliseconds(400), sf::seconds(0.1), false);
 	mAxeAnimation.getSprite().setOrigin(mAxeAnimation.getSprite().getTextureRect().width, mAxeAnimation.getSprite().getTextureRect().height);
 	mAxeAnimation.setProportions(sf::Vector2f(1605, 968));
 	mAxeAnimation.setPosition(sf::Vector2f(1920, 1080));
@@ -61,12 +61,12 @@ void MainMenuPanel::load()
 
 void MainMenuPanel::unload()
 {
-	RMI.unload(Fonts::MenuButtons);
-	RMI.unload(Textures::MainMenuPlayButton);
-	RMI.unload(Textures::MainMenuOptionsButton);
-	RMI.unload(Textures::MainMenuQuitButton);
-	RMI.unload(Textures::MainMenuBackground);
-	RMI.unload(Textures::AxeAnimation);
+	RMI.unloadResource(Fonts::MenuButtons);
+	RMI.unloadResource(Textures::MainMenuPlayButton);
+	RMI.unloadResource(Textures::MainMenuOptionsButton);
+	RMI.unloadResource(Textures::MainMenuQuitButton);
+	RMI.unloadResource(Textures::MainMenuBackground);
+	RMI.unloadResource(Textures::AxeAnimation);
 	//AudioPlayer::stopMusic("mainMenu");
 }
 

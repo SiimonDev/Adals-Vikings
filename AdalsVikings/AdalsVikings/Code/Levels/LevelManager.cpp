@@ -29,6 +29,7 @@ void LevelManager::load()
 	DialogWindow::load();
 	DialogWindow::setTextSize(30);
 	DialogWindow::setTextStyle(sf::Text::Bold);
+	
 
 	mPlayer.load();
 	mPlayer.clearInventory();
@@ -43,15 +44,17 @@ void LevelManager::unload()
 	mPlayer.unload();
 	mActionWheel.unload();
 	PathFinder::unload();
+	unloadCurrentAct();
 }
 
 void LevelManager::unloadCurrentAct()
 {
+	AudioPlayer::unload();
+	PortalLoader::unload();
+
 	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
 		it->second->unload();
 	mLevelMap.clear();
-	AudioPlayer::unload();
-	PortalLoader::unload();
 }
 
 void LevelManager::update(sf::Time &frametime)

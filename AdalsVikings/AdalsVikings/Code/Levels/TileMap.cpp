@@ -145,15 +145,21 @@ void TileMap::refreshVertices()
 
 sf::Color TileMap::getColorAt(sf::Vector2f &texCoord)
 {
-	assert(texCoord.x >= 0 && texCoord.x <= mCollisionMap->getSize().x);
-	assert(texCoord.y >= 0 && texCoord.y <= mCollisionMap->getSize().y);
-	return mCollisionMap->getPixel(texCoord.x, texCoord.y);
+	//assert(texCoord.x >= 0 && texCoord.x <= mCollisionMap->getSize().x);
+	//assert(texCoord.y >= 0 && texCoord.y <= mCollisionMap->getSize().y);
+	if ((texCoord.x >= 0 && texCoord.x <= mCollisionMap->getSize().x) && (texCoord.y >= 0 && texCoord.y <= mCollisionMap->getSize().y))
+		return mCollisionMap->getPixel(texCoord.x, texCoord.y);
+	
+	return sf::Color(0, 0, 0, 0);
 }
 int TileMap::getIndexAt(sf::Vector2f &texCoord)
 {
-	assert(texCoord.x >= 0 && texCoord.x <= mIndexMap->getSize().x);
-	assert(texCoord.y >= 0 && texCoord.y <= mIndexMap->getSize().y);
-	return float(mIndexMap->getPixel(texCoord.x, texCoord.y).a);
+	//assert(texCoord.x >= 0 && texCoord.x <= mIndexMap->getSize().x);
+	//assert(texCoord.y >= 0 && texCoord.y <= mIndexMap->getSize().y);
+	if ((texCoord.x >= 0 && texCoord.x <= mCollisionMap->getSize().x) && (texCoord.y >= 0 && texCoord.y <= mCollisionMap->getSize().y))
+		return float(mIndexMap->getPixel(texCoord.x, texCoord.y).a);
+
+	return 0;
 }
 
 sf::Vector2i TileMap::getClosestTile(sf::Vector2f &pos)
