@@ -16,36 +16,6 @@ typedef std::vector<SoundPtr> SoundFolderPtr;
 
 #define RMI ResourceManager::getInstance()
 
-
-namespace Images
-{
-	enum ID
-	{
-		SIZE
-	};
-}
-namespace TextureFolder
-{
-	enum ID
-	{
-		ShipLevel1,
-		ShipLevel2,
-		BeachLevel,
-		RoadLevel,
-		SIZE
-	};
-};
-namespace SoundFolder
-{
-	enum ID
-	{
-		Default,
-		Hardwood,
-		Grass,
-		SIZE
-	};
-};
-
 namespace Textures
 {
 	enum ID
@@ -59,7 +29,6 @@ namespace Textures
 		UlfrTalkToPlayer,
 		UlfrPickup,
 
-		Portal,
 		Button1,
 		Button1Dissabled,
 		LookButton,
@@ -69,6 +38,7 @@ namespace Textures
 		MainMenuPlayButton,
 		MainMenuOptionsButton,
 		MainMenuQuitButton,
+		MainMenuBackground,
 
 		PauseMenuResumeButton,
 		PauseMenuSaveButton,
@@ -77,13 +47,8 @@ namespace Textures
 		PauseMenuExitButton,
 		PauseMenuBackground,
 
-		Asteroid,
-		Axe,
-		Stick,
-
-		Wave,
+		WaveAnimation,
 		AxeAnimation,
-		MainMenuBackground,
 
 		InventoryBackground,
 		InventoryTile,
@@ -104,6 +69,13 @@ namespace Textures
 		DagnyTalk,
 		YngvarrIdle,
 		YngvarrTalk,
+		SIZE
+	};
+}
+namespace Images
+{
+	enum ID
+	{
 		SIZE
 	};
 }
@@ -129,43 +101,64 @@ namespace Sound
 		SIZE
 	};
 }
+namespace TextureFolder
+{
+	enum ID
+	{
+		ShipLevel1,
+		ShipLevel2,
+		BeachLevel,
+		RoadLevel,
+		SIZE
+	};
+};
+namespace SoundFolder
+{
+	enum ID
+	{
+		Default,
+		Hardwood,
+		Grass,
+		SIZE
+	};
+};
 class ResourceManager
 {
 public:
 	//uses Singleton to make the class global.
 	static ResourceManager &getInstance();
 
-	void loadResource(Images::ID id, const std::string &directory);
+	void loadResource(Textures::ID id);
+	void loadResource(Images::ID id);
+	void loadResource(Fonts::ID id);
+	void loadResource(Sound::ID id);
 	void loadResource(TextureFolder::ID id, const std::string &directory);
-	void loadResource(SoundFolder::ID id, const std::string &directory);
-	void loadResource(Textures::ID id, const std::string &filename);
-	void loadResource(Fonts::ID id, const std::string &filename);
-	void loadResource(Sound::ID id, const std::string &filename);
+	void loadResource(SoundFolder::ID id, const  std::string &directory);
 	void loadTexture(const std::string &filename);
 	void loadImage(const std::string &filename);
 
-	void unloadResource(Images::ID id);
-	void unloadResource(TextureFolder::ID id);
-	void unloadResource(SoundFolder::ID id);
 	void unloadResource(Textures::ID id);
+	void unloadResource(Images::ID id);
 	void unloadResource(Fonts::ID id);
 	void unloadResource(Sound::ID id);
+	void unloadResource(TextureFolder::ID id);
+	void unloadResource(SoundFolder::ID id);
 	void unloadTexture(const std::string &filename);
 	void unloadImage(const std::string &filename);
 
 	void truncateTextures();
 	void truncateImages();
-	void truncateTextureFolders();
-	void truncateSoundFolders();
 	void truncateSounds();
 	void truncateFonts();
+	void truncateTextureFolders();
+	void truncateSoundFolders();
 
-	const TextureFolderPtr &getResource(TextureFolder::ID id) const;
-	const SoundFolderPtr &getResource(SoundFolder::ID id) const;
 	sf::Texture &getResource(Textures::ID id) const;
 	sf::Image &getResource(Images::ID id) const;
 	sf::Font &getResource(Fonts::ID id) const;
 	sf::SoundBuffer &getResource(Sound::ID id) const;
+	const TextureFolderPtr &getResource(TextureFolder::ID id) const;
+	const SoundFolderPtr &getResource(SoundFolder::ID id) const;
 
 	sf::Texture &getNonIDTexture(const std::string &filename) const;
 	sf::Image &getNonIDImage(const std::string &filename) const;
@@ -196,8 +189,15 @@ private:
 	std::map<TextureFolder::ID, int> mTextureFolderCountMap;
 	std::map<SoundFolder::ID, int> mSoundFolderCountMap;
 
+	// FilePath Maps
+	std::map<Textures::ID, std::string> mTexturePathMap;
+	std::map<Images::ID, std::string> mImagePathMap;
+	std::map<Fonts::ID, std::string> mFontPathMap;
+	std::map<Sound::ID, std::string> mSoundPathMap;
+	std::map<TextureFolder::ID, std::string> mTextureFolderPathMap;
+	std::map<SoundFolder::ID, std::string> mSoundFolderPathMap;
+
 	// Dynamic texture loading
 	std::map<std::string, TexturePtr> mNonIDTextures;
 	std::map<std::string, ImagePtr> mNonIDImages;
 };
-

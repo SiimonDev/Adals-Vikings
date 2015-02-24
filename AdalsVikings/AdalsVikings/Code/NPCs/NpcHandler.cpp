@@ -21,8 +21,8 @@ void NpcHandler::load()
 	NpcPtr Yngvarr(new Npc());
 
 	Valdis->setName("Valdis");
-	Valdis->setIdleAnimation(Textures::ValdisIdle, "assets/images/Valdis/character_valdis_blink.png", sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
-	Valdis->SetTalkAnimation(Textures::ValdisTalk, "assets/images/Valdis/character_valdis_talk.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
+	Valdis->setIdleAnimation(Textures::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
+	Valdis->SetTalkAnimation(Textures::ValdisTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 	Valdis->setPosition(sf::Vector2f(1250, 723));
 	Valdis->setInteractionPosition(sf::Vector2f(1153, 726));
 	Valdis->setDialogue("Valdis");
@@ -33,8 +33,8 @@ void NpcHandler::load()
 	Valdis->setRightWay(false);
 
 	Leifr->setName("Leifr");
-	Leifr->setIdleAnimation(Textures::LeifrIdle, "assets/images/leifr/character_leifr_sit_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
-	Leifr->SetTalkAnimation(Textures::LeifrTalk, "assets/images/leifr/character_leifr_sit_talk.png", sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
+	Leifr->setIdleAnimation(Textures::LeifrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+	Leifr->SetTalkAnimation(Textures::LeifrTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
 	Leifr->setPosition(sf::Vector2f(460, 727));
 	Leifr->setInteractionPosition(sf::Vector2f(650, 725));
 	Leifr->setColor(sf::Color(72, 209, 204));
@@ -45,8 +45,8 @@ void NpcHandler::load()
 	Leifr->setRightWay(false);
 
 	Finnr->setName("Finnr");
-	Finnr->setIdleAnimation(Textures::FinnrIdle, "assets/images/finnr/character_finnr_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(8));
-	Finnr->SetTalkAnimation(Textures::FinnrTalk, "assets/images/finnr/character_finnr_talk.png", sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
+	Finnr->setIdleAnimation(Textures::FinnrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(8));
+	Finnr->SetTalkAnimation(Textures::FinnrTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
 	Finnr->setPosition(sf::Vector2f(580, 714));
 	Finnr->setInteractionPosition(sf::Vector2f(650, 725));
 	Finnr->setColor(sf::Color(173, 216, 230));
@@ -57,8 +57,8 @@ void NpcHandler::load()
 	Finnr->setRightWay(false);
 
 	Brynja->setName("Brynja");
-	Brynja->setIdleAnimation(Textures::BrynjaIdle, "assets/images/Brynja/character_brynja_blink.png", sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(5));
-	Brynja->SetTalkAnimation(Textures::BrynjaTalk, "assets/images/Brynja/character_brynja_talk.png", sf::Vector2i(4, 1), sf::milliseconds(600), sf::Time::Zero);
+	Brynja->setIdleAnimation(Textures::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(5));
+	Brynja->SetTalkAnimation(Textures::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(600), sf::Time::Zero);
 	Brynja->setColor(sf::Color(178, 34, 34));
 	Brynja->setDialogue("Brynja");
 	Brynja->setIndex(14);
@@ -69,8 +69,8 @@ void NpcHandler::load()
 	Brynja->setRightWay(false);
 
 	Alfr->setName("Alfr");
-	Alfr->setIdleAnimation(Textures::AlfrIdle, "assets/images/Alfr/character_alfr.png", sf::Vector2i(1, 1), sf::milliseconds(10000), sf::seconds(9999));
-	Alfr->SetTalkAnimation(Textures::AlfrTalk, "assets/images/Alfr/character_alfr_talk.png", sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
+	Alfr->setIdleAnimation(Textures::AlfrIdle, sf::Vector2i(1, 1), sf::milliseconds(10000), sf::seconds(9999));
+	Alfr->SetTalkAnimation(Textures::AlfrTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
 	Alfr->setPosition(sf::Vector2f(290, 870));
 	Alfr->setInteractionPosition(sf::Vector2f(380, 885));
 	Alfr->setColor(sf::Color(210, 105, 30));
@@ -81,8 +81,8 @@ void NpcHandler::load()
 	Alfr->setRightWay(false);
 
 	Dagny->setName("Dagny");
-	Dagny->setIdleAnimation(Textures::DagnyIdle, "assets/images/Dagny/character_dagny_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(4));
-	Dagny->SetTalkAnimation(Textures::DagnyTalk, "assets/images/Dagny/character_dagny_talk.png", sf::Vector2i(4, 1), sf::milliseconds(350), sf::Time::Zero);
+	Dagny->setIdleAnimation(Textures::DagnyIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(4));
+	Dagny->SetTalkAnimation(Textures::DagnyTalk, sf::Vector2i(4, 1), sf::milliseconds(350), sf::Time::Zero);
 	Dagny->setPosition(sf::Vector2f(1565, 705));
 	Dagny->setInteractionPosition(sf::Vector2f(1680, 690));
 	Dagny->setColor(sf::Color(139, 0, 139));
@@ -93,8 +93,8 @@ void NpcHandler::load()
 	Dagny->setRightWay(false);
 
 	Brandr->setName("Brandr");
-	Brandr->setIdleAnimation(Textures::BrandrIdle, "assets/images/Brandr/character_brandr_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(3.7));
-	Brandr->SetTalkAnimation(Textures::BrandrTalk, "assets/images/Brandr/character_brandr_talk.png", sf::Vector2i(6, 1), sf::milliseconds(750), sf::Time::Zero);
+	Brandr->setIdleAnimation(Textures::BrandrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(3.7));
+	Brandr->SetTalkAnimation(Textures::BrandrTalk, sf::Vector2i(6, 1), sf::milliseconds(750), sf::Time::Zero);
 	Brandr->setPosition(sf::Vector2f(800, 800));
 	Brandr->setInteractionPosition(sf::Vector2f(890, 840));
 	Brandr->setColor(sf::Color(255, 215, 0));
@@ -105,8 +105,8 @@ void NpcHandler::load()
 	Brandr->setRightWay(true);
 
 	Yngvarr->setName("Yngvarr");
-	Yngvarr->setIdleAnimation(Textures::YngvarrIdle, "assets/images/Yngvarr/character_yngvarr_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5.2));
-	Yngvarr->SetTalkAnimation(Textures::YngvarrTalk, "assets/images/Yngvarr/character_yngvarr_talk.png", sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
+	Yngvarr->setIdleAnimation(Textures::YngvarrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5.2));
+	Yngvarr->SetTalkAnimation(Textures::YngvarrTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
 	Yngvarr->setPosition(sf::Vector2f(900, 820));
 	Yngvarr->setInteractionPosition(sf::Vector2f(1015, 832));
 	Yngvarr->setColor(sf::Color(176, 196, 222));

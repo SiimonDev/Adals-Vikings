@@ -34,50 +34,133 @@ ResourceManager::ResourceManager()
 
 	for (int i = 0; i < SoundFolder::SIZE; i++)
 		mSoundFolderCountMap[static_cast<SoundFolder::ID>(i)] = 0;
+
+	/* ========== Set Texture File paths ========== */
+	mTexturePathMap[Textures::UlfrWalk] = "assets/images/ulfr/character_ulfr_walk.png";
+	mTexturePathMap[Textures::UlfrIdle] = "assets/images/ulfr/character_ulfr_idle.png";
+	mTexturePathMap[Textures::UlfrFront] = "assets/images/ulfr/character_ulfr_front.png";
+	mTexturePathMap[Textures::UlfrBack] = "assets/images/ulfr/character_ulfr_back.png";
+	mTexturePathMap[Textures::UlfrStop] = "assets/images/ulfr/character_ulfr_stop.png";
+	mTexturePathMap[Textures::UlfrTalkToNpc] = "assets/images/ulfr/character_ulfr_talk.png";
+	mTexturePathMap[Textures::UlfrTalkToPlayer] = "assets/images/ulfr/character_ulfr_front.png";
+	mTexturePathMap[Textures::UlfrPickup] = "assets/images/ulfr/character_ulfr_pickup.png";
+
+	mTexturePathMap[Textures::Button1] = "assets/images/interface/Buttons/Button1.png";
+	mTexturePathMap[Textures::Button1Dissabled] = "assets/images/interface/Buttons/Button1_grey.png";
+	mTexturePathMap[Textures::LookButton] = "assets/images/interface/buttons/interface_look.png";
+	mTexturePathMap[Textures::TakeButton] = "assets/images/interface/buttons/interface_take.png";
+	mTexturePathMap[Textures::TalkButton] = "assets/images/interface/buttons/interface_talk.png";
+
+	mTexturePathMap[Textures::MainMenuPlayButton] = "assets/images/interface/MainMenu/button_play.png";
+	mTexturePathMap[Textures::MainMenuOptionsButton] = "assets/images/interface/MainMenu/button_options_disabled.png";
+	mTexturePathMap[Textures::MainMenuQuitButton] = "assets/images/interface/MainMenu/button_quit.png";
+	mTexturePathMap[Textures::MainMenuBackground] = "assets/images/Interface/MainMenu/menu_background.png";
+
+	mTexturePathMap[Textures::PauseMenuResumeButton] = "assets/images/interface/pauseManu/button_resume.png";
+	mTexturePathMap[Textures::PauseMenuSaveButton] = "assets/images/interface/pauseManu/button_save.png";
+	mTexturePathMap[Textures::PauseMenuOptionsButton] = "assets/images/interface/pauseManu/button_options.png";
+	mTexturePathMap[Textures::PauseMenuMainMenuButton] = "assets/images/interface/pauseManu/button_main_menu.png";
+	mTexturePathMap[Textures::PauseMenuExitButton] = "assets/images/interface/pauseManu/button_exit.png";
+	mTexturePathMap[Textures::PauseMenuBackground] = "assets/images/interface/pauseManu/InGame_menu.png";
+
+	mTexturePathMap[Textures::WaveAnimation] = "assets/MapFiles/Beach/waves.png";
+	mTexturePathMap[Textures::AxeAnimation] = "assets/images/Interface/MainMenu/flying_axe.png";
+
+	mTexturePathMap[Textures::InventoryBackground] = "assets/images/Interface/inventory.png";
+	mTexturePathMap[Textures::InventoryTile] = "assets/images/InventoryTile.png";
+
+	mTexturePathMap[Textures::BrandrIdle] = "assets/images/Brandr/character_brandr_blink.png";
+	mTexturePathMap[Textures::BrandrTalk] = "assets/images/Brandr/character_brandr_talk.png";
+	mTexturePathMap[Textures::ValdisIdle] = "assets/images/Valdis/character_valdis_blink.png";
+	mTexturePathMap[Textures::ValdisTalk] = "assets/images/Valdis/character_valdis_talk.png";
+	mTexturePathMap[Textures::LeifrIdle] = "assets/images/Leifr/character_leifr_blink.png";
+	mTexturePathMap[Textures::LeifrTalk] = "assets/images/Leifr/character_leifr_talk.png";
+	mTexturePathMap[Textures::FinnrIdle] = "assets/images/finnr/character_finnr_blink.png";
+	mTexturePathMap[Textures::FinnrTalk] = "assets/images/finnr/character_finnr_talk.png";
+	mTexturePathMap[Textures::BrynjaIdle] = "assets/images/Brynja/character_brynja_blink.png";
+	mTexturePathMap[Textures::BrynjaTalk] = "assets/images/Brynja/character_brynja_talk.png";
+	mTexturePathMap[Textures::AlfrIdle] = "assets/images/Alfr/character_alfr.png";
+	mTexturePathMap[Textures::AlfrTalk] = "assets/images/Alfr/character_alfr_talk.png";
+	mTexturePathMap[Textures::DagnyIdle] = "assets/images/Dagny/character_dagny_blink.png";
+	mTexturePathMap[Textures::DagnyTalk] = "assets/images/Dagny/character_dagny_talk.png";
+	mTexturePathMap[Textures::YngvarrIdle] = "assets/images/Yngvarr/character_yngvarr_blink.png";
+	mTexturePathMap[Textures::YngvarrTalk] = "assets/images/Yngvarr/character_yngvarr_talk.png";
+	/* ============================================ */
+
+
+	/* =========== Set Font File paths =========== */
+	mFontPathMap[Fonts::ActionWheelDescription] = "assets/fonts/font1.ttf";
+	mFontPathMap[Fonts::DialogWindow] = "Assets/fonts/font2.ttf";
+	mFontPathMap[Fonts::MenuButtons] = "assets/fonts/font1.ttf";
+	/* =========================================== */
+
+
+	/* =========== Set Sound File paths =========== */
+	mSoundPathMap[Sound::InventoryOpen] = "assets/sounds/Inventory(open).wav";
+	mSoundPathMap[Sound::InventoryClose] = "assets/sounds/Inventory(close).wav";
+	mSoundPathMap[Sound::PickUpItem] = "assets/sounds/Pick_up_item.wav";
+
+	mSoundPathMap[Sound::BoatAmbient] = "assets/sounds/Boat.wav";
+	/* ============================================ */
+
+
+	/* =========== Set Texture Folder File paths =========== */
+	mTextureFolderPathMap[TextureFolder::ShipLevel1];
+	mTextureFolderPathMap[TextureFolder::ShipLevel2];
+	mTextureFolderPathMap[TextureFolder::BeachLevel];
+	mTextureFolderPathMap[TextureFolder::RoadLevel];
+	/* ===================================================== */
+
+
+	/* =========== Set Sound Folder File paths =========== */
+	mSoundFolderPathMap[SoundFolder::Default];
+	mSoundFolderPathMap[SoundFolder::Hardwood];
+	mSoundFolderPathMap[SoundFolder::Grass];
+	/* =================================================== */
 }
 
 /* ====== Load functions ======== */
-void ResourceManager::loadResource(Textures::ID id, const std::string& filename)
+void ResourceManager::loadResource(Textures::ID id)
 {
-	std::cout << "Loading Texture: " << filename << std::endl;
+	std::cout << "Loading Texture: " << mTexturePathMap[id] << std::endl;
 	if (mTextureCountMap[id] == 0)
 	{
 		TexturePtr texture(new sf::Texture());
-		texture->loadFromFile(filename);
+		texture->loadFromFile(mTexturePathMap[id]);
 		texture->setSmooth(true);
 		mTextureMap.insert(std::make_pair(id, std::move(texture)));
 	}
 	mTextureCountMap[id]++;
 }
-void ResourceManager::loadResource(Images::ID id, const std::string &filename)
+void ResourceManager::loadResource(Images::ID id)
 {
-	std::cout << "Loading Image: " << filename << std::endl;
+	std::cout << "Loading Image: " << mImagePathMap[id] << std::endl;
 	if (mImageCountMap[id] == 0)
 	{
 		ImagePtr image(new sf::Image());
-		image->loadFromFile(filename);
+		image->loadFromFile(mImagePathMap[id]);
 		mImageMap.insert(std::make_pair(id, std::move(image)));
 	}
 	mImageCountMap[id]++;
 }
-void ResourceManager::loadResource(Fonts::ID id, const std::string& filename)
+void ResourceManager::loadResource(Fonts::ID id)
 {
-	std::cout << "Loading Font: " << filename << std::endl;
+	std::cout << "Loading Font: " << mFontPathMap[id] << std::endl;
 	if (mFontCountMap[id] == 0)
 	{
 		FontPtr font(new sf::Font());
-		font->loadFromFile(filename);
+		font->loadFromFile(mFontPathMap[id]);
 		mFontMap.insert(std::make_pair(id, std::move(font)));
 	}
 	mFontCountMap[id]++;
 }
-void ResourceManager::loadResource(Sound::ID id, const std::string& filename)
+void ResourceManager::loadResource(Sound::ID id)
 {
-	std::cout << "Loading Sound: " << filename << std::endl;
+	std::cout << "Loading Sound: " << mSoundPathMap[id] << std::endl;
 	if (mSoundCountMap[id] == 0)
 	{
 		SoundPtr sound(new sf::SoundBuffer());
-		sound->loadFromFile(filename);
+		sound->loadFromFile(mSoundPathMap[id]);
 		mSoundMap.insert(std::make_pair(id, std::move(sound)));
 	}
 	mSoundCountMap[id]++;

@@ -24,8 +24,8 @@ void Npc::update(sf::Time &frametime)
 
 void Npc::load()
 {
-	RMI.loadResource(mIdleTexture, mIdlePath);
-	RMI.loadResource(mTalkTexture, mTalkPath);
+	RMI.loadResource(mIdleTexture);
+	RMI.loadResource(mTalkTexture);
 	mNpcAnimation.flip(mFlip);
 	mNpcAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
 	mSize.x = mNpcAnimation.getSpriteSize().x;
@@ -113,19 +113,17 @@ void Npc::setRightWay(bool value)
 {
 	mFlip = value;
 }
-void Npc::setIdleAnimation(Textures::ID id, std::string idlePath, sf::Vector2i &idleFrames, sf::Time duration, sf::Time idleDuration)
+void Npc::setIdleAnimation(Textures::ID id, sf::Vector2i &idleFrames, sf::Time duration, sf::Time idleDuration)
 {
 	mIdleTexture = id;
-	mIdlePath = idlePath;
 	mIdleFrames = idleFrames;
 	mIdleDuration = duration;
 	mIdleWaitTime = idleDuration;
 }
 
-void Npc::SetTalkAnimation(Textures::ID id, std::string talkPath, sf::Vector2i &talkFrames, sf::Time duration, sf::Time talkduration)
+void Npc::SetTalkAnimation(Textures::ID id, sf::Vector2i &talkFrames, sf::Time duration, sf::Time talkduration)
 {
 	mTalkTexture = id;
-	mTalkPath = talkPath;
 	mTalkFrames = talkFrames;
 	mTalkDuration = duration;
 	mTalkWaitTime = talkduration;

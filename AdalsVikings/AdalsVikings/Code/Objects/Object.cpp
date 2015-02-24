@@ -9,7 +9,7 @@
 #include <vector>
 
 Object::Object(std::string filePath, std::string folderPath) :
-mDocPath(filePath), mFolderPath(folderPath), mCollision(true), debuggMode(false)
+mDocPath(filePath), mFolderPath(folderPath), mCollision(true), debuggMode(false), mScale(1, 1)
 {
 	readVariablesFromFile();
 }
@@ -107,6 +107,18 @@ void Object::setScale(sf::Vector2f &scale)
 	mScale = scale;
 }
 
+void Object::setScaleFromWidth(float width)
+{
+	mScale.x = ((width / abs(mSprite.getTextureRect().width)));
+	mScale.y = mScale.x;
+}
+
+void Object::setScaleFromHeight(float height)
+{
+	mScale.y = ((height / abs(mSprite.getTextureRect().height)));
+	mScale.x = mScale.y;
+}
+
 void Object::enableCollision(bool active)
 {
 	mCollision = active;
@@ -173,6 +185,11 @@ sf::Vector2f &Object::getPosition()
 sf::Vector2f &Object::getInteractionPosition()
 {
 	return mInteractionPosition;
+}
+
+sf::Vector2f Object::getSize()
+{
+	return sf::Vector2f(mSize.x * mScale.x, mSize.y * mScale.y);
 }
 
 sf::Vector2f Object::getScale()

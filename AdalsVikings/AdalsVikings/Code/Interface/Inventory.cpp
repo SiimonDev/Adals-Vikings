@@ -7,8 +7,8 @@
 #include <fstream>
 
 
-const int invWidth = 9;
-const int invHeight = 5;
+const int invWidth = 8;
+const int invHeight = 4;
 
 InvTile invTiles[invWidth][invHeight];
 
@@ -23,16 +23,16 @@ Inventory::Inventory()
 
 void Inventory::load()
 {
-	RMI.loadResource(Sound::PickUpItem, "assets/sounds/Pick_up_item.wav");
-	RMI.loadResource(Sound::InventoryOpen, "assets/sounds/Inventory(open).wav");
-	RMI.loadResource(Sound::InventoryClose, "assets/sounds/Inventory(close).wav");
-	RMI.loadResource(Textures::InventoryBackground, "assets/images/Interface/inventory.png");
+	RMI.loadResource(Sound::PickUpItem);
+	RMI.loadResource(Sound::InventoryOpen);
+	RMI.loadResource(Sound::InventoryClose);
+	RMI.loadResource(Textures::InventoryBackground);
 	mSprite.setTexture(RMI.getResource(Textures::InventoryBackground));
 	mIndex = 999999;
 
 	// tileShit
-	int tileWidth = 100 * mScale.x;
-	int tileHeight = 100 * mScale.y;
+	int tileWidth = 140 * mScale.x;
+	int tileHeight = 140 * mScale.y;
 	float tileStartPosX = mPosition.x - (((1920 / 2) - 310) * mScale.x) + (tileWidth / 2);
 	float tileStartPosY = mPosition.y - (((1080 / 2) - 215) * mScale.y) + (tileHeight / 2);
 

@@ -31,6 +31,7 @@ private:
 	bool mSnapToMouse;
 
 	Object* mObject;
+	sf::Vector2f mSize;
 	sf::Vector2f mScale;
 	sf::Vector2f mPosition;
 	sf::RectangleShape mRectangle;
