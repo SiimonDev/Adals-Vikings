@@ -65,6 +65,7 @@ public:
 	void clearInventory();
 	void move(sf::Time &frameTime);
 	void walkPath(Path &path);
+	void playFootstepSound();
 
 	sf::Sprite getSprite();
 	sf::Vector2f getPosition();
@@ -79,12 +80,12 @@ public:
 	void setIntention(Intention::ID intention);
 	void setAnimationStyle(AnimationType::ID type);
 	void setFlip(bool value);
+	void setFootsteps(SoundFolder::ID footsteps);
 
 	std::string &getName();
 	float &getCurrentAlpha();
 
 private:
-
 	Path mCurrentPath;
 
 	sf::Vector2f mProportions;
@@ -116,4 +117,6 @@ private:
 	Animation mPlayerAnimation;
 	Intention::ID mIntention;
 	AnimationStyle::ID mAnimationStyle;
+
+	SoundFolder::ID mFootsteps;
 };

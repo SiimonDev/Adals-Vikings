@@ -15,7 +15,7 @@ enum PortalId
 class PortalLoader
 {
 public:
-	static void initialize();
+	static void load();
 	static void unload();
 
 	static std::map<PortalId, PortalPtr> &getPortals();

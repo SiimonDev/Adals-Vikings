@@ -62,6 +62,40 @@ std::vector<std::string> ResourceManager::getAllBackgroundFilesFromFolder(const 
 	return filePaths;
 }
 
+std::vector<std::string> ResourceManager::getAllFootstepsFromFolder(const std::string &directory)
+{
+	DIR *dir;
+	struct dirent *dirnt;
+	std::vector<std::string> filePaths;
+
+	if ((dir = opendir(directory.c_str())) != NULL)
+	{
+		while ((dirnt = readdir(dir)) != NULL)
+		{
+			std::string path = dirnt->d_name;
+			if (path.find("step") != std::string::npos)
+			{
+				filePaths.push_back(directory + dirnt->d_name);
+			}
+		}
+		closedir(dir);
+
+		std::sort(filePaths.begin(), filePaths.end(), compareLX);
+		std::cout << std::endl << "--- Loading Map Layers ---" << std::endl;
+		for each (std::string s in filePaths)
+		{
+			std::cout << s << std::endl;
+		}
+		std::cout << std::endl;
+	}
+	else
+	{
+		std::cout << "Could not find dir" << std::endl;
+	}
+	dir = 0;
+	dirnt = 0;
+	return filePaths;
+}
 std::string ResourceManager::getRCFileFromFolder(const std::string &directory)
 {
 	DIR *dir;
@@ -89,7 +123,6 @@ std::string ResourceManager::getRCFileFromFolder(const std::string &directory)
 	std::cout << "No RC file found" << std::endl;
 	return "";
 }
-
 std::string ResourceManager::getIndexFileFromFolder(const std::string &directory)
 {
 	DIR *dir;
@@ -118,14 +151,15 @@ std::string ResourceManager::getIndexFileFromFolder(const std::string &directory
 	return "";
 }
 
+
+/* ====== Load functions ======== */
 void ResourceManager::load(Images::ID id, const std::string &directory)
 {
 	ImagePtr image(new sf::Image());
 	image->loadFromFile(directory);
 	mImageMap.insert(std::make_pair(id, std::move(image)));
 }
-
-void ResourceManager::load(Folder::ID id, const std::string &directory)
+void ResourceManager::load(TextureFolder::ID id, const std::string &directory)
 {
 	std::vector<std::string> filePaths = getAllBackgroundFilesFromFolder(directory);
 
@@ -134,9 +168,23 @@ void ResourceManager::load(Folder::ID id, const std::string &directory)
 		mFolderVector.push_back(TexturePtr(new sf::Texture()));
 		mFolderVector[i]->loadFromFile(filePaths.at(i));
 	}
-	mFolderMap.insert(std::make_pair(id, std::move(mFolderVector)));
+	mTextureFolderMap.insert(std::make_pair(id, std::move(mFolderVector)));
 
 	mFolderVector.clear();
+	filePaths.clear();
+}
+void ResourceManager::load(SoundFolder::ID id, const std::string &directory)
+{
+	std::vector<std::string> filePaths = getAllFootstepsFromFolder(directory);
+
+	for (int i = 0; i < filePaths.size(); i++)
+	{
+		mSoundVector.push_back(SoundPtr(new sf::SoundBuffer()));
+		mSoundVector[i]->loadFromFile(filePaths.at(i));
+	}
+	mSoundFolderMap.insert(std::make_pair(id, std::move(mSoundVector)));
+
+	mSoundVector.clear();
 	filePaths.clear();
 }
 void ResourceManager::load(Textures::ID id, const std::string& filename)
@@ -177,16 +225,21 @@ void ResourceManager::loadImage(const std::string &filename)
 	mNonIDImages.insert(std::make_pair(filename, std::move(image)));
 }
 
+
+/* ====== Unload functions ======== */
 void ResourceManager::unload(Images::ID id)
 {
 	mImageMap.erase(id);
 }
-void ResourceManager::unload(Folder::ID id)
+void ResourceManager::unload(TextureFolder::ID id)
 {
-	/*for (int i = 0; i < mFolderMap[id].size(); i++)
-		delete mFolderMap[id].at(i);*/
-
-	mFolderMap.clear();
+	for (int i = 0; i < mTextureFolderMap[id].size(); i++)
+		mTextureFolderMap[id].clear();
+}
+void ResourceManager::unload(SoundFolder::ID id)
+{
+	for (int i = 0; i < mSoundFolderMap[id].size(); i++)
+		mSoundFolderMap[id].clear();
 }
 void ResourceManager::unload(Textures::ID id)
 {
@@ -209,43 +262,52 @@ void ResourceManager::unloadImage(const std::string &filename)
 	mNonIDImages.erase(filename);
 }
 
+
+/* ====== Truncate functions ======== */
 void ResourceManager::truncateTextures()
 {
 	mTextureMap.clear();
 }
-
 void ResourceManager::truncateImages()
 {
 	mImageMap.clear();
 }
-
-void ResourceManager::truncateFolders()
+void ResourceManager::truncateTextureFolders()
 {
-	for (std::map<Folder::ID, FolderPtr>::iterator it = mFolderMap.begin(); it != mFolderMap.end(); ++it)
-	{
+	for (std::map<TextureFolder::ID, TextureFolderPtr>::iterator it = mTextureFolderMap.begin(); it != mTextureFolderMap.end(); ++it)
 		it->second.clear();
-	}
-	mFolderMap.clear();
+	mTextureFolderMap.clear();
 }
-
+void ResourceManager::truncateSoundFolders()
+{
+	for (std::map<SoundFolder::ID, SoundFolderPtr>::iterator it = mSoundFolderMap.begin(); it != mSoundFolderMap.end(); ++it)
+		it->second.clear();
+	mSoundFolderMap.clear();
+}
 void ResourceManager::truncateSounds()
 {
 	mSoundMap.clear();
 }
-
 void ResourceManager::truncateFonts()
 {
 	mFontMap.clear();
 }
 
+
+/* ====== Get functions ======== */
 sf::Image &ResourceManager::getImage(Images::ID id)
 {
 	auto found = mImageMap.find(id);
 	return *found->second;
 }
-FolderPtr &ResourceManager::getFolder(Folder::ID id)
+TextureFolderPtr &ResourceManager::getTextureFolder(TextureFolder::ID id)
 {
-	auto found = mFolderMap.find(id);
+	auto found = mTextureFolderMap.find(id);
+	return found->second;
+}
+SoundFolderPtr &ResourceManager::getSoundFolder(SoundFolder::ID id)
+{
+	auto found = mSoundFolderMap.find(id);
 	return found->second;
 }
 sf::Texture &ResourceManager::getTexture(Textures::ID id) const

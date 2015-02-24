@@ -18,7 +18,7 @@ Ship_level_2::Ship_level_2(Player &player, ActionWheel &actionWheel)
 	mFolderPath = "Assets/MapFiles/Ship2/";
 	mFadeRectangle.setSize(sf::Vector2f(1920, 1080));
 	mFadeRectangle.setFillColor(sf::Color(0, 0, 0, mAlpha));
-	mLevelID = Folder::ShipLevel2;
+	mLevelID = TextureFolder::ShipLevel2;
 }
 
 void Ship_level_2::update(sf::Time &frametime)
@@ -79,18 +79,16 @@ void Ship_level_2::render(IndexRenderer &iRenderer)
 
 void Ship_level_2::load()
 {
+	mPortals[Portal2] = &PortalLoader::getPortal(Portal2); // This does not create a new portal it only references the one in PortalLoader;
 
-	DialogHandler::load("assets/mapfiles/Ship2/Dialogues.txt");
-	mPortals[Portal2] = LPortalPtr(new Portal(PortalLoader::getPortal(Portal2)));
+	mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
+	mNpcs["Dagny"]->setIndex(14);
 
-	mNpcs["Dagny"] = LNpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
-	mNpcs["Dagny"]->setIndex(11);
+	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
+	mNpcs["Brandr"]->setIndex(14);
 
-	mNpcs["Brandr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
-	mNpcs["Brandr"]->setIndex(13);
-
-	mNpcs["Yngvarr"] = LNpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
-	mNpcs["Yngvarr"]->setIndex(13);
+	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
+	mNpcs["Yngvarr"]->setIndex(14);
 
 	if (!BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue))
 	{
@@ -107,9 +105,17 @@ void Ship_level_2::load()
 	}
 	Level::load();
 
+	// Add collision from every NPC to the map
 	mTileMap.addCollision(mNpcs["Dagny"]->getCollisionRect());
 	mTileMap.addCollision(mNpcs["Brandr"]->getCollisionRect());
 	mTileMap.addCollision(mNpcs["Yngvarr"]->getCollisionRect());
+
+	// Add Index from every NPC to the map
+	mTileMap.setIndexOnMap(mNpcs["Dagny"]->getIndexRect(), mNpcs["Dagny"]->getIndex() - 1);
+	mTileMap.setIndexOnMap(mNpcs["Brandr"]->getIndexRect(), mNpcs["Brandr"]->getIndex() - 1);
+	mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 1);
+
+	mCurrentStepSound = SoundFolder::Hardwood;
 }
 
 void Ship_level_2::unload()

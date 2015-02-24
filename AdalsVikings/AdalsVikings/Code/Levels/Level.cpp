@@ -104,7 +104,7 @@ void Level::updateObjectActionWheel()
 
 void Level::updateNPCs(sf::Time frameTime)
 {
-	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
+	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 	{
 		it->second->update(frameTime);
 
@@ -185,7 +185,7 @@ void Level::updateDialog(sf::Time frameTime)
 		{
 			mIsInConversation = true;
 			it->second->update(frameTime);
-			for (std::map<std::string, LNpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
+			for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
 			{
 				if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() != "")
 				{
@@ -232,7 +232,7 @@ void Level::updateDialog(sf::Time frameTime)
 			it->second->setEndConversation(false);
 			mIsInConversation = false;
 
-			for (std::map<std::string, LNpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
+			for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
 				iz->second->setAnimationStyle("Idle");
 		}
 	}
@@ -242,18 +242,24 @@ void Level::updateDialog(sf::Time frameTime)
 void Level::update(sf::Time &frameTime)
 {
 	updateDialog(frameTime);
-	checkEvents();
 	updateNPCs(frameTime);
 	mPlayer.update(frameTime);
+	mPlayer.setFootsteps(mCurrentStepSound);
+	checkEvents();
 
 	// Upate all the objects
 	for each (Object* object in mObjects)
 		object->update(frameTime);
 
 	// Do the portal thing
-	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+	for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 	{
-		if (it->second->getWalkAble())
+		if (!it->second->getWalkAble())
+		{
+			it->second->update(frameTime, mPlayer);
+			it->second->portalTravel(mPlayer);
+		}
+		else
 			it->second->walkPath(mPlayer);
 	}
 
@@ -261,17 +267,6 @@ void Level::update(sf::Time &frameTime)
 	{
 		mPlayer.move(frameTime);
 		updateObjectActionWheel();
-
-		for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
-		{
-			if (!it->second->getWalkAble())
-			{
-				it->second->update(frameTime, mPlayer);
-				it->second->portalTravel(mPlayer);
-			}
-			else if (it->second->getWalkAble())
-				it->second->walkPath(mPlayer);
-		}
 	}
 	mOldIsInConversation = mIsInConversation;
 }
@@ -287,11 +282,11 @@ void Level::render(IndexRenderer &iRenderer)
 		iRenderer.addSprite(mBackgrounds[i], mBackgroundsIndexes[i]);
 
 	// Render all the portals
-	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+	for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 		it->second->render(iRenderer);
 
 	// Render all the NPCs
-	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
+	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 		it->second->render(iRenderer);
 
 	// Render all the dialogues
@@ -318,9 +313,9 @@ void Level::loadAllBackgrounds(std::string filepath)
 	// Load all the backgrounds
 	RMI.load(mLevelID, filepath);
 
-	for (int i = 0; i < RMI.getFolder(mLevelID).size(); i++)
+	for (int i = 0; i < RMI.getTextureFolder(mLevelID).size(); i++)
 	{
-		mBackgrounds.push_back(sf::Sprite(*RMI.getFolder(mLevelID).at(i)));
+		mBackgrounds.push_back(sf::Sprite(*RMI.getTextureFolder(mLevelID).at(i)));
 		mBackgroundsIndexes.push_back(i * 10);
 	}
 }
@@ -416,10 +411,8 @@ void Level::resetLevel()
 void Level::refreshLevel()
 {
 	// Reset Portals
-	for (std::map<PortalId, LPortalPtr>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
-	{
+	for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 		it->second->setActivate(false);
-	}
 }
 
 void Level::load()
@@ -434,7 +427,7 @@ void Level::load()
 	DialogHandler::load(mFolderPath + "Dialogues.txt");
 
 	// Load NPCs
-	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
+	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 		it->second->load();
 
 	// Load Objects
@@ -445,6 +438,11 @@ void Level::load()
 		if (object->hasCollision())
 			mTileMap.addCollision(object->getCollisionRect());
 	}
+
+	// Load Default Footsteps
+	RMI.load(SoundFolder::Default, "assets/sounds/footsteps/test/");
+	mCurrentStepSound = SoundFolder::Default;
+	mPlayer.setFootsteps(SoundFolder::Default);
 }
 
 void Level::unload()
@@ -456,10 +454,8 @@ void Level::unload()
 	RMI.unload(mLevelID);
 
 	// Unload NPCs
-	for (std::map<std::string, LNpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
-	{
+	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 		it->second->unload();
-	}
 	mNpcs.clear();
 
 	DialogHandler::unload();
@@ -468,19 +464,20 @@ void Level::unload()
 	mPortals.clear();
 	
 	// Unload and delete all the objects
-	while (!mObjects.empty())
-	{
-		mObjects.at(mObjects.size() - 1)->unload();
-		delete mObjects.at(mObjects.size() - 1);
-		mObjects.pop_back();
+	for each (Object* object in mObjects){
+		object->unload();
+		delete object;
 	}
-	mActionWheel = 0;
+	mObjects.clear();
+
+	RMI.unload(SoundFolder::Default);
 }
 
 void Level::checkInteractEvents()
 {
 
 }
+
 void Level::checkEvents()
 {
 

@@ -30,18 +30,17 @@ Portal::Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMove
 
 void Portal::render(IndexRenderer &iRenderer)
 {
-		iRenderer.addRectangle(mArea, 99999);
+	iRenderer.addRectangle(mArea, 99999);
 }
 
 void Portal::update(sf::Time &frametime, Player &player)
 {
-		setActive();
+	setActive();
 }
 
 void Portal::load()
 {
 }
-
 
 void Portal::unload()
 {
@@ -75,15 +74,10 @@ void Portal::setActive()
 	{
 		mIsActive = true;
 	}
-	else if ((MouseState::getMousePosition().x > mArea.getGlobalBounds().left + mArea.getGlobalBounds().width
-		|| MouseState::getMousePosition().x < mArea.getGlobalBounds().left
-		|| MouseState::getMousePosition().y > mArea.getGlobalBounds().top
-		|| MouseState::getMousePosition().y < mArea.getGlobalBounds().top + mArea.getGlobalBounds().height)
-		&& MouseState::isClicked(sf::Mouse::Left))
+	else if (MouseState::isClicked(sf::Mouse::Left))
 	{
 		mIsActive = false;
 	}
-
 }
 
 void Portal::setActivate(bool value)

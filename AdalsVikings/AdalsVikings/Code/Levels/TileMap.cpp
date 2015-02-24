@@ -106,6 +106,23 @@ void TileMap::removeCollision(sf::IntRect &rect)
 	refreshVertices();
 }
 
+void TileMap::setIndexOnMap(const sf::IntRect &rect, sf::Uint8 index)
+{
+	float xPos = rect.left;
+	float yPos = rect.top;
+	int width = rect.width;
+	int height = rect.height;
+
+	for (size_t y = 0; y < height; y++)
+	{
+		for (size_t x = 0; x < width; x++)
+		{
+			if (xPos + x < 1920 && yPos + y < 1080)
+				mIndexMap->setPixel(xPos + x, yPos + y, sf::Color(255, 255, 255, index));
+		}
+	}
+}
+
 void TileMap::refreshVertices()
 {
 	for (size_t x = 0; x < mMapSize.x; x++)

@@ -7,7 +7,7 @@ PortalLoader::PortalLoader()
 {
 }
 
-void PortalLoader::initialize()
+void PortalLoader::load()
 {
 	if (mPortalMap.size() != 0)
 		mPortalMap.clear();

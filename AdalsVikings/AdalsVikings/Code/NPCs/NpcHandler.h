@@ -8,7 +8,7 @@ typedef std::unique_ptr<Npc> NpcPtr;
 class NpcHandler
 {
 public:
-	static void initialize();
+	static void load();
 	static void unload();
 
 	static std::map<std::string, NpcPtr> &getNpcs();

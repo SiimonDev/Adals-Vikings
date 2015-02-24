@@ -8,10 +8,11 @@
 
 using namespace pugi;
 typedef std::unique_ptr<sf::Texture> TexturePtr;
-typedef std::vector<TexturePtr> FolderPtr;
 typedef std::unique_ptr<sf::Font> FontPtr;
 typedef std::unique_ptr<sf::Image> ImagePtr;
 typedef std::unique_ptr<sf::SoundBuffer> SoundPtr;
+typedef std::vector<TexturePtr> TextureFolderPtr;
+typedef std::vector<SoundPtr> SoundFolderPtr;
 
 #define RMI ResourceManager::getInstance()
 
@@ -23,7 +24,7 @@ namespace Images
 
 	};
 }
-namespace Folder
+namespace TextureFolder
 {
 	enum ID
 	{
@@ -32,6 +33,16 @@ namespace Folder
 		BeachLevel
 	};
 };
+namespace SoundFolder
+{
+	enum ID
+	{
+		Default,
+		Hardwood,
+		Grass
+	};
+};
+
 namespace Textures
 {
 	enum ID
@@ -119,7 +130,8 @@ public:
 	static ResourceManager &getInstance();
 
 	void load(Images::ID id, const std::string &directory);
-	void load(Folder::ID id, const std::string &directory);
+	void load(TextureFolder::ID id, const std::string &directory);
+	void load(SoundFolder::ID id, const std::string &directory);
 	void load(Textures::ID id, const std::string &filename);
 	void load(Fonts::ID id, const std::string &filename);
 	void load(Sound::ID id, const std::string &filename);
@@ -127,7 +139,8 @@ public:
 	void loadImage(const std::string &filename);
 
 	void unload(Images::ID id);
-	void unload(Folder::ID id);
+	void unload(TextureFolder::ID id);
+	void unload(SoundFolder::ID id);
 	void unload(Textures::ID id);
 	void unload(Fonts::ID id);
 	void unload(Sound::ID id);
@@ -136,12 +149,14 @@ public:
 
 	void truncateTextures();
 	void truncateImages();
-	void truncateFolders();
+	void truncateTextureFolders();
+	void truncateSoundFolders();
 	void truncateSounds();
 	void truncateFonts();
 
 	sf::Image &getImage(Images::ID id);
-	FolderPtr &getFolder(Folder::ID id);
+	TextureFolderPtr &getTextureFolder(TextureFolder::ID id);
+	SoundFolderPtr &getSoundFolder(SoundFolder::ID id);
 	sf::Texture &getTexture(Textures::ID id) const;
 	sf::Font &getFont(Fonts::ID id) const;
 	sf::SoundBuffer &getSoundBuffer(Sound::ID id) const;
@@ -149,6 +164,7 @@ public:
 	sf::Image &getNonIDImage(const std::string &filename) const;
 
 	std::vector<std::string> getAllBackgroundFilesFromFolder(const std::string &directory);
+	std::vector<std::string> getAllFootstepsFromFolder(const std::string &directory);
 	std::string getRCFileFromFolder(const std::string &directory);
 	std::string getIndexFileFromFolder(const std::string &directory);
 
@@ -157,9 +173,11 @@ private:
 	ResourceManager(const ResourceManager&);
 	void operator=(const ResourceManager&);
 
-	FolderPtr mFolderVector;
+	TextureFolderPtr mFolderVector;
+	SoundFolderPtr mSoundVector;
 	std::map<Textures::ID, TexturePtr> mTextureMap;
-	std::map<Folder::ID, FolderPtr> mFolderMap;
+	std::map<TextureFolder::ID, TextureFolderPtr> mTextureFolderMap;
+	std::map<SoundFolder::ID, SoundFolderPtr> mSoundFolderMap;
 	std::map<Fonts::ID, FontPtr> mFontMap;
 	std::map<Images::ID, ImagePtr> mImageMap;
 	std::map<Sound::ID, SoundPtr> mSoundMap;

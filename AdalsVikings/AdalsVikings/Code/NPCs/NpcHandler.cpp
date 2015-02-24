@@ -9,7 +9,7 @@ NpcHandler::NpcHandler()
 {
 }
 
-void NpcHandler::initialize()
+void NpcHandler::load()
 {
 	NpcPtr Valdis(new Npc());
 	NpcPtr Leifr(new Npc());

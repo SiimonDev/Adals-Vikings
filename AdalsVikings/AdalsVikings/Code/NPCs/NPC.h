@@ -35,6 +35,7 @@ public:
 	void setProportions(sf::Vector2f proportions);
 	void setIndex(int index);
 	void setCollisionRect(sf::IntRect &rect);
+	void setIndexRect(sf::IntRect &rect);
 	void setAnimationStyle(std::string style);
 	void setColor(sf::Color color);
 	void setDialogue(std::string dialogue);
@@ -43,11 +44,13 @@ public:
 
 	bool isInside(sf::Vector2i &pos);
 	bool getActiveConversation();
+	int getIndex();
 	std::string &getUseText();
 	std::string &getLookText();
 	sf::Vector2f &getPosition();
 	sf::Vector2f &getInteractionPosition();
 	sf::IntRect &getCollisionRect();
+	sf::IntRect &getIndexRect();
 	std::string &getName();
 	sf::Color &getColor();
 	Animation &getAnimation();
@@ -67,6 +70,7 @@ private:
 	sf::Vector2f mScale;
 	sf::Vector2i mSize;
 	sf::IntRect mCollisionRect;
+	sf::IntRect mIndexRect;
 
 	AnimationState::ID mAnimation;
 	sf::Color mColor;
