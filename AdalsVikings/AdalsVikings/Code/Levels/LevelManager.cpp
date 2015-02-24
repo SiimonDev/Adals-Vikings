@@ -3,6 +3,7 @@
 #include "Level.h"
 #include "Ship_level_1.h"
 #include "Ship_level_2.h"
+#include "Road_Level.h"
 #include "Beach_Level.h"
 #include "..\Dialog\DialogWindow.h"
 #include "..\Logics\AudioPlayer.h"
@@ -117,6 +118,7 @@ void LevelManager::loadAct1()
 
 	// Assing all the levels
 	mLevelMap[Beach] = LevelPtr(new Beach_level(mPlayer, mActionWheel));
+	mLevelMap[Road] = LevelPtr(new Road_Level(mPlayer, mActionWheel));
 
 	// Load all the levels
 	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it){

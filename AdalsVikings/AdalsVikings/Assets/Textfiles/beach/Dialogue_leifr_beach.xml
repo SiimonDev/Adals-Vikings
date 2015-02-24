@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
-	<useText useText="Why would I use Brandr?" />
-	<lookText lookText="That's Brandr" />
+	<useText useText="I should probably try talking to him instead" />
+	<lookText lookText="That's Leifr" />
 	<text character="Leifr" turned="true" timer="2.5" say="How does it feel, Ulfr?" />
 	<text character="Ulfr" say="How does what feel?" timer="2.3" turned="false"></text>
 	<text character="Leifr" say="Our destination." timer="2.4" turned="true"></text>
@@ -12,16 +12,34 @@
 	<text character="Ulfr" say="We're not going to stay too long, are we?" timer="3.3" turned="false"></text>
 	<text character="Leifr" say="Not to my knowledge, no." timer="3" turned="true"></text>
 	<text timer="2.2"></text>
-	<text character="Ulfr" say="... Where do you think it is then?" timer="3.3" turned="false"></text>
-	<text character="Leifr" say="The gold?" timer="1.8" turned="true"></text>
-	<text character="Leifr" say="I would guess in that big tall fortress by the sea." timer="3.3" turned="true"></text>
-	<text character="Leifr" timer="5" turned="true" say="Though it’ll probably take one hell of a feat to attack something like that."></text>
-	<text character="Ulfr" say="Don't Worry about it." timer="2.3" turned="false"></text>
-	<text character="Ulfr" say="I'll do it in an afternoon." timer="2.4" turned="false"></text>
-	<text timer="3.3"></text>
-	<text character="Leifr" say="Uh..." timer="1.8" turned="true"></text>
-	<text character="Ulfr" say="I’m joking, Leifr." timer="2.4" turned="false"></text>
-	<text character="Ulfr" say="Don't worry." timer="2.4" turned="false"></text>
+	<option_container disabled="false">
+		<option disabled="false" choice_text="...where do you think the gold is, then?">
+			<text character="Ulfr" turned="false" disablePrevious="false" timer="3.0" say="...where do you think the gold is, then?" />
+			<text character="Leifr" turned="true" say="I saw some big fortress from up that hill behind me." disabled="" timer="3.5"></text>
+			<text character="Leifr" say="That's probably where they keep it." timer="2.5"></text>
+			<text character="Leifr" say="Though it'll probably take one hell of a feat to attack something like that." timer="5"></text>
+			<text character="Ulfr" turned="false" say="Don't Worry about it." timer="2.2"></text>
+			<text character="Ulfr" say="I'll do it in an afternoon." timer="2.2"></text>
+			<text character="Ulfr" say="" timer="1.0"></text>
+			<text character="Leifr" turned="true" say="Uh..." timer="1.8"></text>
+			<text character="Ulfr" turned="false" say="I'm joking, Leifr." timer="2.0"></text>
+			<text character="Ulfr" say="Don't worry." timer="2.0"></text>
+			<gotoContainer></gotoContainer>
+		</option>
+		
+		<option disabled="false" disablePrevious="false" choice_text="So...how are you feeling?">
+			<text character="Ulfr" turned="false" disablePrevious="true" timer="2.5" say="So... how are you feeling?" />
+			<text character="Leifr" turned="turned" say="Good enough." timer="2.0"></text>
+			<text character="Leifr" say="We'll see how long that lasts, though." timer="2.5"></text>
+			<gotoContainer />
+		</option>
+		<option disabled="false" disablePrevious="true" choice_text="I'll see you around.">
+			<text character="Ulfr" turned="false" say="I'll see you around." timer="2.0"></text>
+			<text character="Leifr" turned="turned" say="Bye." timer="1.5"></text>
+			<stopConversation />
+		</option>
+		<stopOption />
+	</option_container>
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />

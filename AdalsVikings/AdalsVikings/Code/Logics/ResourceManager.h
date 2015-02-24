@@ -30,7 +30,8 @@ namespace TextureFolder
 	{
 		ShipLevel1,
 		ShipLevel2,
-		BeachLevel
+		BeachLevel,
+		RoadLevel
 	};
 };
 namespace SoundFolder

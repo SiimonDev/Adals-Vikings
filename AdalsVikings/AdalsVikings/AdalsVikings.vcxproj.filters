@@ -119,6 +119,9 @@
     <ClCompile Include="Code\Logics\Act1Events.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Levels\Road_Level.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Dialog\Dialog.h">
@@ -249,6 +252,9 @@
     </ClInclude>
     <ClInclude Include="Code\Logics\Act1Events.h">
       <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Road_Level.h">
+      <Filter>Header Files\Levels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

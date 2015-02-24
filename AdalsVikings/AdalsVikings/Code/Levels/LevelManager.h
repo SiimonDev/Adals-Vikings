@@ -14,7 +14,8 @@ enum LevelID
 {
 	Ship_1,
 	Ship_2,
-	Beach
+	Beach,
+	Road
 };
 enum Act
 {

@@ -29,11 +29,15 @@ void DialogHandler::load(std::string levelFolder)
 		instream >> id;
 		instream >> filepath;
 
-		DialogueTreePtr dialouge(new DialogueTree());
-		dialouge->setDialogue(filepath);
+		if (id != "" || filepath != "")
+		{
 
-		mDialogueMap.insert(std::make_pair(id, std::move(dialouge)));
-		mDialogueMap[id]->load();
+			DialogueTreePtr dialouge(new DialogueTree());
+			dialouge->setDialogue(filepath);
+
+			mDialogueMap.insert(std::make_pair(id, std::move(dialouge)));
+			mDialogueMap[id]->load();
+		}
 	}
 
 	instream.close();

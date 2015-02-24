@@ -139,7 +139,7 @@ void Ship_level_1::render(IndexRenderer &iRenderer)
 
 void Ship_level_1::load()
 {
-	mPortals[Portal1] = &PortalLoader::getPortal(Portal1); // This does not create a new portal it only references the one in PortalLoader
+	mPortals[Ship1ToShip2] = &PortalLoader::getPortal(Ship1ToShip2); // This does not create a new portal it only references the one in PortalLoader
 
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
 	mNpcs["Valdis"]->setIndex(14);
@@ -220,7 +220,7 @@ void Ship_level_1::checkEvents()
 
 void Ship_level_1::changeLevel(sf::Time &frameTime)
 {
-	if (mPortals[Portal1]->getActivated())
+	if (mPortals[Ship1ToShip2]->getActivated())
 	{
 		LVLMI.changeLevel(Ship_2);
 	}
