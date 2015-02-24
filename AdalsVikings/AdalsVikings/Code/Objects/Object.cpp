@@ -172,7 +172,7 @@ sf::Vector2f &Object::getPosition()
 
 sf::Vector2f &Object::getInteractionPosition()
 {
-	return mPosition + mInteractionPosition;
+	return mInteractionPosition;
 }
 
 sf::Vector2f Object::getScale()

@@ -1,6 +1,6 @@
 *Type: standard
 *ID: $axe$
-*Name: axe
+*Name: Axe
 *ispickupable: False
 *pickup: "Now we're talking. This could really chop some wood." ~2,0
 *lookat: "Looks kinda dangerous. I'll have to get it to Brandr." ~1,5
