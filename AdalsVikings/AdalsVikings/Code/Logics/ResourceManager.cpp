@@ -29,11 +29,11 @@ ResourceManager::ResourceManager()
 	for (int i = 0; i < Sound::SIZE; i++)
 		mSoundCountMap[static_cast<Sound::ID>(i)] = 0;
 
-	for (int i = 0; i < TextureFolder::SIZE; i++)
-		mTextureFolderCountMap[static_cast<TextureFolder::ID>(i)] = 0;
+	for (int i = 0; i < Backgrounds::SIZE; i++)
+		mBackgroundsCountMap[static_cast<Backgrounds::ID>(i)] = 0;
 
-	for (int i = 0; i < SoundFolder::SIZE; i++)
-		mSoundFolderCountMap[static_cast<SoundFolder::ID>(i)] = 0;
+	for (int i = 0; i < Footsteps::SIZE; i++)
+		mFootstepsCountMap[static_cast<Footsteps::ID>(i)] = 0;
 
 	/* ========== Set Texture File paths ========== */
 	mTexturePathMap[Textures::UlfrWalk] = "assets/images/ulfr/character_ulfr_walk.png";
@@ -105,19 +105,19 @@ ResourceManager::ResourceManager()
 	/* ============================================ */
 
 
-	/* =========== Set Texture Folder File paths =========== */
-	mTextureFolderPathMap[TextureFolder::ShipLevel1];
-	mTextureFolderPathMap[TextureFolder::ShipLevel2];
-	mTextureFolderPathMap[TextureFolder::BeachLevel];
-	mTextureFolderPathMap[TextureFolder::RoadLevel];
-	/* ===================================================== */
-
-
-	/* =========== Set Sound Folder File paths =========== */
-	mSoundFolderPathMap[SoundFolder::Default];
-	mSoundFolderPathMap[SoundFolder::Hardwood];
-	mSoundFolderPathMap[SoundFolder::Grass];
+	/* =========== Set Background Folder paths =========== */
+	mBackgroundsPathMap[Backgrounds::ShipLevel1] = "Assets/MapFiles/Ship1/";
+	mBackgroundsPathMap[Backgrounds::ShipLevel2] = "Assets/MapFiles/Ship2/";
+	mBackgroundsPathMap[Backgrounds::BeachLevel] = "Assets/MapFiles/Beach/";
+	mBackgroundsPathMap[Backgrounds::RoadLevel] = "Assets/MapFiles/Road/";
 	/* =================================================== */
+
+
+	/* =========== Set Footstep Folder paths =========== */
+	mFootstepsPathMap[Footsteps::Default] = "assets/sounds/footsteps/test/";
+	mFootstepsPathMap[Footsteps::Hardwood] = "assets/sounds/footsteps/Hardwood/";
+	mFootstepsPathMap[Footsteps::Grass] = "assets/sounds/footsteps/Grass/";
+	/* ================================================= */
 }
 
 /* ====== Load functions ======== */
@@ -166,58 +166,66 @@ void ResourceManager::loadResource(Sound::ID id)
 	}
 	mSoundCountMap[id]++;
 }
-void ResourceManager::loadResource(TextureFolder::ID id, const std::string &directory)
+void ResourceManager::loadResource(Backgrounds::ID id)
 {
-	if (mTextureFolderCountMap[id] == 0)
+	if (mBackgroundsCountMap[id] == 0)
 	{
-		TextureFolderPtr mFolderVector;
-		std::vector<std::string> filePaths = getAllBackgroundFilesFromFolder(directory);
+		BackgroundsPtr mFolderVector;
+		std::vector<std::string> filePaths = getAllBackgroundFilesFromFolder(mBackgroundsPathMap[id]);
 
 		for (int i = 0; i < filePaths.size(); i++)
 		{
 			mFolderVector.push_back(TexturePtr(new sf::Texture()));
 			mFolderVector[i]->loadFromFile(filePaths.at(i));
 		}
-		mTextureFolderMap.insert(std::make_pair(id, std::move(mFolderVector)));
+		mBackgroundsMap.insert(std::make_pair(id, std::move(mFolderVector)));
 
 		mFolderVector.clear();
 		filePaths.clear();
 	}
-	mTextureFolderCountMap[id]++;
+	mBackgroundsCountMap[id]++;
 }
-void ResourceManager::loadResource(SoundFolder::ID id, const std::string &directory)
+void ResourceManager::loadResource(Footsteps::ID id)
 {
-	if (mSoundFolderCountMap[id] == 0)
+	if (mFootstepsCountMap[id] == 0)
 	{
-		SoundFolderPtr mSoundVector;
-		std::vector<std::string> filePaths = getAllFootstepsFromFolder(directory);
+		FootstepsPtr mSoundVector;
+		std::vector<std::string> filePaths = getAllFootstepsFromFolder(mFootstepsPathMap[id]);
 
 		for (int i = 0; i < filePaths.size(); i++)
 		{
 			mSoundVector.push_back(SoundPtr(new sf::SoundBuffer()));
 			mSoundVector[i]->loadFromFile(filePaths.at(i));
 		}
-		mSoundFolderMap.insert(std::make_pair(id, std::move(mSoundVector)));
+		mFootstepsMap.insert(std::make_pair(id, std::move(mSoundVector)));
 
 		mSoundVector.clear();
 		filePaths.clear();
 	}
-	mSoundFolderCountMap[id]++;
+	mFootstepsCountMap[id]++;
 }
 void ResourceManager::loadTexture(const std::string &filename)
 {
 	std::cout << "Loading Dynamic Texture: " << filename << std::endl;
-	TexturePtr texture(new sf::Texture());
-	texture->loadFromFile(filename);
-	texture->setSmooth(true);
-	mNonIDTextures.insert(std::make_pair(filename, std::move(texture)));
+	if (mNonIDTextureCount[filename] == 0)
+	{
+		TexturePtr texture(new sf::Texture());
+		texture->loadFromFile(filename);
+		texture->setSmooth(true);
+		mNonIDTextures.insert(std::make_pair(filename, std::move(texture)));
+	}
+	mNonIDTextureCount[filename]++;
 }
 void ResourceManager::loadImage(const std::string &filename)
 {
 	std::cout << "Loading Dynamic Image: " << filename << std::endl;
-	ImagePtr image(new sf::Image());
-	image->loadFromFile(filename);
-	mNonIDImages.insert(std::make_pair(filename, std::move(image)));
+	if (mNonIDImagesCount[filename] == 0)
+	{
+		ImagePtr image(new sf::Image());
+		image->loadFromFile(filename);
+		mNonIDImages.insert(std::make_pair(filename, std::move(image)));
+	}
+	mNonIDImagesCount[filename]++;
 }
 
 
@@ -254,35 +262,43 @@ void ResourceManager::unloadResource(Sound::ID id)
 	if (mSoundCountMap[id] > 0)
 		mSoundCountMap[id]--;
 }
-void ResourceManager::unloadResource(TextureFolder::ID id)
+void ResourceManager::unloadResource(Backgrounds::ID id)
 {
-	if (mTextureFolderCountMap[id] == 1)
+	if (mBackgroundsCountMap[id] == 1)
 	{
-		mTextureFolderMap[id].clear();
-		mTextureFolderMap.erase(id);
+		mBackgroundsMap[id].clear();
+		mBackgroundsMap.erase(id);
 	}
 
-	if (mTextureFolderCountMap[id] > 0)
-		mTextureFolderCountMap[id]--;
+	if (mBackgroundsCountMap[id] > 0)
+		mBackgroundsCountMap[id]--;
 }
-void ResourceManager::unloadResource(SoundFolder::ID id)
+void ResourceManager::unloadResource(Footsteps::ID id)
 {
-	if (mSoundFolderCountMap[id] == 1)
+	if (mFootstepsCountMap[id] == 1)
 	{
-		mSoundFolderMap[id].clear();
-		mSoundFolderMap.erase(id);
+		mFootstepsMap[id].clear();
+		mFootstepsMap.erase(id);
 	}
 
-	if (mSoundFolderCountMap[id] > 0)
-		mSoundFolderCountMap[id]--;
+	if (mFootstepsCountMap[id] > 0)
+		mFootstepsCountMap[id]--;
 }
 void ResourceManager::unloadTexture(const std::string &filename)
 {
-	mNonIDTextures.erase(filename);
+	if (mNonIDTextureCount[filename] == 1)
+		mNonIDTextures.erase(filename);
+
+	if (mNonIDTextureCount[filename] > 0)
+		mNonIDTextureCount[filename]--;
 }
 void ResourceManager::unloadImage(const std::string &filename)
 {
-	mNonIDImages.erase(filename);
+	if (mNonIDImagesCount[filename] == 1)
+		mNonIDImages.erase(filename);
+
+	if (mNonIDImagesCount[filename] > 0)
+		mNonIDImagesCount[filename]--;
 }
 
 
@@ -313,37 +329,37 @@ void ResourceManager::truncateSounds()
 		mSoundCountMap[static_cast<Sound::ID>(i)] = 0;
 	mSoundMap.clear();
 }
-void ResourceManager::truncateTextureFolders()
+void ResourceManager::truncateBackgrounds()
 {
-	for (int i = 0; i < TextureFolder::SIZE; i++)
-		mTextureFolderCountMap[static_cast<TextureFolder::ID>(i)] = 0;
+	for (int i = 0; i < Backgrounds::SIZE; i++)
+		mBackgroundsCountMap[static_cast<Backgrounds::ID>(i)] = 0;
 
-	for (std::map<TextureFolder::ID, TextureFolderPtr>::iterator it = mTextureFolderMap.begin(); it != mTextureFolderMap.end(); ++it)
+	for (std::map<Backgrounds::ID, BackgroundsPtr>::iterator it = mBackgroundsMap.begin(); it != mBackgroundsMap.end(); ++it)
 		it->second.clear();
 
-	mTextureFolderMap.clear();
+	mBackgroundsMap.clear();
 }
-void ResourceManager::truncateSoundFolders()
+void ResourceManager::truncateFootsteps()
 {
-	for (int i = 0; i < SoundFolder::SIZE; i++)
-		mSoundFolderCountMap[static_cast<SoundFolder::ID>(i)] = 0;
+	for (int i = 0; i < Footsteps::SIZE; i++)
+		mFootstepsCountMap[static_cast<Footsteps::ID>(i)] = 0;
 
-	for (std::map<SoundFolder::ID, SoundFolderPtr>::iterator it = mSoundFolderMap.begin(); it != mSoundFolderMap.end(); ++it)
+	for (std::map<Footsteps::ID, FootstepsPtr>::iterator it = mFootstepsMap.begin(); it != mFootstepsMap.end(); ++it)
 		it->second.clear();
 
-	mSoundFolderMap.clear();
+	mFootstepsMap.clear();
 }
 
 
 /* ====== Get functions ======== */
-const TextureFolderPtr &ResourceManager::getResource(TextureFolder::ID id) const
+const BackgroundsPtr &ResourceManager::getResource(Backgrounds::ID id) const
 {
-	auto found = mTextureFolderMap.find(id);
+	auto found = mBackgroundsMap.find(id);
 	return found->second;
 }
-const SoundFolderPtr &ResourceManager::getResource(SoundFolder::ID id) const
+const FootstepsPtr &ResourceManager::getResource(Footsteps::ID id) const
 {
-	auto found = mSoundFolderMap.find(id);
+	auto found = mFootstepsMap.find(id);
 	return found->second;
 }
 sf::Image &ResourceManager::getResource(Images::ID id) const
@@ -377,6 +393,31 @@ sf::Image &ResourceManager::getNonIDImage(const std::string &filename) const
 	return *found->second;
 }
 
+/* ====== Get FilePath Functions ======== */
+std::string ResourceManager::getFilePath(Textures::ID id)
+{
+	return mTexturePathMap[id];
+}
+std::string ResourceManager::getFilePath(Images::ID id)
+{
+	return mImagePathMap[id];
+}
+std::string ResourceManager::getFilePath(Fonts::ID id)
+{
+	return mFontPathMap[id];
+}
+std::string ResourceManager::getFilePath(Sound::ID id)
+{
+	return mSoundPathMap[id];
+}
+std::string ResourceManager::getFilePath(Backgrounds::ID id)
+{
+	return mBackgroundsPathMap[id];
+}
+std::string ResourceManager::getFilePath(Footsteps::ID id)
+{
+	return mFootstepsPathMap[id];
+}
 
 /* ====== Helper Functions ===== */
 bool compareLX(std::string &a, std::string &b)

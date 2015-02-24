@@ -10,8 +10,7 @@ Beach_level::Beach_level(Player &player, ActionWheel &actionWheel)
 	: Level(player, actionWheel)
 	, mIntroFade1(false)
 {
-	mFolderPath = "Assets/MapFiles/Beach/";
-	mLevelID = TextureFolder::BeachLevel;
+	mBackgroundID = Backgrounds::BeachLevel;
 }
 
 void Beach_level::update(sf::Time &frametime)

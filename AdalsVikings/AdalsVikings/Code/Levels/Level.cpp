@@ -258,7 +258,7 @@ void Level::update(sf::Time &frameTime)
 	updateDialog(frameTime);
 	updateNPCs(frameTime);
 	mPlayer.update(frameTime);
-	mPlayer.setFootsteps(mCurrentStepSound);
+	mPlayer.setFootsteps(mCurrentFootsteps);
 	checkEvents();
 
 	// Upate all the objects
@@ -312,24 +312,24 @@ void Level::render(IndexRenderer &iRenderer)
 		object->render(iRenderer);
 }
 
-void Level::loadAllBackgrounds(std::string filepath)
+void Level::loadAllBackgrounds()
 {
 	// Load TileMap
 	mTileMapFilePath = RMI.getRCFileFromFolder(mFolderPath);	 // Find the filepath of the TileMap File
 	RMI.loadImage(mTileMapFilePath);							 // Load the TileMap File
 
 	// Load IndexMap
-	mIndexMapFilePath = RMI.getIndexFileFromFolder(filepath);	// Find the filepath of the indexfile
+	mIndexMapFilePath = RMI.getIndexFileFromFolder(mFolderPath);	// Find the filepath of the indexfile
 	RMI.loadImage(mIndexMapFilePath);							// Load the indexfile
 
 	mTileMap.load(sf::Vector2i(15, 15), RMI.getNonIDImage(mTileMapFilePath), RMI.getNonIDImage(mIndexMapFilePath));
 	
 	// Load all the backgrounds
-	RMI.loadResource(mLevelID, filepath);
+	RMI.loadResource(mBackgroundID);
 
-	for (int i = 0; i < RMI.getResource(mLevelID).size(); i++)
+	for (int i = 0; i < RMI.getResource(mBackgroundID).size(); i++)
 	{
-		mBackgrounds.push_back(sf::Sprite(*RMI.getResource(mLevelID).at(i)));
+		mBackgrounds.push_back(sf::Sprite(*RMI.getResource(mBackgroundID).at(i)));
 		mBackgroundsIndexes.push_back(i * 10);
 	}
 }
@@ -431,11 +431,13 @@ void Level::refreshLevel()
 
 void Level::load()
 {
+	mFolderPath = RMI.getFilePath(mBackgroundID);
+
 	// Load All objects
 	loadObjects();
 
 	// Load All backgrounds, TileMaps, and index maps
-	loadAllBackgrounds(mFolderPath);
+	loadAllBackgrounds();
 
 	// Load Dialogues
 	DialogHandler::load(mFolderPath + "Dialogues.txt");
@@ -454,9 +456,9 @@ void Level::load()
 	}
 
 	// Load Default Footsteps
-	RMI.loadResource(SoundFolder::Default, "assets/sounds/footsteps/test/");
-	mCurrentStepSound = SoundFolder::Default;
-	mPlayer.setFootsteps(SoundFolder::Default);
+	RMI.loadResource(Footsteps::Default);
+	mCurrentFootsteps = Footsteps::Default;
+	mPlayer.setFootsteps(Footsteps::Default);
 }
 
 void Level::unload()
@@ -465,7 +467,7 @@ void Level::unload()
 	RMI.unloadImage(mIndexMapFilePath);
 	mTileMap.unload();
 	mBackgrounds.clear();
-	RMI.unloadResource(mLevelID);
+	RMI.unloadResource(mBackgroundID);
 
 	// Unload NPCs
 	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
@@ -484,7 +486,7 @@ void Level::unload()
 	}
 	mObjects.clear();
 
-	RMI.unloadResource(SoundFolder::Default);
+	RMI.unloadResource(Footsteps::Default);
 }
 
 void Level::checkInteractEvents()

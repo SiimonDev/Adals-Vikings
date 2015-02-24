@@ -13,8 +13,7 @@ Ship_level_1::Ship_level_1(Player &player, ActionWheel &actionWheel)
 	, mStartBrynja(false)
 	, mBrynjaConv(false)
 {
-	mFolderPath = "Assets/MapFiles/Ship1/";
-	mLevelID = TextureFolder::ShipLevel1;
+	mBackgroundID = Backgrounds::ShipLevel1;
 }
 
 void Ship_level_1::update(sf::Time &frametime)
@@ -151,13 +150,6 @@ void Ship_level_1::load()
 
 	if (!mStartBrynja)
 	{
-		//RMI.unloadResource(Textures::BrynjaIdle);
-		//RMI.unloadResource(Textures::BrandrTalk);
-		//RMI.loadResource(Textures::BrynjaIdle);
-		//RMI.loadResource(Textures::BrynjaTalk);
-		//mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaIdle, sf::Vector2i(3, 4), sf::milliseconds(1200), sf::milliseconds(2000));
-		//mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaTalk, sf::Vector2i(3, 4), sf::milliseconds(1400), sf::milliseconds(2000));
-
 		RMI.loadResource(Textures::BrynjaIdle);
 		RMI.loadResource(Textures::BrynjaTalk);
 		RMI.loadResource(Textures::BrynjaSleeping);
@@ -173,8 +165,8 @@ void Ship_level_1::load()
 	Level::load();
 
 	RMI.loadResource(Sound::BoatAmbient);
-	RMI.loadResource(SoundFolder::Hardwood, "assets/sounds/footsteps/Hardwood/");
-	mCurrentStepSound = SoundFolder::Hardwood;
+	RMI.loadResource(Footsteps::Hardwood);
+	mCurrentFootsteps = Footsteps::Hardwood;
 
 	AudioPlayer::playSound(Sound::BoatAmbient, "boatAmbient", true);
 	AudioPlayer::playMusic("assets/sounds/music/Theme2.ogg", "boat1", true, 20);
@@ -199,7 +191,7 @@ void Ship_level_1::load()
 void Ship_level_1::unload()
 {
 	RMI.unloadResource(Sound::BoatAmbient);
-	RMI.unloadResource(SoundFolder::Hardwood);
+	RMI.unloadResource(Footsteps::Hardwood);
 	Level::unload();
 }
 

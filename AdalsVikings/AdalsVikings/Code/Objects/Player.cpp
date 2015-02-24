@@ -209,7 +209,7 @@ void Player::playFootstepSound()
 			if (RMI.getResource(mFootsteps).size() > 0)
 				AudioPlayer::playRandomSound(mFootsteps);
 			else
-				AudioPlayer::playRandomSound(SoundFolder::Default);
+				AudioPlayer::playRandomSound(Footsteps::Default);
 		}
 	}
 }
@@ -331,7 +331,7 @@ void Player::setFlip(bool value)
 	mPlayerAnimation.flip(mFlip);
 }
 
-void Player::setFootsteps(SoundFolder::ID footsteps)
+void Player::setFootsteps(Footsteps::ID footsteps)
 {
 	mFootsteps = footsteps;
 }

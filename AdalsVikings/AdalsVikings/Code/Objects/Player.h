@@ -80,7 +80,7 @@ public:
 	void setIntention(Intention::ID intention);
 	void setAnimationStyle(AnimationType::ID type);
 	void setFlip(bool value);
-	void setFootsteps(SoundFolder::ID footsteps);
+	void setFootsteps(Footsteps::ID footsteps);
 
 	std::string &getName();
 	float &getCurrentAlpha();
@@ -118,5 +118,5 @@ private:
 	Intention::ID mIntention;
 	AnimationStyle::ID mAnimationStyle;
 
-	SoundFolder::ID mFootsteps;
+	Footsteps::ID mFootsteps;
 };

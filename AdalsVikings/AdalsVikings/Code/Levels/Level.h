@@ -30,7 +30,7 @@ public:
 	virtual void updateDialog(sf::Time frameTime);
 	virtual void update(sf::Time &frametime);
 	virtual void render(IndexRenderer &iRenderer);
-	virtual void loadAllBackgrounds(std::string filepath);
+	virtual void loadAllBackgrounds();
 	virtual void loadObjects();
 	virtual void saveObjects();
 	virtual void refreshLevel();
@@ -61,8 +61,8 @@ protected:
 	std::string mTileMapFilePath;
 	std::string mIndexMapFilePath;
 
-	TextureFolder::ID mLevelID;
-	SoundFolder::ID mCurrentStepSound;
+	Backgrounds::ID mBackgroundID;
+	Footsteps::ID mCurrentFootsteps;
 
 	int mObjIndex;
 

@@ -34,7 +34,7 @@ void AudioPlayer::playSound(Sound::ID id, std::string audioID, bool loop, float 
 	}
 }
 
-void AudioPlayer::playRandomSound(SoundFolder::ID id, float volume)
+void AudioPlayer::playRandomSound(Footsteps::ID id, float volume)
 {
 	int index = rand() % RMI.getResource(id).size();
 
