@@ -12,29 +12,29 @@
 	<text character="Ulfr" say="We're not going to stay too long, are we?" timer="3.3" turned="false" />
 	<text character="Leifr" say="Not to my knowledge, no." timer="3" turned="true" />
 	<text timer="2.2" />
-	<option_container disabled="true">
+	<option_container disabled="false">
 		<option disabled="false" choice_text="...where do you think the gold is, then?">
-			<text character="Ulfr" disablePrevious="false" timer="3.0" say="...where do you think the gold is, then?" />
-			<text character="Leifr" say="I saw some big fortress from up that hill behind me." disabled="" timer="3.5" />
+			<text character="Ulfr" turned="false" disablePrevious="false" timer="3.0" say="...where do you think the gold is, then?" />
+			<text character="Leifr" turned="true" say="I saw some big fortress from up that hill behind me." disabled="" timer="3.5" />
 			<text character="Leifr" say="That's probably where they keep it." timer="2.5" />
 			<text character="Leifr" say="Though it'll probably take one hell of a feat to attack something like that." timer="5" />
-			<text character="Ulfr" say="Don't Worry about it." timer="2.2" />
+			<text character="Ulfr" turned="false" say="Don't Worry about it." timer="2.2" />
 			<text character="Ulfr" say="I'll do it in an afternoon." timer="2.2" />
 			<text character="Ulfr" say="" timer="1.0" />
-			<text character="Leifr" say="Uh..." timer="1.8" />
-			<text character="Ulfr" say="I'm joking, Leifr." timer="2.0" />
+			<text character="Leifr" turned="true" say="Uh..." timer="1.8" />
+			<text character="Ulfr" turned="false" say="I'm joking, Leifr." timer="2.0" />
 			<text character="Ulfr" say="Don't worry." timer="2.0" />
 			<gotoContainer />
 		</option>
-		<option disabled="true" disablePrevious="false" choice_text="So...how are you feeling?">
-			<text character="Ulfr" disablePrevious="true" timer="2.5" say="So... how are you feeling?" />
-			<text character="Leifr" say="Good enough." timer="2.0" />
+		<option disabled="false" disablePrevious="false" choice_text="So...how are you feeling?">
+			<text character="Ulfr" turned="false" disablePrevious="true" timer="2.5" say="So... how are you feeling?" />
+			<text character="Leifr" turned="turned" say="Good enough." timer="2.0" />
 			<text character="Leifr" say="We'll see how long that lasts, though." timer="2.5" />
 			<gotoContainer />
 		</option>
 		<option disabled="false" disablePrevious="true" choice_text="I'll see you around.">
-			<text character="Ulfr" say="I'll see you around." timer="2.0" />
-			<text character="Leifr" say="Bye." timer="1.5" />
+			<text character="Ulfr" turned="false" say="I'll see you around." timer="2.0" />
+			<text character="Leifr" turned="turned" say="Bye." timer="1.5" />
 			<stopConversation />
 		</option>
 		<stopOption />

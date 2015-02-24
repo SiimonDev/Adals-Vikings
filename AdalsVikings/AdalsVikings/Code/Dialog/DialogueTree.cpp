@@ -24,7 +24,7 @@ DialogueTree::DialogueTree()
 	, mEndConversation(false)
 	, mFacePlayer(false)
 {
-	mDialogueRectangle.setFillColor(sf::Color(0, 0, 0, 100));
+	mDialogueRectangle.setFillColor(sf::Color(0, 0, 0, 200));
 }
 void DialogueTree::load()
 {
@@ -137,9 +137,8 @@ void DialogueTree::startDialogue()
 				std::string tmpStr = mNode.attribute("say").as_string();
 				std::string tmpStr2 = mNode.attribute("say").as_string();
 				mPrintText.setString(as_utf8(mNode.attribute("say").as_string()));
-
-				if (mPrintText.getGlobalBounds().left + mPrintText.getGlobalBounds().width > (CurrentWindow.getView().getCenter().x + CurrentWindow.getView().getSize().x / 2) ||
-					mPrintText.getGlobalBounds().left < (CurrentWindow.getView().getCenter().x - CurrentWindow.getView().getSize().x / 2))
+				std::cout << "Text position Left: " << mPrintText.getPosition().x << std::endl;
+				if (tmpStr.size() >= 30)
 				{
 					int index = 0;
 					int cnt = 0;
@@ -149,7 +148,7 @@ void DialogueTree::startDialogue()
 						if (isspace(tmpStr[i]))
 							cnt++;
 					}
-					if (cnt <= 6)
+					if (cnt <= 4)
 					{
 						for (int i = 0; i < cnt - 2; i++)
 							index = tmpStr.find_first_of(' ', index + 1);
@@ -158,7 +157,7 @@ void DialogueTree::startDialogue()
 					}
 					else
 					{
-						for (int i = 0; i < cnt / 2; i++)
+						for (int i = 0; i < cnt / 2 + 1; i++)
 							index = tmpStr.find_first_of(' ', index + 1);
 						if (index != 0)
 							index += 1;
@@ -377,8 +376,8 @@ void DialogueTree::startConverstation()
 				std::string tmpStr = mNode.attribute("say").as_string();
 				std::string tmpStr2 = mNode.attribute("say").as_string();
 				mPrintText.setString(as_utf8(mNode.attribute("say").as_string()));
-				if (mPrintText.getGlobalBounds().left + mPrintText.getGlobalBounds().width > (CurrentWindow.getView().getCenter().x + CurrentWindow.getView().getSize().x / 2) ||
-					mPrintText.getGlobalBounds().left < (CurrentWindow.getView().getCenter().x - CurrentWindow.getView().getSize().x / 2))
+				std::cout << "Text position Left: " << mPrintText.getGlobalBounds().left << std::endl;
+				if (tmpStr.size() >= 30)
 				{
 					int index = 0;
 					int cnt = 0;
@@ -388,7 +387,7 @@ void DialogueTree::startConverstation()
 						if (isspace(tmpStr[i]))
 							cnt++;
 					}
-					if (cnt <= 6)
+					if (cnt <= 4)
 					{
 						for (int i = 0; i < cnt - 2; i++)
 							index = tmpStr.find_first_of(' ', index + 1);
@@ -397,7 +396,7 @@ void DialogueTree::startConverstation()
 					}
 					else
 					{
-						for (int i = 0; i < cnt / 2; i++)
+						for (int i = 0; i < cnt / 2 + 1; i++)
 							index = tmpStr.find_first_of(' ', index + 1);
 						if (index != 0)
 							index += 1;

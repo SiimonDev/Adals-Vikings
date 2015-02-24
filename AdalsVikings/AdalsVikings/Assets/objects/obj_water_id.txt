@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $water$
+*Name: Water
+*ispickupable: True
+*pickup: "No." ~2,0
+*lookat: "Thank Thor the sea is calm today." ~1,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: Y:

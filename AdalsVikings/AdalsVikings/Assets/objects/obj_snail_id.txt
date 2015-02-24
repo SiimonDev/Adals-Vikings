@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $snail$
+*Name: Snail
+*ispickupable: True
+*pickup: "I don't want to hurt the poor fellow." ~3,0
+*lookat: "That sure is a snail. Moving. Very. Slowly." ~4,0
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: Y:

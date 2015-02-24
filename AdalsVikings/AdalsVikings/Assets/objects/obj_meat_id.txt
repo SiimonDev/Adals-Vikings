@@ -2,9 +2,9 @@
 *ID: $meat$
 *Name: meat
 *ispickupable: True
-*pickup: "This might come in handy" ~2,0
-*lookat: "That's nice..." ~1,5
-*deny: "I can't do that" ~1,5
+*pickup: "I'm not really hungry... but sure." ~2,0
+*lookat: "Juicy meat. It's suprisingly fresh." ~2,0
+*deny: "I don't think so." ~1,5
 *denywith: 
 *combine: 
 *interact: 

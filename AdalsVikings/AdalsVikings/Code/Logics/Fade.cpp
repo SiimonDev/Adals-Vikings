@@ -39,23 +39,20 @@ void Fade::render(IndexRenderer &iRenderer)
 
 void Fade::fadeIn(sf::Time frameTime)
 {
-	sf::Time timePerFrame = mDuration / float(255);
-	mElapsedTime += frameTime;
-	if (mElapsedTime >= timePerFrame && mAlpha >= 0)
+
+	if (mAlpha >= 0)
 	{
-		mAlpha -= mElapsedTime.asSeconds();
-		mElapsedTime -= timePerFrame;
+		std::cout << "FADING" << mAlpha << std::endl;
+		mAlpha -= mDuration.asSeconds();
 	}
 }
 
 void Fade::fadeOut(sf::Time frameTime)
 {
-	sf::Time timePerFrame = mDuration / float(255);
-	mElapsedTime += frameTime;
-	if (mElapsedTime >= timePerFrame && mAlpha <= 255)
+	if (mAlpha <= 255)
 	{
-		mAlpha += mElapsedTime.asSeconds();
-		mElapsedTime -= timePerFrame;
+		std::cout << "FADING" << mAlpha << std::endl;
+		mAlpha += mDuration.asSeconds();
 	}
 }
 

@@ -59,7 +59,7 @@ void NpcHandler::load()
 	Brynja->setName("Brynja");
 	Brynja->setIdleAnimation(Textures::BrynjaIdle, "assets/images/Brynja/character_brynja_blink.png", sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(5));
 	Brynja->SetTalkAnimation(Textures::BrynjaTalk, "assets/images/Brynja/character_brynja_talk.png", sf::Vector2i(4, 1), sf::milliseconds(600), sf::Time::Zero);
-	Brynja->setColor(sf::Color(178, 34, 34));
+	Brynja->setColor(sf::Color(219, 0, 0));
 	Brynja->setDialogue("Brynja");
 	Brynja->setIndex(14);
 	Brynja->setProportions(sf::Vector2f(290, 452));
@@ -73,7 +73,7 @@ void NpcHandler::load()
 	Alfr->SetTalkAnimation(Textures::AlfrTalk, "assets/images/Alfr/character_alfr_talk.png", sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
 	Alfr->setPosition(sf::Vector2f(290, 870));
 	Alfr->setInteractionPosition(sf::Vector2f(380, 885));
-	Alfr->setColor(sf::Color(210, 105, 30));
+	Alfr->setColor(sf::Color(201, 114, 27));
 	Alfr->setDialogue("Alfr");
 	Alfr->setIndex(15);
 	Alfr->setProportions(sf::Vector2f(204, 452));
@@ -85,7 +85,7 @@ void NpcHandler::load()
 	Dagny->SetTalkAnimation(Textures::DagnyTalk, "assets/images/Dagny/character_dagny_talk.png", sf::Vector2i(4, 1), sf::milliseconds(350), sf::Time::Zero);
 	Dagny->setPosition(sf::Vector2f(1565, 705));
 	Dagny->setInteractionPosition(sf::Vector2f(1680, 690));
-	Dagny->setColor(sf::Color(139, 0, 139));
+	Dagny->setColor(sf::Color(223, 42, 193));
 	Dagny->setDialogue("Dagny");
 	Dagny->setIndex(15);
 	Dagny->setProportions(sf::Vector2f(126, 322));

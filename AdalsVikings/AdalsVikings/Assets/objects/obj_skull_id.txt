@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $skull$
+*Name: Skull
+*ispickupable: True
+*pickup: "" ~2,0
+*lookat: "By Oden... where's the rest of him?" ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: Y:

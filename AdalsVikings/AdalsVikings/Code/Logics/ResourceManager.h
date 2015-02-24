@@ -31,7 +31,7 @@ namespace TextureFolder
 		ShipLevel1,
 		ShipLevel2,
 		BeachLevel,
-		RoadLevel.
+		RoadLevel,
 		SIZE
 	};
 };
@@ -98,6 +98,7 @@ namespace Textures
 		FinnrTalk,
 		BrynjaIdle,
 		BrynjaTalk,
+		BrynjaSleeping,
 		AlfrIdle,
 		AlfrTalk,
 		DagnyIdle,
