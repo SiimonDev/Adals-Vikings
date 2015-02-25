@@ -93,7 +93,7 @@ void Player::update(sf::Time &frameTime)
 
 	if (mAnimationStyle == AnimationStyle::PlayerPickup && mPlayerAnimation.getStopped())
 	{
-		std::cout << "PICK IT  UP!!" << std::endl;
+		//std::cout << "PICK IT  UP!!" << std::endl;
 		setAnimationStyle(AnimationType::Idle);
 	}
 	if (mAnimationStyle == AnimationStyle::PlayerStop && mPlayerAnimation.getStopped())

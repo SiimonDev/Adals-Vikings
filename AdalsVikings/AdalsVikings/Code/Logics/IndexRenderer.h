@@ -4,7 +4,7 @@
 enum IndObjType
 {
 	Sprite,
-	Rectangle,
+	IRectangle,
 	Text
 };
 
@@ -18,7 +18,7 @@ struct IndexObject
 	}
 	IndexObject(sf::RectangleShape &iRectangle, int index)
 	{
-		mObjType = IndObjType::Rectangle;
+		mObjType = IndObjType::IRectangle;
 		mIndex = index;
 		mRectangle = &iRectangle;
 	}

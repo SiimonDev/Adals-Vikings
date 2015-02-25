@@ -1,5 +1,5 @@
-Intro assets/textfiles/Dialogue_intro.xml
-Dagny assets/textfiles/Dialogue_dagny_ship.xml
-Brandr assets/textfiles/Dialogue_brandr_ship.xml
-Yngvarr assets/textfiles/Dialogue_yngvarr_ship.xml
-GivenMapToBrandr assets/textfiles/Dialogue_GivenMapToBrandr.xml
+Intro assets/textfiles/ship/Dialogue_intro.xml
+Dagny assets/textfiles/ship/Dialogue_dagny_ship.xml
+Brandr assets/textfiles/ship/Dialogue_brandr_ship.xml
+Yngvarr assets/textfiles/ship/Dialogue_yngvarr_ship.xml
+GivenMapToBrandr assets/textfiles/ship/Dialogue_GivenMapToBrandr.xml

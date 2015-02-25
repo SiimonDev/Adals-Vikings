@@ -147,16 +147,21 @@ void Beach_level::load()
 
 	}
 	RMI.loadResource(Textures::WaveAnimation);
-	mWaveAnimation.load(RMI.getResource(Textures::WaveAnimation), sf::Vector2i(10, 9), sf::seconds(7), sf::seconds(5), true);
+	mWaveAnimation.load(RMI.getResource(Textures::WaveAnimation), sf::Vector2i(10, 9), sf::seconds(10), sf::seconds(5), true);
 	mWaveAnimation.setIndex(4);
 	mWaveAnimation.setProportions(sf::Vector2f(1170, 640));
 	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
 	mWaveAnimation.setPadding(1);
 	mWaveAnimation.setPosition(sf::Vector2f(1920 + 3, 1080 + 3));
+
+	RMI.loadResource(Sound::BeachAmbient);
+	AudioPlayer::playSound(Sound::BeachAmbient, "beachAmbient", true);
+	AudioPlayer::playMusic("assets/sounds/music/exp theme.ogg", "Beach", true, 20);
 }
 
 void Beach_level::unload()
 {
+	RMI.unloadResource(Sound::BeachAmbient);
 	RMI.unloadResource(Textures::WaveAnimation);
 	Level::unload();
 }

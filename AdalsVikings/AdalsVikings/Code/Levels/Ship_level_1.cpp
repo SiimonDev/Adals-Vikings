@@ -144,7 +144,10 @@ void Ship_level_1::load()
 	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
 	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
 	mNpcs["Alfr"]->setIndex(16);
-
+	RMI.loadResource(Textures::LeifrSitIdle);
+	RMI.loadResource(Textures::LeifrSitTalk);
+	mNpcs["Leifr"]->setIdleAnimation(Textures::LeifrSitIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+	mNpcs["Leifr"]->SetTalkAnimation(Textures::LeifrSitTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
 	if (!mStartBrynja)
 	{
 		RMI.loadResource(Textures::BrynjaIdle);
@@ -187,6 +190,8 @@ void Ship_level_1::load()
 
 void Ship_level_1::unload()
 {
+	RMI.unloadResource(Textures::LeifrSitIdle);
+	RMI.unloadResource(Textures::LeifrSitTalk);
 	RMI.unloadResource(Sound::BoatAmbient);
 	RMI.unloadResource(Footsteps::Hardwood);
 	Level::unload();

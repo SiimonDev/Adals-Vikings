@@ -73,10 +73,10 @@ void LevelManager::render(IndexRenderer &iRenderer)
 void LevelManager::changeLevel(LevelID id)
 {
 	mCurrentID = id;
-	std::cout << std::endl;
-	std::cout << "==========================" << std::endl;
-	std::cout << "===== Changing Level =====" << std::endl;
-	std::cout << "==========================" << std::endl;
+	/*//std::cout << std::endl;
+	//std::cout << "==========================" << std::endl;
+	//std::cout << "===== Changing Level =====" << std::endl;
+	//std::cout << "==========================" << std::endl;*/
 
 	mLevelMap[mCurrentID]->saveObjects();
 	mPlayer.saveInventory();
@@ -121,7 +121,7 @@ void LevelManager::loadAct1()
 
 	// Assing all the levels
 	mLevelMap[Beach] = LevelPtr(new Beach_level(mPlayer, mActionWheel));
-	mLevelMap[Road] = LevelPtr(new Road_Level(mPlayer, mActionWheel));
+	//mLevelMap[Road] = LevelPtr(new Road_Level(mPlayer, mActionWheel));
 
 	// Load all the levels
 	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it){

@@ -2,9 +2,9 @@
 *ID: $torch$
 *Name: torch
 *ispickupable: False
-*pickup: "This might come in handy" ~2,0
-*lookat: "That's nice..." ~1,5
-*deny: "I can't do that" ~1,5
+*pickup: "Oh yeah, now we're talking!" ~2,0
+*lookat: "Let's light it somewhere." ~1,5
+*deny: "That's not... no." ~1,5
 *denywith: 
 *combine: 
 *interact: 

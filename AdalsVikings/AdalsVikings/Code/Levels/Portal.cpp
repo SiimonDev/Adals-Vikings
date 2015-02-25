@@ -2,11 +2,13 @@
 #include "..\Logics\MouseState.h"
 #include "..\Logics\PathFinder.h"
 #include "..\Logics\ResourceManager.h"
+#include "..\Logics\KeyboardState.h"
 #include <iostream>
 
 Portal::Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn, Portal *portal)
 	: mIsActive(false)
 	, mSwitchPortal(false)
+	, mRenderPortal(false)
 	, mWalkable(false)
 	, mArea(area)
 	, mConnectedPortal(portal)
@@ -30,11 +32,14 @@ Portal::Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMove
 
 void Portal::render(IndexRenderer &iRenderer)
 {
-	iRenderer.addRectangle(mArea, 99999);
+	if (mRenderPortal)
+		iRenderer.addRectangle(mArea, 99999);
 }
 
 void Portal::update(sf::Time &frametime, Player &player)
 {
+	if (KeyboardState::isPressed(sf::Keyboard::F1))
+		mRenderPortal = !mRenderPortal;
 	setActive();
 }
 

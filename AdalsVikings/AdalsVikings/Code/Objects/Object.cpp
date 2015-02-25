@@ -232,7 +232,7 @@ bool Object::hasCollision()
 
 void Object::readVariablesFromFile()
 {
-	std::cout << "--- LOADING ITEM! ---" << std::endl;
+	////std::cout << "--- LOADING ITEM! ---" << std::endl;
 	std::ifstream itemFile(mDocPath);
 	std::string line;
 	while (std::getline(itemFile, line))
@@ -249,7 +249,7 @@ void Object::readVariablesFromFile()
 			else if (type == "invisible")
 				mType = ObjectType::Invisible;
 
-			std::cout << "Type: " << type << std::endl;
+			////std::cout << "Type: " << type << std::endl;
 		}
 		else if (line.find("*ID:") != std::string::npos)
 		{
@@ -258,19 +258,19 @@ void Object::readVariablesFromFile()
 			std::string subString = line.substr(start + 1, (end - start) - 1);
 
 			mObjectID = subString;
-			std::cout << "ID: " << mObjectID << std::endl;
+			////std::cout << "ID: " << mObjectID << std::endl;
 		}
 		else if (line.find("*Name:") != std::string::npos)
 		{
 			line.erase(0, 7);
 			mName = line;
-			std::cout << "Name: " << mName << std::endl;
+			////std::cout << "Name: " << mName << std::endl;
 		}
 		else if (line.find("*ispickupable:") != std::string::npos)
 		{
 			line.erase(0, 15);
 			mCanPickUp = (line == "True");
-			std::cout << "isPickupable: " << mCanPickUp << std::endl;
+			////std::cout << "isPickupable: " << mCanPickUp << std::endl;
 		}
 		else if (line.find("*pickup:") != std::string::npos)
 		{
@@ -284,7 +284,7 @@ void Object::readVariablesFromFile()
 			mPickupDialog.mDialog = dialogText;
 			mPickupDialog.mTimer = atof(dialogTimer.c_str());
 
-			std::cout << "pickUpDialog: " << dialogText << "~" << mPickupDialog.mTimer << std::endl;
+			//std::cout << "pickUpDialog: " << dialogText << "~" << mPickupDialog.mTimer << std::endl;
 		}
 		else if (line.find("*lookat:") != std::string::npos)
 		{
@@ -298,7 +298,7 @@ void Object::readVariablesFromFile()
 			mLookAtDialog.mDialog = dialogText;
 			mLookAtDialog.mTimer = atof(dialogTimer.c_str());
 
-			std::cout << "lookatDialog: " << dialogText << "~" << mLookAtDialog.mTimer << std::endl;
+			//std::cout << "lookatDialog: " << dialogText << "~" << mLookAtDialog.mTimer << std::endl;
 		}
 		else if (line.find("*deny:") != std::string::npos)
 		{
@@ -312,7 +312,7 @@ void Object::readVariablesFromFile()
 			mDenyDialog.mDialog = dialogText;
 			mDenyDialog.mTimer = atof(dialogTimer.c_str());
 
-			std::cout << "denyDialog: " << dialogText << "~" << mDenyDialog.mTimer << std::endl;
+			//std::cout << "denyDialog: " << dialogText << "~" << mDenyDialog.mTimer << std::endl;
 		}
 		else if (line.find("*denywith:") != std::string::npos)
 		{
@@ -343,7 +343,7 @@ void Object::readVariablesFromFile()
 
 					mDenyDialogs[denyID] = dialog;
 
-					std::cout << "denyWith: denyID: " << "$" << denyID << "$ " << dialogText << "~" << dialog.mTimer << std::endl;
+					//std::cout << "denyWith: denyID: " << "$" << denyID << "$ " << dialogText << "~" << dialog.mTimer << std::endl;
 				}
 			}
 		}
@@ -382,7 +382,7 @@ void Object::readVariablesFromFile()
 
 					mCombineObjects[combineID] = dialog;
 
-					std::cout << "Combine: combineID: $" << combineID << "$ " << " Resulting ID: $" << dialog.mResultID << "$ " << dialogText << "~" << dialog.mTimer << std::endl;
+					//std::cout << "Combine: combineID: $" << combineID << "$ " << " Resulting ID: $" << dialog.mResultID << "$ " << dialogText << "~" << dialog.mTimer << std::endl;
 				}
 			}
 		}
@@ -415,7 +415,7 @@ void Object::readVariablesFromFile()
 
 					mInteractDialogs[interactID] = dialog;
 
-					std::cout << "Interact: InteractID: $" << interactID << "$ " << dialogText << "~" << dialog.mTimer << std::endl;
+					//std::cout << "Interact: InteractID: $" << interactID << "$ " << dialogText << "~" << dialog.mTimer << std::endl;
 				}
 			}
 		}
@@ -428,7 +428,7 @@ void Object::readVariablesFromFile()
 				std::string subString = line.substr(start + 1, (end - start) - 1);
 
 				mImagePath = mFolderPath + subString;
-				std::cout << "Image: \"" << mImagePath << "\"" << std::endl;
+				//std::cout << "Image: \"" << mImagePath << "\"" << std::endl;
 			}
 		}
 		if (mType == ObjectType::Animated && line.find("*animation:") != std::string::npos)
@@ -466,6 +466,6 @@ void Object::readVariablesFromFile()
 			mSize.y = atof(invisibleHeight.c_str());
 		}
 	}
-	std::cout << std::endl;
+	//std::cout << std::endl;
 	itemFile.close();
 }

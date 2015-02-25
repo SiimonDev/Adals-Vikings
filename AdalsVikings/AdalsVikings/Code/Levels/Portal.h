@@ -31,7 +31,7 @@ private:
 	sf::RectangleShape mArea;
 	Portal* mConnectedPortal;
 
-	bool mIsActive, mSwitchPortal, mWalkable;
+	bool mIsActive, mSwitchPortal, mWalkable, mRenderPortal;
 	sf::Vector2f mPortalMovement, mPlayerSpawn;
 };
 

@@ -37,7 +37,7 @@ void IndexRenderer::display()
 	{
 		if (iObj.mObjType == IndObjType::Sprite)
 			CurrentWindow.draw(*iObj.mSprite);
-		else if (iObj.mObjType == IndObjType::Rectangle)
+		else if (iObj.mObjType == IndObjType::IRectangle)
 			CurrentWindow.draw(*iObj.mRectangle);
 		else if (iObj.mObjType == IndObjType::Text)
 			CurrentWindow.draw(*iObj.mText);

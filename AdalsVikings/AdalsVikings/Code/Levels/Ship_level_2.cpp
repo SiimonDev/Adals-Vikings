@@ -156,7 +156,6 @@ void Ship_level_2::runCutscene(sf::Time &frameTime)
 			}
 		}
 	}
-	BoatEvents::handleEvent(BoatEvent::StartDialogue);
 }
 
 void Ship_level_2::checkInteractEvents()

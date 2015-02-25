@@ -1,7 +1,7 @@
 *Type: standard
 *ID: $axe$
-*Name: axe
-*ispickupable: False
+*Name: Axe
+*ispickupable: True
 *pickup: "This might come in handy" ~2,0
 *lookat: "That's nice..." ~1,5
 *deny: "I can't do that" ~1,5

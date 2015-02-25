@@ -206,7 +206,7 @@ bool Inventory::removeItemFromInventory(std::string objectID)
 
 void Inventory::saveInventoryToFile()
 {
-	std::cout << "--- Saving Inventory to: " + mFilePath + " ---" << std::endl;
+	//std::cout << "--- Saving Inventory to: " + mFilePath + " ---" << std::endl;
 	std::ofstream file(mFilePath);
 
 	for (int x = 0; x < invWidth; x++)
@@ -225,7 +225,7 @@ void Inventory::saveInventoryToFile()
 
 void Inventory::loadInventoryFromFile()
 {
-	std::cout << std::endl << "--- Loading Inventory from " + mFilePath + " ---" << std::endl;
+	//std::cout << std::endl << "--- Loading Inventory from " + mFilePath + " ---" << std::endl;
 	std::ifstream file("Assets/textfiles/inventory.txt");
 
 	std::string line;
@@ -246,7 +246,7 @@ void Inventory::loadInventoryFromFile()
 
 void Inventory::clearInventory()
 {
-	std::cout << "--- Clearing Inventory ---" << std::endl;
+	//std::cout << "--- Clearing Inventory ---" << std::endl;
 	std::ofstream file(mFilePath);
 	unloadObjects();
 	for (int x = 0; x < invWidth; x++)

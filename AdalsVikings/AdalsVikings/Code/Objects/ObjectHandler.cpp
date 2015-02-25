@@ -42,7 +42,7 @@ std::vector<std::string> getAllObjectsFromFolder(const std::string &directory)
 		closedir(dir);
 	}
 	else{
-		std::cout << "Could not find dir" << std::endl;
+		//std::cout << "Could not find dir" << std::endl;
 	}
 
 	return filePaths;

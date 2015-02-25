@@ -5,7 +5,7 @@
 *pickup: "" ~2,0
 *lookat: "Two lines and an arrow... no wonder we're lost." ~2,0
 *deny: "I have to get this to Brandr. Fast." ~1,5
-*denywith: $Valdis$ "I should probably give this to Brandr" ~1,5; $Brynja$ "I think Brandr needs this" ~1,5; $Leifr$ "I should probably give this to Brandr" ~1,5; $Finnr$ "Brandr could probably use this" ~1,5; $Alfr$ "I should probably give this to Brandr" ~1,5; $Yngvarr$ "Ehm.... no" ~1,5; $Dagny$ "I don't think Dagny wants this" ~1,5; $fliute$ "A mapflute?...flutemap?... nah" ~1,5; 
+*denywith: $Valdis$ "I should probably give this to Brandr" ~1,5; $Brynja$ "I think Brandr needs this" ~1,5; $Leifr$ "I should probably give this to Brandr" ~1,5; $Finnr$ "Brandr could probably use this" ~1,5; $Alfr$ "I should probably give this to Brandr" ~1,5; $Yngvarr$ "Ehm.... no" ~1,5; $Dagny$ "I don't think Dagny wants this" ~1,5; $fliute$ "A mapflute?...flutemap?... nah" ~1,5; $Brandr$ "" ~0; 
 *combine: 
 *interact: 
 *texture: "img_map_id.png"

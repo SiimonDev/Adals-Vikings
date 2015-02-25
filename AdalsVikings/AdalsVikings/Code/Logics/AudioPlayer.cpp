@@ -59,7 +59,7 @@ void AudioPlayer::playMusic(std::string path, std::string musicID, bool loop, fl
 {
 	sf::Music* music = new sf::Music();
 	if (!music->openFromFile(path))
-		std::cout << "Failed to load music: " << path;
+		//std::cout << "Failed to load music: " << path;
 	music->setVolume(volume * masterSoundScale * musicScale);
 	music->setLoop(loop);
 	music->play();

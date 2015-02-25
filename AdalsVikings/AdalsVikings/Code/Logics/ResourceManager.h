@@ -101,6 +101,7 @@ namespace Sound
 		PickUpItem,
 
 		BoatAmbient,
+		BeachAmbient,
 		SIZE
 	};
 }

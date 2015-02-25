@@ -102,8 +102,8 @@ sf::Vector2i MouseState::getMousePosition()
 	scale.x = virtualRenderWidth / physicalRenderWidth;
 	scale.y = virtualRenderHeight / physicalRenderHeight;
 
-	//std::cout << "X: " << (mousePos.x - blackXBarSize) * scale2.x << std::endl;
-	//std::cout << "Y: " << (mousePos.y - blackYBarSize) * scale2.x << std::endl;
+	////std::cout << "X: " << (mousePos.x - blackXBarSize) * scale2.x << std::endl;
+	////std::cout << "Y: " << (mousePos.y - blackYBarSize) * scale2.x << std::endl;
 	return sf::Vector2i((mousePos.x - blackXBarSize) * scale.x, (mousePos.y - blackYBarSize) * scale.y);
 }
 
@@ -113,7 +113,7 @@ bool MouseState::isClicked(sf::Mouse::Button button)
 	{
 		if (buttonStates[button] && !oldButtonStates[button])
 		{
-			std::cout << "MousePosition: X:" << getMousePosition().x << "	Y:" << getMousePosition().y << std::endl;
+			//std::cout << "MousePosition: X:" << getMousePosition().x << "	Y:" << getMousePosition().y << std::endl;
 			return true;
 		}
 	}

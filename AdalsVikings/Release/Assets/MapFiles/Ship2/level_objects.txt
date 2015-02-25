@@ -1,7 +1,8 @@
 ############
 *id: $bucket
 position: $X:1490 $Y:601
-interactPosition: $X:-30 $Y:50
+interactPosition: $X:0 $Y:0
 index: $11
-scale: $0.6hascollision: $false
+scale: $0.6
+hascollision: $false
 ############

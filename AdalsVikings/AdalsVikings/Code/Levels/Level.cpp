@@ -57,13 +57,23 @@ void Level::updateObjectActionWheel()
 	{
 		if (mPlayer.getIntention() == Intention::Look)
 		{
+			if (mPlayer.getPosition().x < mObjects[mObjIndex]->getPosition().x)
+				mPlayer.setFlip(true);
+			else
+				mPlayer.setFlip(false);
 			Dialog dialog = Dialog(mObjects[mObjIndex]->getLookAtDialog());
 			DialogWindow::displayDialog(dialog);
 			mPlayer.setIntention(Intention::None);
 			mWalkToObject = false;
+
 		}
 		else if (mPlayer.getIntention() == Intention::Talk)
 		{
+			if (mPlayer.getPosition().x < mObjects[mObjIndex]->getPosition().x)
+				mPlayer.setFlip(true);
+			else
+				mPlayer.setFlip(false);
+
 			Dialog dialog = (mObjects[mObjIndex]->interactWithObject("player"));
 			DialogWindow::displayDialog(dialog);
 			mPlayer.setIntention(Intention::None);
@@ -71,6 +81,10 @@ void Level::updateObjectActionWheel()
 		}
 		else if (mPlayer.getIntention() == Intention::PickUp)
 		{
+			if (mPlayer.getPosition().x < mObjects[mObjIndex]->getPosition().x)
+				mPlayer.setFlip(true);
+			else
+				mPlayer.setFlip(false);
 			Dialog dialog = Dialog(mObjects[mObjIndex]->getPickupDialog());
 			DialogWindow::displayDialog(dialog);
 			if (mObjects[mObjIndex]->isPickupable())
@@ -89,6 +103,10 @@ void Level::updateObjectActionWheel()
 		}
 		else if (mPlayer.getIntention() == Intention::Interact)
 		{
+			if (mPlayer.getPosition().x < mObjects[mObjIndex]->getPosition().x)
+				mPlayer.setFlip(true);
+			else
+				mPlayer.setFlip(false);
 			Dialog dialog = Dialog(OBHI.getObject(mDroppedItemID).interactWithObject(mObjects[mObjIndex]->getObjID()));
 			DialogWindow::displayDialog(dialog);
 			mPlayer.setIntention(Intention::None);
@@ -343,7 +361,7 @@ void Level::loadObjects()
 	{
 		if (line.find("#") == std::string::npos)
 		{
-			std::cout << std::endl << "-- Loading Object from " << mFolderPath << " ---" << std::endl;
+			//std::cout << std::endl << "-- Loading Object from " << mFolderPath << " ---" << std::endl;
 			if (line.find("*id") != std::string::npos)
 			{
 				std::string id = line.substr(line.find("$") + 1, line.size());
@@ -375,22 +393,22 @@ void Level::loadObjects()
 				obj->enableCollision(enableCollision);
 				mObjects.push_back(obj);
 
-				std::cout << "ID: " << id << std::endl;
-				std::cout << "XPos: " << xPos << " YPos: " << yPos << std::endl;
-				std::cout << "intXPos: " << intXPos << " intYPos: " << intYPos << std::endl;
-				std::cout << "Index: " << index << std::endl;
-				std::cout << "Scale: " << scale << std::endl;
+				//std::cout << "ID: " << id << std::endl;
+				//std::cout << "XPos: " << xPos << " YPos: " << yPos << std::endl;
+				//std::cout << "intXPos: " << intXPos << " intYPos: " << intYPos << std::endl;
+				//std::cout << "Index: " << index << std::endl;
+				//std::cout << "Scale: " << scale << std::endl;
 			}
 		}
 	}
-	std::cout << std::endl;
+	//std::cout << std::endl;
 }
 
 void Level::saveObjects()
 {
 	std::ofstream file(mFolderPath + "level_objects.txt", std::ofstream::out | std::ofstream::trunc);
 
-	std::cout << "--- Saving Object to " << mFolderPath + "level_objects.txt" << " ---" << std::endl;
+	//std::cout << "--- Saving Object to " << mFolderPath + "level_objects.txt" << " ---" << std::endl;
 	file << "############" << std::endl;
 	for each (Object* obj in mObjects)
 	{
@@ -413,9 +431,9 @@ void Level::saveObjects()
 
 void Level::resetLevel()
 {
-	std::cout << std::endl << "--- Reseting Level: " << mFolderPath << " ---" << std::endl;
+	//std::cout << std::endl << "--- Reseting Level: " << mFolderPath << " ---" << std::endl;
 
-	std::cout << "Reseting Objects..." << std::endl;
+	//std::cout << "Reseting Objects..." << std::endl;
 	std::ifstream fin(mFolderPath + "level_objects_reset.txt");
 	std::ofstream fout(mFolderPath + "level_objects.txt", std::ofstream::out | std::ofstream::trunc);
 	std::string line;
@@ -447,7 +465,7 @@ void Level::load()
 		it->second->load();
 
 	// Load Objects
-	std::cout << "--- Loading Map Objects ---" << std::endl;
+	//std::cout << "--- Loading Map Objects ---" << std::endl;
 	for each (Object* object in mObjects)
 	{
 		object->load();

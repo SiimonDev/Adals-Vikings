@@ -2,9 +2,9 @@
 *ID: $axeUnfinished$
 *Name: axeUnfinished
 *ispickupable: False
-*pickup: "This might come in handy" ~2,0
-*lookat: "This will fall apart if I don't get something to keep it together." ~1,5
-*deny: "This will break if i use it, I need something that will hold it together." ~2,0
+*pickup: "It's good... but not finished. I'll need to fasten it with something." ~2,0
+*lookat: "This is going to fall apart any minute now... I have to fasten it with something." ~1,5
+*deny: "It might be sharp, but it'll fall apart if I were to swing it." ~2,0
 *denywith: 
 *combine: 
 *interact: 
