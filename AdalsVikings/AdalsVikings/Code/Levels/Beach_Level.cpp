@@ -10,8 +10,7 @@ Beach_level::Beach_level(Player &player, ActionWheel &actionWheel)
 	: Level(player, actionWheel)
 	, mIntroFade1(false)
 {
-	mFolderPath = "Assets/MapFiles/Beach/";
-	mLevelID = TextureFolder::BeachLevel;
+	mBackgroundID = Backgrounds::BeachLevel;
 }
 
 void Beach_level::update(sf::Time &frametime)
@@ -105,12 +104,10 @@ void Beach_level::load()
 		mNpcs["Alfr"]->setIndex(5);
 
 		/* ==== Leifr ===== */
-		RMI.unloadResource(Textures::LeifrIdle);
-		RMI.unloadResource(Textures::LeifrTalk);
-		RMI.loadResource(Textures::LeifrIdle, "assets/images/Leifr/character_leifr_blink.png");
-		RMI.loadResource(Textures::LeifrTalk, "assets/images/Leifr/character_leifr_talk.png");
-		mNpcs["Leifr"]->setIdleAnimation(Textures::LeifrIdle, "assets/images/Leifr/character_leifr_blink.png", sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(7.2));
-		mNpcs["Leifr"]->SetTalkAnimation(Textures::LeifrTalk, "assets/images/Leifr/character_leifr_talk.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
+		RMI.loadResource(Textures::LeifrIdle);
+		RMI.loadResource(Textures::LeifrTalk);
+		mNpcs["Leifr"]->setIdleAnimation(Textures::LeifrIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(7.2));
+		mNpcs["Leifr"]->SetTalkAnimation(Textures::LeifrTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 		mNpcs["Leifr"]->setFlip(true);
 		mNpcs["Leifr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 580));
@@ -149,8 +146,8 @@ void Beach_level::load()
 		mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 1);
 
 	}
-	RMI.loadResource(Textures::Wave, "Assets/MapFiles/Beach/waves.png");
-	mWaveAnimation.load(RMI.getResource(Textures::Wave), sf::Vector2i(10, 9), sf::seconds(7), sf::seconds(5), true);
+	RMI.loadResource(Textures::WaveAnimation);
+	mWaveAnimation.load(RMI.getResource(Textures::WaveAnimation), sf::Vector2i(10, 9), sf::seconds(7), sf::seconds(5), true);
 	mWaveAnimation.setIndex(4);
 	mWaveAnimation.setProportions(sf::Vector2f(1170, 640));
 	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
@@ -160,7 +157,7 @@ void Beach_level::load()
 
 void Beach_level::unload()
 {
-	RMI.unloadResource(Textures::Wave);
+	RMI.unloadResource(Textures::WaveAnimation);
 	Level::unload();
 }
 

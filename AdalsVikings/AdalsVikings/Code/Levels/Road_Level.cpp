@@ -9,8 +9,7 @@
 Road_Level::Road_Level(Player &player, ActionWheel &actionWheel)
 	: Level(player, actionWheel)
 {
-	mFolderPath = "Assets/MapFiles/Road/";
-	mLevelID = TextureFolder::RoadLevel;
+	mBackgroundID = Backgrounds::RoadLevel;
 }
 
 void Road_Level::update(sf::Time &frametime)

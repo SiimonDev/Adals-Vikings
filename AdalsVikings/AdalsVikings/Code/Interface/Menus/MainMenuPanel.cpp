@@ -10,12 +10,12 @@ mMenuPanels(activeMenuPanels), mAnimationTime(sf::milliseconds(500)), mTimePasse
 
 void MainMenuPanel::load()
 {
-	RMI.loadResource(Fonts::MenuButtons, "assets/fonts/font1.ttf");
-	RMI.loadResource(Textures::MainMenuPlayButton, "assets/images/interface/MainMenu/button_play.png");
-	RMI.loadResource(Textures::MainMenuOptionsButton, "assets/images/interface/MainMenu/button_options_disabled.png");
-	RMI.loadResource(Textures::MainMenuQuitButton, "assets/images/interface/MainMenu/button_quit.png");
-	RMI.loadResource(Textures::MainMenuBackground, "assets/images/Interface/MainMenu/menu_background.png");
-	RMI.loadResource(Textures::AxeAnimation, "assets/images/Interface/MainMenu/flying_axe.png");
+	RMI.loadResource(Fonts::MenuButtons);
+	RMI.loadResource(Textures::MainMenuPlayButton);
+	RMI.loadResource(Textures::MainMenuOptionsButton);
+	RMI.loadResource(Textures::MainMenuQuitButton);
+	RMI.loadResource(Textures::MainMenuBackground);
+	RMI.loadResource(Textures::AxeAnimation);
 	//AudioPlayer::playMusic("assets/sounds/music/Theme3.ogg", "mainMenu", true, 20);
 
 	mBackground.setTexture(RMI.getResource(Textures::MainMenuBackground));

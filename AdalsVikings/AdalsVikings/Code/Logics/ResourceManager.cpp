@@ -16,124 +16,213 @@ ResourceManager &ResourceManager::getInstance()
 
 ResourceManager::ResourceManager()
 {
-	// Set all the loads to zero
+	/* =========== Set all the Loads Counts to Zero =========== */
 	for (int i = 0; i < Textures::SIZE; i++)
 		mTextureCountMap[static_cast<Textures::ID>(i)] = 0;
-
 	for (int i = 0; i < Images::SIZE; i++)
 		mImageCountMap[static_cast<Images::ID>(i)] = 0;
-
 	for (int i = 0; i < Fonts::SIZE; i++)
 		mFontCountMap[static_cast<Fonts::ID>(i)] = 0;
-
 	for (int i = 0; i < Sound::SIZE; i++)
 		mSoundCountMap[static_cast<Sound::ID>(i)] = 0;
+	for (int i = 0; i < Backgrounds::SIZE; i++)
+		mBackgroundsCountMap[static_cast<Backgrounds::ID>(i)] = 0;
+	for (int i = 0; i < Footsteps::SIZE; i++)
+		mFootstepsCountMap[static_cast<Footsteps::ID>(i)] = 0;
+	/* ======================================================== */
 
-	for (int i = 0; i < TextureFolder::SIZE; i++)
-		mTextureFolderCountMap[static_cast<TextureFolder::ID>(i)] = 0;
 
-	for (int i = 0; i < SoundFolder::SIZE; i++)
-		mSoundFolderCountMap[static_cast<SoundFolder::ID>(i)] = 0;
+	/* ========== Set Texture File paths ========== */
+	mTexturePathMap[Textures::UlfrWalk] = "assets/images/ulfr/character_ulfr_walk.png";
+	mTexturePathMap[Textures::UlfrIdle] = "assets/images/ulfr/character_ulfr_idle.png";
+	mTexturePathMap[Textures::UlfrFront] = "assets/images/ulfr/character_ulfr_front.png";
+	mTexturePathMap[Textures::UlfrBack] = "assets/images/ulfr/character_ulfr_back.png";
+	mTexturePathMap[Textures::UlfrStop] = "assets/images/ulfr/character_ulfr_stop.png";
+	mTexturePathMap[Textures::UlfrTalkToNpc] = "assets/images/ulfr/character_ulfr_talk.png";
+	mTexturePathMap[Textures::UlfrTalkToPlayer] = "assets/images/ulfr/character_ulfr_front.png";
+	mTexturePathMap[Textures::UlfrPickup] = "assets/images/ulfr/character_ulfr_pickup.png";
+
+	mTexturePathMap[Textures::Button1] = "assets/images/interface/Buttons/Button1.png";
+	mTexturePathMap[Textures::Button1Dissabled] = "assets/images/interface/Buttons/Button1_grey.png";
+	mTexturePathMap[Textures::LookButton] = "assets/images/interface/buttons/interface_look.png";
+	mTexturePathMap[Textures::TakeButton] = "assets/images/interface/buttons/interface_take.png";
+	mTexturePathMap[Textures::TalkButton] = "assets/images/interface/buttons/interface_talk.png";
+
+	mTexturePathMap[Textures::MainMenuPlayButton] = "assets/images/interface/MainMenu/button_play.png";
+	mTexturePathMap[Textures::MainMenuOptionsButton] = "assets/images/interface/MainMenu/button_options_disabled.png";
+	mTexturePathMap[Textures::MainMenuQuitButton] = "assets/images/interface/MainMenu/button_quit.png";
+	mTexturePathMap[Textures::MainMenuBackground] = "assets/images/Interface/MainMenu/menu_background.png";
+
+	mTexturePathMap[Textures::PauseMenuResumeButton] = "assets/images/interface/pauseManu/button_resume.png";
+	mTexturePathMap[Textures::PauseMenuSaveButton] = "assets/images/interface/pauseManu/button_save.png";
+	mTexturePathMap[Textures::PauseMenuOptionsButton] = "assets/images/interface/pauseManu/button_options.png";
+	mTexturePathMap[Textures::PauseMenuMainMenuButton] = "assets/images/interface/pauseManu/button_main_menu.png";
+	mTexturePathMap[Textures::PauseMenuExitButton] = "assets/images/interface/pauseManu/button_exit.png";
+	mTexturePathMap[Textures::PauseMenuBackground] = "assets/images/interface/pauseManu/InGame_menu.png";
+
+	mTexturePathMap[Textures::WaveAnimation] = "assets/MapFiles/Beach/waves.png";
+	mTexturePathMap[Textures::AxeAnimation] = "assets/images/Interface/MainMenu/flying_axe.png";
+
+	mTexturePathMap[Textures::InventoryBackground] = "assets/images/Interface/inventory.png";
+	mTexturePathMap[Textures::InventoryTile] = "assets/images/InventoryTile.png";
+
+	mTexturePathMap[Textures::BrandrIdle] = "assets/images/Brandr/character_brandr_blink.png";
+	mTexturePathMap[Textures::BrandrTalk] = "assets/images/Brandr/character_brandr_talk.png";
+	mTexturePathMap[Textures::ValdisIdle] = "assets/images/Valdis/character_valdis_blink.png";
+	mTexturePathMap[Textures::ValdisTalk] = "assets/images/Valdis/character_valdis_talk.png";
+	mTexturePathMap[Textures::LeifrIdle] = "assets/images/Leifr/character_leifr_blink.png";
+	mTexturePathMap[Textures::LeifrTalk] = "assets/images/Leifr/character_leifr_talk.png";
+	mTexturePathMap[Textures::FinnrIdle] = "assets/images/finnr/character_finnr_blink.png";
+	mTexturePathMap[Textures::FinnrTalk] = "assets/images/finnr/character_finnr_talk.png";
+	mTexturePathMap[Textures::BrynjaIdle] = "assets/images/Brynja/character_brynja_blink.png";
+	mTexturePathMap[Textures::BrynjaTalk] = "assets/images/Brynja/character_brynja_talk.png";
+	mTexturePathMap[Textures::BrynjaSleeping] = "assets/images/Brynja/character_brynja_sleeping.png";
+	mTexturePathMap[Textures::AlfrIdle] = "assets/images/Alfr/character_alfr.png";
+	mTexturePathMap[Textures::AlfrTalk] = "assets/images/Alfr/character_alfr_talk.png";
+	mTexturePathMap[Textures::DagnyIdle] = "assets/images/Dagny/character_dagny_blink.png";
+	mTexturePathMap[Textures::DagnyTalk] = "assets/images/Dagny/character_dagny_talk.png";
+	mTexturePathMap[Textures::YngvarrIdle] = "assets/images/Yngvarr/character_yngvarr_blink.png";
+	mTexturePathMap[Textures::YngvarrTalk] = "assets/images/Yngvarr/character_yngvarr_talk.png";
+	/* ============================================ */
+
+
+	/* =========== Set Font File paths =========== */
+	mFontPathMap[Fonts::ActionWheelDescription] = "assets/fonts/font1.ttf";
+	mFontPathMap[Fonts::DialogWindow] = "Assets/fonts/font2.ttf";
+	mFontPathMap[Fonts::MenuButtons] = "assets/fonts/font1.ttf";
+	/* =========================================== */
+
+
+	/* =========== Set Sound File paths =========== */
+	mSoundPathMap[Sound::InventoryOpen] = "assets/sounds/Inventory(open).wav";
+	mSoundPathMap[Sound::InventoryClose] = "assets/sounds/Inventory(close).wav";
+	mSoundPathMap[Sound::PickUpItem] = "assets/sounds/Pick_up_item.wav";
+
+	mSoundPathMap[Sound::BoatAmbient] = "assets/sounds/Boat.wav";
+	/* ============================================ */
+
+
+	/* =========== Set Background Folder paths =========== */
+	mBackgroundsPathMap[Backgrounds::ShipLevel1] = "Assets/MapFiles/Ship1/";
+	mBackgroundsPathMap[Backgrounds::ShipLevel2] = "Assets/MapFiles/Ship2/";
+	mBackgroundsPathMap[Backgrounds::BeachLevel] = "Assets/MapFiles/Beach/";
+	mBackgroundsPathMap[Backgrounds::RoadLevel] = "Assets/MapFiles/Road/";
+	/* =================================================== */
+
+
+	/* =========== Set Footstep Folder paths =========== */
+	mFootstepsPathMap[Footsteps::Default] = "assets/sounds/footsteps/test/";
+	mFootstepsPathMap[Footsteps::Hardwood] = "assets/sounds/footsteps/Hardwood/";
+	mFootstepsPathMap[Footsteps::Grass] = "assets/sounds/footsteps/Grass/";
+	/* ================================================= */
 }
 
 /* ====== Load functions ======== */
-void ResourceManager::loadResource(Textures::ID id, const std::string& filename)
+void ResourceManager::loadResource(Textures::ID id)
 {
-	std::cout << "Loading Texture: " << filename << std::endl;
+	std::cout << "Loading Texture: " << mTexturePathMap[id] << std::endl;
 	if (mTextureCountMap[id] == 0)
 	{
 		TexturePtr texture(new sf::Texture());
-		texture->loadFromFile(filename);
+		texture->loadFromFile(mTexturePathMap[id]);
 		texture->setSmooth(true);
 		mTextureMap.insert(std::make_pair(id, std::move(texture)));
 	}
 	mTextureCountMap[id]++;
 }
-void ResourceManager::loadResource(Images::ID id, const std::string &filename)
+void ResourceManager::loadResource(Images::ID id)
 {
-	std::cout << "Loading Image: " << filename << std::endl;
+	std::cout << "Loading Image: " << mImagePathMap[id] << std::endl;
 	if (mImageCountMap[id] == 0)
 	{
 		ImagePtr image(new sf::Image());
-		image->loadFromFile(filename);
+		image->loadFromFile(mImagePathMap[id]);
 		mImageMap.insert(std::make_pair(id, std::move(image)));
 	}
 	mImageCountMap[id]++;
 }
-void ResourceManager::loadResource(Fonts::ID id, const std::string& filename)
+void ResourceManager::loadResource(Fonts::ID id)
 {
-	std::cout << "Loading Font: " << filename << std::endl;
+	std::cout << "Loading Font: " << mFontPathMap[id] << std::endl;
 	if (mFontCountMap[id] == 0)
 	{
 		FontPtr font(new sf::Font());
-		font->loadFromFile(filename);
+		font->loadFromFile(mFontPathMap[id]);
 		mFontMap.insert(std::make_pair(id, std::move(font)));
 	}
 	mFontCountMap[id]++;
 }
-void ResourceManager::loadResource(Sound::ID id, const std::string& filename)
+void ResourceManager::loadResource(Sound::ID id)
 {
-	std::cout << "Loading Sound: " << filename << std::endl;
+	std::cout << "Loading Sound: " << mSoundPathMap[id] << std::endl;
 	if (mSoundCountMap[id] == 0)
 	{
 		SoundPtr sound(new sf::SoundBuffer());
-		sound->loadFromFile(filename);
+		sound->loadFromFile(mSoundPathMap[id]);
 		mSoundMap.insert(std::make_pair(id, std::move(sound)));
 	}
 	mSoundCountMap[id]++;
 }
-void ResourceManager::loadResource(TextureFolder::ID id, const std::string &directory)
+void ResourceManager::loadResource(Backgrounds::ID id)
 {
-	if (mTextureFolderCountMap[id] == 0)
+	if (mBackgroundsCountMap[id] == 0)
 	{
-		TextureFolderPtr mFolderVector;
-		std::vector<std::string> filePaths = getAllBackgroundFilesFromFolder(directory);
+		BackgroundsPtr mFolderVector;
+		std::vector<std::string> filePaths = getAllBackgroundFilesFromFolder(mBackgroundsPathMap[id]);
 
 		for (int i = 0; i < filePaths.size(); i++)
 		{
 			mFolderVector.push_back(TexturePtr(new sf::Texture()));
 			mFolderVector[i]->loadFromFile(filePaths.at(i));
 		}
-		mTextureFolderMap.insert(std::make_pair(id, std::move(mFolderVector)));
+		mBackgroundsMap.insert(std::make_pair(id, std::move(mFolderVector)));
 
 		mFolderVector.clear();
 		filePaths.clear();
 	}
-	mTextureFolderCountMap[id]++;
+	mBackgroundsCountMap[id]++;
 }
-void ResourceManager::loadResource(SoundFolder::ID id, const std::string &directory)
+void ResourceManager::loadResource(Footsteps::ID id)
 {
-	if (mSoundFolderCountMap[id] == 0)
+	if (mFootstepsCountMap[id] == 0)
 	{
-		SoundFolderPtr mSoundVector;
-		std::vector<std::string> filePaths = getAllFootstepsFromFolder(directory);
+		FootstepsPtr mSoundVector;
+		std::vector<std::string> filePaths = getAllFootstepsFromFolder(mFootstepsPathMap[id]);
 
 		for (int i = 0; i < filePaths.size(); i++)
 		{
 			mSoundVector.push_back(SoundPtr(new sf::SoundBuffer()));
 			mSoundVector[i]->loadFromFile(filePaths.at(i));
 		}
-		mSoundFolderMap.insert(std::make_pair(id, std::move(mSoundVector)));
+		mFootstepsMap.insert(std::make_pair(id, std::move(mSoundVector)));
 
 		mSoundVector.clear();
 		filePaths.clear();
 	}
-	mSoundFolderCountMap[id]++;
+	mFootstepsCountMap[id]++;
 }
 void ResourceManager::loadTexture(const std::string &filename)
 {
 	std::cout << "Loading Dynamic Texture: " << filename << std::endl;
-	TexturePtr texture(new sf::Texture());
-	texture->loadFromFile(filename);
-	texture->setSmooth(true);
-	mNonIDTextures.insert(std::make_pair(filename, std::move(texture)));
+	if (mNonIDTextureCount[filename] == 0)
+	{
+		TexturePtr texture(new sf::Texture());
+		texture->loadFromFile(filename);
+		texture->setSmooth(true);
+		mNonIDTextures.insert(std::make_pair(filename, std::move(texture)));
+	}
+	mNonIDTextureCount[filename]++;
 }
 void ResourceManager::loadImage(const std::string &filename)
 {
 	std::cout << "Loading Dynamic Image: " << filename << std::endl;
-	ImagePtr image(new sf::Image());
-	image->loadFromFile(filename);
-	mNonIDImages.insert(std::make_pair(filename, std::move(image)));
+	if (mNonIDImagesCount[filename] == 0)
+	{
+		ImagePtr image(new sf::Image());
+		image->loadFromFile(filename);
+		mNonIDImages.insert(std::make_pair(filename, std::move(image)));
+	}
+	mNonIDImagesCount[filename]++;
 }
 
 
@@ -170,35 +259,43 @@ void ResourceManager::unloadResource(Sound::ID id)
 	if (mSoundCountMap[id] > 0)
 		mSoundCountMap[id]--;
 }
-void ResourceManager::unloadResource(TextureFolder::ID id)
+void ResourceManager::unloadResource(Backgrounds::ID id)
 {
-	if (mTextureFolderCountMap[id] == 1)
+	if (mBackgroundsCountMap[id] == 1)
 	{
-		mTextureFolderMap[id].clear();
-		mTextureFolderMap.erase(id);
+		mBackgroundsMap[id].clear();
+		mBackgroundsMap.erase(id);
 	}
 
-	if (mTextureFolderCountMap[id] > 0)
-		mTextureFolderCountMap[id]--;
+	if (mBackgroundsCountMap[id] > 0)
+		mBackgroundsCountMap[id]--;
 }
-void ResourceManager::unloadResource(SoundFolder::ID id)
+void ResourceManager::unloadResource(Footsteps::ID id)
 {
-	if (mSoundFolderCountMap[id] == 1)
+	if (mFootstepsCountMap[id] == 1)
 	{
-		mSoundFolderMap[id].clear();
-		mSoundFolderMap.erase(id);
+		mFootstepsMap[id].clear();
+		mFootstepsMap.erase(id);
 	}
 
-	if (mSoundFolderCountMap[id] > 0)
-		mSoundFolderCountMap[id]--;
+	if (mFootstepsCountMap[id] > 0)
+		mFootstepsCountMap[id]--;
 }
 void ResourceManager::unloadTexture(const std::string &filename)
 {
-	mNonIDTextures.erase(filename);
+	if (mNonIDTextureCount[filename] == 1)
+		mNonIDTextures.erase(filename);
+
+	if (mNonIDTextureCount[filename] > 0)
+		mNonIDTextureCount[filename]--;
 }
 void ResourceManager::unloadImage(const std::string &filename)
 {
-	mNonIDImages.erase(filename);
+	if (mNonIDImagesCount[filename] == 1)
+		mNonIDImages.erase(filename);
+
+	if (mNonIDImagesCount[filename] > 0)
+		mNonIDImagesCount[filename]--;
 }
 
 
@@ -229,37 +326,37 @@ void ResourceManager::truncateSounds()
 		mSoundCountMap[static_cast<Sound::ID>(i)] = 0;
 	mSoundMap.clear();
 }
-void ResourceManager::truncateTextureFolders()
+void ResourceManager::truncateBackgrounds()
 {
-	for (int i = 0; i < TextureFolder::SIZE; i++)
-		mTextureFolderCountMap[static_cast<TextureFolder::ID>(i)] = 0;
+	for (int i = 0; i < Backgrounds::SIZE; i++)
+		mBackgroundsCountMap[static_cast<Backgrounds::ID>(i)] = 0;
 
-	for (std::map<TextureFolder::ID, TextureFolderPtr>::iterator it = mTextureFolderMap.begin(); it != mTextureFolderMap.end(); ++it)
+	for (std::map<Backgrounds::ID, BackgroundsPtr>::iterator it = mBackgroundsMap.begin(); it != mBackgroundsMap.end(); ++it)
 		it->second.clear();
 
-	mTextureFolderMap.clear();
+	mBackgroundsMap.clear();
 }
-void ResourceManager::truncateSoundFolders()
+void ResourceManager::truncateFootsteps()
 {
-	for (int i = 0; i < SoundFolder::SIZE; i++)
-		mSoundFolderCountMap[static_cast<SoundFolder::ID>(i)] = 0;
+	for (int i = 0; i < Footsteps::SIZE; i++)
+		mFootstepsCountMap[static_cast<Footsteps::ID>(i)] = 0;
 
-	for (std::map<SoundFolder::ID, SoundFolderPtr>::iterator it = mSoundFolderMap.begin(); it != mSoundFolderMap.end(); ++it)
+	for (std::map<Footsteps::ID, FootstepsPtr>::iterator it = mFootstepsMap.begin(); it != mFootstepsMap.end(); ++it)
 		it->second.clear();
 
-	mSoundFolderMap.clear();
+	mFootstepsMap.clear();
 }
 
 
 /* ====== Get functions ======== */
-const TextureFolderPtr &ResourceManager::getResource(TextureFolder::ID id) const
+const BackgroundsPtr &ResourceManager::getResource(Backgrounds::ID id) const
 {
-	auto found = mTextureFolderMap.find(id);
+	auto found = mBackgroundsMap.find(id);
 	return found->second;
 }
-const SoundFolderPtr &ResourceManager::getResource(SoundFolder::ID id) const
+const FootstepsPtr &ResourceManager::getResource(Footsteps::ID id) const
 {
-	auto found = mSoundFolderMap.find(id);
+	auto found = mFootstepsMap.find(id);
 	return found->second;
 }
 sf::Image &ResourceManager::getResource(Images::ID id) const
@@ -291,6 +388,33 @@ sf::Image &ResourceManager::getNonIDImage(const std::string &filename) const
 {
 	auto found = mNonIDImages.find(filename);
 	return *found->second;
+}
+
+
+/* ====== Get FilePath Functions ======== */
+std::string ResourceManager::getFilePath(Textures::ID id)
+{
+	return mTexturePathMap[id];
+}
+std::string ResourceManager::getFilePath(Images::ID id)
+{
+	return mImagePathMap[id];
+}
+std::string ResourceManager::getFilePath(Fonts::ID id)
+{
+	return mFontPathMap[id];
+}
+std::string ResourceManager::getFilePath(Sound::ID id)
+{
+	return mSoundPathMap[id];
+}
+std::string ResourceManager::getFilePath(Backgrounds::ID id)
+{
+	return mBackgroundsPathMap[id];
+}
+std::string ResourceManager::getFilePath(Footsteps::ID id)
+{
+	return mFootstepsPathMap[id];
 }
 
 

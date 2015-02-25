@@ -58,7 +58,7 @@ void DialogWindow::load()
 	setBackgroundSize(sf::Vector2f(700, 250));
 	setBackgroundColor(sf::Color(0, 0, 0, 200));
 
-	RMI.loadResource(Fonts::DialogWindow, "Assets/fonts/font2.ttf");
+	RMI.loadResource(Fonts::DialogWindow);
 	mText.setFont(RMI.getResource(Fonts::DialogWindow));
 }
 

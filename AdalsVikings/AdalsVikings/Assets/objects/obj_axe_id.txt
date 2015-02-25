@@ -1,10 +1,10 @@
 *Type: standard
 *ID: $axe$
 *Name: Axe
-*ispickupable: False
-*pickup: "Now we're talking. This could really chop some wood." ~2,0
-*lookat: "Looks kinda dangerous. I'll have to get it to Brandr." ~1,5
-*deny: "That doesn't seem safe." ~1,5
+*ispickupable: True
+*pickup: "This might come in handy" ~2,0
+*lookat: "That's nice..." ~1,5
+*deny: "I can't do that" ~1,5
 *denywith: 
 *combine: 
 *interact: 

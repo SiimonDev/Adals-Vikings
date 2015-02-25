@@ -11,13 +11,16 @@ InvTile::InvTile(sf::Vector2f position, int width, int height)
 	mRectangle = sf::RectangleShape(sf::Vector2f(width, height));
 	mRectangle.setOrigin(width / 2, height / 2);
 	mRectangle.setPosition(mPosition);
+	mSize = mRectangle.getSize();
 	mHasObject = false;
 }
 
 void InvTile::setObject(Object* object)
 {
-	mHasObject = true;
+	if (mHasObject)
+		delete mObject;
 	mObject = object;
+	mHasObject = true;
 }
 
 void InvTile::removeObject()
@@ -86,16 +89,31 @@ void InvTile::unload()
 
 void InvTile::update(sf::Time frameTime)
 {
-	if (isInside(MouseState::getMousePosition())){
-		mScale.x = 1.25f;
-		mScale.y = 1.25f;
+	mScale.x = 1;
+	mScale.y = 1;
+	if (mHasObject)
+	{
+		sf::Vector2f objSize = sf::Vector2f(mObject->getSprite().getTexture()->getSize());
+		if (objSize.x > mSize.x)
+		{
+			mScale.x = (mSize.x / objSize.x);
+			mScale.y = mScale.x;
+		}
+		if (objSize.y > mSize.y)
+		{
+			mScale.y = (mSize.y / objSize.y);
+			mScale.x = mScale.y;
+		}
+	}
+
+	if (isInside(MouseState::getMousePosition()))
+	{
+		mScale.x = mScale.x + 0.25f;
+		mScale.y = mScale.y + 0.25f;
 		mRectangle.setFillColor(sf::Color(255, 0, 0, 255));
 	}
-	else{
-		mScale.x = 1;
-		mScale.y = 1;
-		mRectangle.setFillColor(sf::Color(255, 255, 255, 255));
-	}
+	else
+		mRectangle.setFillColor(sf::Color(0, 0, 0, 255));
 }
 
 void InvTile::render(IndexRenderer &iRenderer)
@@ -106,5 +124,5 @@ void InvTile::render(IndexRenderer &iRenderer)
 		mObject->setScale(mScale);
 		mObject->render(iRenderer);
 	}
-	//iRenderer.addRectangle(mRectangle);
+	//iRenderer.addRectangle(mRectangle, 9999999 - 1);
 }

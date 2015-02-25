@@ -24,14 +24,14 @@ void Player::load()
 {
 	mInventory.load();
 
-	RMI.loadResource(Textures::UlfrIdle, "Assets/images/ulfr/character_ulfr_idle.png");
-	RMI.loadResource(Textures::UlfrBack, "Assets/images/ulfr/character_ulfr_back.png");
-	RMI.loadResource(Textures::UlfrFront, "Assets/images/ulfr/character_ulfr_front.png");
-	RMI.loadResource(Textures::UlfrWalk, "Assets/images/ulfr/character_ulfr_walk.png");
-	RMI.loadResource(Textures::UlfrTalkToNpc, "Assets/images/ulfr/character_ulfr_talk.png");
-	RMI.loadResource(Textures::UlfrTalkToPlayer, "Assets/images/ulfr/character_ulfr_front.png");
-	RMI.loadResource(Textures::UlfrStop, "assets/images/ulfr/character_ulfr_stop.png");
-	RMI.loadResource(Textures::UlfrPickup, "assets/images/ulfr/character_ulfr_pickup.png");
+	RMI.loadResource(Textures::UlfrIdle);
+	RMI.loadResource(Textures::UlfrBack);
+	RMI.loadResource(Textures::UlfrFront);
+	RMI.loadResource(Textures::UlfrWalk);
+	RMI.loadResource(Textures::UlfrTalkToNpc);
+	RMI.loadResource(Textures::UlfrTalkToPlayer);
+	RMI.loadResource(Textures::UlfrStop);
+	RMI.loadResource(Textures::UlfrPickup);
 
 	mPlayerAnimation.flip(false);
 	mPlayerAnimation.load(RMI.getResource(Textures::UlfrIdle), Frames(6, 3), sf::milliseconds(1300), sf::seconds(7), true);
@@ -209,7 +209,7 @@ void Player::playFootstepSound()
 			if (RMI.getResource(mFootsteps).size() > 0)
 				AudioPlayer::playRandomSound(mFootsteps);
 			else
-				AudioPlayer::playRandomSound(SoundFolder::Default);
+				AudioPlayer::playRandomSound(Footsteps::Default);
 		}
 	}
 }
@@ -331,7 +331,7 @@ void Player::setFlip(bool value)
 	mPlayerAnimation.flip(mFlip);
 }
 
-void Player::setFootsteps(SoundFolder::ID footsteps)
+void Player::setFootsteps(Footsteps::ID footsteps)
 {
 	mFootsteps = footsteps;
 }

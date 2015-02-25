@@ -27,8 +27,8 @@ public:
 	void startConversation();
 
 	void setName(std::string name);
-	void setIdleAnimation(Textures::ID id, std::string IdlePath, sf::Vector2i &idleFrames, sf::Time duration, sf::Time idleDuration);
-	void SetTalkAnimation(Textures::ID id, std::string TalkPath, sf::Vector2i &talkFrames, sf::Time duration, sf::Time idleDuration);
+	void setIdleAnimation(Textures::ID id, sf::Vector2i &idleFrames, sf::Time duration, sf::Time idleDuration);
+	void SetTalkAnimation(Textures::ID id, sf::Vector2i &talkFrames, sf::Time duration, sf::Time idleDuration);
 	void setPosition(sf::Vector2f position);
 	void setFlip(bool value);
 	void setscale(sf::Vector2f scale);
@@ -58,7 +58,6 @@ public:
 
 private:
 	Textures::ID mIdleTexture, mTalkTexture;
-	std::string mIdlePath, mTalkPath;
 	sf::Vector2i mIdleFrames, mTalkFrames;
 	sf::Time mIdleDuration, mIdleWaitTime, mTalkDuration, mTalkWaitTime;
 	std::string mName, mDialogue;

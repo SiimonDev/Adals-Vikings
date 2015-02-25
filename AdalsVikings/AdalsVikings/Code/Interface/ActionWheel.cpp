@@ -20,10 +20,10 @@ sf::Vector2f ActionWheel::getPosition(){ return mPosition; }
 
 void ActionWheel::load()
 {
-	RMI.loadResource(Fonts::ActionWheelDescription, "assets/fonts/font1.ttf");
-	RMI.loadResource(Textures::LookButton, "assets/images/interface/buttons/interface_look.png");
-	RMI.loadResource(Textures::TakeButton, "assets/images/interface/buttons/interface_take.png");
-	RMI.loadResource(Textures::TalkButton, "assets/images/interface/buttons/interface_talk.png");
+	RMI.loadResource(Fonts::ActionWheelDescription);
+	RMI.loadResource(Textures::LookButton);
+	RMI.loadResource(Textures::TakeButton);
+	RMI.loadResource(Textures::TalkButton);
 
 	button1 = Button(Textures::TalkButton, Fonts::ActionWheelDescription, sf::Vector2f(), " Talk");
 	button1.setScale(sf::Vector2f(0.6f, 0.6f));

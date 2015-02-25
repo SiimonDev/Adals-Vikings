@@ -30,6 +30,8 @@ public:
 	void setPosition(sf::Vector2f &position);
 	void setCollisionRect(sf::IntRect &rect);
 	void setScale(sf::Vector2f &scale);
+	void setScaleFromWidth(float width);
+	void setScaleFromHeight(float height);
 	void enableCollision(bool active);
 
 	std::string getObjID();
@@ -43,6 +45,7 @@ public:
 
 	sf::Vector2f &getPosition();
 	sf::Vector2f &getInteractionPosition();
+	sf::Vector2f getSize();
 	sf::Vector2f getScale();
 	sf::IntRect &getCollisionRect();
 	sf::Sprite &getSprite();

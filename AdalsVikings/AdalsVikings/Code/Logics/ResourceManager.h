@@ -11,40 +11,10 @@ typedef std::unique_ptr<sf::Texture> TexturePtr;
 typedef std::unique_ptr<sf::Font> FontPtr;
 typedef std::unique_ptr<sf::Image> ImagePtr;
 typedef std::unique_ptr<sf::SoundBuffer> SoundPtr;
-typedef std::vector<TexturePtr> TextureFolderPtr;
-typedef std::vector<SoundPtr> SoundFolderPtr;
+typedef std::vector<TexturePtr> BackgroundsPtr;
+typedef std::vector<SoundPtr> FootstepsPtr;
 
 #define RMI ResourceManager::getInstance()
-
-
-namespace Images
-{
-	enum ID
-	{
-		SIZE
-	};
-}
-namespace TextureFolder
-{
-	enum ID
-	{
-		ShipLevel1,
-		ShipLevel2,
-		BeachLevel,
-		RoadLevel,
-		SIZE
-	};
-};
-namespace SoundFolder
-{
-	enum ID
-	{
-		Default,
-		Hardwood,
-		Grass,
-		SIZE
-	};
-};
 
 namespace Textures
 {
@@ -59,7 +29,6 @@ namespace Textures
 		UlfrTalkToPlayer,
 		UlfrPickup,
 
-		Portal,
 		Button1,
 		Button1Dissabled,
 		LookButton,
@@ -69,6 +38,7 @@ namespace Textures
 		MainMenuPlayButton,
 		MainMenuOptionsButton,
 		MainMenuQuitButton,
+		MainMenuBackground,
 
 		PauseMenuResumeButton,
 		PauseMenuSaveButton,
@@ -77,13 +47,8 @@ namespace Textures
 		PauseMenuExitButton,
 		PauseMenuBackground,
 
-		Asteroid,
-		Axe,
-		Stick,
-
-		Wave,
+		WaveAnimation,
 		AxeAnimation,
-		MainMenuBackground,
 
 		InventoryBackground,
 		InventoryTile,
@@ -105,6 +70,13 @@ namespace Textures
 		DagnyTalk,
 		YngvarrIdle,
 		YngvarrTalk,
+		SIZE
+	};
+}
+namespace Images
+{
+	enum ID
+	{
 		SIZE
 	};
 }
@@ -130,46 +102,74 @@ namespace Sound
 		SIZE
 	};
 }
+namespace Backgrounds
+{
+	enum ID
+	{
+		ShipLevel1,
+		ShipLevel2,
+		BeachLevel,
+		RoadLevel,
+		SIZE
+	};
+};
+namespace Footsteps
+{
+	enum ID
+	{
+		Default,
+		Hardwood,
+		Grass,
+		SIZE
+	};
+};
 class ResourceManager
 {
 public:
 	//uses Singleton to make the class global.
 	static ResourceManager &getInstance();
 
-	void loadResource(Images::ID id, const std::string &directory);
-	void loadResource(TextureFolder::ID id, const std::string &directory);
-	void loadResource(SoundFolder::ID id, const std::string &directory);
-	void loadResource(Textures::ID id, const std::string &filename);
-	void loadResource(Fonts::ID id, const std::string &filename);
-	void loadResource(Sound::ID id, const std::string &filename);
+	void loadResource(Textures::ID id);
+	void loadResource(Images::ID id);
+	void loadResource(Fonts::ID id);
+	void loadResource(Sound::ID id);
+	void loadResource(Backgrounds::ID id);
+	void loadResource(Footsteps::ID id);
 	void loadTexture(const std::string &filename);
 	void loadImage(const std::string &filename);
 
-	void unloadResource(Images::ID id);
-	void unloadResource(TextureFolder::ID id);
-	void unloadResource(SoundFolder::ID id);
 	void unloadResource(Textures::ID id);
+	void unloadResource(Images::ID id);
 	void unloadResource(Fonts::ID id);
 	void unloadResource(Sound::ID id);
+	void unloadResource(Backgrounds::ID id);
+	void unloadResource(Footsteps::ID id);
 	void unloadTexture(const std::string &filename);
 	void unloadImage(const std::string &filename);
 
 	void truncateTextures();
 	void truncateImages();
-	void truncateTextureFolders();
-	void truncateSoundFolders();
 	void truncateSounds();
 	void truncateFonts();
+	void truncateBackgrounds();
+	void truncateFootsteps();
 
-	const TextureFolderPtr &getResource(TextureFolder::ID id) const;
-	const SoundFolderPtr &getResource(SoundFolder::ID id) const;
 	sf::Texture &getResource(Textures::ID id) const;
 	sf::Image &getResource(Images::ID id) const;
 	sf::Font &getResource(Fonts::ID id) const;
 	sf::SoundBuffer &getResource(Sound::ID id) const;
+	const BackgroundsPtr &getResource(Backgrounds::ID id) const;
+	const FootstepsPtr &getResource(Footsteps::ID id) const;
 
 	sf::Texture &getNonIDTexture(const std::string &filename) const;
 	sf::Image &getNonIDImage(const std::string &filename) const;
+
+	std::string getFilePath(Textures::ID id);
+	std::string getFilePath(Images::ID id);
+	std::string getFilePath(Fonts::ID id);
+	std::string getFilePath(Sound::ID id);
+	std::string getFilePath(Backgrounds::ID id);
+	std::string getFilePath(Footsteps::ID id);
 
 	std::vector<std::string> getAllBackgroundFilesFromFolder(const std::string &directory);
 	std::vector<std::string> getAllFootstepsFromFolder(const std::string &directory);
@@ -186,19 +186,29 @@ private:
 	std::map<Images::ID, ImagePtr> mImageMap;
 	std::map<Fonts::ID, FontPtr> mFontMap;
 	std::map<Sound::ID, SoundPtr> mSoundMap;
-	std::map<TextureFolder::ID, TextureFolderPtr> mTextureFolderMap;
-	std::map<SoundFolder::ID, SoundFolderPtr> mSoundFolderMap;
+	std::map<Backgrounds::ID, BackgroundsPtr> mBackgroundsMap;
+	std::map<Footsteps::ID, FootstepsPtr> mFootstepsMap;
 
 	// Load Count Maps
 	std::map<Textures::ID, int> mTextureCountMap;
 	std::map<Images::ID, int> mImageCountMap;
 	std::map<Fonts::ID, int> mFontCountMap;
 	std::map<Sound::ID, int> mSoundCountMap;
-	std::map<TextureFolder::ID, int> mTextureFolderCountMap;
-	std::map<SoundFolder::ID, int> mSoundFolderCountMap;
+	std::map<Backgrounds::ID, int> mBackgroundsCountMap;
+	std::map<Footsteps::ID, int> mFootstepsCountMap;
+
+	std::map<std::string, int> mNonIDTextureCount;
+	std::map<std::string, int> mNonIDImagesCount;
+
+	// FilePath Maps
+	std::map<Textures::ID, std::string> mTexturePathMap;
+	std::map<Images::ID, std::string> mImagePathMap;
+	std::map<Fonts::ID, std::string> mFontPathMap;
+	std::map<Sound::ID, std::string> mSoundPathMap;
+	std::map<Backgrounds::ID, std::string> mBackgroundsPathMap;
+	std::map<Footsteps::ID, std::string> mFootstepsPathMap;
 
 	// Dynamic texture loading
 	std::map<std::string, TexturePtr> mNonIDTextures;
 	std::map<std::string, ImagePtr> mNonIDImages;
 };
-

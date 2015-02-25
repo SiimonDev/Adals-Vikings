@@ -13,8 +13,7 @@ Ship_level_1::Ship_level_1(Player &player, ActionWheel &actionWheel)
 	, mStartBrynja(false)
 	, mBrynjaConv(false)
 {
-	mFolderPath = "Assets/MapFiles/Ship1/";
-	mLevelID = TextureFolder::ShipLevel1;
+	mBackgroundID = Backgrounds::ShipLevel1;
 }
 
 void Ship_level_1::update(sf::Time &frametime)
@@ -67,11 +66,9 @@ void Ship_level_1::update(sf::Time &frametime)
 			FadeI.fadeOut(frametime);
 			if (FadeI.getFaded())
 			{
-				//FadeI.setAlpha(255);
-
-				mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaIdle, "assets/Images/Brynja/character_brynja_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
-				mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaTalk, "assets/Images/Brynja/character_brynja_talk.png", sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
-
+				RMI.unloadResource(Textures::BrynjaSleeping);
+				mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+				mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
 				mNpcs["Brynja"]->setProportions(sf::Vector2f(290, 452));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
 				mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
@@ -150,11 +147,12 @@ void Ship_level_1::load()
 
 	if (!mStartBrynja)
 	{
-		RMI.loadResource(Textures::BrynjaIdle, "assets/Images/Brynja/character_brynja_blink.png");
-		RMI.loadResource(Textures::BrynjaTalk, "assets/Images/Brynja/character_brynja_talk.png");
-		RMI.loadResource(Textures::BrynjaSleeping, "assets/images/Brynja/character_brynja_sleeping.png");
-		mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaSleeping, "assets/images/Brynja/character_brynja_sleeping.png", sf::Vector2i(3, 4), sf::milliseconds(1200), sf::milliseconds(2000));
-		mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaSleeping, "assets/images/Brynja/character_brynja_sleeping.png", sf::Vector2i(3, 4), sf::milliseconds(1400), sf::milliseconds(2000));
+		RMI.loadResource(Textures::BrynjaIdle);
+		RMI.loadResource(Textures::BrynjaTalk);
+		RMI.loadResource(Textures::BrynjaSleeping);
+		mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaSleeping, sf::Vector2i(3, 4), sf::milliseconds(1200), sf::milliseconds(2000));
+		mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaSleeping, sf::Vector2i(3, 4), sf::milliseconds(1400), sf::milliseconds(2000));
+
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 720));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(900, 710));
 		mNpcs["Brynja"]->setProportions(sf::Vector2f(504, 160));
@@ -163,9 +161,9 @@ void Ship_level_1::load()
 
 	Level::load();
 
-	RMI.loadResource(Sound::BoatAmbient, "assets/sounds/Boat.wav");
-	RMI.loadResource(SoundFolder::Hardwood, "assets/sounds/footsteps/Hardwood/");
-	mCurrentStepSound = SoundFolder::Hardwood;
+	RMI.loadResource(Sound::BoatAmbient);
+	RMI.loadResource(Footsteps::Hardwood);
+	mCurrentFootsteps = Footsteps::Hardwood;
 
 	AudioPlayer::playSound(Sound::BoatAmbient, "boatAmbient", true);
 	AudioPlayer::playMusic("assets/sounds/music/Theme2.ogg", "boat1", true, 20);
@@ -190,7 +188,7 @@ void Ship_level_1::load()
 void Ship_level_1::unload()
 {
 	RMI.unloadResource(Sound::BoatAmbient);
-	RMI.unloadResource(SoundFolder::Hardwood);
+	RMI.unloadResource(Footsteps::Hardwood);
 	Level::unload();
 }
 

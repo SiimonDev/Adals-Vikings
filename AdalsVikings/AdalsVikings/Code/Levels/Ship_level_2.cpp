@@ -15,10 +15,9 @@ Ship_level_2::Ship_level_2(Player &player, ActionWheel &actionWheel)
 	, mZoom(1.f)
 	, mAlpha(0)
 {
-	mFolderPath = "Assets/MapFiles/Ship2/";
 	mFadeRectangle.setSize(sf::Vector2f(1920, 1080));
 	mFadeRectangle.setFillColor(sf::Color(0, 0, 0, mAlpha));
-	mLevelID = TextureFolder::ShipLevel2;
+	mBackgroundID = Backgrounds::ShipLevel2;
 }
 
 void Ship_level_2::update(sf::Time &frametime)
@@ -115,7 +114,7 @@ void Ship_level_2::load()
 	mTileMap.setIndexOnMap(mNpcs["Brandr"]->getIndexRect(), mNpcs["Brandr"]->getIndex() - 1);
 	mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 1);
 
-	mCurrentStepSound = SoundFolder::Hardwood;
+	mCurrentFootsteps = Footsteps::Hardwood;
 }
 
 void Ship_level_2::unload()
@@ -157,18 +156,17 @@ void Ship_level_2::runCutscene(sf::Time &frameTime)
 			}
 		}
 	}
+	BoatEvents::handleEvent(BoatEvent::StartDialogue);
 }
 
 void Ship_level_2::checkInteractEvents()
 {
 	if (mDroppedItemID == "map" && mCurrentNPCID == "Brandr" && !BoatEvents::hasBeenTriggered(BoatEvent::GivenMapToBrandr))
 		BoatEvents::triggerEvent(BoatEvent::GivenMapToBrandr);
-
 }
 
 void Ship_level_2::checkEvents()
 {
 	if (!BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue))
 		BoatEvents::triggerEvent(BoatEvent::StartDialogue);
-
 }
