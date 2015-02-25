@@ -36,14 +36,14 @@ void Beach_level::render(IndexRenderer &iRenderer)
 
 void Beach_level::load()
 {
-	mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
+	//mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro) && !Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
 	{
 		mCutSceneView.setCenter(1920 / 2 - 450, 1080 / 2 + 270);
 		mCutSceneView.setSize(1920, 1080);
 		mCutSceneView.zoom(0.5);
 
-		FadeI.setAlpha(254);
+		//FadeI.setAlpha(255);
 
 		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
 		mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
@@ -51,20 +51,21 @@ void Beach_level::load()
 
 		mPlayer.setPosition(sf::Vector2f(410, 1070));
 		mPlayer.setFlip(true);
+		mPlayer.UpdateAnimationStyle();
 
-		mNpcs["Brandr"]->setRightWay(true);
+		mNpcs["Brandr"]->setFlip(true);
 		mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Brandr"]->setPosition(sf::Vector2f(400, 1120));
 		mNpcs["Brandr"]->setDialogue("IntroDialogue");
 		mNpcs["Brandr"]->setIndex(5);
 
-		mNpcs["Brynja"]->setRightWay(false);
+		mNpcs["Brynja"]->setFlip(false);
 		mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(600, 1070));
 		mNpcs["Brynja"]->setDialogue("IntroDialogue");
 		mNpcs["Brynja"]->setIndex(4);
 
-		mNpcs["Valdis"]->setRightWay(false);
+		mNpcs["Valdis"]->setFlip(false);
 		mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Valdis"]->setPosition(sf::Vector2f(600, 1120));
 		mNpcs["Valdis"]->setDialogue("Valdis");
@@ -80,7 +81,7 @@ void Beach_level::load()
 		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
 
 		/* ==== Yngvarr ===== */
-		mNpcs["Yngvarr"]->setRightWay(false);
+		mNpcs["Yngvarr"]->setFlip(false);
 		mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Yngvarr"]->setPosition(sf::Vector2f(350, 760));
 		mNpcs["Yngvarr"]->setInteractionPosition(sf::Vector2f(420, 760));
@@ -88,7 +89,7 @@ void Beach_level::load()
 		mNpcs["Yngvarr"]->setIndex(5);
 
 		/* ==== Yngvarr ===== */
-		mNpcs["Dagny"]->setRightWay(true);
+		mNpcs["Dagny"]->setFlip(true);
 		mNpcs["Dagny"]->setscale(sf::Vector2f(0.5, 0.5));
 		mNpcs["Dagny"]->setPosition(sf::Vector2f(250, 760));
 		mNpcs["Dagny"]->setInteractionPosition(sf::Vector2f(300, 760));
@@ -96,7 +97,7 @@ void Beach_level::load()
 		mNpcs["Dagny"]->setIndex(5);
 
 		/* ==== Alfr ===== */
-		mNpcs["Alfr"]->setRightWay(false);
+		mNpcs["Alfr"]->setFlip(false);
 		mNpcs["Alfr"]->setscale(sf::Vector2f(0.35, 0.35));
 		mNpcs["Alfr"]->setPosition(sf::Vector2f(1250, 590));
 		mNpcs["Alfr"]->setInteractionPosition(sf::Vector2f(1200, 590));
@@ -110,7 +111,7 @@ void Beach_level::load()
 		RMI.loadResource(Textures::LeifrTalk, "assets/images/Leifr/character_leifr_talk.png");
 		mNpcs["Leifr"]->setIdleAnimation(Textures::LeifrIdle, "assets/images/Leifr/character_leifr_blink.png", sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(7.2));
 		mNpcs["Leifr"]->SetTalkAnimation(Textures::LeifrTalk, "assets/images/Leifr/character_leifr_talk.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
-		mNpcs["Leifr"]->setRightWay(true);
+		mNpcs["Leifr"]->setFlip(true);
 		mNpcs["Leifr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 580));
 		mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(750, 580));
@@ -118,7 +119,7 @@ void Beach_level::load()
 		mNpcs["Leifr"]->setIndex(5);
 
 		/* ==== Finnr ===== */
-		mNpcs["Finnr"]->setRightWay(false);
+		mNpcs["Finnr"]->setFlip(false);
 		mNpcs["Finnr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Finnr"]->setPosition(sf::Vector2f(1600, 520));
 		mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(1550, 520));
@@ -165,10 +166,10 @@ void Beach_level::unload()
 
 void Beach_level::changeLevel()
 {
-	if (mPortals[BeachToRoad]->getActivated())
+	/*if (mPortals[BeachToRoad]->getActivated())
 	{
 		LVLMI.changeLevel(Road);
-	}
+	}*/
 }
 void Beach_level::checkInteractEvents()
 {
@@ -187,7 +188,7 @@ void Beach_level::introCutscene(sf::Time &frameTime)
 			FadeI.fadeIn(frameTime);
 			if (FadeI.getFaded())
 			{
-				FadeI.setAlpha(1);
+				//FadeI.setAlpha(0);
 				DialogHandler::getDialogue("IntroBeach").startDialogue();
 				mIntroFade1 = true;
 			}
@@ -201,17 +202,16 @@ void Beach_level::introCutscene(sf::Time &frameTime)
 				mCutSceneView.setCenter(1920 / 2, 1080 / 2);
 				//mCutSceneView.setViewport(sf::FloatRect(0, 0, 1920, 1080));
 
-				FadeI.setAlpha(254);
+				//FadeI.setAlpha(255);
 
 				mNpcs["Brandr"]->setPosition(sf::Vector2f(2000, 0));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(2000, 0));
 
-				mNpcs["Valdis"]->setRightWay(true);
+				mNpcs["Valdis"]->setFlip(true);
 				mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Valdis"]->setPosition(sf::Vector2f(1600, 720));
 				mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(1550, 720));
-				mNpcs["Valdis"]->UpdateAnimation();
-				mNpcs["Valdis"]->setAnimationStyle("Idle");
+				mNpcs["Valdis"]->UpdateAnimationStyle();
 
 				mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
 				mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
@@ -224,7 +224,7 @@ void Beach_level::introCutscene(sf::Time &frameTime)
 			FadeI.fadeIn(frameTime);
 			if (FadeI.getFaded())
 			{
-				FadeI.setAlpha(1);
+				//FadeI.setAlpha(0);
 				Act1Events::handleEvent(Act1Event::Beach_Intro);
 				mIntroFade3 = true;
 			}
@@ -240,49 +240,49 @@ void Beach_level::endingCutscene(sf::Time &frameTime)
 			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())
 			{
-				FadeI.setAlpha(254);
+				//FadeI.setAlpha(255);
 
-				mNpcs["Brynja"]->setRightWay(true);
+				mNpcs["Brynja"]->setFlip(true);
 				mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(580, 760));
 				mNpcs["Brynja"]->setIndex(4);
-				mNpcs["Brynja"]->UpdateAnimation();
+				mNpcs["Brynja"]->UpdateAnimationStyle();
 
-				mNpcs["Brandr"]->setRightWay(true);
+				mNpcs["Brandr"]->setFlip(true);
 				mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Brandr"]->setPosition(sf::Vector2f(600, 800));
 				mNpcs["Brandr"]->setIndex(5);
-				mNpcs["Brandr"]->UpdateAnimation();
+				mNpcs["Brandr"]->UpdateAnimationStyle();
 
-				mNpcs["Valdis"]->setRightWay(false);
+				mNpcs["Valdis"]->setFlip(false);
 				mNpcs["Valdis"]->setPosition(sf::Vector2f(700, 680));
 				mNpcs["Valdis"]->setIndex(3);
-				mNpcs["Valdis"]->UpdateAnimation();
+				mNpcs["Valdis"]->UpdateAnimationStyle();
 
-				mNpcs["Finnr"]->setRightWay(false);
+				mNpcs["Finnr"]->setFlip(false);
 				mNpcs["Finnr"]->setPosition(sf::Vector2f(720, 720));
 				mNpcs["Finnr"]->setIndex(4);
-				mNpcs["Finnr"]->UpdateAnimation();
+				mNpcs["Finnr"]->UpdateAnimationStyle();
 
-				mNpcs["Leifr"]->setRightWay(false);
+				mNpcs["Leifr"]->setFlip(false);
 				mNpcs["Leifr"]->setPosition(sf::Vector2f(740, 760));
 				mNpcs["Leifr"]->setIndex(5);
-				mNpcs["Leifr"]->UpdateAnimation();
+				mNpcs["Leifr"]->UpdateAnimationStyle();
 
-				mNpcs["Alfr"]->setRightWay(false);
+				mNpcs["Alfr"]->setFlip(false);
 				mNpcs["Alfr"]->setPosition(sf::Vector2f(740, 840));
 				mNpcs["Alfr"]->setIndex(7);
-				mNpcs["Alfr"]->UpdateAnimation();
+				mNpcs["Alfr"]->UpdateAnimationStyle();
 
-				mNpcs["Yngvarr"]->setRightWay(false);
+				mNpcs["Yngvarr"]->setFlip(false);
 				mNpcs["Yngvarr"]->setPosition(sf::Vector2f(720, 880));
 				mNpcs["Yngvarr"]->setIndex(8);
-				mNpcs["Yngvarr"]->UpdateAnimation();
+				mNpcs["Yngvarr"]->UpdateAnimationStyle();
 
-				mNpcs["Dagny"]->setRightWay(false);
+				mNpcs["Dagny"]->setFlip(false);
 				mNpcs["Dagny"]->setPosition(sf::Vector2f(700, 920));
 				mNpcs["Dagny"]->setIndex(9);
-				mNpcs["Dagny"]->UpdateAnimation();
+				mNpcs["Dagny"]->UpdateAnimationStyle();
 
 				mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
 				mTileMap.setIndexOnMap(mNpcs["Leifr"]->getIndexRect(), mNpcs["Leifr"]->getIndex() - 1);
@@ -294,12 +294,6 @@ void Beach_level::endingCutscene(sf::Time &frameTime)
 				mPlayer.setPosition(sf::Vector2f(760, 800));
 				mPlayer.setFlip(false);
 				mPlayer.setAnimationStyle(AnimationType::Idle);
-
-				for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
-				{
-					iz->second->setAnimationStyle("Idle");
-				}
-
 
 				mEndingFade1 = true;
 			}
@@ -319,7 +313,7 @@ void Beach_level::endingCutscene(sf::Time &frameTime)
 			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())
 			{
-				FadeI.setAlpha(254);
+				//FadeI.setAlpha(255);
 				mNpcs.erase("Brandr");
 				mNpcs.erase("Brynja");
 				mNpcs.erase("Yngvarr");
@@ -337,7 +331,7 @@ void Beach_level::endingCutscene(sf::Time &frameTime)
 			FadeI.fadeIn(frameTime);
 			if (FadeI.getFaded())
 			{
-				FadeI.setAlpha(1);
+				//FadeI.setAlpha(0);
 				Act1Events::handleEvent(Act1Event::Beach_Ending);
 				mEndingFade4 = true;
 			}

@@ -19,11 +19,6 @@ Ship_level_1::Ship_level_1(Player &player, ActionWheel &actionWheel)
 
 void Ship_level_1::update(sf::Time &frametime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::F))
-	{
-		mPlayer.addItemToInventory("flute");
-	}
-
 	if (BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
 	{
 		if (!mGameStart)
@@ -33,7 +28,7 @@ void Ship_level_1::update(sf::Time &frametime)
 			{
 				DialogHandler::getDialogue("IntroUlfr").startDialogue();
 				mGameStart = true;
-				FadeI.setAlpha(1);
+				//FadeI.setAlpha(0);
 			}
 		}
 		if (DialogHandler::getDialogue("IntroUlfr").getHasStopped())
@@ -59,7 +54,7 @@ void Ship_level_1::update(sf::Time &frametime)
 	{
 		if (mStartBrynja == false)
 		{
-			FadeI.setAlpha(1);
+			//FadeI.setAlpha(0);
 			DialogHandler::getDialogue("Leifr").disableOption(2);
 			DialogHandler::getDialogue("Alfr").disableOption(3);
 			mPlayer.removeItemFromInventory("flute");
@@ -72,15 +67,18 @@ void Ship_level_1::update(sf::Time &frametime)
 			FadeI.fadeOut(frametime);
 			if (FadeI.getFaded())
 			{
+				//FadeI.setAlpha(255);
+
 				mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaIdle, "assets/Images/Brynja/character_brynja_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 				mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaTalk, "assets/Images/Brynja/character_brynja_talk.png", sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
-				RMI.unloadResource(Textures::BrynjaSleeping);
-				FadeI.setAlpha(254);
 
 				mNpcs["Brynja"]->setProportions(sf::Vector2f(290, 452));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
 				mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
-				//FadeI.setFadeDuration(sf::milliseconds(20000));
+				mNpcs["Brynja"]->UpdateAnimationStyle();
+				mNpcs["Brynja"]->setFlip(true);
+				RMI.unloadResource(Textures::BrynjaSleeping);
+
 				mBrynjaFade1 = true;
 			}
 		}
@@ -90,7 +88,7 @@ void Ship_level_1::update(sf::Time &frametime)
 
 			if (FadeI.getFaded())
 			{
-				FadeI.setAlpha(0);
+				//FadeI.setAlpha(0);
 				mBrynjaFade2 = true;
 			}
 		}

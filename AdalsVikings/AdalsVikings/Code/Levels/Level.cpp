@@ -192,7 +192,7 @@ void Level::updateDialog(sf::Time frameTime)
 			{
 				if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() != "")
 				{
-					iz->second->setRightWay(it->second->getFacing());
+					iz->second->setFlip(it->second->getFacing());
 					iz->second->setAnimationStyle("Npc");
 					mPlayer.setAnimationStyle(AnimationType::Idle);
 					it->second->setTextPosition(sf::Vector2f(iz->second->getAnimation().getSprite().getGlobalBounds().left +
@@ -203,7 +203,7 @@ void Level::updateDialog(sf::Time frameTime)
 				}
 				else if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() == "")
 				{
-					iz->second->setRightWay(it->second->getFacing());
+					iz->second->setFlip(it->second->getFacing());
 					iz->second->setAnimationStyle("Idle");
 				}
 				else if (it->second->getCharacter() == mPlayer.getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
@@ -277,7 +277,7 @@ void Level::update(sf::Time &frameTime)
 			it->second->walkPath(mPlayer);
 	}
 
-	if (!mIsInConversation && !mOldIsInConversation)
+	if (!mIsInConversation && !mOldIsInConversation && FadeI.getFaded())
 	{
 		mPlayer.move(frameTime);
 		updateObjectActionWheel();

@@ -335,3 +335,9 @@ void Player::setFootsteps(SoundFolder::ID footsteps)
 {
 	mFootsteps = footsteps;
 }
+
+void Player::UpdateAnimationStyle()
+{
+	mAnimationStyle = AnimationStyle::Update;
+	setAnimationStyle(AnimationType::Idle);
+}

@@ -14,18 +14,22 @@ public:
 
 	void fadeIn(sf::Time frameTime);
 	void fadeOut(sf::Time frameTime);
+	void setWaitDuration(sf::Time duration);
 	void setFadeDuration(sf::Time duration);
 	void setAlpha(float alpha);
+	void wait(sf::Time frameTime);
 
 	bool &getFaded();
+	bool &getWait();
+	bool &getFinishedWaiting();
 
 private:
 	Fade();
 	Fade(const Fade&);
 	void operator=(const Fade&);
 	sf::RectangleShape mFadeRectangle;
-	sf::Time mDuration, mElapsedTime;
+	sf::Time mDuration, mElapsedTime, mWaitDuration;
 	float mAlpha;
-	bool mFaded;
+	bool mFaded, mWaiting, mFinishedWaiting;
 };
 

@@ -95,13 +95,13 @@ void Ship_level_2::load()
 		mCutsceneView.setCenter(1920 / 2 - 100, 1080 / 2);
 		mCutsceneView.setSize(1920, 1080);
 		mCutsceneView.zoom(0.4);
-		mNpcs["Brandr"]->setRightWay(false);
-		mNpcs["Yngvarr"]->setRightWay(true);
+		mNpcs["Brandr"]->setFlip(false);
+		mNpcs["Yngvarr"]->setFlip(true);
 	}
 	else
 	{
-		mNpcs["Brandr"]->setRightWay(true);
-		mNpcs["Yngvarr"]->setRightWay(false);
+		mNpcs["Brandr"]->setFlip(true);
+		mNpcs["Yngvarr"]->setFlip(false);
 	}
 	Level::load();
 
@@ -143,7 +143,7 @@ void Ship_level_2::runCutscene(sf::Time &frameTime)
 	{
 		if (!mDone)
 		{
-			FadeI.setAlpha(1);
+			//FadeI.setAlpha(0);
 			DialogHandler::getDialogue("Intro").startDialogue();
 			mDone = true;
 		}
@@ -152,7 +152,7 @@ void Ship_level_2::runCutscene(sf::Time &frameTime)
 			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())
 			{
-				FadeI.setAlpha(254);
+				//FadeI.setAlpha(255);
 				BoatEvents::handleEvent(BoatEvent::StartDialogue);
 			}
 		}

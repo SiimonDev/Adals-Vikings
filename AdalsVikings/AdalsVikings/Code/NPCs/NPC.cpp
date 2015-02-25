@@ -109,7 +109,7 @@ void Npc::setProportions(sf::Vector2f proportions)
 {
 	mProportions = proportions;
 }
-void Npc::setRightWay(bool value)
+void Npc::setFlip(bool value)
 {
 	mFlip = value;
 }
@@ -223,7 +223,8 @@ std::string Npc::getDialogueString()
 	return string;
 }
 
-void Npc::UpdateAnimation()
+void Npc::UpdateAnimationStyle()
 {
 	mAnimation = AnimationState::Update;
+	setAnimationStyle("Idle");
 }

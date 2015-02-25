@@ -31,7 +31,8 @@ namespace AnimationStyle
 		PlayerTalk,
 		PlayerMonolog,
 		PlayerIdle,
-		PlayerPickup
+		PlayerPickup,
+		Update
 	};
 }
 
@@ -66,6 +67,7 @@ public:
 	void move(sf::Time &frameTime);
 	void walkPath(Path &path);
 	void playFootstepSound();
+	void UpdateAnimationStyle();
 
 	sf::Sprite getSprite();
 	sf::Vector2f getPosition();

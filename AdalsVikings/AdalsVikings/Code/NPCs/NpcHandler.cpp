@@ -30,7 +30,7 @@ void NpcHandler::load()
 	Valdis->setIndex(14);
 	Valdis->setProportions(sf::Vector2f(167.5, 436));
 	Valdis->setscale(sf::Vector2f(0.55f, 0.55f));
-	Valdis->setRightWay(false);
+	Valdis->setFlip(false);
 
 	Leifr->setName("Leifr");
 	Leifr->setIdleAnimation(Textures::LeifrIdle, "assets/images/leifr/character_leifr_sit_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
@@ -42,7 +42,7 @@ void NpcHandler::load()
 	Leifr->setIndex(14);
 	Leifr->setProportions(sf::Vector2f(286, 427));
 	Leifr->setscale(sf::Vector2f(0.5f, 0.5f));
-	Leifr->setRightWay(false);
+	Leifr->setFlip(false);
 
 	Finnr->setName("Finnr");
 	Finnr->setIdleAnimation(Textures::FinnrIdle, "assets/images/finnr/character_finnr_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(8));
@@ -54,7 +54,7 @@ void NpcHandler::load()
 	Finnr->setIndex(14);
 	Finnr->setProportions(sf::Vector2f(286, 427));
 	Finnr->setscale(sf::Vector2f(0.5f, 0.5f));
-	Finnr->setRightWay(false);
+	Finnr->setFlip(false);
 
 	Brynja->setName("Brynja");
 	Brynja->setIdleAnimation(Textures::BrynjaIdle, "assets/images/Brynja/character_brynja_blink.png", sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(5));
@@ -66,7 +66,7 @@ void NpcHandler::load()
 	Brynja->setPosition(sf::Vector2f(1080, 711));
 	Brynja->setInteractionPosition(sf::Vector2f(1050, 620));
 	Brynja->setscale(sf::Vector2f(0.75f, 0.75f));
-	Brynja->setRightWay(false);
+	Brynja->setFlip(false);
 
 	Alfr->setName("Alfr");
 	Alfr->setIdleAnimation(Textures::AlfrIdle, "assets/images/Alfr/character_alfr.png", sf::Vector2i(1, 1), sf::milliseconds(10000), sf::seconds(9999));
@@ -78,7 +78,7 @@ void NpcHandler::load()
 	Alfr->setIndex(15);
 	Alfr->setProportions(sf::Vector2f(204, 452));
 	Alfr->setscale(sf::Vector2f(0.5f, 0.5f));
-	Alfr->setRightWay(false);
+	Alfr->setFlip(false);
 
 	Dagny->setName("Dagny");
 	Dagny->setIdleAnimation(Textures::DagnyIdle, "assets/images/Dagny/character_dagny_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(4));
@@ -90,7 +90,7 @@ void NpcHandler::load()
 	Dagny->setIndex(15);
 	Dagny->setProportions(sf::Vector2f(126, 322));
 	Dagny->setscale(sf::Vector2f(0.7f, 0.7f));
-	Dagny->setRightWay(false);
+	Dagny->setFlip(false);
 
 	Brandr->setName("Brandr");
 	Brandr->setIdleAnimation(Textures::BrandrIdle, "assets/images/Brandr/character_brandr_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(3.7));
@@ -102,7 +102,7 @@ void NpcHandler::load()
 	Brandr->setIndex(15);
 	Brandr->setProportions(sf::Vector2f(181, 525));
 	Brandr->setscale(sf::Vector2f(0.45f, 0.45f));
-	Brandr->setRightWay(true);
+	Brandr->setFlip(true);
 
 	Yngvarr->setName("Yngvarr");
 	Yngvarr->setIdleAnimation(Textures::YngvarrIdle, "assets/images/Yngvarr/character_yngvarr_blink.png", sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5.2));
@@ -114,7 +114,7 @@ void NpcHandler::load()
 	Yngvarr->setIndex(15);
 	Yngvarr->setProportions(sf::Vector2f(148, 472));
 	Yngvarr->setscale(sf::Vector2f(0.55f, 0.55f));
-	Yngvarr->setRightWay(false);
+	Yngvarr->setFlip(false);
 
 	CreateNpc("Valdis", std::move(Valdis)));
 	CreateNpc("Leifr", std::move(Leifr)));

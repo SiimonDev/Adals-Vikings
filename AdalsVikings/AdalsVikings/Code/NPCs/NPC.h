@@ -30,7 +30,7 @@ public:
 	void setIdleAnimation(Textures::ID id, std::string IdlePath, sf::Vector2i &idleFrames, sf::Time duration, sf::Time idleDuration);
 	void SetTalkAnimation(Textures::ID id, std::string TalkPath, sf::Vector2i &talkFrames, sf::Time duration, sf::Time idleDuration);
 	void setPosition(sf::Vector2f position);
-	void setRightWay(bool value);
+	void setFlip(bool value);
 	void setscale(sf::Vector2f scale);
 	void setProportions(sf::Vector2f proportions);
 	void setIndex(int index);
@@ -40,7 +40,7 @@ public:
 	void setColor(sf::Color color);
 	void setDialogue(std::string dialogue);
 	void setInteractionPosition(sf::Vector2f &interactpos);
-	void UpdateAnimation();
+	void UpdateAnimationStyle();
 
 	bool isInside(sf::Vector2i &pos);
 	bool getActiveConversation();

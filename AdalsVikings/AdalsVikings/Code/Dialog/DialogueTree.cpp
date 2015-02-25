@@ -69,9 +69,12 @@ void DialogueTree::render(IndexRenderer &iRenderer)
 		if (mWait)
 		{
 			iRenderer.addText(mPrintText, 99999);
-			mDialogueRectangle.setSize(sf::Vector2f(mPrintText.getGlobalBounds().width + 4, mPrintText.getGlobalBounds().height + 10));
-			mDialogueRectangle.setPosition(mPrintText.getGlobalBounds().left - 2, mPrintText.getGlobalBounds().top - 5);
-			iRenderer.addRectangle(mDialogueRectangle, 9999);
+			if (mPrintText.getString() != "")
+			{
+				mDialogueRectangle.setSize(sf::Vector2f(mPrintText.getGlobalBounds().width + 4, mPrintText.getGlobalBounds().height + 10));
+				mDialogueRectangle.setPosition(mPrintText.getGlobalBounds().left - 2, mPrintText.getGlobalBounds().top - 5);
+				iRenderer.addRectangle(mDialogueRectangle, 9999);
+			}
 		}
 	}
 }
@@ -137,7 +140,7 @@ void DialogueTree::startDialogue()
 				std::string tmpStr = mNode.attribute("say").as_string();
 				std::string tmpStr2 = mNode.attribute("say").as_string();
 				mPrintText.setString(as_utf8(mNode.attribute("say").as_string()));
-				std::cout << "Text position Left: " << mPrintText.getPosition().x << std::endl;
+
 				if (tmpStr.size() >= 30)
 				{
 					int index = 0;
@@ -376,7 +379,7 @@ void DialogueTree::startConverstation()
 				std::string tmpStr = mNode.attribute("say").as_string();
 				std::string tmpStr2 = mNode.attribute("say").as_string();
 				mPrintText.setString(as_utf8(mNode.attribute("say").as_string()));
-				std::cout << "Text position Left: " << mPrintText.getGlobalBounds().left << std::endl;
+
 				if (tmpStr.size() >= 30)
 				{
 					int index = 0;

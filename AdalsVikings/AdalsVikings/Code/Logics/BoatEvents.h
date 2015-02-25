@@ -5,6 +5,7 @@ namespace BoatEvent
 	{
 		StartDialogue,
 		UlfrStartDialogue,
+		IntroScreen,
 		PickedUpBucket,
 		GivenBucketToLeifr,
 		FluteFromAlfr,
