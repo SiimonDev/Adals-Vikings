@@ -22,10 +22,10 @@ Ship_level_2::Ship_level_2(Player &player, ActionWheel &actionWheel)
 
 void Ship_level_2::update(sf::Time &frametime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::F))
-	{
-		mPlayer.addItemToInventory("map");
-	}
+	//if (KeyboardState::isPressed(sf::Keyboard::F))
+	//{
+	//	mPlayer.addItemToInventory("map");
+	//}
 	if (BoatEvents::hasBeenTriggered(BoatEvent::PickedUpBucket) && !BoatEvents::hasBeenHandled(BoatEvent::PickedUpBucket))
 	{
 		DialogHandler::getDialogue("Dagny").disableOption(2);

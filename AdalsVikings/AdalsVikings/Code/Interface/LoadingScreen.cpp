@@ -112,7 +112,6 @@ void LoadingScreen::runTask()
 			else if (mTask == LoadTask::LoadAct1)
 			{
 				LVLMI.unloadCurrentAct();
-				RMI.truncateSounds();
 				LVLMI.loadAct1();
 				mStart = false;
 				mFinished = true;

@@ -44,6 +44,8 @@ public:
 	Act &getCurrentAct();
 
 private:
+	void baseLoad();
+
 	LevelManager();
 	LevelManager(const LevelManager&);
 	void operator=(const LevelManager&);

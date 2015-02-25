@@ -122,7 +122,7 @@ ResourceManager::ResourceManager()
 /* ====== Load functions ======== */
 void ResourceManager::loadResource(Textures::ID id)
 {
-	////std::cout << "Loading Texture: " << mTexturePathMap[id] << std::endl;
+	//std::cout << "Loading Texture: " << mTexturePathMap[id] << std::endl;
 	if (mTextureCountMap[id] == 0)
 	{
 		TexturePtr texture(new sf::Texture());
@@ -134,7 +134,7 @@ void ResourceManager::loadResource(Textures::ID id)
 }
 void ResourceManager::loadResource(Images::ID id)
 {
-	////std::cout << "Loading Image: " << mImagePathMap[id] << std::endl;
+	//std::cout << "Loading Image: " << mImagePathMap[id] << std::endl;
 	if (mImageCountMap[id] == 0)
 	{
 		ImagePtr image(new sf::Image());
@@ -145,7 +145,7 @@ void ResourceManager::loadResource(Images::ID id)
 }
 void ResourceManager::loadResource(Fonts::ID id)
 {
-	////std::cout << "Loading Font: " << mFontPathMap[id] << std::endl;
+	//std::cout << "Loading Font: " << mFontPathMap[id] << std::endl;
 	if (mFontCountMap[id] == 0)
 	{
 		FontPtr font(new sf::Font());
@@ -156,7 +156,7 @@ void ResourceManager::loadResource(Fonts::ID id)
 }
 void ResourceManager::loadResource(Sound::ID id)
 {
-	////std::cout << "Loading Sound: " << mSoundPathMap[id] << std::endl;
+	//std::cout << "Loading Sound: " << mSoundPathMap[id] << std::endl;
 	if (mSoundCountMap[id] == 0)
 	{
 		SoundPtr sound(new sf::SoundBuffer());
@@ -205,7 +205,7 @@ void ResourceManager::loadResource(Footsteps::ID id)
 }
 void ResourceManager::loadTexture(const std::string &filename)
 {
-	////std::cout << "Loading Dynamic Texture: " << filename << std::endl;
+	//std::cout << "Loading Dynamic Texture: " << filename << std::endl;
 	if (mNonIDTextureCount[filename] == 0)
 	{
 		TexturePtr texture(new sf::Texture());
@@ -217,7 +217,7 @@ void ResourceManager::loadTexture(const std::string &filename)
 }
 void ResourceManager::loadImage(const std::string &filename)
 {
-	/////std::cout << "Loading Dynamic Image: " << filename << std::endl;
+	//std::cout << "Loading Dynamic Image: " << filename << std::endl;
 	if (mNonIDImagesCount[filename] == 0)
 	{
 		ImagePtr image(new sf::Image());
@@ -447,16 +447,16 @@ std::vector<std::string> ResourceManager::getAllBackgroundFilesFromFolder(const 
 		closedir(dir);
 
 		std::sort(filePaths.begin(), filePaths.end(), compareLX);
-		////std::cout << std::endl << "--- Loading Map Layers ---" << std::endl;
+		//std::cout << std::endl << "--- Loading Map Layers ---" << std::endl;
 		for each (std::string s in filePaths)
 		{
-			////std::cout << s << std::endl;
+			//std::cout << s << std::endl;
 		}
-	//	//std::cout << std::endl;
+	//std::cout << std::endl;
 	}
 	else
 	{
-	//	//std::cout << "Could not find dir" << std::endl;
+	//std::cout << "Could not find dir" << std::endl;
 	}
 	dir = 0;
 	dirnt = 0;
@@ -484,13 +484,13 @@ std::vector<std::string> ResourceManager::getAllFootstepsFromFolder(const std::s
 		////std::cout << std::endl << "--- Loading Footsteps ---" << std::endl;
 		for each (std::string s in filePaths)
 		{
-		//	//std::cout << s << std::endl;
+		//std::cout << s << std::endl;
 		}
-		////std::cout << std::endl;
+		//std::cout << std::endl;
 	}
 	else
 	{
-		////std::cout << "Could not find dir" << std::endl;
+		//std::cout << "Could not find dir" << std::endl;
 	}
 	dir = 0;
 	dirnt = 0;
@@ -517,10 +517,10 @@ std::string ResourceManager::getRCFileFromFolder(const std::string &directory)
 	}
 	else
 	{
-		////std::cout << "Could not find RC dir" << std::endl;
+		//std::cout << "Could not find RC dir" << std::endl;
 	}
 
-	////std::cout << "No RC file found" << std::endl;
+	//std::cout << "No RC file found" << std::endl;
 	return "";
 }
 std::string ResourceManager::getIndexFileFromFolder(const std::string &directory)
@@ -544,9 +544,9 @@ std::string ResourceManager::getIndexFileFromFolder(const std::string &directory
 	}
 	else
 	{
-		////std::cout << "Could not find Index dir" << std::endl;
+		//std::cout << "Could not find Index dir" << std::endl;
 	}
 
-	////std::cout << "No Index file found" << std::endl;
+	//std::cout << "No Index file found" << std::endl;
 	return "";
 }
