@@ -1,15 +1,10 @@
 #include "Road_Level.h"
-#include "..\Logics\ResourceManager.h"
-#include "..\Logics\AudioPlayer.h"
-#include "..\Interface\LoadingScreen.h"
-#include "..\Logics\KeyboardState.h"
-#include "..\Logics\WindowState.h"
 #include <iostream>
 
 Road_Level::Road_Level(Player &player, ActionWheel &actionWheel)
 	: Level(player, actionWheel)
 {
-	mBackgroundID = Backgrounds::RoadLevel;
+	mBackgroundID = LevelFolder::Road;
 }
 
 void Road_Level::update(sf::Time &frametime)
@@ -25,8 +20,10 @@ void Road_Level::render(IndexRenderer &iRenderer)
 
 void Road_Level::load()
 {
-	mPortals[RoadToBeach] = &PortalLoader::getPortal(RoadToBeach);
+	//mPortals[RoadToBeach] = &PortalLoader::getPortal(RoadToBeach);
 	Level::load();
+
+	mPlayer.setPosition(sf::Vector2f(410, 1070));
 }
 
 void Road_Level::unload()
@@ -36,10 +33,10 @@ void Road_Level::unload()
 
 void Road_Level::changeLevel()
 {
-	if (mPortals[RoadToBeach]->getActivated())
-	{
-		LVLMI.changeLevel(Beach);
-	}
+	//if (mPortals[RoadToBeach]->getActivated())
+	//{
+	//	LVLMI.changeLevel(Beach);
+	//}
 }
 void Road_Level::checkInteractEvents()
 {

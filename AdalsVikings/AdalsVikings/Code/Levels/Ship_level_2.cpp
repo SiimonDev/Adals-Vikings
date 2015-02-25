@@ -17,7 +17,7 @@ Ship_level_2::Ship_level_2(Player &player, ActionWheel &actionWheel)
 {
 	mFadeRectangle.setSize(sf::Vector2f(1920, 1080));
 	mFadeRectangle.setFillColor(sf::Color(0, 0, 0, mAlpha));
-	mBackgroundID = Backgrounds::ShipLevel2;
+	mBackgroundID = LevelFolder::Ship_2;
 }
 
 void Ship_level_2::update(sf::Time &frametime)
@@ -126,14 +126,14 @@ void Ship_level_2::changeLevel(sf::Time &frameTime)
 {
 	if (mPortals[Ship2ToShip1]->getActivated())
 	{
-		LVLMI.changeLevel(Ship_1);
+		LVLMI.changeLevel(LevelFolder::Ship_1);
 	}
 	else if (BoatEvents::hasBeenHandled(BoatEvent::GivenMapToBrandr) && BoatEvents::hasBeenTriggered(BoatEvent::GivenMapToBrandr))
 	{
 		LSI.startLoading(LoadTask::LoadAct1);
 	}
 	else if (BoatEvents::hasBeenHandled(BoatEvent::StartDialogue) && BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
-		LVLMI.changeLevel(Ship_1);
+		LVLMI.changeLevel(LevelFolder::Ship_1);
 }
 
 void Ship_level_2::runCutscene(sf::Time &frameTime)

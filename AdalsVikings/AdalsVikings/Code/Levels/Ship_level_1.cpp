@@ -13,7 +13,7 @@ Ship_level_1::Ship_level_1(Player &player, ActionWheel &actionWheel)
 	, mStartBrynja(false)
 	, mBrynjaConv(false)
 {
-	mBackgroundID = Backgrounds::ShipLevel1;
+	mBackgroundID = LevelFolder::Ship_1;
 }
 
 void Ship_level_1::update(sf::Time &frametime)
@@ -223,6 +223,6 @@ void Ship_level_1::changeLevel(sf::Time &frameTime)
 {
 	if (mPortals[Ship1ToShip2]->getActivated())
 	{
-		LVLMI.changeLevel(Ship_2);
+		LVLMI.changeLevel(LevelFolder::Ship_2);
 	}
 }

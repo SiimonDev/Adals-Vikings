@@ -10,7 +10,7 @@ Beach_level::Beach_level(Player &player, ActionWheel &actionWheel)
 	: Level(player, actionWheel)
 	, mIntroFade1(false)
 {
-	mBackgroundID = Backgrounds::BeachLevel;
+	mBackgroundID = LevelFolder::Beach;
 }
 
 void Beach_level::update(sf::Time &frametime)

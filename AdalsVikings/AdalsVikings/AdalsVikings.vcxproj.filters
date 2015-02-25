@@ -122,6 +122,12 @@
     <ClCompile Include="Code\Levels\Road_Level.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Levels\Church_Level.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Template_Level.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Dialog\Dialog.h">
@@ -254,6 +260,12 @@
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
     <ClInclude Include="Code\Levels\Road_Level.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Church_Level.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Template_Level.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,13 +10,6 @@
 
 #define LVLMI LevelManager::getInstance()
 
-enum LevelID
-{
-	Ship_1,
-	Ship_2,
-	Beach,
-	Road
-};
 enum Act
 {
 	Ship,
@@ -36,7 +29,7 @@ public:
 	void unloadCurrentAct();
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);
-	void changeLevel(LevelID id);
+	void changeLevel(LevelFolder::ID id);
 
 	void loadBoatScene();
 	void loadAct1();
@@ -52,10 +45,10 @@ private:
 
 	Player mPlayer;
 	ActionWheel mActionWheel;
-	LevelID mCurrentID;
+	LevelFolder::ID mCurrentID;
 	Act mCurrentAct;
 
-	std::map<LevelID, LevelPtr> mLevelMap;
+	std::map<LevelFolder::ID, LevelPtr> mLevelMap;
 	bool mLoadedPlayer;
 };
 

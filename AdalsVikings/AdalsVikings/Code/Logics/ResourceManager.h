@@ -105,14 +105,15 @@ namespace Sound
 		SIZE
 	};
 }
-namespace Backgrounds
+namespace LevelFolder
 {
 	enum ID
 	{
-		ShipLevel1,
-		ShipLevel2,
-		BeachLevel,
-		RoadLevel,
+		Ship_1,
+		Ship_2,
+		Beach,
+		Road,
+		Church,
 		SIZE
 	};
 };
@@ -136,7 +137,7 @@ public:
 	void loadResource(Images::ID id);
 	void loadResource(Fonts::ID id);
 	void loadResource(Sound::ID id);
-	void loadResource(Backgrounds::ID id);
+	void loadResource(LevelFolder::ID id);
 	void loadResource(Footsteps::ID id);
 	void loadTexture(const std::string &filename);
 	void loadImage(const std::string &filename);
@@ -145,7 +146,7 @@ public:
 	void unloadResource(Images::ID id);
 	void unloadResource(Fonts::ID id);
 	void unloadResource(Sound::ID id);
-	void unloadResource(Backgrounds::ID id);
+	void unloadResource(LevelFolder::ID id);
 	void unloadResource(Footsteps::ID id);
 	void unloadTexture(const std::string &filename);
 	void unloadImage(const std::string &filename);
@@ -161,7 +162,7 @@ public:
 	sf::Image &getResource(Images::ID id) const;
 	sf::Font &getResource(Fonts::ID id) const;
 	sf::SoundBuffer &getResource(Sound::ID id) const;
-	const BackgroundsPtr &getResource(Backgrounds::ID id) const;
+	const BackgroundsPtr &getResource(LevelFolder::ID id) const;
 	const FootstepsPtr &getResource(Footsteps::ID id) const;
 
 	sf::Texture &getNonIDTexture(const std::string &filename) const;
@@ -171,7 +172,7 @@ public:
 	std::string getFilePath(Images::ID id);
 	std::string getFilePath(Fonts::ID id);
 	std::string getFilePath(Sound::ID id);
-	std::string getFilePath(Backgrounds::ID id);
+	std::string getFilePath(LevelFolder::ID id);
 	std::string getFilePath(Footsteps::ID id);
 
 	std::vector<std::string> getAllBackgroundFilesFromFolder(const std::string &directory);
@@ -189,7 +190,7 @@ private:
 	std::map<Images::ID, ImagePtr> mImageMap;
 	std::map<Fonts::ID, FontPtr> mFontMap;
 	std::map<Sound::ID, SoundPtr> mSoundMap;
-	std::map<Backgrounds::ID, BackgroundsPtr> mBackgroundsMap;
+	std::map<LevelFolder::ID, BackgroundsPtr> mBackgroundsMap;
 	std::map<Footsteps::ID, FootstepsPtr> mFootstepsMap;
 
 	// Load Count Maps
@@ -197,7 +198,7 @@ private:
 	std::map<Images::ID, int> mImageCountMap;
 	std::map<Fonts::ID, int> mFontCountMap;
 	std::map<Sound::ID, int> mSoundCountMap;
-	std::map<Backgrounds::ID, int> mBackgroundsCountMap;
+	std::map<LevelFolder::ID, int> mBackgroundsCountMap;
 	std::map<Footsteps::ID, int> mFootstepsCountMap;
 
 	std::map<std::string, int> mNonIDTextureCount;
@@ -208,7 +209,7 @@ private:
 	std::map<Images::ID, std::string> mImagePathMap;
 	std::map<Fonts::ID, std::string> mFontPathMap;
 	std::map<Sound::ID, std::string> mSoundPathMap;
-	std::map<Backgrounds::ID, std::string> mBackgroundsPathMap;
+	std::map<LevelFolder::ID, std::string> mBackgroundsPathMap;
 	std::map<Footsteps::ID, std::string> mFootstepsPathMap;
 
 	// Dynamic texture loading

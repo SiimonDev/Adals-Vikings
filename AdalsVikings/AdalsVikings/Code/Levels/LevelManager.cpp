@@ -3,6 +3,7 @@
 #include "Level.h"
 #include "Ship_level_1.h"
 #include "Ship_level_2.h"
+#include "Church_Level.h"
 #include "Road_Level.h"
 #include "Beach_Level.h"
 #include "..\Dialog\DialogWindow.h"
@@ -55,7 +56,7 @@ void LevelManager::unloadCurrentAct()
 	AudioPlayer::unload();
 	PortalLoader::unload();
 
-	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
+	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
 		it->second->unload();
 	mLevelMap.clear();
 }
@@ -72,7 +73,7 @@ void LevelManager::render(IndexRenderer &iRenderer)
 	DialogWindow::render(iRenderer);
 }
 
-void LevelManager::changeLevel(LevelID id)
+void LevelManager::changeLevel(LevelFolder::ID id)
 {
 	mCurrentID = id;
 	/*//std::cout << std::endl;
@@ -90,37 +91,24 @@ void LevelManager::changeLevel(LevelID id)
 void LevelManager::loadBoatScene()
 {
 	mCurrentAct = Ship;
-	baseLoad();
 
 	// Assign all the levels
-	mLevelMap[Ship_1] = std::move(LevelPtr(new Ship_level_1(mPlayer, mActionWheel)));
-	mLevelMap[Ship_2] = std::move(LevelPtr(new Ship_level_2(mPlayer, mActionWheel)));
-
-	// Load all the levels
-	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it){
-		it->second->load();
-		it->second->resetLevel();
-	}
-	mCurrentID = Ship_2;
-	PathFinder::setTileMap(mLevelMap[mCurrentID]->getTileMap());
+	mLevelMap[LevelFolder::Ship_1] = std::move(LevelPtr(new Ship_level_1(mPlayer, mActionWheel)));
+	mLevelMap[LevelFolder::Ship_2] = std::move(LevelPtr(new Ship_level_2(mPlayer, mActionWheel)));
+	mCurrentID = LevelFolder::Ship_2;
+	baseLoad();
 }
 
 void LevelManager::loadAct1()
 {
 	mCurrentAct = Act1;
-	baseLoad();
 
 	// Assing all the levels
-	mLevelMap[Beach] = LevelPtr(new Beach_level(mPlayer, mActionWheel));
-	//mLevelMap[Road] = LevelPtr(new Road_Level(mPlayer, mActionWheel));
-
-	// Load all the levels
-	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it){
-		it->second->resetLevel();
-		it->second->load();
-	}
-	mCurrentID = Beach;
-	PathFinder::setTileMap(mLevelMap[mCurrentID]->getTileMap());
+	mLevelMap[LevelFolder::Beach] = LevelPtr(new Beach_level(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Road] = LevelPtr(new Road_Level(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Church] = LevelPtr(new Church_Level(mPlayer, mActionWheel));
+	mCurrentID = LevelFolder::Beach;
+	baseLoad();
 }
 
 Act &LevelManager::getCurrentAct()
@@ -131,10 +119,15 @@ Act &LevelManager::getCurrentAct()
 void LevelManager::baseLoad()
 {
 	// onödig komentar
-	if (mLevelMap.size() != 0)
-		unloadCurrentAct();
-
 	Act1Events::initialize();
 	PortalLoader::load();
 	mPlayer.refreshInventory();
+
+	// Load all the levels
+	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it){
+		it->second->load();
+		it->second->resetLevel();
+	}
+
+	PathFinder::setTileMap(mLevelMap[mCurrentID]->getTileMap());
 }
