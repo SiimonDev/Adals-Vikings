@@ -166,7 +166,7 @@ void Ship_level_1::load()
 	mCurrentFootsteps = Footsteps::Hardwood;
 
 	AudioPlayer::playSound(Sound::BoatAmbient, "boatAmbient", true);
-	AudioPlayer::playMusic("assets/sounds/music/Theme2.ogg", "boat1", true, 20);
+	AudioPlayer::playMusic("assets/sounds/music/Boat_music.ogg", "boat1", true, 20);
 
 	// Add Collision from every NPC to the map
 	mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());

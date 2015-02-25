@@ -57,6 +57,8 @@ namespace Textures
 		BrandrTalk,
 		ValdisIdle,
 		ValdisTalk,
+		LeifrSitIdle,
+		LeifrSitTalk,
 		LeifrIdle,
 		LeifrTalk,
 		FinnrIdle,

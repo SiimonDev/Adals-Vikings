@@ -98,7 +98,7 @@ ResourceManager::ResourceManager()
 	mSoundPathMap[Sound::InventoryClose] = "assets/sounds/Inventory(close).wav";
 	mSoundPathMap[Sound::PickUpItem] = "assets/sounds/Pick_up_item.wav";
 
-	mSoundPathMap[Sound::BoatAmbient] = "assets/sounds/Boat.wav";
+	mSoundPathMap[Sound::BoatAmbient] = "assets/sounds/Boat.ogg";
 	/* ============================================ */
 
 
