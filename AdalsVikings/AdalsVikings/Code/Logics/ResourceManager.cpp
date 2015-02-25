@@ -90,7 +90,7 @@ ResourceManager::ResourceManager()
 
 	/* =========== Set Font File paths =========== */
 	mFontPathMap[Fonts::ActionWheelDescription] = "assets/fonts/font1.ttf";
-	mFontPathMap[Fonts::DialogWindow] = "Assets/fonts/font2.ttf";
+	mFontPathMap[Fonts::DialogWindow] = "assets/fonts/font2.ttf";
 	mFontPathMap[Fonts::MenuButtons] = "assets/fonts/font1.ttf";
 	/* =========================================== */
 
