@@ -21,6 +21,7 @@ namespace Textures
 	enum ID
 	{ 
 		UlfrWalk,
+		UlfrWalkUp,
 		UlfrIdle,
 		UlfrFront,
 		UlfrBack,
@@ -55,8 +56,11 @@ namespace Textures
 
 		BrandrIdle,
 		BrandrTalk,
+		BrandrAngryTalk,
 		ValdisIdle,
 		ValdisTalk,
+		ValdisSittingIdle,
+		ValdisSittingTalk,
 		LeifrSitIdle,
 		LeifrSitTalk,
 		LeifrIdle,
@@ -72,6 +76,10 @@ namespace Textures
 		DagnyTalk,
 		YngvarrIdle,
 		YngvarrTalk,
+		YngvarrSadIdle,
+		YngvarrSadTalk,
+		SeagullIdle,
+		SeagullTalk,
 		SIZE
 	};
 }
@@ -79,6 +87,7 @@ namespace Images
 {
 	enum ID
 	{
+		Icon,
 		SIZE
 	};
 }

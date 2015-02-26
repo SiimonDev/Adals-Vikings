@@ -13,7 +13,7 @@
 			<text character="Ulfr" disablePrevious="false" timer="2.0" say="Just some water?" turned="true" />
 			<text character="Valdis" say="It might have been a bit more." timer="2.4" default="" turned="false" />
 			<text character="Valdis" say="Like a bucket full." timer="1.8" />
-			<text character="Ulfr" say="" timer="1.4" turned="true" />
+			<text />
 			<text character="Valdis" say="Still an accident, I swear." timer="2.0" turned="false" />
 			<text character="Ulfr" say="...sure." timer="1.5" turned="true" />
 			<text character="Valdis" say="" timer="1.4" turned="false" />

@@ -85,6 +85,8 @@ void Ship_level_2::load()
 
 	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
 	mNpcs["Brandr"]->setIndex(14);
+	RMI.loadResource(Textures::BrandrAngryTalk);
+	mNpcs["Brandr"]->SetTalkAnimation(Textures::BrandrAngryTalk, sf::Vector2i(4, 1), sf::milliseconds(550), sf::Time::Zero);
 
 	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
 	mNpcs["Yngvarr"]->setIndex(14);

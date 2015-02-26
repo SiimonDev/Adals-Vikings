@@ -98,8 +98,8 @@ void LevelManager::loadBoatScene()
 
 	// Load all the levels
 	for (std::map<LevelID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it){
-		it->second->load();
 		it->second->resetLevel();
+		it->second->load();
 	}
 	mCurrentID = Ship_2;
 	PathFinder::setTileMap(mLevelMap[mCurrentID]->getTileMap());

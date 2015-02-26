@@ -1,13 +1,15 @@
 #include "Logics\Game.h"
-////Define the minimum operating system for the application:
-//#define _WIN32_WINNT _WIN32_WINNT_WINXP //Windows XP
-////Get rid of the annoying min() and max() macros:
-//#define NOMINMAX
-////Include the windows header:
+//define the minimum operating system for the application:
+//#define _win32_winnt _win32_winnt_winxp //windows xp
+////get rid of the annoying min() and max() macros:
+//#define nominmax
+////include the windows header:
 //#include <windows.h>
 //
-////Now write the entry point.  It is the 21st century, so write Unicode programs.  This is the Unicode entry point.
-//int wWinMain(HINSTANCE hInst, HINSTANCE prevInst, LPWSTR szCmdLine, int nCmdShow)
+//
+////now write the entry point.  it is the 21st century, so write unicode programs.  this is the unicode entry point.
+//
+//int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmd, int show)
 //{
 //	Game game;
 //	game.run();

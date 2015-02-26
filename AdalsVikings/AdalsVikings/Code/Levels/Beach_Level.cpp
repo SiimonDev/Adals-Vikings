@@ -44,6 +44,7 @@ void Beach_level::load()
 
 		//FadeI.setAlpha(255);
 
+		mNpcs["Seagull"] = NpcPtr(new Npc(NpcHandler::getNpc("Seagull")));
 		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
 		mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
 		mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
@@ -80,6 +81,10 @@ void Beach_level::load()
 		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
 
 		/* ==== Yngvarr ===== */
+		RMI.loadResource(Textures::YngvarrSadIdle);
+		RMI.loadResource(Textures::YngvarrSadTalk);
+		mNpcs["Yngvarr"]->setIdleAnimation(Textures::YngvarrSadIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(7));
+		mNpcs["Yngvarr"]->SetTalkAnimation(Textures::YngvarrSadTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 		mNpcs["Yngvarr"]->setFlip(false);
 		mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Yngvarr"]->setPosition(sf::Vector2f(350, 760));
@@ -163,6 +168,8 @@ void Beach_level::unload()
 {
 	RMI.unloadResource(Sound::BeachAmbient);
 	RMI.unloadResource(Textures::WaveAnimation);
+	RMI.unloadResource(Textures::YngvarrSadIdle);
+	RMI.unloadResource(Textures::YngvarrSadTalk);
 	Level::unload();
 }
 

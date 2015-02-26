@@ -25,6 +25,8 @@ namespace AnimationStyle
 	{
 		Right,
 		Left,
+		UpRight,
+		UpLeft,
 		Up,
 		Down,
 		PlayerStop,

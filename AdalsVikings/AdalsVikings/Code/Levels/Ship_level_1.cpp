@@ -18,6 +18,8 @@ Ship_level_1::Ship_level_1(Player &player, ActionWheel &actionWheel)
 
 void Ship_level_1::update(sf::Time &frametime)
 {
+	if (KeyboardState::isPressed(sf::Keyboard::F))
+		mPlayer.addItemToInventory("flute");
 	if (BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
 	{
 		if (!mGameStart)
@@ -70,6 +72,7 @@ void Ship_level_1::update(sf::Time &frametime)
 				mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 				mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
 				mNpcs["Brynja"]->setProportions(sf::Vector2f(290, 452));
+				mNpcs["Brynja"]->setscale(sf::Vector2f(0.5f, 0.5f));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
 				mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
 				mNpcs["Brynja"]->UpdateAnimationStyle();
@@ -138,7 +141,14 @@ void Ship_level_1::load()
 	mPortals[Ship1ToShip2] = &PortalLoader::getPortal(Ship1ToShip2); // This does not create a new portal it only references the one in PortalLoader
 
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+	RMI.loadResource(Textures::ValdisSittingIdle);
+	RMI.loadResource(Textures::ValdisSittingTalk);
+	mNpcs["Valdis"]->setIdleAnimation(Textures::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
+	mNpcs["Valdis"]->SetTalkAnimation(Textures::ValdisSittingTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
+	mNpcs["Valdis"]->setProportions(sf::Vector2f(150, 134.5));
+	mNpcs["Valdis"]->setscale(sf::Vector2f(1.1, 1.1));
 	mNpcs["Valdis"]->setIndex(14);
+
 	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
 	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
 	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
@@ -156,10 +166,10 @@ void Ship_level_1::load()
 		mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaSleeping, sf::Vector2i(3, 4), sf::milliseconds(1200), sf::milliseconds(2000));
 		mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaSleeping, sf::Vector2i(3, 4), sf::milliseconds(1400), sf::milliseconds(2000));
 
-		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 720));
+		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 730));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(900, 710));
 		mNpcs["Brynja"]->setProportions(sf::Vector2f(504, 160));
-		mNpcs["Brynja"]->setscale(sf::Vector2f(0.5f, 0.5f));
+		mNpcs["Brynja"]->setscale(sf::Vector2f(0.6f, 0.6f));
 	}
 
 	Level::load();

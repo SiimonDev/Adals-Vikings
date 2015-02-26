@@ -19,6 +19,7 @@ void NpcHandler::load()
 	NpcPtr Dagny(new Npc());
 	NpcPtr Brandr(new Npc());
 	NpcPtr Yngvarr(new Npc());
+	NpcPtr Seagull(new Npc());
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Textures::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -65,7 +66,7 @@ void NpcHandler::load()
 	Brynja->setProportions(sf::Vector2f(290, 452));
 	Brynja->setPosition(sf::Vector2f(1080, 711));
 	Brynja->setInteractionPosition(sf::Vector2f(1050, 620));
-	Brynja->setscale(sf::Vector2f(0.75f, 0.75f));
+	Brynja->setscale(sf::Vector2f(1.f, 1.f));
 	Brynja->setFlip(false);
 
 	Alfr->setName("Alfr");
@@ -77,7 +78,7 @@ void NpcHandler::load()
 	Alfr->setDialogue("Alfr");
 	Alfr->setIndex(15);
 	Alfr->setProportions(sf::Vector2f(204, 452));
-	Alfr->setscale(sf::Vector2f(0.5f, 0.5f));
+	Alfr->setscale(sf::Vector2f(0.55f, 0.55f));
 	Alfr->setFlip(false);
 
 	Dagny->setName("Dagny");
@@ -89,7 +90,7 @@ void NpcHandler::load()
 	Dagny->setDialogue("Dagny");
 	Dagny->setIndex(15);
 	Dagny->setProportions(sf::Vector2f(126, 322));
-	Dagny->setscale(sf::Vector2f(0.7f, 0.7f));
+	Dagny->setscale(sf::Vector2f(0.59f, 0.59f));
 	Dagny->setFlip(false);
 
 	Brandr->setName("Brandr");
@@ -116,6 +117,18 @@ void NpcHandler::load()
 	Yngvarr->setscale(sf::Vector2f(0.55f, 0.55f));
 	Yngvarr->setFlip(false);
 
+	Seagull->setName("Bosse");
+	Seagull->setIdleAnimation(Textures::SeagullIdle, sf::Vector2i(4, 2), sf::milliseconds(800), sf::seconds(7));
+	Seagull->SetTalkAnimation(Textures::SeagullTalk, sf::Vector2i(2, 1), sf::milliseconds(650), sf::Time::Zero);
+	Seagull->setPosition(sf::Vector2f(1800, 460));
+	Seagull->setInteractionPosition(sf::Vector2f(1650, 500));
+	Seagull->setColor(sf::Color(176, 196, 222));
+	Seagull->setDialogue("Bosse");
+	Seagull->setIndex(15);
+	Seagull->setProportions(sf::Vector2f(124, 164));
+	Seagull->setscale(sf::Vector2f(0.55f, 0.55f));
+	Seagull->setFlip(false);
+
 	CreateNpc("Valdis", std::move(Valdis)));
 	CreateNpc("Leifr", std::move(Leifr)));
 	CreateNpc("Finnr", std::move(Finnr)));
@@ -124,6 +137,7 @@ void NpcHandler::load()
 	CreateNpc("Dagny", std::move(Dagny)));
 	CreateNpc("Brandr", std::move(Brandr)));
 	CreateNpc("Yngvarr", std::move(Yngvarr)));
+	CreateNpc("Seagull", std::move(Seagull)));
 }
 
 void NpcHandler::unload()
