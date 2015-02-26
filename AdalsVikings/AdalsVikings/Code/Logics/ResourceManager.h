@@ -117,6 +117,8 @@ namespace LevelFolder
 		Forest_Camp,
 		Church_Outside,
 		Church_Inside,
+		Tavern_Outside,
+		Tavern_Inside,
 		Camp,
 		SIZE
 	};
@@ -134,7 +136,7 @@ namespace Footsteps
 class ResourceManager
 {
 public:
-	//uses Singleton to make the class global.
+	// Uses Singleton to make the class global.
 	static ResourceManager &getInstance();
 
 	void loadResource(Textures::ID id);

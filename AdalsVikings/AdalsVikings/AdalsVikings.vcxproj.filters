@@ -140,6 +140,12 @@
     <ClCompile Include="Code\Levels\Level_Forest_Camp.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Tavern_Outside.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Tavern_Inside.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Dialog\Dialog.h">
@@ -290,6 +296,12 @@
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
     <ClInclude Include="Code\Levels\Level_Forest_Camp.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Tavern_Outside.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Tavern_Inside.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
   </ItemGroup>

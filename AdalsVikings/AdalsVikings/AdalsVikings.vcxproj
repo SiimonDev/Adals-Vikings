@@ -32,6 +32,8 @@
     <ClCompile Include="Code\Levels\Level_Church_Inside.cpp" />
     <ClCompile Include="Code\Levels\Level_Forest_Camp.cpp" />
     <ClCompile Include="Code\Levels\Level_Forest_Road.cpp" />
+    <ClCompile Include="Code\Levels\Level_Tavern_Inside.cpp" />
+    <ClCompile Include="Code\Levels\Level_Tavern_Outside.cpp" />
     <ClCompile Include="Code\Levels\Portal.cpp" />
     <ClCompile Include="Code\Levels\PortalLoader.cpp" />
     <ClCompile Include="Code\Levels\Level_Road.cpp" />
@@ -84,6 +86,8 @@
     <ClInclude Include="Code\Levels\Level_Church_Inside.h" />
     <ClInclude Include="Code\Levels\Level_Forest_Camp.h" />
     <ClInclude Include="Code\Levels\Level_Forest_Road.h" />
+    <ClInclude Include="Code\Levels\Level_Tavern_Inside.h" />
+    <ClInclude Include="Code\Levels\Level_Tavern_Outside.h" />
     <ClInclude Include="Code\Levels\Portal.h" />
     <ClInclude Include="Code\Levels\PortalLoader.h" />
     <ClInclude Include="Code\Levels\Level_Road.h" />

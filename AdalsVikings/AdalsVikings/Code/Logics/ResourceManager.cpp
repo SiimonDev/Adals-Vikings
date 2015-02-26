@@ -113,6 +113,8 @@ ResourceManager::ResourceManager()
 	mBackgroundsPathMap[LevelFolder::Forest_Camp] = "assets/MapFiles/Forest_Camp/";
 	mBackgroundsPathMap[LevelFolder::Church_Outside] = "assets/MapFiles/Church_Outside/";
 	mBackgroundsPathMap[LevelFolder::Church_Inside] = "assets/MapFiles/Church_Inside/";
+	mBackgroundsPathMap[LevelFolder::Tavern_Outside] = "assets/MapFiles/Tavern_Outside/";
+	mBackgroundsPathMap[LevelFolder::Tavern_Inside] = "assets/MapFiles/Tavern_Inside/";
 	mBackgroundsPathMap[LevelFolder::Camp] = "assets/MapFiles/Camp/";
 	/* =================================================== */
 

@@ -5,6 +5,8 @@
 #include "Level_Ship_2.h"
 #include "Level_Church_Outside.h"
 #include "Level_Church_Inside.h"
+#include "Level_Tavern_Outside.h"
+#include "Level_Tavern_Inside.h"
 #include "Level_Forest_Road.h"
 #include "Level_Forest_Camp.h"
 #include "Level_Road.h"
@@ -79,10 +81,10 @@ void LevelManager::render(IndexRenderer &iRenderer)
 void LevelManager::changeLevel(LevelFolder::ID id)
 {
 	mCurrentID = id;
-	/*//std::cout << std::endl;
+	//std::cout << std::endl;
 	//std::cout << "==========================" << std::endl;
 	//std::cout << "===== Changing Level =====" << std::endl;
-	//std::cout << "==========================" << std::endl;*/
+	//std::cout << "==========================" << std::endl;
 
 	mLevelMap[mCurrentID]->saveObjects();
 	mPlayer.saveInventory();
@@ -106,15 +108,18 @@ void LevelManager::loadAct1()
 {
 	mCurrentAct = Act1;
 
-	// Assing all the levels
-	mLevelMap[LevelFolder::Beach] = LevelPtr(new Level_Beach(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Road] = LevelPtr(new Level_Road(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Forest_Road] = LevelPtr(new Level_Forest_Road(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Forest_Camp] = LevelPtr(new Level_Forest_Camp(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Church_Outside] = LevelPtr(new Level_Church_Outside(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Church_Inside] = LevelPtr(new Level_Church_Inside(mPlayer, mActionWheel));
+	// Assing ;) all the levels
+	//mLevelMap[LevelFolder::Beach] = LevelPtr(new Level_Beach(mPlayer, mActionWheel));
+	//mLevelMap[LevelFolder::Road] = LevelPtr(new Level_Road(mPlayer, mActionWheel));
+	//mLevelMap[LevelFolder::Forest_Road] = LevelPtr(new Level_Forest_Road(mPlayer, mActionWheel));
+	//mLevelMap[LevelFolder::Forest_Camp] = LevelPtr(new Level_Forest_Camp(mPlayer, mActionWheel));
+	//mLevelMap[LevelFolder::Church_Outside] = LevelPtr(new Level_Church_Outside(mPlayer, mActionWheel));
+	//mLevelMap[LevelFolder::Church_Inside] = LevelPtr(new Level_Church_Inside(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Tavern_Outside] = LevelPtr(new Level_Tavern_Outside(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Tavern_Inside] = LevelPtr(new Level_Tavern_Inside(mPlayer, mActionWheel));
 	mLevelMap[LevelFolder::Camp] = LevelPtr(new Level_Camp(mPlayer, mActionWheel));
-	mCurrentID = LevelFolder::Beach;
+
+	mCurrentID = LevelFolder::Tavern_Inside;
 	baseLoad();
 }
 
