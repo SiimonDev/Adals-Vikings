@@ -1,11 +1,15 @@
 #include "LevelManager.h"
 #include "PortalLoader.h"
 #include "Level.h"
-#include "Ship_level_1.h"
-#include "Ship_level_2.h"
-#include "Church_Level.h"
-#include "Road_Level.h"
-#include "Beach_Level.h"
+#include "Level_Ship_1.h"
+#include "Level_Ship_2.h"
+#include "Level_Church_Outside.h"
+#include "Level_Church_Inside.h"
+#include "Level_Forest_Road.h"
+#include "Level_Forest_Camp.h"
+#include "Level_Road.h"
+#include "Level_Beach.h"
+#include "Level_Camp.h"
 #include "..\Dialog\DialogWindow.h"
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
@@ -32,7 +36,6 @@ void LevelManager::load()
 	DialogWindow::setTextSize(30);
 	DialogWindow::setTextStyle(sf::Text::Bold);
 	
-
 	mPlayer.load();
 	mPlayer.clearInventory();
 	mActionWheel.load();
@@ -93,8 +96,8 @@ void LevelManager::loadBoatScene()
 	mCurrentAct = Ship;
 
 	// Assign all the levels
-	mLevelMap[LevelFolder::Ship_1] = std::move(LevelPtr(new Ship_level_1(mPlayer, mActionWheel)));
-	mLevelMap[LevelFolder::Ship_2] = std::move(LevelPtr(new Ship_level_2(mPlayer, mActionWheel)));
+	mLevelMap[LevelFolder::Ship_1] = std::move(LevelPtr(new Level_Ship_1(mPlayer, mActionWheel)));
+	mLevelMap[LevelFolder::Ship_2] = std::move(LevelPtr(new Level_Ship_2(mPlayer, mActionWheel)));
 	mCurrentID = LevelFolder::Ship_2;
 	baseLoad();
 }
@@ -104,10 +107,14 @@ void LevelManager::loadAct1()
 	mCurrentAct = Act1;
 
 	// Assing all the levels
-	mLevelMap[LevelFolder::Beach] = LevelPtr(new Beach_level(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Road] = LevelPtr(new Road_Level(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Church] = LevelPtr(new Church_Level(mPlayer, mActionWheel));
-	mCurrentID = LevelFolder::Church;
+	mLevelMap[LevelFolder::Beach] = LevelPtr(new Level_Beach(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Road] = LevelPtr(new Level_Road(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Forest_Road] = LevelPtr(new Level_Forest_Road(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Forest_Camp] = LevelPtr(new Level_Forest_Camp(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Church_Outside] = LevelPtr(new Level_Church_Outside(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Church_Inside] = LevelPtr(new Level_Church_Inside(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Camp] = LevelPtr(new Level_Camp(mPlayer, mActionWheel));
+	mCurrentID = LevelFolder::Beach;
 	baseLoad();
 }
 

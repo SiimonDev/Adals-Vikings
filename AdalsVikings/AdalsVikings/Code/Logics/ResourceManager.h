@@ -113,7 +113,11 @@ namespace LevelFolder
 		Ship_2,
 		Beach,
 		Road,
-		Church,
+		Forest_Road,
+		Forest_Camp,
+		Church_Outside,
+		Church_Inside,
+		Camp,
 		SIZE
 	};
 };

@@ -98,15 +98,6 @@ void LoadingScreen::runTask()
 			{
 				LVLMI.unload();
 				MHI.unload(MenuID::PauseMenu);
-
-				/* ==== Quick fix for bad unloads ===== */
-				//RMI.truncateTextures();
-				//RMI.truncateImages();
-				//RMI.truncateSounds();
-				//RMI.truncateTextureFolders();
-				//RMI.truncateFonts();
-				/* ==================================== */
-
 				MHI.load(MenuID::MainMenu);
 			}
 			else if (mTask == LoadTask::LoadAct1)
