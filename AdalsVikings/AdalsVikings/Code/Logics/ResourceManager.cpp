@@ -36,8 +36,6 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Textures::UlfrWalk] = "assets/images/ulfr/character_ulfr_walk.png";
 	mTexturePathMap[Textures::UlfrWalkUp] = "assets/images/ulfr/character_ulfr_walk_Up.png";
 	mTexturePathMap[Textures::UlfrIdle] = "assets/images/ulfr/character_ulfr_idle.png";
-	mTexturePathMap[Textures::UlfrFront] = "assets/images/ulfr/character_ulfr_front.png";
-	mTexturePathMap[Textures::UlfrBack] = "assets/images/ulfr/character_ulfr_back.png";
 	mTexturePathMap[Textures::UlfrStop] = "assets/images/ulfr/character_ulfr_stop.png";
 	mTexturePathMap[Textures::UlfrTalkToNpc] = "assets/images/ulfr/character_ulfr_talk.png";
 	mTexturePathMap[Textures::UlfrTalkToPlayer] = "assets/images/ulfr/character_ulfr_front.png";
@@ -126,7 +124,10 @@ ResourceManager::ResourceManager()
 	mBackgroundsPathMap[LevelFolder::Forest_Camp] = "assets/MapFiles/Forest_Camp/";
 	mBackgroundsPathMap[LevelFolder::Church_Outside] = "assets/MapFiles/Church_Outside/";
 	mBackgroundsPathMap[LevelFolder::Church_Inside] = "assets/MapFiles/Church_Inside/";
-	mBackgroundsPathMap[LevelFolder::Camp] = "assets/MapFiles/Camp/";
+	mBackgroundsPathMap[LevelFolder::Tavern_Outside] = "assets/MapFiles/Tavern_Outside/";
+	mBackgroundsPathMap[LevelFolder::Tavern_Inside] = "assets/MapFiles/Tavern_Inside/";
+	mBackgroundsPathMap[LevelFolder::Camp_Clearing] = "assets/MapFiles/Camp_Clearing/";
+	mBackgroundsPathMap[LevelFolder::Camp_Finished] = "assets/MapFiles/Camp_Finished/";
 	/* =================================================== */
 
 

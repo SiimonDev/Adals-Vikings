@@ -23,8 +23,6 @@ namespace Textures
 		UlfrWalk,
 		UlfrWalkUp,
 		UlfrIdle,
-		UlfrFront,
-		UlfrBack,
 		UlfrStop,
 		UlfrTalkToNpc,
 		UlfrTalkToPlayer,
@@ -127,7 +125,10 @@ namespace LevelFolder
 		Forest_Camp,
 		Church_Outside,
 		Church_Inside,
-		Camp,
+		Tavern_Outside,
+		Tavern_Inside,
+		Camp_Clearing,
+		Camp_Finished,
 		SIZE
 	};
 };
@@ -144,7 +145,7 @@ namespace Footsteps
 class ResourceManager
 {
 public:
-	//uses Singleton to make the class global.
+	// Uses Singleton to make the class global.
 	static ResourceManager &getInstance();
 
 	void loadResource(Textures::ID id);

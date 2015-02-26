@@ -125,9 +125,6 @@
     <ClCompile Include="Code\Levels\Level_Template.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Levels\Level_Camp.cpp">
-      <Filter>Source Files\Levels</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Levels\Level_Church_Outside.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
@@ -138,6 +135,18 @@
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
     <ClCompile Include="Code\Levels\Level_Forest_Camp.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Tavern_Outside.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Tavern_Inside.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Camp_Clearing.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Camp_Finished.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
   </ItemGroup>
@@ -274,9 +283,6 @@
     <ClInclude Include="Code\Levels\Level_Template.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Levels\Level_Camp.h">
-      <Filter>Header Files\Levels</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Levels\Level_Church_Outside.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
@@ -289,8 +295,20 @@
     <ClInclude Include="Code\Levels\Level_Forest_Camp.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Tavern_Outside.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Tavern_Inside.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Camp_Finished.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Camp_Clearing.h">
+      <Filter>Header Files\Levels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
