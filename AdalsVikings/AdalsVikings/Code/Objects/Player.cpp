@@ -25,8 +25,6 @@ void Player::load()
 	mInventory.load();
 
 	RMI.loadResource(Textures::UlfrIdle);
-	RMI.loadResource(Textures::UlfrBack);
-	RMI.loadResource(Textures::UlfrFront);
 	RMI.loadResource(Textures::UlfrWalk);
 	RMI.loadResource(Textures::UlfrTalkToNpc);
 	RMI.loadResource(Textures::UlfrTalkToPlayer);
@@ -45,8 +43,6 @@ void Player::load()
 void Player::unload()
 {
 	mInventory.unload();
-	RMI.unloadResource(Textures::UlfrBack);
-	RMI.unloadResource(Textures::UlfrFront);
 	RMI.unloadResource(Textures::UlfrWalk);
 	RMI.unloadResource(Textures::UlfrIdle);
 	RMI.unloadResource(Textures::UlfrTalkToNpc);
@@ -320,7 +316,7 @@ void Player::setAnimationStyle(AnimationType::ID type)
 	{
 		setFlip(false);
 		mPlayerAnimation.flip(mFlip);
-		mPlayerAnimation.load(RMI.getResource(Textures::UlfrFront), Frames(4, 1), sf::milliseconds(600), sf::seconds(0), true);
+		mPlayerAnimation.load(RMI.getResource(Textures::UlfrTalkToPlayer), Frames(4, 1), sf::milliseconds(600), sf::seconds(0), true);
 		mAnimationStyle = AnimationStyle::PlayerMonolog;
 	}
 	else if (type == AnimationType::Pickup && mAnimationStyle != AnimationStyle::PlayerPickup)

@@ -23,8 +23,6 @@ namespace Textures
 		UlfrWalk,
 		UlfrWalkUp,
 		UlfrIdle,
-		UlfrFront,
-		UlfrBack,
 		UlfrStop,
 		UlfrTalkToNpc,
 		UlfrTalkToPlayer,
@@ -129,7 +127,8 @@ namespace LevelFolder
 		Church_Inside,
 		Tavern_Outside,
 		Tavern_Inside,
-		Camp,
+		Camp_Clearing,
+		Camp_Finished,
 		SIZE
 	};
 };
