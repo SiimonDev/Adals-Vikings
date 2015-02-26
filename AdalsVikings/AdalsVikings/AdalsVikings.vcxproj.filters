@@ -77,19 +77,10 @@
     <ClCompile Include="Code\Dialog\DialogHandler.cpp">
       <Filter>Source Files\Dialog</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Levels\Ship_level_2.cpp">
-      <Filter>Source Files\Levels</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Logics\Fade.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Levels\Beach_Level.cpp">
-      <Filter>Source Files\Levels</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Levels\LevelManager.cpp">
-      <Filter>Source Files\Levels</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Levels\Ship_level_1.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
     <ClCompile Include="Code\Interface\Menus\MenuHandler.cpp">
@@ -119,7 +110,34 @@
     <ClCompile Include="Code\Logics\Act1Events.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Levels\Road_Level.cpp">
+    <ClCompile Include="Code\Levels\Level_Beach.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Road.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Ship_1.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Ship_2.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Template.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Camp.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Church_Outside.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Church_Inside.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Forest_Road.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Forest_Camp.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
   </ItemGroup>
@@ -211,19 +229,10 @@
     <ClInclude Include="Code\Dialog\DialogHandler.h">
       <Filter>Header Files\Dialog</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Levels\Ship_level_2.h">
-      <Filter>Header Files\Levels</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Logics\Fade.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Levels\Beach_Level.h">
-      <Filter>Header Files\Levels</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Levels\LevelManager.h">
-      <Filter>Header Files\Levels</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Levels\Ship_level_1.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
     <ClInclude Include="Code\Interface\Menus\MenuHandler.h">
@@ -250,7 +259,34 @@
     <ClInclude Include="Code\Logics\Act1Events.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Levels\Road_Level.h">
+    <ClInclude Include="Code\Levels\Level_Ship_2.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Ship_1.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Road.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Beach.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Template.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Camp.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Church_Outside.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Church_Inside.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Forest_Road.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Forest_Camp.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">

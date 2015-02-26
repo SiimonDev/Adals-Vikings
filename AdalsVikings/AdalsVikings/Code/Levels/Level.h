@@ -61,7 +61,7 @@ protected:
 	std::string mTileMapFilePath;
 	std::string mIndexMapFilePath;
 
-	Backgrounds::ID mBackgroundID;
+	LevelFolder::ID mBackgroundID;
 	Footsteps::ID mCurrentFootsteps;
 
 	int mObjIndex;

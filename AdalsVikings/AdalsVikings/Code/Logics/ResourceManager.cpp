@@ -25,8 +25,8 @@ ResourceManager::ResourceManager()
 		mFontCountMap[static_cast<Fonts::ID>(i)] = 0;
 	for (int i = 0; i < Sound::SIZE; i++)
 		mSoundCountMap[static_cast<Sound::ID>(i)] = 0;
-	for (int i = 0; i < Backgrounds::SIZE; i++)
-		mBackgroundsCountMap[static_cast<Backgrounds::ID>(i)] = 0;
+	for (int i = 0; i < LevelFolder::SIZE; i++)
+		mBackgroundsCountMap[static_cast<LevelFolder::ID>(i)] = 0;
 	for (int i = 0; i < Footsteps::SIZE; i++)
 		mFootstepsCountMap[static_cast<Footsteps::ID>(i)] = 0;
 	/* ======================================================== */
@@ -102,7 +102,7 @@ ResourceManager::ResourceManager()
 
 	/* =========== Set Font File paths =========== */
 	mFontPathMap[Fonts::ActionWheelDescription] = "assets/fonts/font1.ttf";
-	mFontPathMap[Fonts::DialogWindow] = "Assets/fonts/font2.ttf";
+	mFontPathMap[Fonts::DialogWindow] = "assets/fonts/font2.ttf";
 	mFontPathMap[Fonts::MenuButtons] = "assets/fonts/font1.ttf";
 	/* =========================================== */
 
@@ -117,10 +117,15 @@ ResourceManager::ResourceManager()
 
 
 	/* =========== Set Background Folder paths =========== */
-	mBackgroundsPathMap[Backgrounds::ShipLevel1] = "Assets/MapFiles/Ship1/";
-	mBackgroundsPathMap[Backgrounds::ShipLevel2] = "Assets/MapFiles/Ship2/";
-	mBackgroundsPathMap[Backgrounds::BeachLevel] = "Assets/MapFiles/Beach/";
-	mBackgroundsPathMap[Backgrounds::RoadLevel] = "Assets/MapFiles/Road/";
+	mBackgroundsPathMap[LevelFolder::Ship_1] = "assets/MapFiles/Ship1/";
+	mBackgroundsPathMap[LevelFolder::Ship_2] = "assets/MapFiles/Ship2/";
+	mBackgroundsPathMap[LevelFolder::Beach] = "assets/MapFiles/Beach/";
+	mBackgroundsPathMap[LevelFolder::Road] = "assets/MapFiles/Road/";
+	mBackgroundsPathMap[LevelFolder::Forest_Road] = "assets/MapFiles/Forest_Road/";
+	mBackgroundsPathMap[LevelFolder::Forest_Camp] = "assets/MapFiles/Forest_Camp/";
+	mBackgroundsPathMap[LevelFolder::Church_Outside] = "assets/MapFiles/Church_Outside/";
+	mBackgroundsPathMap[LevelFolder::Church_Inside] = "assets/MapFiles/Church_Inside/";
+	mBackgroundsPathMap[LevelFolder::Camp] = "assets/MapFiles/Camp/";
 	/* =================================================== */
 
 
@@ -130,6 +135,7 @@ ResourceManager::ResourceManager()
 	mFootstepsPathMap[Footsteps::Grass] = "assets/sounds/footsteps/Grass/";
 	/* ================================================= */
 }
+
 
 /* ====== Load functions ======== */
 void ResourceManager::loadResource(Textures::ID id)
@@ -177,7 +183,7 @@ void ResourceManager::loadResource(Sound::ID id)
 	}
 	mSoundCountMap[id]++;
 }
-void ResourceManager::loadResource(Backgrounds::ID id)
+void ResourceManager::loadResource(LevelFolder::ID id)
 {
 	if (mBackgroundsCountMap[id] == 0)
 	{
@@ -273,7 +279,7 @@ void ResourceManager::unloadResource(Sound::ID id)
 	if (mSoundCountMap[id] > 0)
 		mSoundCountMap[id]--;
 }
-void ResourceManager::unloadResource(Backgrounds::ID id)
+void ResourceManager::unloadResource(LevelFolder::ID id)
 {
 	if (mBackgroundsCountMap[id] == 1)
 	{
@@ -342,10 +348,10 @@ void ResourceManager::truncateSounds()
 }
 void ResourceManager::truncateBackgrounds()
 {
-	for (int i = 0; i < Backgrounds::SIZE; i++)
-		mBackgroundsCountMap[static_cast<Backgrounds::ID>(i)] = 0;
+	for (int i = 0; i < LevelFolder::SIZE; i++)
+		mBackgroundsCountMap[static_cast<LevelFolder::ID>(i)] = 0;
 
-	for (std::map<Backgrounds::ID, BackgroundsPtr>::iterator it = mBackgroundsMap.begin(); it != mBackgroundsMap.end(); ++it)
+	for (std::map<LevelFolder::ID, BackgroundsPtr>::iterator it = mBackgroundsMap.begin(); it != mBackgroundsMap.end(); ++it)
 		it->second.clear();
 
 	mBackgroundsMap.clear();
@@ -363,7 +369,7 @@ void ResourceManager::truncateFootsteps()
 
 
 /* ====== Get functions ======== */
-const BackgroundsPtr &ResourceManager::getResource(Backgrounds::ID id) const
+const BackgroundsPtr &ResourceManager::getResource(LevelFolder::ID id) const
 {
 	auto found = mBackgroundsMap.find(id);
 	return found->second;
@@ -422,7 +428,7 @@ std::string ResourceManager::getFilePath(Sound::ID id)
 {
 	return mSoundPathMap[id];
 }
-std::string ResourceManager::getFilePath(Backgrounds::ID id)
+std::string ResourceManager::getFilePath(LevelFolder::ID id)
 {
 	return mBackgroundsPathMap[id];
 }
