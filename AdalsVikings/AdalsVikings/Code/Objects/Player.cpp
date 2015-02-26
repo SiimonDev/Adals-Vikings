@@ -16,7 +16,7 @@ Player::Player()
 	, mName("Ulfr")
 	, mIntention(Intention::None)
 {
-	mSpeed = 3.f;
+	mSpeed = 4.f;
 	mProportions = sf::Vector2f(285.7f, 512.f);
 }
 
@@ -32,7 +32,7 @@ void Player::load()
 	RMI.loadResource(Textures::UlfrTalkToPlayer);
 	RMI.loadResource(Textures::UlfrStop);
 	RMI.loadResource(Textures::UlfrPickup);
-
+	RMI.loadResource(Textures::UlfrWalkUp);
 	mPlayerAnimation.flip(false);
 	mPlayerAnimation.load(RMI.getResource(Textures::UlfrIdle), Frames(6, 3), sf::milliseconds(1300), sf::seconds(7), true);
 	mPlayerAnimation.setIndex(3);
@@ -53,6 +53,7 @@ void Player::unload()
 	RMI.unloadResource(Textures::UlfrTalkToPlayer);
 	RMI.unloadResource(Textures::UlfrStop);
 	RMI.unloadResource(Textures::UlfrPickup);
+	RMI.unloadResource(Textures::UlfrWalkUp);
 }
 
 bool Player::addItemToInventory(std::string objID)
@@ -256,20 +257,35 @@ void Player::setIntention(Intention::ID intention)
 
 void Player::setAnimationStyle(AnimationType::ID type)
 {
-	if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x > 0.4 && mAnimationStyle != AnimationStyle::Right)
+	if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x > 0.4/* && mVelocity.y >= 0*/ && mAnimationStyle != AnimationStyle::Right)
 	{
 		setFlip(true);
 		mPlayerAnimation.flip(mFlip);
 		mPlayerAnimation.load(RMI.getResource(Textures::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
 		mAnimationStyle = AnimationStyle::Right;
 	}
-	else if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x < -0.4 && mAnimationStyle != AnimationStyle::Left)
+	else if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x < -0.4 /*&& mVelocity.y >= 0*/ && mAnimationStyle != AnimationStyle::Left)
 	{
 		setFlip(false);
 		mPlayerAnimation.flip(mFlip);
 		mPlayerAnimation.load(RMI.getResource(Textures::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
 		mAnimationStyle = AnimationStyle::Left;
 	}
+	/*else if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x < -0.4 && mVelocity.y < 0 && mAnimationStyle != AnimationStyle::UpLeft)
+	{
+		setFlip(false);
+		mPlayerAnimation.flip(mFlip);
+		mPlayerAnimation.load(RMI.getResource(Textures::UlfrWalkUp), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		mAnimationStyle = AnimationStyle::UpLeft;
+	}
+	else if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x > 0.4 && mVelocity.y < 0 && mAnimationStyle != AnimationStyle::UpRight)
+	{
+		setFlip(true);
+		mPlayerAnimation.flip(mFlip);
+		mPlayerAnimation.load(RMI.getResource(Textures::UlfrWalkUp), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		mAnimationStyle = AnimationStyle::UpRight;
+
+	}*/
 	else if (type == AnimationType::Movement && mDestinationReached && mAnimationStyle != AnimationStyle::PlayerStop && mAnimationStyle != AnimationStyle::PlayerIdle && mAnimationStyle != AnimationStyle::PlayerPickup)
 	{
 		mPlayerAnimation.flip(mFlip);
@@ -285,7 +301,7 @@ void Player::setAnimationStyle(AnimationType::ID type)
 	else if (type == AnimationType::Movement && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y < 0 && mAnimationStyle != AnimationStyle::Up)
 	{
 		mPlayerAnimation.flip(mFlip);
-		mPlayerAnimation.load(RMI.getResource(Textures::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		mPlayerAnimation.load(RMI.getResource(Textures::UlfrWalkUp), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
 		mAnimationStyle = AnimationStyle::Up;
 	}
 	else if (type == AnimationType::Movement && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y > 0 && mAnimationStyle != AnimationStyle::Down)

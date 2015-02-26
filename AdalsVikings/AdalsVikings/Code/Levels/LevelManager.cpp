@@ -97,7 +97,6 @@ void LevelManager::loadBoatScene()
 {
 	mCurrentAct = Ship;
 
-	// Assign all the levels
 	mLevelMap[LevelFolder::Ship_1] = std::move(LevelPtr(new Level_Ship_1(mPlayer, mActionWheel)));
 	mLevelMap[LevelFolder::Ship_2] = std::move(LevelPtr(new Level_Ship_2(mPlayer, mActionWheel)));
 	mCurrentID = LevelFolder::Ship_2;

@@ -253,9 +253,6 @@
     <ClInclude Include="Code\Interface\Menus\PauseMenuPanel.h">
       <Filter>Header Files\Interface\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Logics\BoatEvents.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
@@ -303,6 +300,9 @@
     </ClInclude>
     <ClInclude Include="Code\Levels\Level_Tavern_Inside.h">
       <Filter>Header Files\Levels</Filter>
+	</ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -359,13 +359,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="icon1.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
     <ResourceCompile Include="AdalsVikings.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon_128.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -34,6 +34,7 @@ ResourceManager::ResourceManager()
 
 	/* ========== Set Texture File paths ========== */
 	mTexturePathMap[Textures::UlfrWalk] = "assets/images/ulfr/character_ulfr_walk.png";
+	mTexturePathMap[Textures::UlfrWalkUp] = "assets/images/ulfr/character_ulfr_walk_Up.png";
 	mTexturePathMap[Textures::UlfrIdle] = "assets/images/ulfr/character_ulfr_idle.png";
 	mTexturePathMap[Textures::UlfrFront] = "assets/images/ulfr/character_ulfr_front.png";
 	mTexturePathMap[Textures::UlfrBack] = "assets/images/ulfr/character_ulfr_back.png";
@@ -59,6 +60,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Textures::PauseMenuMainMenuButton] = "assets/images/interface/pauseManu/button_main_menu.png";
 	mTexturePathMap[Textures::PauseMenuExitButton] = "assets/images/interface/pauseManu/button_exit.png";
 	mTexturePathMap[Textures::PauseMenuBackground] = "assets/images/interface/pauseManu/InGame_menu.png";
+	mTexturePathMap[Textures::IntroScreen] = "assets/images/interface/tutorial2.png";
 
 	mTexturePathMap[Textures::WaveAnimation] = "assets/MapFiles/Beach/waves.png";
 	mTexturePathMap[Textures::AxeAnimation] = "assets/images/Interface/MainMenu/flying_axe.png";
@@ -68,8 +70,11 @@ ResourceManager::ResourceManager()
 
 	mTexturePathMap[Textures::BrandrIdle] = "assets/images/Brandr/character_brandr_blink.png";
 	mTexturePathMap[Textures::BrandrTalk] = "assets/images/Brandr/character_brandr_talk.png";
+	mTexturePathMap[Textures::BrandrAngryTalk] = "assets/images/Brandr/character_brandr_angry_talk.png";
 	mTexturePathMap[Textures::ValdisIdle] = "assets/images/Valdis/character_valdis_blink.png";
 	mTexturePathMap[Textures::ValdisTalk] = "assets/images/Valdis/character_valdis_talk.png";
+	mTexturePathMap[Textures::ValdisSittingIdle] = "assets/images/Valdis/character_valdis_sitting_blink.png";
+	mTexturePathMap[Textures::ValdisSittingTalk] = "assets/images/Valdis/character_valdis_sitting_talk.png";
 	mTexturePathMap[Textures::LeifrSitIdle] = "assets/images/Leifr/character_leifr_sit_blink.png";
 	mTexturePathMap[Textures::LeifrSitTalk] = "assets/images/Leifr/character_leifr_sit_talk.png";
 	mTexturePathMap[Textures::LeifrIdle] = "assets/images/Leifr/character_leifr_blink.png";
@@ -85,8 +90,16 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Textures::DagnyTalk] = "assets/images/Dagny/character_dagny_talk.png";
 	mTexturePathMap[Textures::YngvarrIdle] = "assets/images/Yngvarr/character_yngvarr_blink.png";
 	mTexturePathMap[Textures::YngvarrTalk] = "assets/images/Yngvarr/character_yngvarr_talk.png";
+	mTexturePathMap[Textures::YngvarrSadIdle] = "assets/images/Yngvarr/character_yngvarr_uneasy_blink.png";
+	mTexturePathMap[Textures::YngvarrSadTalk] = "assets/images/Yngvarr/character_yngvarr_uneasy_talk.png";
+	mTexturePathMap[Textures::SeagullIdle] = "assets/images/Seagull/character_fismås_idle.png";
+	mTexturePathMap[Textures::SeagullTalk] = "assets/images/Seagull/character_fismås_talk.png";
 	/* ============================================ */
 
+
+	/* =========== Set Image File paths =========== */
+	mImagePathMap[Images::Icon] = "assets/images/interface/icon.ico";
+	/* =========================================== */
 
 	/* =========== Set Font File paths =========== */
 	mFontPathMap[Fonts::ActionWheelDescription] = "assets/fonts/font1.ttf";

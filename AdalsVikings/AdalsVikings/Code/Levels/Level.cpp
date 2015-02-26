@@ -278,6 +278,7 @@ void Level::update(sf::Time &frameTime)
 	mPlayer.update(frameTime);
 	mPlayer.setFootsteps(mCurrentFootsteps);
 	checkEvents();
+	setDialogPosition();
 
 	// Upate all the objects
 	for each (Object* object in mObjects)

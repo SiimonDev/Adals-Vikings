@@ -20,7 +20,8 @@ void Level_Road::render(IndexRenderer &iRenderer)
 
 void Level_Road::load()
 {
-	//mPortals[RoadToBeach] = &PortalLoader::getPortal(RoadToBeach);
+	mPortals[RoadToBeach] = &PortalLoader::getPortal(RoadToBeach);
+	mPortals[RoadToOutside_Chuch] = &PortalLoader::getPortal(RoadToOutside_Chuch);
 	Level::load();
 
 	mPlayer.setPosition(sf::Vector2f(410, 1070));

@@ -35,7 +35,10 @@ void Level_Beach::render(IndexRenderer &iRenderer)
 
 void Level_Beach::load()
 {
-	//mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
+	
+	mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
+	mPortals[BeachToRoad]->setCannotDialogue("I cannot go there yet!");
+	mPortals[BeachToRoad]->setWorking(true);
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro) && !Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
 	{
 		mCutSceneView.setCenter(1920 / 2 - 450, 1080 / 2 + 270);
@@ -44,6 +47,7 @@ void Level_Beach::load()
 
 		//FadeI.setAlpha(255);
 
+		mNpcs["Seagull"] = NpcPtr(new Npc(NpcHandler::getNpc("Seagull")));
 		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
 		mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
 		mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
@@ -80,6 +84,10 @@ void Level_Beach::load()
 		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
 
 		/* ==== Yngvarr ===== */
+		RMI.loadResource(Textures::YngvarrSadIdle);
+		RMI.loadResource(Textures::YngvarrSadTalk);
+		mNpcs["Yngvarr"]->setIdleAnimation(Textures::YngvarrSadIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(7));
+		mNpcs["Yngvarr"]->SetTalkAnimation(Textures::YngvarrSadTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 		mNpcs["Yngvarr"]->setFlip(false);
 		mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Yngvarr"]->setPosition(sf::Vector2f(350, 760));
@@ -163,15 +171,18 @@ void Level_Beach::unload()
 {
 	RMI.unloadResource(Sound::BeachAmbient);
 	RMI.unloadResource(Textures::WaveAnimation);
+	RMI.unloadResource(Textures::YngvarrSadIdle);
+	RMI.unloadResource(Textures::YngvarrSadTalk);
 	Level::unload();
 }
 
 void Level_Beach::changeLevel()
 {
-	/*if (mPortals[BeachToRoad]->getActivated())
+	if (mPortals[BeachToRoad]->getActivated())
 	{
-		LVLMI.changeLevel(Road);
-	}*/
+		if (mPortals[BeachToRoad]->getWorking())
+			LVLMI.changeLevel(LevelFolder::Road);
+	}
 }
 void Level_Beach::checkInteractEvents()
 {

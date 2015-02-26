@@ -11,7 +11,11 @@ enum PortalId
 	BeachToRoad,
 	BeachToBeachHill,
 	BeachToHill,
-	RoadToBeach
+	RoadToBeach,
+	RoadToOutside_Chuch,
+	Outside_ChurchToRoad,
+	Outside_ChurchToChurch,
+	ChurchToOutside_Church
 };
 class PortalLoader
 {

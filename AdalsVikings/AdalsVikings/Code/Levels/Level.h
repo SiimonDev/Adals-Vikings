@@ -43,7 +43,7 @@ public:
 	virtual TileMap &getTileMap();
 
 protected:
-	void setDialogPosition();
+	virtual void setDialogPosition();
 	std::vector<int> mBackgroundsIndexes;
 	std::vector<sf::Sprite> mBackgrounds;
 	std::vector<Object*> mObjects;

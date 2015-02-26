@@ -79,12 +79,15 @@ void Level_Ship_2::render(IndexRenderer &iRenderer)
 void Level_Ship_2::load()
 {
 	mPortals[Ship2ToShip1] = &PortalLoader::getPortal(Ship2ToShip1); // This does not create a new portal it only references the one in PortalLoader;
+	mPortals[Ship2ToShip1]->setWorking(true);
 
 	mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
 	mNpcs["Dagny"]->setIndex(14);
 
 	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
 	mNpcs["Brandr"]->setIndex(14);
+	RMI.loadResource(Textures::BrandrAngryTalk);
+	mNpcs["Brandr"]->SetTalkAnimation(Textures::BrandrAngryTalk, sf::Vector2i(4, 1), sf::milliseconds(550), sf::Time::Zero);
 
 	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
 	mNpcs["Yngvarr"]->setIndex(14);

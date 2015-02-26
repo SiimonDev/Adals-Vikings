@@ -11,6 +11,11 @@ DialogHandler::DialogHandler()
 
 void DialogHandler::startDialogue(std::string id)
 {
+	for (std::map<std::string, DialogueTreePtr>::const_iterator it = mDialogueMap.begin(); it != mDialogueMap.end(); it++)
+	{
+		if (it->second->getActiveConversation())
+			it->second->stopConversation();
+	}
 	mDialogueMap.find(id)->second->startDialogue();
 }
 void DialogHandler::reloadConversations()

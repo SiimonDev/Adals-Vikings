@@ -21,5 +21,6 @@ private:
 	void render();
 	void processEvents();
 	sf::RenderWindow mWindow;
+	sf::Image icon;
 };
 

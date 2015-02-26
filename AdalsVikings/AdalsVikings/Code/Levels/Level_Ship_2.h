@@ -23,7 +23,8 @@ private:
 	sf::View mCutsceneView;
 	sf::RectangleShape mFadeRectangle;
 	bool mGameStart, mDone, mStartedGiveDialogue, mBrandrMapFade;
-
+	sf::Sprite spritilus;
+	sf::Texture mTexture;
 	float mZoom, mAlpha, mEnd;
 };
 

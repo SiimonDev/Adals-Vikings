@@ -27,6 +27,10 @@ Game::Game()
 	mWindow.setVerticalSyncEnabled(false);
 	mWindow.setMouseCursorVisible(false);
 
+
+	icon.loadFromFile("assets/images/interface/icon_32.png");
+	mWindow.setIcon(32, 32, icon.getPixelsPtr());
+
 	WinState.initialize(mWindow);
 	OBHI.initialize();
 	FadeI.initialize();
