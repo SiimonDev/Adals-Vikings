@@ -26,6 +26,7 @@ public:
 	void setEndConversation(bool value);
 	void disableOption(int index);
 	void enableOption(int index);
+	void stopConversation();
 
 	std::string &getText();
 	std::string &getCharacter();
@@ -54,7 +55,6 @@ private:
 	std::string as_utf8(const char* str) { return str; }
 	std::wstring as_wide(const wchar_t* str) { return str; }
 	bool &wait(sf::Time &frametime);
-	void stopConversation();
 	void disablePrevious();
 	void enable();
 

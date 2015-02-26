@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="I don't want to get my clothes wet..." />
-	<lookText lookText="Yep... That's one awesome bird." />
+	<lookText lookText="That is one AWESOME bird!" />
 	<text character="Ulfr" default="false" disabled="false" say="Hey!" timer="1.5" turned="true" />
 	<text character="Bosse" default="false" disabled="false" say="Hya!!" timer="1.5" turned="false" />
 	<text character="Ulfr" default="false" disabled="false" say="What's your name, little fellow?" timer="2.5" turned="true" />

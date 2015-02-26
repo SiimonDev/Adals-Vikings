@@ -3,6 +3,7 @@
 #include "..\Logics\PathFinder.h"
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\KeyboardState.h"
+#include "..\Dialog\DialogWindow.h"
 #include <iostream>
 
 Portal::Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn, Portal *portal)
@@ -10,6 +11,7 @@ Portal::Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMove
 	, mSwitchPortal(false)
 	, mRenderPortal(false)
 	, mWalkable(false)
+	, mWorking(false)
 	, mArea(area)
 	, mConnectedPortal(portal)
 	, mPortalMovement(portalMovement)
@@ -23,6 +25,7 @@ Portal::Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMove
 	, mIsActive(false)
 	, mSwitchPortal(false)
 	, mWalkable(false)
+	, mWorking(false)
 	, mPortalMovement(portalMovement)
 	, mPlayerSpawn(mPlayerSpawn)
 {
@@ -90,7 +93,10 @@ void Portal::setActivate(bool value)
 	mSwitchPortal = value;
 	mIsActive = value;
 }
-
+void Portal::setWorking(bool value)
+{
+	mWorking = value;
+}
 void Portal::portalTravel(Player &player)
 {
 	if (player.getSprite().getPosition().x > mArea.getGlobalBounds().left
@@ -99,9 +105,17 @@ void Portal::portalTravel(Player &player)
 		&& player.getSprite().getPosition().y < mArea.getGlobalBounds().top + mArea.getGlobalBounds().height
 		&& mIsActive == true)
 	{
-		mSwitchPortal = true;
-		player.setPosition(mConnectedPortal->getSpawn());
-		mConnectedPortal->setWalkable(true);
+		if (mWorking)
+		{
+			mSwitchPortal = true;
+			player.setPosition(mConnectedPortal->getSpawn());
+			mConnectedPortal->setWalkable(true);
+		}
+		else
+		{
+			Dialog dialog = Dialog(mCannotDialogue, 2);
+			DialogWindow::displayDialog(dialog);
+		}
 	}
 }
 
@@ -115,10 +129,18 @@ void Portal::setWalkable(bool value)
 {
 	mWalkable = value;
 }
+void Portal::setCannotDialogue(std::string string)
+{
+	mCannotDialogue = string;
+}
 
 bool &Portal::getWalkAble()
 {
 	return mWalkable;
+}
+bool &Portal::getWorking()
+{
+	return mWorking;
 }
 
 bool &Portal::getActivated()

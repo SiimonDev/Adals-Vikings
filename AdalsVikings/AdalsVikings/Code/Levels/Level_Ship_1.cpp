@@ -18,8 +18,14 @@ Level_Ship_1::Level_Ship_1(Player &player, ActionWheel &actionWheel)
 
 void Level_Ship_1::update(sf::Time &frametime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::F))
-		mPlayer.addItemToInventory("flute");
+	if(BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen) && !BoatEvents::hasBeenHandled(BoatEvent::IntroScreen))
+	{
+		if (!mPlayer.isDestinationReached())
+		{
+			BoatEvents::handleEvent(BoatEvent::IntroScreen);
+		}
+	}
+
 	if (BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
 	{
 		if (!mGameStart)
@@ -132,6 +138,8 @@ void Level_Ship_1::update(sf::Time &frametime)
 
 void Level_Ship_1::render(IndexRenderer &iRenderer)
 {
+	if (BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen) && !BoatEvents::hasBeenHandled(BoatEvent::IntroScreen))
+		iRenderer.addSprite(mIntroScreen, 99999);
 	CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
 	Level::render(iRenderer);
 }
@@ -139,6 +147,12 @@ void Level_Ship_1::render(IndexRenderer &iRenderer)
 void Level_Ship_1::load()
 {
 	mPortals[Ship1ToShip2] = &PortalLoader::getPortal(Ship1ToShip2); // This does not create a new portal it only references the one in PortalLoader
+	mPortals[Ship1ToShip2]->setWorking(true);
+
+	RMI.loadResource(Textures::IntroScreen);
+	mIntroScreen.setTexture(RMI.getResource(Textures::IntroScreen));
+	mIntroScreen.setScale(2, 2);
+	mIntroScreen.setPosition(150, 50);
 
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
 	RMI.loadResource(Textures::ValdisSittingIdle);
@@ -204,6 +218,7 @@ void Level_Ship_1::unload()
 	RMI.unloadResource(Textures::LeifrSitTalk);
 	RMI.unloadResource(Sound::BoatAmbient);
 	RMI.unloadResource(Footsteps::Hardwood);
+	RMI.unloadResource(Textures::IntroScreen);
 	Level::unload();
 }
 
@@ -227,6 +242,10 @@ void Level_Ship_1::checkEvents()
 	// Check if ulfrs startdialogue has been triggered
 	if (!BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && BoatEvents::hasBeenHandled(BoatEvent::StartDialogue))
 		BoatEvents::triggerEvent(BoatEvent::UlfrStartDialogue);
+
+	if (DialogHandler::getDialogue("IntroUlfr").getHasStopped() && !BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen))
+		BoatEvents::triggerEvent(BoatEvent::IntroScreen);
+
 }
 
 void Level_Ship_1::changeLevel(sf::Time &frameTime)

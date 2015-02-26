@@ -18,5 +18,6 @@ private:
 	bool mGameStart;
 	bool mOldBucketAdded;
 	bool mStartBrynja, mBrynjaFade1, mBrynjaFade2, mBrynjaConv;
+	sf::Sprite mIntroScreen;
 };
 

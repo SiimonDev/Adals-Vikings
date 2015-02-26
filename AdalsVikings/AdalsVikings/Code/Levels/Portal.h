@@ -22,16 +22,19 @@ public:
 	void setActive();
 	void portalTravel(Player &player);
 	void walkPath(Player &player);
+	void setCannotDialogue(std::string string);
+	void setWorking(bool value);
 
 	bool &getActivated();
+	bool &getWorking();
 	bool &getWalkAble();
 	sf::Vector2f &getSpawn();
 
 private:
 	sf::RectangleShape mArea;
 	Portal* mConnectedPortal;
-
-	bool mIsActive, mSwitchPortal, mWalkable, mRenderPortal;
+	std::string mCannotDialogue;
+	bool mIsActive, mSwitchPortal, mWalkable, mRenderPortal, mWorking;
 	sf::Vector2f mPortalMovement, mPlayerSpawn;
 };
 

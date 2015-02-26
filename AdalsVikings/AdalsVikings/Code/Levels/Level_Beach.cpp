@@ -35,7 +35,10 @@ void Level_Beach::render(IndexRenderer &iRenderer)
 
 void Level_Beach::load()
 {
-	//mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
+	
+	mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
+	mPortals[BeachToRoad]->setCannotDialogue("I cannot go there yet!");
+	mPortals[BeachToRoad]->setWorking(true);
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro) && !Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
 	{
 		mCutSceneView.setCenter(1920 / 2 - 450, 1080 / 2 + 270);
@@ -175,10 +178,11 @@ void Level_Beach::unload()
 
 void Level_Beach::changeLevel()
 {
-	/*if (mPortals[BeachToRoad]->getActivated())
+	if (mPortals[BeachToRoad]->getActivated())
 	{
-		LVLMI.changeLevel(Road);
-	}*/
+		if (mPortals[BeachToRoad]->getWorking())
+			LVLMI.changeLevel(LevelFolder::Road);
+	}
 }
 void Level_Beach::checkInteractEvents()
 {

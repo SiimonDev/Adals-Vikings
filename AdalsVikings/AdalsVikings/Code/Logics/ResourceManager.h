@@ -35,6 +35,7 @@ namespace Textures
 		LookButton,
 		TakeButton,
 		TalkButton,
+		IntroScreen,
 
 		MainMenuPlayButton,
 		MainMenuOptionsButton,
