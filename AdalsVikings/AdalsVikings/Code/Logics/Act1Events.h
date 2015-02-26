@@ -11,6 +11,7 @@ namespace Act1Event
 		Beach_Yngvarr,
 		Beach_Valdis,
 		Beach_Ending,
+		Enter_Road,
 		EVENT_SIZE
 	};
 }

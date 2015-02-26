@@ -181,7 +181,10 @@ void Level_Beach::changeLevel()
 	if (mPortals[BeachToRoad]->getActivated())
 	{
 		if (mPortals[BeachToRoad]->getWorking())
+		{
+			Act1Events::triggerEvent(Act1Event::Enter_Road);
 			LVLMI.changeLevel(LevelFolder::Road);
+		}
 	}
 }
 void Level_Beach::checkInteractEvents()

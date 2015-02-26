@@ -13,6 +13,8 @@ enum PortalId
 	BeachToHill,
 	RoadToBeach,
 	RoadToOutside_Chuch,
+	RoadToForestCamp,
+	ForestCampToRoad,
 	Outside_ChurchToRoad,
 	Outside_ChurchToChurch,
 	ChurchToOutside_Church

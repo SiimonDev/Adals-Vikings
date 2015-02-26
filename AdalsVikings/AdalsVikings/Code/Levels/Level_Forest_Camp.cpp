@@ -20,6 +20,7 @@ void Level_Forest_Camp::render(IndexRenderer &iRenderer)
 
 void Level_Forest_Camp::load()
 {
+	
 	Level::load();
 	mPlayer.setPosition(sf::Vector2f(410, 1070));
 }

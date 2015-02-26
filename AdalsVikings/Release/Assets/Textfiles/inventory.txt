@@ -1,6 +1,6 @@
-slot_0.0: 
+slot_0.0: $fluteBroken
 slot_0.1: 
-slot_0.2: 
+slot_0.2: $bucketBroken
 slot_0.3: 
 slot_1.0: 
 slot_1.1: 

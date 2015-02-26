@@ -20,6 +20,9 @@ void Level_Forest_Road::render(IndexRenderer &iRenderer)
 
 void Level_Forest_Road::load()
 {
+	mPortals[ForestCampToRoad] = &PortalLoader::getPortal(ForestCampToRoad);
+	mPortals[ForestCampToRoad]->setWorking(true);
+
 	Level::load();
 	mPlayer.setPosition(sf::Vector2f(410, 1070));
 }
@@ -31,6 +34,8 @@ void Level_Forest_Road::unload()
 
 void Level_Forest_Road::changeLevel()
 {
+	if (mPortals[ForestCampToRoad]->getActivated() && mPortals[ForestCampToRoad]->getWorking())
+		LVLMI.changeLevel(LevelFolder::Road);
 }
 
 void Level_Forest_Road::checkInteractEvents()

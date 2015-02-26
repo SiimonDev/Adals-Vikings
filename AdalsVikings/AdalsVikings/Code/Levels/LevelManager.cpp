@@ -113,7 +113,7 @@ void LevelManager::loadAct1()
 	mLevelMap[LevelFolder::Church_Outside] = LevelPtr(new Level_Church_Outside(mPlayer, mActionWheel));
 	mLevelMap[LevelFolder::Church_Inside] = LevelPtr(new Level_Church_Inside(mPlayer, mActionWheel));
 	mLevelMap[LevelFolder::Camp] = LevelPtr(new Level_Camp(mPlayer, mActionWheel));
-	mCurrentID = LevelFolder::Beach;
+	mCurrentID = LevelFolder::Road;
 	baseLoad();
 }
 

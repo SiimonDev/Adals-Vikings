@@ -24,6 +24,8 @@ class LoadingScreen
 public:
 	static LoadingScreen &getInstance();
 
+	~LoadingScreen();
+
 	void initialize();
 	void render(IndexRenderer &iRenderer);
 	bool update(sf::Time dt);
