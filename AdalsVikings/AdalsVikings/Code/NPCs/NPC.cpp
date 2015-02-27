@@ -113,7 +113,7 @@ void Npc::setFlip(bool value)
 {
 	mFlip = value;
 }
-void Npc::setIdleAnimation(Textures::ID id, sf::Vector2i &idleFrames, sf::Time duration, sf::Time idleDuration)
+void Npc::setIdleAnimation(Texture::ID id, sf::Vector2i &idleFrames, sf::Time duration, sf::Time idleDuration)
 {
 	mIdleTexture = id;
 	mIdleFrames = idleFrames;
@@ -121,7 +121,7 @@ void Npc::setIdleAnimation(Textures::ID id, sf::Vector2i &idleFrames, sf::Time d
 	mIdleWaitTime = idleDuration;
 }
 
-void Npc::SetTalkAnimation(Textures::ID id, sf::Vector2i &talkFrames, sf::Time duration, sf::Time talkduration)
+void Npc::SetTalkAnimation(Texture::ID id, sf::Vector2i &talkFrames, sf::Time duration, sf::Time talkduration)
 {
 	mTalkTexture = id;
 	mTalkFrames = talkFrames;

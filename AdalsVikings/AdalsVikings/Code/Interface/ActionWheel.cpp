@@ -20,24 +20,24 @@ sf::Vector2f ActionWheel::getPosition(){ return mPosition; }
 
 void ActionWheel::load()
 {
-	RMI.loadResource(Fonts::ActionWheelDescription);
-	RMI.loadResource(Textures::LookButton);
-	RMI.loadResource(Textures::TakeButton);
-	RMI.loadResource(Textures::TalkButton);
+	RMI.loadResource(Font::Font1);
+	RMI.loadResource(Texture::LookButton);
+	RMI.loadResource(Texture::TakeButton);
+	RMI.loadResource(Texture::TalkButton);
 
-	button1 = Button(Textures::TalkButton, Fonts::ActionWheelDescription, sf::Vector2f(), " Talk");
+	button1 = Button(Texture::TalkButton, Font::Font1, sf::Vector2f(), " Talk");
 	button1.setScale(sf::Vector2f(0.6f, 0.6f));
 	button1.setOrigin(ButtonOrigin::Center);
 	button1.setDescriptionStyle(sf::Text::Bold);
 	button1.setIndex(mIndex);
 
-	button2 = Button(Textures::TakeButton, Fonts::ActionWheelDescription, sf::Vector2f(), " Pick Up");
+	button2 = Button(Texture::TakeButton, Font::Font1, sf::Vector2f(), " Pick Up");
 	button2.setScale(sf::Vector2f(0.6f, 0.6f));
 	button2.setOrigin(ButtonOrigin::Center);
 	button2.setDescriptionStyle(sf::Text::Bold);
 	button2.setIndex(mIndex);
 
-	button3 = Button(Textures::LookButton, Fonts::ActionWheelDescription, sf::Vector2f(), " Look");
+	button3 = Button(Texture::LookButton, Font::Font1, sf::Vector2f(), " Look");
 	button3.setScale(sf::Vector2f(0.6f, 0.6f));
 	button3.setOrigin(ButtonOrigin::Center);
 	button3.setDescriptionStyle(sf::Text::Bold);
@@ -46,10 +46,10 @@ void ActionWheel::load()
 
 void ActionWheel::unload()
 {
-	RMI.unloadResource(Textures::LookButton);
-	RMI.unloadResource(Textures::TakeButton);
-	RMI.unloadResource(Textures::TalkButton);
-	RMI.unloadResource(Fonts::ActionWheelDescription);
+	RMI.unloadResource(Texture::LookButton);
+	RMI.unloadResource(Texture::TakeButton);
+	RMI.unloadResource(Texture::TalkButton);
+	RMI.unloadResource(Font::Font1);
 }
 
 void ActionWheel::update()

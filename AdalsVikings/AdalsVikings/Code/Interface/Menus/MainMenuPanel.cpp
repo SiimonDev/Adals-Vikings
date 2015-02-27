@@ -10,17 +10,17 @@ mMenuPanels(activeMenuPanels), mAnimationTime(sf::milliseconds(500)), mTimePasse
 
 void MainMenuPanel::load()
 {
-	RMI.loadResource(Fonts::MenuButtons);
-	RMI.loadResource(Textures::MainMenuPlayButton);
-	RMI.loadResource(Textures::MainMenuOptionsButton);
-	RMI.loadResource(Textures::MainMenuQuitButton);
-	RMI.loadResource(Textures::MainMenuBackground);
-	RMI.loadResource(Textures::AxeAnimation);
+	RMI.loadResource(Font::Font1);
+	RMI.loadResource(Texture::MainMenuPlayButton);
+	RMI.loadResource(Texture::MainMenuOptionsButton);
+	RMI.loadResource(Texture::MainMenuQuitButton);
+	RMI.loadResource(Texture::MainMenuBackground);
+	RMI.loadResource(Texture::AxeAnimation);
 	//AudioPlayer::playMusic("assets/sounds/music/Theme3.ogg", "mainMenu", true, 20);
 
-	mBackground.setTexture(RMI.getResource(Textures::MainMenuBackground));
+	mBackground.setTexture(RMI.getResource(Texture::MainMenuBackground));
 
-	mAxeAnimation.load(RMI.getResource(Textures::AxeAnimation), Frames(5, 1), sf::milliseconds(400), sf::seconds(0.1), false);
+	mAxeAnimation.load(RMI.getResource(Texture::AxeAnimation), Frames(5, 1), sf::milliseconds(400), sf::seconds(0.1), false);
 	mAxeAnimation.getSprite().setOrigin(mAxeAnimation.getSprite().getTextureRect().width, mAxeAnimation.getSprite().getTextureRect().height);
 	mAxeAnimation.setProportions(sf::Vector2f(1605, 968));
 	mAxeAnimation.setPosition(sf::Vector2f(1920, 1080));
@@ -28,7 +28,7 @@ void MainMenuPanel::load()
 	mAxeAnimation.setIndex(50);
 	mAxeAnimation.restart();
 
-	playButton = Button(Textures::MainMenuPlayButton, Fonts::MenuButtons, sf::Vector2f(), "Start a new Game");
+	playButton = Button(Texture::MainMenuPlayButton, Font::Font1, sf::Vector2f(), "Start a new Game");
 	playButton.setPosition(sf::Vector2f(1010, 275));
 	playButton.setOrigin(ButtonOrigin::Center);
 	playButton.setTextStyle(sf::Text::Bold);
@@ -36,7 +36,7 @@ void MainMenuPanel::load()
 	playButton.setDescriptionPosition(sf::Vector2f(200, 0));
 	playButton.setIndex(10);
 
-	optionButton = Button(Textures::MainMenuOptionsButton, Fonts::MenuButtons, sf::Vector2f(), "Go to options menu");
+	optionButton = Button(Texture::MainMenuOptionsButton, Font::Font1, sf::Vector2f(), "Go to options menu");
 	optionButton.setPosition(sf::Vector2f(960, 550));
 	optionButton.setOrigin(ButtonOrigin::Center);
 	optionButton.setTextStyle(sf::Text::Bold);
@@ -45,7 +45,7 @@ void MainMenuPanel::load()
 	optionButton.setIndex(10);
 	optionButton.setEnabled(false);
 
-	exitButton = Button(Textures::MainMenuQuitButton, Fonts::MenuButtons, sf::Vector2f(), "Exit the game");
+	exitButton = Button(Texture::MainMenuQuitButton, Font::Font1, sf::Vector2f(), "Exit the game");
 	exitButton.setPosition(sf::Vector2f(900, 810));
 	exitButton.setOrigin(ButtonOrigin::Center);
 	exitButton.setTextStyle(sf::Text::Bold);
@@ -61,12 +61,12 @@ void MainMenuPanel::load()
 
 void MainMenuPanel::unload()
 {
-	RMI.unloadResource(Fonts::MenuButtons);
-	RMI.unloadResource(Textures::MainMenuPlayButton);
-	RMI.unloadResource(Textures::MainMenuOptionsButton);
-	RMI.unloadResource(Textures::MainMenuQuitButton);
-	RMI.unloadResource(Textures::MainMenuBackground);
-	RMI.unloadResource(Textures::AxeAnimation);
+	RMI.unloadResource(Font::Font1);
+	RMI.unloadResource(Texture::MainMenuPlayButton);
+	RMI.unloadResource(Texture::MainMenuOptionsButton);
+	RMI.unloadResource(Texture::MainMenuQuitButton);
+	RMI.unloadResource(Texture::MainMenuBackground);
+	RMI.unloadResource(Texture::AxeAnimation);
 	//AudioPlayer::stopMusic("mainMenu");
 }
 

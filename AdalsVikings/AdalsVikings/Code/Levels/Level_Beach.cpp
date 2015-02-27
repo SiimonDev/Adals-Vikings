@@ -84,10 +84,10 @@ void Level_Beach::load()
 		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
 
 		/* ==== Yngvarr ===== */
-		RMI.loadResource(Textures::YngvarrSadIdle);
-		RMI.loadResource(Textures::YngvarrSadTalk);
-		mNpcs["Yngvarr"]->setIdleAnimation(Textures::YngvarrSadIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(7));
-		mNpcs["Yngvarr"]->SetTalkAnimation(Textures::YngvarrSadTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
+		RMI.loadResource(Texture::YngvarrSadIdle);
+		RMI.loadResource(Texture::YngvarrSadTalk);
+		mNpcs["Yngvarr"]->setIdleAnimation(Texture::YngvarrSadIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(7));
+		mNpcs["Yngvarr"]->SetTalkAnimation(Texture::YngvarrSadTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 		mNpcs["Yngvarr"]->setFlip(false);
 		mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Yngvarr"]->setPosition(sf::Vector2f(350, 760));
@@ -112,10 +112,10 @@ void Level_Beach::load()
 		mNpcs["Alfr"]->setIndex(5);
 
 		/* ==== Leifr ===== */
-		RMI.loadResource(Textures::LeifrIdle);
-		RMI.loadResource(Textures::LeifrTalk);
-		mNpcs["Leifr"]->setIdleAnimation(Textures::LeifrIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(7.2));
-		mNpcs["Leifr"]->SetTalkAnimation(Textures::LeifrTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
+		RMI.loadResource(Texture::LeifrIdle);
+		RMI.loadResource(Texture::LeifrTalk);
+		mNpcs["Leifr"]->setIdleAnimation(Texture::LeifrIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(7.2));
+		mNpcs["Leifr"]->SetTalkAnimation(Texture::LeifrTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 		mNpcs["Leifr"]->setFlip(true);
 		mNpcs["Leifr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 580));
@@ -154,8 +154,8 @@ void Level_Beach::load()
 		mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 1);
 
 	}
-	RMI.loadResource(Textures::WaveAnimation);
-	mWaveAnimation.load(RMI.getResource(Textures::WaveAnimation), sf::Vector2i(10, 9), sf::seconds(10), sf::seconds(5), true);
+	RMI.loadResource(Texture::WaveAnimation);
+	mWaveAnimation.load(RMI.getResource(Texture::WaveAnimation), sf::Vector2i(10, 9), sf::seconds(10), sf::seconds(5), true);
 	mWaveAnimation.setIndex(4);
 	mWaveAnimation.setProportions(sf::Vector2f(1170, 640));
 	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
@@ -170,9 +170,9 @@ void Level_Beach::load()
 void Level_Beach::unload()
 {
 	RMI.unloadResource(Sound::BeachAmbient);
-	RMI.unloadResource(Textures::WaveAnimation);
-	RMI.unloadResource(Textures::YngvarrSadIdle);
-	RMI.unloadResource(Textures::YngvarrSadTalk);
+	RMI.unloadResource(Texture::WaveAnimation);
+	RMI.unloadResource(Texture::YngvarrSadIdle);
+	RMI.unloadResource(Texture::YngvarrSadTalk);
 	Level::unload();
 }
 

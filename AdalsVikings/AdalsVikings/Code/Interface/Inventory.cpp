@@ -26,8 +26,8 @@ void Inventory::load()
 	RMI.loadResource(Sound::PickUpItem);
 	RMI.loadResource(Sound::InventoryOpen);
 	RMI.loadResource(Sound::InventoryClose);
-	RMI.loadResource(Textures::InventoryBackground);
-	mSprite.setTexture(RMI.getResource(Textures::InventoryBackground));
+	RMI.loadResource(Texture::InventoryBackground);
+	mSprite.setTexture(RMI.getResource(Texture::InventoryBackground));
 	mIndex = 999999;
 
 	// tileShit
@@ -53,7 +53,7 @@ void Inventory::unload()
 	RMI.unloadResource(Sound::PickUpItem);
 	RMI.unloadResource(Sound::InventoryOpen);
 	RMI.unloadResource(Sound::InventoryClose);
-	RMI.unloadResource(Textures::InventoryBackground);
+	RMI.unloadResource(Texture::InventoryBackground);
 	unloadObjects();
 }
 
@@ -106,13 +106,11 @@ void Inventory::update(sf::Time frameTime)
 								invTiles[x][y].removeObject();
 								addItemToInventory(newObjDialog.mResultID);
 							}
-							else{
+							else
 								addItemToInventory(mSnappedObject->getObjID());
-							}
 						}
-						else{
+						else
 							addItemToInventory(mSnappedObject->getObjID());
-						}
 
 						delete mSnappedObject;
 						mHasSnappedObject = false;
@@ -126,17 +124,24 @@ void Inventory::update(sf::Time frameTime)
 		}
 	}
 
+	if (mHasSnappedObject)
+	{
+		mSnappedObject->enableNameDisplay(false);
+		mSnappedObject->setPosition(sf::Vector2f(MouseState::getMousePosition()));
+		mSnappedObject->update(frameTime);
+
+		if (!MouseState::isPressed(sf::Mouse::Right))
+		{
+			mDroppedSnappedObj = true;
+			mHasSnappedObject = false;
+		}
+	}
+	
 	if (mDroppedSnappedObj)
 	{
 		addItemToInventory(mSnappedObject->getObjID());
 		delete mSnappedObject;
 		mDroppedSnappedObj = false;
-	}
-
-	if (!MouseState::isPressed(sf::Mouse::Right) && mHasSnappedObject)
-	{
-		mDroppedSnappedObj = true;
-		mHasSnappedObject = false;
 	}
 }
 
@@ -149,27 +154,20 @@ void Inventory::render(IndexRenderer &iRenderer)
 		mSprite.setPosition(mPosition);
 		iRenderer.addSprite(mSprite, mIndex);
 
-		for (int x = 0; x < invWidth; x++)
-		{
+		for (int x = 0; x < invWidth; x++){
 			for (int y = 0; y < invHeight; y++)
-			{
 				invTiles[x][y].render(iRenderer);
-			}
 		}
 	}
 	if (mHasSnappedObject)
-	{
-		mSnappedObject->setPosition(sf::Vector2f(MouseState::getMousePosition()));
 		mSnappedObject->render(iRenderer);
-	}
 }
 
 bool Inventory::addItemToInventory(std::string objectID)
 {
 	if (objectID == "bucket")
-	{
 		BoatEvents::triggerEvent(BoatEvent::PickedUpBucket);
-	}
+
 	AudioPlayer::playSound(Sound::PickUpItem, "pickUpItem", false);
 	for (int x = 0; x < invWidth; x++)
 	{
@@ -215,9 +213,7 @@ void Inventory::saveInventoryToFile()
 		{
 			file << "slot_" << x << "." << y << ": ";
 			if (invTiles[x][y].hasObject())
-			{
 				file << "$" << invTiles[x][y].getObject().getObjID();
-			}
 			file << std::endl;
 		}
 	}
@@ -290,9 +286,7 @@ bool Inventory::hasItemInInventory(std::string objID)
 		for (int y = 0; y < invHeight; y++)
 		{
 			if (invTiles[x][y].getObjectID() == objID)
-			{
 				return true;
-			}
 		}
 	}
 	return false;
@@ -301,8 +295,6 @@ bool Inventory::hasItemInInventory(std::string objID)
 std::string Inventory::getDroppedObjectID()
 {
 	if (mDroppedSnappedObj)
-	{
 		return mSnappedObject->getObjID();
-	}
 	return "";
 }

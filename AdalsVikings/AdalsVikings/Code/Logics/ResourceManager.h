@@ -16,7 +16,7 @@ typedef std::vector<SoundPtr> FootstepsPtr;
 
 #define RMI ResourceManager::getInstance()
 
-namespace Textures
+namespace Texture
 {
 	enum ID
 	{ 
@@ -82,7 +82,7 @@ namespace Textures
 		SIZE
 	};
 }
-namespace Images
+namespace Image
 {
 	enum ID
 	{
@@ -90,13 +90,12 @@ namespace Images
 		SIZE
 	};
 }
-namespace Fonts
+namespace Font
 {
 	enum ID
 	{
-		ActionWheelDescription,
-		DialogWindow,
-		MenuButtons,
+		Font1,
+		Font2,
 		SIZE
 	};
 }
@@ -148,18 +147,18 @@ public:
 	// Uses Singleton to make the class global.
 	static ResourceManager &getInstance();
 
-	void loadResource(Textures::ID id);
-	void loadResource(Images::ID id);
-	void loadResource(Fonts::ID id);
+	void loadResource(Texture::ID id);
+	void loadResource(Image::ID id);
+	void loadResource(Font::ID id);
 	void loadResource(Sound::ID id);
 	void loadResource(LevelFolder::ID id);
 	void loadResource(Footsteps::ID id);
 	void loadTexture(const std::string &filename);
 	void loadImage(const std::string &filename);
 
-	void unloadResource(Textures::ID id);
-	void unloadResource(Images::ID id);
-	void unloadResource(Fonts::ID id);
+	void unloadResource(Texture::ID id);
+	void unloadResource(Image::ID id);
+	void unloadResource(Font::ID id);
 	void unloadResource(Sound::ID id);
 	void unloadResource(LevelFolder::ID id);
 	void unloadResource(Footsteps::ID id);
@@ -173,9 +172,9 @@ public:
 	void truncateBackgrounds();
 	void truncateFootsteps();
 
-	sf::Texture &getResource(Textures::ID id) const;
-	sf::Image &getResource(Images::ID id) const;
-	sf::Font &getResource(Fonts::ID id) const;
+	sf::Texture &getResource(Texture::ID id) const;
+	sf::Image &getResource(Image::ID id) const;
+	sf::Font &getResource(Font::ID id) const;
 	sf::SoundBuffer &getResource(Sound::ID id) const;
 	const BackgroundsPtr &getResource(LevelFolder::ID id) const;
 	const FootstepsPtr &getResource(Footsteps::ID id) const;
@@ -183,9 +182,9 @@ public:
 	sf::Texture &getNonIDTexture(const std::string &filename) const;
 	sf::Image &getNonIDImage(const std::string &filename) const;
 
-	std::string getFilePath(Textures::ID id);
-	std::string getFilePath(Images::ID id);
-	std::string getFilePath(Fonts::ID id);
+	std::string getFilePath(Texture::ID id);
+	std::string getFilePath(Image::ID id);
+	std::string getFilePath(Font::ID id);
 	std::string getFilePath(Sound::ID id);
 	std::string getFilePath(LevelFolder::ID id);
 	std::string getFilePath(Footsteps::ID id);
@@ -201,17 +200,17 @@ private:
 	void operator=(const ResourceManager&);
 
 	// Resource Maps
-	std::map<Textures::ID, TexturePtr> mTextureMap;
-	std::map<Images::ID, ImagePtr> mImageMap;
-	std::map<Fonts::ID, FontPtr> mFontMap;
+	std::map<Texture::ID, TexturePtr> mTextureMap;
+	std::map<Image::ID, ImagePtr> mImageMap;
+	std::map<Font::ID, FontPtr> mFontMap;
 	std::map<Sound::ID, SoundPtr> mSoundMap;
 	std::map<LevelFolder::ID, BackgroundsPtr> mBackgroundsMap;
 	std::map<Footsteps::ID, FootstepsPtr> mFootstepsMap;
 
 	// Load Count Maps
-	std::map<Textures::ID, int> mTextureCountMap;
-	std::map<Images::ID, int> mImageCountMap;
-	std::map<Fonts::ID, int> mFontCountMap;
+	std::map<Texture::ID, int> mTextureCountMap;
+	std::map<Image::ID, int> mImageCountMap;
+	std::map<Font::ID, int> mFontCountMap;
 	std::map<Sound::ID, int> mSoundCountMap;
 	std::map<LevelFolder::ID, int> mBackgroundsCountMap;
 	std::map<Footsteps::ID, int> mFootstepsCountMap;
@@ -220,9 +219,9 @@ private:
 	std::map<std::string, int> mNonIDImagesCount;
 
 	// FilePath Maps
-	std::map<Textures::ID, std::string> mTexturePathMap;
-	std::map<Images::ID, std::string> mImagePathMap;
-	std::map<Fonts::ID, std::string> mFontPathMap;
+	std::map<Texture::ID, std::string> mTexturePathMap;
+	std::map<Image::ID, std::string> mImagePathMap;
+	std::map<Font::ID, std::string> mFontPathMap;
 	std::map<Sound::ID, std::string> mSoundPathMap;
 	std::map<LevelFolder::ID, std::string> mBackgroundsPathMap;
 	std::map<Footsteps::ID, std::string> mFootstepsPathMap;

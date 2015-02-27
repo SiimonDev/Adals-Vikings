@@ -18,6 +18,11 @@ Level_Ship_1::Level_Ship_1(Player &player, ActionWheel &actionWheel)
 
 void Level_Ship_1::update(sf::Time &frametime)
 {
+	if (KeyboardState::isPressed(sf::Keyboard::F))
+	{
+		mPlayer.addItemToInventory("bucket");
+	}
+
 	if(BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen) && !BoatEvents::hasBeenHandled(BoatEvent::IntroScreen))
 	{
 		if (!mPlayer.isDestinationReached())
@@ -74,16 +79,16 @@ void Level_Ship_1::update(sf::Time &frametime)
 			FadeI.fadeOut(frametime);
 			if (FadeI.getFaded())
 			{
-				RMI.unloadResource(Textures::BrynjaSleeping);
-				mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
-				mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
+				RMI.unloadResource(Texture::BrynjaSleeping);
+				mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+				mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
 				mNpcs["Brynja"]->setProportions(sf::Vector2f(290, 452));
 				mNpcs["Brynja"]->setscale(sf::Vector2f(0.5f, 0.5f));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
 				mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
 				mNpcs["Brynja"]->UpdateAnimationStyle();
 				mNpcs["Brynja"]->setFlip(true);
-				RMI.unloadResource(Textures::BrynjaSleeping);
+				RMI.unloadResource(Texture::BrynjaSleeping);
 
 				mBrynjaFade1 = true;
 			}
@@ -149,16 +154,16 @@ void Level_Ship_1::load()
 	mPortals[Ship1ToShip2] = &PortalLoader::getPortal(Ship1ToShip2); // This does not create a new portal it only references the one in PortalLoader
 	mPortals[Ship1ToShip2]->setWorking(true);
 
-	RMI.loadResource(Textures::IntroScreen);
-	mIntroScreen.setTexture(RMI.getResource(Textures::IntroScreen));
+	RMI.loadResource(Texture::IntroScreen);
+	mIntroScreen.setTexture(RMI.getResource(Texture::IntroScreen));
 	mIntroScreen.setScale(2, 2);
 	mIntroScreen.setPosition(150, 50);
 
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
-	RMI.loadResource(Textures::ValdisSittingIdle);
-	RMI.loadResource(Textures::ValdisSittingTalk);
-	mNpcs["Valdis"]->setIdleAnimation(Textures::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
-	mNpcs["Valdis"]->SetTalkAnimation(Textures::ValdisSittingTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
+	RMI.loadResource(Texture::ValdisSittingIdle);
+	RMI.loadResource(Texture::ValdisSittingTalk);
+	mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
+	mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisSittingTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 	mNpcs["Valdis"]->setProportions(sf::Vector2f(150, 134.5));
 	mNpcs["Valdis"]->setscale(sf::Vector2f(1.1, 1.1));
 	mNpcs["Valdis"]->setIndex(14);
@@ -168,17 +173,17 @@ void Level_Ship_1::load()
 	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
 	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
 	mNpcs["Alfr"]->setIndex(16);
-	RMI.loadResource(Textures::LeifrSitIdle);
-	RMI.loadResource(Textures::LeifrSitTalk);
-	mNpcs["Leifr"]->setIdleAnimation(Textures::LeifrSitIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
-	mNpcs["Leifr"]->SetTalkAnimation(Textures::LeifrSitTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
+	RMI.loadResource(Texture::LeifrSitIdle);
+	RMI.loadResource(Texture::LeifrSitTalk);
+	mNpcs["Leifr"]->setIdleAnimation(Texture::LeifrSitIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+	mNpcs["Leifr"]->SetTalkAnimation(Texture::LeifrSitTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
 	if (!mStartBrynja)
 	{
-		RMI.loadResource(Textures::BrynjaIdle);
-		RMI.loadResource(Textures::BrynjaTalk);
-		RMI.loadResource(Textures::BrynjaSleeping);
-		mNpcs["Brynja"]->setIdleAnimation(Textures::BrynjaSleeping, sf::Vector2i(3, 4), sf::milliseconds(1200), sf::milliseconds(2000));
-		mNpcs["Brynja"]->SetTalkAnimation(Textures::BrynjaSleeping, sf::Vector2i(3, 4), sf::milliseconds(1400), sf::milliseconds(2000));
+		RMI.loadResource(Texture::BrynjaIdle);
+		RMI.loadResource(Texture::BrynjaTalk);
+		RMI.loadResource(Texture::BrynjaSleeping);
+		mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaSleeping, sf::Vector2i(3, 4), sf::milliseconds(1200), sf::milliseconds(2000));
+		mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaSleeping, sf::Vector2i(3, 4), sf::milliseconds(1400), sf::milliseconds(2000));
 
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 730));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(900, 710));
@@ -214,11 +219,11 @@ void Level_Ship_1::load()
 
 void Level_Ship_1::unload()
 {
-	RMI.unloadResource(Textures::LeifrSitIdle);
-	RMI.unloadResource(Textures::LeifrSitTalk);
+	RMI.unloadResource(Texture::LeifrSitIdle);
+	RMI.unloadResource(Texture::LeifrSitTalk);
 	RMI.unloadResource(Sound::BoatAmbient);
 	RMI.unloadResource(Footsteps::Hardwood);
-	RMI.unloadResource(Textures::IntroScreen);
+	RMI.unloadResource(Texture::IntroScreen);
 	Level::unload();
 }
 

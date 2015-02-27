@@ -50,21 +50,19 @@ std::vector<std::string> getAllObjectsFromFolder(const std::string &directory)
 
 void ObjectHandler::initialize()
 {
+	RMI.loadResource(Font::Font1);
 	std::vector<std::string> objects = getAllObjectsFromFolder(mFolderPath);
 
-	for each (std::string file in objects)
-	{
-		Object* obj = new Object(file, mFolderPath);
+	for each (std::string file in objects){
+		Object* obj = new Object(Font::Font1, file);
 		mObjects[obj->getObjID()] = obj;
 	}
 }
 
 void ObjectHandler::unload()
 {
+	RMI.unloadResource(Font::Font1);
 	for (std::map<std::string, Object*>::const_iterator it = mObjects.begin(); it != mObjects.end(); it++)
-	{
 		it->second->unload();
-	}
 	mObjects.clear();
-
 }

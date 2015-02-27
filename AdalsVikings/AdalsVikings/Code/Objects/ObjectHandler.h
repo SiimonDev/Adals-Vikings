@@ -5,8 +5,6 @@
 
 #define OBHI ObjectHandler::getInstance()
 
-
-
 class ObjectHandler
 {
 public:
@@ -22,6 +20,5 @@ private:
 	void operator=(const ObjectHandler &objHandler);
 
 	std::string mFolderPath;
-
 	std::map<std::string, Object*> mObjects;
 };

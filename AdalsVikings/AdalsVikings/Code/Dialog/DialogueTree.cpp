@@ -117,7 +117,7 @@ void DialogueTree::startDialogue()
 			if (!mNode.attribute("disabled").as_bool() && as_utf8(mNode.name()) == "text")
 			{
 				mName = as_utf8(mNode.attribute("character").as_string());
-				mPrintText.setFont(RMI.getResource(Fonts::DialogWindow));
+				mPrintText.setFont(RMI.getResource(Font::Font2));
 				mPrintText.setCharacterSize(30);
 
 				if (as_utf8(mNode.attribute("turned").as_string()) == "true")
@@ -261,7 +261,7 @@ void DialogueTree::find_AllOptions()
 		{
 			sf::Text text;
 			text.setString(mNode.attribute("choice_text").as_string());
-			text.setFont(RMI.getResource(Fonts::DialogWindow));
+			text.setFont(RMI.getResource(Font::Font2));
 			text.setCharacterSize(30);
 			text.setPosition(100.f, 700.f + 30 * cnt);
 			rectangle.setFillColor(sf::Color(0, 0, 0, 100));
@@ -358,7 +358,7 @@ void DialogueTree::startConverstation()
 				mName = mNode.attribute("character").as_string();
 				disablePrevious();
 				mTimer = mNode.attribute("timer").as_float();
-				mPrintText.setFont(RMI.getResource(Fonts::ActionWheelDescription));
+				mPrintText.setFont(RMI.getResource(Font::Font1));
 				mPrintText.setCharacterSize(30);
 				if (as_utf8(mNode.attribute("turned").as_string()) == "true")
 				{

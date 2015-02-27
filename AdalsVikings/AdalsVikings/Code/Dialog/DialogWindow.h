@@ -9,7 +9,7 @@ class DialogWindow
 {
 public:
 	static void setPosition(sf::Vector2f &pos);
-	static void setFont(Fonts::ID id);
+	static void setFont(Font::ID id);
 	static void setText(std::string text);
 	static void setTextSize(int textSize);
 	static void setTextStyle(sf::Text::Style);

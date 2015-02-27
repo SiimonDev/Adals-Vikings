@@ -1,6 +1,7 @@
 #include "Object.h"
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\KeyboardState.h"
+#include "..\Logics\MouseState.h"
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include <sstream>
@@ -8,10 +9,17 @@
 #include <algorithm>
 #include <vector>
 
-Object::Object(std::string filePath, std::string folderPath) :
-mDocPath(filePath), mFolderPath(folderPath), mCollision(true), debuggMode(false), mScale(1, 1)
+Object::Object(Font::ID font, std::string filePath) :
+mFilePath(filePath), mCollision(true), debuggMode(false), mDisplayNameEnabled(true), mScale(1, 1)
 {
-	readVariablesFromFile();
+	int index = mFilePath.find_last_of("/");
+	mFolderPath = mFilePath.substr(0, index + 1);
+
+	readVariablesFromFile(); 
+
+	mText.setFont(RMI.getResource(font));
+	mText.setString(mName);
+	mTextRect.setFillColor(sf::Color(0, 0, 0, 200));
 }
 
 void Object::load()
@@ -54,11 +62,22 @@ void Object::unload()
 
 void Object::update(sf::Time &frameTime)
 {
+	mDisplayName = false;
+
 	if (KeyboardState::isPressed(sf::Keyboard::F1))
 		debuggMode = (!debuggMode);
 
 	if (mType == ObjectType::Animated)
 		mAnimation.animate(frameTime);
+
+	if (isInside(MouseState::getMousePosition()) && mDisplayNameEnabled)
+	{
+		mDisplayName = true;
+		mText.setPosition(sf::Vector2f(mPosition.x - (mText.getGlobalBounds().width / 2), mPosition.y - (mText.getGlobalBounds().height) - ((mSize.y * mScale.y) / 2)));
+
+		mTextRect.setSize(sf::Vector2f(mText.getGlobalBounds().width + 10, mText.getGlobalBounds().height + 10));
+		mTextRect.setPosition(sf::Vector2f(mPosition.x - (mTextRect.getGlobalBounds().width / 2), mPosition.y - (mTextRect.getGlobalBounds().height / 2) - ((mSize.y * mScale.y) / 2) + 3));
+	}
 }
 
 void Object::render(IndexRenderer &iRenderer)
@@ -78,6 +97,12 @@ void Object::render(IndexRenderer &iRenderer)
 			mRect.setPosition(sf::Vector2f(mPosition.x - (mSize.x / 2), mPosition.y - (mSize.y / 2)));
 			iRenderer.addRectangle(mRect, mIndex);
 		}
+	}
+
+	if (mDisplayName)
+	{
+		iRenderer.addRectangle(mTextRect, mIndex + 1);
+		iRenderer.addText(mText, mIndex + 2);
 	}
 }
 
@@ -122,6 +147,11 @@ void Object::setScaleFromHeight(float height)
 void Object::enableCollision(bool active)
 {
 	mCollision = active;
+}
+
+void Object::enableNameDisplay(bool active)
+{
+	mDisplayNameEnabled = active;
 }
 
 std::string Object::getName()
@@ -233,7 +263,7 @@ bool Object::hasCollision()
 void Object::readVariablesFromFile()
 {
 	////std::cout << "--- LOADING ITEM! ---" << std::endl;
-	std::ifstream itemFile(mDocPath);
+	std::ifstream itemFile(mFilePath);
 	std::string line;
 	while (std::getline(itemFile, line))
 	{

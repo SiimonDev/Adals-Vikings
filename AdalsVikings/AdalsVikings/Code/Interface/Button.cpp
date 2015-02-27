@@ -6,7 +6,7 @@ mText(""), mPosition(0, 0), mDescription(""), mOrigin(ButtonOrigin::UpperLeft), 
 {
 }
 
-void Button::setTextStuff(Fonts::ID fontID, std::string text, std::string description)
+void Button::setTextStuff(Font::ID fontID, std::string text, std::string description)
 {
 	setFont(fontID);
 	setText(text);
@@ -15,27 +15,27 @@ void Button::setTextStuff(Fonts::ID fontID, std::string text, std::string descri
 	setDescriptionSize(24);
 }
 
-Button::Button(Textures::ID texID, sf::Vector2f position) :
+Button::Button(Texture::ID texID, sf::Vector2f position) :
 mText(""), mPosition(position), mDescription(""), mOrigin(ButtonOrigin::UpperLeft), mScale(1, 1), mEnabled(true)
 {
 	setSprites(texID);
 }
 
-Button::Button(Textures::ID texID, Fonts::ID fontID, sf::Vector2f position, std::string description) :
+Button::Button(Texture::ID texID, Font::ID fontID, sf::Vector2f position, std::string description) :
 mText(""), mPosition(position), mDescription(description), mOrigin(ButtonOrigin::UpperLeft), mScale(1, 1), mEnabled(true)
 {
 	setSprites(texID);
 	setTextStuff(fontID, "", mDescription);
 }
 
-Button::Button(Textures::ID texID, Fonts::ID fontID, std::string text, sf::Vector2f position, std::string description) :
+Button::Button(Texture::ID texID, Font::ID fontID, std::string text, sf::Vector2f position, std::string description) :
 mText(text), mPosition(position), mDescription(description), mOrigin(ButtonOrigin::UpperLeft), mScale(1, 1), mEnabled(true)
 {
 	setSprites(texID);
 	setTextStuff(fontID, text, mDescription);
 }
 
-void Button::setSprites(Textures::ID id)
+void Button::setSprites(Texture::ID id)
 {
 	sf::Texture* texture = &RMI.getResource(id);
 	int texWidth = texture->getSize().x;
@@ -160,7 +160,7 @@ void Button::setIndex(int index)
 	mIndex = index;
 }
 
-void Button::setFont(Fonts::ID id)
+void Button::setFont(Font::ID id)
 {
 	mButtonText.setFont(RMI.getResource(id));
 	mDescriptionText.setFont(RMI.getResource(id));

@@ -17,7 +17,7 @@ enum ObjectType
 class Object
 {
 public:
-	Object(std::string filePath, std::string folderPath);
+	Object(Font::ID font, std::string filePath);
 
 	void load();
 	void unload();
@@ -33,6 +33,7 @@ public:
 	void setScaleFromWidth(float width);
 	void setScaleFromHeight(float height);
 	void enableCollision(bool active);
+	void enableNameDisplay(bool active);
 
 	std::string getObjID();
 	std::string getName();
@@ -60,16 +61,16 @@ private:
 
 	std::string mName;
 	std::string mObjectID;
-	std::string mFolderPath;
 	std::string mFileID;
-	std::string mDocPath;
+	std::string mFolderPath;
+	std::string mFilePath;
 	std::string mImagePath;
 
 	Dialog mLookAtDialog, mPickupDialog, mDenyDialog;
 
 	ObjectType mType;
 	Animation mAnimation;
-	Textures::ID mTextureID;
+	sf::RectangleShape mTextRect;
 	sf::RectangleShape mRect;
 	sf::Vector2f mPosition;
 	sf::Vector2f mInteractionPosition;
@@ -77,10 +78,13 @@ private:
 	sf::Vector2i mSize;
 	sf::Sprite mSprite;
 	sf::IntRect mCollisionRect;
+	sf::Text mText;
 
 	bool debuggMode;
 	bool mCollision;
 	bool mCanPickUp;
+	bool mDisplayName;
+	bool mDisplayNameEnabled;
 	int mIndex;
 
 	std::map<std::string, Dialog> mInteractDialogs;

@@ -30,11 +30,11 @@ void LoadingScreen::initialize()
 	mThread = ThreadPtr(new std::thread(&LoadingScreen::runTask, this));
 	mThread->detach();
 }
+
 LoadingScreen::~LoadingScreen()
 {
 	terminate();
 }
-
 
 bool LoadingScreen::update(sf::Time frameTime)
 {
@@ -96,7 +96,7 @@ void LoadingScreen::runTask()
 				MHI.unload(MenuID::MainMenu);
 				MHI.load(MenuID::PauseMenu);
 				LVLMI.load();
-				LVLMI.loadAct1();
+				LVLMI.loadBoatScene();
 			}
 			else if (mTask == LoadTask::LoadMenu)
 			{

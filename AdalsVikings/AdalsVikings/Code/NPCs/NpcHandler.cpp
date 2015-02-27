@@ -22,8 +22,8 @@ void NpcHandler::load()
 	NpcPtr Seagull(new Npc());
 
 	Valdis->setName("Valdis");
-	Valdis->setIdleAnimation(Textures::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
-	Valdis->SetTalkAnimation(Textures::ValdisTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
+	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
+	Valdis->SetTalkAnimation(Texture::ValdisTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 	Valdis->setPosition(sf::Vector2f(1250, 723));
 	Valdis->setInteractionPosition(sf::Vector2f(1153, 726));
 	Valdis->setDialogue("Valdis");
@@ -34,8 +34,8 @@ void NpcHandler::load()
 	Valdis->setFlip(false);
 
 	Leifr->setName("Leifr");
-	Leifr->setIdleAnimation(Textures::LeifrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
-	Leifr->SetTalkAnimation(Textures::LeifrTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
+	Leifr->setIdleAnimation(Texture::LeifrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+	Leifr->SetTalkAnimation(Texture::LeifrTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
 	Leifr->setPosition(sf::Vector2f(460, 727));
 	Leifr->setInteractionPosition(sf::Vector2f(650, 725));
 	Leifr->setColor(sf::Color(72, 209, 204));
@@ -46,8 +46,8 @@ void NpcHandler::load()
 	Leifr->setFlip(false);
 
 	Finnr->setName("Finnr");
-	Finnr->setIdleAnimation(Textures::FinnrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(8));
-	Finnr->SetTalkAnimation(Textures::FinnrTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
+	Finnr->setIdleAnimation(Texture::FinnrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(8));
+	Finnr->SetTalkAnimation(Texture::FinnrTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
 	Finnr->setPosition(sf::Vector2f(580, 714));
 	Finnr->setInteractionPosition(sf::Vector2f(650, 725));
 	Finnr->setColor(sf::Color(173, 216, 230));
@@ -58,8 +58,8 @@ void NpcHandler::load()
 	Finnr->setFlip(false);
 
 	Brynja->setName("Brynja");
-	Brynja->setIdleAnimation(Textures::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(5));
-	Brynja->SetTalkAnimation(Textures::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(600), sf::Time::Zero);
+	Brynja->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(5));
+	Brynja->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(600), sf::Time::Zero);
 	Brynja->setColor(sf::Color(219, 0, 0));
 	Brynja->setDialogue("Brynja");
 	Brynja->setIndex(14);
@@ -70,8 +70,8 @@ void NpcHandler::load()
 	Brynja->setFlip(false);
 
 	Alfr->setName("Alfr");
-	Alfr->setIdleAnimation(Textures::AlfrIdle, sf::Vector2i(1, 1), sf::milliseconds(10000), sf::seconds(9999));
-	Alfr->SetTalkAnimation(Textures::AlfrTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
+	Alfr->setIdleAnimation(Texture::AlfrIdle, sf::Vector2i(1, 1), sf::milliseconds(10000), sf::seconds(9999));
+	Alfr->SetTalkAnimation(Texture::AlfrTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
 	Alfr->setPosition(sf::Vector2f(290, 870));
 	Alfr->setInteractionPosition(sf::Vector2f(380, 885));
 	Alfr->setColor(sf::Color(201, 114, 27));
@@ -82,8 +82,8 @@ void NpcHandler::load()
 	Alfr->setFlip(false);
 
 	Dagny->setName("Dagny");
-	Dagny->setIdleAnimation(Textures::DagnyIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(4));
-	Dagny->SetTalkAnimation(Textures::DagnyTalk, sf::Vector2i(4, 1), sf::milliseconds(350), sf::Time::Zero);
+	Dagny->setIdleAnimation(Texture::DagnyIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(4));
+	Dagny->SetTalkAnimation(Texture::DagnyTalk, sf::Vector2i(4, 1), sf::milliseconds(350), sf::Time::Zero);
 	Dagny->setPosition(sf::Vector2f(1565, 705));
 	Dagny->setInteractionPosition(sf::Vector2f(1680, 690));
 	Dagny->setColor(sf::Color(223, 42, 193));
@@ -94,8 +94,8 @@ void NpcHandler::load()
 	Dagny->setFlip(false);
 
 	Brandr->setName("Brandr");
-	Brandr->setIdleAnimation(Textures::BrandrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(3.7));
-	Brandr->SetTalkAnimation(Textures::BrandrTalk, sf::Vector2i(6, 1), sf::milliseconds(750), sf::Time::Zero);
+	Brandr->setIdleAnimation(Texture::BrandrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(3.7));
+	Brandr->SetTalkAnimation(Texture::BrandrTalk, sf::Vector2i(6, 1), sf::milliseconds(750), sf::Time::Zero);
 	Brandr->setPosition(sf::Vector2f(800, 800));
 	Brandr->setInteractionPosition(sf::Vector2f(890, 840));
 	Brandr->setColor(sf::Color(255, 215, 0));
@@ -106,8 +106,8 @@ void NpcHandler::load()
 	Brandr->setFlip(true);
 
 	Yngvarr->setName("Yngvarr");
-	Yngvarr->setIdleAnimation(Textures::YngvarrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5.2));
-	Yngvarr->SetTalkAnimation(Textures::YngvarrTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
+	Yngvarr->setIdleAnimation(Texture::YngvarrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5.2));
+	Yngvarr->SetTalkAnimation(Texture::YngvarrTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
 	Yngvarr->setPosition(sf::Vector2f(900, 820));
 	Yngvarr->setInteractionPosition(sf::Vector2f(1015, 832));
 	Yngvarr->setColor(sf::Color(176, 196, 222));
@@ -118,8 +118,8 @@ void NpcHandler::load()
 	Yngvarr->setFlip(false);
 
 	Seagull->setName("Bosse");
-	Seagull->setIdleAnimation(Textures::SeagullIdle, sf::Vector2i(4, 2), sf::milliseconds(800), sf::seconds(7));
-	Seagull->SetTalkAnimation(Textures::SeagullTalk, sf::Vector2i(2, 1), sf::milliseconds(650), sf::Time::Zero);
+	Seagull->setIdleAnimation(Texture::SeagullIdle, sf::Vector2i(4, 2), sf::milliseconds(800), sf::seconds(7));
+	Seagull->SetTalkAnimation(Texture::SeagullTalk, sf::Vector2i(2, 1), sf::milliseconds(650), sf::Time::Zero);
 	Seagull->setPosition(sf::Vector2f(1800, 460));
 	Seagull->setInteractionPosition(sf::Vector2f(1650, 500));
 	Seagull->setColor(sf::Color(176, 196, 222));

@@ -104,6 +104,7 @@ void InvTile::update(sf::Time frameTime)
 			mScale.y = (mSize.y / objSize.y);
 			mScale.x = mScale.y;
 		}
+		mObject->update(frameTime);
 	}
 
 	if (isInside(MouseState::getMousePosition()))

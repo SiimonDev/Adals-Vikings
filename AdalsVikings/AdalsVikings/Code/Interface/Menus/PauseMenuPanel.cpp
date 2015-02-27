@@ -11,19 +11,19 @@ mMenuPanels(activeMenuPanels)
 
 void PauseMenuPanel::load()
 {
-	RMI.loadResource(Fonts::MenuButtons);
-	RMI.loadResource(Textures::PauseMenuResumeButton);
-	RMI.loadResource(Textures::PauseMenuSaveButton);
-	RMI.loadResource(Textures::PauseMenuOptionsButton);
-	RMI.loadResource(Textures::PauseMenuMainMenuButton);
-	RMI.loadResource(Textures::PauseMenuExitButton);
+	RMI.loadResource(Font::Font1);
+	RMI.loadResource(Texture::PauseMenuResumeButton);
+	RMI.loadResource(Texture::PauseMenuSaveButton);
+	RMI.loadResource(Texture::PauseMenuOptionsButton);
+	RMI.loadResource(Texture::PauseMenuMainMenuButton);
+	RMI.loadResource(Texture::PauseMenuExitButton);
 
-	RMI.loadResource(Textures::PauseMenuBackground);
-	mBackground.setTexture(RMI.getResource(Textures::PauseMenuBackground));
+	RMI.loadResource(Texture::PauseMenuBackground);
+	mBackground.setTexture(RMI.getResource(Texture::PauseMenuBackground));
 	mBackground.setOrigin(mBackground.getTexture()->getSize().x / 2, mBackground.getTexture()->getSize().y / 2);
 	mBackground.setPosition(960, 540);
 
-	resumeButton = Button(Textures::PauseMenuResumeButton, Fonts::MenuButtons, sf::Vector2f(), "Resume the game");
+	resumeButton = Button(Texture::PauseMenuResumeButton, Font::Font1, sf::Vector2f(), "Resume the game");
 	resumeButton.setPosition(sf::Vector2f(960, 300));
 	resumeButton.setOrigin(ButtonOrigin::Center);
 	resumeButton.setTextStyle(sf::Text::Bold);
@@ -31,7 +31,7 @@ void PauseMenuPanel::load()
 	resumeButton.setDescriptionPosition(sf::Vector2f(200, 0));
 	resumeButton.setIndex(mIndex + 1);
 
-	saveButton = Button(Textures::PauseMenuSaveButton, Fonts::MenuButtons, sf::Vector2f(), "Resume the game");
+	saveButton = Button(Texture::PauseMenuSaveButton, Font::Font1, sf::Vector2f(), "Resume the game");
 	saveButton.setPosition(sf::Vector2f(960, 433));
 	saveButton.setOrigin(ButtonOrigin::Center);
 	saveButton.setTextStyle(sf::Text::Bold);
@@ -40,7 +40,7 @@ void PauseMenuPanel::load()
 	saveButton.setIndex(mIndex + 1);
 	saveButton.setEnabled(false);
 
-	optionButton = Button(Textures::PauseMenuOptionsButton, Fonts::MenuButtons, sf::Vector2f(), "Go to options menu");
+	optionButton = Button(Texture::PauseMenuOptionsButton, Font::Font1, sf::Vector2f(), "Go to options menu");
 	optionButton.setPosition(sf::Vector2f(960, 569));
 	optionButton.setOrigin(ButtonOrigin::Center);
 	optionButton.setTextStyle(sf::Text::Bold);
@@ -49,7 +49,7 @@ void PauseMenuPanel::load()
 	optionButton.setIndex(mIndex + 1);
 	optionButton.setEnabled(false);
 
-	mainMenuButton = Button(Textures::PauseMenuMainMenuButton, Fonts::MenuButtons, sf::Vector2f(), "Back to main menu");
+	mainMenuButton = Button(Texture::PauseMenuMainMenuButton, Font::Font1, sf::Vector2f(), "Back to main menu");
 	mainMenuButton.setPosition(sf::Vector2f(960, 702));
 	mainMenuButton.setOrigin(ButtonOrigin::Center);
 	mainMenuButton.setTextStyle(sf::Text::Bold);
@@ -57,7 +57,7 @@ void PauseMenuPanel::load()
 	mainMenuButton.setDescriptionPosition(sf::Vector2f(200, 0));
 	mainMenuButton.setIndex(mIndex + 1);
 
-	exitButton = Button(Textures::PauseMenuExitButton, Fonts::MenuButtons, sf::Vector2f(), "Exit the game");
+	exitButton = Button(Texture::PauseMenuExitButton, Font::Font1, sf::Vector2f(), "Exit the game");
 	exitButton.setPosition(sf::Vector2f(960, 840));
 	exitButton.setOrigin(ButtonOrigin::Center);
 	exitButton.setTextStyle(sf::Text::Bold);
@@ -68,14 +68,14 @@ void PauseMenuPanel::load()
 
 void PauseMenuPanel::unload()
 {
-	RMI.unloadResource(Fonts::MenuButtons);
-	RMI.unloadResource(Textures::PauseMenuBackground);
+	RMI.unloadResource(Font::Font1);
+	RMI.unloadResource(Texture::PauseMenuBackground);
 
-	RMI.unloadResource(Textures::PauseMenuResumeButton);
-	RMI.unloadResource(Textures::PauseMenuSaveButton);
-	RMI.unloadResource(Textures::PauseMenuOptionsButton);
-	RMI.unloadResource(Textures::PauseMenuMainMenuButton);
-	RMI.unloadResource(Textures::PauseMenuExitButton);
+	RMI.unloadResource(Texture::PauseMenuResumeButton);
+	RMI.unloadResource(Texture::PauseMenuSaveButton);
+	RMI.unloadResource(Texture::PauseMenuOptionsButton);
+	RMI.unloadResource(Texture::PauseMenuMainMenuButton);
+	RMI.unloadResource(Texture::PauseMenuExitButton);
 }
 
 void PauseMenuPanel::update(sf::Time frameTime)

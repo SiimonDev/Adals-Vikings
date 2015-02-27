@@ -20,7 +20,7 @@ void DialogWindow::setPosition(sf::Vector2f &pos)
 {
 	mPosition = sf::Vector2f(pos.x - mText.getGlobalBounds().width / 2, pos.y - pos.y / 10);
 }
-void DialogWindow::setFont(Fonts::ID id)
+void DialogWindow::setFont(Font::ID id)
 {
 	mText.setFont(RMI.getResource(id));
 }
@@ -58,13 +58,13 @@ void DialogWindow::load()
 	setBackgroundSize(sf::Vector2f(700, 250));
 	setBackgroundColor(sf::Color(0, 0, 0, 200));
 
-	RMI.loadResource(Fonts::DialogWindow);
-	mText.setFont(RMI.getResource(Fonts::DialogWindow));
+	RMI.loadResource(Font::Font2);
+	mText.setFont(RMI.getResource(Font::Font2));
 }
 
 void DialogWindow::unload()
 {
-	RMI.unloadResource(Fonts::DialogWindow);
+	RMI.unloadResource(Font::Font2);
 }
 
 void DialogWindow::displayDialog(Dialog &dialog)
