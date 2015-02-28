@@ -7,5 +7,5 @@
 *deny: "I just... no. " ~1,5
 *denywith: $Dagny$ "I'm not suicidal." ~1,5; $Alfr$ "Like he'd help." ~1,5; $Valdis$ "I don't want to disturb her." ~1,5; $Leifr$ "" ~0; 
 *combine: 
-*interact: 
+*interact: $Leifr$ "" ~0; 
 *texture: "img_bucket_id.png"

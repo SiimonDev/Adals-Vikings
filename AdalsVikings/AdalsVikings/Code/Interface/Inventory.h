@@ -24,6 +24,7 @@ public:
 	bool isInside(sf::Vector2i &pos);
 	bool hasItemInInventory(std::string objID);
 
+	std::string getSnappedObjectID();
 	std::string getDroppedObjectID();
 
 private:

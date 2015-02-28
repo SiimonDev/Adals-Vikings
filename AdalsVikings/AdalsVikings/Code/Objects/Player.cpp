@@ -88,15 +88,9 @@ void Player::update(sf::Time &frameTime)
 
 	mInventory.update(frameTime);
 
-	if (mAnimationStyle == AnimationStyle::PlayerPickup && mPlayerAnimation.getStopped())
-	{
-		//std::cout << "PICK IT  UP!!" << std::endl;
+	if ((mAnimationStyle == AnimationStyle::PlayerPickup || mAnimationStyle == AnimationStyle::PlayerStop) && mPlayerAnimation.getStopped())
 		setAnimationStyle(AnimationType::Idle);
-	}
-	if (mAnimationStyle == AnimationStyle::PlayerStop && mPlayerAnimation.getStopped())
-	{
-		setAnimationStyle(AnimationType::Idle);
-	}
+
 	// Animate the player
 	mPlayerAnimation.animate(frameTime);
 
@@ -218,6 +212,10 @@ sf::Sprite Player::getSprite()
 sf::Vector2f Player::getPosition()
 {
 	return mPosition;
+}
+std::string Player::getSnappedObjectID()
+{
+	return mInventory.getSnappedObjectID();
 }
 std::string Player::getDroppedObjectID()
 { 
