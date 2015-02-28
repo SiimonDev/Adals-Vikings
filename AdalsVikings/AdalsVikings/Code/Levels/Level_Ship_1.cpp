@@ -86,7 +86,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 				mNpcs["Brynja"]->setscale(sf::Vector2f(0.5f, 0.5f));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
 				mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
-				mNpcs["Brynja"]->UpdateAnimationStyle();
+				mNpcs["Brynja"]->updateAnimationStyle();
 				mNpcs["Brynja"]->setFlip(true);
 				RMI.unloadResource(Texture::BrynjaSleeping);
 

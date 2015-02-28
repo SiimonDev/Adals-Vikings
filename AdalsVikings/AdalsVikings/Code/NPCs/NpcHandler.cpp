@@ -11,15 +11,16 @@ NpcHandler::NpcHandler()
 
 void NpcHandler::load()
 {
-	NpcPtr Valdis(new Npc());
-	NpcPtr Leifr(new Npc());
-	NpcPtr Finnr(new Npc());
-	NpcPtr Brynja(new Npc());
-	NpcPtr Alfr(new Npc());
-	NpcPtr Dagny(new Npc());
-	NpcPtr Brandr(new Npc());
-	NpcPtr Yngvarr(new Npc());
-	NpcPtr Seagull(new Npc());
+	RMI.loadResource(Font::Font1);
+	NpcPtr Valdis(new Npc(Font::Font1));
+	NpcPtr Leifr(new Npc(Font::Font1));
+	NpcPtr Finnr(new Npc(Font::Font1));
+	NpcPtr Brynja(new Npc(Font::Font1));
+	NpcPtr Alfr(new Npc(Font::Font1));
+	NpcPtr Dagny(new Npc(Font::Font1));
+	NpcPtr Brandr(new Npc(Font::Font1));
+	NpcPtr Yngvarr(new Npc(Font::Font1));
+	NpcPtr Seagull(new Npc(Font::Font1));
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -142,6 +143,7 @@ void NpcHandler::load()
 
 void NpcHandler::unload()
 {
+	RMI.unloadResource(Font::Font1);
 	// Unload NPCs
 	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcMap.begin(); it != mNpcMap.end(); it++)
 	{

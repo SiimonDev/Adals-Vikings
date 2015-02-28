@@ -2,11 +2,14 @@
 #include "..\Dialog\DialogHandler.h"
 #include <iostream>
 
-Npc::Npc()
+Npc::Npc(Font::ID id)
 : mName("Hero")
 , mPosition(sf::Vector2f(0, 0))
 , mFlip(false)
+, mDisplayDescription(false)
 {
+	mDescription.setFont(RMI.getResource(id));
+	mTextRect.setFillColor(sf::Color(0, 0, 0, 200));
 }
 
 void Npc::render(IndexRenderer &iRenderer)
@@ -15,11 +18,25 @@ void Npc::render(IndexRenderer &iRenderer)
 	mNpcAnimation.setScaleFromHeight(mProportions.y * mScale.y);
 	mNpcAnimation.setPosition(mPosition);
 	mNpcAnimation.render(iRenderer);
+
+	if (mDisplayDescription)
+	{
+		iRenderer.addRectangle(mTextRect, mNpcAnimation.getIndex() + 1);
+		iRenderer.addText(mDescription, mNpcAnimation.getIndex() + 2);
+	}
 }
 
 void Npc::update(sf::Time &frametime)
 {
 	mNpcAnimation.animate(frametime);
+
+	if (mDisplayDescription)
+	{
+		mDescription.setPosition(sf::Vector2f(mPosition.x - (mDescription.getGlobalBounds().width / 2), mPosition.y - (mDescription.getGlobalBounds().height) - (mSize.y * mScale.y)));
+
+		mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 10, mDescription.getGlobalBounds().height + 10));
+		mTextRect.setPosition(sf::Vector2f(mPosition.x - (mTextRect.getGlobalBounds().width / 2), mPosition.y - (mTextRect.getGlobalBounds().height / 2) - (mSize.y * mScale.y)));
+	}
 }
 
 void Npc::load()
@@ -215,13 +232,21 @@ void Npc::setDialogue(std::string dialogue)
 {
 	mDialogue = dialogue;
 }
+void Npc::setDescription(std::string description)
+{
+	mDescription.setString(description);
+}
+void Npc::enableDescription(bool active)
+{
+	mDisplayDescription = active;
+}
 std::string Npc::getDialogueString()
 {
 	std::string string = DialogHandler::getDialogue(mDialogue).getPrintText().getString();
 	return string;
 }
 
-void Npc::UpdateAnimationStyle()
+void Npc::updateAnimationStyle()
 {
 	mAnimation = AnimationState::Update;
 	setAnimationStyle("Idle");

@@ -14,10 +14,11 @@ namespace AnimationState
 		Update
 	};
 }
+
 class Npc
 {
 public:
-	Npc();
+	Npc(Font::ID id);
 	
 	virtual void render(IndexRenderer &iRenderer);
 	virtual void update(sf::Time &frametime);
@@ -39,8 +40,10 @@ public:
 	void setAnimationStyle(std::string style);
 	void setColor(sf::Color color);
 	void setDialogue(std::string dialogue);
+	void setDescription(std::string description);
+	void enableDescription(bool active);
 	void setInteractionPosition(sf::Vector2f &interactpos);
-	void UpdateAnimationStyle();
+	void updateAnimationStyle();
 
 	bool isInside(sf::Vector2i &pos);
 	bool getActiveConversation();
@@ -70,10 +73,12 @@ private:
 	sf::Vector2i mSize;
 	sf::IntRect mCollisionRect;
 	sf::IntRect mIndexRect;
+	sf::Text mDescription;
+	sf::RectangleShape mTextRect;
 
 	AnimationState::ID mAnimation;
 	sf::Color mColor;
 
 	bool mFlip, mUpdateAnimation;
+	bool mDisplayDescription;
 };
-

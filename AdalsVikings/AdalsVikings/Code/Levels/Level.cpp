@@ -163,6 +163,16 @@ void Level::updateNPCs(sf::Time frameTime)
 				mPlayer.walkPath(path);
 			}
 		}
+		else
+		{
+			if (it->second->isInside(MouseState::getMousePosition()))
+			{
+				it->second->setDescription(it->second->getName());
+				it->second->enableDescription(true);
+			}
+			else
+				it->second->enableDescription(false);
+		}
 	}
 	
 	if (mWalkToNPC && mPlayer.isDestinationReached())
@@ -217,7 +227,6 @@ void Level::updateDialog(sf::Time frameTime)
 						iz->second->getAnimation().getSprite().getGlobalBounds().width / 2,
 						iz->second->getAnimation().getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
 					it->second->setTextColor(iz->second->getColor());
-					//it->second->enableDraw(true);
 				}
 				else if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() == "")
 				{
@@ -248,7 +257,6 @@ void Level::updateDialog(sf::Time frameTime)
 												mPlayer.getSprite().getGlobalBounds().width / 2,
 												mPlayer.getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
 					it->second->setTextColor(sf::Color::White);
-					//it->second->enableDraw(true);
 				}
 				else if (it->second->getCharacter() != iz->second->getName() && it->second->getCharacter() != mPlayer.getName())
 				{

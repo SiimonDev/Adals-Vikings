@@ -227,7 +227,7 @@ void Level_Beach::introCutscene(sf::Time &frameTime)
 				mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Valdis"]->setPosition(sf::Vector2f(1600, 720));
 				mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(1550, 720));
-				mNpcs["Valdis"]->UpdateAnimationStyle();
+				mNpcs["Valdis"]->updateAnimationStyle();
 
 				mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
 				mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
@@ -262,43 +262,43 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 				mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(580, 760));
 				mNpcs["Brynja"]->setIndex(4);
-				mNpcs["Brynja"]->UpdateAnimationStyle();
+				mNpcs["Brynja"]->updateAnimationStyle();
 
 				mNpcs["Brandr"]->setFlip(true);
 				mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Brandr"]->setPosition(sf::Vector2f(600, 800));
 				mNpcs["Brandr"]->setIndex(5);
-				mNpcs["Brandr"]->UpdateAnimationStyle();
+				mNpcs["Brandr"]->updateAnimationStyle();
 
 				mNpcs["Valdis"]->setFlip(false);
 				mNpcs["Valdis"]->setPosition(sf::Vector2f(700, 680));
 				mNpcs["Valdis"]->setIndex(3);
-				mNpcs["Valdis"]->UpdateAnimationStyle();
+				mNpcs["Valdis"]->updateAnimationStyle();
 
 				mNpcs["Finnr"]->setFlip(false);
 				mNpcs["Finnr"]->setPosition(sf::Vector2f(720, 720));
 				mNpcs["Finnr"]->setIndex(4);
-				mNpcs["Finnr"]->UpdateAnimationStyle();
+				mNpcs["Finnr"]->updateAnimationStyle();
 
 				mNpcs["Leifr"]->setFlip(false);
 				mNpcs["Leifr"]->setPosition(sf::Vector2f(740, 760));
 				mNpcs["Leifr"]->setIndex(5);
-				mNpcs["Leifr"]->UpdateAnimationStyle();
+				mNpcs["Leifr"]->updateAnimationStyle();
 
 				mNpcs["Alfr"]->setFlip(false);
 				mNpcs["Alfr"]->setPosition(sf::Vector2f(740, 840));
 				mNpcs["Alfr"]->setIndex(7);
-				mNpcs["Alfr"]->UpdateAnimationStyle();
+				mNpcs["Alfr"]->updateAnimationStyle();
 
 				mNpcs["Yngvarr"]->setFlip(false);
 				mNpcs["Yngvarr"]->setPosition(sf::Vector2f(720, 880));
 				mNpcs["Yngvarr"]->setIndex(8);
-				mNpcs["Yngvarr"]->UpdateAnimationStyle();
+				mNpcs["Yngvarr"]->updateAnimationStyle();
 
 				mNpcs["Dagny"]->setFlip(false);
 				mNpcs["Dagny"]->setPosition(sf::Vector2f(700, 920));
 				mNpcs["Dagny"]->setIndex(9);
-				mNpcs["Dagny"]->UpdateAnimationStyle();
+				mNpcs["Dagny"]->updateAnimationStyle();
 
 				mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
 				mTileMap.setIndexOnMap(mNpcs["Leifr"]->getIndexRect(), mNpcs["Leifr"]->getIndex() - 1);
