@@ -1,6 +1,5 @@
 #include "DialogHandler.h"
 #include <fstream>
-#include <iostream>
 
 static std::ifstream instream;
 static std::map<std::string, DialogueTreePtr> mDialogueMap;
