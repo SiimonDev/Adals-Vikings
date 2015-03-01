@@ -32,8 +32,9 @@ public:
 	void setScale(sf::Vector2f &scale);
 	void setScaleFromWidth(float width);
 	void setScaleFromHeight(float height);
+	void setDescription(std::string description);
 	void enableCollision(bool active);
-	void enableNameDisplay(bool active);
+	void enableDescription(bool active);
 
 	std::string getObjID();
 	std::string getName();
@@ -78,13 +79,12 @@ private:
 	sf::Vector2i mSize;
 	sf::Sprite mSprite;
 	sf::IntRect mCollisionRect;
-	sf::Text mText;
+	sf::Text mDescription;
 
 	bool debuggMode;
 	bool mCollision;
 	bool mCanPickUp;
-	bool mDisplayName;
-	bool mDisplayNameEnabled;
+	bool mDisplayDescription;
 	int mIndex;
 
 	std::map<std::string, Dialog> mInteractDialogs;

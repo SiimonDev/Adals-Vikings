@@ -14,11 +14,13 @@ Level::Level(Player& player, ActionWheel &ActionWheel)
 	mActionWheel = &ActionWheel;
 }
 
-void Level::updateObjectActionWheel()
+void Level::updateObjects(sf::Time frameTime)
 {
-	if (mActionWheel->isButtonSelected())
+	// Object update functions
+	for (int i = 0; i < mObjects.size(); i++)
 	{
-		for (int i = 0; i < mObjects.size(); i++)
+		mObjects[i]->update(frameTime);
+		if (mActionWheel->isButtonSelected())
 		{
 			if (mObjects[i]->isInside(sf::Vector2i(mActionWheel->getPosition())))
 			{
@@ -36,11 +38,9 @@ void Level::updateObjectActionWheel()
 				Path path = PathFinder::getPath(mPlayer.getPosition(), interactPos);
 				mPlayer.walkPath(path);
 			}
+
 		}
-	}
-	else if (mPlayer.getDroppedObjectID() != "")
-	{
-		for (int i = 0; i < mObjects.size(); i++)
+		else if (mPlayer.getDroppedObjectID() != "")
 		{
 			if (mObjects[i]->isInside(MouseState::getMousePosition()))
 			{
@@ -55,7 +55,22 @@ void Level::updateObjectActionWheel()
 				mPlayer.walkPath(path);
 			}
 		}
+		else
+		{
+			if (mObjects[i]->isInside(MouseState::getMousePosition()))
+			{
+				mObjects[i]->enableDescription(true);
+				if (mPlayer.getSnappedObjectID() != "")
+					mObjects[i]->setDescription("Use " + OBHI.getObject(mPlayer.getSnappedObjectID()).getName() + " on " + mObjects[i]->getName());
+				else
+					mObjects[i]->setDescription(mObjects[i]->getName());
+			}
+			else
+				mObjects[i]->enableDescription(false);
+		}
 	}
+
+	// Walk to object functions
 	if (mWalkToObject && mPlayer.isDestinationReached())
 	{
 		if (mPlayer.getIntention() == Intention::Look)
@@ -124,7 +139,6 @@ void Level::updateObjectActionWheel()
 	}
 	mActionWheel->update();
 }
-
 void Level::updateNPCs(sf::Time frameTime)
 {
 	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
@@ -172,7 +186,7 @@ void Level::updateNPCs(sf::Time frameTime)
 			{
 				it->second->enableDescription(true);
 				if (mPlayer.getSnappedObjectID() != "")
-					it->second->setDescription("Use " + OBHI.getObject(mPlayer.getSnappedObjectID()).getName() + " on " + it->second->getName());
+					it->second->setDescription("Give " + OBHI.getObject(mPlayer.getSnappedObjectID()).getName() + " to " + it->second->getName());
 				else
 					it->second->setDescription(it->second->getName());
 			}
@@ -233,7 +247,6 @@ void Level::updateNPCs(sf::Time frameTime)
 		mWalkToNPC = false;
 	}
 }
-
 void Level::updateDialog(sf::Time frameTime)
 {
 	for (std::map<std::string, DialogueTreePtr>::const_iterator it = DialogHandler::getDialogues().begin(); it != DialogHandler::getDialogues().end(); it++)
@@ -314,14 +327,10 @@ void Level::update(sf::Time &frameTime)
 	checkEvents();
 	setDialogPosition();
 
-	// Upate all the objects
-	for each (Object* object in mObjects)
-		object->update(frameTime);
-
 	if (!mIsInConversation && !mOldIsInConversation && FadeI.getFaded())
 	{
 		mPlayer.move(frameTime);
-		updateObjectActionWheel();
+		updateObjects(frameTime);
 	}
 	mOldIsInConversation = mIsInConversation;
 
@@ -531,7 +540,7 @@ void Level::unload()
 		it->second->unload();
 	mNpcs.clear();
 
-	////Unload Portals
+	// Unload Portals
 	mPortals.clear();
 	
 	// Unload and delete all the objects
@@ -564,11 +573,6 @@ void Level::setDialogPosition()
 TileMap &Level::getTileMap()
 {
 	return mTileMap;
-}
-
-Level::~Level()
-{
-
 }
 
 void Level::setLoaded(bool value)

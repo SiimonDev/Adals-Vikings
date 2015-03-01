@@ -10,15 +10,15 @@
 #include <vector>
 
 Object::Object(Font::ID font, std::string filePath) :
-mFilePath(filePath), mCollision(true), debuggMode(false), mDisplayNameEnabled(true), mScale(1, 1)
+mFilePath(filePath), mCollision(true), debuggMode(false), mDisplayDescription(false), mScale(1, 1)
 {
 	int index = mFilePath.find_last_of("/");
 	mFolderPath = mFilePath.substr(0, index + 1);
 
 	readVariablesFromFile(); 
 
-	mText.setFont(RMI.getResource(font));
-	mText.setString(mName);
+	mDescription.setFont(RMI.getResource(font));
+	mDescription.setString(mName);
 	mTextRect.setFillColor(sf::Color(0, 0, 0, 200));
 }
 
@@ -62,20 +62,17 @@ void Object::unload()
 
 void Object::update(sf::Time &frameTime)
 {
-	mDisplayName = false;
-
 	if (KeyboardState::isPressed(sf::Keyboard::F1))
 		debuggMode = (!debuggMode);
 
 	if (mType == ObjectType::Animated)
 		mAnimation.animate(frameTime);
 
-	if (isInside(MouseState::getMousePosition()) && mDisplayNameEnabled)
+	if (mDisplayDescription)
 	{
-		mDisplayName = true;
-		mText.setPosition(sf::Vector2f(mPosition.x - (mText.getGlobalBounds().width / 2), mPosition.y - (mText.getGlobalBounds().height) - ((mSize.y * mScale.y) / 2)));
+		mDescription.setPosition(sf::Vector2f(mPosition.x - (mDescription.getGlobalBounds().width / 2), mPosition.y - (mDescription.getGlobalBounds().height) - ((mSize.y * mScale.y) / 2)));
 
-		mTextRect.setSize(sf::Vector2f(mText.getGlobalBounds().width + 10, mText.getGlobalBounds().height + 10));
+		mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 10, mDescription.getGlobalBounds().height + 10));
 		mTextRect.setPosition(sf::Vector2f(mPosition.x - (mTextRect.getGlobalBounds().width / 2), mPosition.y - (mTextRect.getGlobalBounds().height / 2) - ((mSize.y * mScale.y) / 2) + 3));
 	}
 }
@@ -99,10 +96,10 @@ void Object::render(IndexRenderer &iRenderer)
 		}
 	}
 
-	if (mDisplayName)
+	if (mDisplayDescription)
 	{
 		iRenderer.addRectangle(mTextRect, mIndex + 1);
-		iRenderer.addText(mText, mIndex + 2);
+		iRenderer.addText(mDescription, mIndex + 2);
 	}
 }
 
@@ -144,14 +141,19 @@ void Object::setScaleFromHeight(float height)
 	mScale.x = mScale.y;
 }
 
+void Object::setDescription(std::string description)
+{
+	mDescription.setString(description);
+}
+
 void Object::enableCollision(bool active)
 {
 	mCollision = active;
 }
 
-void Object::enableNameDisplay(bool active)
+void Object::enableDescription(bool active)
 {
-	mDisplayNameEnabled = active;
+	mDisplayDescription = active;
 }
 
 std::string Object::getName()
