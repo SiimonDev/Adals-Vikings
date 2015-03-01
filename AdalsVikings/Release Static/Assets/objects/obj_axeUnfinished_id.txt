@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $axeUnfinished$
+*Name: axeUnfinished
+*ispickupable: False
+*pickup: "It's good... but not finished. I'll need to fasten it with something." ~2,0
+*lookat: "This is going to fall apart any minute now... I have to fasten it with something." ~1,5
+*deny: "It might be sharp, but it'll fall apart if I were to swing it." ~2,0
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_axeUnfinished_id.png"

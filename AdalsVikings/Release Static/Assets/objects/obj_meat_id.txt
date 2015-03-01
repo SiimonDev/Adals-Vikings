@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $meat$
+*Name: meat
+*ispickupable: True
+*pickup: "I'm not really hungry... but sure." ~2,0
+*lookat: "Juicy meat. It's suprisingly fresh." ~2,0
+*deny: "I don't think so." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_meat_id.png"

@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $flowers$
+*Name: Flowers
+*ispickupable: True
+*pickup: "I don't think that Jacob guy would like that." ~3,5
+*lookat: "That's some pretty flowers." ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: Y:

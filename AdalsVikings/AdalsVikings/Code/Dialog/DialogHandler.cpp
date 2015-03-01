@@ -47,12 +47,24 @@ void DialogHandler::load(std::string levelFolder)
 	instream.close();
 
 }
-void DialogHandler::unload()
+void DialogHandler::unload(std::string levelFolder)
 {
-	for (std::map<std::string, DialogueTreePtr>::const_iterator it = mDialogueMap.begin(); it != mDialogueMap.end(); it++)
-		it->second->unload();
-	
-	mDialogueMap.clear();
+	instream.open(levelFolder);
+
+	while (!instream.eof())
+	{
+		std::string id, filepath;
+		instream >> id;
+		instream >> filepath;
+
+		if (id != "" || filepath != "")
+		{
+
+			mDialogueMap.erase(id);
+		}
+	}
+
+	instream.close();
 }
 
 DialogueTree &DialogHandler::getDialogue(std::string id)

@@ -14,5 +14,6 @@ public:
 	void changeLevel();
 	void checkInteractEvents();
 	void checkEvents();
+	void setNearbyLevels();
 };
 

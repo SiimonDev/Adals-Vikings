@@ -56,9 +56,12 @@ void LoadingScreen::render(IndexRenderer &iRenderer)
 
 void LoadingScreen::startLoading(LoadTask task)
 {
-	mStart = true;
-	mFinished = false;
 	mTask = task;
+	if (mTask != LoadTask::LoadNearbyLevels)
+	{
+		mStart = true;
+		mFinished = false;
+	}
 }
 
 void LoadingScreen::terminate()
@@ -91,6 +94,11 @@ void LoadingScreen::runTask()
 			{
 
 			}
+			else if (mTask == LoadTask::LoadNearbyLevels)
+			{
+				LVLMI.unloadCacheLevels();
+				LVLMI.LoadNearbyLevels();
+			}
 			else if (mTask == LoadTask::StartGame)
 			{
 				MHI.unload(MenuID::MainMenu);
@@ -122,4 +130,9 @@ void LoadingScreen::runTask()
 			mFinished = true;
 		}
 	}
+}
+
+void LoadingScreen::loadNearbyLevels()
+{
+
 }

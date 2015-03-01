@@ -21,7 +21,6 @@ void Level_Tavern_Inside::render(IndexRenderer &iRenderer)
 void Level_Tavern_Inside::load()
 {
 	Level::load();
-	mPlayer.setPosition(sf::Vector2f(410, 1070));
 }
 
 void Level_Tavern_Inside::unload()
@@ -40,4 +39,15 @@ void Level_Tavern_Inside::checkInteractEvents()
 void Level_Tavern_Inside::checkEvents()
 {
 
+}
+
+void Level_Tavern_Inside::setNearbyLevels()
+{
+	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
+	{
+		if (it->first == LevelFolder::Tavern_Outside)
+			it->second->setIsNearbyLevel(true);
+		else
+			it->second->setIsNearbyLevel(false);
+	}
 }

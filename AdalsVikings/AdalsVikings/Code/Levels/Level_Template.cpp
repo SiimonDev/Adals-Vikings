@@ -21,7 +21,6 @@ void Level_Template::render(IndexRenderer &iRenderer)
 void Level_Template::load()
 {
 	Level::load();
-	mPlayer.setPosition(sf::Vector2f(410, 1070));
 }
 
 void Level_Template::unload()

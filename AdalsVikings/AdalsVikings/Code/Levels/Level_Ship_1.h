@@ -11,6 +11,7 @@ public:
 	void unload();
 	void checkInteractEvents();
 	void checkEvents();
+	void setNearbyLevels();
 
 	void changeLevel(sf::Time &frameTime);
 
