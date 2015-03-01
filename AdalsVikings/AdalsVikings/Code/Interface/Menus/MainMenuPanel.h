@@ -6,7 +6,7 @@
 class MainMenuPanel : public MenuPanel
 {
 public:
-	MainMenuPanel(MenuPanels &activeMenuPanels);
+	MainMenuPanel();
 
 	virtual void load();
 	virtual void unload();
@@ -17,8 +17,6 @@ public:
 	virtual MenuEvent getEvent();
 
 private:
-	MenuPanels &mMenuPanels;
-
 	Button playButton;
 	Button optionButton;
 	Button exitButton;

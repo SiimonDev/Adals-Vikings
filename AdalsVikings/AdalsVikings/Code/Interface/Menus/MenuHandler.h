@@ -31,13 +31,9 @@ private:
 	void operator=(MenuHandler&);
 
 	MenuID mCurrentID;
+	MenuEvent mCurrentEvent;
 
 	MenuPanels mActiveMenuPanels;
 	MenuPanels mMainMenuPanels;
 	MenuPanels mPauseMenuPanels;
-
-	// All the meny Panels
-	MainMenuPanel* mMainMenuPanel;
-	PauseMenuPanel* mPauseMenuPanel;
-	MenuEvent mCurrentEvent;
 };

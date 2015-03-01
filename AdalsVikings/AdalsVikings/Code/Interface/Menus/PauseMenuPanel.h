@@ -6,7 +6,7 @@
 class PauseMenuPanel : public MenuPanel
 {
 public:
-	PauseMenuPanel(MenuPanels &activeMenuPanels);
+	PauseMenuPanel();
 
 	virtual void load();
 	virtual void unload();
@@ -18,8 +18,6 @@ public:
 
 private:
 	int mIndex;
-
-	MenuPanels &mMenuPanels;
 
 	Button resumeButton;
 	Button saveButton;

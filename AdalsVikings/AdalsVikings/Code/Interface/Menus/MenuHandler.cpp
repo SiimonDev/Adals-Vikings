@@ -13,13 +13,11 @@ MenuHandler &MenuHandler::getInstance()
 
 MenuHandler::MenuHandler()
 {
-	mMainMenuPanel = new MainMenuPanel(mActiveMenuPanels);
-	mPauseMenuPanel = new PauseMenuPanel(mActiveMenuPanels);
 	// Main Menu Section
-	//mMainMenuPanels.push_back(mMainMenuPanel);
+	mMainMenuPanels.push_back(new MainMenuPanel());
 
 	// Pause Menu Section
-	//mPauseMenuPanels.push_back(mPauseMenuPanel);
+	mPauseMenuPanels.push_back(new PauseMenuPanel());
 
 	load(MenuID::MainMenu);
 }
@@ -29,11 +27,14 @@ void MenuHandler::load(MenuID menuID)
 	mCurrentID = menuID;
 	mActiveMenuPanels.clear();
 	if (menuID == MenuID::MainMenu){
-		mMainMenuPanel->load();
-		mActiveMenuPanels.push_back(mMainMenuPanel);
+		for each (MenuPanel* panel in mMainMenuPanels)
+			panel->load();
+		
+		mActiveMenuPanels.push_back(mMainMenuPanels[0]);
 	}
 	if (menuID == MenuID::PauseMenu){
-		mPauseMenuPanel->load();
+		for each (MenuPanel* panel in mPauseMenuPanels)
+			panel->load();
 	}
 }
 void MenuHandler::unload(MenuID menuID)
@@ -41,10 +42,12 @@ void MenuHandler::unload(MenuID menuID)
 	mActiveMenuPanels.clear();
 
 	if (menuID == MenuID::MainMenu){
-		mMainMenuPanel->unload();
+		for each (MenuPanel* panel in mMainMenuPanels)
+			panel->unload();
 	}
 	if (menuID == MenuID::PauseMenu){
-		mPauseMenuPanel->unload();
+		for each (MenuPanel* panel in mPauseMenuPanels)
+			panel->unload();
 	}
 }
 
@@ -63,7 +66,7 @@ void MenuHandler::update(sf::Time frameTime)
 	}
 	else if (KeyboardState::isPressed(sf::Keyboard::Escape) && mCurrentID == MenuID::PauseMenu)
 	{
-		mActiveMenuPanels.push_back(mPauseMenuPanel);
+		mActiveMenuPanels.push_back(mPauseMenuPanels[0]);
 	}
 }
 void MenuHandler::render(IndexRenderer &iRenderer)

@@ -2,8 +2,7 @@
 #include "..\..\Logics\AudioPlayer.h"
 #include "..\..\Logics\KeyboardState.h"
 
-PauseMenuPanel::PauseMenuPanel(MenuPanels &activeMenuPanels):
-mMenuPanels(activeMenuPanels)
+PauseMenuPanel::PauseMenuPanel()
 {
 	mIndex = 9999999;
 	mCurrentEvent = MenuEvent::NONE;
