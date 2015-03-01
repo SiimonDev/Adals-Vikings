@@ -38,12 +38,12 @@ void Level_Ship_1::update(sf::Time &frametime)
 			FadeI.fadeIn(frametime);
 			if (FadeI.getFaded())
 			{
-				DialogHandler::getDialogue("IntroUlfr").startDialogue();
+				DialogHandler::getDialogue("IntroUlfr_Ship1").startDialogue();
 				mGameStart = true;
 				//FadeI.setAlpha(0);
 			}
 		}
-		if (DialogHandler::getDialogue("IntroUlfr").getHasStopped())
+		if (DialogHandler::getDialogue("IntroUlfr_Ship1").getHasStopped())
 		{
 			BoatEvents::handleEvent(BoatEvent::UlfrStartDialogue);
 		}
@@ -52,7 +52,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 	if (BoatEvents::hasBeenTriggered(BoatEvent::GivenBucketToLeifr) && !BoatEvents::hasBeenHandled(BoatEvent::GivenBucketToLeifr))
 	{
 		mPlayer.removeItemFromInventory("bucket");
-		DialogHandler::startDialogue("BucketDialogue");
+		DialogHandler::startDialogue("BucketDialogue_Ship1");
 
 		BoatEvents::handleEvent(BoatEvent::GivenBucketToLeifr);
 	}
@@ -67,14 +67,14 @@ void Level_Ship_1::update(sf::Time &frametime)
 		if (mStartBrynja == false)
 		{
 			//FadeI.setAlpha(0);
-			DialogHandler::getDialogue("Leifr").disableOption(2);
-			DialogHandler::getDialogue("Alfr").disableOption(3);
+			DialogHandler::getDialogue("Leifr_Ship1").disableOption(2);
+			DialogHandler::getDialogue("Alfr_Ship1").disableOption(3);
 			mPlayer.removeItemFromInventory("flute");
-			DialogHandler::startDialogue("BrynjaFlute");
+			DialogHandler::startDialogue("BrynjaFlute_Ship1");
 			mStartBrynja = true;
 		}
 
-		if (DialogHandler::getDialogue("BrynjaFlute").getHasStopped() && !mBrynjaFade1)
+		if (DialogHandler::getDialogue("BrynjaFlute_Ship1").getHasStopped() && !mBrynjaFade1)
 		{
 			FadeI.fadeOut(frametime);
 			if (FadeI.getFaded())
@@ -105,35 +105,35 @@ void Level_Ship_1::update(sf::Time &frametime)
 		}
 		else if (mBrynjaFade2 && !mBrynjaConv)
 		{
-			DialogHandler::startDialogue("BrynjaConversation");
+			DialogHandler::startDialogue("BrynjaConversation_Ship1");
 			mBrynjaConv = true;
 		}
 
-		if (DialogHandler::getDialogue("BrynjaConversation").getHasStopped() && mBrynjaConv)
+		if (DialogHandler::getDialogue("BrynjaConversation_Ship1").getHasStopped() && mBrynjaConv)
 		{
 			mPlayer.addItemToInventory("fluteBroken");
 
 			mPlayer.addItemToInventory("map");
-			DialogHandler::getDialogue("Brandr").disableOption(2);
+			DialogHandler::getDialogue("Brandr_Ship2").disableOption(2);
 			BoatEvents::handleEvent(BoatEvent::GottenMap);
 			BoatEvents::handleEvent(BoatEvent::DroppedFluteOnBrynja);
 		}
 	}
-	if (DialogHandler::getDialogue("BucketDialogue").getHasStopped() && !mOldBucketAdded)
+	if (DialogHandler::getDialogue("BucketDialogue_Ship1").getHasStopped() && !mOldBucketAdded)
 	{
 		mPlayer.addItemToInventory("bucketBroken");
 		mOldBucketAdded = true;
 	}
 
-	if (DialogHandler::getDialogue("Valdis").getIsOptionDisabled(2) && BoatEvents::hasBeenHandled(BoatEvent::TalkedToBrandr) && 
-		!BoatEvents::hasBeenHandled(BoatEvent::TalkedToValdis) && DialogHandler::getDialogue("Valdis").getHasStopped())
+	if (DialogHandler::getDialogue("Valdis_Ship1").getIsOptionDisabled(2) && BoatEvents::hasBeenHandled(BoatEvent::TalkedToBrandr) && 
+		!BoatEvents::hasBeenHandled(BoatEvent::TalkedToValdis) && DialogHandler::getDialogue("Valdis_Ship1").getHasStopped())
 	{
-		DialogHandler::getDialogue("Finnr").enableOption(2);
-		DialogHandler::getDialogue("Leifr").enableOption(2);
-		DialogHandler::getDialogue("Alfr").enableOption(3);
+		DialogHandler::getDialogue("Finnr_Ship1").enableOption(2);
+		DialogHandler::getDialogue("Leifr_Ship1").enableOption(2);
+		DialogHandler::getDialogue("Alfr_Ship1").enableOption(3);
 		if (!mPlayer.hasItemInInventory("bucket"))
 		{
-			DialogHandler::getDialogue("Dagny").enableOption(2);
+			DialogHandler::getDialogue("Dagny_Ship2").enableOption(2);
 		}
 		BoatEvents::handleEvent(BoatEvent::TalkedToValdis);
 	}
@@ -215,6 +215,13 @@ void Level_Ship_1::load()
 	mTileMap.setIndexOnMap(mNpcs["Brynja"]->getIndexRect(), mNpcs["Brynja"]->getIndex() - 1);
 	mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 1);
 
+	//Set Dialogues
+	mNpcs["Valdis"]->setDialogue("Valdis_Ship1");
+	mNpcs["Leifr"]->setDialogue("Leifr_Ship1");
+	mNpcs["Finnr"]->setDialogue("Finnr_Ship1");
+	mNpcs["Alfr"]->setDialogue("Alfr_Ship1");
+	mNpcs["Brynja"]->setDialogue("Brynja_Ship1");
+
 	if (!BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
 		mPlayer.setPosition(sf::Vector2f(1400, 750));
 
@@ -246,14 +253,14 @@ void Level_Ship_1::checkInteractEvents()
 void Level_Ship_1::checkEvents()
 {
 	// Event for asking Alfr to help you wake up Brynja
-	if (BoatEvents::hasBeenHandled(BoatEvent::TalkedToValdis) && DialogHandler::getDialogue("Alfr").getIsOptionDisabled(3) && !BoatEvents::hasBeenTriggered(BoatEvent::FluteFromAlfr))
+	if (BoatEvents::hasBeenHandled(BoatEvent::TalkedToValdis) && DialogHandler::getDialogue("Alfr_Ship1").getIsOptionDisabled(3) && !BoatEvents::hasBeenTriggered(BoatEvent::FluteFromAlfr))
 		BoatEvents::triggerEvent(BoatEvent::FluteFromAlfr);
 
 	// Check if ulfrs startdialogue has been triggered
 	if (!BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && BoatEvents::hasBeenHandled(BoatEvent::StartDialogue))
 		BoatEvents::triggerEvent(BoatEvent::UlfrStartDialogue);
 
-	if (DialogHandler::getDialogue("IntroUlfr").getHasStopped() && !BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen))
+	if (DialogHandler::getDialogue("IntroUlfr_Ship1").getHasStopped() && !BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen))
 		BoatEvents::triggerEvent(BoatEvent::IntroScreen);
 
 }

@@ -23,9 +23,9 @@ void DialogHandler::reloadConversations()
 		it->second->reloadConverstaion();
 }
 
-void DialogHandler::load(std::string levelFolder)
+void DialogHandler::load()
 {
-	instream.open(levelFolder);
+	instream.open("assets/textfiles/Dialogues.txt");
 
 	while (!instream.eof())
 	{
@@ -33,7 +33,7 @@ void DialogHandler::load(std::string levelFolder)
 		instream >> id;
 		instream >> filepath;
 
-		if (id != "" || filepath != "")
+		if (id != "" && id.find("---") == std::string::npos && filepath != "" && filepath.find("---") == std::string::npos)
 		{
 
 			DialogueTreePtr dialouge(new DialogueTree());
@@ -47,9 +47,9 @@ void DialogHandler::load(std::string levelFolder)
 	instream.close();
 
 }
-void DialogHandler::unload(std::string levelFolder)
+void DialogHandler::unload()
 {
-	instream.open(levelFolder);
+	instream.open("assets/textfiles/Dialogues.txt");
 
 	while (!instream.eof())
 	{
@@ -57,7 +57,7 @@ void DialogHandler::unload(std::string levelFolder)
 		instream >> id;
 		instream >> filepath;
 
-		if (id != "" || filepath != "")
+		if (id != "" || id.find("---") == std::string::npos || filepath != "" || filepath.find("---") == std::string::npos)
 		{
 
 			mDialogueMap.erase(id);

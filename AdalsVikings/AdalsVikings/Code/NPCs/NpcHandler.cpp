@@ -28,7 +28,6 @@ void NpcHandler::load()
 	Valdis->SetTalkAnimation(Texture::ValdisTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 	Valdis->setPosition(sf::Vector2f(1250, 723));
 	Valdis->setInteractionPosition(sf::Vector2f(1153, 726));
-	Valdis->setDialogue("Valdis");
 	Valdis->setColor(sf::Color(50, 205, 50));
 	Valdis->setIndex(14);
 	Valdis->setProportions(sf::Vector2f(167.5, 436));
@@ -41,7 +40,6 @@ void NpcHandler::load()
 	Leifr->setPosition(sf::Vector2f(460, 727));
 	Leifr->setInteractionPosition(sf::Vector2f(650, 725));
 	Leifr->setColor(sf::Color(72, 209, 204));
-	Leifr->setDialogue("Leifr");
 	Leifr->setIndex(14);
 	Leifr->setProportions(sf::Vector2f(286, 427));
 	Leifr->setscale(sf::Vector2f(0.5f, 0.5f));
@@ -53,7 +51,6 @@ void NpcHandler::load()
 	Finnr->setPosition(sf::Vector2f(580, 714));
 	Finnr->setInteractionPosition(sf::Vector2f(650, 725));
 	Finnr->setColor(sf::Color(173, 216, 230));
-	Finnr->setDialogue("Finnr");
 	Finnr->setIndex(14);
 	Finnr->setProportions(sf::Vector2f(286, 427));
 	Finnr->setscale(sf::Vector2f(0.5f, 0.5f));
@@ -63,7 +60,6 @@ void NpcHandler::load()
 	Brynja->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(5));
 	Brynja->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(600), sf::Time::Zero);
 	Brynja->setColor(sf::Color(219, 0, 0));
-	Brynja->setDialogue("Brynja");
 	Brynja->setIndex(14);
 	Brynja->setProportions(sf::Vector2f(290, 452));
 	Brynja->setPosition(sf::Vector2f(1080, 711));
@@ -77,7 +73,6 @@ void NpcHandler::load()
 	Alfr->setPosition(sf::Vector2f(290, 870));
 	Alfr->setInteractionPosition(sf::Vector2f(380, 885));
 	Alfr->setColor(sf::Color(201, 114, 27));
-	Alfr->setDialogue("Alfr");
 	Alfr->setIndex(15);
 	Alfr->setProportions(sf::Vector2f(204, 452));
 	Alfr->setscale(sf::Vector2f(0.55f, 0.55f));
@@ -89,7 +84,6 @@ void NpcHandler::load()
 	Dagny->setPosition(sf::Vector2f(1565, 705));
 	Dagny->setInteractionPosition(sf::Vector2f(1680, 690));
 	Dagny->setColor(sf::Color(223, 42, 193));
-	Dagny->setDialogue("Dagny");
 	Dagny->setIndex(15);
 	Dagny->setProportions(sf::Vector2f(126, 322));
 	Dagny->setscale(sf::Vector2f(0.59f, 0.59f));
@@ -101,7 +95,6 @@ void NpcHandler::load()
 	Brandr->setPosition(sf::Vector2f(800, 800));
 	Brandr->setInteractionPosition(sf::Vector2f(890, 840));
 	Brandr->setColor(sf::Color(255, 215, 0));
-	Brandr->setDialogue("Brandr");
 	Brandr->setIndex(15);
 	Brandr->setProportions(sf::Vector2f(181, 525));
 	Brandr->setscale(sf::Vector2f(0.45f, 0.45f));
@@ -113,7 +106,6 @@ void NpcHandler::load()
 	Yngvarr->setPosition(sf::Vector2f(900, 820));
 	Yngvarr->setInteractionPosition(sf::Vector2f(1015, 832));
 	Yngvarr->setColor(sf::Color(176, 196, 222));
-	Yngvarr->setDialogue("Yngvarr");
 	Yngvarr->setIndex(15);
 	Yngvarr->setProportions(sf::Vector2f(148, 472));
 	Yngvarr->setscale(sf::Vector2f(0.55f, 0.55f));
@@ -125,7 +117,7 @@ void NpcHandler::load()
 	Seagull->setPosition(sf::Vector2f(1800, 460));
 	Seagull->setInteractionPosition(sf::Vector2f(1650, 500));
 	Seagull->setColor(sf::Color(176, 196, 222));
-	Seagull->setDialogue("Bosse");
+	Seagull->setDialogue("Bosse_Beach");
 	Seagull->setIndex(15);
 	Seagull->setProportions(sf::Vector2f(124, 164));
 	Seagull->setscale(sf::Vector2f(0.55f, 0.55f));
@@ -137,7 +129,6 @@ void NpcHandler::load()
 	Mailman->setPosition(sf::Vector2f(820, 1000));
 	Mailman->setInteractionPosition(sf::Vector2f(800, 500));
 	Mailman->setColor(sf::Color(176, 196, 222));
-	Mailman->setDialogue("Mailman");
 	Mailman->setIndex(21);
 	Mailman->setProportions(sf::Vector2f(199, 432));
 	Mailman->setscale(sf::Vector2f(0.55f, 0.55f));

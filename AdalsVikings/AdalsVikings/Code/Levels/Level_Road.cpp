@@ -31,6 +31,7 @@ void Level_Road::load()
 	mPortals[RoadToBeach]->setWorking(true);
 
 	mNpcs["Mailman"] = NpcPtr(new Npc(NpcHandler::getNpc("Mailman")));
+	mNpcs["Mailman"]->setDialogue("Mailman_Road");
 
 	Level::load();
 }

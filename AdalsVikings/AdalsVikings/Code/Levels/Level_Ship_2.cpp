@@ -28,17 +28,17 @@ void Level_Ship_2::update(sf::Time &frametime)
 	//}
 	if (BoatEvents::hasBeenTriggered(BoatEvent::PickedUpBucket) && !BoatEvents::hasBeenHandled(BoatEvent::PickedUpBucket))
 	{
-		DialogHandler::getDialogue("Dagny").disableOption(2);
+		DialogHandler::getDialogue("Dagny_Ship2").disableOption(2);
 		BoatEvents::handleEvent(BoatEvent::PickedUpBucket);
 	}
-	if (DialogHandler::getDialogue("Brandr").getHasStopped() && !BoatEvents::hasBeenHandled(BoatEvent::TalkedToBrandr))
+	if (DialogHandler::getDialogue("Brandr_Ship2").getHasStopped() && !BoatEvents::hasBeenHandled(BoatEvent::TalkedToBrandr))
 	{
-		DialogHandler::getDialogue("Brandr").enableOption(2);
-		DialogHandler::getDialogue("Dagny").enableOption(1);
-		DialogHandler::getDialogue("Finnr").enableOption(1);
-		DialogHandler::getDialogue("Leifr").enableOption(1);
-		DialogHandler::getDialogue("Alfr").enableOption(2);
-		DialogHandler::getDialogue("Valdis").enableOption(2);
+		DialogHandler::getDialogue("Brandr_Ship2").enableOption(2);
+		DialogHandler::getDialogue("Dagny_Ship2").enableOption(1);
+		DialogHandler::getDialogue("Finnr_Ship1").enableOption(1);
+		DialogHandler::getDialogue("Leifr_Ship1").enableOption(1);
+		DialogHandler::getDialogue("Alfr_Ship1").enableOption(2);
+		DialogHandler::getDialogue("Valdis_Ship1").enableOption(2);
 		BoatEvents::handleEvent(BoatEvent::TalkedToBrandr);
 	}
 	if (!BoatEvents::hasBeenHandled(BoatEvent::GivenMapToBrandr) && BoatEvents::hasBeenTriggered(BoatEvent::GivenMapToBrandr))
@@ -46,10 +46,10 @@ void Level_Ship_2::update(sf::Time &frametime)
 		mPlayer.removeItemFromInventory("map");
 		if (!mStartedGiveDialogue)
 		{
-			DialogHandler::getDialogue("GivenMapToBrandr").startDialogue();
+			DialogHandler::getDialogue("GivenMapToBrandr_Ship2").startDialogue();
 			mStartedGiveDialogue = true;
 		}
-		if (DialogHandler::getDialogue("GivenMapToBrandr").getHasStopped())
+		if (DialogHandler::getDialogue("GivenMapToBrandr_Ship2").getHasStopped())
 		{
 			FadeI.fadeOut(frametime);
 			if (FadeI.getFaded())
@@ -117,6 +117,11 @@ void Level_Ship_2::load()
 	mTileMap.setIndexOnMap(mNpcs["Brandr"]->getIndexRect(), mNpcs["Brandr"]->getIndex() - 1);
 	mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 1);
 
+	//Set Dialogues
+	mNpcs["Dagny"]->setDialogue("Dagny_Ship2");
+	mNpcs["Brandr"]->setDialogue("Brandr_Ship2");
+	mNpcs["Yngvarr"]->setDialogue("Yngvarr_Ship2");
+
 	mCurrentFootsteps = Footsteps::Hardwood;
 }
 
@@ -146,10 +151,10 @@ void Level_Ship_2::runCutscene(sf::Time &frameTime)
 		if (!mDone)
 		{
 			//FadeI.setAlpha(0);
-			DialogHandler::getDialogue("Intro").startDialogue();
+			DialogHandler::getDialogue("Intro_Ship2").startDialogue();
 			mDone = true;
 		}
-		if (DialogHandler::getDialogue("Intro").getHasStopped())
+		if (DialogHandler::getDialogue("Intro_Ship2").getHasStopped())
 		{
 			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())

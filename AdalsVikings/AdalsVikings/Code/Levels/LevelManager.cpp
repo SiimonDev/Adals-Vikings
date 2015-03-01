@@ -13,6 +13,7 @@
 #include "Level_Camp_Finished.h"
 #include "Level_Road.h"
 #include "Level_Beach.h"
+#include "..\Dialog\DialogHandler.h"
 #include "..\Dialog\DialogWindow.h"
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
@@ -38,7 +39,7 @@ void LevelManager::load()
 	DialogWindow::load();
 	DialogWindow::setTextSize(30);
 	DialogWindow::setTextStyle(sf::Text::Bold);
-	
+	DialogHandler::load();
 	mPlayer.load();
 	mPlayer.clearInventory();
 	mActionWheel.load();
@@ -48,7 +49,7 @@ void LevelManager::unload()
 {
 	NpcHandler::unload();
 	DialogWindow::unload();
-
+	DialogHandler::unload();
 	mPlayer.unload();
 	mActionWheel.unload();
 	PathFinder::unload();
@@ -114,13 +115,13 @@ void LevelManager::loadAct1()
 	mLevelMap[LevelFolder::Beach] = LevelPtr(new Level_Beach(mPlayer, mActionWheel));
 	mLevelMap[LevelFolder::Road] = LevelPtr(new Level_Road(mPlayer, mActionWheel));
 	mLevelMap[LevelFolder::Forest_Road] = LevelPtr(new Level_Forest_Road(mPlayer, mActionWheel));
-	//mLevelMap[LevelFolder::Forest_Camp] = LevelPtr(new Level_Forest_Camp(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Forest_Camp] = LevelPtr(new Level_Forest_Camp(mPlayer, mActionWheel));
 	mLevelMap[LevelFolder::Church_Outside] = LevelPtr(new Level_Church_Outside(mPlayer, mActionWheel));
-	//mLevelMap[LevelFolder::Church_Inside] = LevelPtr(new Level_Church_Inside(mPlayer, mActionWheel));
-	//mLevelMap[LevelFolder::Tavern_Outside] = LevelPtr(new Level_Tavern_Outside(mPlayer, mActionWheel));
-	//mLevelMap[LevelFolder::Tavern_Inside] = LevelPtr(new Level_Tavern_Inside(mPlayer, mActionWheel));
-	//mLevelMap[LevelFolder::Camp_Clearing] = LevelPtr(new Level_Camp_Clearing(mPlayer, mActionWheel));
-	//mLevelMap[LevelFolder::Camp_Finished] = LevelPtr(new Level_Camp_Finished(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Church_Inside] = LevelPtr(new Level_Church_Inside(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Tavern_Outside] = LevelPtr(new Level_Tavern_Outside(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Tavern_Inside] = LevelPtr(new Level_Tavern_Inside(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Camp_Clearing] = LevelPtr(new Level_Camp_Clearing(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Camp_Finished] = LevelPtr(new Level_Camp_Finished(mPlayer, mActionWheel));
 
 	mCurrentID = LevelFolder::Beach;
 	baseLoad();

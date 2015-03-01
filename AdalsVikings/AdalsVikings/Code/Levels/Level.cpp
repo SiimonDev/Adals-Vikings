@@ -471,9 +471,6 @@ void Level::load()
 	// Load All backgrounds, TileMaps, and index maps
 	loadAllBackgrounds();
 
-	// Load Dialogues
-	DialogHandler::load(mFolderPath + "Dialogues.txt");
-
 	// Load NPCs
 	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 		it->second->load();
@@ -506,9 +503,6 @@ void Level::unload()
 	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 		it->second->unload();
 	mNpcs.clear();
-
-	/*std::cout << "Unloading dialogues in: " << mFolderPath << std::endl;
-	DialogHandler::unload(mFolderPath + "Dialogues.txt");*/
 
 	////Unload Portals
 	mPortals.clear();

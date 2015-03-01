@@ -12,8 +12,8 @@ public:
 	static void startDialogue(std::string id);
 	static void reloadConversations();
 
-	static void load(std::string levelFolder);
-	static void unload(std::string levelFolder);
+	static void load();
+	static void unload();
 
 	static DialogueTree &getDialogue(std::string id);
 	static std::map<std::string, DialogueTreePtr> &getDialogues();

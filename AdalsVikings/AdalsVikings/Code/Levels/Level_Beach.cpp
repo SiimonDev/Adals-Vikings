@@ -60,19 +60,19 @@ void Level_Beach::load()
 		mNpcs["Brandr"]->setFlip(true);
 		mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Brandr"]->setPosition(sf::Vector2f(400, 1120));
-		mNpcs["Brandr"]->setDialogue("IntroDialogue");
+		mNpcs["Brandr"]->setDialogue("Intro_Beach");
 		mNpcs["Brandr"]->setIndex(5);
 
 		mNpcs["Brynja"]->setFlip(false);
 		mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(600, 1070));
-		mNpcs["Brynja"]->setDialogue("IntroDialogue");
+		mNpcs["Brynja"]->setDialogue("Intro_Beach");
 		mNpcs["Brynja"]->setIndex(4);
 
 		mNpcs["Valdis"]->setFlip(false);
 		mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Valdis"]->setPosition(sf::Vector2f(600, 1120));
-		mNpcs["Valdis"]->setDialogue("Valdis");
+		mNpcs["Valdis"]->setDialogue("Valdis_Beach");
 		mNpcs["Valdis"]->setIndex(5);
 
 		/* ==== Load Npcs and set right position, dialogue, scale and so on... ===== */
@@ -91,7 +91,7 @@ void Level_Beach::load()
 		mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Yngvarr"]->setPosition(sf::Vector2f(350, 760));
 		mNpcs["Yngvarr"]->setInteractionPosition(sf::Vector2f(420, 760));
-		mNpcs["Yngvarr"]->setDialogue("Yngvarr");
+		mNpcs["Yngvarr"]->setDialogue("Yngvarr_Beach");
 		mNpcs["Yngvarr"]->setIndex(5);
 
 		/* ==== Yngvarr ===== */
@@ -99,7 +99,7 @@ void Level_Beach::load()
 		mNpcs["Dagny"]->setscale(sf::Vector2f(0.5, 0.5));
 		mNpcs["Dagny"]->setPosition(sf::Vector2f(250, 760));
 		mNpcs["Dagny"]->setInteractionPosition(sf::Vector2f(300, 760));
-		mNpcs["Dagny"]->setDialogue("Dagny");
+		mNpcs["Dagny"]->setDialogue("Dagny_Beach");
 		mNpcs["Dagny"]->setIndex(5);
 
 		/* ==== Alfr ===== */
@@ -107,7 +107,7 @@ void Level_Beach::load()
 		mNpcs["Alfr"]->setscale(sf::Vector2f(0.35, 0.35));
 		mNpcs["Alfr"]->setPosition(sf::Vector2f(1250, 590));
 		mNpcs["Alfr"]->setInteractionPosition(sf::Vector2f(1200, 590));
-		mNpcs["Alfr"]->setDialogue("Alfr");
+		mNpcs["Alfr"]->setDialogue("Alfr_Beach");
 		mNpcs["Alfr"]->setIndex(5);
 
 		/* ==== Leifr ===== */
@@ -119,7 +119,7 @@ void Level_Beach::load()
 		mNpcs["Leifr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 580));
 		mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(750, 580));
-		mNpcs["Leifr"]->setDialogue("Leifr");
+		mNpcs["Leifr"]->setDialogue("Leifr_Beach");
 		mNpcs["Leifr"]->setIndex(5);
 
 		/* ==== Finnr ===== */
@@ -127,10 +127,9 @@ void Level_Beach::load()
 		mNpcs["Finnr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Finnr"]->setPosition(sf::Vector2f(1600, 520));
 		mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(1550, 520));
-		mNpcs["Finnr"]->setDialogue("Finnr");
+		mNpcs["Finnr"]->setDialogue("Finnr_Beach");
 		mNpcs["Finnr"]->setIndex(3);
 
-		//mPortals[Portal3] = &PortalLoader::getPortal(Portal3); // This does not create a new portal it only references the one in PortalLoader
 
 		/* ================================================================ */
 
@@ -210,11 +209,11 @@ void Level_Beach::introCutscene(sf::Time &frameTime)
 			if (FadeI.getFaded())
 			{
 				//FadeI.setAlpha(0);
-				DialogHandler::getDialogue("IntroBeach").startDialogue();
+				DialogHandler::getDialogue("Intro_Beach").startDialogue();
 				mIntroFade1 = true;
 			}
 		}
-		else if (DialogHandler::getDialogue("IntroBeach").getHasStopped() && !mIntroFade2)
+		else if (DialogHandler::getDialogue("Intro_Beach").getHasStopped() && !mIntroFade2)
 		{
 			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())
@@ -324,12 +323,12 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 			FadeI.fadeIn(frameTime);
 			if (FadeI.getFaded())
 			{
-				DialogHandler::getDialogue("EndingBeach").startDialogue();
+				DialogHandler::getDialogue("Ending_Beach").startDialogue();
 
 				mEndingFade2 = true;
 			}
 		}
-		else if (DialogHandler::getDialogue("EndingBeach").getHasStopped() && !mEndingFade3)
+		else if (DialogHandler::getDialogue("Ending_Beach").getHasStopped() && !mEndingFade3)
 		{
 			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())
@@ -365,45 +364,45 @@ void Level_Beach::talkToNpcs()
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Ending))
 	{
 		/* ==== Check if talked to Dagny ===== */
-		if (DialogHandler::getDialogue("Dagny").getActiveConversation())
+		if (DialogHandler::getDialogue("Dagny_Beach").getActiveConversation())
 			Act1Events::triggerEvent(Act1Event::Beach_Dagny);
 		if (Act1Events::hasBeenTriggered(Act1Event::Beach_Dagny) && !Act1Events::hasBeenHandled(Act1Event::Beach_Dagny))
-			if (DialogHandler::getDialogue("Dagny").getHasStopped())
+			if (DialogHandler::getDialogue("Dagny_Beach").getHasStopped())
 				Act1Events::handleEvent(Act1Event::Beach_Dagny);
 
 		/* ==== Check if talked to Leifr ===== */
-		if (DialogHandler::getDialogue("Leifr").getActiveConversation())
+		if (DialogHandler::getDialogue("Leifr_Beach").getActiveConversation())
 			Act1Events::triggerEvent(Act1Event::Beach_Leifr);
 		if (Act1Events::hasBeenTriggered(Act1Event::Beach_Leifr) && !Act1Events::hasBeenHandled(Act1Event::Beach_Leifr))
-			if (DialogHandler::getDialogue("Leifr").getHasStopped())
+			if (DialogHandler::getDialogue("Leifr_Beach").getHasStopped())
 				Act1Events::handleEvent(Act1Event::Beach_Leifr);
 
 		/* ==== Check if talked to Yngvarr ===== */
-		if (DialogHandler::getDialogue("Yngvarr").getActiveConversation())
+		if (DialogHandler::getDialogue("Yngvarr_Beach").getActiveConversation())
 			Act1Events::triggerEvent(Act1Event::Beach_Yngvarr);
 		if (Act1Events::hasBeenTriggered(Act1Event::Beach_Yngvarr) && !Act1Events::hasBeenHandled(Act1Event::Beach_Yngvarr))
-			if (DialogHandler::getDialogue("Yngvarr").getHasStopped())
+			if (DialogHandler::getDialogue("Yngvarr_Beach").getHasStopped())
 				Act1Events::handleEvent(Act1Event::Beach_Yngvarr);
 
 		/* ==== Check if talked to Alfr ===== */
-		if (DialogHandler::getDialogue("Alfr").getActiveConversation())
+		if (DialogHandler::getDialogue("Alfr_Beach").getActiveConversation())
 			Act1Events::triggerEvent(Act1Event::Beach_Alfr);
 		if (Act1Events::hasBeenTriggered(Act1Event::Beach_Alfr) && !Act1Events::hasBeenHandled(Act1Event::Beach_Alfr))
-			if (DialogHandler::getDialogue("Yngvarr").getHasStopped())
+			if (DialogHandler::getDialogue("Yngvarr_Beach").getHasStopped())
 				Act1Events::handleEvent(Act1Event::Beach_Alfr);
 
 		/* ==== Check if talked to Valdis ===== */
-		if (DialogHandler::getDialogue("Valdis").getActiveConversation())
+		if (DialogHandler::getDialogue("Valdis_Beach").getActiveConversation())
 			Act1Events::triggerEvent(Act1Event::Beach_Valdis);
 		if (Act1Events::hasBeenTriggered(Act1Event::Beach_Valdis) && !Act1Events::hasBeenHandled(Act1Event::Beach_Valdis))
-			if (DialogHandler::getDialogue("Valdis").getHasStopped())
+			if (DialogHandler::getDialogue("Valdis_Beach").getHasStopped())
 				Act1Events::handleEvent(Act1Event::Beach_Valdis);
 
 		/* ==== Check if talked to Finnr ===== */
-		if (DialogHandler::getDialogue("Finnr").getActiveConversation())
+		if (DialogHandler::getDialogue("Finnr_Beach").getActiveConversation())
 			Act1Events::triggerEvent(Act1Event::Beach_Finnr);
 		if (Act1Events::hasBeenTriggered(Act1Event::Beach_Finnr) && !Act1Events::hasBeenHandled(Act1Event::Beach_Finnr))
-			if (DialogHandler::getDialogue("Finnr").getHasStopped())
+			if (DialogHandler::getDialogue("Finnr_Beach").getHasStopped())
 				Act1Events::handleEvent(Act1Event::Beach_Finnr);
 
 		/* ==== Check if talked to All ===== */
