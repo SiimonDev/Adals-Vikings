@@ -11,12 +11,19 @@ static Animation mWaveAnimation;
 Level_Beach::Level_Beach(Player &player, ActionWheel &actionWheel)
 	: Level(player, actionWheel)
 	, mIntroFade1(false)
+	, mPlayMusic(false)
 {
 	mBackgroundID = LevelFolder::Beach;
 }
 
 void Level_Beach::update(sf::Time &frametime)
 {
+	if (!mPlayMusic)
+	{
+		AudioPlayer::playMusic("assets/sounds/beach.ogg", "beachAmbient", true, 20);
+		AudioPlayer::playMusic("assets/sounds/music/exp theme.ogg", "Beach", true, 20);
+		mPlayMusic = true;
+	}
 	introCutscene(frametime);
 	talkToNpcs();
 	endingCutscene(frametime);
@@ -170,8 +177,6 @@ void Level_Beach::load()
 
 void Level_Beach::unload()
 {
-	AudioPlayer::stopSound("beachAmbient");
-	RMI.unloadResource(Sound::BeachAmbient);
 	RMI.unloadResource(Texture::WaveAnimation);
 	RMI.unloadResource(Texture::YngvarrSadIdle);
 	RMI.unloadResource(Texture::YngvarrSadTalk);
@@ -186,8 +191,9 @@ void Level_Beach::changeLevel()
 		{
 			Act1Events::triggerEvent(Act1Event::Enter_Road);
 			LVLMI.changeLevel(LevelFolder::Road);
-			AudioPlayer::stopSound("beachAmbient");
+			AudioPlayer::stopMusic("beachAmbient");
 			AudioPlayer::stopMusic("Beach");
+			mPlayMusic = false;
 		}
 	}
 }

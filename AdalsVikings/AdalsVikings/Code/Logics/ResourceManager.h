@@ -83,6 +83,9 @@ namespace Texture
 		MailManTalk,
 		MailManSadIdle,
 		MailManSadTalk,
+		PrincessIdle,
+		PrincessIdle2,
+		PrincessTalk,
 		SIZE
 	};
 }

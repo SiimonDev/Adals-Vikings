@@ -1,0 +1,1 @@
+savePath: "C:\Users\Simon\Documents\GitHub\Adals-Vikings\AdalsVikings\AdalsVikings\Assets\objects"

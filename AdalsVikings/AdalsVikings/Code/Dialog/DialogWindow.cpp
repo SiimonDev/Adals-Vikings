@@ -70,7 +70,44 @@ void DialogWindow::unload()
 void DialogWindow::displayDialog(Dialog &dialog)
 {
 	mCurrentDialog = dialog;
-	setText(dialog.mDialog);
+	std::string tmpStr = dialog.mDialog;
+	std::string tmpStr2 = dialog.mDialog;
+
+	if (tmpStr.size() >= 30)
+	{
+		int index = 0;
+		int cnt = 0;
+		for (int i = 0; i < tmpStr.size(); i++)
+		{
+			char c = tmpStr[i];
+			if (isspace(tmpStr[i]))
+				cnt++;
+		}
+		if (cnt <= 4)
+		{
+			for (int i = 0; i < cnt - 2; i++)
+				index = tmpStr.find_first_of(' ', index + 1);
+			if (index != 0)
+				index += 1;
+		}
+		else
+		{
+			for (int i = 0; i < cnt / 2 + 1; i++)
+				index = tmpStr.find_first_of(' ', index + 1);
+			if (index != 0)
+				index += 1;
+		}
+		size_t found = tmpStr2.find(tmpStr.substr(index));
+		if (found != std::string::npos)
+		{
+			tmpStr2 = tmpStr2.substr(0, found);
+		}
+		setText(tmpStr2 + '\n' + tmpStr.substr(index));
+	}
+	else
+	{
+		setText(dialog.mDialog);
+	}
 	mTimePassed = sf::Time::Zero;
 	mDisplay = true;
 }

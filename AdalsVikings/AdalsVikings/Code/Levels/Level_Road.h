@@ -15,5 +15,8 @@ public:
 	void checkInteractEvents();
 	void checkEvents();
 	void setNearbyLevels();
+
+private:
+	bool mFade1, mFade2;
 };
 

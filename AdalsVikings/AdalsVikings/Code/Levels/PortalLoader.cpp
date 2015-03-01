@@ -28,6 +28,8 @@ void PortalLoader::load()
 		mPortalMap[Outside_ChurchToRoad] = PortalPtr(new Portal(sf::Vector2f(650, 50), sf::Vector2f(0, 1030), sf::Vector2f(515, 1005), sf::Vector2f(365, 1079)));
 		mPortalMap[RoadToForestCamp] = PortalPtr(new Portal(sf::Vector2f(240, 70), sf::Vector2f(50, 630), sf::Vector2f(86, 650), sf::Vector2f(305, 686)));
 		mPortalMap[ForestCampToRoad] = PortalPtr(new Portal(sf::Vector2f(170, 90), sf::Vector2f(1750, 640), sf::Vector2f(86, 680), sf::Vector2f(1920, 680)));
+		mPortalMap[Outside_ChurchToChurch] = PortalPtr(new Portal(sf::Vector2f(100, 230), sf::Vector2f(1270, 642), sf::Vector2f(1240, 870), sf::Vector2f(1240, 870)));
+		mPortalMap[ChurchToOutside_Church] = PortalPtr(new Portal(sf::Vector2f(295, 399), sf::Vector2f(1400, 0), sf::Vector2f(1545, 358), sf::Vector2f(1545, 358)));
 
 		//connect the portals
 		mPortalMap[BeachToRoad]->setGateway(&*mPortalMap[RoadToBeach]);
@@ -36,6 +38,8 @@ void PortalLoader::load()
 		mPortalMap[Outside_ChurchToRoad]->setGateway(&*mPortalMap[RoadToOutside_Chuch]);
 		mPortalMap[RoadToForestCamp]->setGateway(&*mPortalMap[ForestCampToRoad]);
 		mPortalMap[ForestCampToRoad]->setGateway(&*mPortalMap[RoadToForestCamp]);
+		mPortalMap[Outside_ChurchToChurch]->setGateway(&*mPortalMap[ChurchToOutside_Church]);
+		mPortalMap[ChurchToOutside_Church]->setGateway(&*mPortalMap[Outside_ChurchToChurch]);
 
 	}
 }

@@ -184,22 +184,42 @@ void Level::updateNPCs(sf::Time frameTime)
 	{
 		if (mPlayer.getIntention() == Intention::Look)
 		{
+			if (mPlayer.getPosition().x < mNpcs[mCurrentNPCID]->getPosition().x)
+				mPlayer.setFlip(true);
+			else
+				mPlayer.setFlip(false);
+			mPlayer.UpdateAnimationStyle();
 			Dialog dialog = Dialog(mNpcs[mCurrentNPCID]->getLookText(), 2);
 			DialogWindow::displayDialog(dialog);
 		}
 		else if (mPlayer.getIntention() == Intention::Talk)
 		{
+			if (mPlayer.getPosition().x < mNpcs[mCurrentNPCID]->getPosition().x)
+				mPlayer.setFlip(true);
+			else
+				mPlayer.setFlip(false);
+			mPlayer.UpdateAnimationStyle();
 			mNpcs[mCurrentNPCID]->startConversation();
 			mIsInConversation = true;
 			mPlayer.setIntention(Intention::None);
 		}
 		else if (mPlayer.getIntention() == Intention::PickUp)
 		{
+			if (mPlayer.getPosition().x < mNpcs[mCurrentNPCID]->getPosition().x)
+				mPlayer.setFlip(true);
+			else
+				mPlayer.setFlip(false);
+			mPlayer.UpdateAnimationStyle();
 			Dialog dialog = Dialog(mNpcs[mCurrentNPCID]->getUseText(), 2);
 			DialogWindow::displayDialog(dialog);
 		}
 		else if (mPlayer.getIntention() == Intention::Interact)
 		{
+			if (mPlayer.getPosition().x < mNpcs[mCurrentNPCID]->getPosition().x)
+				mPlayer.setFlip(true);
+			else
+				mPlayer.setFlip(false);
+			mPlayer.UpdateAnimationStyle();
 			checkInteractEvents();
 			Dialog dialog = Dialog(OBHI.getObject(mDroppedItemID).interactWithObject(mCurrentNPCID));
 			DialogWindow::displayDialog(dialog);

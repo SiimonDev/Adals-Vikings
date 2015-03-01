@@ -22,6 +22,7 @@ void NpcHandler::load()
 	NpcPtr Yngvarr(new Npc(Font::Font1));
 	NpcPtr Seagull(new Npc(Font::Font1));
 	NpcPtr Mailman(new Npc(Font::Font1));
+	NpcPtr Princess(new Npc(Font::Font1));
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -127,12 +128,23 @@ void NpcHandler::load()
 	Mailman->setIdleAnimation(Texture::MailManSadIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(5));
 	Mailman->SetTalkAnimation(Texture::MailManSadTalk, sf::Vector2i(4, 1), sf::milliseconds(550), sf::Time::Zero);
 	Mailman->setPosition(sf::Vector2f(820, 1000));
-	Mailman->setInteractionPosition(sf::Vector2f(800, 500));
+	Mailman->setInteractionPosition(sf::Vector2f(700, 1000));
 	Mailman->setColor(sf::Color(176, 196, 222));
-	Mailman->setIndex(21);
+	Mailman->setIndex(19);
 	Mailman->setProportions(sf::Vector2f(199, 432));
 	Mailman->setscale(sf::Vector2f(0.55f, 0.55f));
 	Mailman->setFlip(false);
+
+	Princess->setName("Girl");
+	Princess->setIdleAnimation(Texture::PrincessIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(5));
+	Princess->SetTalkAnimation(Texture::PrincessTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
+	Princess->setPosition(sf::Vector2f(240, 920));
+	Princess->setInteractionPosition(sf::Vector2f(415, 990));
+	Princess->setColor(sf::Color(176, 196, 222));
+	Princess->setIndex(7);
+	Princess->setProportions(sf::Vector2f(266, 273));
+	Princess->setscale(sf::Vector2f(0.40f, 0.40f));
+	Princess->setFlip(false);
 
 	CreateNpc("Valdis", std::move(Valdis)));
 	CreateNpc("Leifr", std::move(Leifr)));
@@ -144,6 +156,7 @@ void NpcHandler::load()
 	CreateNpc("Yngvarr", std::move(Yngvarr)));
 	CreateNpc("Seagull", std::move(Seagull)));
 	CreateNpc("Mailman", std::move(Mailman)));
+	CreateNpc("Princess", std::move(Princess)));
 }
 
 void NpcHandler::unload()

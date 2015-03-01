@@ -12,6 +12,9 @@ namespace Act1Event
 		Beach_Valdis,
 		Beach_Ending,
 		Enter_Road,
+		Road_StartMailmanConv,
+		Road_GiveMailmanPaper,
+		ChurchOutside_TalkToPrincess,
 		EVENT_SIZE
 	};
 }

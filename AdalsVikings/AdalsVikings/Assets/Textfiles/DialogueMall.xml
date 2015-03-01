@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
-	<useText useText="Why would I use Brandr?" />
-	<lookText lookText="That's Brandr" />
-	<text character="Leifr" turned="true" timer="2.5" say="How does it feel, Ulfr?" />
+	<useText useText="Why? Just why?" />
+	<lookText lookText="The postman looks rather distressed. " />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />
