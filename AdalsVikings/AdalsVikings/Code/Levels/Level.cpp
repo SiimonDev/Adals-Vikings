@@ -169,8 +169,11 @@ void Level::updateNPCs(sf::Time frameTime)
 		{
 			if (it->second->isInside(MouseState::getMousePosition()))
 			{
-				it->second->setDescription(it->second->getName());
 				it->second->enableDescription(true);
+				if (mPlayer.getSnappedObjectID() != "")
+					it->second->setDescription("Use " + OBHI.getObject(mPlayer.getSnappedObjectID()).getName() + " on " + it->second->getName());
+				else
+					it->second->setDescription(it->second->getName());
 			}
 			else
 				it->second->enableDescription(false);

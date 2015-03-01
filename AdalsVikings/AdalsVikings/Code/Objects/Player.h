@@ -74,6 +74,7 @@ public:
 	sf::Sprite getSprite();
 	sf::Vector2f getPosition();
 	std::string getDroppedObjectID();
+	std::string getSnappedObjectID();
 	Animation &getAnimation();
 
 	Intention::ID getIntention();
@@ -113,7 +114,7 @@ private:
 	float mCurrentAlpha;
 	float mCurrentSpeed;
 	float mTargetSpeed;
-	float mAcceleration; // The speed increase/decrease every frame
+	float mAcceleration;
 	float mDistanceTraveled;
 	float mTotalDistance;
 

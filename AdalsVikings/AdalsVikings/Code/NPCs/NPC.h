@@ -65,18 +65,17 @@ private:
 	sf::Time mIdleDuration, mIdleWaitTime, mTalkDuration, mTalkWaitTime;
 	std::string mName, mDialogue;
 
-	Animation mNpcAnimation;
+	Animation mAnimation;
 	sf::Vector2f mProportions;
 	sf::Vector2f mPosition;
 	sf::Vector2f mInteractionPosition;
 	sf::Vector2f mScale;
-	sf::Vector2i mSize;
 	sf::IntRect mCollisionRect;
 	sf::IntRect mIndexRect;
 	sf::Text mDescription;
 	sf::RectangleShape mTextRect;
 
-	AnimationState::ID mAnimation;
+	AnimationState::ID mAnimationState;
 	sf::Color mColor;
 
 	bool mFlip, mUpdateAnimation;

@@ -124,6 +124,13 @@ void Inventory::update(sf::Time frameTime)
 		}
 	}
 
+	if (mDroppedSnappedObj)
+	{
+		addItemToInventory(mSnappedObject->getObjID());
+		delete mSnappedObject;
+		mDroppedSnappedObj = false;
+	}
+
 	if (mHasSnappedObject)
 	{
 		mSnappedObject->enableNameDisplay(false);
@@ -135,13 +142,6 @@ void Inventory::update(sf::Time frameTime)
 			mDroppedSnappedObj = true;
 			mHasSnappedObject = false;
 		}
-	}
-	
-	if (mDroppedSnappedObj)
-	{
-		addItemToInventory(mSnappedObject->getObjID());
-		delete mSnappedObject;
-		mDroppedSnappedObj = false;
 	}
 }
 
@@ -290,6 +290,13 @@ bool Inventory::hasItemInInventory(std::string objID)
 		}
 	}
 	return false;
+}
+
+std::string Inventory::getSnappedObjectID()
+{
+	if (mHasSnappedObject)
+		return mSnappedObject->getObjID();
+	return "";
 }
 
 std::string Inventory::getDroppedObjectID()

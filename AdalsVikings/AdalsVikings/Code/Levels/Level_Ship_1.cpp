@@ -155,17 +155,23 @@ void Level_Ship_1::load()
 	mPortals[Ship1ToShip2]->setWorking(true);
 
 	RMI.loadResource(Texture::IntroScreen);
+	RMI.loadResource(Texture::ValdisSittingIdle);
+	RMI.loadResource(Texture::ValdisSittingTalk);
+	RMI.loadResource(Texture::LeifrSitIdle);
+	RMI.loadResource(Texture::LeifrSitTalk);
+	RMI.loadResource(Sound::BoatAmbient);
+	RMI.loadResource(Footsteps::Hardwood);
+	mCurrentFootsteps = Footsteps::Hardwood;
+
 	mIntroScreen.setTexture(RMI.getResource(Texture::IntroScreen));
 	mIntroScreen.setScale(2, 2);
 	mIntroScreen.setPosition(150, 50);
 
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
-	RMI.loadResource(Texture::ValdisSittingIdle);
-	RMI.loadResource(Texture::ValdisSittingTalk);
 	mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
 	mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisSittingTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 	mNpcs["Valdis"]->setProportions(sf::Vector2f(150, 134.5));
-	mNpcs["Valdis"]->setscale(sf::Vector2f(1.1, 1.1));
+	mNpcs["Valdis"]->setscale(sf::Vector2f(1.1f, 1.1f));
 	mNpcs["Valdis"]->setIndex(14);
 
 	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
@@ -173,10 +179,9 @@ void Level_Ship_1::load()
 	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
 	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
 	mNpcs["Alfr"]->setIndex(16);
-	RMI.loadResource(Texture::LeifrSitIdle);
-	RMI.loadResource(Texture::LeifrSitTalk);
 	mNpcs["Leifr"]->setIdleAnimation(Texture::LeifrSitIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 	mNpcs["Leifr"]->SetTalkAnimation(Texture::LeifrSitTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
+
 	if (!mStartBrynja)
 	{
 		RMI.loadResource(Texture::BrynjaIdle);
@@ -192,10 +197,6 @@ void Level_Ship_1::load()
 	}
 
 	Level::load();
-
-	RMI.loadResource(Sound::BoatAmbient);
-	RMI.loadResource(Footsteps::Hardwood);
-	mCurrentFootsteps = Footsteps::Hardwood;
 
 	AudioPlayer::playSound(Sound::BoatAmbient, "boatAmbient", true);
 	AudioPlayer::playMusic("assets/sounds/music/Boat_music.ogg", "boat1", true, 20);
@@ -221,11 +222,13 @@ void Level_Ship_1::load()
 
 void Level_Ship_1::unload()
 {
+	RMI.unloadResource(Texture::IntroScreen);
+	RMI.unloadResource(Texture::ValdisSittingIdle);
+	RMI.unloadResource(Texture::ValdisSittingTalk);
 	RMI.unloadResource(Texture::LeifrSitIdle);
 	RMI.unloadResource(Texture::LeifrSitTalk);
 	RMI.unloadResource(Sound::BoatAmbient);
 	RMI.unloadResource(Footsteps::Hardwood);
-	RMI.unloadResource(Texture::IntroScreen);
 	Level::unload();
 }
 

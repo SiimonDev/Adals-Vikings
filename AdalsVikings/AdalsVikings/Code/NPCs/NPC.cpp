@@ -4,7 +4,8 @@
 
 Npc::Npc(Font::ID id)
 : mName("Hero")
-, mPosition(sf::Vector2f(0, 0))
+, mPosition(0, 0)
+, mScale(0, 0)
 , mFlip(false)
 , mDisplayDescription(false)
 {
@@ -14,28 +15,30 @@ Npc::Npc(Font::ID id)
 
 void Npc::render(IndexRenderer &iRenderer)
 {
-	mNpcAnimation.getSprite().setOrigin(sf::Vector2f(mSize.x / 2, mSize.y));
-	mNpcAnimation.setScaleFromHeight(mProportions.y * mScale.y);
-	mNpcAnimation.setPosition(mPosition);
-	mNpcAnimation.render(iRenderer);
+	mAnimation.getSprite().setOrigin(sf::Vector2f(mAnimation.getSpriteSize().x / 2, mAnimation.getSpriteSize().y));
+	mAnimation.setScaleFromHeight(mProportions.y * mScale.y);
+	mAnimation.setPosition(mPosition);
+	mAnimation.render(iRenderer);
 
 	if (mDisplayDescription)
 	{
-		iRenderer.addRectangle(mTextRect, mNpcAnimation.getIndex() + 1);
-		iRenderer.addText(mDescription, mNpcAnimation.getIndex() + 2);
+		iRenderer.addRectangle(mTextRect, mAnimation.getIndex() + 1);
+		iRenderer.addText(mDescription, mAnimation.getIndex() + 2);
 	}
 }
 
 void Npc::update(sf::Time &frametime)
 {
-	mNpcAnimation.animate(frametime);
+	mAnimation.animate(frametime);
 
 	if (mDisplayDescription)
 	{
-		mDescription.setPosition(sf::Vector2f(mPosition.x - (mDescription.getGlobalBounds().width / 2), mPosition.y - (mDescription.getGlobalBounds().height) - (mSize.y * mScale.y)));
+		mDescription.setPosition(sf::Vector2f(mPosition.x - (mDescription.getGlobalBounds().width / 2),
+			mPosition.y - (mAnimation.getSpriteSize().y * mScale.y) - (mDescription.getGlobalBounds().height)));
 
 		mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 10, mDescription.getGlobalBounds().height + 10));
-		mTextRect.setPosition(sf::Vector2f(mPosition.x - (mTextRect.getGlobalBounds().width / 2), mPosition.y - (mTextRect.getGlobalBounds().height / 2) - (mSize.y * mScale.y)));
+		mTextRect.setPosition(sf::Vector2f(mPosition.x - (mTextRect.getGlobalBounds().width / 2),
+			mPosition.y - (mTextRect.getGlobalBounds().height / 2) - (mAnimation.getSpriteSize().y * mScale.y)));
 	}
 }
 
@@ -43,14 +46,12 @@ void Npc::load()
 {
 	RMI.loadResource(mIdleTexture);
 	RMI.loadResource(mTalkTexture);
-	mNpcAnimation.flip(mFlip);
-	mNpcAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
-	mSize.x = mNpcAnimation.getSpriteSize().x;
-	mSize.y = mNpcAnimation.getSpriteSize().y;
-	mNpcAnimation.setProportions(mProportions);
+	mAnimation.flip(mFlip);
+	mAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
+	mAnimation.setProportions(mProportions);
 
-	float npcWith = float(mSize.x * mScale.x);
-	float npcHeight = float(mSize.y * mScale.y);
+	float npcWith = float(mAnimation.getSpriteSize().x * mScale.x);
+	float npcHeight = float(mAnimation.getSpriteSize().y * mScale.y);
 	float xPos = mPosition.x - (npcWith / 2);
 	float yPos = mPosition.y - ((npcHeight * 0.2f) / 2);
 	mCollisionRect = sf::IntRect(xPos, yPos, npcWith, npcHeight * 0.2f);
@@ -76,15 +77,15 @@ bool Npc::getActiveConversation()
 bool Npc::isInside(sf::Vector2i &pos)
 {
 	return
-		(pos.x >= mPosition.x - mNpcAnimation.getSprite().getGlobalBounds().width / 2 &&
-		pos.x <= mPosition.x + mNpcAnimation.getSprite().getGlobalBounds().width / 2 &&
-		pos.y >= mPosition.y - mNpcAnimation.getSprite().getGlobalBounds().height &&
+		(pos.x >= mPosition.x - ((mAnimation.getSpriteSize().x / 2) * mScale.x) &&
+		pos.x <= mPosition.x + ((mAnimation.getSpriteSize().x / 2) * mScale.x) &&
+		pos.y >= mPosition.y - (mAnimation.getSpriteSize().y * mScale.y) &&
 		pos.y <= mPosition.y);
 }
 
 int Npc::getIndex()
 {
-	return mNpcAnimation.getIndex();
+	return mAnimation.getIndex();
 }
 
 std::string & Npc::getUseText()
@@ -112,7 +113,7 @@ void Npc::setColor(sf::Color color)
 }
 void Npc::setIndex(int index)
 {
-	mNpcAnimation.setIndex(index);
+	mAnimation.setIndex(index);
 }
 void Npc::setInteractionPosition(sf::Vector2f &interPos)
 {
@@ -160,29 +161,23 @@ void Npc::setIndexRect(sf::IntRect &rect)
 
 void Npc::setAnimationStyle(std::string type)
 {
-	if (type == "Npc" && mAnimation != AnimationState::Talking)
+	if (type == "Npc" && mAnimationState != AnimationState::Talking)
 	{
-		mNpcAnimation.flip(mFlip);
-		mNpcAnimation.load(RMI.getResource(mTalkTexture), mTalkFrames, mTalkDuration, mTalkWaitTime, true);
-		mSize.x = abs(mNpcAnimation.getSprite().getTextureRect().width);
-		mSize.y = abs(mNpcAnimation.getSprite().getTextureRect().height);
-		mAnimation = AnimationState::Talking;
+		mAnimation.flip(mFlip);
+		mAnimation.load(RMI.getResource(mTalkTexture), mTalkFrames, mTalkDuration, mTalkWaitTime, true);
+		mAnimationState = AnimationState::Talking;
 	}
-	else if (type == "Player" &&  mAnimation != AnimationState::PlayerTalking)
+	else if (type == "Player" &&  mAnimationState != AnimationState::PlayerTalking)
 	{
-		mNpcAnimation.flip(mFlip);
-		mNpcAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
-		mSize.x = abs(mNpcAnimation.getSprite().getTextureRect().width);
-		mSize.y = abs(mNpcAnimation.getSprite().getTextureRect().height);
-		mAnimation = AnimationState::PlayerTalking;
+		mAnimation.flip(mFlip);
+		mAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
+		mAnimationState = AnimationState::PlayerTalking;
 	}
-	else if (type == "Idle" && mAnimation != AnimationState::Idle)
+	else if (type == "Idle" && mAnimationState != AnimationState::Idle)
 	{
-		mNpcAnimation.flip(mFlip);
-		mNpcAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
-		mSize.x = abs(mNpcAnimation.getSprite().getTextureRect().width);
-		mSize.y = abs(mNpcAnimation.getSprite().getTextureRect().height);
-		mAnimation = AnimationState::Idle;
+		mAnimation.flip(mFlip);
+		mAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
+		mAnimationState = AnimationState::Idle;
 	}
 }
 
@@ -202,12 +197,12 @@ sf::Vector2f &Npc::getInteractionPosition()
 
 Animation &Npc::getAnimation()
 {
-	return mNpcAnimation;
+	return mAnimation;
 }
 sf::IntRect &Npc::getCollisionRect()
 {
-	float npcWith = float(mSize.x * mScale.x);
-	float npcHeight = float(mSize.y * mScale.y);
+	float npcWith = float(mAnimation.getSpriteSize().x * mScale.x);
+	float npcHeight = float(mAnimation.getSpriteSize().y * mScale.y);
 	float xPos = mPosition.x - (npcWith / 2);
 	float yPos = mPosition.y - ((npcHeight * 0.2f) / 2);
 	mCollisionRect = sf::IntRect(xPos, yPos, npcWith, npcHeight * 0.2f);
@@ -216,8 +211,8 @@ sf::IntRect &Npc::getCollisionRect()
 }
 sf::IntRect &Npc::getIndexRect()
 {
-	float npcWith = float(mSize.x * mScale.x);
-	float npcHeight = float(mSize.y * mScale.y);
+	float npcWith = float(mAnimation.getSpriteSize().x * mScale.x);
+	float npcHeight = float(mAnimation.getSpriteSize().y * mScale.y);
 	float yPos = mPosition.y - (npcHeight * 1.2f);
 	float xPos = mPosition.x - ((npcWith * 1.5f) / 2);
 	mIndexRect = sf::IntRect(xPos, yPos, npcWith * 1.5f, npcHeight * 1.2f);
@@ -248,6 +243,6 @@ std::string Npc::getDialogueString()
 
 void Npc::updateAnimationStyle()
 {
-	mAnimation = AnimationState::Update;
+	mAnimationState = AnimationState::Update;
 	setAnimationStyle("Idle");
 }
