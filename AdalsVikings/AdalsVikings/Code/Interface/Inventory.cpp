@@ -115,6 +115,16 @@ void Inventory::update(sf::Time frameTime)
 						delete mSnappedObject;
 						mHasSnappedObject = false;
 					}
+					else
+					{
+						if (invTiles[x][y].hasObject())
+							invTiles[x][y].getObject().enableDescription(true);
+					}
+				}
+				else
+				{
+					if (invTiles[x][y].hasObject())
+						invTiles[x][y].getObject().enableDescription(false);
 				}
 			}
 		}
@@ -133,7 +143,7 @@ void Inventory::update(sf::Time frameTime)
 
 	if (mHasSnappedObject)
 	{
-		mSnappedObject->enableNameDisplay(false);
+		mSnappedObject->enableDescription(false);
 		mSnappedObject->setPosition(sf::Vector2f(MouseState::getMousePosition()));
 		mSnappedObject->update(frameTime);
 

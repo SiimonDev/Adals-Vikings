@@ -24,8 +24,7 @@ class Level
 {
 public:
 	Level(Player &player, ActionWheel &ActionWheel);
-	virtual ~Level();
-	virtual void updateObjectActionWheel();
+	virtual void updateObjects(sf::Time frameTime);
 	virtual void updateNPCs(sf::Time frameTime);
 	virtual void updateDialog(sf::Time frameTime);
 	virtual void update(sf::Time &frametime);
