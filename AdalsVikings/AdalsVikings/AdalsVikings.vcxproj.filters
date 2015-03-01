@@ -53,9 +53,6 @@
     <ClCompile Include="Code\Interface\TextButton.cpp">
       <Filter>Source Files\Interface</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Levels\TileMap.cpp">
-      <Filter>Source Files\Logics</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Dialog\DialogueTree.cpp">
       <Filter>Source Files\Dialog</Filter>
     </ClCompile>
@@ -148,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="Code\Levels\Level_Camp_Finished.cpp">
       <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\TileMap.cpp">
+      <Filter>Source Files\Logics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

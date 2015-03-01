@@ -23,6 +23,7 @@ public:
 	void endingCutscene(sf::Time &frameTime);
 
 private:
+	bool mPlayMusic;
 	bool mIntroFade1, mIntroFade2, mIntroFade3;
 	bool mEndingFade1, mEndingFade2, mEndingFade3, mEndingFade4;
 	sf::View mCutSceneView;

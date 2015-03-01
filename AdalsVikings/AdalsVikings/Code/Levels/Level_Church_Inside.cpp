@@ -20,6 +20,8 @@ void Level_Church_Inside::render(IndexRenderer &iRenderer)
 
 void Level_Church_Inside::load()
 {
+	mPortals[ChurchToOutside_Church] = &PortalLoader::getPortal(ChurchToOutside_Church);
+	mPortals[ChurchToOutside_Church]->setWorking(true);
 	Level::load();
 }
 
@@ -30,6 +32,8 @@ void Level_Church_Inside::unload()
 
 void Level_Church_Inside::changeLevel()
 {
+	if (mPortals[ChurchToOutside_Church]->getActivated() && mPortals[ChurchToOutside_Church]->getWorking())
+		LVLMI.changeLevel(LevelFolder::Church_Outside);
 }
 
 void Level_Church_Inside::checkInteractEvents()

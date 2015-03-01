@@ -159,7 +159,6 @@ void Level_Ship_1::load()
 	RMI.loadResource(Texture::ValdisSittingTalk);
 	RMI.loadResource(Texture::LeifrSitIdle);
 	RMI.loadResource(Texture::LeifrSitTalk);
-	RMI.loadResource(Sound::BoatAmbient);
 	RMI.loadResource(Footsteps::Hardwood);
 	mCurrentFootsteps = Footsteps::Hardwood;
 
@@ -198,7 +197,7 @@ void Level_Ship_1::load()
 
 	Level::load();
 
-	AudioPlayer::playSound(Sound::BoatAmbient, "boatAmbient", true);
+	AudioPlayer::playMusic("assets/sounds/Boat.ogg", "boatAmbient", true, 20);
 	AudioPlayer::playMusic("assets/sounds/music/Boat_music.ogg", "boat1", true, 20);
 
 	// Add Collision from every NPC to the map
@@ -234,7 +233,6 @@ void Level_Ship_1::unload()
 	RMI.unloadResource(Texture::ValdisSittingTalk);
 	RMI.unloadResource(Texture::LeifrSitIdle);
 	RMI.unloadResource(Texture::LeifrSitTalk);
-	RMI.unloadResource(Sound::BoatAmbient);
 	RMI.unloadResource(Footsteps::Hardwood);
 	Level::unload();
 }

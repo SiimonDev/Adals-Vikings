@@ -93,9 +93,12 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::SeagullIdle] = "assets/images/Seagull/character_fismås_idle.png";
 	mTexturePathMap[Texture::SeagullTalk] = "assets/images/Seagull/character_fismås_talk.png";
 	mTexturePathMap[Texture::MailmanIdle] = "assets/images/Mailman/character_mailman_leaves_blink.png";
-	mTexturePathMap[Texture::MailmanIdle] = "assets/images/Mailman/character_mailman_leaves_talk.png";
+	mTexturePathMap[Texture::MailManTalk] = "assets/images/Mailman/character_mailman_leaves_talk.png";
 	mTexturePathMap[Texture::MailManSadIdle] = "assets/images/Mailman/character_sad_mailman_leaves_blink.png";
 	mTexturePathMap[Texture::MailManSadTalk] = "assets/images/Mailman/character_sad_mailman_leaves_talk.png";
+	mTexturePathMap[Texture::PrincessIdle] = "assets/images/Princess/character_princess_blink.png";
+	mTexturePathMap[Texture::PrincessIdle2] = "assets/images/Princess/character_princess_poke.png";
+	mTexturePathMap[Texture::PrincessTalk] = "assets/images/Princess/character_princess_talk.png";
 	/* ============================================ */
 
 
