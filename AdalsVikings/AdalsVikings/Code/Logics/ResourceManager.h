@@ -86,6 +86,8 @@ namespace Texture
 		PrincessIdle,
 		PrincessIdle2,
 		PrincessTalk,
+		BeorIdle,
+		BeorTalk,
 		SIZE
 	};
 }

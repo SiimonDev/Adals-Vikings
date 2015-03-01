@@ -18,6 +18,7 @@
 #include "PortalLoader.h"
 #include <External\dirent.h>
 #include <SFML\Graphics.hpp>
+#include <fstream>
 #include <vector>
 
 class Level
@@ -42,6 +43,7 @@ public:
 	virtual void setNearbyLevels() = 0;
 	virtual void setLoaded(bool value);
 	virtual void setIsNearbyLevel(bool value);
+	virtual void setBackgroundID();
 
 	virtual bool &getIsNearbyLevel();
 	virtual bool &getIsLoaded();
@@ -58,6 +60,8 @@ protected:
 	std::string mFolderPath;
 	std::string mDroppedItemID;
 	std::string mCurrentNPCID;
+	std::ifstream mInstream;
+	std::ofstream mOfstream;
 
 	ActionWheel *mActionWheel;
 	Player &mPlayer;
@@ -75,6 +79,6 @@ protected:
 	bool mWalkToNPC;
 	bool mIsInConversation;
 	bool mOldIsInConversation;
-	bool mIsNearbyLevel, mIsLoaded;
+	bool mIsNearbyLevel, mIsLoaded, mHasBeenReset;
 };
 

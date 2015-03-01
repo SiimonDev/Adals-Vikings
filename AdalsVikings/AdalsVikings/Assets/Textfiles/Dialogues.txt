@@ -29,3 +29,6 @@ Mailman_Road assets/textfiles/road/Dialogue_mailman_road.xml
 GiveScroll_Road assets/textfiles/road/Dialogue_givescroll_road.xml
 -----------------------CHURCH OUTSIDE----------------------------
 Princess_ChurchOutside assets/textfiles/church/Dialogue_princess_church.xml
+-----------------------CHURCH INSIDE----------------------------
+Beor_ChurchInside assets/textfiles/church/Dialogue_beor_church.xml
+GoBack_ChurchInside assets/textfiles/church/Dialogue_exit_church.xml

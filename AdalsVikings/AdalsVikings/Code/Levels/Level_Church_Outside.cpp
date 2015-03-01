@@ -30,6 +30,16 @@ void Level_Church_Outside::update(sf::Time &frametime)
 			}
 		}
 	}
+
+	if (Act1Events::hasBeenTriggered(Act1Event::ChurchInside_GoBackDialogue) && !Act1Events::hasBeenHandled(Act1Event::ChurchInside_GoBackDialogue))
+	{
+		if (!DialogHandler::getDialogue("GoBack_ChurchInside").getActiveConversation() && !DialogHandler::getDialogue("GoBack_ChurchInside").getHasStopped())
+			DialogHandler::getDialogue("GoBack_ChurchInside").startDialogue();
+		else if (DialogHandler::getDialogue("GoBack_ChurchInside").getHasStopped())
+		{
+			Act1Events::handleEvent(Act1Event::ChurchInside_GoBackDialogue);
+		}
+	}
 	changeLevel();
 	Level::update(frametime);
 }

@@ -123,7 +123,7 @@ void LevelManager::loadAct1()
 	mLevelMap[LevelFolder::Camp_Clearing] = LevelPtr(new Level_Camp_Clearing(mPlayer, mActionWheel));
 	mLevelMap[LevelFolder::Camp_Finished] = LevelPtr(new Level_Camp_Finished(mPlayer, mActionWheel));
 
-	mCurrentID = LevelFolder::Church_Outside;
+	mCurrentID = LevelFolder::Beach;
 	baseLoad();
 }
 
@@ -141,6 +141,8 @@ void LevelManager::baseLoad()
 
 	// Load all the levels
 	mLevelMap[mCurrentID]->setIsNearbyLevel(true);
+	mLevelMap[mCurrentID]->setBackgroundID();
+	mLevelMap[mCurrentID]->resetLevel();
 	mLevelMap[mCurrentID]->load();
 	mLevelMap[mCurrentID]->setNearbyLevels();
 	LoadNearbyLevels();
@@ -154,8 +156,9 @@ void LevelManager::LoadNearbyLevels()
 		if (it->second->getIsNearbyLevel() && !it->second->getIsLoaded())
 		{
 			std::cout << "LOAD: " << it->first << std::endl;
-			it->second->load();
+			it->second->setBackgroundID();
 			it->second->resetLevel();
+			it->second->load();
 		}
 	}
 }

@@ -63,12 +63,22 @@ void Level_Road::load()
 	mPortals[RoadToOutside_Chuch] = &PortalLoader::getPortal(RoadToOutside_Chuch);
 	mPortals[RoadToForestCamp] = &PortalLoader::getPortal(RoadToForestCamp);
 
-	mPortals[RoadToOutside_Chuch]->setCannotDialogue("I Should probably help find that scroll first...");
-	mPortals[RoadToForestCamp]->setCannotDialogue("I Should probably help find that scroll first...");
 	mPortals[RoadToBeach]->setWorking(true);
 
-	mNpcs["Mailman"] = NpcPtr(new Npc(NpcHandler::getNpc("Mailman")));
-	mNpcs["Mailman"]->setDialogue("Mailman_Road");
+	if (!Act1Events::hasBeenHandled(Act1Event::Enter_Road))
+	{
+
+		mPortals[RoadToOutside_Chuch]->setCannotDialogue("I Should probably help find that scroll first...");
+		mPortals[RoadToForestCamp]->setCannotDialogue("I Should probably help find that scroll first...");
+
+		mNpcs["Mailman"] = NpcPtr(new Npc(NpcHandler::getNpc("Mailman")));
+		mNpcs["Mailman"]->setDialogue("Mailman_Road");
+	}
+	else if (Act1Events::hasBeenHandled(Act1Event::Road_GiveMailmanPaper))
+	{
+		mPortals[RoadToOutside_Chuch]->setWorking(true);
+		mPortals[RoadToForestCamp]->setCannotDialogue("I can see brynja over there... I would rather not talk to her right now");
+	}
 
 	Level::load();
 }

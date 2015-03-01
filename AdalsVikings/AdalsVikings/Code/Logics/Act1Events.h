@@ -15,6 +15,7 @@ namespace Act1Event
 		Road_StartMailmanConv,
 		Road_GiveMailmanPaper,
 		ChurchOutside_TalkToPrincess,
+		ChurchInside_GoBackDialogue,
 		EVENT_SIZE
 	};
 }

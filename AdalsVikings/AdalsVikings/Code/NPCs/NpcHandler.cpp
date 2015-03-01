@@ -23,6 +23,7 @@ void NpcHandler::load()
 	NpcPtr Seagull(new Npc(Font::Font1));
 	NpcPtr Mailman(new Npc(Font::Font1));
 	NpcPtr Princess(new Npc(Font::Font1));
+	NpcPtr Beor(new Npc(Font::Font1));
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -146,6 +147,17 @@ void NpcHandler::load()
 	Princess->setscale(sf::Vector2f(0.40f, 0.40f));
 	Princess->setFlip(false);
 
+	Beor->setName("Beor");
+	Beor->setIdleAnimation(Texture::BeorIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(5));
+	Beor->SetTalkAnimation(Texture::BeorTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
+	Beor->setPosition(sf::Vector2f(450, 790));
+	Beor->setInteractionPosition(sf::Vector2f(700, 780));
+	Beor->setColor(sf::Color(176, 196, 222));
+	Beor->setIndex(3);
+	Beor->setProportions(sf::Vector2f(243, 558));
+	Beor->setscale(sf::Vector2f(0.65f, 0.65f));
+	Beor->setFlip(true);
+
 	CreateNpc("Valdis", std::move(Valdis)));
 	CreateNpc("Leifr", std::move(Leifr)));
 	CreateNpc("Finnr", std::move(Finnr)));
@@ -157,6 +169,7 @@ void NpcHandler::load()
 	CreateNpc("Seagull", std::move(Seagull)));
 	CreateNpc("Mailman", std::move(Mailman)));
 	CreateNpc("Princess", std::move(Princess)));
+	CreateNpc("Beor", std::move(Beor)));
 }
 
 void NpcHandler::unload()

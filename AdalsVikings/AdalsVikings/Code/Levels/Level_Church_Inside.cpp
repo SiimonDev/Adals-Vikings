@@ -22,6 +22,10 @@ void Level_Church_Inside::load()
 {
 	mPortals[ChurchToOutside_Church] = &PortalLoader::getPortal(ChurchToOutside_Church);
 	mPortals[ChurchToOutside_Church]->setWorking(true);
+
+	mNpcs["Beor"] = NpcPtr(new Npc(NpcHandler::getNpc("Beor")));
+	mNpcs["Beor"]->setDialogue("Beor_ChurchInside");
+
 	Level::load();
 }
 
@@ -32,7 +36,12 @@ void Level_Church_Inside::unload()
 
 void Level_Church_Inside::changeLevel()
 {
-	if (mPortals[ChurchToOutside_Church]->getActivated() && mPortals[ChurchToOutside_Church]->getWorking())
+	if (mPortals[ChurchToOutside_Church]->getActivated() && mPortals[ChurchToOutside_Church]->getWorking() && !Act1Events::hasBeenTriggered(Act1Event::ChurchInside_GoBackDialogue) && DialogHandler::getDialogue("Beor_ChurchInside").getHasStopped())
+	{
+		Act1Events::triggerEvent(Act1Event::ChurchInside_GoBackDialogue);
+		LVLMI.changeLevel(LevelFolder::Church_Outside);
+	}
+	else if (mPortals[ChurchToOutside_Church]->getActivated() && mPortals[ChurchToOutside_Church]->getWorking())
 		LVLMI.changeLevel(LevelFolder::Church_Outside);
 }
 

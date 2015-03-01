@@ -9,6 +9,7 @@ Level::Level(Player& player, ActionWheel &ActionWheel)
 : mPlayer(player)
 , mIsNearbyLevel(false)
 , mIsLoaded(false)
+, mHasBeenReset(false)
 {
 	mActionWheel = &ActionWheel;
 }
@@ -465,13 +466,16 @@ void Level::saveObjects()
 
 void Level::resetLevel()
 {
-	//std::cout << std::endl << "--- Reseting Level: " << mFolderPath << " ---" << std::endl;
-
-	//std::cout << "Reseting Objects..." << std::endl;
-	std::ifstream fin(mFolderPath + "level_objects_reset.txt");
-	std::ofstream fout(mFolderPath + "level_objects.txt", std::ofstream::out | std::ofstream::trunc);
-	std::string line;
-	while (std::getline(fin, line)) fout << line << std::endl;
+		mInstream.open(mFolderPath + "level_objects_reset.txt");
+		mOfstream.open(mFolderPath + "level_objects.txt");
+		std::string line;
+		while (!mInstream.eof())
+		{
+			std::getline(mInstream, line);
+			mOfstream << line << std::endl;
+		}
+		mInstream.close();
+		mOfstream.close();
 }
 
 void Level::refreshLevel()
@@ -483,10 +487,13 @@ void Level::refreshLevel()
 
 void Level::load()
 {
-	mFolderPath = RMI.getFilePath(mBackgroundID);
 
 	// Load All objects
-	loadObjects();
+	if (!mHasBeenReset)
+	{
+		loadObjects();
+		mHasBeenReset = true;
+	}
 
 	// Load All backgrounds, TileMaps, and index maps
 	loadAllBackgrounds();
@@ -582,4 +589,9 @@ bool & Level::getIsNearbyLevel()
 bool & Level::getIsLoaded()
 {
 	return mIsLoaded;
+}
+
+void Level::setBackgroundID()
+{
+	mFolderPath = RMI.getFilePath(mBackgroundID);
 }
