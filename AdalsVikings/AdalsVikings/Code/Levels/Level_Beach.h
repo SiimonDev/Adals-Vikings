@@ -15,6 +15,7 @@ public:
 	void changeLevel();
 	void checkInteractEvents();
 	void checkEvents();
+	void setNearbyLevels();
 
 	//specific Functions
 	void introCutscene(sf::Time &frameTime);
@@ -22,8 +23,6 @@ public:
 	void endingCutscene(sf::Time &frameTime);
 
 private:
-
-	Animation mWaveAnimation;
 	bool mIntroFade1, mIntroFade2, mIntroFade3;
 	bool mEndingFade1, mEndingFade2, mEndingFade3, mEndingFade4;
 	sf::View mCutSceneView;

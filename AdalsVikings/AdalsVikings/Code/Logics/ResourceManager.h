@@ -79,6 +79,10 @@ namespace Texture
 		YngvarrSadTalk,
 		SeagullIdle,
 		SeagullTalk,
+		MailmanIdle,
+		MailManTalk,
+		MailManSadIdle,
+		MailManSadTalk,
 		SIZE
 	};
 }

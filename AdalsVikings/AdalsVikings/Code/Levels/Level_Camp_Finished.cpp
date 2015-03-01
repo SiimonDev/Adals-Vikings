@@ -21,7 +21,6 @@ void Level_Camp_Finished::render(IndexRenderer &iRenderer)
 void Level_Camp_Finished::load()
 {
 	Level::load();
-	mPlayer.setPosition(sf::Vector2f(410, 1070));
 }
 
 void Level_Camp_Finished::unload()
@@ -38,6 +37,11 @@ void Level_Camp_Finished::checkInteractEvents()
 
 }
 void Level_Camp_Finished::checkEvents()
+{
+
+}
+
+void Level_Camp_Finished::setNearbyLevels()
 {
 
 }

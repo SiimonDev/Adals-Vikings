@@ -54,7 +54,6 @@ void Portal::unload()
 {
 	mIsActive = false;
 	mSwitchPortal = false;
-	mConnectedPortal = 0;
 }
 
 void Portal::setGateway(Portal *portal2)

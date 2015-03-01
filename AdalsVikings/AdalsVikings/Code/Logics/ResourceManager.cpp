@@ -92,6 +92,10 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::YngvarrSadTalk] = "assets/images/Yngvarr/character_yngvarr_uneasy_talk.png";
 	mTexturePathMap[Texture::SeagullIdle] = "assets/images/Seagull/character_fismås_idle.png";
 	mTexturePathMap[Texture::SeagullTalk] = "assets/images/Seagull/character_fismås_talk.png";
+	mTexturePathMap[Texture::MailmanIdle] = "assets/images/Mailman/character_mailman_leaves_blink.png";
+	mTexturePathMap[Texture::MailmanIdle] = "assets/images/Mailman/character_mailman_leaves_talk.png";
+	mTexturePathMap[Texture::MailManSadIdle] = "assets/images/Mailman/character_sad_mailman_leaves_blink.png";
+	mTexturePathMap[Texture::MailManSadTalk] = "assets/images/Mailman/character_sad_mailman_leaves_talk.png";
 	/* ============================================ */
 
 
@@ -106,8 +110,8 @@ ResourceManager::ResourceManager()
 
 
 	/* =========== Set Sound File paths =========== */
-	mSoundPathMap[Sound::InventoryOpen] = "assets/sounds/Inventory(open).wav";
-	mSoundPathMap[Sound::InventoryClose] = "assets/sounds/Inventory(close).wav";
+	mSoundPathMap[Sound::InventoryOpen] = "assets/sounds/Inventory (open).ogg";
+	mSoundPathMap[Sound::InventoryClose] = "assets/sounds/Inventory (close).ogg";
 	mSoundPathMap[Sound::PickUpItem] = "assets/sounds/Pick_up_item.wav";
 	mSoundPathMap[Sound::BeachAmbient] = "assets/sounds/Beach.ogg";
 	mSoundPathMap[Sound::BoatAmbient] = "assets/sounds/Boat.ogg";

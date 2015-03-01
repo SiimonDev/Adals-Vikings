@@ -15,7 +15,7 @@
 			<text character="Ulfr" say="But thanks anyways, I'll keep looking." timer="2.5" disablePrevious="false" />
 			<gotoContainer />
 		</option>
-		<option choice_text="Could you guys help me wake someone up?" disabled="true">
+		<option choice_text="Could you guys help me wake someone up?" disabled="false">
 			<text character="Ulfr" say="Could you guys help me wake someone up?" timer="2.5" turned="false" />
 			<text character="Finnr" say="Eh..." timer="1.7" turned="true" />
 			<text character="Leifr" say="Who exactly?" timer="2.0" turned="false" />

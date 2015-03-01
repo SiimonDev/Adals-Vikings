@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $brokenWagon$
+*Name: Broken Wagon
+*ispickupable: True
+*pickup: "Nah." ~2,0
+*lookat: "An old wagon. What a sad sight." ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: Y:

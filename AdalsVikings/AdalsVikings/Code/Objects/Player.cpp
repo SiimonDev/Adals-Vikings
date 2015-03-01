@@ -16,7 +16,7 @@ Player::Player()
 	, mName("Ulfr")
 	, mIntention(Intention::None)
 {
-	mSpeed = 4.f;
+	mSpeed = 6.f;
 	mProportions = sf::Vector2f(285.7f, 512.f);
 }
 

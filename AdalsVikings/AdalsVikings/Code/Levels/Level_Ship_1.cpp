@@ -215,7 +215,9 @@ void Level_Ship_1::load()
 	mTileMap.setIndexOnMap(mNpcs["Brynja"]->getIndexRect(), mNpcs["Brynja"]->getIndex() - 1);
 	mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 1);
 
-	mPlayer.setPosition(sf::Vector2f(1400, 750));
+	if (!BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
+		mPlayer.setPosition(sf::Vector2f(1400, 750));
+
 }
 
 void Level_Ship_1::unload()
@@ -261,5 +263,16 @@ void Level_Ship_1::changeLevel(sf::Time &frameTime)
 	if (mPortals[Ship1ToShip2]->getActivated())
 	{
 		LVLMI.changeLevel(LevelFolder::Ship_2);
+	}
+}
+
+void Level_Ship_1::setNearbyLevels()
+{
+	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
+	{
+		if (it->first == LevelFolder::Ship_2)
+			it->second->setIsNearbyLevel(true);
+		else
+			it->second->setIsNearbyLevel(false);
 	}
 }

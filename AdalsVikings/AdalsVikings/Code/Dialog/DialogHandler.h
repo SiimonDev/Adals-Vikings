@@ -13,7 +13,7 @@ public:
 	static void reloadConversations();
 
 	static void load(std::string levelFolder);
-	static void unload();
+	static void unload(std::string levelFolder);
 
 	static DialogueTree &getDialogue(std::string id);
 	static std::map<std::string, DialogueTreePtr> &getDialogues();

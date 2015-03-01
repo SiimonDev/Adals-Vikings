@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why would I use Brandr?"></useText>
+	<lookText lookText="That's Brandr"></lookText>
+	<text character="Ulfr" disablePrevious="false" timer="2.2" say="hej"></text>
+	<text character="Ulfr" disablePrevious="false" timer="" say="DUrr"></text>
+	<option_container id="1" disabled="false">
+		<option id="1.1" disabled="false" choice_text="do you even?">
+			<text character="Brandr" disablePrevious="false" timer="3.3" say="hej!"></text>
+			
+			<option_container id="1.1" disabled="false">
+				<option id="1.1.1" disabled="false" disablePrevious="false" choice_text="What do you want!?">
+					<text character="Ulfr" disablePrevious="false" timer="2.5" say="durr"></text>
+					<text character="Brandr" disablePrevious="false" timer="2.4" say="murh"></text>
+					<option_container id="1.1.1" disabled="false">
+						<option id="1.1.1.1" disabled="false" disablePrevious="true" choice_text="Disable Previous">
+							<text character="Ulfr" disablePrevious="false" timer="2.4" say="Disable Previous"></text>
+							<gotoBaseContainer></gotoBaseContainer>
+						</option>
+						<stopOption></stopOption>
+					</option_container>
+				</option>
+				<option id="1.1.2" disabled="false" disablePrevious="false" choice_text="back">
+				<gotoBaseContainer></gotoBaseContainer>
+				</option>
+				<stopOption></stopOption>
+			</option_container>
+		</option>
+		<option id="1.2" disabled="false" disablePrevious="false" choice_text="NOPE">
+			<text character="Ulfr" disablePrevious="false" timer="2.5" say="NUHU">!</text>
+			<option_container id="1.2" disabled="false">
+				<option id="1.2.1" disabled="false" disablePrevious="false" choice_text="durr">
+					<text character="Brandr" disablePrevious="false" timer="2.5" say="disable"></text>
+					<gotoContainer></gotoContainer>
+				</option>
+				<option id="1.2.2" disabled="false" disablePrevious="false" choice_text="back">
+				<gotoBaseContainer></gotoBaseContainer>
+				</option>
+				<stopOption></stopOption>
+			</option_container>
+		</option>
+		<option id="1.3" disabled="false" disablePrevious="false" choice_text="jimmie had a little farm that was brown and red and green, why was it brown and red and green?">
+			<text character="Brandr" disablePrevious="true" timer="3.3" say="Never Happened"></text>
+			<gotoContainer></gotoContainer>
+		</option>
+		<option id="1.4" disabled="false" disablePrevious="true" choice_text="exit conversation">
+		<stopConversation></stopConversation>
+		</option>
+		<stopOption></stopOption>
+	</option_container>
+	<option_container id="2" disabled="false">
+		<option id="2.1" disabled="false" disablePrevious="false" choice_text="hello">
+			<text character="Ulfr" disablePrevious="false" timer="2.5" say="hello"></text>
+			<text character="Brandr" disablePrevious="true" timer="2.5" say="hi!"></text>
+			<gotoContainer></gotoContainer>
+		</option>
+		<stopOption></stopOption>
+	</option_container>
+	<stopConversation></stopConversation>
+	<mall info="Endast Mall Efter Detta!" disabled="true">
+		<useText useText="Why would I use Brandr?"></useText>
+		<lookText lookText="That's Brandr"></lookText>
+		<text character="Ulfr" disablePrevious="false" timer="2.2" say="hej"></text>
+		<text character="Ulfr" disablePrevious="false" timer="" say="DUrr"></text>
+		<option_container id="1" disabled="false">
+			<option id="1.1" disabled="false" choice_text="do you even?">
+				<text character="Brandr" disablePrevious="false" timer="3.3" say="hej!"></text>
+				
+				<option_container id="1.1" disabled="false">
+					<option id="1.1.1" disabled="false" disablePrevious="false" choice_text="What do you want!?">
+						<text character="Ulfr" disablePrevious="false" timer="2.5" say="durr"></text>
+						<text character="Brandr" disablePrevious="false" timer="2.4" say="murh"></text>
+						<option_container id="1.1.1" disabled="false">
+							<option id="1.1.1.1" disabled="false" disablePrevious="true" choice_text="Disable Previous">
+								<text character="Ulfr" disablePrevious="false" timer="2.4" say="Disable Previous"></text>
+								<gotoBaseContainer></gotoBaseContainer>
+							</option>
+							<stopOption></stopOption>
+						</option_container>
+					</option>
+					<option id="1.1.2" disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer></gotoBaseContainer>
+					</option>
+					<stopOption></stopOption>
+				</option_container>
+			</option>
+			<option id="1.2" disabled="false" disablePrevious="false" choice_text="NOPE">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="NUHU">!</text>
+				<option_container id="1.2" disabled="false">
+					<option id="1.2.1" disabled="false" disablePrevious="false" choice_text="durr">
+						<text character="Brandr" disablePrevious="false" timer="2.5" say="disable"></text>
+						<gotoContainer></gotoContainer>
+					</option>
+					<option id="1.2.2" disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer></gotoBaseContainer>
+					</option>
+					<stopOption></stopOption>
+				</option_container>
+			</option>
+			<option id="1.3" disabled="false" disablePrevious="false" choice_text="jimmie had a little farm that was brown and red and green, why was it brown and red and green?">
+				<text character="Brandr" disablePrevious="true" timer="3.3" say="Never Happened"></text>
+				<gotoContainer></gotoContainer>
+			</option>
+			<option id="1.4" disabled="false" disablePrevious="true" choice_text="exit conversation">
+				<stopConversation></stopConversation>
+			</option>
+			<stopOption></stopOption>
+		</option_container>
+		<option_container id="2" disabled="false">
+			<option id="2.1" disabled="false" disablePrevious="false" choice_text="hello">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="hello"></text>
+				<text character="Brandr" disablePrevious="true" timer="2.5" say="hi!"></text>
+				<gotoContainer></gotoContainer>
+			</option>
+			<stopOption></stopOption>
+		</option_container>
+	</mall>
+</conversation>

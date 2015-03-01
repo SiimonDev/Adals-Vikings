@@ -21,6 +21,7 @@ void NpcHandler::load()
 	NpcPtr Brandr(new Npc(Font::Font1));
 	NpcPtr Yngvarr(new Npc(Font::Font1));
 	NpcPtr Seagull(new Npc(Font::Font1));
+	NpcPtr Mailman(new Npc(Font::Font1));
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -130,6 +131,18 @@ void NpcHandler::load()
 	Seagull->setscale(sf::Vector2f(0.55f, 0.55f));
 	Seagull->setFlip(false);
 
+	Mailman->setName("Mailman");
+	Mailman->setIdleAnimation(Texture::MailManSadIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(5));
+	Mailman->SetTalkAnimation(Texture::MailManSadTalk, sf::Vector2i(4, 1), sf::milliseconds(550), sf::Time::Zero);
+	Mailman->setPosition(sf::Vector2f(820, 1000));
+	Mailman->setInteractionPosition(sf::Vector2f(800, 500));
+	Mailman->setColor(sf::Color(176, 196, 222));
+	Mailman->setDialogue("Mailman");
+	Mailman->setIndex(21);
+	Mailman->setProportions(sf::Vector2f(199, 432));
+	Mailman->setscale(sf::Vector2f(0.55f, 0.55f));
+	Mailman->setFlip(false);
+
 	CreateNpc("Valdis", std::move(Valdis)));
 	CreateNpc("Leifr", std::move(Leifr)));
 	CreateNpc("Finnr", std::move(Finnr)));
@@ -139,6 +152,7 @@ void NpcHandler::load()
 	CreateNpc("Brandr", std::move(Brandr)));
 	CreateNpc("Yngvarr", std::move(Yngvarr)));
 	CreateNpc("Seagull", std::move(Seagull)));
+	CreateNpc("Mailman", std::move(Mailman)));
 }
 
 void NpcHandler::unload()

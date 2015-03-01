@@ -7,6 +7,8 @@
 
 Level::Level(Player& player, ActionWheel &ActionWheel)
 : mPlayer(player)
+, mIsNearbyLevel(false)
+, mIsLoaded(false)
 {
 	mActionWheel = &ActionWheel;
 }
@@ -295,6 +297,13 @@ void Level::update(sf::Time &frameTime)
 	for each (Object* object in mObjects)
 		object->update(frameTime);
 
+	if (!mIsInConversation && !mOldIsInConversation && FadeI.getFaded())
+	{
+		mPlayer.move(frameTime);
+		updateObjectActionWheel();
+	}
+	mOldIsInConversation = mIsInConversation;
+
 	// Do the portal thing
 	for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 	{
@@ -306,13 +315,6 @@ void Level::update(sf::Time &frameTime)
 		else
 			it->second->walkPath(mPlayer);
 	}
-
-	if (!mIsInConversation && !mOldIsInConversation && FadeI.getFaded())
-	{
-		mPlayer.move(frameTime);
-		updateObjectActionWheel();
-	}
-	mOldIsInConversation = mIsInConversation;
 }
 
 void Level::render(IndexRenderer &iRenderer)
@@ -489,6 +491,7 @@ void Level::load()
 	RMI.loadResource(Footsteps::Default);
 	mCurrentFootsteps = Footsteps::Default;
 	mPlayer.setFootsteps(Footsteps::Default);
+	setLoaded(true);
 }
 
 void Level::unload()
@@ -504,9 +507,10 @@ void Level::unload()
 		it->second->unload();
 	mNpcs.clear();
 
-	DialogHandler::unload();
+	/*std::cout << "Unloading dialogues in: " << mFolderPath << std::endl;
+	DialogHandler::unload(mFolderPath + "Dialogues.txt");*/
 
-	//Unload Portals
+	////Unload Portals
 	mPortals.clear();
 	
 	// Unload and delete all the objects
@@ -544,4 +548,24 @@ TileMap &Level::getTileMap()
 Level::~Level()
 {
 
+}
+
+void Level::setLoaded(bool value)
+{
+	mIsLoaded = value;
+}
+
+void Level::setIsNearbyLevel(bool value)
+{
+	mIsNearbyLevel = value;
+}
+
+bool & Level::getIsNearbyLevel()
+{
+	return mIsNearbyLevel;
+}
+
+bool & Level::getIsLoaded()
+{
+	return mIsLoaded;
 }

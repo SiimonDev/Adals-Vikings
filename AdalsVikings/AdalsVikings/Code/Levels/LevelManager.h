@@ -3,6 +3,7 @@
 #include "..\Levels\PortalLoader.h"
 #include "..\Interface\ActionWheel.h"
 #include "..\Objects\ObjectHandler.h"
+#include "..\Interface\LoadingScreen.h"
 #include "..\NPCs\NpcHandler.h"
 #include <SFML\Graphics.hpp>
 #include <map>
@@ -33,7 +34,11 @@ public:
 
 	void loadBoatScene();
 	void loadAct1();
+	void resetNearbyLevels();
+	void LoadNearbyLevels();
+	void unloadCacheLevels();
 
+	std::map<LevelFolder::ID, LevelPtr> &getCurrentLevels();
 	Act &getCurrentAct();
 
 private:

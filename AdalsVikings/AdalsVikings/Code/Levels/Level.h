@@ -39,7 +39,12 @@ public:
 	virtual void unload();
 	virtual void checkInteractEvents();
 	virtual void checkEvents();
+	virtual void setNearbyLevels() = 0;
+	virtual void setLoaded(bool value);
+	virtual void setIsNearbyLevel(bool value);
 
+	virtual bool &getIsNearbyLevel();
+	virtual bool &getIsLoaded();
 	virtual TileMap &getTileMap();
 
 protected:
@@ -70,5 +75,6 @@ protected:
 	bool mWalkToNPC;
 	bool mIsInConversation;
 	bool mOldIsInConversation;
+	bool mIsNearbyLevel, mIsLoaded;
 };
 

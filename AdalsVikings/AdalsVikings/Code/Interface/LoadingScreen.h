@@ -16,6 +16,7 @@ enum LoadTask
 	LoadTest,
 	LoadMenu,
 	None,
+	LoadNearbyLevels,
 	Finished,
 };
 
@@ -31,6 +32,7 @@ public:
 	bool update(sf::Time dt);
 
 	void startLoading(LoadTask task);
+	void loadNearbyLevels();
 	void terminate();
 
 	bool &getIsDone();

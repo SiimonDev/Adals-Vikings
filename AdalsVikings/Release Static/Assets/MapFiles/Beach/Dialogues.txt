@@ -1,0 +1,9 @@
+Alfr assets/textfiles/beach/Dialogue_alfr_beach.xml
+Dagny assets/textfiles/beach/Dialogue_dagny_beach.xml
+Finnr assets/textfiles/beach/Dialogue_finnr_beach.xml
+Valdis assets/textfiles/beach/Dialogue_valdis_beach.xml
+Yngvarr assets/textfiles/beach/Dialogue_yngvarr_beach.xml
+Leifr assets/textfiles/beach/Dialogue_leifr_beach.xml
+IntroBeach assets/textfiles/beach/Dialogue_intro_beach.xml
+EndingBeach assets/textfiles/beach/Dialogue_ending_beach.xml
+Bosse assets/textfiles/beach/Dialogue_bosse_beach.xml

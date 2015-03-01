@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $bucket$
+*Name: bucket
+*ispickupable: True
+*pickup: "This might wake Brynja up! I'll need to fill it up first... and I can't do it myself..." ~3,0
+*lookat: "I'll need some help to fill it up." ~1,5
+*deny: "I just... no. " ~1,5
+*denywith: $Dagny$ "I'm not suicidal." ~1,5; $Alfr$ "Like he'd help." ~1,5; $Valdis$ "I don't want to disturb her." ~1,5; $Leifr$ "" ~0; 
+*combine: 
+*interact: 
+*texture: "img_bucket_id.png"

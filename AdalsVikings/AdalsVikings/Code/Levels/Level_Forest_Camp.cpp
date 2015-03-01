@@ -22,7 +22,6 @@ void Level_Forest_Camp::load()
 {
 	
 	Level::load();
-	mPlayer.setPosition(sf::Vector2f(410, 1070));
 }
 
 void Level_Forest_Camp::unload()
@@ -41,4 +40,15 @@ void Level_Forest_Camp::checkInteractEvents()
 void Level_Forest_Camp::checkEvents()
 {
 
+}
+
+void Level_Forest_Camp::setNearbyLevels()
+{
+	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
+	{
+		if (it->first == LevelFolder::Forest_Road)
+			it->second->setIsNearbyLevel(true);
+		else
+			it->second->setIsNearbyLevel(false);
+	}
 }

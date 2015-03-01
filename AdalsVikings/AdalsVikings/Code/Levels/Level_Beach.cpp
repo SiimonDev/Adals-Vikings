@@ -6,6 +6,8 @@
 #include "..\Logics\WindowState.h"
 #include <iostream>
 
+static Animation mWaveAnimation;
+
 Level_Beach::Level_Beach(Player &player, ActionWheel &actionWheel)
 	: Level(player, actionWheel)
 	, mIntroFade1(false)
@@ -35,7 +37,6 @@ void Level_Beach::render(IndexRenderer &iRenderer)
 
 void Level_Beach::load()
 {
-	
 	mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
 	mPortals[BeachToRoad]->setCannotDialogue("I cannot go there yet!");
 	mPortals[BeachToRoad]->setWorking(true);
@@ -73,8 +74,6 @@ void Level_Beach::load()
 		mNpcs["Valdis"]->setPosition(sf::Vector2f(600, 1120));
 		mNpcs["Valdis"]->setDialogue("Valdis");
 		mNpcs["Valdis"]->setIndex(5);
-
-		Act1Events::triggerEvent(Act1Event::Beach_Intro);
 
 		/* ==== Load Npcs and set right position, dialogue, scale and so on... ===== */
 		mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
@@ -153,7 +152,12 @@ void Level_Beach::load()
 		mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 1);
 		mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 1);
 
+		Act1Events::triggerEvent(Act1Event::Beach_Intro);
+
 	}
+	else
+		Level::load();
+
 	RMI.loadResource(Texture::WaveAnimation);
 	mWaveAnimation.load(RMI.getResource(Texture::WaveAnimation), sf::Vector2i(10, 9), sf::seconds(10), sf::seconds(5), true);
 	mWaveAnimation.setIndex(4);
@@ -163,12 +167,11 @@ void Level_Beach::load()
 	mWaveAnimation.setPosition(sf::Vector2f(1920 + 3, 1080 + 3));
 
 	RMI.loadResource(Sound::BeachAmbient);
-	AudioPlayer::playSound(Sound::BeachAmbient, "beachAmbient", true);
-	AudioPlayer::playMusic("assets/sounds/music/exp theme.ogg", "Beach", true, 20);
 }
 
 void Level_Beach::unload()
 {
+	AudioPlayer::stopSound("beachAmbient");
 	RMI.unloadResource(Sound::BeachAmbient);
 	RMI.unloadResource(Texture::WaveAnimation);
 	RMI.unloadResource(Texture::YngvarrSadIdle);
@@ -184,6 +187,8 @@ void Level_Beach::changeLevel()
 		{
 			Act1Events::triggerEvent(Act1Event::Enter_Road);
 			LVLMI.changeLevel(LevelFolder::Road);
+			AudioPlayer::stopSound("beachAmbient");
+			AudioPlayer::stopMusic("Beach");
 		}
 	}
 }
@@ -408,5 +413,16 @@ void Level_Beach::talkToNpcs()
 		{
 			Act1Events::triggerEvent(Act1Event::Beach_Ending);
 		}
+	}
+}
+
+void Level_Beach::setNearbyLevels()
+{
+	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
+	{
+		if (it->first == LevelFolder::Road)
+			it->second->setIsNearbyLevel(true);
+		else
+			it->second->setIsNearbyLevel(false);
 	}
 }
