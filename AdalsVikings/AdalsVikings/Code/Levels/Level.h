@@ -39,7 +39,6 @@ public:
 	virtual void unload();
 	virtual void checkInteractEvents();
 	virtual void checkEvents();
-	virtual void setNearbyLevels() = 0;
 	virtual void setLoaded(bool value);
 	virtual void setIsNearbyLevel(bool value);
 	virtual void setBackgroundID();
@@ -47,6 +46,7 @@ public:
 	virtual bool &getIsNearbyLevel();
 	virtual bool &getIsLoaded();
 	virtual TileMap &getTileMap();
+	virtual std::vector<LevelFolder::ID> getConnectedLevels();
 
 protected:
 	virtual void setDialogPosition();
@@ -55,6 +55,7 @@ protected:
 	std::vector<Object*> mObjects;
 	std::map<std::string, NpcPtr> mNpcs;
 	std::map<PortalId, Portal*> mPortals;
+	std::vector<LevelFolder::ID> MConnectedLevels;
 
 	std::string mFolderPath;
 	std::string mDroppedItemID;

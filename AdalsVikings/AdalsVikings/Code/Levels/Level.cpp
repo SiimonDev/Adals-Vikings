@@ -381,8 +381,8 @@ void Level::loadAllBackgrounds()
 	RMI.loadImage(mTileMapFilePath);							 // Load the TileMap File
 
 	// Load IndexMap
-	mIndexMapFilePath = RMI.getIndexFileFromFolder(mFolderPath);	// Find the filepath of the indexfile
-	RMI.loadImage(mIndexMapFilePath);							// Load the indexfile
+	mIndexMapFilePath = RMI.getIndexFileFromFolder(mFolderPath); // Find the filepath of the indexfile
+	RMI.loadImage(mIndexMapFilePath);							 // Load the indexfile
 
 	mTileMap.load(sf::Vector2i(15, 15), RMI.getNonIDImage(mTileMapFilePath), RMI.getNonIDImage(mIndexMapFilePath));
 	
@@ -445,12 +445,13 @@ void Level::loadObjects()
 			}
 		}
 	}
+	file.close();
 	//std::cout << std::endl;
 }
 
 void Level::saveObjects()
 {
-	std::ofstream file(mFolderPath + "level_objects.txt", std::ofstream::out | std::ofstream::trunc);
+	std::ofstream file(mFolderPath + "level_objects.txt");
 
 	//std::cout << "--- Saving Object to " << mFolderPath + "level_objects.txt" << " ---" << std::endl;
 	file << "############" << std::endl;
@@ -471,20 +472,21 @@ void Level::saveObjects()
 		file << std::endl;
 		file << "############" << std::endl;
 	}
+	file.close();
 }
 
 void Level::resetLevel()
 {
-		mInstream.open(mFolderPath + "level_objects_reset.txt");
-		mOfstream.open(mFolderPath + "level_objects.txt");
-		std::string line;
-		while (!mInstream.eof())
-		{
-			std::getline(mInstream, line);
-			mOfstream << line << std::endl;
-		}
-		mInstream.close();
-		mOfstream.close();
+	mInstream.open(mFolderPath + "level_objects_reset.txt");
+	mOfstream.open(mFolderPath + "level_objects.txt");
+	std::string line;
+	while (!mInstream.eof())
+	{
+		std::getline(mInstream, line);
+		mOfstream << line << std::endl;
+	}
+	mInstream.close();
+	mOfstream.close();
 }
 
 void Level::refreshLevel()
@@ -496,13 +498,8 @@ void Level::refreshLevel()
 
 void Level::load()
 {
-
 	// Load All objects
-	if (!mHasBeenReset)
-	{
-		loadObjects();
-		mHasBeenReset = true;
-	}
+	loadObjects();
 
 	// Load All backgrounds, TileMaps, and index maps
 	loadAllBackgrounds();
@@ -541,7 +538,7 @@ void Level::unload()
 	mNpcs.clear();
 
 	// Unload Portals
-	mPortals.clear();
+	//mPortals.clear();
 	
 	// Unload and delete all the objects
 	for each (Object* object in mObjects){
@@ -598,4 +595,11 @@ bool & Level::getIsLoaded()
 void Level::setBackgroundID()
 {
 	mFolderPath = RMI.getFilePath(mBackgroundID);
+}
+
+std::vector<LevelFolder::ID> Level::getConnectedLevels()
+{
+	for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+		MConnectedLevels.push_back(it->second->getConnectedLevel());
+	return MConnectedLevels;
 }

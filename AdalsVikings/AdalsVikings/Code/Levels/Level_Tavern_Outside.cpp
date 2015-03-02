@@ -41,14 +41,3 @@ void Level_Tavern_Outside::checkEvents()
 {
 
 }
-
-void Level_Tavern_Outside::setNearbyLevels()
-{
-	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-	{
-		if (it->first == LevelFolder::Tavern_Inside)
-			it->second->setIsNearbyLevel(true);
-		else
-			it->second->setIsNearbyLevel(false);
-	}
-}

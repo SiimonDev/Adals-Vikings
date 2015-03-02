@@ -97,7 +97,7 @@ void LoadingScreen::runTask()
 			else if (mTask == LoadTask::LoadNearbyLevels)
 			{
 				LVLMI.unloadCacheLevels();
-				LVLMI.LoadNearbyLevels();
+				LVLMI.loadNearbyLevels();
 			}
 			else if (mTask == LoadTask::StartGame)
 			{

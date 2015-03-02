@@ -197,6 +197,7 @@ void Level_Beach::changeLevel()
 		}
 	}
 }
+
 void Level_Beach::checkInteractEvents()
 {
 
@@ -205,6 +206,7 @@ void Level_Beach::checkEvents()
 {
 
 }
+
 void Level_Beach::introCutscene(sf::Time &frameTime)
 {
 	if (Act1Events::hasBeenTriggered(Act1Event::Beach_Intro) && !Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
@@ -365,6 +367,7 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 		}
 	}
 }
+
 void Level_Beach::talkToNpcs()
 {
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Ending))
@@ -421,13 +424,13 @@ void Level_Beach::talkToNpcs()
 	}
 }
 
-void Level_Beach::setNearbyLevels()
-{
-	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-	{
-		if (it->first == LevelFolder::Road)
-			it->second->setIsNearbyLevel(true);
-		else
-			it->second->setIsNearbyLevel(false);
-	}
-}
+//void Level_Beach::setNearbyLevels()
+//{
+//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
+//	{
+//		if (it->first == LevelFolder::Road)
+//			it->second->setIsNearbyLevel(true);
+//		else
+//			it->second->setIsNearbyLevel(false);
+//	}
+//}

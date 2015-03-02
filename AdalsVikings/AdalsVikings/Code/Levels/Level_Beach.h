@@ -15,7 +15,6 @@ public:
 	void changeLevel();
 	void checkInteractEvents();
 	void checkEvents();
-	void setNearbyLevels();
 
 	//specific Functions
 	void introCutscene(sf::Time &frameTime);

@@ -31,11 +31,12 @@ public:
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);
 	void changeLevel(LevelFolder::ID id);
+	void setNearbyLevels();
 
 	void loadBoatScene();
 	void loadAct1();
 	void resetNearbyLevels();
-	void LoadNearbyLevels();
+	void loadNearbyLevels();
 	void unloadCacheLevels();
 
 	std::map<LevelFolder::ID, LevelPtr> &getCurrentLevels();
@@ -53,6 +54,7 @@ private:
 	LevelFolder::ID mCurrentID;
 	Act mCurrentAct;
 
+	std::vector<LevelFolder::ID> mNearbyLevels;
 	std::map<LevelFolder::ID, LevelPtr> mLevelMap;
 	bool mLoadedPlayer;
 };

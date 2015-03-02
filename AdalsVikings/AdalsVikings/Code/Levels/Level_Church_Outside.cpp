@@ -85,13 +85,13 @@ void Level_Church_Outside::checkEvents()
 		Act1Events::triggerEvent(Act1Event::ChurchOutside_TalkToPrincess);
 }
 
-void Level_Church_Outside::setNearbyLevels()
-{
-	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-	{
-		if (it->first == LevelFolder::Church_Inside || it->first == LevelFolder::Road)
-			it->second->setIsNearbyLevel(true);
-		else
-			it->second->setIsNearbyLevel(false);
-	}
-}
+//void Level_Church_Outside::setNearbyLevels()
+//{
+//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
+//	{
+//		if (it->first == LevelFolder::Church_Inside || it->first == LevelFolder::Road)
+//			it->second->setIsNearbyLevel(true);
+//		else
+//			it->second->setIsNearbyLevel(false);
+//	}
+//}

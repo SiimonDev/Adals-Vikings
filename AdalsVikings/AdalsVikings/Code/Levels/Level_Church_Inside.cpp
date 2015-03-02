@@ -55,13 +55,13 @@ void Level_Church_Inside::checkEvents()
 
 }
 
-void Level_Church_Inside::setNearbyLevels()
-{
-	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-	{
-		if (it->first == LevelFolder::Church_Outside)
-			it->second->setIsNearbyLevel(true);
-		else
-			it->second->setIsNearbyLevel(false);
-	}
-}
+//void Level_Church_Inside::setNearbyLevels()
+//{
+//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
+//	{
+//		if (it->first == LevelFolder::Church_Outside)
+//			it->second->setIsNearbyLevel(true);
+//		else
+//			it->second->setIsNearbyLevel(false);
+//	}
+//}
