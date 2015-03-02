@@ -178,13 +178,13 @@ void Level_Ship_2::checkEvents()
 		BoatEvents::triggerEvent(BoatEvent::StartDialogue);
 }
 
-void Level_Ship_2::setNearbyLevels()
-{
-	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-	{
-		if (it->first == LevelFolder::Ship_1)
-			it->second->setIsNearbyLevel(true);
-		else
-			it->second->setIsNearbyLevel(false);
-	}
-}
+//void Level_Ship_2::setNearbyLevels()
+//{
+//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
+//	{
+//		if (it->first == LevelFolder::Ship_1)
+//			it->second->setIsNearbyLevel(true);
+//		else
+//			it->second->setIsNearbyLevel(false);
+//	}
+//}

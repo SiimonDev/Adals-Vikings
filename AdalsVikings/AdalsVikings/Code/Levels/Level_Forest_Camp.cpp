@@ -42,13 +42,13 @@ void Level_Forest_Camp::checkEvents()
 
 }
 
-void Level_Forest_Camp::setNearbyLevels()
-{
-	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-	{
-		if (it->first == LevelFolder::Forest_Road)
-			it->second->setIsNearbyLevel(true);
-		else
-			it->second->setIsNearbyLevel(false);
-	}
-}
+//void Level_Forest_Camp::setNearbyLevels()
+//{
+//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
+//	{
+//		if (it->first == LevelFolder::Forest_Road)
+//			it->second->setIsNearbyLevel(true);
+//		else
+//			it->second->setIsNearbyLevel(false);
+//	}
+//}

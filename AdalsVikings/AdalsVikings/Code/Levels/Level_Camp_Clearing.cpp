@@ -40,8 +40,3 @@ void Level_Camp_Clearing::checkEvents()
 {
 
 }
-
-void Level_Camp_Clearing::setNearbyLevels()
-{
-
-}

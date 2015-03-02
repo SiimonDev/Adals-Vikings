@@ -82,19 +82,32 @@ void LevelManager::render(IndexRenderer &iRenderer)
 
 void LevelManager::changeLevel(LevelFolder::ID id)
 {
-	mCurrentID = id;
-	mLevelMap[mCurrentID]->setNearbyLevels();
-	LSI.startLoading(LoadTask::LoadNearbyLevels);
-	//std::cout << std::endl;
-	//std::cout << "==========================" << std::endl;
-	//std::cout << "===== Changing Level =====" << std::endl;
-	//std::cout << "==========================" << std::endl;
+	std::cout << std::endl;
+	std::cout << "==========================" << std::endl;
+	std::cout << "===== Changing Level =====" << std::endl;
+	std::cout << "==========================" << std::endl;
 
-	mLevelMap[mCurrentID]->saveObjects();
 	mPlayer.saveInventory();
 	mPlayer.refreshInventory();
+	mLevelMap[mCurrentID]->saveObjects();
+	mCurrentID = id;
 	mLevelMap[mCurrentID]->refreshLevel();
+
+	setNearbyLevels();
+	LSI.startLoading(LoadTask::LoadNearbyLevels);
 	PathFinder::setTileMap(mLevelMap[mCurrentID]->getTileMap());
+}
+
+void LevelManager::setNearbyLevels()
+{
+	mNearbyLevels.clear();
+	mNearbyLevels = mLevelMap[mCurrentID]->getConnectedLevels();
+	mNearbyLevels.push_back(mCurrentID);
+
+	resetNearbyLevels();
+
+	for each (LevelFolder::ID levelID in mNearbyLevels)
+		mLevelMap[levelID]->setIsNearbyLevel(true);
 }
 
 void LevelManager::loadBoatScene()
@@ -140,24 +153,26 @@ void LevelManager::baseLoad()
 	mPlayer.refreshInventory();
 
 	// Load all the levels
+	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
+	{
+		it->second->setBackgroundID();
+		it->second->resetLevel();
+	}
 	mLevelMap[mCurrentID]->setIsNearbyLevel(true);
 	mLevelMap[mCurrentID]->setBackgroundID();
-	mLevelMap[mCurrentID]->resetLevel();
 	mLevelMap[mCurrentID]->load();
-	mLevelMap[mCurrentID]->setNearbyLevels();
-	LoadNearbyLevels();
+	setNearbyLevels();
+	loadNearbyLevels();
 
 	PathFinder::setTileMap(mLevelMap[mCurrentID]->getTileMap());
 }
 
-void LevelManager::LoadNearbyLevels()
+void LevelManager::loadNearbyLevels()
 {
 	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it){
 		if (it->second->getIsNearbyLevel() && !it->second->getIsLoaded())
 		{
 			std::cout << "LOAD: " << it->first << std::endl;
-			it->second->setBackgroundID();
-			it->second->resetLevel();
 			it->second->load();
 		}
 	}

@@ -2,13 +2,13 @@
 #include "..\Objects\Player.h"
 #include "..\Logics\PathFinder.h"
 #include "..\Logics\IndexRenderer.h"
+#include "..\Logics\ResourceManager.h"
 #include <SFML\Graphics.hpp>
 
 class Portal
 {
 public:
-	Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn);
-	Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn, Portal *portal);
+	Portal(LevelFolder::ID levelID, sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn);
 
 	void render(IndexRenderer &iRenderer);
 	void update(sf::Time &frametime, Player &player);
@@ -25,16 +25,21 @@ public:
 	void setCannotDialogue(std::string string);
 	void setWorking(bool value);
 
-	bool &getActivated();
-	bool &getWorking();
-	bool &getWalkAble();
+	bool getActivated();
+	bool getWorking();
+	bool getWalkAble();
 	sf::Vector2f &getSpawn();
 
+	LevelFolder::ID getCurrentLevel();
+	LevelFolder::ID getConnectedLevel();
+
 private:
-	sf::RectangleShape mArea;
 	Portal* mConnectedPortal;
 	std::string mCannotDialogue;
-	bool mIsActive, mSwitchPortal, mWalkable, mRenderPortal, mWorking;
+	sf::RectangleShape mArea;
 	sf::Vector2f mPortalMovement, mPlayerSpawn;
-};
 
+	LevelFolder::ID mCurrentLevel;
+
+	bool mIsActive, mSwitchPortal, mWalkable, mRenderPortal, mWorking;
+};

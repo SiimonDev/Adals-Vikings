@@ -97,14 +97,14 @@ void LoadingScreen::runTask()
 			else if (mTask == LoadTask::LoadNearbyLevels)
 			{
 				LVLMI.unloadCacheLevels();
-				LVLMI.LoadNearbyLevels();
+				LVLMI.loadNearbyLevels();
 			}
 			else if (mTask == LoadTask::StartGame)
 			{
 				MHI.unload(MenuID::MainMenu);
 				MHI.load(MenuID::PauseMenu);
 				LVLMI.load();
-				LVLMI.loadBoatScene();
+				LVLMI.loadAct1();
 			}
 			else if (mTask == LoadTask::LoadMenu)
 			{

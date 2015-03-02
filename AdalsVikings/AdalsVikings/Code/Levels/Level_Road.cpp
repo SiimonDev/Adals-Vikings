@@ -67,7 +67,6 @@ void Level_Road::load()
 
 	if (!Act1Events::hasBeenHandled(Act1Event::Enter_Road))
 	{
-
 		mPortals[RoadToOutside_Chuch]->setCannotDialogue("I Should probably help find that scroll first...");
 		mPortals[RoadToForestCamp]->setCannotDialogue("I Should probably help find that scroll first...");
 
@@ -113,13 +112,13 @@ void Level_Road::checkEvents()
 	}
 }
 
-void Level_Road::setNearbyLevels()
-{
-	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-	{
-		if (it->first == LevelFolder::Forest_Road || it->first == LevelFolder::Church_Outside || it->first == LevelFolder::Beach)
-			it->second->setIsNearbyLevel(true);
-		else
-			it->second->setIsNearbyLevel(false);
-	}
-}
+//void Level_Road::setNearbyLevels()
+//{
+//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
+//	{
+//		if (it->first == LevelFolder::Forest_Road || it->first == LevelFolder::Church_Outside || it->first == LevelFolder::Beach)
+//			it->second->setIsNearbyLevel(true);
+//		else
+//			it->second->setIsNearbyLevel(false);
+//	}
+//}

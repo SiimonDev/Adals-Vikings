@@ -6,21 +6,7 @@
 #include "..\Dialog\DialogWindow.h"
 #include <iostream>
 
-Portal::Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn, Portal *portal)
-	: mIsActive(false)
-	, mSwitchPortal(false)
-	, mRenderPortal(false)
-	, mWalkable(false)
-	, mWorking(false)
-	, mArea(area)
-	, mConnectedPortal(portal)
-	, mPortalMovement(portalMovement)
-	, mPlayerSpawn(mPlayerSpawn)
-{
-	mArea.setPosition(position);
-	mArea.setFillColor(sf::Color(255, 0, 0, 50));
-}
-Portal::Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn)
+Portal::Portal(LevelFolder::ID levelID, sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn)
 	: mArea(area)
 	, mIsActive(false)
 	, mSwitchPortal(false)
@@ -28,6 +14,7 @@ Portal::Portal(sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMove
 	, mWorking(false)
 	, mPortalMovement(portalMovement)
 	, mPlayerSpawn(mPlayerSpawn)
+	, mCurrentLevel(levelID)
 {
 	mArea.setPosition(position);
 	mArea.setFillColor(sf::Color(255, 0, 0, 50));
@@ -133,16 +120,17 @@ void Portal::setCannotDialogue(std::string string)
 	mCannotDialogue = string;
 }
 
-bool &Portal::getWalkAble()
+bool Portal::getWalkAble()
 {
 	return mWalkable;
 }
-bool &Portal::getWorking()
+
+bool Portal::getWorking()
 {
 	return mWorking;
 }
 
-bool &Portal::getActivated()
+bool Portal::getActivated()
 {
 	return mSwitchPortal;
 }
@@ -150,4 +138,14 @@ bool &Portal::getActivated()
 sf::Vector2f &Portal::getSpawn()
 {
 	return mPlayerSpawn;
+}
+
+LevelFolder::ID Portal::getCurrentLevel()
+{
+	return mCurrentLevel;
+}
+
+LevelFolder::ID Portal::getConnectedLevel()
+{
+	return mConnectedPortal->getCurrentLevel();
 }
