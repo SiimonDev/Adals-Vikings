@@ -34,5 +34,5 @@ Beor_ChurchInside assets/textfiles/church/Dialogue_beor_church.xml
 GoBack_ChurchInside assets/textfiles/church/Dialogue_exit_church.xml
 -----------------------CLEARING CAMP----------------------------
 Valdis_ClearingCamp assets/textfiles/camp/Dialogue_valdis_camp.xml
-Brynja_ClearingCamp assets/textfiles/camp/Dialoge_Brynja_camp.xml
+Brynja_ClearingCamp assets/textfiles/camp/Dialogue_Brynja_camp.xml
 Leifr_ClearingCamp assets/textfiles/camp/Dialogue_Leifr_camp.xml

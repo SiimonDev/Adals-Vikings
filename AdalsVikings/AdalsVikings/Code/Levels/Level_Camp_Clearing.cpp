@@ -29,13 +29,24 @@ void Level_Camp_Clearing::load()
 	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
 
-	mNpcs["Leifr"]->setscale(sf::Vector2f(0.42, 0.42));
-	mNpcs["Brynja"]->setscale(sf::Vector2f(0.42, 0.42));
-	mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
-
-	mNpcs["Valdis"]->setDialogue("Valdis_ClearingCamp");
-	mNpcs["Brynja"]->setDialogue("Brynja_ClearingCamp");
+	/*------------------- Leifr ----------------*/
+	mNpcs["Leifr"]->setscale(sf::Vector2f(0.4, 0.4));
+	mNpcs["Leifr"]->setPosition(sf::Vector2f(1035, 729));
+	mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1160, 724));
 	mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
+
+	/*------------------- Brynja ----------------*/
+	mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
+	mNpcs["Brynja"]->setPosition(sf::Vector2f(1500, 850));
+	mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(1385, 825));
+	mNpcs["Brynja"]->setDialogue("Brynja_ClearingCamp");
+
+	/*------------------- Valdis ----------------*/
+	mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
+	mNpcs["Valdis"]->setPosition(sf::Vector2f(645, 860));
+	mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(750, 860));
+	mNpcs["Valdis"]->setFlip(true);
+	mNpcs["Valdis"]->setDialogue("Valdis_ClearingCamp");
 
 	mPortals[CampToRoad] = &PortalLoader::getPortal(CampToRoad);
 	mPortals[CampToForestRoad] = &PortalLoader::getPortal(CampToForestRoad);
