@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $bushes$
 *Name: Bushes
-*ispickupable: True
+*ispickupable: False
 *pickup: "Not sure why I'd want a bush." ~2,0
 *lookat: "...that's a bush." ~1,5
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X: Y:
+*invisible: X:  Y:

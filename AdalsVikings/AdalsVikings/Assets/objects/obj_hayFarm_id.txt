@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $hayFarm$
 *Name: HayAtFarm
-*ispickupable: True
+*ispickupable: False
 *pickup: "It's not mine." ~2,0
 *lookat: "...why do they keep this stuff in piles?" ~2,5
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X: Y:
+*invisible: X:  Y:

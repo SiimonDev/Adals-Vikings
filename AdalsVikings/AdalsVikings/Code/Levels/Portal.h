@@ -41,5 +41,5 @@ private:
 
 	LevelFolder::ID mCurrentLevel;
 
-	bool mIsActive, mSwitchPortal, mWalkable, mRenderPortal, mWorking;
+	bool mIsActive, mSwitchPortal, mWalkable, mWorking;
 };

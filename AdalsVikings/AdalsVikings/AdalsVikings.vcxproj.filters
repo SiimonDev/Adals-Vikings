@@ -149,6 +149,9 @@
     <ClCompile Include="Code\Levels\TileMap.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Logics\Debug.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Dialog\Dialog.h">
@@ -310,6 +313,9 @@
     <ClInclude Include="Code\Levels\Level_Camp_Clearing.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Logics\Debug.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -329,9 +335,6 @@
     </Filter>
     <Filter Include="Header Files\Logics">
       <UniqueIdentifier>{70adf534-8992-461d-95e6-335ce82a7f7e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Object">
-      <UniqueIdentifier>{92d8013d-f9d5-4741-9d0e-fc1f025e81dc}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Dialog">
       <UniqueIdentifier>{ea832b5f-14bd-4f60-95fe-b0bf743e5f1c}</UniqueIdentifier>
@@ -362,6 +365,9 @@
     </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{3b9551c4-eec9-44df-a658-018362658d55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object">
+      <UniqueIdentifier>{92d8013d-f9d5-4741-9d0e-fc1f025e81dc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

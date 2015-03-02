@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $sign9$
 *Name: Sign 9
-*ispickupable: True
+*ispickupable: False
 *pickup: "Nah." ~2,0
 *lookat: "No swearing on Sundays!" ~2,5
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X: Y:
+*invisible: X:  Y:

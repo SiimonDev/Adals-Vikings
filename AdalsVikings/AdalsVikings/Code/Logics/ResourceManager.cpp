@@ -112,6 +112,8 @@ ResourceManager::ResourceManager()
 	/* =========== Set Font File paths =========== */
 	mFontPathMap[Font::Font1] = "assets/fonts/font1.ttf";
 	mFontPathMap[Font::Font2] = "assets/fonts/font2.ttf";
+	mFontPathMap[Font::Skranji_regular] = "assets/fonts/skranji_outline.ttf";
+	mFontPathMap[Font::Skranji_outline] = "assets/fonts/skranji_outline.ttf";
 	/* =========================================== */
 
 
@@ -119,9 +121,17 @@ ResourceManager::ResourceManager()
 	mSoundPathMap[Sound::InventoryOpen] = "assets/sounds/Inventory (open).ogg";
 	mSoundPathMap[Sound::InventoryClose] = "assets/sounds/Inventory (close).ogg";
 	mSoundPathMap[Sound::PickUpItem] = "assets/sounds/Pick_up_item.wav";
-	mSoundPathMap[Sound::BeachAmbient] = "assets/sounds/Beach.ogg";
-	mSoundPathMap[Sound::BoatAmbient] = "assets/sounds/Boat.ogg";
 	/* ============================================ */
+
+
+	/* =========== Set HDDSound File paths =========== */
+	mHDDSoundPathMap[HDDSound::BoatAmbient] = "assets/sounds/boat/Boat.ogg";
+	mHDDSoundPathMap[HDDSound::BoatMusic] = "assets/sounds/music/Boat_music.ogg";
+
+	mHDDSoundPathMap[HDDSound::BeachAmbient] = "assets/sounds/beach/Beach.ogg";
+	mHDDSoundPathMap[HDDSound::BeachMusic] = "assets/sounds/music/exp theme.ogg";
+	mHDDSoundPathMap[HDDSound::BeachWave] = "assets/sounds/beach/wave.ogg";
+	/* =============================================== */
 
 
 	/* =========== Set Background Folder paths =========== */
@@ -438,6 +448,10 @@ std::string ResourceManager::getFilePath(Font::ID id)
 std::string ResourceManager::getFilePath(Sound::ID id)
 {
 	return mSoundPathMap[id];
+}
+std::string ResourceManager::getFilePath(HDDSound::ID id)
+{
+	return mHDDSoundPathMap[id];
 }
 std::string ResourceManager::getFilePath(LevelFolder::ID id)
 {

@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $oars$
 *Name: Oars
-*ispickupable: True
+*ispickupable: False
 *pickup: "Yeah, I can't lift these either." ~2,0
 *lookat: "Would be pretty useful for rowing. Too bad no one's doing it." ~2,5
 *deny: "I can't do that" ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X: Y:
+*invisible: X:460  Y:60

@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $spiderweb$
 *Name: Spiderweb
-*ispickupable: True
+*ispickupable: False
 *pickup: "Yeah... no." ~2,0
 *lookat: "Spooky." ~2,0
 *deny: "I can't do that." ~2,0
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X: Y:
+*invisible: X:  Y:

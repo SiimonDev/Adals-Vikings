@@ -2,6 +2,7 @@
 #include "..\Logics\MouseState.h"
 #include "..\Logics\PathFinder.h"
 #include "..\Logics\ResourceManager.h"
+#include "..\Logics\Debug.h"
 #include "..\Logics\KeyboardState.h"
 #include "..\Dialog\DialogWindow.h"
 #include <iostream>
@@ -22,14 +23,12 @@ Portal::Portal(LevelFolder::ID levelID, sf::Vector2f area, sf::Vector2f position
 
 void Portal::render(IndexRenderer &iRenderer)
 {
-	if (mRenderPortal)
+	if (DebugMode)
 		iRenderer.addRectangle(mArea, 99999);
 }
 
 void Portal::update(sf::Time &frametime, Player &player)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::F1))
-		mRenderPortal = !mRenderPortal;
 	setActive();
 }
 

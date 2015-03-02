@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $firePlaceCamp2$
 *Name: Fireplace Camp 2
-*ispickupable: True
+*ispickupable: False
 *pickup: "Nope." ~2,0
 *lookat: "Now all it needs is some fire." ~2,5
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X: Y:
+*invisible: X:  Y:

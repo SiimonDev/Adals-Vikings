@@ -327,6 +327,13 @@ void Level::update(sf::Time &frameTime)
 	checkEvents();
 	setDialogPosition();
 
+	if (KeyboardState::isPressed(sf::Keyboard::F5))
+	{
+		OBHI.initialize();
+		resetLevel();
+		refreshLevel();
+	}
+		
 	if (!mIsInConversation && !mOldIsInConversation && FadeI.getFaded())
 	{
 		mPlayer.move(frameTime);
@@ -395,7 +402,6 @@ void Level::loadAllBackgrounds()
 		mBackgroundsIndexes.push_back(i * 10);
 	}
 }
-
 void Level::loadObjects()
 {
 	std::ifstream file(mFolderPath + "level_objects.txt");
@@ -435,6 +441,9 @@ void Level::loadObjects()
 				obj->setIndex(index);
 				obj->setScale(sf::Vector2f(scale, scale));
 				obj->enableCollision(enableCollision);
+				obj->load();
+				if (enableCollision)
+					mTileMap.addCollision(obj->getCollisionRect());
 				mObjects.push_back(obj);
 
 				//std::cout << "ID: " << id << std::endl;
@@ -448,7 +457,6 @@ void Level::loadObjects()
 	file.close();
 	//std::cout << std::endl;
 }
-
 void Level::saveObjects()
 {
 	std::ofstream file(mFolderPath + "level_objects.txt");
@@ -474,7 +482,6 @@ void Level::saveObjects()
 	}
 	file.close();
 }
-
 void Level::resetLevel()
 {
 	mInstream.open(mFolderPath + "level_objects_reset.txt");
@@ -488,12 +495,21 @@ void Level::resetLevel()
 	mInstream.close();
 	mOfstream.close();
 }
-
 void Level::refreshLevel()
 {
 	// Reset Portals
 	for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 		it->second->setActivate(false);
+
+	// Reset objects
+	for each (Object* obj in mObjects){
+		mTileMap.removeCollision(obj->getCollisionRect());
+		obj->unload();
+		delete obj;
+	}
+	mObjects.clear();
+
+	loadObjects();
 }
 
 void Level::load()
@@ -508,22 +524,12 @@ void Level::load()
 	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 		it->second->load();
 
-	// Load Objects
-	//std::cout << "--- Loading Map Objects ---" << std::endl;
-	for each (Object* object in mObjects)
-	{
-		object->load();
-		if (object->hasCollision())
-			mTileMap.addCollision(object->getCollisionRect());
-	}
-
 	// Load Default Footsteps
 	RMI.loadResource(Footsteps::Default);
 	mCurrentFootsteps = Footsteps::Default;
 	mPlayer.setFootsteps(Footsteps::Default);
 	setLoaded(true);
 }
-
 void Level::unload()
 {
 	RMI.unloadImage(mTileMapFilePath);
@@ -536,9 +542,6 @@ void Level::unload()
 	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcs.begin(); it != mNpcs.end(); it++)
 		it->second->unload();
 	mNpcs.clear();
-
-	// Unload Portals
-	//mPortals.clear();
 	
 	// Unload and delete all the objects
 	for each (Object* object in mObjects){

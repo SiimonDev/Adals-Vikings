@@ -8,8 +8,8 @@ public:
 	static void playRandomSound(Footsteps::ID id, float volume = 50);
 	static void stopSound(std::string audioID);
 
-	static void playMusic(std::string path, std::string musicID, bool loop, float volume = 50);
-	static void stopMusic(std::string musicID);
+	static void playHDDSound(HDDSound::ID id, bool loop, float volume = 50);
+	static void stopHDDSound(HDDSound::ID id);
 
 	static void update(sf::Time frameTime);
 	static void unload();

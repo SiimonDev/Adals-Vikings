@@ -20,8 +20,8 @@ void Level_Beach::update(sf::Time &frametime)
 {
 	if (!mPlayMusic)
 	{
-		AudioPlayer::playMusic("assets/sounds/beach.ogg", "beachAmbient", true, 20);
-		AudioPlayer::playMusic("assets/sounds/music/exp theme.ogg", "Beach", true, 20);
+		AudioPlayer::playHDDSound(HDDSound::BeachAmbient, true, 20);
+		AudioPlayer::playHDDSound(HDDSound::BeachMusic, true, 20);
 		mPlayMusic = true;
 	}
 	introCutscene(frametime);
@@ -29,6 +29,9 @@ void Level_Beach::update(sf::Time &frametime)
 	endingCutscene(frametime);
 
 	mWaveAnimation.animate(frametime);
+	if (mWaveAnimation.getCurrentFrame() == 1)
+		AudioPlayer::playHDDSound(HDDSound::BeachWave, false, 100);
+
 	Level::update(frametime);
 	changeLevel();
 }
@@ -165,14 +168,12 @@ void Level_Beach::load()
 		Level::load();
 
 	RMI.loadResource(Texture::WaveAnimation);
-	mWaveAnimation.load(RMI.getResource(Texture::WaveAnimation), sf::Vector2i(10, 9), sf::seconds(10), sf::seconds(5), true);
+	mWaveAnimation.load(RMI.getResource(Texture::WaveAnimation), sf::Vector2i(10, 9), sf::seconds(10), sf::seconds(7), true);
 	mWaveAnimation.setIndex(4);
 	mWaveAnimation.setProportions(sf::Vector2f(1170, 640));
 	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
 	mWaveAnimation.setPadding(1);
 	mWaveAnimation.setPosition(sf::Vector2f(1920 + 3, 1080 + 3));
-
-	RMI.loadResource(Sound::BeachAmbient);
 }
 
 void Level_Beach::unload()
@@ -191,8 +192,8 @@ void Level_Beach::changeLevel()
 		{
 			Act1Events::triggerEvent(Act1Event::Enter_Road);
 			LVLMI.changeLevel(LevelFolder::Road);
-			AudioPlayer::stopMusic("beachAmbient");
-			AudioPlayer::stopMusic("Beach");
+			AudioPlayer::stopHDDSound(HDDSound::BeachAmbient);
+			AudioPlayer::stopHDDSound(HDDSound::BeachMusic);
 			mPlayMusic = false;
 		}
 	}
