@@ -24,8 +24,9 @@ void MouseState::initialize()
 	}
 
 	mCursorTexture.loadFromFile("assets/images/cursor.png");
+	mCursorTexture.setSmooth(true);
 	mSprite.setTexture(mCursorTexture);
-	mSprite.setScale(2, 2);
+	mSprite.setOrigin(mSprite.getGlobalBounds().width / 2, mSprite.getGlobalBounds().height / 2);
 	hasFocus = true;
 }
 

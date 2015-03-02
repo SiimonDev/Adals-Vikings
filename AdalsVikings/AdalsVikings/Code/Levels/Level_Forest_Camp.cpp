@@ -20,7 +20,8 @@ void Level_Forest_Camp::render(IndexRenderer &iRenderer)
 
 void Level_Forest_Camp::load()
 {
-	
+	mPortals[ForestCampToForestRoad] = &PortalLoader::getPortal(ForestCampToForestRoad);
+	mPortals[ForestCampToForestRoad]->setWorking(true);
 	Level::load();
 }
 
@@ -31,6 +32,8 @@ void Level_Forest_Camp::unload()
 
 void Level_Forest_Camp::changeLevel()
 {
+	if (mPortals[ForestCampToForestRoad]->getActivated() && mPortals[ForestCampToForestRoad]->getWorking())
+		LVLMI.changeLevel(LevelFolder::Forest_Road);
 }
 
 void Level_Forest_Camp::checkInteractEvents()

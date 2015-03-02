@@ -20,6 +20,17 @@ void Level_Camp_Finished::render(IndexRenderer &iRenderer)
 
 void Level_Camp_Finished::load()
 {
+	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
+	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
+	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+
+	mNpcs["Leifr"]->setscale(sf::Vector2f(0.42, 0.42));
+	mNpcs["Brynja"]->setscale(sf::Vector2f(0.42, 0.42));
+	mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
+
+	mNpcs["Valdis"]->setDialogue("Valdis_ClearingCamp");
+	mNpcs["Brynja"]->setDialogue("Brynja_ClearingCamp");
+	mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
 	Level::load();
 }
 

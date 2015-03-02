@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Yeah... or not?" />
+	<lookText lookText="Brynja might look big, but she is even stronger than she looks." />
+	<text character="Ulfr" disabled="false" default="false" say="Where are Brandr and the others?" timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="You tihnk i'd be the one to ask?" timer="1.4" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="They still havn't returned from scouting out that small house to the east." timer="1.7" />
+	<text character="Ulfr" disabled="false" default="false" say="Scary." timer="1.6" />
+	<text character="Ulfr" disabled="false" default="false" say="Maybe the Anglians found them?" timer="1.6" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="Doubt it." timer="1.4" /><text character="Brynja" disabled="false" default="false" disablePrevious="" say="If Brandr was even remotely close to danger he would start running in the opposite direction." timer="2.0" /><text character="Brynja" disabled="false" default="false" disablePrevious="" say="so at least one of them would make it back here." timer="1.4" />
+	<text character="Ulfr" disabled="false" default="false" say="That's... not very reassuring" timer="1.6" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="Don't worry about it, shorty" timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="But do me a favor, willya?" timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="Go find Brandr and tell him to come back already." timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="We need to talk about our..." timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="...situation..." timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="...as soon as possible" timer="2.0" />
+	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="Yeah sure." timer="2.0" />
+	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="I'll do that." timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="Good" timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="They are just past the beach, then north." timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="You should proably find them there." timer="2.0" />
+	<stopConversation />
+	<mall info="Endast Mall Efter Detta!" disabled="true">
+		<useText useText="Why would I use Brandr?" />
+		<lookText lookText="That's Brandr" />
+		<text character="Ulfr" default="false" disabled="false" disablePrevious="false" turned="true" timer="2.2" say="hej" />
+		<text character="Brandr" disablePrevious="false" timer="" say="DUrr" />
+		<text character="Valdis" />
+		<text character="Alfr" />
+		<text character="Brynja" />
+		<text character="Dagny" />
+		<text character="Finnr" />
+		<text character="Guard" />
+		<text character="Leifr" />
+		<text character="Mailman" />
+		<text character="Miner" />
+		<text character="Priest" />
+		<text character="Princess" />
+		<text character="Valdis" />
+		<text character="Yngvarr" />
+		
+		<option_container disabled="false">
+			<option disabled="false" choice_text="do you even?">
+				<text character="Brandr" disablePrevious="false" timer="3.3" say="hej!" />
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="What do you want!?">
+						<text character="Ulfr" disablePrevious="false" timer="2.5" say="durr" />
+						<text character="Brandr" disablePrevious="false" timer="2.4" say="murh" />
+						<option_container disabled="false">
+							<option disabled="false" disablePrevious="true" choice_text="Disable Previous">
+								<text character="Ulfr" disablePrevious="false" timer="2.4" say="Disable Previous" />
+								<gotoBaseContainer />
+							</option>
+							<stopOption />
+						</option_container>
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="NOPE">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="NUHU">!</text>
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="durr">
+						<text character="Brandr" disablePrevious="false" timer="2.5" say="disable" />
+						<gotoContainer />
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="jimmie had a little farm that was brown and red and green, why was it brown and red and green?">
+				<text character="Brandr" disablePrevious="true" timer="3.3" say="Never Happened" />
+				<gotoContainer />
+			</option>
+			<option disabled="false" disablePrevious="true" choice_text="exit conversation">
+				<stopConversation />
+			</option>
+			<stopOption />
+		</option_container>
+		<option_container disabled="true">
+			<option disabled="false" disablePrevious="false" choice_text="hello">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="hello" />
+				<text character="Brandr" disablePrevious="true" timer="2.5" say="hi!" />
+				<gotoContainer />
+			</option>
+			<stopOption />
+		</option_container>
+	</mall>
+</conversation>

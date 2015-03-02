@@ -35,7 +35,7 @@ void Level_Road::update(sf::Time &frametime)
 			if (FadeI.getFaded())
 			{
 				mPortals[RoadToOutside_Chuch]->setWorking(true);
-				mPortals[RoadToForestRoad]->setCannotDialogue("I can see brynja over there... I would rather not talk to her right now");
+				mPortals[RoadToFarm]->setCannotDialogue("I can see brynja over there... I would rather not talk to her right now");
 				mNpcs.erase("Mailman");
 				mFade1 = true;
 			}
@@ -61,7 +61,7 @@ void Level_Road::load()
 {
 	mPortals[RoadToBeach] = &PortalLoader::getPortal(RoadToBeach);
 	mPortals[RoadToOutside_Chuch] = &PortalLoader::getPortal(RoadToOutside_Chuch);
-	mPortals[RoadToForestRoad] = &PortalLoader::getPortal(RoadToForestRoad);
+	mPortals[RoadToFarm] = &PortalLoader::getPortal(RoadToFarm);
 	mPortals[RoadToCamp] = &PortalLoader::getPortal(RoadToCamp);
 
 	mPortals[RoadToBeach]->setWorking(true);
@@ -70,7 +70,7 @@ void Level_Road::load()
 	if (!Act1Events::hasBeenHandled(Act1Event::Enter_Road))
 	{
 		mPortals[RoadToOutside_Chuch]->setCannotDialogue("I Should probably help find that scroll first...");
-		mPortals[RoadToForestRoad]->setCannotDialogue("I Should probably help find that scroll first...");
+		mPortals[RoadToFarm]->setCannotDialogue("I Should probably help find that scroll first...");
 
 		mNpcs["Mailman"] = NpcPtr(new Npc(NpcHandler::getNpc("Mailman")));
 		mNpcs["Mailman"]->setDialogue("Mailman_Road");
@@ -78,7 +78,7 @@ void Level_Road::load()
 	else if (Act1Events::hasBeenHandled(Act1Event::Road_GiveMailmanPaper))
 	{
 		mPortals[RoadToOutside_Chuch]->setWorking(true);
-		mPortals[RoadToForestRoad]->setCannotDialogue("I can see brynja over there... I would rather not talk to her right now");
+		mPortals[RoadToFarm]->setCannotDialogue("I can see brynja over there... I would rather not talk to her right now");
 	}
 
 	Level::load();
@@ -97,7 +97,7 @@ void Level_Road::changeLevel()
 	}
 	else if (mPortals[RoadToOutside_Chuch]->getActivated() && mPortals[RoadToOutside_Chuch]->getWorking())
 		LVLMI.changeLevel(LevelFolder::Church_Outside);
-	else if (mPortals[RoadToForestRoad]->getActivated() && mPortals[RoadToForestRoad]->getWorking())
+	else if (mPortals[RoadToFarm]->getActivated() && mPortals[RoadToFarm]->getWorking())
 		LVLMI.changeLevel(LevelFolder::Forest_Road);
 	if (mPortals[RoadToCamp]->getActivated() && mPortals[RoadToCamp]->getWorking())
 		LVLMI.changeLevel(LevelFolder::Camp_Clearing);

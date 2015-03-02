@@ -16,6 +16,10 @@ namespace Act1Event
 		Road_GiveMailmanPaper,
 		ChurchOutside_TalkToPrincess,
 		ChurchInside_GoBackDialogue,
+		CampClearing_Brynja,
+		CampClearing_Valdis,
+		CampClearing_Leifr,
+		CampClearing_TalkedToAll,
 		EVENT_SIZE
 	};
 }

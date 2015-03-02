@@ -20,22 +20,26 @@ void Level_Forest_Road::render(IndexRenderer &iRenderer)
 
 void Level_Forest_Road::load()
 {
-	mPortals[ForestCampToRoad] = &PortalLoader::getPortal(ForestCampToRoad);
-	mPortals[ForestCampToRoad]->setWorking(true);
+	mPortals[ForestRoadToCamp] = &PortalLoader::getPortal(ForestRoadToCamp);
+	mPortals[ForestRoadToForestCamp] = &PortalLoader::getPortal(ForestRoadToForestCamp);
+	mPortals[ForestRoadToCamp]->setWorking(true);
+	mPortals[ForestRoadToForestCamp]->setWorking(true);
 
 	Level::load();
 }
 
 void Level_Forest_Road::unload()
 {
-	mPortals.erase(ForestCampToRoad);
+	mPortals.erase(ForestRoadToCamp);
 	Level::unload();
 }
 
 void Level_Forest_Road::changeLevel()
 {
-	if (mPortals[ForestCampToRoad]->getActivated() && mPortals[ForestCampToRoad]->getWorking())
-		LVLMI.changeLevel(LevelFolder::Road);
+	if (mPortals[ForestRoadToCamp]->getActivated() && mPortals[ForestRoadToCamp]->getWorking())
+		LVLMI.changeLevel(LevelFolder::Camp_Clearing);
+	else if (mPortals[ForestRoadToForestCamp]->getActivated() && mPortals[ForestRoadToForestCamp]->getWorking())
+		LVLMI.changeLevel(LevelFolder::Forest_Camp);
 }
 
 void Level_Forest_Road::checkInteractEvents()
