@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $goldRegister$
 *Name: Gold Register
-*ispickupable: True
+*ispickupable: False
 *pickup: "This might come in handy" ~2,0
 *lookat: "It's empty. Sadly." ~2,0
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X: Y:
+*invisible: X:  Y:

@@ -19,16 +19,12 @@ Level_Ship_1::Level_Ship_1(Player &player, ActionWheel &actionWheel)
 void Level_Ship_1::update(sf::Time &frametime)
 {
 	if (KeyboardState::isPressed(sf::Keyboard::F))
-	{
 		mPlayer.addItemToInventory("bucket");
-	}
 
 	if(BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen) && !BoatEvents::hasBeenHandled(BoatEvent::IntroScreen))
 	{
 		if (!mPlayer.isDestinationReached())
-		{
 			BoatEvents::handleEvent(BoatEvent::IntroScreen);
-		}
 	}
 
 	if (BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
@@ -44,9 +40,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 			}
 		}
 		if (DialogHandler::getDialogue("IntroUlfr_Ship1").getHasStopped())
-		{
 			BoatEvents::handleEvent(BoatEvent::UlfrStartDialogue);
-		}
 	}
 
 	if (BoatEvents::hasBeenTriggered(BoatEvent::GivenBucketToLeifr) && !BoatEvents::hasBeenHandled(BoatEvent::GivenBucketToLeifr))
@@ -132,9 +126,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 		DialogHandler::getDialogue("Leifr_Ship1").enableOption(2);
 		DialogHandler::getDialogue("Alfr_Ship1").enableOption(3);
 		if (!mPlayer.hasItemInInventory("bucket"))
-		{
 			DialogHandler::getDialogue("Dagny_Ship2").enableOption(2);
-		}
 		BoatEvents::handleEvent(BoatEvent::TalkedToValdis);
 	}
 	Level::update(frametime);
@@ -197,8 +189,8 @@ void Level_Ship_1::load()
 
 	Level::load();
 
-	AudioPlayer::playMusic("assets/sounds/Boat.ogg", "boatAmbient", true, 20);
-	AudioPlayer::playMusic("assets/sounds/music/Boat_music.ogg", "boat1", true, 20);
+	AudioPlayer::playHDDSound(HDDSound::BoatAmbient, false, 20);
+	AudioPlayer::playHDDSound(HDDSound::BoatMusic, true, 20);
 
 	// Add Collision from every NPC to the map
 	mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
@@ -266,18 +258,5 @@ void Level_Ship_1::checkEvents()
 void Level_Ship_1::changeLevel(sf::Time &frameTime)
 {
 	if (mPortals[Ship1ToShip2]->getActivated())
-	{
 		LVLMI.changeLevel(LevelFolder::Ship_2);
-	}
 }
-
-//void Level_Ship_1::setNearbyLevels()
-//{
-//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-//	{
-//		if (it->first == LevelFolder::Ship_2)
-//			it->second->setIsNearbyLevel(true);
-//		else
-//			it->second->setIsNearbyLevel(false);
-//	}
-//}

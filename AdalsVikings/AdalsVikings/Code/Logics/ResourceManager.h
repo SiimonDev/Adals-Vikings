@@ -105,6 +105,8 @@ namespace Font
 	{
 		Font1,
 		Font2,
+		Skranji_regular,
+		Skranji_outline,
 		SIZE
 	};
 }
@@ -115,9 +117,19 @@ namespace Sound
 		InventoryOpen,
 		InventoryClose,
 		PickUpItem,
-
+		SIZE
+	};
+}
+namespace HDDSound
+{
+	enum ID
+	{
+		BoatMusic,
 		BoatAmbient,
+
 		BeachAmbient,
+		BeachMusic,
+		BeachWave,
 		SIZE
 	};
 }
@@ -195,6 +207,7 @@ public:
 	std::string getFilePath(Image::ID id);
 	std::string getFilePath(Font::ID id);
 	std::string getFilePath(Sound::ID id);
+	std::string getFilePath(HDDSound::ID id);
 	std::string getFilePath(LevelFolder::ID id);
 	std::string getFilePath(Footsteps::ID id);
 
@@ -232,6 +245,7 @@ private:
 	std::map<Image::ID, std::string> mImagePathMap;
 	std::map<Font::ID, std::string> mFontPathMap;
 	std::map<Sound::ID, std::string> mSoundPathMap;
+	std::map<HDDSound::ID, std::string> mHDDSoundPathMap;
 	std::map<LevelFolder::ID, std::string> mBackgroundsPathMap;
 	std::map<Footsteps::ID, std::string> mFootstepsPathMap;
 

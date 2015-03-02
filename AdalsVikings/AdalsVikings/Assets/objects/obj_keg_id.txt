@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $keg$
 *Name: Keg
-*ispickupable: True
+*ispickupable: False
 *pickup: "Way too big. And I think it's nailed to the wall." ~3,0
 *lookat: "A keg of... mead? No wonder none of them wants to leave." ~5,0
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X: Y:
+*invisible: X:  Y:

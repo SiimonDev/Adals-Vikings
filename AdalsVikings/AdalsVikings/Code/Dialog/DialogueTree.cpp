@@ -28,6 +28,7 @@ DialogueTree::DialogueTree()
 }
 void DialogueTree::load()
 {
+	RMI.loadResource(Font::Font2);
 	mDialogue.load_file(mFilePath.c_str());
 	std::string copyFolder = "copy/";
 	if (mFilePath.find(copyFolder) == std::string::npos)
@@ -54,6 +55,11 @@ void DialogueTree::load()
 	}
 	getUseText();
 	getLookText();
+}
+//OBS! OBS! Remember to add micro transactions OBS! OBS! 
+void DialogueTree::unload()
+{
+	RMI.unloadResource(Font::Font2);
 }
 //Praise the graphical people!!
 void DialogueTree::render(IndexRenderer &iRenderer)
@@ -653,12 +659,6 @@ void DialogueTree::enableDraw(bool value)
 {
 	mDraw = value;
 }
-//OBS! OBS! Remember to add micro transactions OBS! OBS! 
-void DialogueTree::unload()
-{
-
-}
-
 bool & DialogueTree::getActiveConversation()
 {
 	return mActiveConversation;

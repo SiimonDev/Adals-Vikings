@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $fence$
 *Name: Fence
-*ispickupable: True
+*ispickupable: False
 *pickup: "I don't think they want me to touch that." ~2,0
 *lookat: "These farmers sure don't like each other." ~2,5
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X: Y:
+*invisible: X:  Y:

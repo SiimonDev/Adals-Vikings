@@ -53,7 +53,6 @@ void DialogWindow::setBackgroundColor(sf::Color &color)
 
 void DialogWindow::load()
 {
-	mPadding = 15;
 	setPosition(sf::Vector2f(600, 700));
 	setBackgroundSize(sf::Vector2f(700, 250));
 	setBackgroundColor(sf::Color(0, 0, 0, 200));
@@ -129,7 +128,7 @@ void DialogWindow::render(IndexRenderer &iRenderer)
 {
 	if (mDisplay)
 	{
-		mText.setPosition(sf::Vector2f(mPosition.x + mPadding, mPosition.y + mPadding));
+		mText.setPosition(mPosition);
 		background.setPosition(mPosition);
 		iRenderer.addText(mText, 100000);
 		//iRenderer.addRectangle(background, 99999);

@@ -1,7 +1,7 @@
 *Type: standard
 *ID: $axeHead$
 *Name: axeHead
-*ispickupable: False
+*ispickupable: True
 *pickup: "" ~2,0
 *lookat: "This is useless without a shaft." ~1,5
 *deny: "Woah, this is sharp. I have to be careful with it." ~2,5

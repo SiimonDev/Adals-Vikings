@@ -1,7 +1,7 @@
 *Type: standard
 *ID: $fluteBroken$
 *Name: fluteBroken
-*ispickupable: False
+*ispickupable: True
 *pickup: "" ~2,0
 *lookat: "...this doesn't seem playable." ~1,5
 *deny: "What can I even use this for?" ~1,5

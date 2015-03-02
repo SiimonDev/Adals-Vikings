@@ -1,7 +1,7 @@
 *Type: standard
 *ID: $flute$
 *Name: flute
-*ispickupable: False
+*ispickupable: True
 *pickup: "" ~2,0
 *lookat: "It's a well carved bone flute." ~1,5
 *deny: "Let's try and play it for Brynja instead." ~1,5

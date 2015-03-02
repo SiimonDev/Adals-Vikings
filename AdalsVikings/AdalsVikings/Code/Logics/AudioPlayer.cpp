@@ -4,13 +4,13 @@
 static std::vector<sf::Sound*> mNonLoopSounds;
 
 static std::map<std::string, sf::Sound*> mSounds;
-static std::map<std::string, sf::Music*> mMusic;
+static std::map<HDDSound::ID, sf::Music*> mHDDSound;
 static bool mMute = false;
 
 // 0.0 - 1.0
-static double masterSoundScale = 1.0;
-static double soundEffectsScale = 0.5;
-static double musicScale = 0.0;
+static double masterSoundScale = 1.0f;
+static double soundEffectsScale = 0.5f;
+static double musicScale = 1.0f;
 
 AudioPlayer::AudioPlayer()
 {
@@ -40,7 +40,7 @@ void AudioPlayer::playRandomSound(Footsteps::ID id, float volume)
 
 	sf::Sound* sound = new sf::Sound();
 	sound->setBuffer(*RMI.getResource(id).at(index));
-	sound->setVolume(100 * masterSoundScale/* * soundEffectsScale*/);
+	sound->setVolume(volume * masterSoundScale * soundEffectsScale);
 	sound->setLoop(false);
 	sound->play();
 	mNonLoopSounds.push_back(sound);
@@ -55,30 +55,30 @@ void AudioPlayer::stopSound(std::string audioID)
 	}
 }
 
-void AudioPlayer::playMusic(std::string path, std::string musicID, bool loop, float volume)
+void AudioPlayer::playHDDSound(HDDSound::ID id, bool loop, float volume)
 {
 	sf::Music* music = new sf::Music();
-	if (!music->openFromFile(path))
-		//std::cout << "Failed to load music: " << path;
+	if (!music->openFromFile(RMI.getFilePath(id)))
+		std::cout << "Failed to load music: " << RMI.getFilePath(id);
 	music->setVolume(volume * masterSoundScale * musicScale);
 	music->setLoop(loop);
 	music->play();
 
-	if (mMusic.find(musicID) == mMusic.end()) {
-		mMusic[musicID] = music;
+	if (mHDDSound.find(id) == mHDDSound.end()) {
+		mHDDSound[id] = music;
 	}
 	else {
-		delete mMusic[musicID];
-		mMusic.erase(musicID);
-		mMusic[musicID] = music;
+		delete mHDDSound[id];
+		mHDDSound.erase(id);
+		mHDDSound[id] = music;
 	}
 }
-void AudioPlayer::stopMusic(std::string musicID)
+void AudioPlayer::stopHDDSound(HDDSound::ID id)
 {
-	if (mMusic.find(musicID) != mMusic.end()) {
-		mMusic[musicID]->stop();
-		delete mMusic[musicID];
-		mMusic.erase(musicID);
+	if (mHDDSound.find(id) != mHDDSound.end()) {
+		mHDDSound[id]->stop();
+		delete mHDDSound[id];
+		mHDDSound.erase(id);
 	}
 }
 
@@ -107,15 +107,15 @@ void AudioPlayer::update(sf::Time frameTime)
 	}
 
 	// Delete all music that has been stopped
-	deleteID.clear();
-	for (std::map<std::string, sf::Music*>::iterator it = mMusic.begin(); it != mMusic.end(); ++it){
+	std::vector<HDDSound::ID> deleteHDDSoundID;
+	for (std::map<HDDSound::ID, sf::Music*>::iterator it = mHDDSound.begin(); it != mHDDSound.end(); ++it){
 		if (it->second->getStatus() == sf::Sound::Status::Stopped){
-			deleteID.push_back(it->first);
+			deleteHDDSoundID.push_back(it->first);
 		}
 	}
-	for each (std::string music in deleteID){
-		delete mMusic.at(music);
-		mMusic.erase(music);
+	for each (HDDSound::ID id in deleteHDDSoundID){
+		delete mHDDSound.at(id);
+		mHDDSound.erase(id);
 	}
 }
 
@@ -138,13 +138,9 @@ void AudioPlayer::unload()
 	}
 
 	// Delete all the Music
-	deleteID.clear();
-	for (std::map<std::string, sf::Music*>::iterator it = mMusic.begin(); it != mMusic.end(); ++it){
-		deleteID.push_back(it->first);
+	for (std::map<HDDSound::ID, sf::Music*>::iterator it = mHDDSound.begin(); it != mHDDSound.end(); ++it){
+		it->second->stop();
+		delete it->second;
 	}
-	for each (std::string music in deleteID){
-		mMusic[music]->stop();
-		delete mMusic.at(music);
-		mMusic.erase(music);
-	}
+	mHDDSound.clear();
 }
