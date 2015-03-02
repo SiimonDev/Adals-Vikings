@@ -59,6 +59,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::PauseMenuExitButton] = "assets/images/interface/pauseManu/button_exit.png";
 	mTexturePathMap[Texture::PauseMenuBackground] = "assets/images/interface/pauseManu/InGame_menu.png";
 	mTexturePathMap[Texture::IntroScreen] = "assets/images/interface/tutorial2.png";
+	mTexturePathMap[Texture::TextBackgroundPaper] = "assets/images/textbackgorund.jpg";
 
 	mTexturePathMap[Texture::WaveAnimation] = "assets/MapFiles/Beach/waves.png";
 	mTexturePathMap[Texture::AxeAnimation] = "assets/images/Interface/MainMenu/flying_axe.png";

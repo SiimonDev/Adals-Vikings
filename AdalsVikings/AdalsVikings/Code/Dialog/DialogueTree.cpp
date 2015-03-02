@@ -24,6 +24,8 @@ DialogueTree::DialogueTree()
 	, mEndConversation(false)
 	, mFacePlayer(false)
 {
+	RMI.loadResource(Texture::TextBackgroundPaper);
+	mTextBackground.setTexture(RMI.getResource(Texture::TextBackgroundPaper));
 	mDialogueRectangle.setFillColor(sf::Color(0, 0, 0, 200));
 }
 void DialogueTree::load()
@@ -73,6 +75,9 @@ void DialogueTree::render(IndexRenderer &iRenderer)
 			{
 				mDialogueRectangle.setSize(sf::Vector2f(mPrintText.getGlobalBounds().width + 4, mPrintText.getGlobalBounds().height + 10));
 				mDialogueRectangle.setPosition(mPrintText.getGlobalBounds().left - 2, mPrintText.getGlobalBounds().top - 5);
+				/*mTextBackground.setTextureRect(sf::IntRect(0, 0, mPrintText.getGlobalBounds().width + 10, mPrintText.getGlobalBounds().height + 20));
+				mTextBackground.setPosition(mPrintText.getGlobalBounds().left - 5, mPrintText.getGlobalBounds().top - 10);*/
+				//iRenderer.addSprite(mTextBackground, 9999);
 				iRenderer.addRectangle(mDialogueRectangle, 9999);
 			}
 		}
