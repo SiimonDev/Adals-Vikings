@@ -54,6 +54,7 @@
     <ClCompile Include="Code\Logics\BoatEvents.cpp" />
     <ClCompile Include="Code\Logics\Animation.cpp" />
     <ClCompile Include="Code\Logics\AudioPlayer.cpp" />
+    <ClCompile Include="Code\Logics\Debug.cpp" />
     <ClCompile Include="Code\Logics\Fade.cpp" />
     <ClCompile Include="Code\Logics\Game.cpp" />
     <ClCompile Include="Code\Logics\IndexRenderer.cpp" />
@@ -109,6 +110,7 @@
     <ClInclude Include="Code\Logics\BoatEvents.h" />
     <ClInclude Include="Code\Logics\Animation.h" />
     <ClInclude Include="Code\Logics\AudioPlayer.h" />
+    <ClInclude Include="Code\Logics\Debug.h" />
     <ClInclude Include="Code\Logics\Fade.h" />
     <ClInclude Include="Code\Logics\Game.h" />
     <ClInclude Include="Code\Logics\IndexRenderer.h" />

@@ -2,6 +2,7 @@
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\KeyboardState.h"
 #include "..\Logics\MouseState.h"
+#include "..\Logics\Debug.h"
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include <sstream>
@@ -10,7 +11,7 @@
 #include <vector>
 
 Object::Object(Font::ID font, std::string filePath) :
-mFilePath(filePath), mCollision(true), debuggMode(false), mDisplayDescription(false), mScale(1, 1)
+mFilePath(filePath), mCollision(true), mDisplayDescription(false), mScale(1, 1)
 {
 	int index = mFilePath.find_last_of("/");
 	mFolderPath = mFilePath.substr(0, index + 1);
@@ -62,9 +63,6 @@ void Object::unload()
 
 void Object::update(sf::Time &frameTime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::F1))
-		debuggMode = (!debuggMode);
-
 	if (mType == ObjectType::Animated)
 		mAnimation.animate(frameTime);
 
@@ -90,7 +88,7 @@ void Object::render(IndexRenderer &iRenderer)
 		mAnimation.render(iRenderer);
 	}
 	else if (mType == ObjectType::Invisible){
-		if (debuggMode){
+		if (DebugMode){
 			mRect.setPosition(sf::Vector2f(mPosition.x - (mSize.x / 2), mPosition.y - (mSize.y / 2)));
 			iRenderer.addRectangle(mRect, mIndex);
 		}

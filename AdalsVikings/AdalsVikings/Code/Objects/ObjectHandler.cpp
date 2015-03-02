@@ -11,12 +11,8 @@ ObjectHandler::ObjectHandler()
 
 ObjectHandler &ObjectHandler::getInstance()
 {
-	static std::unique_ptr<ObjectHandler> instance;
-
-	if (instance == NULL)
-		instance = std::unique_ptr<ObjectHandler>(new ObjectHandler());
-
-	return *instance;
+	static ObjectHandler instance;
+	return instance;
 }
 
 Object &ObjectHandler::getObject(std::string objID)
@@ -50,6 +46,7 @@ std::vector<std::string> getAllObjectsFromFolder(const std::string &directory)
 
 void ObjectHandler::initialize()
 {
+	unload();
 	RMI.loadResource(Font::Font1);
 	std::vector<std::string> objects = getAllObjectsFromFolder(mFolderPath);
 

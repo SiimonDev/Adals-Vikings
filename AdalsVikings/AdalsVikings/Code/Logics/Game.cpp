@@ -6,6 +6,7 @@
 #include "MouseState.h"
 #include "KeyboardState.h"
 #include "WindowState.h"
+#include "Debug.h"
 #include "IndexRenderer.h"
 #include "AudioPlayer.h"
 #include "Fade.h"
@@ -17,7 +18,6 @@ int mHeight = 720;
 
 IndexRenderer iRenderer;
 
-bool debugMode = false;
 bool runGame = false;
 
 Game::Game()
@@ -64,9 +64,6 @@ void Game::update(sf::Time frameTime)
 	}
 	else
 	{
-		if (KeyboardState::isPressed(sf::Keyboard::F1))
-			debugMode = (!debugMode);
-
 		MHI.update(frameTime);
 		if (runGame)
 		{
@@ -95,12 +92,13 @@ void Game::update(sf::Time frameTime)
 		{
 			mWindow.close();
 		}
-
-		// Always Last
-		AudioPlayer::update(frameTime);
-		KeyboardState::update(frameTime);
-		MouseState::update(frameTime);
 	}
+
+	// Always Last
+	AudioPlayer::update(frameTime);
+	KeyboardState::update(frameTime);
+	MouseState::update(frameTime);
+	DebugI.update(frameTime);
 }
 
 void Game::render()
@@ -119,7 +117,7 @@ void Game::render()
 			LVLMI.render(iRenderer);
 		}
 		iRenderer.display();
-		if (debugMode){
+		if (DebugMode){
 			PathFinder::getCurrentTileMap().render(iRenderer);
 		}
 	}

@@ -81,7 +81,6 @@ private:
 	sf::IntRect mCollisionRect;
 	sf::Text mDescription;
 
-	bool debuggMode;
 	bool mCollision;
 	bool mCanPickUp;
 	bool mDisplayDescription;

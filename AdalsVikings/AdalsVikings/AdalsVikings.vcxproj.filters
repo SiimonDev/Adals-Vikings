@@ -149,6 +149,9 @@
     <ClCompile Include="Code\Levels\TileMap.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Logics\Debug.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Dialog\Dialog.h">
@@ -188,16 +191,16 @@
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
     <ClInclude Include="Code\Objects\Object.h">
-      <Filter>Header Files\NPCs\Object</Filter>
+      <Filter>Header Files\Object</Filter>
     </ClInclude>
     <ClInclude Include="Code\Objects\ObjectHandler.h">
-      <Filter>Header Files\NPCs\Object</Filter>
+      <Filter>Header Files\Object</Filter>
     </ClInclude>
     <ClInclude Include="Code\Logics\PathFinder.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
     <ClInclude Include="Code\Objects\Player.h">
-      <Filter>Header Files\NPCs\Object</Filter>
+      <Filter>Header Files\Object</Filter>
     </ClInclude>
     <ClInclude Include="Code\Levels\Portal.h">
       <Filter>Header Files\Levels</Filter>
@@ -310,6 +313,9 @@
     <ClInclude Include="Code\Levels\Level_Camp_Clearing.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Logics\Debug.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -360,7 +366,7 @@
     <Filter Include="Resource Files">
       <UniqueIdentifier>{3b9551c4-eec9-44df-a658-018362658d55}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\NPCs\Object">
+    <Filter Include="Header Files\Object">
       <UniqueIdentifier>{92d8013d-f9d5-4741-9d0e-fc1f025e81dc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
