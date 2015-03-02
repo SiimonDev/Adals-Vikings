@@ -20,6 +20,7 @@ void Level_Camp_Clearing::render(IndexRenderer &iRenderer)
 
 void Level_Camp_Clearing::load()
 {
+	mPortals[CampToRoad] = &PortalLoader::getPortal(CampToRoad);
 	Level::load();
 }
 
@@ -30,6 +31,8 @@ void Level_Camp_Clearing::unload()
 
 void Level_Camp_Clearing::changeLevel()
 {
+	if (mPortals[CampToRoad]->getActivated() && mPortals[CampToRoad]->getWorking())
+		LVLMI.changeLevel(LevelFolder::Road);
 }
 
 void Level_Camp_Clearing::checkInteractEvents()

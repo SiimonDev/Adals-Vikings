@@ -25,6 +25,7 @@ void MouseState::initialize()
 
 	mCursorTexture.loadFromFile("assets/images/cursor.png");
 	mSprite.setTexture(mCursorTexture);
+	mSprite.setScale(2, 2);
 	hasFocus = true;
 }
 

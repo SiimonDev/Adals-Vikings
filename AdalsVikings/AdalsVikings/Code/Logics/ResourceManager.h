@@ -46,6 +46,7 @@ namespace Texture
 		PauseMenuMainMenuButton,
 		PauseMenuExitButton,
 		PauseMenuBackground,
+		TextBackgroundPaper,
 
 		WaveAnimation,
 		AxeAnimation,
