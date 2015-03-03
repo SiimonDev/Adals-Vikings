@@ -39,10 +39,9 @@ void Npc::render(IndexRenderer &iRenderer)
 
 	if (mDisplayDescription && !mIsInvisble)
 	{
-		//iRenderer.addShape(mTextRect, mAnimation.getIndex() + 1);
+		iRenderer.addShape(mTextRect, mAnimation.getIndex() + 1);
 		iRenderer.addText(mDescription, mAnimation.getIndex() + 2);
 		iRenderer.addText(mDescriptionOutline, mAnimation.getIndex() + 3);
-		CurrentWindow.draw(mTextRect);
 	}
 	else if (mDisplayDescription && mIsInvisble)
 	{
