@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $toolsAtChurch$
+*Name: Tools
+*ispickupable: True
+*pickup: "...yeah, I don't think those sheep are going to let me do that." ~3,5
+*lookat: "Are... are those sheep guarding the tools?" ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: Y:

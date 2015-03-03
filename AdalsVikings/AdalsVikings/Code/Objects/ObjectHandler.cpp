@@ -60,6 +60,9 @@ void ObjectHandler::unload()
 {
 	RMI.unloadResource(Font::Font1);
 	for (std::map<std::string, Object*>::const_iterator it = mObjects.begin(); it != mObjects.end(); it++)
+	{
 		it->second->unload();
+		delete it->second;
+	}
 	mObjects.clear();
 }

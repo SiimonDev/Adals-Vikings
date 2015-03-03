@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $groupOfSheep$
+*Name: Group of Sheep
+*ispickupable: True
+*pickup: "I shouldn't disturb them." ~2,0
+*lookat: "Looks like they're chilling in the shadow." ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: Y:

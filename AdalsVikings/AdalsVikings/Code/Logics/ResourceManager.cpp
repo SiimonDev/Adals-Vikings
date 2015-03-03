@@ -112,7 +112,7 @@ ResourceManager::ResourceManager()
 	/* =========== Set Font File paths =========== */
 	mFontPathMap[Font::Font1] = "assets/fonts/font1.ttf";
 	mFontPathMap[Font::Font2] = "assets/fonts/font2.ttf";
-	mFontPathMap[Font::Skranji_regular] = "assets/fonts/skranji_outline.ttf";
+	mFontPathMap[Font::Skranji_regular] = "assets/fonts/skranji_regular.ttf";
 	mFontPathMap[Font::Skranji_outline] = "assets/fonts/skranji_outline.ttf";
 	/* =========================================== */
 
