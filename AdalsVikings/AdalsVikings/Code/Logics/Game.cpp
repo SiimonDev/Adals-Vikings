@@ -17,6 +17,7 @@ int mWidth = 1280;
 int mHeight = 720;
 
 IndexRenderer iRenderer;
+sf::RoundedRectangleShape roundedRect;
 
 bool runGame = false;
 
@@ -27,7 +28,6 @@ Game::Game()
 	mWindow.setVerticalSyncEnabled(false);
 	mWindow.setMouseCursorVisible(false);
 
-
 	icon.loadFromFile("assets/images/interface/icon_32.png");
 	mWindow.setIcon(32, 32, icon.getPixelsPtr());
 
@@ -37,6 +37,11 @@ Game::Game()
 	LSI.initialize();
 	KeyboardState::initialize();
 	MouseState::initialize();
+
+	roundedRect.setSize(sf::Vector2f(100, 50));
+	roundedRect.setCornersRadius(5);
+	roundedRect.setOutlineThickness(5);
+	roundedRect.setPosition(10, 20);
 }
 
 Game::~Game()
@@ -122,6 +127,7 @@ void Game::render()
 		}
 	}
 	MouseState::render();
+	mWindow.draw(roundedRect);
 	mWindow.display();
 }
 

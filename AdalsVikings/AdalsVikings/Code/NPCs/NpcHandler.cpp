@@ -11,21 +11,21 @@ NpcHandler::NpcHandler()
 
 void NpcHandler::load()
 {
-	RMI.loadResource(Font::Font1);
-	NpcPtr Valdis(new Npc(Font::Font1));
-	NpcPtr Leifr(new Npc(Font::Font1));
-	NpcPtr Finnr(new Npc(Font::Font1));
-	NpcPtr Brynja(new Npc(Font::Font1));
-	NpcPtr Alfr(new Npc(Font::Font1));
-	NpcPtr Dagny(new Npc(Font::Font1));
-	NpcPtr Brandr(new Npc(Font::Font1));
-	NpcPtr Yngvarr(new Npc(Font::Font1));
-	NpcPtr Seagull(new Npc(Font::Font1));
-	NpcPtr Mailman(new Npc(Font::Font1));
-	NpcPtr Princess(new Npc(Font::Font1));
-	NpcPtr Beor(new Npc(Font::Font1));
-	NpcPtr DruidLeader(new Npc(Font::Font1));
-	NpcPtr Druids(new Npc(Font::Font1));
+	RMI.loadResource(Font::Skranji_regular);
+	RMI.loadResource(Font::Skranji_outline);
+
+	NpcPtr Valdis(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Leifr(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Finnr(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Brynja(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Alfr(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Dagny(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Brandr(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Yngvarr(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Seagull(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Mailman(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Princess(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Beor(new Npc(Font::Skranji_regular, Font::Skranji_outline));
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -195,7 +195,8 @@ void NpcHandler::load()
 
 void NpcHandler::unload()
 {
-	RMI.unloadResource(Font::Font1);
+	RMI.unloadResource(Font::Skranji_regular);
+	RMI.unloadResource(Font::Skranji_outline);
 	// Unload NPCs
 	for (std::map<std::string, NpcPtr>::const_iterator it = mNpcMap.begin(); it != mNpcMap.end(); it++)
 	{

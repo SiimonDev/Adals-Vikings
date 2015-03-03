@@ -24,7 +24,7 @@ Portal::Portal(LevelFolder::ID levelID, sf::Vector2f area, sf::Vector2f position
 void Portal::render(IndexRenderer &iRenderer)
 {
 	if (DebugMode)
-		iRenderer.addRectangle(mArea, 99999);
+		iRenderer.addShape(mArea, 99999);
 }
 
 void Portal::update(sf::Time &frametime, Player &player)

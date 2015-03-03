@@ -90,13 +90,13 @@ void Object::render(IndexRenderer &iRenderer)
 	else if (mType == ObjectType::Invisible){
 		if (DebugMode){
 			mRect.setPosition(sf::Vector2f(mPosition.x - (mSize.x / 2), mPosition.y - (mSize.y / 2)));
-			iRenderer.addRectangle(mRect, mIndex);
+			iRenderer.addShape(mRect, mIndex);
 		}
 	}
 
 	if (mDisplayDescription)
 	{
-		iRenderer.addRectangle(mTextRect, mIndex + 1);
+		iRenderer.addShape(mTextRect, mIndex + 1);
 		iRenderer.addText(mDescription, mIndex + 2);
 	}
 }

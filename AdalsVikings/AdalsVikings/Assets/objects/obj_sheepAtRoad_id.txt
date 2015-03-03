@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $sheepAtRoad$
+*Name: Sheep
+*ispickupable: True
+*pickup: "Uh... I don't want to get bitten." ~3,0
+*lookat: "What a pretty sheep." ~2,0
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: Y:

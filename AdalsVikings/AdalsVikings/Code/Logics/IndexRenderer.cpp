@@ -15,9 +15,9 @@ void IndexRenderer::addSprite(sf::Sprite &sprite, int index)
 {
 	mIndexObjects.push_back(IndexObject(sprite, index));
 }
-void IndexRenderer::addRectangle(sf::RectangleShape &rectangle, int index)
+void IndexRenderer::addShape(sf::Shape &shape, int index)
 {
-	mIndexObjects.push_back(IndexObject(rectangle, index));
+	mIndexObjects.push_back(IndexObject(shape, index));
 }
 void IndexRenderer::addText(sf::Text &text, int index)
 {
@@ -37,8 +37,8 @@ void IndexRenderer::display()
 	{
 		if (iObj.mObjType == IndObjType::Sprite)
 			CurrentWindow.draw(*iObj.mSprite);
-		else if (iObj.mObjType == IndObjType::IRectangle)
-			CurrentWindow.draw(*iObj.mRectangle);
+		else if (iObj.mObjType == IndObjType::Shape)
+			CurrentWindow.draw(*iObj.mShape);
 		else if (iObj.mObjType == IndObjType::Text)
 			CurrentWindow.draw(*iObj.mText);
 	}
