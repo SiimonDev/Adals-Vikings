@@ -44,10 +44,14 @@ public:
 	void enableDescription(bool active);
 	void setInteractionPosition(sf::Vector2f &interactpos);
 	void updateAnimationStyle();
+	void setIsInvisble(bool value);
+	void setInvisibleRect(sf::Vector2f rect);
 
 	bool isInside(sf::Vector2i &pos);
+	bool &isInvisible();
 	bool getActiveConversation();
 	int getIndex();
+	sf::RectangleShape & getInvisRect();
 	std::string &getUseText();
 	std::string &getLookText();
 	sf::Vector2f &getPosition();
@@ -73,11 +77,11 @@ private:
 	sf::IntRect mCollisionRect;
 	sf::IntRect mIndexRect;
 	sf::Text mDescription;
-	sf::RectangleShape mTextRect;
+	sf::RectangleShape mTextRect, mInvisbleRect;
 
 	AnimationState::ID mAnimationState;
 	sf::Color mColor;
 
-	bool mFlip, mUpdateAnimation;
+	bool mFlip, mUpdateAnimation, mIsInvisble;
 	bool mDisplayDescription;
 };

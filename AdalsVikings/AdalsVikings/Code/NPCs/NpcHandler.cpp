@@ -24,6 +24,8 @@ void NpcHandler::load()
 	NpcPtr Mailman(new Npc(Font::Font1));
 	NpcPtr Princess(new Npc(Font::Font1));
 	NpcPtr Beor(new Npc(Font::Font1));
+	NpcPtr DruidLeader(new Npc(Font::Font1));
+	NpcPtr Druids(new Npc(Font::Font1));
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -158,6 +160,23 @@ void NpcHandler::load()
 	Beor->setscale(sf::Vector2f(0.65f, 0.65f));
 	Beor->setFlip(true);
 
+	DruidLeader->setName("Druid Leader");
+	DruidLeader->setIdleAnimation(Texture::DruidLeaderIdle, sf::Vector2i(1, 1), sf::milliseconds(0), sf::seconds(999));
+	DruidLeader->SetTalkAnimation(Texture::DruidLeaderTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
+	DruidLeader->setPosition(sf::Vector2f(650, 790));
+	DruidLeader->setInteractionPosition(sf::Vector2f(700, 780));
+	DruidLeader->setColor(sf::Color(176, 196, 222));
+	DruidLeader->setIndex(3);
+	DruidLeader->setProportions(sf::Vector2f(243, 558));
+	DruidLeader->setscale(sf::Vector2f(0.65f, 0.65f));
+	DruidLeader->setFlip(false);
+
+	Druids->setName("Druids");
+	Druids->setPosition(sf::Vector2f(0, 450));
+	Druids->setInvisibleRect(sf::Vector2f(565, 630));
+	Druids->setColor(sf::Color(176, 196, 222));
+	Druids->setIsInvisble(true);
+
 	CreateNpc("Valdis", std::move(Valdis)));
 	CreateNpc("Leifr", std::move(Leifr)));
 	CreateNpc("Finnr", std::move(Finnr)));
@@ -170,6 +189,8 @@ void NpcHandler::load()
 	CreateNpc("Mailman", std::move(Mailman)));
 	CreateNpc("Princess", std::move(Princess)));
 	CreateNpc("Beor", std::move(Beor)));
+	CreateNpc("DruidLeader", std::move(DruidLeader)));
+	CreateNpc("Druids", std::move(Druids)));
 }
 
 void NpcHandler::unload()

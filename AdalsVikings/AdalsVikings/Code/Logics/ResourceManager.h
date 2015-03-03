@@ -50,6 +50,12 @@ namespace Texture
 
 		WaveAnimation,
 		AxeAnimation,
+		FireForestCampAnimation,
+		DruidsForest1,
+		DruidsForest2,
+		DruidLeaderIdle,
+		DruidLeaderTalk,
+		SittingDruidLeader,
 
 		InventoryBackground,
 		InventoryTile,

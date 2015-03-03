@@ -59,7 +59,7 @@ private:
 	void enable();
 
 	std::string mFilePath;
-	sf::Text mPrintText;
+	sf::Text mPrintText, mOutlineText;
 	sf::Sprite mTextBackground;
 	sf::RectangleShape mDialogueRectangle;
 	std::vector<sf::RectangleShape> mRectangleVector;

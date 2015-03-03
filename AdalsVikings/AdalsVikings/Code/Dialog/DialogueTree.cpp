@@ -24,15 +24,16 @@ DialogueTree::DialogueTree()
 	, mEndConversation(false)
 	, mFacePlayer(false)
 {
-	RMI.loadResource(Texture::TextBackgroundPaper);
-	mTextBackground.setTexture(RMI.getResource(Texture::TextBackgroundPaper));
 	mDialogueRectangle.setFillColor(sf::Color(0, 0, 0, 200));
 }
 void DialogueTree::load()
 {
-	RMI.loadResource(Font::Font2);
+	RMI.loadResource(Font::Skranji_regular);
+	RMI.loadResource(Font::Skranji_outline);
 	mDialogue.load_file(mFilePath.c_str());
 	std::string copyFolder = "copy/";
+	mPrintText.setFont(RMI.getResource(Font::Skranji_regular));
+	mOutlineText.setFont(RMI.getResource(Font::Skranji_outline));
 	if (mFilePath.find(copyFolder) == std::string::npos)
 	{
 		std::string copyStr = "_copy.xml";
@@ -76,15 +77,17 @@ void DialogueTree::render(IndexRenderer &iRenderer)
 
 		if (mWait)
 		{
-			iRenderer.addText(mPrintText, 99999);
+			iRenderer.addText(mPrintText, 100);
+			mOutlineText.setColor(sf::Color::Magenta);
+			iRenderer.addText(mOutlineText, 99999);
 			if (mPrintText.getString() != "")
 			{
-				mDialogueRectangle.setSize(sf::Vector2f(mPrintText.getGlobalBounds().width + 4, mPrintText.getGlobalBounds().height + 10));
-				mDialogueRectangle.setPosition(mPrintText.getGlobalBounds().left - 2, mPrintText.getGlobalBounds().top - 5);
-				/*mTextBackground.setTextureRect(sf::IntRect(0, 0, mPrintText.getGlobalBounds().width + 10, mPrintText.getGlobalBounds().height + 20));
-				mTextBackground.setPosition(mPrintText.getGlobalBounds().left - 5, mPrintText.getGlobalBounds().top - 10);*/
-				//iRenderer.addSprite(mTextBackground, 9999);
-				iRenderer.addRectangle(mDialogueRectangle, 9999);
+				//mDialogueRectangle.setSize(sf::Vector2f(mPrintText.getGlobalBounds().width + 4, mPrintText.getGlobalBounds().height + 10));
+				//mDialogueRectangle.setPosition(mPrintText.getGlobalBounds().left - 2, mPrintText.getGlobalBounds().top - 5);
+				///*mTextBackground.setTextureRect(sf::IntRect(0, 0, mPrintText.getGlobalBounds().width + 10, mPrintText.getGlobalBounds().height + 20));
+				//mTextBackground.setPosition(mPrintText.getGlobalBounds().left - 5, mPrintText.getGlobalBounds().top - 10);*/
+				////iRenderer.addSprite(mTextBackground, 9999);
+				//iRenderer.addRectangle(mDialogueRectangle, 9999);
 			}
 		}
 	}
@@ -128,7 +131,7 @@ void DialogueTree::startDialogue()
 			if (!mNode.attribute("disabled").as_bool() && as_utf8(mNode.name()) == "text")
 			{
 				mName = as_utf8(mNode.attribute("character").as_string());
-				mPrintText.setFont(RMI.getResource(Font::Font2));
+				mPrintText.setCharacterSize(30);
 				mPrintText.setCharacterSize(30);
 
 				if (as_utf8(mNode.attribute("turned").as_string()) == "true")
@@ -151,6 +154,7 @@ void DialogueTree::startDialogue()
 				std::string tmpStr = mNode.attribute("say").as_string();
 				std::string tmpStr2 = mNode.attribute("say").as_string();
 				mPrintText.setString(as_utf8(mNode.attribute("say").as_string()));
+				mOutlineText.setString(as_utf8(mNode.attribute("say").as_string()));
 
 				if (tmpStr.size() >= 30)
 				{
@@ -182,6 +186,7 @@ void DialogueTree::startDialogue()
 						tmpStr2 = tmpStr2.substr(0, found);
 					}
 					mPrintText.setString(tmpStr2 + '\n' + tmpStr.substr(index));
+					mOutlineText.setString(tmpStr2 + '\n' + tmpStr.substr(index));
 				}
 				mTimer = mNode.attribute("timer").as_float();
 				mWait = true;
@@ -369,8 +374,8 @@ void DialogueTree::startConverstation()
 				mName = mNode.attribute("character").as_string();
 				disablePrevious();
 				mTimer = mNode.attribute("timer").as_float();
-				mPrintText.setFont(RMI.getResource(Font::Font1));
 				mPrintText.setCharacterSize(30);
+				mOutlineText.setCharacterSize(30);
 				if (as_utf8(mNode.attribute("turned").as_string()) == "true")
 				{
 					mFaceWay = true;
@@ -390,6 +395,7 @@ void DialogueTree::startConverstation()
 				std::string tmpStr = mNode.attribute("say").as_string();
 				std::string tmpStr2 = mNode.attribute("say").as_string();
 				mPrintText.setString(as_utf8(mNode.attribute("say").as_string()));
+				mOutlineText.setString(as_utf8(mNode.attribute("say").as_string()));
 
 				if (tmpStr.size() >= 30)
 				{
@@ -421,6 +427,7 @@ void DialogueTree::startConverstation()
 						tmpStr2 = tmpStr2.substr(0, found);
 					}
 					mPrintText.setString(tmpStr2 + '\n' + tmpStr.substr(index));
+					mOutlineText.setString(tmpStr2 + '\n' + tmpStr.substr(index));
 				}
 				mWait = true;
 				if (as_utf8(mNode.next_sibling().name()) == "text" || as_utf8(mNode.next_sibling().name()) == "gotoBaseContainer"
@@ -680,6 +687,7 @@ void DialogueTree::stopConversation()
 	mRectangleVector.clear();
 	mWait = false;
 	mPrintText.setString("");
+	mOutlineText.setString("");
 	mStart = false;
 	mOptionSelected = false;
 	setEndConversation(true);
@@ -694,8 +702,8 @@ bool & DialogueTree::getWait()
 
 void DialogueTree::setTextPosition(sf::Vector2f position)
 {
-	std::string string = mPrintText.getString();
 	mPrintText.setPosition(position.x - mPrintText.getGlobalBounds().width / 2, position.y - position.y / 10);
+	mOutlineText.setPosition(position.x - mPrintText.getGlobalBounds().width / 2, position.y - position.y / 10);
 }
 void DialogueTree::setEndConversation(bool value)
 {

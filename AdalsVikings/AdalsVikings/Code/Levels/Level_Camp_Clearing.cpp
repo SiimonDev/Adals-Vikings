@@ -11,8 +11,7 @@ void Level_Camp_Clearing::update(sf::Time &frametime)
 {
 	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_TalkedToAll) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_TalkedToAll))
 	{
-		mPortals[CampToRoad]->setWorking(true);
-		mPortals[CampToForestRoad]->setWorking(true);
+		
 	}
 	changeLevel();
 	Level::update(frametime);
@@ -79,14 +78,19 @@ void Level_Camp_Clearing::checkEvents()
 		Act1Events::triggerEvent(Act1Event::CampClearing_Brynja);
 	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_Brynja) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))
 		if (DialogHandler::getDialogue("Brynja_ClearingCamp").getHasStopped())
-			Act1Events::handleEvent(Act1Event::CampClearing_Brynja);
+		{
+		Act1Events::handleEvent(Act1Event::CampClearing_Brynja);
+		mPortals[CampToRoad]->setWorking(true);
+		}
 
 	if (DialogHandler::getDialogue("Valdis_ClearingCamp").getActiveConversation())
 		Act1Events::triggerEvent(Act1Event::CampClearing_Valdis);
 	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_Valdis) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_Valdis))
 		if (DialogHandler::getDialogue("Valdis_ClearingCamp").getHasStopped())
+		{
+			mPortals[CampToForestRoad]->setWorking(true);
 			Act1Events::handleEvent(Act1Event::CampClearing_Valdis);
-
+		}
 	if (DialogHandler::getDialogue("Leifr_ClearingCamp").getActiveConversation())
 		Act1Events::triggerEvent(Act1Event::CampClearing_Leifr);
 	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_Leifr) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))

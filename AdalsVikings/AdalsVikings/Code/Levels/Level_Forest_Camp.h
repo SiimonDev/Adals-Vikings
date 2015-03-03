@@ -14,4 +14,8 @@ public:
 	void changeLevel();
 	void checkInteractEvents();
 	void checkEvents();
+
+private:
+	sf::Sprite mDruids;
+	Animation mFireAnimation;
 };

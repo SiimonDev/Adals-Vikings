@@ -262,9 +262,18 @@ void Level::updateDialog(sf::Time frameTime)
 					iz->second->setFlip(it->second->getFacing());
 					iz->second->setAnimationStyle("Npc");
 					mPlayer.setAnimationStyle(AnimationType::Idle);
-					it->second->setTextPosition(sf::Vector2f(iz->second->getAnimation().getSprite().getGlobalBounds().left +
-						iz->second->getAnimation().getSprite().getGlobalBounds().width / 2,
-						iz->second->getAnimation().getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
+					if (!iz->second->isInvisible())
+					{
+						it->second->setTextPosition(sf::Vector2f(iz->second->getAnimation().getSprite().getGlobalBounds().left +
+							iz->second->getAnimation().getSprite().getGlobalBounds().width / 2,
+							iz->second->getAnimation().getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
+					}
+					else if (iz->second->isInvisible())
+					{
+						it->second->setTextPosition(sf::Vector2f(iz->second->getInvisRect().getPosition().x +
+							iz->second->getInvisRect().getSize().x / 2,
+							iz->second->getInvisRect().getPosition().y));
+					}
 					it->second->setTextColor(iz->second->getColor());
 				}
 				else if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() == "")

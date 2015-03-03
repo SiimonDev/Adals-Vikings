@@ -63,6 +63,12 @@ ResourceManager::ResourceManager()
 
 	mTexturePathMap[Texture::WaveAnimation] = "assets/MapFiles/Beach/waves.png";
 	mTexturePathMap[Texture::AxeAnimation] = "assets/images/Interface/MainMenu/flying_axe.png";
+	mTexturePathMap[Texture::FireForestCampAnimation] = "assets/Mapfiles/Forest_Camp/background_forestcamp_fire.png";
+	mTexturePathMap[Texture::DruidsForest1] = "assets/Mapfiles/Forest_Camp/background_forestcamp_druids_1.png";
+	mTexturePathMap[Texture::DruidsForest2] = "assets/Mapfiles/Forest_Camp/background_forestcamp_druids_2.png";
+	mTexturePathMap[Texture::DruidLeaderIdle] = "assets/Images/Druid/druid_lord_swag.png";
+	mTexturePathMap[Texture::DruidLeaderTalk] = "assets/Images/Druid/druid_lord_swag_talk.png";
+	mTexturePathMap[Texture::SittingDruidLeader] = "assets/Images/Druid/druid_lord_swag_2.png";
 
 	mTexturePathMap[Texture::InventoryBackground] = "assets/images/Interface/inventory.png";
 	mTexturePathMap[Texture::InventoryTile] = "assets/images/InventoryTile.png";
@@ -112,7 +118,7 @@ ResourceManager::ResourceManager()
 	/* =========== Set Font File paths =========== */
 	mFontPathMap[Font::Font1] = "assets/fonts/font1.ttf";
 	mFontPathMap[Font::Font2] = "assets/fonts/font2.ttf";
-	mFontPathMap[Font::Skranji_regular] = "assets/fonts/skranji_outline.ttf";
+	mFontPathMap[Font::Skranji_regular] = "assets/fonts/skranji_regular.ttf";
 	mFontPathMap[Font::Skranji_outline] = "assets/fonts/skranji_outline.ttf";
 	/* =========================================== */
 

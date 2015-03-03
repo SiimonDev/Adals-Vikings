@@ -8,30 +8,48 @@ Npc::Npc(Font::ID id)
 , mScale(0, 0)
 , mFlip(false)
 , mDisplayDescription(false)
+, mIsInvisble(false)
 {
+	mInvisbleRect.setFillColor(sf::Color(0, 0, 0, 0));
 	mDescription.setFont(RMI.getResource(id));
 	mTextRect.setFillColor(sf::Color(0, 0, 0, 200));
 }
 
 void Npc::render(IndexRenderer &iRenderer)
 {
-	mAnimation.getSprite().setOrigin(sf::Vector2f(mAnimation.getSpriteSize().x / 2, mAnimation.getSpriteSize().y));
-	mAnimation.setScaleFromHeight(mProportions.y * mScale.y);
-	mAnimation.setPosition(mPosition);
-	mAnimation.render(iRenderer);
+	if (!mIsInvisble)
+	{
+		mAnimation.getSprite().setOrigin(sf::Vector2f(mAnimation.getSpriteSize().x / 2, mAnimation.getSpriteSize().y));
+		mAnimation.setScaleFromHeight(mProportions.y * mScale.y);
+		mAnimation.setPosition(mPosition);
+		mAnimation.render(iRenderer);
+	}
+	else
+	{
+		mInvisbleRect.setPosition(mPosition);
+		iRenderer.addRectangle(mInvisbleRect, 999);
+	}
 
-	if (mDisplayDescription)
+	if (mDisplayDescription && !mIsInvisble)
 	{
 		iRenderer.addRectangle(mTextRect, mAnimation.getIndex() + 1);
 		iRenderer.addText(mDescription, mAnimation.getIndex() + 2);
+	}
+	else if (mDisplayDescription && mIsInvisble)
+	{
+		iRenderer.addRectangle(mTextRect, 999);
+		iRenderer.addText(mDescription, 1000);
 	}
 }
 
 void Npc::update(sf::Time &frametime)
 {
-	mAnimation.animate(frametime);
+	if (!mIsInvisble)
+	{
+		mAnimation.animate(frametime);
+	}
 
-	if (mDisplayDescription)
+	if (mDisplayDescription && !mIsInvisble)
 	{
 		mDescription.setPosition(sf::Vector2f(mPosition.x - (mDescription.getGlobalBounds().width / 2),
 			mPosition.y - (mAnimation.getSpriteSize().y * mScale.y) - (mDescription.getGlobalBounds().height)));
@@ -40,27 +58,39 @@ void Npc::update(sf::Time &frametime)
 		mTextRect.setPosition(sf::Vector2f(mPosition.x - (mTextRect.getGlobalBounds().width / 2),
 			mPosition.y - (mTextRect.getGlobalBounds().height / 2) - (mAnimation.getSpriteSize().y * mScale.y)));
 	}
+	else if (mDisplayDescription && mIsInvisble)
+	{
+		mDescription.setPosition(sf::Vector2f(mPosition.x + mInvisbleRect.getSize().x / 2,
+			mPosition.y - (mDescription.getGlobalBounds().height)));
+
+		mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 10, mDescription.getGlobalBounds().height + 10));
+		mTextRect.setPosition(sf::Vector2f(mPosition.x + mInvisbleRect.getSize().x / 2,
+			mPosition.y - (mTextRect.getGlobalBounds().height / 2)));
+	}
 }
 
 void Npc::load()
 {
-	RMI.loadResource(mIdleTexture);
-	RMI.loadResource(mTalkTexture);
-	mAnimation.flip(mFlip);
-	mAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
-	mAnimation.setProportions(mProportions);
+	if (!mIsInvisble)
+	{
+		RMI.loadResource(mIdleTexture);
+		RMI.loadResource(mTalkTexture);
+		mAnimation.flip(mFlip);
+		mAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
+		mAnimation.setProportions(mProportions);
 
-	float npcWith = float(mAnimation.getSpriteSize().x * mScale.x);
-	float npcHeight = float(mAnimation.getSpriteSize().y * mScale.y);
-	float xPos = mPosition.x - (npcWith / 2);
-	float yPos = mPosition.y - ((npcHeight * 0.2f) / 2);
-	mCollisionRect = sf::IntRect(xPos, yPos, npcWith, npcHeight * 0.2f);
+		float npcWith = float(mAnimation.getSpriteSize().x * mScale.x);
+		float npcHeight = float(mAnimation.getSpriteSize().y * mScale.y);
+		float xPos = mPosition.x - (npcWith / 2);
+		float yPos = mPosition.y - ((npcHeight * 0.2f) / 2);
+		mCollisionRect = sf::IntRect(xPos, yPos, npcWith, npcHeight * 0.2f);
 
-	yPos = mPosition.y - (npcHeight * 1.2f);
-	xPos = mPosition.x - ((npcWith * 1.5f) / 2);
-	mIndexRect = sf::IntRect(xPos, yPos, npcWith * 1.5f, npcHeight * 1.2f);
+		yPos = mPosition.y - (npcHeight * 1.2f);
+		xPos = mPosition.x - ((npcWith * 1.5f) / 2);
+		mIndexRect = sf::IntRect(xPos, yPos, npcWith * 1.5f, npcHeight * 1.2f);
 
-	setAnimationStyle("Idle");
+		setAnimationStyle("Idle");
+	}
 }
 
 void Npc::unload()
@@ -76,11 +106,18 @@ bool Npc::getActiveConversation()
 
 bool Npc::isInside(sf::Vector2i &pos)
 {
-	return
-		(pos.x >= mPosition.x - ((mAnimation.getSpriteSize().x / 2) * mScale.x) &&
-		pos.x <= mPosition.x + ((mAnimation.getSpriteSize().x / 2) * mScale.x) &&
-		pos.y >= mPosition.y - (mAnimation.getSpriteSize().y * mScale.y) &&
-		pos.y <= mPosition.y);
+	if (!mIsInvisble)
+		return
+			(pos.x >= mPosition.x - ((mAnimation.getSpriteSize().x / 2) * mScale.x) &&
+			pos.x <= mPosition.x + ((mAnimation.getSpriteSize().x / 2) * mScale.x) &&
+			pos.y >= mPosition.y - (mAnimation.getSpriteSize().y * mScale.y) &&
+			pos.y <= mPosition.y);
+	else
+		return
+		(pos.x >= mPosition.x &&
+		pos.x <= mPosition.x + ((mInvisbleRect.getSize().x)) &&
+		pos.y >= mPosition.y &&
+		pos.y <= mPosition.y + (mInvisbleRect.getSize().y));
 }
 
 int Npc::getIndex()
@@ -161,23 +198,26 @@ void Npc::setIndexRect(sf::IntRect &rect)
 
 void Npc::setAnimationStyle(std::string type)
 {
-	if (type == "Npc" && mAnimationState != AnimationState::Talking)
+	if (!mIsInvisble)
 	{
-		mAnimation.flip(mFlip);
-		mAnimation.load(RMI.getResource(mTalkTexture), mTalkFrames, mTalkDuration, mTalkWaitTime, true);
-		mAnimationState = AnimationState::Talking;
-	}
-	else if (type == "Player" &&  mAnimationState != AnimationState::PlayerTalking)
-	{
-		mAnimation.flip(mFlip);
-		mAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
-		mAnimationState = AnimationState::PlayerTalking;
-	}
-	else if (type == "Idle" && mAnimationState != AnimationState::Idle)
-	{
-		mAnimation.flip(mFlip);
-		mAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
-		mAnimationState = AnimationState::Idle;
+		if (type == "Npc" && mAnimationState != AnimationState::Talking)
+		{
+			mAnimation.flip(mFlip);
+			mAnimation.load(RMI.getResource(mTalkTexture), mTalkFrames, mTalkDuration, mTalkWaitTime, true);
+			mAnimationState = AnimationState::Talking;
+		}
+		else if (type == "Player" &&  mAnimationState != AnimationState::PlayerTalking)
+		{
+			mAnimation.flip(mFlip);
+			mAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
+			mAnimationState = AnimationState::PlayerTalking;
+		}
+		else if (type == "Idle" && mAnimationState != AnimationState::Idle)
+		{
+			mAnimation.flip(mFlip);
+			mAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
+			mAnimationState = AnimationState::Idle;
+		}
 	}
 }
 
@@ -219,6 +259,15 @@ sf::IntRect &Npc::getIndexRect()
 
 	return mIndexRect;
 }
+void Npc::setIsInvisble(bool value)
+{
+	mIsInvisble = value;
+}
+void Npc::setInvisibleRect(sf::Vector2f rect)
+{
+	mInvisbleRect.setSize(rect);
+}
+
 sf::Color &Npc::getColor()
 {
 	return mColor;
@@ -240,7 +289,14 @@ std::string Npc::getDialogueString()
 	std::string string = DialogHandler::getDialogue(mDialogue).getPrintText().getString();
 	return string;
 }
-
+bool &Npc::isInvisible()
+{
+	return mIsInvisble;
+}
+sf::RectangleShape &Npc::getInvisRect()
+{
+	return mInvisbleRect;
+}
 void Npc::updateAnimationStyle()
 {
 	mAnimationState = AnimationState::Update;
