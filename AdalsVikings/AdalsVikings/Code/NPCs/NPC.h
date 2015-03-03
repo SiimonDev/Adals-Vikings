@@ -2,6 +2,7 @@
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\IndexRenderer.h"
 #include "..\Logics\Animation.h"
+#include "..\Logics\RoundedRectangleShape.h"
 using namespace pugi;
 
 namespace AnimationState
@@ -18,7 +19,7 @@ namespace AnimationState
 class Npc
 {
 public:
-	Npc(Font::ID id);
+	Npc(Font::ID id, Font::ID Oid);
 	
 	virtual void render(IndexRenderer &iRenderer);
 	virtual void update(sf::Time &frametime);
@@ -73,7 +74,9 @@ private:
 	sf::IntRect mCollisionRect;
 	sf::IntRect mIndexRect;
 	sf::Text mDescription;
-	sf::RectangleShape mTextRect;
+	sf::Text mDescriptionOutline;
+	//sf::RectangleShape mTextRect;
+	sf::RoundedRectangleShape mTextRect;
 
 	AnimationState::ID mAnimationState;
 	sf::Color mColor;

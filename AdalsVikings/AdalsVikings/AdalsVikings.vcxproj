@@ -63,6 +63,7 @@
     <ClCompile Include="Code\Logics\MouseState.cpp" />
     <ClCompile Include="Code\Logics\PathFinder.cpp" />
     <ClCompile Include="Code\Logics\ResourceManager.cpp" />
+    <ClCompile Include="Code\Logics\RoundedRectangleShape.cpp" />
     <ClCompile Include="Code\Logics\WindowState.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\NPCs\NPC.cpp" />
@@ -72,7 +73,6 @@
     <ClCompile Include="Code\Objects\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Desktop\AdalsVikings\AdalsVikings\Code\Logics\WindowState.h" />
     <ClInclude Include="Code\Dialog\Dialog.h" />
     <ClInclude Include="Code\Dialog\DialogHandler.h" />
     <ClInclude Include="Code\Dialog\DialogueTree.h" />
@@ -120,6 +120,8 @@
     <ClInclude Include="Code\Logics\Node.h" />
     <ClInclude Include="Code\Logics\PathFinder.h" />
     <ClInclude Include="Code\Logics\ResourceManager.h" />
+    <ClInclude Include="Code\Logics\RoundedRectangleShape.h" />
+    <ClInclude Include="Code\Logics\WindowState.h" />
     <ClInclude Include="Code\NPCs\NPC.h" />
     <ClInclude Include="Code\NPCs\NpcHandler.h" />
     <ClInclude Include="Code\Objects\Object.h" />

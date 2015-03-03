@@ -1,8 +1,9 @@
 #include "NPC.h"
 #include "..\Dialog\DialogHandler.h"
+#include "..\Logics\WindowState.h"
 #include <iostream>
 
-Npc::Npc(Font::ID id)
+Npc::Npc(Font::ID id, Font::ID Oid)
 : mName("Hero")
 , mPosition(0, 0)
 , mScale(0, 0)
@@ -10,7 +11,13 @@ Npc::Npc(Font::ID id)
 , mDisplayDescription(false)
 {
 	mDescription.setFont(RMI.getResource(id));
+	mDescriptionOutline.setFont(RMI.getResource(Oid));
+	mDescriptionOutline.setColor(sf::Color(0, 0, 0, 255));
+
 	mTextRect.setFillColor(sf::Color(0, 0, 0, 200));
+	mTextRect.setOutlineColor(sf::Color(255, 0, 0, 220));
+	mTextRect.setOutlineThickness(5);
+	mTextRect.setCornersRadius(5);
 }
 
 void Npc::render(IndexRenderer &iRenderer)
@@ -22,8 +29,10 @@ void Npc::render(IndexRenderer &iRenderer)
 
 	if (mDisplayDescription)
 	{
-		iRenderer.addRectangle(mTextRect, mAnimation.getIndex() + 1);
+		//iRenderer.addShape(mTextRect, mAnimation.getIndex() + 1);
 		iRenderer.addText(mDescription, mAnimation.getIndex() + 2);
+		iRenderer.addText(mDescriptionOutline, mAnimation.getIndex() + 3);
+		CurrentWindow.draw(mTextRect);
 	}
 }
 
@@ -35,6 +44,7 @@ void Npc::update(sf::Time &frametime)
 	{
 		mDescription.setPosition(sf::Vector2f(mPosition.x - (mDescription.getGlobalBounds().width / 2),
 			mPosition.y - (mAnimation.getSpriteSize().y * mScale.y) - (mDescription.getGlobalBounds().height)));
+		mDescriptionOutline.setPosition(mDescription.getPosition());
 
 		mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 10, mDescription.getGlobalBounds().height + 10));
 		mTextRect.setPosition(sf::Vector2f(mPosition.x - (mTextRect.getGlobalBounds().width / 2),
@@ -230,6 +240,7 @@ void Npc::setDialogue(std::string dialogue)
 void Npc::setDescription(std::string description)
 {
 	mDescription.setString(description);
+	mDescriptionOutline.setString(description);
 }
 void Npc::enableDescription(bool active)
 {

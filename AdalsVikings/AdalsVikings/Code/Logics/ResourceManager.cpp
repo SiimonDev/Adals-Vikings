@@ -267,7 +267,7 @@ void ResourceManager::loadImage(const std::string &filename)
 }
 
 
-/* ====== Unload functions ======== */
+/* ======== Unload functions ======== */
 void ResourceManager::unloadResource(Texture::ID id)
 {
 	if (mTextureCountMap[id] == 1)
@@ -339,57 +339,98 @@ void ResourceManager::unloadImage(const std::string &filename)
 		mNonIDImagesCount[filename]--;
 }
 
-
-/* ====== Truncate functions ======== */
-void ResourceManager::truncateTextures()
+/* ======== Reload functions ======== */
+void ResourceManager::reloadResource(Texture::ID id)
 {
-	for (int i = 0; i < Texture::SIZE; i++)
-		mTextureCountMap[static_cast<Texture::ID>(i)] = 0;
-
-	mTextureMap.clear();
+	if (mTextureCountMap[id] != 0)
+	{
+		std::cout << "Reloading Texture: " << mTexturePathMap[id] << std::endl;
+		mTextureMap.erase(id);
+		TexturePtr texture(new sf::Texture());
+		texture->loadFromFile(mTexturePathMap[id]);
+		texture->setSmooth(true);
+		mTextureMap.insert(std::make_pair(id, std::move(texture)));
+	}
 }
-void ResourceManager::truncateImages()
+void ResourceManager::reloadResource(Image::ID id)
 {
-	for (int i = 0; i < Image::SIZE; i++)
-		mImageCountMap[static_cast<Image::ID>(i)] = 0;
-
-	mImageMap.clear();
+	if (mImageCountMap[id] != 0)
+	{
+		std::cout << "Reloading Image: " << mImagePathMap[id] << std::endl;
+		mImageMap.erase(id);
+		ImagePtr image(new sf::Image());
+		image->loadFromFile(mImagePathMap[id]);
+		mImageMap.insert(std::make_pair(id, std::move(image)));
+	}
 }
-void ResourceManager::truncateFonts()
+void ResourceManager::reloadResource(Font::ID id)
 {
-	for (int i = 0; i < Font::SIZE; i++)
-		mFontCountMap[static_cast<Font::ID>(i)] = 0;
-	mFontMap.clear();
+	if (mFontCountMap[id] != 0)
+	{
+		std::cout << "Loading Font: " << mFontPathMap[id] << std::endl;
+		mFontMap.erase(id);
+		FontPtr font(new sf::Font());
+		font->loadFromFile(mFontPathMap[id]);
+		mFontMap.insert(std::make_pair(id, std::move(font)));
+	}
 }
-void ResourceManager::truncateSounds()
+void ResourceManager::reloadResource(Sound::ID id)
 {
-	for (int i = 0; i < Sound::SIZE; i++)
-		mSoundCountMap[static_cast<Sound::ID>(i)] = 0;
-	mSoundMap.clear();
+	if (mSoundCountMap[id] != 0)
+	{
+		std::cout << "Loading Sound: " << mSoundPathMap[id] << std::endl;
+		mSoundMap.erase(id);
+		SoundPtr sound(new sf::SoundBuffer());
+		sound->loadFromFile(mSoundPathMap[id]);
+		mSoundMap.insert(std::make_pair(id, std::move(sound)));
+	}
 }
-void ResourceManager::truncateBackgrounds()
+void ResourceManager::reloadResource(LevelFolder::ID id)
 {
-	for (int i = 0; i < LevelFolder::SIZE; i++)
-		mBackgroundsCountMap[static_cast<LevelFolder::ID>(i)] = 0;
+	if (mBackgroundsCountMap[id] != 0)
+	{
+		std::cout << "Reloading Level Folder: " << std::endl;
+		mBackgroundsMap[id].clear();
+		mBackgroundsMap.erase(id);
 
-	for (std::map<LevelFolder::ID, BackgroundsPtr>::iterator it = mBackgroundsMap.begin(); it != mBackgroundsMap.end(); ++it)
-		it->second.clear();
+		BackgroundsPtr mFolderVector;
+		std::vector<std::string> filePaths = getAllBackgroundFilesFromFolder(mBackgroundsPathMap[id]);
 
-	mBackgroundsMap.clear();
+		for (int i = 0; i < filePaths.size(); i++)
+		{
+			mFolderVector.push_back(TexturePtr(new sf::Texture()));
+			mFolderVector[i]->loadFromFile(filePaths.at(i));
+		}
+		mBackgroundsMap.insert(std::make_pair(id, std::move(mFolderVector)));
+
+		mFolderVector.clear();
+		filePaths.clear();
+	}
 }
-void ResourceManager::truncateFootsteps()
+void ResourceManager::reloadResource(Footsteps::ID id)
 {
-	for (int i = 0; i < Footsteps::SIZE; i++)
-		mFootstepsCountMap[static_cast<Footsteps::ID>(i)] = 0;
+	if (mFootstepsCountMap[id] != 0)
+	{
+		std::cout << "Reloading Footsteps: " << std::endl;
+		mFootstepsMap[id].clear();
+		mFootstepsMap.erase(id);
+		FootstepsPtr mSoundVector;
+		std::vector<std::string> filePaths = getAllFootstepsFromFolder(mFootstepsPathMap[id]);
 
-	for (std::map<Footsteps::ID, FootstepsPtr>::iterator it = mFootstepsMap.begin(); it != mFootstepsMap.end(); ++it)
-		it->second.clear();
+		for (int i = 0; i < filePaths.size(); i++)
+		{
+			mSoundVector.push_back(SoundPtr(new sf::SoundBuffer()));
+			mSoundVector[i]->loadFromFile(filePaths.at(i));
+		}
+		mFootstepsMap.insert(std::make_pair(id, std::move(mSoundVector)));
 
-	mFootstepsMap.clear();
+		mSoundVector.clear();
+		filePaths.clear();
+	}
 }
 
 
-/* ====== Get functions ======== */
+/* ======== Get functions ======== */
 const BackgroundsPtr &ResourceManager::getResource(LevelFolder::ID id) const
 {
 	auto found = mBackgroundsMap.find(id);
@@ -432,7 +473,7 @@ sf::Image &ResourceManager::getNonIDImage(const std::string &filename) const
 }
 
 
-/* ====== Get FilePath Functions ======== */
+/* ======== Get FilePath Functions ======== */
 std::string ResourceManager::getFilePath(Texture::ID id)
 {
 	return mTexturePathMap[id];
@@ -463,7 +504,7 @@ std::string ResourceManager::getFilePath(Footsteps::ID id)
 }
 
 
-/* ====== Helper Functions ===== */
+/* ====== Helper Functions ====== */
 bool compareLX(std::string &a, std::string &b)
 {
 	int aI = atoi(&a.c_str()[a.find("ml_L") + 4]);

@@ -187,12 +187,12 @@ public:
 	void unloadTexture(const std::string &filename);
 	void unloadImage(const std::string &filename);
 
-	void truncateTextures();
-	void truncateImages();
-	void truncateSounds();
-	void truncateFonts();
-	void truncateBackgrounds();
-	void truncateFootsteps();
+	void reloadResource(Texture::ID id);
+	void reloadResource(Image::ID id);
+	void reloadResource(Font::ID id);
+	void reloadResource(Sound::ID id);
+	void reloadResource(LevelFolder::ID id);
+	void reloadResource(Footsteps::ID id);
 
 	sf::Texture &getResource(Texture::ID id) const;
 	sf::Image &getResource(Image::ID id) const;

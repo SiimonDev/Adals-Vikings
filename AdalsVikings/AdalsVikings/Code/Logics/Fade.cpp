@@ -37,7 +37,7 @@ void Fade::update(sf::Time &frameTime)
 void Fade::render(IndexRenderer &iRenderer)
 {
 	mFadeRectangle.setFillColor(sf::Color(0, 0, 0, mAlpha));
-	iRenderer.addRectangle(mFadeRectangle, 9999999);
+	iRenderer.addShape(mFadeRectangle, 9999999);
 }
 
 void Fade::fadeIn(sf::Time frameTime)

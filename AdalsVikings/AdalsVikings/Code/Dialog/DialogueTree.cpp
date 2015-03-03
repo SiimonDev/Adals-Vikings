@@ -67,7 +67,7 @@ void DialogueTree::unload()
 void DialogueTree::render(IndexRenderer &iRenderer)
 {
 	for (int i = 0; i < mRectangleVector.size(); i++)
-		iRenderer.addRectangle(mRectangleVector[i], 99999);
+		iRenderer.addShape(mRectangleVector[i], 99999);
 
 	if (mActiveConversation == true)
 	{
@@ -84,7 +84,7 @@ void DialogueTree::render(IndexRenderer &iRenderer)
 				/*mTextBackground.setTextureRect(sf::IntRect(0, 0, mPrintText.getGlobalBounds().width + 10, mPrintText.getGlobalBounds().height + 20));
 				mTextBackground.setPosition(mPrintText.getGlobalBounds().left - 5, mPrintText.getGlobalBounds().top - 10);*/
 				//iRenderer.addSprite(mTextBackground, 9999);
-				iRenderer.addRectangle(mDialogueRectangle, 9999);
+				iRenderer.addShape(mDialogueRectangle, 9999);
 			}
 		}
 	}

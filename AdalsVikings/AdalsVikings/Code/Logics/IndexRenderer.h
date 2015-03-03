@@ -4,7 +4,7 @@
 enum IndObjType
 {
 	Sprite,
-	IRectangle,
+	Shape,
 	Text
 };
 
@@ -16,11 +16,11 @@ struct IndexObject
 		mSprite = &sprite;
 		mIndex = index;
 	}
-	IndexObject(sf::RectangleShape &iRectangle, int index)
+	IndexObject(sf::Shape &iShape, int index)
 	{
-		mObjType = IndObjType::IRectangle;
+		mObjType = IndObjType::Shape;
 		mIndex = index;
-		mRectangle = &iRectangle;
+		mShape = &iShape;
 	}
 	IndexObject(sf::Text &iText, int index)
 	{
@@ -33,7 +33,7 @@ struct IndexObject
 	
 	int mIndex;
 	sf::Sprite* mSprite;
-	sf::RectangleShape* mRectangle;
+	sf::Shape* mShape;
 	sf::Text* mText;
 };
 
@@ -44,7 +44,7 @@ public:
 
 	void setWindow(sf::RenderWindow &window);
 	void addSprite(sf::Sprite &sprite, int index);
-	void addRectangle(sf::RectangleShape &rectangle, int index);
+	void addShape(sf::Shape &shape, int index);
 	void addText(sf::Text &text, int index);
 	void clear();
 	void display();
@@ -54,4 +54,3 @@ public:
 private:
 	std::vector<IndexObject> mIndexObjects;
 };
-

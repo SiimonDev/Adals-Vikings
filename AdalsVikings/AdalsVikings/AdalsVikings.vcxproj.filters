@@ -152,6 +152,9 @@
     <ClCompile Include="Code\Logics\Debug.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Logics\RoundedRectangleShape.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Dialog\Dialog.h">
@@ -265,9 +268,6 @@
     <ClInclude Include="Code\Interface\LoadingScreen.h">
       <Filter>Header Files\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Desktop\AdalsVikings\AdalsVikings\Code\Logics\WindowState.h">
-      <Filter>Header Files\Logics</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Logics\Act1Events.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
@@ -314,6 +314,12 @@
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
     <ClInclude Include="Code\Logics\Debug.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\RoundedRectangleShape.h">
+      <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\WindowState.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
   </ItemGroup>
