@@ -25,9 +25,9 @@ namespace sf
 		virtual sf::Vector2f getPoint(unsigned int index) const;
 
 	private:
-		Vector2f mySize;
-		float myRadius;
-		unsigned int myCornerPointCount;
+		Vector2f mSize;
+		float mRadius;
+		unsigned int mCornerPointCount;
 	};
 }
 #endif // ROUNDEDRECTANGLESHAPE_HPP

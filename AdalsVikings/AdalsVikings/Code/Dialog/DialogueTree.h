@@ -3,6 +3,7 @@
 #include "..\Logics\MouseState.h"
 #include "..\Logics\IndexRenderer.h"
 #include "..\Logics\ResourceManager.h"
+#include "..\Logics\RoundedRectangleShape.h"
 #include <string>
 #include <vector>
 
@@ -10,7 +11,7 @@ using namespace pugi;
 class DialogueTree
 {
 public:
-	DialogueTree();
+	DialogueTree(Font::ID fontID);
 
 	void load();
 	void unload();
@@ -59,9 +60,9 @@ private:
 	void enable();
 
 	std::string mFilePath;
-	sf::Text mPrintText, mOutlineText;
+	sf::Text mPrintText;
 	sf::Sprite mTextBackground;
-	sf::RectangleShape mDialogueRectangle;
+	sf::RoundedRectangleShape mDialogueRectangle;
 	std::vector<sf::RectangleShape> mRectangleVector;
 	std::vector<sf::Text> mOptionsVector;
 	std::string mName, mText, mUseText, mLookText, mEnable;
@@ -69,6 +70,7 @@ private:
 	bool mActiveConversation, mStart, mWait, mOptionSelected, mGoneDeep, 
 		mIsTalking, mStopConversation, mDraw, mEndConversation, mFaceWay, mFacePlayer;
 
+	Font::ID mFontID;
 	xml_document mDialogue;
 	xml_node mNode;
 };

@@ -11,7 +11,7 @@
 #include "..\Logics\WindowState.h"
 
 
-DialogueTree::DialogueTree()
+DialogueTree::DialogueTree(Font::ID fontID)
 	: mActiveConversation(false)
 	, mStart(false)
 	, mWait(false)
@@ -23,17 +23,20 @@ DialogueTree::DialogueTree()
 	, mDraw(false)
 	, mEndConversation(false)
 	, mFacePlayer(false)
+	, mFontID(fontID)
 {
 	mDialogueRectangle.setFillColor(sf::Color(0, 0, 0, 200));
+	mDialogueRectangle.setOutlineColor(sf::Color(255, 255, 255, 200));
+
+	mDialogueRectangle.setCornerPointCount(40);
+	mDialogueRectangle.setCornersRadius(10);
+	mDialogueRectangle.setOutlineThickness(3);
 }
 void DialogueTree::load()
 {
-	RMI.loadResource(Font::Skranji_regular);
-	RMI.loadResource(Font::Skranji_outline);
 	mDialogue.load_file(mFilePath.c_str());
 	std::string copyFolder = "copy/";
-	mPrintText.setFont(RMI.getResource(Font::Skranji_regular));
-	mOutlineText.setFont(RMI.getResource(Font::Skranji_outline));
+	mPrintText.setFont(RMI.getResource(mFontID));
 	if (mFilePath.find(copyFolder) == std::string::npos)
 	{
 		std::string copyStr = "_copy.xml";
@@ -62,7 +65,7 @@ void DialogueTree::load()
 //OBS! OBS! Remember to add micro transactions OBS! OBS! 
 void DialogueTree::unload()
 {
-	RMI.unloadResource(Font::Font2);
+
 }
 //Praise the graphical people!!
 void DialogueTree::render(IndexRenderer &iRenderer)
@@ -77,16 +80,11 @@ void DialogueTree::render(IndexRenderer &iRenderer)
 
 		if (mWait)
 		{
-			iRenderer.addText(mPrintText, 100);
-			mOutlineText.setColor(sf::Color::Magenta);
-			iRenderer.addText(mOutlineText, 99999);
+			iRenderer.addText(mPrintText, 9999 + 1);
 			if (mPrintText.getString() != "")
 			{
-				mDialogueRectangle.setSize(sf::Vector2f(mPrintText.getGlobalBounds().width + 4, mPrintText.getGlobalBounds().height + 10));
-				mDialogueRectangle.setPosition(mPrintText.getGlobalBounds().left - 2, mPrintText.getGlobalBounds().top - 5);
-				/*mTextBackground.setTextureRect(sf::IntRect(0, 0, mPrintText.getGlobalBounds().width + 10, mPrintText.getGlobalBounds().height + 20));
-				mTextBackground.setPosition(mPrintText.getGlobalBounds().left - 5, mPrintText.getGlobalBounds().top - 10);*/
-				//iRenderer.addSprite(mTextBackground, 9999);
+				mDialogueRectangle.setSize(sf::Vector2f(mPrintText.getGlobalBounds().width + 10, mPrintText.getGlobalBounds().height + 10));
+				mDialogueRectangle.setPosition(mPrintText.getGlobalBounds().left - 5, mPrintText.getGlobalBounds().top + (mDialogueRectangle.getSize().y) -5);
 				iRenderer.addShape(mDialogueRectangle, 9999);
 			}
 		}
@@ -110,7 +108,7 @@ void DialogueTree::update(sf::Time &frameTime)
 }
 void DialogueTree::setTextColor(sf::Color color)
 {
-	mPrintText.setColor(color);
+	mDialogueRectangle.setOutlineColor(color);
 }
 void DialogueTree::setDialogue(std::string filepath)
 {
@@ -154,7 +152,6 @@ void DialogueTree::startDialogue()
 				std::string tmpStr = mNode.attribute("say").as_string();
 				std::string tmpStr2 = mNode.attribute("say").as_string();
 				mPrintText.setString(as_utf8(mNode.attribute("say").as_string()));
-				mOutlineText.setString(as_utf8(mNode.attribute("say").as_string()));
 
 				if (tmpStr.size() >= 30)
 				{
@@ -186,7 +183,6 @@ void DialogueTree::startDialogue()
 						tmpStr2 = tmpStr2.substr(0, found);
 					}
 					mPrintText.setString(tmpStr2 + '\n' + tmpStr.substr(index));
-					mOutlineText.setString(tmpStr2 + '\n' + tmpStr.substr(index));
 				}
 				mTimer = mNode.attribute("timer").as_float();
 				mWait = true;
@@ -277,7 +273,7 @@ void DialogueTree::find_AllOptions()
 		{
 			sf::Text text;
 			text.setString(mNode.attribute("choice_text").as_string());
-			text.setFont(RMI.getResource(Font::Font2));
+			text.setFont(RMI.getResource(mFontID));
 			text.setCharacterSize(30);
 			text.setPosition(100.f, 700.f + 30 * cnt);
 			rectangle.setFillColor(sf::Color(0, 0, 0, 100));
@@ -375,7 +371,6 @@ void DialogueTree::startConverstation()
 				disablePrevious();
 				mTimer = mNode.attribute("timer").as_float();
 				mPrintText.setCharacterSize(30);
-				mOutlineText.setCharacterSize(30);
 				if (as_utf8(mNode.attribute("turned").as_string()) == "true")
 				{
 					mFaceWay = true;
@@ -395,7 +390,6 @@ void DialogueTree::startConverstation()
 				std::string tmpStr = mNode.attribute("say").as_string();
 				std::string tmpStr2 = mNode.attribute("say").as_string();
 				mPrintText.setString(as_utf8(mNode.attribute("say").as_string()));
-				mOutlineText.setString(as_utf8(mNode.attribute("say").as_string()));
 
 				if (tmpStr.size() >= 30)
 				{
@@ -427,7 +421,6 @@ void DialogueTree::startConverstation()
 						tmpStr2 = tmpStr2.substr(0, found);
 					}
 					mPrintText.setString(tmpStr2 + '\n' + tmpStr.substr(index));
-					mOutlineText.setString(tmpStr2 + '\n' + tmpStr.substr(index));
 				}
 				mWait = true;
 				if (as_utf8(mNode.next_sibling().name()) == "text" || as_utf8(mNode.next_sibling().name()) == "gotoBaseContainer"
@@ -687,7 +680,6 @@ void DialogueTree::stopConversation()
 	mRectangleVector.clear();
 	mWait = false;
 	mPrintText.setString("");
-	mOutlineText.setString("");
 	mStart = false;
 	mOptionSelected = false;
 	setEndConversation(true);
@@ -703,7 +695,6 @@ bool & DialogueTree::getWait()
 void DialogueTree::setTextPosition(sf::Vector2f position)
 {
 	mPrintText.setPosition(position.x - mPrintText.getGlobalBounds().width / 2, position.y - position.y / 10);
-	mOutlineText.setPosition(position.x - mPrintText.getGlobalBounds().width / 2, position.y - position.y / 10);
 }
 void DialogueTree::setEndConversation(bool value)
 {

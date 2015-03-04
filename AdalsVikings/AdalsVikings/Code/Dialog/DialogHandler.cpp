@@ -25,6 +25,7 @@ void DialogHandler::reloadConversations()
 
 void DialogHandler::load()
 {
+	RMI.loadResource(Font::Skranji_regular);
 	instream.open("assets/textfiles/Dialogues.txt");
 
 	while (!instream.eof())
@@ -36,7 +37,7 @@ void DialogHandler::load()
 		if (id != "" && id.find("---") == std::string::npos && filepath != "" && filepath.find("---") == std::string::npos)
 		{
 
-			DialogueTreePtr dialouge(new DialogueTree());
+			DialogueTreePtr dialouge(new DialogueTree(Font::Skranji_regular));
 			dialouge->setDialogue(filepath);
 
 			mDialogueMap.insert(std::make_pair(id, std::move(dialouge)));
@@ -49,6 +50,7 @@ void DialogHandler::load()
 }
 void DialogHandler::unload()
 {
+	RMI.unloadResource(Font::Skranji_regular);
 	instream.open("assets/textfiles/Dialogues.txt");
 
 	while (!instream.eof())
@@ -59,7 +61,6 @@ void DialogHandler::unload()
 
 		if (id != "" || id.find("---") == std::string::npos || filepath != "" || filepath.find("---") == std::string::npos)
 		{
-
 			mDialogueMap.erase(id);
 		}
 	}
