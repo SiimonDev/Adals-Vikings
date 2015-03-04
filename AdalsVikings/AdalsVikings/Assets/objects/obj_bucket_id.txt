@@ -1,6 +1,6 @@
 *Type: standard
 *ID: $bucket$
-*Name: bucket
+*Name: Bucket
 *ispickupable: True
 *pickup: "This might wake Brynja up! I'll need to fill it up first... and I can't do it myself..." ~3,0
 *lookat: "I'll need some help to fill it up." ~1,5

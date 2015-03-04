@@ -12,22 +12,21 @@ NpcHandler::NpcHandler()
 void NpcHandler::load()
 {
 	RMI.loadResource(Font::Skranji_regular);
-	RMI.loadResource(Font::Skranji_outline);
 
-	NpcPtr Valdis(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr Leifr(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr Finnr(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr Brynja(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr Alfr(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr Dagny(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr Brandr(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr Yngvarr(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr Seagull(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr Mailman(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr Princess(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr Beor(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr DruidLeader(new Npc(Font::Skranji_regular, Font::Skranji_outline));
-	NpcPtr Druids(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Valdis(new Npc(Font::Skranji_regular));
+	NpcPtr Leifr(new Npc(Font::Skranji_regular));
+	NpcPtr Finnr(new Npc(Font::Skranji_regular));
+	NpcPtr Brynja(new Npc(Font::Skranji_regular));
+	NpcPtr Alfr(new Npc(Font::Skranji_regular));
+	NpcPtr Dagny(new Npc(Font::Skranji_regular));
+	NpcPtr Brandr(new Npc(Font::Skranji_regular));
+	NpcPtr Yngvarr(new Npc(Font::Skranji_regular));
+	NpcPtr Seagull(new Npc(Font::Skranji_regular));
+	NpcPtr Mailman(new Npc(Font::Skranji_regular));
+	NpcPtr Princess(new Npc(Font::Skranji_regular));
+	NpcPtr Beor(new Npc(Font::Skranji_regular));
+	NpcPtr Druids(new Npc(Font::Skranji_regular));
+	NpcPtr DruidLeader(new Npc(Font::Skranji_regular));
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));

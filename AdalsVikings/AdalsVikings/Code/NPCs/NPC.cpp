@@ -3,7 +3,7 @@
 #include "..\Logics\WindowState.h"
 #include <iostream>
 
-Npc::Npc(Font::ID id, Font::ID Oid)
+Npc::Npc(Font::ID id)
 : mName("Hero")
 , mPosition(0, 0)
 , mScale(0, 0)
@@ -13,13 +13,14 @@ Npc::Npc(Font::ID id, Font::ID Oid)
 {
 	mInvisbleRect.setFillColor(sf::Color(0, 0, 0, 0));
 	mDescription.setFont(RMI.getResource(id));
-	mDescriptionOutline.setFont(RMI.getResource(Oid));
-	mDescriptionOutline.setColor(sf::Color(0, 0, 0, 255));
 
 	mTextRect.setFillColor(sf::Color(0, 0, 0, 200));
-	mTextRect.setOutlineColor(sf::Color(255, 0, 0, 220));
-	mTextRect.setOutlineThickness(5);
-	mTextRect.setCornersRadius(5);
+	mTextRect.setOutlineColor(sf::Color(100, 0, 0, 200));
+
+	mTextRect.setCornerPointCount(40);
+	mTextRect.setCornersRadius(10);
+	mTextRect.setOutlineThickness(3);
+	mTextRect.setPosition(400, 200);
 }
 
 void Npc::render(IndexRenderer &iRenderer)
@@ -39,10 +40,8 @@ void Npc::render(IndexRenderer &iRenderer)
 
 	if (mDisplayDescription && !mIsInvisble)
 	{
-		//iRenderer.addShape(mTextRect, mAnimation.getIndex() + 1);
+		iRenderer.addShape(mTextRect, mAnimation.getIndex() + 1);
 		iRenderer.addText(mDescription, mAnimation.getIndex() + 2);
-		iRenderer.addText(mDescriptionOutline, mAnimation.getIndex() + 3);
-		CurrentWindow.draw(mTextRect);
 	}
 	else if (mDisplayDescription && mIsInvisble)
 	{
@@ -54,21 +53,23 @@ void Npc::render(IndexRenderer &iRenderer)
 void Npc::update(sf::Time &frametime)
 {
 	if (!mIsInvisble)
-	{
 		mAnimation.animate(frametime);
-	}
 
-	if (mDisplayDescription && !mIsInvisble)
+	updateDescription();
+}
+
+void Npc::updateDescription()
+{
+	if (!mIsInvisble)
 	{
 		mDescription.setPosition(sf::Vector2f(mPosition.x - (mDescription.getGlobalBounds().width / 2),
-			mPosition.y - (mAnimation.getSpriteSize().y * mScale.y) - (mDescription.getGlobalBounds().height)));
-		mDescriptionOutline.setPosition(mDescription.getPosition());
+			mPosition.y - (mAnimation.getSpriteSize().y * mScale.y) - (mDescription.getGlobalBounds().height) - 10));
 
-		mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 10, mDescription.getGlobalBounds().height + 10));
+		mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 40, mDescription.getGlobalBounds().height + 10));
 		mTextRect.setPosition(sf::Vector2f(mPosition.x - (mTextRect.getGlobalBounds().width / 2),
-			mPosition.y - (mTextRect.getGlobalBounds().height / 2) - (mAnimation.getSpriteSize().y * mScale.y)));
+			mPosition.y - (mAnimation.getSpriteSize().y * mScale.y)));
 	}
-	else if (mDisplayDescription && mIsInvisble)
+	else
 	{
 		mDescription.setPosition(sf::Vector2f(mPosition.x + mInvisbleRect.getSize().x / 2,
 			mPosition.y - (mDescription.getGlobalBounds().height)));
@@ -157,6 +158,7 @@ void Npc::setName(std::string name)
 void Npc::setColor(sf::Color color)
 {
 	mColor = color;
+	mTextRect.setOutlineColor(color);
 }
 void Npc::setIndex(int index)
 {
@@ -289,7 +291,7 @@ void Npc::setDialogue(std::string dialogue)
 void Npc::setDescription(std::string description)
 {
 	mDescription.setString(description);
-	mDescriptionOutline.setString(description);
+	updateDescription();
 }
 void Npc::enableDescription(bool active)
 {

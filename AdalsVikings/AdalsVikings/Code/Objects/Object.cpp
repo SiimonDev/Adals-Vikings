@@ -20,7 +20,14 @@ mFilePath(filePath), mCollision(true), mDisplayDescription(false), mScale(1, 1)
 
 	mDescription.setFont(RMI.getResource(font));
 	mDescription.setString(mName);
+
 	mTextRect.setFillColor(sf::Color(0, 0, 0, 200));
+	mTextRect.setOutlineColor(sf::Color(255, 255, 255, 200));
+
+	mTextRect.setCornerPointCount(40);
+	mTextRect.setCornersRadius(10);
+	mTextRect.setOutlineThickness(3);
+	mTextRect.setPosition(400, 200);
 }
 
 void Object::load()
@@ -67,12 +74,7 @@ void Object::update(sf::Time &frameTime)
 		mAnimation.animate(frameTime);
 
 	if (mDisplayDescription)
-	{
-		mDescription.setPosition(sf::Vector2f(mPosition.x - (mDescription.getGlobalBounds().width / 2), mPosition.y - (mDescription.getGlobalBounds().height) - ((mSize.y * mScale.y) / 2)));
-
-		mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 10, mDescription.getGlobalBounds().height + 10));
-		mTextRect.setPosition(sf::Vector2f(mPosition.x - (mTextRect.getGlobalBounds().width / 2), mPosition.y - (mTextRect.getGlobalBounds().height / 2) - ((mSize.y * mScale.y) / 2) + 3));
-	}
+		updateDescription();
 }
 
 void Object::render(IndexRenderer &iRenderer)
@@ -101,6 +103,14 @@ void Object::render(IndexRenderer &iRenderer)
 	}
 }
 
+void Object::updateDescription()
+{
+	mDescription.setPosition(sf::Vector2f(mPosition.x - (mDescription.getGlobalBounds().width / 2), mPosition.y - (mDescription.getGlobalBounds().height) - ((mSize.y * mScale.y) / 2)));
+
+	mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 40, mDescription.getGlobalBounds().height + 6));
+	mTextRect.setPosition(sf::Vector2f(mPosition.x - (mTextRect.getGlobalBounds().width / 2), mPosition.y + (mTextRect.getGlobalBounds().height / 4) - ((mSize.y * mScale.y) / 2)));
+}
+
 void Object::setInteractionPosition(sf::Vector2f &interPos)
 {
 	mInteractionPosition = interPos;
@@ -115,6 +125,7 @@ void Object::setIndex(int index)
 void Object::setPosition(sf::Vector2f &position)
 {
 	mPosition = position;
+	updateDescription();
 }
 
 void Object::setCollisionRect(sf::IntRect &rect)
@@ -142,6 +153,7 @@ void Object::setScaleFromHeight(float height)
 void Object::setDescription(std::string description)
 {
 	mDescription.setString(description);
+	updateDescription();
 }
 
 void Object::enableCollision(bool active)

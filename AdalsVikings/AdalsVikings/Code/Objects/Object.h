@@ -1,6 +1,7 @@
 #pragma once
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\IndexRenderer.h"
+#include "..\Logics\RoundedRectangleShape.h"
 #include "..\Dialog\Dialog.h"
 #include "..\Logics\Animation.h"
 #include <SFML\Graphics.hpp>
@@ -59,6 +60,7 @@ public:
 
 private:
 	void readVariablesFromFile();
+	void updateDescription();
 
 	std::string mName;
 	std::string mObjectID;
@@ -71,7 +73,7 @@ private:
 
 	ObjectType mType;
 	Animation mAnimation;
-	sf::RectangleShape mTextRect;
+	sf::RoundedRectangleShape mTextRect;
 	sf::RectangleShape mRect;
 	sf::Vector2f mPosition;
 	sf::Vector2f mInteractionPosition;

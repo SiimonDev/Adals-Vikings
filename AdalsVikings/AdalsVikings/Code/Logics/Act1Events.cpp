@@ -2,11 +2,12 @@
 #include <map>
 
 
+static std::map<Act1Event::ID, bool> mHasBeenTriggerd;
+static std::map<Act1Event::ID, bool> mHasBeenHandled;
+
 Act1Events::Act1Events()
 {
 }
-static std::map<Act1Event::ID, bool> mHasBeenTriggerd;
-static std::map<Act1Event::ID, bool> mHasBeenHandled;
 
 void Act1Events::initialize()
 {

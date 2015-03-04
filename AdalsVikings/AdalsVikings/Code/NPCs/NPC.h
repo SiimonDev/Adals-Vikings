@@ -19,7 +19,7 @@ namespace AnimationState
 class Npc
 {
 public:
-	Npc(Font::ID id, Font::ID Oid);
+	Npc(Font::ID id);
 	
 	virtual void render(IndexRenderer &iRenderer);
 	virtual void update(sf::Time &frametime);
@@ -52,7 +52,7 @@ public:
 	bool &isInvisible();
 	bool getActiveConversation();
 	int getIndex();
-	sf::RectangleShape & getInvisRect();
+	sf::RectangleShape &getInvisRect();
 	std::string &getUseText();
 	std::string &getLookText();
 	sf::Vector2f &getPosition();
@@ -65,6 +65,8 @@ public:
 	std::string getDialogueString();
 
 private:
+	void updateDescription();
+
 	Texture::ID mIdleTexture, mTalkTexture;
 	sf::Vector2i mIdleFrames, mTalkFrames;
 	sf::Time mIdleDuration, mIdleWaitTime, mTalkDuration, mTalkWaitTime;
@@ -79,8 +81,6 @@ private:
 	sf::IntRect mIndexRect;
 	sf::Text mDescription;
 	sf::RectangleShape mInvisbleRect;
-	sf::Text mDescriptionOutline;
-	//sf::RectangleShape mTextRect;
 	sf::RoundedRectangleShape mTextRect;
 
 	AnimationState::ID mAnimationState;
