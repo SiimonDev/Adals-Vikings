@@ -532,9 +532,10 @@ void DialogueTree::enableOption(int index)
 	mNode = mDialogue.first_child();
 }
 
-std::string &DialogueTree::getText()
+std::string DialogueTree::getText()
 {
-	return mText;
+	std::string text = mPrintText.getString();
+	return text;
 }
 std::string &DialogueTree::getCharacter()
 {

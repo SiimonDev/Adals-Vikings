@@ -29,7 +29,7 @@ public:
 	void enableOption(int index);
 	void stopConversation();
 
-	std::string &getText();
+	std::string getText();
 	std::string &getCharacter();
 	std::string &getUseText();
 	std::string &getLookText();

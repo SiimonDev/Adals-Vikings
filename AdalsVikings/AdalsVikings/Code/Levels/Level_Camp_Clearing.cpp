@@ -19,7 +19,7 @@ void Level_Camp_Clearing::update(sf::Time &frametime)
 
 			if (FadeI.getFaded())
 			{
-				mNpcs
+
 			}
 		}
 	}
@@ -60,8 +60,15 @@ void Level_Camp_Clearing::load()
 	mPortals[CampToRoad] = &PortalLoader::getPortal(CampToRoad);
 	mPortals[CampToForestRoad] = &PortalLoader::getPortal(CampToForestRoad);
 
-	mPortals[CampToRoad]->setCannotDialogue("I should speak to the others first. They might need help with something, and I don't want to come off as an asshole.");
-	mPortals[CampToForestRoad]->setCannotDialogue("I should speak to the others first. They might need help with something, and I don't want to come off as an asshole.");
+	if (!Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))
+		mPortals[CampToRoad]->setCannotDialogue("I should speak to the others first. They might need help with something, and I don't want to come off as an asshole.");
+	else if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))
+		mPortals[CampToRoad]->setWorking(true);
+	if (!Act1Events::hasBeenHandled(Act1Event::CampClearing_Valdis))
+		mPortals[CampToForestRoad]->setCannotDialogue("I should speak to the others first. They might need help with something, and I don't want to come off as an asshole.");
+	else if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Valdis))
+		mPortals[CampToForestRoad]->setWorking(true);
+
 	Level::load();
 }
 

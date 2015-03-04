@@ -63,7 +63,10 @@ void Level_Forest_Camp::checkInteractEvents()
 }
 void Level_Forest_Camp::checkEvents()
 {
-
+	if (DialogHandler::getDialogue("Druids_ForestCamp1").getIsOptionDisabled(3) &&
+		DialogHandler::getDialogue("Druids_ForestCamp1").getIsOptionDisabled(5) &&
+		!Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest))
+		Act1Events::triggerEvent(Act1Event::ForestCamp_NeedFireQuest);
 }
 
 //void Level_Forest_Camp::setNearbyLevels()
