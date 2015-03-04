@@ -231,9 +231,9 @@ void Level_Ship_1::load()
 	mWaveAnimation.setPosition(sf::Vector2f(1920, 1060));
 
 	mRopeAnimation.load(RMI.getResource(Texture::BackBoatRopeAnimation), sf::Vector2i(4, 1), sf::seconds(1.5), sf::seconds(0), true);
-	mRopeAnimation.setIndex(3);
+	mRopeAnimation.setIndex(11);
 	mRopeAnimation.setProportions(sf::Vector2f(485, 494));
-	mRopeAnimation.setPosition(sf::Vector2f(200, 200));
+	mRopeAnimation.setPosition(sf::Vector2f(155, 215));
 }
 
 void Level_Ship_1::unload()

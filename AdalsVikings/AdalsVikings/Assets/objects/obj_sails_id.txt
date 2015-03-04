@@ -8,4 +8,4 @@
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:900   Y:280
+*invisible: X:900    Y:270
