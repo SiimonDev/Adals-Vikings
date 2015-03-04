@@ -3,6 +3,8 @@
 
 Level_Camp_Clearing::Level_Camp_Clearing(Player &player, ActionWheel &actionWheel)
 	: Level(player, actionWheel)
+	, mFade1(false)
+	, mFade2(false)
 {
 	mBackgroundID = LevelFolder::Camp_Clearing;
 }
@@ -11,15 +13,23 @@ void Level_Camp_Clearing::update(sf::Time &frametime)
 {
 	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_Leifr) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
 	{
-		if (!DialogHandler::getDialogue("Leifr_ClearingCamp").getActiveConversation() && !DialogHandler::getDialogue("Leifr_ClearingCamp").getHasStopped())
-			DialogHandler::getDialogue("Leifr_ClearingCamp").startDialogue();
-		else if (DialogHandler::getDialogue("Leifr_ClearingCamp").getHasStopped())
+		if (DialogHandler::getDialogue("LeifrBear_ClearingCamp").getHasStopped() && !mFade1)
 		{
 			FadeI.fadeOut(frametime);
 
 			if (FadeI.getFaded())
 			{
+				mNpcs.erase("Leifr");
+				mFade1 = true;
+			}
+		}
+		else if (!mFade2 && mFade1)
+		{
+			FadeI.fadeIn(frametime);
 
+			if (FadeI.getFaded())
+			{
+				mFade2 = true;
 			}
 		}
 	}
@@ -42,7 +52,12 @@ void Level_Camp_Clearing::load()
 	mNpcs["Leifr"]->setscale(sf::Vector2f(0.4, 0.4));
 	mNpcs["Leifr"]->setPosition(sf::Vector2f(1035, 729));
 	mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1160, 724));
-	mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
+	if (!Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest))
+		mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
+	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && !mPlayer.hasItemInInventory("bearDeer"))
+		mNpcs["Leifr"]->setDialogue("LeifrFire_ClearingCamp");
+	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && mPlayer.hasItemInInventory("bearDeer"))
+		mNpcs["Leifr"]->setDialogue("LeifrBear_ClearingCamp");
 
 	/*------------------- Brynja ----------------*/
 	mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
@@ -56,6 +71,16 @@ void Level_Camp_Clearing::load()
 	mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(750, 860));
 	mNpcs["Valdis"]->setFlip(true);
 	mNpcs["Valdis"]->setDialogue("Valdis_ClearingCamp");
+
+	if (Act1Events::hasBeenHandled(Act1Event::TavernInside_GiveAxeToBrandr))
+	{
+		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
+		mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
+		mNpcs["Brandr"]->setPosition(sf::Vector2f(1000, 250));
+		mNpcs["Brandr"]->setInteractionPosition(sf::Vector2f(1100, 250));
+		mNpcs["Brandr"]->setDialogue("Brynja_ClearingCamp");
+
+	}
 
 	mPortals[CampToRoad] = &PortalLoader::getPortal(CampToRoad);
 	mPortals[CampToForestRoad] = &PortalLoader::getPortal(CampToForestRoad);
@@ -115,7 +140,7 @@ void Level_Camp_Clearing::checkEvents()
 		Act1Events::triggerEvent(Act1Event::CampClearing_TalkedToAll);
 	}
 
-	if (!Act1Events::hasBeenTriggered(Act1Event::GotBeerDeerPelt) && mPlayer.hasItemInInventory("BeerDeer"))
+	if (!Act1Events::hasBeenTriggered(Act1Event::GotBeerDeerPelt) && mPlayer.hasItemInInventory("bearDeer"))
 		Act1Events::triggerEvent(Act1Event::GotBeerDeerPelt);
 
 	if (!Act1Events::hasBeenTriggered(Act1Event::CampClearing_Leifr) && Act1Events::hasBeenTriggered(Act1Event::GotBeerDeerPelt))

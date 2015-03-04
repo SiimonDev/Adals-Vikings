@@ -55,7 +55,20 @@ index: $99
 scale: $1.0
 hascollision: $false
 ############
-
+*id: $antlers
+position: $X:1495 $Y:640
+interactPosition: $X:0 $Y:0
+index: $11
+scale: $1.0
+hascollision: $false
+############
+*id: $bearPelt
+position: $X:605 $Y:778
+interactPosition: $X:0 $Y:0
+index: $1
+scale: $0.8
+hascollision: $false
+############
 
 
 
