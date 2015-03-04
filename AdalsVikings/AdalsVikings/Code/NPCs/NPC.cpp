@@ -6,10 +6,11 @@
 Npc::Npc(Font::ID id)
 : mName("Hero")
 , mPosition(0, 0)
-, mScale(0, 0)
+, mScale(1, 1)
 , mFlip(false)
 , mDisplayDescription(false)
 , mIsInvisble(false)
+, mHasLoaded(false)
 {
 	mInvisbleRect.setFillColor(sf::Color(0, 0, 0, 0));
 	mDescription.setFont(RMI.getResource(id));
@@ -101,13 +102,17 @@ void Npc::load()
 		mIndexRect = sf::IntRect(xPos, yPos, npcWith * 1.5f, npcHeight * 1.2f);
 
 		setAnimationStyle("Idle");
+		mHasLoaded = true;
 	}
 }
 
 void Npc::unload()
 {
-	RMI.unloadResource(mIdleTexture);
-	RMI.unloadResource(mTalkTexture);
+	if (mHasLoaded)
+	{
+		RMI.unloadResource(mIdleTexture);
+		RMI.unloadResource(mTalkTexture);
+	}
 }
 
 bool Npc::getActiveConversation()
@@ -136,12 +141,12 @@ int Npc::getIndex()
 	return mAnimation.getIndex();
 }
 
-std::string & Npc::getUseText()
+std::string &Npc::getUseText()
 {
 	return DialogHandler::getDialogue(mDialogue).getUseText();
 }
 
-std::string & Npc::getLookText()
+std::string &Npc::getLookText()
 {
 	return DialogHandler::getDialogue(mDialogue).getLookText();
 }

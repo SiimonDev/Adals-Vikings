@@ -14,7 +14,7 @@ scale: $1
 hascollision: $false
 ############
 *id: $holeInTheCeiling
-position: $X:790 $Y:70
+position: $X:790 $Y:120
 interactPosition: $X:0 $Y:0
 index: $99
 scale: $1
