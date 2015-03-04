@@ -1,5 +1,6 @@
 #pragma once
 #include "Level.h"
+
 class Level_Ship_1 : public Level
 {
 public:
@@ -19,5 +20,7 @@ private:
 	bool mOldBucketAdded;
 	bool mStartBrynja, mBrynjaFade1, mBrynjaFade2, mBrynjaConv;
 	sf::Sprite mIntroScreen;
-};
 
+	Animation mRopeAnimation;
+	Animation mWaveAnimation;
+};

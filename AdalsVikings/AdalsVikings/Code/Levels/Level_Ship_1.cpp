@@ -18,6 +18,8 @@ Level_Ship_1::Level_Ship_1(Player &player, ActionWheel &actionWheel)
 
 void Level_Ship_1::update(sf::Time &frametime)
 {
+	mWaveAnimation.animate(frametime);
+	mRopeAnimation.animate(frametime);
 	if (KeyboardState::isPressed(sf::Keyboard::F))
 		mPlayer.addItemToInventory("bucket");
 
@@ -138,6 +140,8 @@ void Level_Ship_1::render(IndexRenderer &iRenderer)
 	if (BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen) && !BoatEvents::hasBeenHandled(BoatEvent::IntroScreen))
 		iRenderer.addSprite(mIntroScreen, 99999);
 	CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
+	mWaveAnimation.render(iRenderer);
+	mRopeAnimation.render(iRenderer);
 	Level::render(iRenderer);
 }
 
@@ -151,7 +155,10 @@ void Level_Ship_1::load()
 	RMI.loadResource(Texture::ValdisSittingTalk);
 	RMI.loadResource(Texture::LeifrSitIdle);
 	RMI.loadResource(Texture::LeifrSitTalk);
+	RMI.loadResource(Texture::BackBoatRopeAnimation);
+	RMI.loadResource(Texture::BackBoatWaveAnimation);
 	RMI.loadResource(Footsteps::Hardwood);
+	
 	mCurrentFootsteps = Footsteps::Hardwood;
 
 	mIntroScreen.setTexture(RMI.getResource(Texture::IntroScreen));
@@ -216,6 +223,17 @@ void Level_Ship_1::load()
 	if (!BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
 		mPlayer.setPosition(sf::Vector2f(1400, 750));
 
+
+	mWaveAnimation.load(RMI.getResource(Texture::BackBoatWaveAnimation), sf::Vector2i(2, 2), sf::seconds(1.5), sf::seconds(0), true);
+	mWaveAnimation.setIndex(200);
+	mWaveAnimation.setProportions(sf::Vector2f(1920, 120));
+	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
+	mWaveAnimation.setPosition(sf::Vector2f(1920, 1060));
+
+	mRopeAnimation.load(RMI.getResource(Texture::BackBoatRopeAnimation), sf::Vector2i(4, 1), sf::seconds(1.5), sf::seconds(0), true);
+	mRopeAnimation.setIndex(3);
+	mRopeAnimation.setProportions(sf::Vector2f(485, 494));
+	mRopeAnimation.setPosition(sf::Vector2f(200, 200));
 }
 
 void Level_Ship_1::unload()
@@ -225,6 +243,8 @@ void Level_Ship_1::unload()
 	RMI.unloadResource(Texture::ValdisSittingTalk);
 	RMI.unloadResource(Texture::LeifrSitIdle);
 	RMI.unloadResource(Texture::LeifrSitTalk);
+	RMI.unloadResource(Texture::BackBoatRopeAnimation);
+	RMI.unloadResource(Texture::BackBoatWaveAnimation);
 	RMI.unloadResource(Footsteps::Hardwood);
 	Level::unload();
 }

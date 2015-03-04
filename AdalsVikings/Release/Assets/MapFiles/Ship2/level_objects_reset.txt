@@ -6,3 +6,31 @@ index: $11
 scale: $0.6
 hascollision: $false
 ############
+*id: $oars
+position: $X:1200 $Y:651
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1
+hascollision: $false
+############
+*id: $box1
+position: $X:685 $Y:681
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1
+hascollision: $false
+############
+*id: $box2
+position: $X:1700 $Y:733
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1
+hascollision: $false
+############
+*id: $box3
+position: $X:1485 $Y:657
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1
+hascollision: $false
+############

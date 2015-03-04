@@ -43,6 +43,9 @@ void MouseState::update(sf::Time frameTime)
 	}
 	for (int i = 0; i <= MouseSize; i++)
 		buttonStates[i] = sf::Mouse::isButtonPressed(static_cast<sf::Mouse::Button>(i));
+
+	if (isClicked(sf::Mouse::Left))
+		std::cout << "MousePosition: X:" << getMousePosition().x << "	Y:" << getMousePosition().y << std::endl;
 }
 
 void MouseState::render()
@@ -112,13 +115,7 @@ sf::Vector2i MouseState::getMousePosition()
 bool MouseState::isClicked(sf::Mouse::Button button)
 {
 	if (hasFocus)
-	{
-		if (buttonStates[button] && !oldButtonStates[button])
-		{
-			std::cout << "MousePosition: X:" << getMousePosition().x << "	Y:" << getMousePosition().y << std::endl;
-			return true;
-		}
-	}
+		return (buttonStates[button] && !oldButtonStates[button]);
 	return false;
 }
 

@@ -88,7 +88,7 @@ void Inventory::update(sf::Time frameTime)
 
 				if (invTiles[x][y].isInside(MouseState::getMousePosition()))
 				{
-					if (MouseState::isPressed(sf::Mouse::Right) && !mHasSnappedObject)
+					if (MouseState::isPressed(sf::Mouse::Left) && !mHasSnappedObject)
 					{
 						if (invTiles[x][y].hasObject()){
 							mSnappedObject = new Object(invTiles[x][y].getObject());
@@ -96,7 +96,7 @@ void Inventory::update(sf::Time frameTime)
 							mHasSnappedObject = true;
 						}
 					}
-					else if (!MouseState::isPressed(sf::Mouse::Right) && mHasSnappedObject)
+					else if (!MouseState::isPressed(sf::Mouse::Left) && mHasSnappedObject)
 					{
 						if (invTiles[x][y].hasObject())
 						{
@@ -147,7 +147,7 @@ void Inventory::update(sf::Time frameTime)
 		mSnappedObject->setPosition(sf::Vector2f(MouseState::getMousePosition()));
 		mSnappedObject->update(frameTime);
 
-		if (!MouseState::isPressed(sf::Mouse::Right))
+		if (!MouseState::isPressed(sf::Mouse::Left))
 		{
 			mDroppedSnappedObj = true;
 			mHasSnappedObject = false;

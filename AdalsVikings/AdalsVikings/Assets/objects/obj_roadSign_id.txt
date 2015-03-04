@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $roadSign$
+*Name: Northwest
+*ispickupable: False
+*pickup: "Nah." ~2,0
+*lookat: "Northwest: Farm. Don't touch Jakop's flowers. He's an angry man." ~3,0
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: 25  Y:25

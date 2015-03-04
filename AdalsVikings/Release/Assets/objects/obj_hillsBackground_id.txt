@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $hillsBackground$
 *Name: Hills
-*ispickupable: True
+*ispickupable: False
 *pickup: "Too far away." ~2,0
 *lookat: "How pretty." ~1,5
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X: Y:
+*invisible: X:  Y:

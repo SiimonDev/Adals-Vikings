@@ -34,7 +34,7 @@ ResourceManager::ResourceManager()
 
 	/* ========== Set Texture File paths ========== */
 	mTexturePathMap[Texture::UlfrWalk] = "assets/images/ulfr/character_ulfr_walk.png";
-	mTexturePathMap[Texture::UlfrWalkUp] = "assets/images/ulfr/character_ulfr_walk_Up.png";
+	mTexturePathMap[Texture::UlfrWalkUp] = "assets/images/ulfr/character_ulfr_straightback.png";
 	mTexturePathMap[Texture::UlfrIdle] = "assets/images/ulfr/character_ulfr_idle.png";
 	mTexturePathMap[Texture::UlfrStop] = "assets/images/ulfr/character_ulfr_stop.png";
 	mTexturePathMap[Texture::UlfrTalkToNpc] = "assets/images/ulfr/character_ulfr_talk.png";
@@ -60,6 +60,10 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::PauseMenuBackground] = "assets/images/interface/pauseManu/InGame_menu.png";
 	mTexturePathMap[Texture::IntroScreen] = "assets/images/interface/tutorial2.png";
 	mTexturePathMap[Texture::TextBackgroundPaper] = "assets/images/textbackgorund.jpg";
+
+	mTexturePathMap[Texture::FrontBoatWaveAnimation] = "assets/MapFiles/Ship2/waves.png";
+	mTexturePathMap[Texture::BackBoatRopeAnimation] = "assets/MapFiles/Ship1/rope.png";
+	mTexturePathMap[Texture::BackBoatWaveAnimation] = "assets/MapFiles/Ship1/waves2.png";
 
 	mTexturePathMap[Texture::WaveAnimation] = "assets/MapFiles/Beach/waves.png";
 	mTexturePathMap[Texture::AxeAnimation] = "assets/images/Interface/MainMenu/flying_axe.png";

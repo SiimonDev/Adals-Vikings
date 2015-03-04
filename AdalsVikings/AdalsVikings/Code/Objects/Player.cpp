@@ -52,6 +52,10 @@ void Player::unload()
 	RMI.unloadResource(Texture::UlfrWalkUp);
 }
 
+bool Player::isInventoryActive()
+{
+	return mInventory.isActive();
+}
 bool Player::addItemToInventory(std::string objID)
 {
 	return mInventory.addItemToInventory(objID);
@@ -292,12 +296,12 @@ void Player::setAnimationStyle(AnimationType::ID type)
 		mPlayerAnimation.load(RMI.getResource(Texture::UlfrIdle), Frames(6, 3), sf::milliseconds(1300), sf::seconds(7), true);
 		mAnimationStyle = AnimationStyle::PlayerIdle;
 	}
-	else if (type == AnimationType::Movement && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y < 0 && mAnimationStyle != AnimationStyle::Up)
+	/*else if (type == AnimationType::Movement && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y < 0 && mAnimationStyle != AnimationStyle::Up)
 	{
 		mPlayerAnimation.flip(mFlip);
 		mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalkUp), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
 		mAnimationStyle = AnimationStyle::Up;
-	}
+	}*/
 	else if (type == AnimationType::Movement && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y > 0 && mAnimationStyle != AnimationStyle::Down)
 	{
 		mPlayerAnimation.flip(mFlip);

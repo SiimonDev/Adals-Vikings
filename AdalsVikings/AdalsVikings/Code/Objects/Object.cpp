@@ -27,7 +27,6 @@ mFilePath(filePath), mCollision(true), mDisplayDescription(false), mScale(1, 1)
 	mTextRect.setCornerPointCount(40);
 	mTextRect.setCornersRadius(10);
 	mTextRect.setOutlineThickness(3);
-	mTextRect.setPosition(400, 200);
 }
 
 void Object::load()

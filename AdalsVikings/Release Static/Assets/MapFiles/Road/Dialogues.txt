@@ -1,1 +1,0 @@
-Mailman assets/textfiles/road/Dialogue_mailman_road.xml

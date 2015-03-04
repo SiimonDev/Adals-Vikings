@@ -1,6 +1,6 @@
 *Type: invisible
 *ID: $yellowFieldBackground$
-*Name: Yellow Field
+*Name: Field
 *ispickupable: False
 *pickup: "Way too far away." ~2,0
 *lookat: "Looks like the Anglians have farms as well. Ours are probably better." ~2,5
@@ -8,4 +8,4 @@
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:  Y:
+*invisible: X:  388   Y:84

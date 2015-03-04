@@ -1,6 +1,6 @@
 *Type: standard
 *ID: $scroll$
-*Name: scroll
+*Name: Scroll
 *ispickupable: True
 *pickup: "Oh yeah, this must be his letter." ~2,0
 *lookat: "Better give it to the courier." ~1,5

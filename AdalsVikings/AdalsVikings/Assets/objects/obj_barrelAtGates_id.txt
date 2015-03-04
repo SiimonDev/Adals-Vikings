@@ -1,6 +1,6 @@
 *Type: invisible
 *ID: $barrelAtGates$
-*Name: Barrel At Gates
+*Name: Barrel
 *ispickupable: False
 *pickup: "I'm no thief. Plus, it freaking stinks!" ~3,0
 *lookat: "It's a badly smelling barrel." ~2,0
@@ -8,4 +8,4 @@
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:  Y:
+*invisible: X:   Y:

@@ -48,6 +48,9 @@ namespace Texture
 		PauseMenuBackground,
 		TextBackgroundPaper,
 
+		FrontBoatWaveAnimation,
+		BackBoatRopeAnimation,
+		BackBoatWaveAnimation,
 		WaveAnimation,
 		AxeAnimation,
 		FireForestCampAnimation,

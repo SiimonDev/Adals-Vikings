@@ -11,12 +11,8 @@ public:
 	static void setPosition(sf::Vector2f &pos);
 	static void setFont(Font::ID id);
 	static void setText(std::string text);
-	static void setTextSize(int textSize);
-	static void setTextStyle(sf::Text::Style);
-	static void setTextColor(sf::Color color);
 
-	static void setBackgroundSize(sf::Vector2f &size);
-	static void setBackgroundColor(sf::Color &color);
+	static void setOutlineColor(sf::Color &color);
 
 	static void load();
 	static void unload();

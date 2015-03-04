@@ -1,7 +1,7 @@
 *Type: standard
 *ID: $meat$
 *Name: meat
-*ispickupable: True
+*ispickupable: False
 *pickup: "I'm not really hungry... but sure." ~2,0
 *lookat: "Juicy meat. It's suprisingly fresh." ~2,0
 *deny: "I don't think so." ~1,5

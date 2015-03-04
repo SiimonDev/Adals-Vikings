@@ -60,6 +60,7 @@ public:
 	void update(sf::Time &frameTime);
 	void render(IndexRenderer &iRenderer);
 
+	bool isInventoryActive();
 	bool addItemToInventory(std::string objID);
 	bool hasItemInInventory(std::string objID);
 	bool removeItemFromInventory(std::string objID);

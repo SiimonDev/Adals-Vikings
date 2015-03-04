@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $psalm$
+*Name: Psalm
+*ispickupable: True
+*pickup: "I can't even read it, why would I take it?" ~2,0
+*lookat: "It's not even in Latin. Who could possibly read this strange nonsense?" ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: Y:

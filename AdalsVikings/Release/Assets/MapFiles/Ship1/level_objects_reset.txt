@@ -1,0 +1,22 @@
+############
+*id: $mast
+position: $X:210 $Y:550
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1
+hascollision: $false
+############
+*id: $barrel
+position: $X:320 $Y:620
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1
+hascollision: $false
+############
+*id: $sails
+position: $X:465 $Y:160
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1
+hascollision: $false
+############

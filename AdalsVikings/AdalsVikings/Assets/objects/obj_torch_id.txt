@@ -1,6 +1,6 @@
 *Type: standard
 *ID: $torch$
-*Name: torch
+*Name: Torch
 *ispickupable: False
 *pickup: "Oh yeah, now we're talking!" ~2,0
 *lookat: "Let's light it somewhere." ~1,5

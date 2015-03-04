@@ -1,6 +1,6 @@
 *Type: standard
 *ID: $map$
-*Name: map
+*Name: Map
 *ispickupable: True
 *pickup: "" ~2,0
 *lookat: "Two lines and an arrow... no wonder we're lost." ~2,0

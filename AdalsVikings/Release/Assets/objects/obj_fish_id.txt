@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $fish$
 *Name: Fish
-*ispickupable: True
+*ispickupable: False
 *pickup: "I'm not a thief, someone might eat this later!" ~3,0
 *lookat: "A fresh fish." ~1,5
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X: Y:
+*invisible: X:  Y:

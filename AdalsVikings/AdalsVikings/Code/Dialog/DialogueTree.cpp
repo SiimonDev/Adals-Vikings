@@ -92,7 +92,7 @@ void DialogueTree::render(IndexRenderer &iRenderer)
 }
 void DialogueTree::update(sf::Time &frameTime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::Z))
+	if (MouseState::isClicked(sf::Mouse::Left))
 	{
 		mWait = false;
 	}

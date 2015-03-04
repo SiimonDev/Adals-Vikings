@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $roadScarecrow$
+*Name: Scarecrow
+*ispickupable: False
+*pickup: "Nah." ~2,0
+*lookat: "Scary. I wonder what it's for." ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: 30  Y:40

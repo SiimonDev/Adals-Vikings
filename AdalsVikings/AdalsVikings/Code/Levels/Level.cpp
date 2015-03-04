@@ -137,7 +137,6 @@ void Level::updateObjects(sf::Time frameTime)
 		mPlayer.setIntention(Intention::None);
 		mWalkToObject = false;
 	}
-	mActionWheel->update();
 }
 void Level::updateNPCs(sf::Time frameTime)
 {
@@ -342,7 +341,9 @@ void Level::update(sf::Time &frameTime)
 		resetLevel();
 		refreshLevel();
 	}
-		
+	
+	if (!mIsInConversation && FadeI.getFaded() && !(mPlayer.isInventoryActive() || mPlayer.getSnappedObjectID() != ""))
+		mActionWheel->update();
 	if (!mIsInConversation && !mOldIsInConversation && FadeI.getFaded())
 	{
 		mPlayer.move(frameTime);
