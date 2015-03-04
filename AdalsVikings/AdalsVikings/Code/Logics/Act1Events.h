@@ -22,6 +22,7 @@ namespace Act1Event
 		CampClearing_TalkedToAll,
 		TavernInside_GetAxeHead,
 		TavernInside_GiveAxeToBrandr,
+		ForestCamp_NeedFireQuest,
 		GotBeerDeerPelt,
 		ForestCamp_BeerDeer,
 		LightCampFire,

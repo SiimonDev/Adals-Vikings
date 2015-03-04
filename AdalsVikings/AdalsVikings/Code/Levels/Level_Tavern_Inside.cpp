@@ -9,18 +9,41 @@ Level_Tavern_Inside::Level_Tavern_Inside(Player &player, ActionWheel &actionWhee
 
 void Level_Tavern_Inside::update(sf::Time &frametime)
 {
+	if (KeyboardState::isPressed(sf::Keyboard::Num1))
+		mPlayer.addItemToInventory("cross");
+	else if (KeyboardState::isPressed(sf::Keyboard::Num2))
+		mPlayer.addItemToInventory("axe");
 	if (Act1Events::hasBeenTriggered(Act1Event::TavernInside_GetAxeHead) && !Act1Events::hasBeenHandled(Act1Event::TavernInside_GetAxeHead))
 	{
-		if (DialogHandler::getDialogue("Brandr_Tavern").getPrintText().getString() == "Here Take This Axe Head")
+		if (DialogHandler::getDialogue("Brandr_Tavern").getText() == "Not like I've got \nmuch of a choice.")
 		{
-			mPlayer.addItemToInventory("AxeHead");
+			mPlayer.addItemToInventory("axeHead");
 			Act1Events::handleEvent(Act1Event::TavernInside_GetAxeHead);
 		}
 	}
 
 	if (Act1Events::hasBeenTriggered(Act1Event::TavernInside_GiveAxeToBrandr) && !Act1Events::hasBeenHandled(Act1Event::TavernInside_GiveAxeToBrandr))
 	{
+		if (true && !mFade1)
+		{
+			FadeI.fadeOut(frametime);
+			if (FadeI.getFaded())
+			{
+				mPlayer.removeItemFromInventory("axe");
+				mNpcs.clear();
+				mFade1 = true;
+			}
 
+		}
+		else if (mFade1 && !mFade2)
+		{
+			FadeI.fadeIn(frametime);
+			if (FadeI.getFaded())
+			{
+				mFade2 = true;
+				Act1Events::handleEvent(Act1Event::TavernInside_GiveAxeToBrandr);
+			}
+		}
 	}
 	changeLevel();
 	Level::update(frametime);
@@ -88,7 +111,7 @@ void Level_Tavern_Inside::changeLevel()
 
 void Level_Tavern_Inside::checkInteractEvents()
 {
-	if (mDroppedItemID == "Axe" && mCurrentNPCID == "Brandr" && !Act1Events::hasBeenTriggered(Act1Event::TavernInside_GiveAxeToBrandr))
+	if (mDroppedItemID == "axe" && mCurrentNPCID == "Brandr" && !Act1Events::hasBeenTriggered(Act1Event::TavernInside_GiveAxeToBrandr))
 		Act1Events::triggerEvent(Act1Event::TavernInside_GiveAxeToBrandr);
 }
 void Level_Tavern_Inside::checkEvents()
