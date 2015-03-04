@@ -42,7 +42,10 @@ void Level_Camp_Clearing::load()
 	mNpcs["Leifr"]->setscale(sf::Vector2f(0.4, 0.4));
 	mNpcs["Leifr"]->setPosition(sf::Vector2f(1035, 729));
 	mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1160, 724));
-	mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
+	if (!Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest))
+		mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
+	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest))
+		mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
 
 	/*------------------- Brynja ----------------*/
 	mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));

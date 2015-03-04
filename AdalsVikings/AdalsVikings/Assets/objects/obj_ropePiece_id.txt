@@ -6,6 +6,6 @@
 *lookat: "You can really just this for anything." ~1,5
 *deny: "You can use it for anything... but not that." ~1,5
 *denywith: 
-*combine: 
+*combine: $axeUnfinished$ $axe$ "There that should make the axe sturdy enough for Brandr." ~2,5; 
 *interact: 
 *texture: "img_ropePiece_id.png"

@@ -12,7 +12,7 @@ void Level_Tavern_Inside::update(sf::Time &frametime)
 	if (KeyboardState::isPressed(sf::Keyboard::Num1))
 		mPlayer.addItemToInventory("cross");
 	else if (KeyboardState::isPressed(sf::Keyboard::Num2))
-		mPlayer.addItemToInventory("axe");
+		mPlayer.addItemToInventory("ropePiece");
 	if (Act1Events::hasBeenTriggered(Act1Event::TavernInside_GetAxeHead) && !Act1Events::hasBeenHandled(Act1Event::TavernInside_GetAxeHead))
 	{
 		if (DialogHandler::getDialogue("Brandr_Tavern").getText() == "Not like I've got \nmuch of a choice.")
@@ -59,40 +59,42 @@ void Level_Tavern_Inside::load()
 	mPortals[TavernInsideToTavernOutside] = &PortalLoader::getPortal(TavernInsideToTavernOutside);
 	mPortals[TavernInsideToTavernOutside]->setWorking(true);
 
-	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
-	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
-	mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
-	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
-	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
+	if (!Act1Events::hasBeenHandled(Act1Event::TavernInside_GiveAxeToBrandr))
+	{
+		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
+		mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
+		mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
+		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
+		mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
 
-	mNpcs["Brandr"]->setscale(sf::Vector2f(0.8, 0.8));
-	mNpcs["Brandr"]->setPosition(sf::Vector2f(605, 930));
-	mNpcs["Brandr"]->setIndex(22);
-	mNpcs["Brandr"]->setFlip(true);
-	mNpcs["Brandr"]->setDialogue("Brandr_Tavern");
+		mNpcs["Brandr"]->setscale(sf::Vector2f(0.8, 0.8));
+		mNpcs["Brandr"]->setPosition(sf::Vector2f(605, 930));
+		mNpcs["Brandr"]->setIndex(22);
+		mNpcs["Brandr"]->setFlip(true);
+		mNpcs["Brandr"]->setDialogue("Brandr_Tavern");
 
-	mNpcs["Alfr"]->setscale(sf::Vector2f(1, 1));
-	mNpcs["Alfr"]->setPosition(sf::Vector2f(1830, 1030));
-	mNpcs["Alfr"]->setIndex(22);
-	mNpcs["Alfr"]->setDialogue("Alfr_Tavern");
+		mNpcs["Alfr"]->setscale(sf::Vector2f(1, 1));
+		mNpcs["Alfr"]->setPosition(sf::Vector2f(1830, 1030));
+		mNpcs["Alfr"]->setIndex(22);
+		mNpcs["Alfr"]->setDialogue("Alfr_Tavern");
 
-	mNpcs["Dagny"]->setscale(sf::Vector2f(1, 1));
-	mNpcs["Dagny"]->setPosition(sf::Vector2f(1390, 880));
-	mNpcs["Dagny"]->setIndex(22);
-	mNpcs["Dagny"]->setFlip(true);
-	mNpcs["Dagny"]->setDialogue("Dagny_Tavern");
+		mNpcs["Dagny"]->setscale(sf::Vector2f(1, 1));
+		mNpcs["Dagny"]->setPosition(sf::Vector2f(1390, 880));
+		mNpcs["Dagny"]->setIndex(22);
+		mNpcs["Dagny"]->setFlip(true);
+		mNpcs["Dagny"]->setDialogue("Dagny_Tavern");
 
-	mNpcs["Finnr"]->setscale(sf::Vector2f(0.8, 0.8));
-	mNpcs["Finnr"]->setPosition(sf::Vector2f(960, 785));
-	mNpcs["Finnr"]->setIndex(22);
-	mNpcs["Finnr"]->setFlip(true);
-	mNpcs["Finnr"]->setDialogue("Finnr_Tavern");
+		mNpcs["Finnr"]->setscale(sf::Vector2f(0.8, 0.8));
+		mNpcs["Finnr"]->setPosition(sf::Vector2f(960, 785));
+		mNpcs["Finnr"]->setIndex(22);
+		mNpcs["Finnr"]->setFlip(true);
+		mNpcs["Finnr"]->setDialogue("Finnr_Tavern");
 
-	mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.8, 0.8));
-	mNpcs["Yngvarr"]->setPosition(sf::Vector2f(1615, 800));
-	mNpcs["Yngvarr"]->setIndex(9);
-	mNpcs["Yngvarr"]->setDialogue("Yngvarr_Tavern");
-
+		mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.8, 0.8));
+		mNpcs["Yngvarr"]->setPosition(sf::Vector2f(1615, 800));
+		mNpcs["Yngvarr"]->setIndex(9);
+		mNpcs["Yngvarr"]->setDialogue("Yngvarr_Tavern");
+	}
 	Level::load();
 }
 
