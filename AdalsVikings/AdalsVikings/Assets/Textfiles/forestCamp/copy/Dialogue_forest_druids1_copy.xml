@@ -58,7 +58,7 @@
 			<text character="Druid Leader" disabled="false" default="false" say="This isn't his timber, dummy." timer="2.0" turned="false" />
 			<text character="Druid Leader" disabled="false" default="false" say="This is from the northern forest." timer="2.0" turned="false" />
 			<text character="Druid Leader" disabled="false" default="false" say="And the god of that forest is a dick, so mainstream." timer="2.0" turned="false" />
-			<text character="Druids" disabled="false" default="false" say="A DICK!" timer="2.0" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="A DICK!" timer="2.0" turned="false" enable="Ursa Vercus, where have i heard that before?" disablePrevious="true" />
 			<gotoBaseContainer />
 		</option>
 		<option choice_text="Can i borrow some of your fire?" disabled="false">
@@ -75,7 +75,7 @@
 			<text character="Druids" disabled="false" default="false" say="URSA CERVUS" timer="2.0" turned="false" />
 			<text character="Hipster Druid Leader" disabled="false" default="false" say="the bear deer!" timer="1.0" turned="false" />
 			<text character="Druid Leader" disabled="false" default="false" say="-will be drawn to" timer="1.2" turned="false" />
-			<text character="Druid Leader" disabled="false" default="false" say="so no, you can't have any." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="so no, you can't have any." timer="2.0" turned="false" enable="Just a little fire, please?" disablePrevious="true" />
 			<gotoContainer />
 		</option>
 		<option choice_text="What is your friend burning over there?" disabled="false">
@@ -83,10 +83,10 @@
 			<text character="Druid Leader" disabled="false" default="false" say="Who? Jeff?" timer="2.0" turned="false" />
 			<text character="Druid Leader" disabled="false" default="false" say="Those are marshmallows." timer="2.0" turned="false" />
 			<text character="Druid Leader" disabled="false" default="false" say="They are pretty cool." timer="2.0" turned="true" />
-			<text character="Druid Leader" disabled="false" default="false" say="But i don't expect you to ever have heard of them." timer="2.0" turned="true" />
+			<text character="Druid Leader" disabled="false" default="false" say="But i don't expect you to ever have heard of them." timer="2.0" turned="true" disablePrevious="true" />
 			<gotoContainer />
 		</option>
-		<option choice_text="Just a little fire, please?" disabled="false">
+		<option choice_text="Just a little fire, please?" disabled="true">
 			<text character="Ulfr" say="Just a little fire, please?" timer="1.4" />
 			<text character="Druid Leader" disabled="false" default="false" say="no." timer="2.0" turned="false" />
 			<text character="Ulfr" say="Pretty please?" timer="1.4" />
@@ -98,8 +98,8 @@
 			<text character="Druid Leader" disabled="false" default="false" say="...our god himself." timer="2.0" turned="false" />
 			<text character="Druid Leader" disabled="false" default="false" say="So i am sorry, my short tiny friend." timer="2.0" turned="false" />
 			<text character="Druid Leader" disabled="false" default="false" say="You can't have our fire." timer="2.0" turned="false" />
-			<text character="Druid Leader" disabled="false" default="false" say="NONE!" timer="2.0" turned="false" />
-			<stopConversation />
+			<text character="Druid Leader" disabled="false" default="false" say="NONE!" timer="2.0" turned="false" disablePrevious="true" />
+			<gotoBaseContainer />
 		</option>
 		<option choice_text="I'll just... leave... ok bye" disabled="false">
 			<stopConversation />

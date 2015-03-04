@@ -9,6 +9,8 @@ Level_Forest_Camp::Level_Forest_Camp(Player &player, ActionWheel &actionWheel)
 
 void Level_Forest_Camp::update(sf::Time &frametime)
 {
+	if (KeyboardState::isPressed(sf::Keyboard::Num1))
+		mPlayer.addItemToInventory("bearDeer");
 	mFireAnimation.animate(frametime);
 
 	changeLevel();
@@ -34,6 +36,9 @@ void Level_Forest_Camp::load()
 	mNpcs["Druids"] = NpcPtr(new Npc(NpcHandler::getNpc("Druids")));
 	mNpcs["DruidLeader"]->setDialogue("Druids_ForestCamp1");
 	mNpcs["Druids"]->setDialogue("Druids_ForestCamp1");
+
+	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
+	mNpcs["Leifr"]->setDialogue("Leifr_ForestCamp");
 
 	mFireAnimation.load(RMI.getResource(Texture::FireForestCampAnimation), sf::Vector2i(2, 4), sf::milliseconds(2000), sf::Time::Zero, true);
 	mFireAnimation.setIndex(9999);
