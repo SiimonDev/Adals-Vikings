@@ -20,6 +20,12 @@ namespace Act1Event
 		CampClearing_Valdis,
 		CampClearing_Leifr,
 		CampClearing_TalkedToAll,
+		TavernInside_GetAxeHead,
+		TavernInside_GiveAxeToBrandr,
+		GotBeerDeerPelt,
+		ForestCamp_BeerDeer,
+		LightCampFire,
+		CampFinished_Conversation,
 		EVENT_SIZE
 	};
 }

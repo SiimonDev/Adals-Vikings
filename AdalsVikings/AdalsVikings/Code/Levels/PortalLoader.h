@@ -27,6 +27,10 @@ enum PortalId
 	ChurchToOutside_Church,
 	RoadToCamp,
 	CampToRoad,
+	BeachToTavernOutside,
+	TavernOutsideToBeach,
+	TavernOutsideToTavernInside,
+	TavernInsideToTavernOutside,
 };
 class PortalLoader
 {

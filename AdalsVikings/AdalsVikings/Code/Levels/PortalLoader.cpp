@@ -37,6 +37,10 @@ void PortalLoader::load()
 		mPortalMap[CampToRoad] = PortalPtr(new Portal(LevelFolder::Camp_Clearing, sf::Vector2f(180, 170), sf::Vector2f(1450, 400), sf::Vector2f(1492, 595), sf::Vector2f(1540, 528)));
 		mPortalMap[ForestRoadToForestCamp] = PortalPtr(new Portal(LevelFolder::Forest_Road, sf::Vector2f(290, 270), sf::Vector2f(0, 550), sf::Vector2f(360, 691), sf::Vector2f(247, 676)));
 		mPortalMap[ForestCampToForestRoad] = PortalPtr(new Portal(LevelFolder::Forest_Camp, sf::Vector2f(240, 370), sf::Vector2f(1680, 470), sf::Vector2f(1870, 690), sf::Vector2f(1920, 690)));
+		mPortalMap[BeachToTavernOutside] = PortalPtr(new Portal(LevelFolder::Beach, sf::Vector2f(410, 290), sf::Vector2f(1360, 0), sf::Vector2f(1480, 290), sf::Vector2f(1460, 185)));
+		mPortalMap[TavernOutsideToBeach] = PortalPtr(new Portal(LevelFolder::Tavern_Outside, sf::Vector2f(100, 1080), sf::Vector2f(0, 0), sf::Vector2f(100, 1065), sf::Vector2f(0, 1065)));
+		mPortalMap[TavernOutsideToTavernInside] = PortalPtr(new Portal(LevelFolder::Tavern_Outside, sf::Vector2f(130, 300), sf::Vector2f(930, 600), sf::Vector2f(975, 885), sf::Vector2f(975, 885)));
+		mPortalMap[TavernInsideToTavernOutside] = PortalPtr(new Portal(LevelFolder::Tavern_Inside, sf::Vector2f(250, 705), sf::Vector2f(0, 235), sf::Vector2f(220, 945), sf::Vector2f(220, 945)));
 
 		//connect the portals
 		mPortalMap[BeachToRoad]->setGateway(&*mPortalMap[RoadToBeach]);
@@ -53,6 +57,10 @@ void PortalLoader::load()
 		mPortalMap[CampToForestRoad]->setGateway(&*mPortalMap[ForestRoadToCamp]);
 		mPortalMap[ForestRoadToForestCamp]->setGateway(&*mPortalMap[ForestCampToForestRoad]);
 		mPortalMap[ForestCampToForestRoad]->setGateway(&*mPortalMap[ForestRoadToForestCamp]);
+		mPortalMap[BeachToTavernOutside]->setGateway(&*mPortalMap[TavernOutsideToBeach]);
+		mPortalMap[TavernOutsideToBeach]->setGateway(&*mPortalMap[BeachToTavernOutside]);
+		mPortalMap[TavernOutsideToTavernInside]->setGateway(&*mPortalMap[TavernInsideToTavernOutside]);
+		mPortalMap[TavernInsideToTavernOutside]->setGateway(&*mPortalMap[TavernOutsideToTavernInside]);
 	}
 }
 

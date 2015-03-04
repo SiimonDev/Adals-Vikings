@@ -20,6 +20,10 @@ void Level_Tavern_Outside::render(IndexRenderer &iRenderer)
 
 void Level_Tavern_Outside::load()
 {
+	mPortals[TavernOutsideToBeach] = &PortalLoader::getPortal(TavernOutsideToBeach);
+	mPortals[TavernOutsideToTavernInside] = &PortalLoader::getPortal(TavernOutsideToTavernInside);
+	mPortals[TavernOutsideToTavernInside]->setWorking(true);
+	mPortals[TavernOutsideToBeach]->setWorking(true);
 	Level::load();
 }
 
@@ -30,6 +34,14 @@ void Level_Tavern_Outside::unload()
 
 void Level_Tavern_Outside::changeLevel()
 {
+	if (mPortals[TavernOutsideToBeach]->getActivated() && mPortals[TavernOutsideToBeach]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::Beach);
+	}
+	else if (mPortals[TavernOutsideToTavernInside]->getActivated() && mPortals[TavernOutsideToTavernInside]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::Tavern_Inside);
+	}
 }
 
 void Level_Tavern_Outside::checkInteractEvents()
