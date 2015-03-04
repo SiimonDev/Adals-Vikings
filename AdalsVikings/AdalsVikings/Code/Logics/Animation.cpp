@@ -209,7 +209,7 @@ void Animation::setPadding(float padding)
 
 const sf::Vector2i &Animation::getSpriteSize()
 {
-	return sf::Vector2i(abs(mSprite.getTextureRect().width), mSprite.getTextureRect().height);
+	return sf::Vector2i(abs(mSprite.getTextureRect().width), abs(mSprite.getTextureRect().height));
 }
 sf::Sprite &Animation::getSprite()
 {

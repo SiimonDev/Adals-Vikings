@@ -158,8 +158,6 @@ void Level_Ship_1::load()
 	RMI.loadResource(Texture::BackBoatRopeAnimation);
 	RMI.loadResource(Texture::BackBoatWaveAnimation);
 	RMI.loadResource(Footsteps::Hardwood);
-	
-	mCurrentFootsteps = Footsteps::Hardwood;
 
 	mIntroScreen.setTexture(RMI.getResource(Texture::IntroScreen));
 	mIntroScreen.setScale(2, 2);
@@ -234,6 +232,8 @@ void Level_Ship_1::load()
 	mRopeAnimation.setIndex(11);
 	mRopeAnimation.setProportions(sf::Vector2f(485, 494));
 	mRopeAnimation.setPosition(sf::Vector2f(155, 215));
+
+	mCurrentFootsteps = Footsteps::Hardwood;
 }
 
 void Level_Ship_1::unload()
