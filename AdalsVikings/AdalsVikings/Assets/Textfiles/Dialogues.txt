@@ -41,7 +41,7 @@ LeifrBear_ClearingCamp assets/textfiles/camp/Dialogue_LeifrFinishedBear_camp.xml
 -----------------------FOREST CAMP----------------------------
 Druids_ForestCamp1 assets/textfiles/forestCamp/Dialogue_forest_druids.xml
 Leifr_ForestCamp assets/textfiles/forestCamp/Dialogue_Leifr_ForestCamp.xml
-BearDeer_ForestCamp assets/textfiles/forestCamp/
+BearDeer_ForestCamp assets/textfiles/forestCamp/Dialogue_forest_druids2.xml
 -----------------------TAVERN INSIDE----------------------------
 Brandr_Tavern assets/textfiles/tavern/Dialogue_brandr_tavern.xml
 Alfr_Tavern assets/textfiles/tavern/dialogue_tavern_alfr.xml

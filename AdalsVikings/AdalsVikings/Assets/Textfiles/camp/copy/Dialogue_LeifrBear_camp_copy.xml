@@ -11,11 +11,11 @@
 	<text character="Ulfr" default="false" disabled="false" say="The Bear Deer... God." timer="2.4" turned="false" />
 	<text character="Leifr" default="false" disabled="false" say="That does indeed sound like a valid reason to not lend you their fire." timer="3.3" turned="true" />
 	<text character="Ulfr" default="false" disabled="false" say="You're kidding, right?" timer="2.4" turned="false" />
-	<text character="Leifr" default="false" disabled="false" say="Uh... Tell you what, if you manage to find a bear deer costume." timer="3.3" turned="true" />
-	<text character="Leifr" default="false" disabled="false" say="I'll help you convince the druids to leave!" timer="2.4" turned="true" />
+	<text character="Leifr" default="false" disabled="false" say="Uh... Tell you what, if you manage to find a bear costume." timer="3.3" turned="true" />
+	<text character="Leifr" default="false" disabled="false" say="I'll help you convince the druids to give you some fire!" timer="2.4" turned="true" />
 	<text character="Ulfr" default="false" disabled="false" say="Uh... Right." timer="2.4" turned="false" />
-	<text character="Leifr" default="false" disabled="true" say="Found the bear deer costume yet?" timer="2.4" turned="true" />
-	<text character="Ulfr" default="false" disabled="true" say="Not yet, not that I believe there exists a bear deer costume..." timer="3.0" turned="false" />
+	<text character="Leifr" default="true" disabled="true" say="Found the bear costume yet?" timer="2.4" turned="true" />
+	<text character="Ulfr" default="true" disabled="true" say="Not yet, not that I believe there exists a bear deer costume..." timer="3.0" turned="false" />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />

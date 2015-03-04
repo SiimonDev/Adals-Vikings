@@ -76,7 +76,7 @@ void Level_Camp_Clearing::load()
 	{
 		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
 		mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
-		mNpcs["Brandr"]->setPosition(sf::Vector2f(1000, 250));
+		mNpcs["Brandr"]->setPosition(sf::Vector2f(1370, 850));
 		mNpcs["Brandr"]->setInteractionPosition(sf::Vector2f(1100, 250));
 		mNpcs["Brandr"]->setDialogue("Brynja_ClearingCamp");
 

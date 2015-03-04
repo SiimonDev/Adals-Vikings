@@ -51,7 +51,7 @@ void Level_Beach::load()
 	mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
 	mPortals[BeachToTavernOutside] = &PortalLoader::getPortal(BeachToTavernOutside);
 
-	/*if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))*/
+	if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))
 		mPortals[BeachToTavernOutside]->setWorking(true);
 
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro) && !Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
@@ -371,6 +371,7 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 			FadeI.fadeIn(frameTime);
 			if (FadeI.getFaded())
 			{
+				mPortals[BeachToTavernOutside]->setCannotDialogue("Brandr and the others went that way... I should go the other.");
 				mPortals[BeachToRoad]->setWorking(true);
 				Act1Events::handleEvent(Act1Event::Beach_Ending);
 				mEndingFade4 = true;

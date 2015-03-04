@@ -35,7 +35,8 @@ void Level_Road::update(sf::Time &frametime)
 			if (FadeI.getFaded())
 			{
 				mPortals[RoadToOutside_Chuch]->setWorking(true);
-				mPortals[RoadToFarm]->setCannotDialogue("I can see brynja over there... I would rather not talk to her right now");
+				mPortals[RoadToCamp]->setCannotDialogue("I can see brynja over there... I would rather not talk to her before I've finished my mission.");
+				mPortals[RoadToFarm]->setCannotDialogue("Uh, if I don't do as Brandr told me, he is literally  going to kill me.");
 				mNpcs.erase("Mailman");
 				mFade1 = true;
 			}
@@ -44,7 +45,10 @@ void Level_Road::update(sf::Time &frametime)
 		{
 			FadeI.fadeIn(frametime);
 			if (FadeI.getFaded())
+			{
+				Act1Events::handleEvent(Act1Event::Road_GiveMailmanPaper);
 				mFade1 = true;
+			}
 		}
 	}
 
@@ -65,20 +69,27 @@ void Level_Road::load()
 	mPortals[RoadToCamp] = &PortalLoader::getPortal(RoadToCamp);
 
 	mPortals[RoadToBeach]->setWorking(true);
-	mPortals[RoadToCamp]->setWorking(true);
 
 	if (!Act1Events::hasBeenHandled(Act1Event::Enter_Road))
 	{
 		mPortals[RoadToOutside_Chuch]->setCannotDialogue("I Should probably help find that scroll first...");
 		mPortals[RoadToFarm]->setCannotDialogue("I Should probably help find that scroll first...");
+		mPortals[RoadToCamp]->setCannotDialogue("I Should probably help find that scroll first...");
 
 		mNpcs["Mailman"] = NpcPtr(new Npc(NpcHandler::getNpc("Mailman")));
 		mNpcs["Mailman"]->setDialogue("Mailman_Road");
 	}
-	else if (Act1Events::hasBeenHandled(Act1Event::Road_GiveMailmanPaper))
+	
+	if (Act1Events::hasBeenHandled(Act1Event::Road_GiveMailmanPaper))
 	{
 		mPortals[RoadToOutside_Chuch]->setWorking(true);
-		mPortals[RoadToFarm]->setCannotDialogue("I can see brynja over there... I would rather not talk to her right now");
+		mPortals[RoadToCamp]->setCannotDialogue("I can see brynja over there... I would rather not talk to her before I've finished my mission.");
+		mPortals[RoadToFarm]->setCannotDialogue("Uh, if I don't do as Brandr told me, he is literally  going to kill me.");
+	}
+	if (Act1Events::hasBeenTriggered(Act1Event::ChurchInside_GoBackDialogue))
+	{
+		mPortals[RoadToFarm]->setCannotDialogue("I should report to Brynja before I start exploring...");
+		mPortals[RoadToCamp]->setWorking(true);
 	}
 
 	Level::load();

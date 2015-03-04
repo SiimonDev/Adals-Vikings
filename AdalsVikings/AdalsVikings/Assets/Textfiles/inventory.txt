@@ -1,4 +1,4 @@
-slot_0.0: $bearDeer
+slot_0.0: 
 slot_0.1: 
 slot_0.2: 
 slot_0.3: 
