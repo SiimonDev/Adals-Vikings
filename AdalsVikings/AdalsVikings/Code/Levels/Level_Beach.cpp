@@ -47,11 +47,18 @@ void Level_Beach::render(IndexRenderer &iRenderer)
 
 void Level_Beach::load()
 {
+
 	mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
-	mPortals[BeachToRoad]->setCannotDialogue("I cannot go there yet!");
-	mPortals[BeachToRoad]->setWorking(true);
+	mPortals[BeachToTavernOutside] = &PortalLoader::getPortal(BeachToTavernOutside);
+
+	/*if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))*/
+		mPortals[BeachToTavernOutside]->setWorking(true);
+
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro) && !Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
 	{
+		mPortals[BeachToRoad]->setCannotDialogue("I was told no to leave the beach!");
+		mPortals[BeachToTavernOutside]->setCannotDialogue("I was told no to leave the beach!");
+
 		mCutSceneView.setCenter(1920 / 2 - 450, 1080 / 2 + 270);
 		mCutSceneView.setSize(1920, 1080);
 		mCutSceneView.zoom(0.5);
@@ -186,16 +193,20 @@ void Level_Beach::unload()
 
 void Level_Beach::changeLevel()
 {
-	if (mPortals[BeachToRoad]->getActivated())
+	if (mPortals[BeachToRoad]->getActivated() && mPortals[BeachToRoad]->getWorking())
 	{
-		if (mPortals[BeachToRoad]->getWorking())
-		{
 			Act1Events::triggerEvent(Act1Event::Enter_Road);
 			LVLMI.changeLevel(LevelFolder::Road);
 			AudioPlayer::stopHDDSound(HDDSound::BeachAmbient);
 			AudioPlayer::stopHDDSound(HDDSound::BeachMusic);
 			mPlayMusic = false;
-		}
+	}
+	else if (mPortals[BeachToTavernOutside]->getActivated() && mPortals[BeachToTavernOutside]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::Tavern_Outside);
+		AudioPlayer::stopHDDSound(HDDSound::BeachAmbient);
+		AudioPlayer::stopHDDSound(HDDSound::BeachMusic);
+		mPlayMusic = false;
 	}
 }
 
@@ -360,7 +371,7 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 			FadeI.fadeIn(frameTime);
 			if (FadeI.getFaded())
 			{
-				//FadeI.setAlpha(0);
+				mPortals[BeachToRoad]->setWorking(true);
 				Act1Events::handleEvent(Act1Event::Beach_Ending);
 				mEndingFade4 = true;
 			}

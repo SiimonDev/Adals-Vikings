@@ -26,6 +26,8 @@ void NpcHandler::load()
 	NpcPtr Mailman(new Npc(Font::Skranji_regular, Font::Skranji_outline));
 	NpcPtr Princess(new Npc(Font::Skranji_regular, Font::Skranji_outline));
 	NpcPtr Beor(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr DruidLeader(new Npc(Font::Skranji_regular, Font::Skranji_outline));
+	NpcPtr Druids(new Npc(Font::Skranji_regular, Font::Skranji_outline));
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));

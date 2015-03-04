@@ -9,9 +9,19 @@ Level_Camp_Clearing::Level_Camp_Clearing(Player &player, ActionWheel &actionWhee
 
 void Level_Camp_Clearing::update(sf::Time &frametime)
 {
-	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_TalkedToAll) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_TalkedToAll))
+	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_Leifr) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
 	{
-		
+		if (!DialogHandler::getDialogue("Leifr_ClearingCamp").getActiveConversation() && !DialogHandler::getDialogue("Leifr_ClearingCamp").getHasStopped())
+			DialogHandler::getDialogue("Leifr_ClearingCamp").startDialogue();
+		else if (DialogHandler::getDialogue("Leifr_ClearingCamp").getHasStopped())
+		{
+			FadeI.fadeOut(frametime);
+
+			if (FadeI.getFaded())
+			{
+				mNpcs
+			}
+		}
 	}
 	changeLevel();
 	Level::update(frametime);
@@ -91,16 +101,17 @@ void Level_Camp_Clearing::checkEvents()
 			mPortals[CampToForestRoad]->setWorking(true);
 			Act1Events::handleEvent(Act1Event::CampClearing_Valdis);
 		}
-	if (DialogHandler::getDialogue("Leifr_ClearingCamp").getActiveConversation())
-		Act1Events::triggerEvent(Act1Event::CampClearing_Leifr);
-	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_Leifr) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
-		if (DialogHandler::getDialogue("Leifr_ClearingCamp").getHasStopped())
-			Act1Events::handleEvent(Act1Event::CampClearing_Leifr);
 
 	if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr) && Act1Events::hasBeenHandled(Act1Event::CampClearing_Valdis) &&
 		Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja) && !Act1Events::hasBeenTriggered(Act1Event::CampClearing_TalkedToAll))
 	{
 		Act1Events::triggerEvent(Act1Event::CampClearing_TalkedToAll);
 	}
+
+	if (!Act1Events::hasBeenTriggered(Act1Event::GotBeerDeerPelt) && mPlayer.hasItemInInventory("BeerDeer"))
+		Act1Events::triggerEvent(Act1Event::GotBeerDeerPelt);
+
+	if (!Act1Events::hasBeenTriggered(Act1Event::CampClearing_Leifr) && Act1Events::hasBeenTriggered(Act1Event::GotBeerDeerPelt))
+		Act1Events::triggerEvent(Act1Event::CampClearing_Leifr);
 
 }

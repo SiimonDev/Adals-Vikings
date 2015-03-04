@@ -34,7 +34,7 @@ void Npc::render(IndexRenderer &iRenderer)
 	else
 	{
 		mInvisbleRect.setPosition(mPosition);
-		iRenderer.addRectangle(mInvisbleRect, 999);
+		iRenderer.addShape(mInvisbleRect, 999);
 	}
 
 	if (mDisplayDescription && !mIsInvisble)
@@ -46,7 +46,7 @@ void Npc::render(IndexRenderer &iRenderer)
 	}
 	else if (mDisplayDescription && mIsInvisble)
 	{
-		iRenderer.addRectangle(mTextRect, 999);
+		iRenderer.addShape(mTextRect, 999);
 		iRenderer.addText(mDescription, 1000);
 	}
 }
