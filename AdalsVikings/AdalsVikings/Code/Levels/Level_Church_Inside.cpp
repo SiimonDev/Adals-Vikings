@@ -1,4 +1,5 @@
 #include "Level_Church_Inside.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Church_Inside::Level_Church_Inside(Player &player, ActionWheel &actionWheel)
@@ -7,10 +8,15 @@ Level_Church_Inside::Level_Church_Inside(Player &player, ActionWheel &actionWhee
 	mBackgroundID = LevelFolder::Church_Inside;
 }
 
+void Level_Church_Inside::restartSounds()
+{
+	AudioPlayer::playHDDSound(HDDSound::Church_Inside_Ambient, true, 100);
+}
+
 void Level_Church_Inside::update(sf::Time &frametime)
 {
-	changeLevel();
 	Level::update(frametime);
+	changeLevel();
 }
 
 void Level_Church_Inside::render(IndexRenderer &iRenderer)
@@ -34,6 +40,7 @@ void Level_Church_Inside::load()
 
 void Level_Church_Inside::unload()
 {
+	AudioPlayer::stopHDDSound(HDDSound::Church_Inside_Ambient);
 	RMI.unloadResource(Footsteps::Church);
 	Level::unload();
 }
@@ -44,9 +51,15 @@ void Level_Church_Inside::changeLevel()
 	{
 		Act1Events::triggerEvent(Act1Event::ChurchInside_GoBackDialogue);
 		LVLMI.changeLevel(LevelFolder::Church_Outside);
+		AudioPlayer::stopHDDSound(HDDSound::Church_Inside_Ambient);
+		mRestartSounds = true;
 	}
 	else if (mPortals[ChurchToOutside_Church]->getActivated() && mPortals[ChurchToOutside_Church]->getWorking())
+	{
 		LVLMI.changeLevel(LevelFolder::Church_Outside);
+		AudioPlayer::stopHDDSound(HDDSound::Church_Inside_Ambient);
+		mRestartSounds = true;
+	}
 }
 
 void Level_Church_Inside::checkInteractEvents()

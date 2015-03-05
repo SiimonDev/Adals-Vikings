@@ -1,10 +1,16 @@
 #include "Level_Church_Outside.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Church_Outside::Level_Church_Outside(Player &player, ActionWheel &actionWheel)
 	: Level(player, actionWheel)
 {
 	mBackgroundID = LevelFolder::Church_Outside;
+}
+
+void Level_Church_Outside::restartSounds()
+{
+	AudioPlayer::playHDDSound(HDDSound::Church_Outside_Ambient, true, 100);
 }
 
 void Level_Church_Outside::update(sf::Time &frametime)
@@ -40,8 +46,9 @@ void Level_Church_Outside::update(sf::Time &frametime)
 			Act1Events::handleEvent(Act1Event::ChurchInside_GoBackDialogue);
 		}
 	}
-	changeLevel();
+	
 	Level::update(frametime);
+	changeLevel();
 }
 
 void Level_Church_Outside::render(IndexRenderer &iRenderer)
@@ -65,6 +72,7 @@ void Level_Church_Outside::load()
 
 void Level_Church_Outside::unload()
 {
+	AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
 	RMI.unloadResource(Footsteps::Dirt);
 	Level::unload();
 }
@@ -72,9 +80,17 @@ void Level_Church_Outside::unload()
 void Level_Church_Outside::changeLevel()
 {
 	if (mPortals[Outside_ChurchToRoad]->getActivated() && mPortals[Outside_ChurchToRoad]->getWorking())
+	{
 		LVLMI.changeLevel(LevelFolder::Road);
+		AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
+		mRestartSounds = true;
+	}
 	else if (mPortals[Outside_ChurchToChurch]->getActivated() && mPortals[Outside_ChurchToChurch]->getWorking())
+	{
 		LVLMI.changeLevel(LevelFolder::Church_Inside);
+		AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
+		mRestartSounds = true;
+	}
 }
 
 void Level_Church_Outside::checkInteractEvents()
@@ -87,14 +103,3 @@ void Level_Church_Outside::checkEvents()
 	if (DialogHandler::getDialogue("Princess_ChurchOutside").getActiveConversation() && !Act1Events::hasBeenTriggered(Act1Event::ChurchOutside_TalkToPrincess))
 		Act1Events::triggerEvent(Act1Event::ChurchOutside_TalkToPrincess);
 }
-
-//void Level_Church_Outside::setNearbyLevels()
-//{
-//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-//	{
-//		if (it->first == LevelFolder::Church_Inside || it->first == LevelFolder::Road)
-//			it->second->setIsNearbyLevel(true);
-//		else
-//			it->second->setIsNearbyLevel(false);
-//	}
-//}

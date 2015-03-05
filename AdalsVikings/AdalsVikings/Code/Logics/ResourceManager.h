@@ -138,12 +138,19 @@ namespace HDDSound
 {
 	enum ID
 	{
-		BoatMusic,
-		BoatAmbient,
+		Boat_Music,
+		ExplorerTheme_Music,
 
-		BeachAmbient,
-		BeachMusic,
-		BeachWave,
+		Boat_Ambient,
+		Beach_Ambient,
+		Road_Ambient,
+		Tavern_Outside_Ambient,
+		Church_Inside_Ambient,
+		Church_Outside_Ambient,
+		Forest_Road_Ambient,
+		Forest_Camp_Ambient,
+
+		Beach_Wave,
 		SIZE
 	};
 }

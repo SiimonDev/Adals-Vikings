@@ -14,6 +14,7 @@ public:
 	void changeLevel();
 	void checkInteractEvents();
 	void checkEvents();
+	void restartSounds();
 
 private:
 	bool mFade1, mFade2;

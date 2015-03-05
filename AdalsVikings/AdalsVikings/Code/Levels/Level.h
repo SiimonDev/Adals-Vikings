@@ -50,6 +50,8 @@ public:
 
 protected:
 	virtual void setDialogPosition();
+	virtual void restartSounds();
+
 	std::vector<int> mBackgroundsIndexes;
 	std::vector<sf::Sprite> mBackgrounds;
 	std::vector<Object*> mObjects;
@@ -80,5 +82,6 @@ protected:
 	bool mIsInConversation;
 	bool mOldIsInConversation;
 	bool mIsNearbyLevel, mIsLoaded, mHasBeenReset;
+	bool mRestartSounds;
 };
 

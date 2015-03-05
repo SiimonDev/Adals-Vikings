@@ -16,7 +16,6 @@ void MainMenuPanel::load()
 	RMI.loadResource(Texture::MainMenuQuitButton);
 	RMI.loadResource(Texture::MainMenuBackground);
 	RMI.loadResource(Texture::AxeAnimation);
-	//AudioPlayer::playMusic("assets/sounds/music/Theme3.ogg", "mainMenu", true, 20);
 
 	mBackground.setTexture(RMI.getResource(Texture::MainMenuBackground));
 
@@ -67,7 +66,6 @@ void MainMenuPanel::unload()
 	RMI.unloadResource(Texture::MainMenuQuitButton);
 	RMI.unloadResource(Texture::MainMenuBackground);
 	RMI.unloadResource(Texture::AxeAnimation);
-	//AudioPlayer::stopMusic("mainMenu");
 }
 
 void MainMenuPanel::update(sf::Time frameTime)

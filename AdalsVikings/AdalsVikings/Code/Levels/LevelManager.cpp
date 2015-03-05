@@ -134,7 +134,7 @@ void LevelManager::loadAct1()
 	mLevelMap[LevelFolder::Camp_Clearing] = LevelPtr(new Level_Camp_Clearing(mPlayer, mActionWheel));
 	mLevelMap[LevelFolder::Camp_Finished] = LevelPtr(new Level_Camp_Finished(mPlayer, mActionWheel));
 
-	mCurrentID = LevelFolder::Tavern_Inside;
+	mCurrentID = LevelFolder::Beach;
 	baseLoad();
 }
 

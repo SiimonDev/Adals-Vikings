@@ -134,17 +134,24 @@ ResourceManager::ResourceManager()
 	/* =========== Set Sound File paths =========== */
 	mSoundPathMap[Sound::InventoryOpen] = "assets/sounds/Inventory (open).ogg";
 	mSoundPathMap[Sound::InventoryClose] = "assets/sounds/Inventory (close).ogg";
-	mSoundPathMap[Sound::PickUpItem] = "assets/sounds/Pick_up_item.wav";
+	mSoundPathMap[Sound::PickUpItem] = "assets/sounds/Pick_up_item.ogg";
 	/* ============================================ */
 
 
 	/* =========== Set HDDSound File paths =========== */
-	mHDDSoundPathMap[HDDSound::BoatAmbient] = "assets/sounds/boat/Boat.ogg";
-	mHDDSoundPathMap[HDDSound::BoatMusic] = "assets/sounds/music/Boat_music.ogg";
+	mHDDSoundPathMap[HDDSound::Boat_Ambient] = "assets/sounds/ambient/boat_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::Boat_Music] = "assets/sounds/music/Boat_music.ogg";
 
-	mHDDSoundPathMap[HDDSound::BeachAmbient] = "assets/sounds/beach/Beach.ogg";
-	mHDDSoundPathMap[HDDSound::BeachMusic] = "assets/sounds/music/exp theme.ogg";
-	mHDDSoundPathMap[HDDSound::BeachWave] = "assets/sounds/beach/wave.ogg";
+	mHDDSoundPathMap[HDDSound::Beach_Ambient] = "assets/sounds/ambient/beach_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::ExplorerTheme_Music] = "assets/sounds/music/exp_theme.ogg";
+	mHDDSoundPathMap[HDDSound::Beach_Wave] = "assets/sounds/beach/wave.ogg";
+
+	mHDDSoundPathMap[HDDSound::Road_Ambient] = "assets/sounds/ambient/road_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::Tavern_Outside_Ambient] = "assets/sounds/ambient/tavern_outside_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::Church_Inside_Ambient] = "assets/sounds/ambient/church_inside_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::Church_Outside_Ambient] = "assets/sounds/ambient/church_outside_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::Forest_Road_Ambient] = "assets/sounds/ambient/forest_road_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::Forest_Camp_Ambient] = "assets/sounds/ambient/forest_camp_ambient.ogg";
 	/* =============================================== */
 
 

@@ -194,8 +194,8 @@ void Level_Ship_1::load()
 
 	Level::load();
 
-	AudioPlayer::playHDDSound(HDDSound::BoatAmbient, false, 20);
-	AudioPlayer::playHDDSound(HDDSound::BoatMusic, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Boat_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Boat_Music, true, 20);
 
 	// Add Collision from every NPC to the map
 	mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());

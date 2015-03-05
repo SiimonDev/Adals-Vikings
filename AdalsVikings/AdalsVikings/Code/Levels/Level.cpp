@@ -342,6 +342,12 @@ void Level::update(sf::Time &frameTime)
 		resetLevel();
 		refreshLevel();
 	}
+
+	if (mRestartSounds)
+	{
+		restartSounds();
+		mRestartSounds = false;
+	}
 	
 	if (!mIsInConversation && FadeI.getFaded() && !(mPlayer.isInventoryActive() || mPlayer.getSnappedObjectID() != ""))
 		mActionWheel->update();
@@ -412,6 +418,8 @@ void Level::loadAllBackgrounds()
 		mBackgrounds.push_back(sf::Sprite(*RMI.getResource(mBackgroundID).at(i)));
 		mBackgroundsIndexes.push_back(i * 10);
 	}
+
+	mRestartSounds = true;
 }
 void Level::loadObjects()
 {
@@ -579,6 +587,11 @@ void Level::setDialogPosition()
 	DialogWindow::setPosition(sf::Vector2f(mPlayer.getSprite().getGlobalBounds().left +
 		mPlayer.getSprite().getGlobalBounds().width / 2,
 		mPlayer.getSprite().getGlobalBounds().top));
+}
+
+void Level::restartSounds()
+{
+
 }
 
 TileMap &Level::getTileMap()

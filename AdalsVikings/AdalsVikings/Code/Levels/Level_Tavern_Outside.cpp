@@ -1,4 +1,5 @@
 #include "Level_Tavern_Outside.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Tavern_Outside::Level_Tavern_Outside(Player &player, ActionWheel &actionWheel)
@@ -7,10 +8,15 @@ Level_Tavern_Outside::Level_Tavern_Outside(Player &player, ActionWheel &actionWh
 	mBackgroundID = LevelFolder::Tavern_Outside;
 }
 
+void Level_Tavern_Outside::restartSounds()
+{
+	AudioPlayer::playHDDSound(HDDSound::Tavern_Outside_Ambient, true, 20);
+}
+
 void Level_Tavern_Outside::update(sf::Time &frametime)
 {
-	changeLevel();
 	Level::update(frametime);
+	changeLevel();
 }
 
 void Level_Tavern_Outside::render(IndexRenderer &iRenderer)
@@ -31,6 +37,7 @@ void Level_Tavern_Outside::load()
 
 void Level_Tavern_Outside::unload()
 {
+	AudioPlayer::stopHDDSound(HDDSound::Tavern_Outside_Ambient);
 	RMI.unloadResource(Footsteps::Dirt);
 	Level::unload();
 }
@@ -40,10 +47,14 @@ void Level_Tavern_Outside::changeLevel()
 	if (mPortals[TavernOutsideToBeach]->getActivated() && mPortals[TavernOutsideToBeach]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Beach);
+		AudioPlayer::stopHDDSound(HDDSound::Tavern_Outside_Ambient);
+		mRestartSounds = true;
 	}
 	else if (mPortals[TavernOutsideToTavernInside]->getActivated() && mPortals[TavernOutsideToTavernInside]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Tavern_Inside);
+		AudioPlayer::stopHDDSound(HDDSound::Tavern_Outside_Ambient);
+		mRestartSounds = true;
 	}
 }
 

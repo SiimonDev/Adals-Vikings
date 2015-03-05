@@ -13,8 +13,6 @@ public:
 	void load();
 	void unload();
 	void changeLevel();
-	void checkInteractEvents();
-	void checkEvents();
 
 	//specific Functions
 	void introCutscene(sf::Time &frameTime);
@@ -22,7 +20,8 @@ public:
 	void endingCutscene(sf::Time &frameTime);
 
 private:
-	bool mPlayMusic;
+	void restartSounds();
+
 	bool mIntroFade1, mIntroFade2, mIntroFade3;
 	bool mEndingFade1, mEndingFade2, mEndingFade3, mEndingFade4;
 	sf::View mCutSceneView;

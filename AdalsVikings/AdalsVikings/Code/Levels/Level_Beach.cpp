@@ -11,26 +11,25 @@ static Animation mWaveAnimation;
 Level_Beach::Level_Beach(Player &player, ActionWheel &actionWheel)
 	: Level(player, actionWheel)
 	, mIntroFade1(false)
-	, mPlayMusic(false)
 {
 	mBackgroundID = LevelFolder::Beach;
 }
 
+void Level_Beach::restartSounds()
+{
+	AudioPlayer::playHDDSound(HDDSound::Beach_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::ExplorerTheme_Music, true, 20);
+}
+
 void Level_Beach::update(sf::Time &frametime)
 {
-	if (!mPlayMusic)
-	{
-		AudioPlayer::playHDDSound(HDDSound::BeachAmbient, true, 20);
-		AudioPlayer::playHDDSound(HDDSound::BeachMusic, true, 20);
-		mPlayMusic = true;
-	}
 	introCutscene(frametime);
 	talkToNpcs();
 	endingCutscene(frametime);
 
 	mWaveAnimation.animate(frametime);
 	if (mWaveAnimation.getCurrentFrame() == 1)
-		AudioPlayer::playHDDSound(HDDSound::BeachWave, false, 100);
+		AudioPlayer::playHDDSound(HDDSound::Beach_Wave, false, 20);
 
 	Level::update(frametime);
 	changeLevel();
@@ -47,7 +46,7 @@ void Level_Beach::render(IndexRenderer &iRenderer)
 
 void Level_Beach::load()
 {
-
+	mRestartSounds = true;
 	mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
 	mPortals[BeachToTavernOutside] = &PortalLoader::getPortal(BeachToTavernOutside);
 
@@ -146,8 +145,6 @@ void Level_Beach::load()
 		mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(1550, 520));
 		mNpcs["Finnr"]->setDialogue("Finnr_Beach");
 		mNpcs["Finnr"]->setIndex(3);
-
-
 		/* ================================================================ */
 
 		Level::load();
@@ -188,6 +185,9 @@ void Level_Beach::unload()
 	RMI.unloadResource(Texture::WaveAnimation);
 	RMI.unloadResource(Texture::YngvarrSadIdle);
 	RMI.unloadResource(Texture::YngvarrSadTalk);
+
+	AudioPlayer::stopHDDSound(HDDSound::Beach_Ambient);
+	AudioPlayer::stopHDDSound(HDDSound::ExplorerTheme_Music);
 	Level::unload();
 }
 
@@ -195,28 +195,19 @@ void Level_Beach::changeLevel()
 {
 	if (mPortals[BeachToRoad]->getActivated() && mPortals[BeachToRoad]->getWorking())
 	{
-			Act1Events::triggerEvent(Act1Event::Enter_Road);
-			LVLMI.changeLevel(LevelFolder::Road);
-			AudioPlayer::stopHDDSound(HDDSound::BeachAmbient);
-			AudioPlayer::stopHDDSound(HDDSound::BeachMusic);
-			mPlayMusic = false;
+		Act1Events::triggerEvent(Act1Event::Enter_Road);
+		LVLMI.changeLevel(LevelFolder::Road);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Wave);
+		mRestartSounds = true;
 	}
 	else if (mPortals[BeachToTavernOutside]->getActivated() && mPortals[BeachToTavernOutside]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Tavern_Outside);
-		AudioPlayer::stopHDDSound(HDDSound::BeachAmbient);
-		AudioPlayer::stopHDDSound(HDDSound::BeachMusic);
-		mPlayMusic = false;
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Wave);
+		mRestartSounds = true;
 	}
-}
-
-void Level_Beach::checkInteractEvents()
-{
-
-}
-void Level_Beach::checkEvents()
-{
-
 }
 
 void Level_Beach::introCutscene(sf::Time &frameTime)
@@ -383,6 +374,20 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 
 void Level_Beach::talkToNpcs()
 {
+	/* Debug stuff */
+	//Act1Events::handleEvent(Act1Event::Beach_Intro);
+
+	//Act1Events::handleEvent(Act1Event::Beach_Dagny);
+	//Act1Events::handleEvent(Act1Event::Beach_Leifr);
+	//Act1Events::handleEvent(Act1Event::Beach_Yngvarr);
+	//Act1Events::handleEvent(Act1Event::Beach_Alfr);
+	//Act1Events::handleEvent(Act1Event::Beach_Valdis);
+	//Act1Events::handleEvent(Act1Event::Beach_Finnr);
+
+	//mPortals[BeachToRoad]->setWorking(true);
+	//mPortals[BeachToTavernOutside]->setWorking(true);
+	/*=============*/
+
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Ending))
 	{
 		/* ==== Check if talked to Dagny ===== */
@@ -436,14 +441,3 @@ void Level_Beach::talkToNpcs()
 		}
 	}
 }
-
-//void Level_Beach::setNearbyLevels()
-//{
-//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-//	{
-//		if (it->first == LevelFolder::Road)
-//			it->second->setIsNearbyLevel(true);
-//		else
-//			it->second->setIsNearbyLevel(false);
-//	}
-//}

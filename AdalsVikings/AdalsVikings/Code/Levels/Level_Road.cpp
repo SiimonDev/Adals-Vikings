@@ -9,6 +9,11 @@ Level_Road::Level_Road(Player &player, ActionWheel &actionWheel)
 	mBackgroundID = LevelFolder::Road;
 }
 
+void Level_Road::restartSounds()
+{
+	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, 100);
+}
+
 void Level_Road::update(sf::Time &frametime)
 {
 	if (Act1Events::hasBeenTriggered(Act1Event::Road_StartMailmanConv) && !Act1Events::hasBeenHandled(Act1Event::Road_StartMailmanConv))
@@ -52,8 +57,8 @@ void Level_Road::update(sf::Time &frametime)
 		}
 	}
 
-	changeLevel();
 	Level::update(frametime);
+	changeLevel();
 }
 
 void Level_Road::render(IndexRenderer &iRenderer)
@@ -63,6 +68,7 @@ void Level_Road::render(IndexRenderer &iRenderer)
 
 void Level_Road::load()
 {
+	mRestartSounds = true;
 	RMI.loadResource(Footsteps::Dirt);
 	mPortals[RoadToBeach] = &PortalLoader::getPortal(RoadToBeach);
 	mPortals[RoadToOutside_Chuch] = &PortalLoader::getPortal(RoadToOutside_Chuch);
@@ -70,6 +76,11 @@ void Level_Road::load()
 	mPortals[RoadToCamp] = &PortalLoader::getPortal(RoadToCamp);
 
 	mPortals[RoadToBeach]->setWorking(true);
+
+	/* Debug */
+	//mPortals[RoadToOutside_Chuch]->setWorking(true);
+	//mPortals[RoadToCamp]->setWorking(true);
+	/* ===== */
 
 	if (!Act1Events::hasBeenHandled(Act1Event::Enter_Road))
 	{
@@ -99,6 +110,7 @@ void Level_Road::load()
 
 void Level_Road::unload()
 {
+	AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
 	RMI.unloadResource(Footsteps::Dirt);
 	Level::unload();
 }
@@ -108,13 +120,27 @@ void Level_Road::changeLevel()
 	if (mPortals[RoadToBeach]->getActivated() && mPortals[RoadToBeach]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Beach);
+		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
+		mRestartSounds = true;
 	}
 	else if (mPortals[RoadToOutside_Chuch]->getActivated() && mPortals[RoadToOutside_Chuch]->getWorking())
+	{
 		LVLMI.changeLevel(LevelFolder::Church_Outside);
+		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
+		mRestartSounds = true;
+	}
 	else if (mPortals[RoadToFarm]->getActivated() && mPortals[RoadToFarm]->getWorking())
+	{
 		LVLMI.changeLevel(LevelFolder::Forest_Road);
+		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
+		mRestartSounds = true;
+	}
 	if (mPortals[RoadToCamp]->getActivated() && mPortals[RoadToCamp]->getWorking())
+	{
 		LVLMI.changeLevel(LevelFolder::Camp_Clearing);
+		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
+		mRestartSounds = true;
+	}
 }
 void Level_Road::checkInteractEvents()
 {
@@ -129,14 +155,3 @@ void Level_Road::checkEvents()
 		Act1Events::triggerEvent(Act1Event::Road_StartMailmanConv);
 	}
 }
-
-//void Level_Road::setNearbyLevels()
-//{
-//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-//	{
-//		if (it->first == LevelFolder::Forest_Road || it->first == LevelFolder::Church_Outside || it->first == LevelFolder::Beach)
-//			it->second->setIsNearbyLevel(true);
-//		else
-//			it->second->setIsNearbyLevel(false);
-//	}
-//}
