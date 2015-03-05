@@ -2,7 +2,7 @@
 *ID: $cross$
 *Name: Cross
 *ispickupable: True
-*pickup: "By Thor! So this is what the Anglian’s use as weapons. They truly are the brutes of the west, to swing such things around." ~6,5
+*pickup: "By Thor! So this is what the Anglian's use as weapons. They truly are the brutes of the west, to swing such things around." ~6,5
 *lookat: "A dangerous tool, for sure. I wonder what it can be used for." ~2,0
 *deny: "I don't think I want to do that." ~1,5
 *denywith: 

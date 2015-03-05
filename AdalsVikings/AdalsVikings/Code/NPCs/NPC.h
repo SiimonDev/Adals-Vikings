@@ -88,4 +88,5 @@ private:
 
 	bool mFlip, mUpdateAnimation, mIsInvisble;
 	bool mDisplayDescription;
+	bool mHasLoaded;
 };

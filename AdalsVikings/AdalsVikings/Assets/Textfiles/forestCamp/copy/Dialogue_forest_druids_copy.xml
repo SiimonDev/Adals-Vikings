@@ -46,10 +46,10 @@
 			<text character="Druid Leader" disabled="false" default="false" say="Ursa Cervus, of cour-" timer="1.0" turned="false" />
 			<text character="Druids" disabled="false" default="false" say="URSA CERVUS" timer="2.0" turned="false" />
 			<text character="Hipster Druid Leader" disabled="false" default="false" say="the bear deer!" timer="1.0" turned="false" />
-			<text character="Druid Leader" disabled="false" default="false" say="...right." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="...right." timer="2.0" turned="false" disablePrevious="true" />
 			<gotoContainer />
 		</option>
-		<option choice_text="What are you guys doing out here, anyway?">
+		<option choice_text="What are you guys doing out here, anyway?" disabled="false">
 			<text character="Ulfr" say="What are you guys doing out here, anyway?" timer="2.0" />
 			<text character="Druid Leader" disabled="false" default="false" say="We are pleasing the forest god of this forest. " timer="2.0" turned="false" />
 			<text character="Druid Leader" disabled="false" default="false" say="Ursa Cervus" timer="2.0" turned="false" />
@@ -82,8 +82,8 @@
 			<text character="Ulfr" say="What is your friend burning over there?" timer="1.4" />
 			<text character="Druid Leader" disabled="false" default="false" say="Who? Jeff?" timer="2.0" turned="false" />
 			<text character="Druid Leader" disabled="false" default="false" say="Those are marshmallows." timer="2.0" turned="false" />
-			<text character="Druid Leader" disabled="false" default="false" say="They are pretty cool." timer="2.0" turned="true" />
-			<text character="Druid Leader" disabled="false" default="false" say="But i don't expect you to ever have heard of them." timer="2.0" turned="true" disablePrevious="true" />
+			<text character="Druid Leader" disabled="false" default="false" say="They are pretty cool." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="But i don't expect you to ever have heard of them." timer="2.0" turned="false" disablePrevious="true" />
 			<gotoContainer />
 		</option>
 		<option choice_text="Just a little fire, please?" disabled="true">

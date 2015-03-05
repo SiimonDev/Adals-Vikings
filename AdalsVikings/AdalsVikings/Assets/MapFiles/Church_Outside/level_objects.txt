@@ -3,34 +3,34 @@
 position: $X:1878 $Y:958
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $gravestone2
 position: $X:1767 $Y:903
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $gravestone3
 position: $X:630 $Y:787
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $toolsAtChurch
 position: $X:1485 $Y:782
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $birdAtChurch
 position: $X:1297 $Y:256
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
