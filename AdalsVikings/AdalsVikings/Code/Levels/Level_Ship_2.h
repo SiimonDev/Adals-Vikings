@@ -26,5 +26,6 @@ private:
 	sf::Sprite spritilus;
 	sf::Texture mTexture;
 	float mZoom, mAlpha, mEnd;
-};
 
+	Animation mWaveAnimation;
+};

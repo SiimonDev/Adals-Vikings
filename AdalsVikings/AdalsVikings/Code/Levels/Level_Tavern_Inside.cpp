@@ -56,6 +56,7 @@ void Level_Tavern_Inside::render(IndexRenderer &iRenderer)
 
 void Level_Tavern_Inside::load()
 {
+	RMI.loadResource(Footsteps::Hardwood);
 	mPortals[TavernInsideToTavernOutside] = &PortalLoader::getPortal(TavernInsideToTavernOutside);
 	mPortals[TavernInsideToTavernOutside]->setWorking(true);
 
@@ -94,10 +95,27 @@ void Level_Tavern_Inside::load()
 	mNpcs["Yngvarr"]->setDialogue("Yngvarr_Tavern");
 
 	Level::load();
+
+	// Add collision from every NPC to the map
+	mTileMap.addCollision(mNpcs["Brandr"]->getCollisionRect());
+	mTileMap.addCollision(mNpcs["Alfr"]->getCollisionRect());
+	mTileMap.addCollision(mNpcs["Dagny"]->getCollisionRect());
+	mTileMap.addCollision(mNpcs["Finnr"]->getCollisionRect());
+	mTileMap.addCollision(mNpcs["Yngvarr"]->getCollisionRect());
+
+	// Add Index from every NPC to the map
+	mTileMap.setIndexOnMap(mNpcs["Brandr"]->getIndexRect(), mNpcs["Brandr"]->getIndex() - 2);
+	mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 2);
+	mTileMap.setIndexOnMap(mNpcs["Dagny"]->getIndexRect(), mNpcs["Dagny"]->getIndex() - 2);
+	mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 2);
+	mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 2);
+
+	mCurrentFootsteps = Footsteps::Hardwood;
 }
 
 void Level_Tavern_Inside::unload()
 {
+	RMI.unloadResource(Footsteps::Hardwood);
 	Level::unload();
 }
 

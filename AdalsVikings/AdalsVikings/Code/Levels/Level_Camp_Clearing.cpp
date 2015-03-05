@@ -34,24 +34,28 @@ void Level_Camp_Clearing::render(IndexRenderer &iRenderer)
 
 void Level_Camp_Clearing::load()
 {
+	RMI.loadResource(Footsteps::Dirt);
 	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
 	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
 
 	/*------------------- Leifr ----------------*/
 	mNpcs["Leifr"]->setscale(sf::Vector2f(0.4, 0.4));
+	mNpcs["Leifr"]->setIndex(10);
 	mNpcs["Leifr"]->setPosition(sf::Vector2f(1035, 729));
 	mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1160, 724));
 	mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
 
 	/*------------------- Brynja ----------------*/
 	mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
+	mNpcs["Brynja"]->setIndex(10);
 	mNpcs["Brynja"]->setPosition(sf::Vector2f(1500, 850));
 	mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(1385, 825));
 	mNpcs["Brynja"]->setDialogue("Brynja_ClearingCamp");
 
 	/*------------------- Valdis ----------------*/
 	mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
+	mNpcs["Valdis"]->setIndex(10);
 	mNpcs["Valdis"]->setPosition(sf::Vector2f(645, 860));
 	mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(750, 860));
 	mNpcs["Valdis"]->setFlip(true);
@@ -70,10 +74,23 @@ void Level_Camp_Clearing::load()
 		mPortals[CampToForestRoad]->setWorking(true);
 
 	Level::load();
+
+	// Add collision from every NPC to the map
+	mTileMap.addCollision(mNpcs["Leifr"]->getCollisionRect());
+	mTileMap.addCollision(mNpcs["Brynja"]->getCollisionRect());
+	mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
+
+	// Add Index from every NPC to the map
+	mTileMap.setIndexOnMap(mNpcs["Leifr"]->getIndexRect(), mNpcs["Leifr"]->getIndex() - 2);
+	mTileMap.setIndexOnMap(mNpcs["Brynja"]->getIndexRect(), mNpcs["Brynja"]->getIndex() - 2);
+	mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 2);
+
+	mCurrentFootsteps = Footsteps::Dirt;
 }
 
 void Level_Camp_Clearing::unload()
 {
+	RMI.unloadResource(Footsteps::Dirt);
 	Level::unload();
 }
 

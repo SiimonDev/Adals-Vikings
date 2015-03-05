@@ -328,6 +328,7 @@ void Level::updateDialog(sf::Time frameTime)
 
 void Level::update(sf::Time &frameTime)
 {
+	MouseState::setCursorType(CursorType::Default);
 	updateDialog(frameTime);
 	updateNPCs(frameTime);
 	mPlayer.update(frameTime);

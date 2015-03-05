@@ -59,6 +59,7 @@ void Level_Road::render(IndexRenderer &iRenderer)
 
 void Level_Road::load()
 {
+	RMI.loadResource(Footsteps::Dirt);
 	mPortals[RoadToBeach] = &PortalLoader::getPortal(RoadToBeach);
 	mPortals[RoadToOutside_Chuch] = &PortalLoader::getPortal(RoadToOutside_Chuch);
 	mPortals[RoadToFarm] = &PortalLoader::getPortal(RoadToFarm);
@@ -82,10 +83,12 @@ void Level_Road::load()
 	}
 
 	Level::load();
+	mCurrentFootsteps = Footsteps::Dirt;
 }
 
 void Level_Road::unload()
 {
+	RMI.unloadResource(Footsteps::Dirt);
 	Level::unload();
 }
 

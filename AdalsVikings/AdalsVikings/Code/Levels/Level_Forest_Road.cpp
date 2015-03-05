@@ -20,16 +20,20 @@ void Level_Forest_Road::render(IndexRenderer &iRenderer)
 
 void Level_Forest_Road::load()
 {
+	RMI.loadResource(Footsteps::Dirt);
 	mPortals[ForestRoadToCamp] = &PortalLoader::getPortal(ForestRoadToCamp);
 	mPortals[ForestRoadToForestCamp] = &PortalLoader::getPortal(ForestRoadToForestCamp);
 	mPortals[ForestRoadToCamp]->setWorking(true);
 	mPortals[ForestRoadToForestCamp]->setWorking(true);
 
 	Level::load();
+
+	mCurrentFootsteps = Footsteps::Dirt;
 }
 
 void Level_Forest_Road::unload()
 {
+	RMI.unloadResource(Footsteps::Dirt);
 	mPortals.erase(ForestRoadToCamp);
 	Level::unload();
 }
@@ -50,14 +54,3 @@ void Level_Forest_Road::checkEvents()
 {
 
 }
-
-//void Level_Forest_Road::setNearbyLevels()
-//{
-//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-//	{
-//		if (it->first == LevelFolder::Forest_Camp || it->first == LevelFolder::Road)
-//			it->second->setIsNearbyLevel(true);
-//		else
-//			it->second->setIsNearbyLevel(false);
-//	}
-//}

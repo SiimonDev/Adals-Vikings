@@ -20,12 +20,9 @@ Level_Ship_2::Level_Ship_2(Player &player, ActionWheel &actionWheel)
 	mBackgroundID = LevelFolder::Ship_2;
 }
 
-void Level_Ship_2::update(sf::Time &frametime)
+void Level_Ship_2::update(sf::Time &frameTime)
 {
-	//if (KeyboardState::isPressed(sf::Keyboard::F))
-	//{
-	//	mPlayer.addItemToInventory("map");
-	//}
+	mWaveAnimation.animate(frameTime);
 	if (BoatEvents::hasBeenTriggered(BoatEvent::PickedUpBucket) && !BoatEvents::hasBeenHandled(BoatEvent::PickedUpBucket))
 	{
 		DialogHandler::getDialogue("Dagny_Ship2").disableOption(2);
@@ -51,33 +48,32 @@ void Level_Ship_2::update(sf::Time &frametime)
 		}
 		if (DialogHandler::getDialogue("GivenMapToBrandr_Ship2").getHasStopped())
 		{
-			FadeI.fadeOut(frametime);
+			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())
 			{
 				BoatEvents::handleEvent(BoatEvent::GivenMapToBrandr);
 			}
 		}
 	}
-	runCutscene(frametime);
-	changeLevel(frametime);
-	Level::update(frametime);
+	runCutscene(frameTime);
+	changeLevel(frameTime);
+	Level::update(frameTime);
 }
 
 void Level_Ship_2::render(IndexRenderer &iRenderer)
 {
 	if (!BoatEvents::hasBeenHandled(BoatEvent::StartDialogue))
-	{
 		CurrentWindow.setView(mCutsceneView);
-	}
 	else
-	{
 		CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
-	}
+	mWaveAnimation.render(iRenderer);
 	Level::render(iRenderer);
 }
 
 void Level_Ship_2::load()
 {
+	RMI.loadResource(Texture::BrandrAngryTalk);
+	RMI.loadResource(Texture::FrontBoatWaveAnimation);
 	mPortals[Ship2ToShip1] = &PortalLoader::getPortal(Ship2ToShip1); // This does not create a new portal it only references the one in PortalLoader;
 	mPortals[Ship2ToShip1]->setWorking(true);
 
@@ -86,7 +82,6 @@ void Level_Ship_2::load()
 
 	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
 	mNpcs["Brandr"]->setIndex(14);
-	RMI.loadResource(Texture::BrandrAngryTalk);
 	mNpcs["Brandr"]->SetTalkAnimation(Texture::BrandrAngryTalk, sf::Vector2i(4, 1), sf::milliseconds(550), sf::Time::Zero);
 
 	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
@@ -122,11 +117,18 @@ void Level_Ship_2::load()
 	mNpcs["Brandr"]->setDialogue("Brandr_Ship2");
 	mNpcs["Yngvarr"]->setDialogue("Yngvarr_Ship2");
 
+	mWaveAnimation.load(RMI.getResource(Texture::FrontBoatWaveAnimation), sf::Vector2i(2, 2), sf::seconds(1), sf::seconds(0), true);
+	mWaveAnimation.setIndex(200);
+	mWaveAnimation.setProportions(sf::Vector2f(1440, 78));
+	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
+	mWaveAnimation.setPosition(sf::Vector2f(1920, 1060));
+
 	mCurrentFootsteps = Footsteps::Hardwood;
 }
 
 void Level_Ship_2::unload()
 {
+	RMI.unloadResource(Texture::FrontBoatWaveAnimation);
 	Level::unload();
 }
 

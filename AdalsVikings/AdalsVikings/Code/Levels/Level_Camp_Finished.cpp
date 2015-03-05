@@ -20,6 +20,7 @@ void Level_Camp_Finished::render(IndexRenderer &iRenderer)
 
 void Level_Camp_Finished::load()
 {
+	RMI.loadResource(Footsteps::Dirt);
 	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
 	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
@@ -32,10 +33,13 @@ void Level_Camp_Finished::load()
 	mNpcs["Brynja"]->setDialogue("Brynja_ClearingCamp");
 	mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
 	Level::load();
+
+	mCurrentFootsteps = Footsteps::Dirt;
 }
 
 void Level_Camp_Finished::unload()
 {
+	RMI.unloadResource(Footsteps::Dirt);
 	Level::unload();
 }
 

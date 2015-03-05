@@ -158,8 +158,6 @@ void Level_Ship_1::load()
 	RMI.loadResource(Texture::BackBoatRopeAnimation);
 	RMI.loadResource(Texture::BackBoatWaveAnimation);
 	RMI.loadResource(Footsteps::Hardwood);
-	
-	mCurrentFootsteps = Footsteps::Hardwood;
 
 	mIntroScreen.setTexture(RMI.getResource(Texture::IntroScreen));
 	mIntroScreen.setScale(2, 2);
@@ -224,9 +222,9 @@ void Level_Ship_1::load()
 		mPlayer.setPosition(sf::Vector2f(1400, 750));
 
 
-	mWaveAnimation.load(RMI.getResource(Texture::BackBoatWaveAnimation), sf::Vector2i(2, 2), sf::seconds(1.5), sf::seconds(0), true);
+	mWaveAnimation.load(RMI.getResource(Texture::BackBoatWaveAnimation), sf::Vector2i(2, 2), sf::seconds(1), sf::seconds(0), true);
 	mWaveAnimation.setIndex(200);
-	mWaveAnimation.setProportions(sf::Vector2f(1920, 120));
+	mWaveAnimation.setProportions(sf::Vector2f(1850, 120));
 	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
 	mWaveAnimation.setPosition(sf::Vector2f(1920, 1060));
 
@@ -234,6 +232,8 @@ void Level_Ship_1::load()
 	mRopeAnimation.setIndex(11);
 	mRopeAnimation.setProportions(sf::Vector2f(485, 494));
 	mRopeAnimation.setPosition(sf::Vector2f(155, 215));
+
+	mCurrentFootsteps = Footsteps::Hardwood;
 }
 
 void Level_Ship_1::unload()

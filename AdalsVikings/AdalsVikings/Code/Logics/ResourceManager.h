@@ -63,6 +63,10 @@ namespace Texture
 		InventoryBackground,
 		InventoryTile,
 
+		CursorDefault,
+		CursorArrow,
+		CursorInteract,
+
 		BrandrIdle,
 		BrandrTalk,
 		BrandrAngryTalk,
@@ -169,6 +173,9 @@ namespace Footsteps
 		Default,
 		Hardwood,
 		Grass,
+		Church,
+		Concrete,
+		Dirt,
 		SIZE
 	};
 };

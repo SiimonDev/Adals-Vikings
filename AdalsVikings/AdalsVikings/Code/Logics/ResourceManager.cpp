@@ -63,7 +63,7 @@ ResourceManager::ResourceManager()
 
 	mTexturePathMap[Texture::FrontBoatWaveAnimation] = "assets/MapFiles/Ship2/waves.png";
 	mTexturePathMap[Texture::BackBoatRopeAnimation] = "assets/MapFiles/Ship1/rope.png";
-	mTexturePathMap[Texture::BackBoatWaveAnimation] = "assets/MapFiles/Ship1/waves2.png";
+	mTexturePathMap[Texture::BackBoatWaveAnimation] = "assets/MapFiles/Ship1/waves.png";
 
 	mTexturePathMap[Texture::WaveAnimation] = "assets/MapFiles/Beach/waves.png";
 	mTexturePathMap[Texture::AxeAnimation] = "assets/images/Interface/MainMenu/flying_axe.png";
@@ -76,6 +76,10 @@ ResourceManager::ResourceManager()
 
 	mTexturePathMap[Texture::InventoryBackground] = "assets/images/Interface/inventory.png";
 	mTexturePathMap[Texture::InventoryTile] = "assets/images/InventoryTile.png";
+
+	mTexturePathMap[Texture::CursorDefault] = "assets/images/cursor.png";
+	mTexturePathMap[Texture::CursorArrow] = "assets/images/cursor_arrow.png";
+	mTexturePathMap[Texture::CursorInteract] = "assets/images/cursor_interact.png";
 
 	mTexturePathMap[Texture::BrandrIdle] = "assets/images/Brandr/character_brandr_blink.png";
 	mTexturePathMap[Texture::BrandrTalk] = "assets/images/Brandr/character_brandr_talk.png";
@@ -164,6 +168,10 @@ ResourceManager::ResourceManager()
 	mFootstepsPathMap[Footsteps::Default] = "assets/sounds/footsteps/test/";
 	mFootstepsPathMap[Footsteps::Hardwood] = "assets/sounds/footsteps/Hardwood/";
 	mFootstepsPathMap[Footsteps::Grass] = "assets/sounds/footsteps/Grass/";
+	
+	mFootstepsPathMap[Footsteps::Church] = "assets/sounds/footsteps/Church/";
+	mFootstepsPathMap[Footsteps::Concrete] = "assets/sounds/footsteps/Concrete/";
+	mFootstepsPathMap[Footsteps::Dirt] = "assets/sounds/footsteps/Dirt/";
 	/* ================================================= */
 }
 

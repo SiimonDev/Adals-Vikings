@@ -1,5 +1,6 @@
 #include "MouseState.h"
 #include "WindowState.h"
+#include "ResourceManager.h"
 #include <iostream>
 #include <map>
 
@@ -11,22 +12,21 @@ static std::map<int, bool> buttonStates;
 static std::map<int, bool> oldButtonStates;
 static std::map<int, double> timeDown;
 
-static sf::Texture mCursorTexture;
 static sf::Sprite mSprite;
 
 void MouseState::initialize()
 {
+	RMI.loadResource(Texture::CursorDefault);
+	RMI.loadResource(Texture::CursorArrow);
+	RMI.loadResource(Texture::CursorInteract);
+	mSprite.setTexture(RMI.getResource(Texture::CursorDefault));
+
 	for (size_t i = 0; i <= MouseSize; i++)
 	{
 		buttonStates.insert(std::make_pair(i, false));
 		oldButtonStates.insert(std::make_pair(i, false));
 		timeDown.insert(std::make_pair(i, 0));
 	}
-
-	mCursorTexture.loadFromFile("assets/images/cursor.png");
-	mCursorTexture.setSmooth(true);
-	mSprite.setTexture(mCursorTexture);
-	mSprite.setOrigin(mSprite.getGlobalBounds().width / 2, mSprite.getGlobalBounds().height / 2);
 	hasFocus = true;
 }
 
@@ -46,12 +46,23 @@ void MouseState::update(sf::Time frameTime)
 
 	if (isClicked(sf::Mouse::Left))
 		std::cout << "MousePosition: X:" << getMousePosition().x << "	Y:" << getMousePosition().y << std::endl;
+
+	mSprite.setPosition(sf::Vector2f(getMousePosition()));
 }
 
 void MouseState::render()
 {
-	mSprite.setPosition(sf::Vector2f(getMousePosition()));
 	CurrentWindow.draw(mSprite);
+}
+
+void MouseState::setCursorType(CursorType::ID id)
+{
+	if (id == CursorType::Default)
+		mSprite.setTexture(RMI.getResource(Texture::CursorDefault));
+	else if (id == CursorType::Arrow)
+		mSprite.setTexture(RMI.getResource(Texture::CursorArrow));
+	else if (id == CursorType::Interact)
+		mSprite.setTexture(RMI.getResource(Texture::CursorInteract));
 }
 
 void MouseState::checkEvents(sf::Event::EventType event)

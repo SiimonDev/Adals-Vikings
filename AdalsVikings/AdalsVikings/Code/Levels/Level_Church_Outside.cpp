@@ -51,6 +51,7 @@ void Level_Church_Outside::render(IndexRenderer &iRenderer)
 
 void Level_Church_Outside::load()
 {
+	RMI.loadResource(Footsteps::Dirt);
 	mNpcs["Princess"] = NpcPtr(new Npc(NpcHandler::getNpc("Princess")));
 	mNpcs["Princess"]->setDialogue("Princess_ChurchOutside");
 	mPortals[Outside_ChurchToRoad] = &PortalLoader::getPortal(Outside_ChurchToRoad);
@@ -59,10 +60,12 @@ void Level_Church_Outside::load()
 	mPortals[Outside_ChurchToRoad]->setWorking(true);
 	mPortals[Outside_ChurchToChurch]->setWorking(true);
 	Level::load();
+	mCurrentFootsteps = Footsteps::Dirt;
 }
 
 void Level_Church_Outside::unload()
 {
+	RMI.unloadResource(Footsteps::Dirt);
 	Level::unload();
 }
 

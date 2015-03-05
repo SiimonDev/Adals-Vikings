@@ -28,6 +28,7 @@ public:
 	bool getActivated();
 	bool getWorking();
 	bool getWalkAble();
+	bool isInside();
 	sf::Vector2f &getSpawn();
 
 	LevelFolder::ID getCurrentLevel();

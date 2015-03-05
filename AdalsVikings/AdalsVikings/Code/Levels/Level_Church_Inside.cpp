@@ -20,6 +20,7 @@ void Level_Church_Inside::render(IndexRenderer &iRenderer)
 
 void Level_Church_Inside::load()
 {
+	RMI.loadResource(Footsteps::Church);
 	mPortals[ChurchToOutside_Church] = &PortalLoader::getPortal(ChurchToOutside_Church);
 	mPortals[ChurchToOutside_Church]->setWorking(true);
 
@@ -27,10 +28,13 @@ void Level_Church_Inside::load()
 	mNpcs["Beor"]->setDialogue("Beor_ChurchInside");
 
 	Level::load();
+
+	mCurrentFootsteps = Footsteps::Church;
 }
 
 void Level_Church_Inside::unload()
 {
+	RMI.unloadResource(Footsteps::Church);
 	Level::unload();
 }
 
@@ -54,14 +58,3 @@ void Level_Church_Inside::checkEvents()
 {
 
 }
-
-//void Level_Church_Inside::setNearbyLevels()
-//{
-//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-//	{
-//		if (it->first == LevelFolder::Church_Outside)
-//			it->second->setIsNearbyLevel(true);
-//		else
-//			it->second->setIsNearbyLevel(false);
-//	}
-//}

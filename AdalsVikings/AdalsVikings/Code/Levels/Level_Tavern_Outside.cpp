@@ -20,15 +20,18 @@ void Level_Tavern_Outside::render(IndexRenderer &iRenderer)
 
 void Level_Tavern_Outside::load()
 {
+	RMI.loadResource(Footsteps::Dirt);
 	mPortals[TavernOutsideToBeach] = &PortalLoader::getPortal(TavernOutsideToBeach);
 	mPortals[TavernOutsideToTavernInside] = &PortalLoader::getPortal(TavernOutsideToTavernInside);
 	mPortals[TavernOutsideToTavernInside]->setWorking(true);
 	mPortals[TavernOutsideToBeach]->setWorking(true);
 	Level::load();
+	mCurrentFootsteps = Footsteps::Dirt;
 }
 
 void Level_Tavern_Outside::unload()
 {
+	RMI.unloadResource(Footsteps::Dirt);
 	Level::unload();
 }
 

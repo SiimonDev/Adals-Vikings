@@ -24,6 +24,7 @@ void Level_Forest_Camp::render(IndexRenderer &iRenderer)
 
 void Level_Forest_Camp::load()
 {
+	RMI.loadResource(Footsteps::Dirt);
 	mPortals[ForestCampToForestRoad] = &PortalLoader::getPortal(ForestCampToForestRoad);
 	mPortals[ForestCampToForestRoad]->setWorking(true);
 
@@ -43,10 +44,13 @@ void Level_Forest_Camp::load()
 	mDruids.setTexture(RMI.getResource(Texture::DruidsForest1));
 
 	Level::load();
+
+	mCurrentFootsteps = Footsteps::Dirt;
 }
 
 void Level_Forest_Camp::unload()
 {
+	RMI.unloadResource(Footsteps::Dirt);
 	RMI.unloadResource(Texture::FireForestCampAnimation);
 	Level::unload();
 }

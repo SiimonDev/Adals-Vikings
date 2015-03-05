@@ -1,17 +1,18 @@
 #include "NPC.h"
 #include "..\Dialog\DialogHandler.h"
 #include "..\Logics\WindowState.h"
+#include "..\Logics\Debug.h"
 #include <iostream>
 
 Npc::Npc(Font::ID id)
 : mName("Hero")
 , mPosition(0, 0)
-, mScale(0, 0)
+, mScale(1, 1)
 , mFlip(false)
 , mDisplayDescription(false)
 , mIsInvisble(false)
 {
-	mInvisbleRect.setFillColor(sf::Color(0, 0, 0, 0));
+	mInvisbleRect.setFillColor(sf::Color(0, 255, 0, 255));
 	mDescription.setFont(RMI.getResource(id));
 
 	mTextRect.setFillColor(sf::Color(0, 0, 0, 200));
@@ -35,7 +36,8 @@ void Npc::render(IndexRenderer &iRenderer)
 	else
 	{
 		mInvisbleRect.setPosition(mPosition);
-		iRenderer.addShape(mInvisbleRect, 999);
+		if (DebugMode)
+			iRenderer.addShape(mInvisbleRect, 1000);
 	}
 
 	if (mDisplayDescription && !mIsInvisble)
@@ -74,9 +76,9 @@ void Npc::updateDescription()
 		mDescription.setPosition(sf::Vector2f(mPosition.x + mInvisbleRect.getSize().x / 2,
 			mPosition.y - (mDescription.getGlobalBounds().height)));
 
-		mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 10, mDescription.getGlobalBounds().height + 10));
-		mTextRect.setPosition(sf::Vector2f(mPosition.x + mInvisbleRect.getSize().x / 2,
-			mPosition.y - (mTextRect.getGlobalBounds().height / 2)));
+		mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 40, mDescription.getGlobalBounds().height + 10));
+		mTextRect.setPosition(sf::Vector2f(mPosition.x + (mInvisbleRect.getSize().x / 2) - 20,
+			mPosition.y + (mTextRect.getGlobalBounds().height / 4)));
 	}
 }
 

@@ -59,18 +59,12 @@ void Portal::setPosition(sf::Vector2f &position)
 
 void Portal::setActive()
 {
-	if (MouseState::getMousePosition().x < mArea.getGlobalBounds().left + mArea.getGlobalBounds().width
-		&& MouseState::getMousePosition().x > mArea.getGlobalBounds().left
-		&& MouseState::getMousePosition().y > mArea.getGlobalBounds().top
-		&& MouseState::getMousePosition().y < mArea.getGlobalBounds().top + mArea.getGlobalBounds().height
-		&& MouseState::isClicked(sf::Mouse::Left))
-	{
+	if (isInside())
+		MouseState::setCursorType(CursorType::Arrow);
+	if (isInside() && MouseState::isClicked(sf::Mouse::Left))
 		mIsActive = true;
-	}
 	else if (MouseState::isClicked(sf::Mouse::Left))
-	{
 		mIsActive = false;
-	}
 }
 
 void Portal::setActivate(bool value)
@@ -122,6 +116,15 @@ void Portal::setCannotDialogue(std::string string)
 bool Portal::getWalkAble()
 {
 	return mWalkable;
+}
+
+bool Portal::isInside()
+{
+	return
+		(MouseState::getMousePosition().x < mArea.getGlobalBounds().left + mArea.getGlobalBounds().width
+		&& MouseState::getMousePosition().x > mArea.getGlobalBounds().left
+		&& MouseState::getMousePosition().y > mArea.getGlobalBounds().top
+		&& MouseState::getMousePosition().y < mArea.getGlobalBounds().top + mArea.getGlobalBounds().height);
 }
 
 bool Portal::getWorking()
