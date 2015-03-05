@@ -81,13 +81,13 @@ void Level_Tavern_Inside::load()
 
 		mNpcs["Dagny"]->setscale(sf::Vector2f(1, 1));
 		mNpcs["Dagny"]->setPosition(sf::Vector2f(1390, 880));
-		mNpcs["Dagny"]->setIndex(22);
+		mNpcs["Dagny"]->setIndex(10);
 		mNpcs["Dagny"]->setFlip(true);
 		mNpcs["Dagny"]->setDialogue("Dagny_Tavern");
 
 		mNpcs["Finnr"]->setscale(sf::Vector2f(0.8, 0.8));
 		mNpcs["Finnr"]->setPosition(sf::Vector2f(960, 785));
-		mNpcs["Finnr"]->setIndex(22);
+		mNpcs["Finnr"]->setIndex(4);
 		mNpcs["Finnr"]->setFlip(true);
 		mNpcs["Finnr"]->setDialogue("Finnr_Tavern");
 

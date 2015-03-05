@@ -2,8 +2,8 @@
 <conversation>
 	<useText useText="Yeah, havn't had my ass kicked in ages now." />
 	<lookText lookText="Yngvarr... less of a nice guy" />
-	<text character="Ulfr" disabled="false" default="false" say="Hey yngvarr." timer="2.0" turned="false" />
-	<text character="Yngvarr" disabled="false" default="false" say="Whatcha want, scrub?" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Hey yngvarr." timer="2.0" turned="false" />
+	<text character="Yngvarr" disabled="true" default="false" say="Whatcha want, scrub?" timer="2.0" turned="false" />
 	<option_container disabled="false">
 		<option choice_text="Err.." disabled="true">
 			<text character="Ulfr" disablePrevious="false" say="Err.." timer="1.2" />
