@@ -78,7 +78,12 @@ void Level_Ship_1::update(sf::Time &frametime)
 				mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
 				mNpcs["Brynja"]->updateAnimationStyle();
 				mNpcs["Brynja"]->setFlip(true);
-				RMI.unloadResource(Texture::BrynjaSleeping);
+				
+				//RMI.loadResource(Texture::ValdisTalk);
+				//RMI.loadResource(Texture::ValdisIdle);
+				//mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
+				//mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
+				//mNpcs["Valdis"]->setAnimationStyle("Idle");
 
 				mBrynjaFade1 = true;
 			}
@@ -233,6 +238,8 @@ void Level_Ship_1::unload()
 	RMI.unloadResource(Texture::IntroScreen);
 	RMI.unloadResource(Texture::ValdisSittingIdle);
 	RMI.unloadResource(Texture::ValdisSittingTalk);
+	//RMI.loadResource(Texture::ValdisTalk);
+	//RMI.loadResource(Texture::ValdisIdle);
 	RMI.unloadResource(Texture::LeifrSitIdle);
 	RMI.unloadResource(Texture::LeifrSitTalk);
 	RMI.unloadResource(Texture::BackBoatRopeAnimation);

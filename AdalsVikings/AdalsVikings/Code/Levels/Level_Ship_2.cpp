@@ -73,6 +73,7 @@ void Level_Ship_2::render(IndexRenderer &iRenderer)
 void Level_Ship_2::load()
 {
 	RMI.loadResource(Texture::BrandrAngryTalk);
+	RMI.loadResource(Texture::BrandrAngryIdle);
 	RMI.loadResource(Texture::FrontBoatWaveAnimation);
 	mPortals[Ship2ToShip1] = &PortalLoader::getPortal(Ship2ToShip1); // This does not create a new portal it only references the one in PortalLoader;
 	mPortals[Ship2ToShip1]->setWorking(true);
@@ -83,6 +84,7 @@ void Level_Ship_2::load()
 	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
 	mNpcs["Brandr"]->setIndex(14);
 	mNpcs["Brandr"]->SetTalkAnimation(Texture::BrandrAngryTalk, sf::Vector2i(4, 1), sf::milliseconds(550), sf::Time::Zero);
+	mNpcs["Brandr"]->setIdleAnimation(Texture::BrandrAngryIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(3.7));
 
 	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
 	mNpcs["Yngvarr"]->setIndex(14);
@@ -128,6 +130,8 @@ void Level_Ship_2::load()
 
 void Level_Ship_2::unload()
 {
+	RMI.unloadResource(Texture::BrandrAngryTalk);
+	RMI.unloadResource(Texture::BrandrAngryIdle);
 	RMI.unloadResource(Texture::FrontBoatWaveAnimation);
 	Level::unload();
 }
@@ -179,14 +183,3 @@ void Level_Ship_2::checkEvents()
 	if (!BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue))
 		BoatEvents::triggerEvent(BoatEvent::StartDialogue);
 }
-
-//void Level_Ship_2::setNearbyLevels()
-//{
-//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-//	{
-//		if (it->first == LevelFolder::Ship_1)
-//			it->second->setIsNearbyLevel(true);
-//		else
-//			it->second->setIsNearbyLevel(false);
-//	}
-//}

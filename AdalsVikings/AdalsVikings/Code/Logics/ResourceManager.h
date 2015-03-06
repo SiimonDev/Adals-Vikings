@@ -70,6 +70,7 @@ namespace Texture
 		BrandrIdle,
 		BrandrTalk,
 		BrandrAngryTalk,
+		BrandrAngryIdle,
 		ValdisIdle,
 		ValdisTalk,
 		ValdisSittingIdle,

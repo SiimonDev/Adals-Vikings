@@ -84,6 +84,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::BrandrIdle] = "assets/images/Brandr/character_brandr_blink.png";
 	mTexturePathMap[Texture::BrandrTalk] = "assets/images/Brandr/character_brandr_talk.png";
 	mTexturePathMap[Texture::BrandrAngryTalk] = "assets/images/Brandr/character_brandr_angry_talk.png";
+	mTexturePathMap[Texture::BrandrAngryIdle] = "assets/images/Brandr/character_brandr_angry_blink.png";
 	mTexturePathMap[Texture::ValdisIdle] = "assets/images/Valdis/character_valdis_blink.png";
 	mTexturePathMap[Texture::ValdisTalk] = "assets/images/Valdis/character_valdis_talk.png";
 	mTexturePathMap[Texture::ValdisSittingIdle] = "assets/images/Valdis/character_valdis_sitting_blink.png";
