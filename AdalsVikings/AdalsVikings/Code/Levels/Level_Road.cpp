@@ -11,7 +11,7 @@ Level_Road::Level_Road(Player &player, ActionWheel &actionWheel)
 
 void Level_Road::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, 100);
+	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, 20);
 }
 
 void Level_Road::update(sf::Time &frametime)
@@ -31,7 +31,7 @@ void Level_Road::update(sf::Time &frametime)
 	{
 		if (!DialogHandler::getDialogue("GiveScroll_Road").getActiveConversation() && !DialogHandler::getDialogue("GiveScroll_Road").getHasStopped())
 		{
-			mPlayer.removeItemFromInventory("scroll");
+			mPlayer->removeItemFromInventory("scroll");
 			DialogHandler::startDialogue("GiveScroll_Road");
 		}
 		else if (DialogHandler::getDialogue("GiveScroll_Road").getHasStopped() && !mFade1)
@@ -110,7 +110,6 @@ void Level_Road::load()
 
 void Level_Road::unload()
 {
-	AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
 	RMI.unloadResource(Footsteps::Dirt);
 	Level::unload();
 }
@@ -149,7 +148,7 @@ void Level_Road::checkInteractEvents()
 }
 void Level_Road::checkEvents()
 {
-	if (Act1Events::hasBeenTriggered(Act1Event::Enter_Road) && !Act1Events::hasBeenHandled(Act1Event::Enter_Road) && mPlayer.getPosition().y <= 970)
+	if (Act1Events::hasBeenTriggered(Act1Event::Enter_Road) && !Act1Events::hasBeenHandled(Act1Event::Enter_Road) && mPlayer->getPosition().y <= 970)
 	{
 		Act1Events::handleEvent(Act1Event::Enter_Road);
 		Act1Events::triggerEvent(Act1Event::Road_StartMailmanConv);

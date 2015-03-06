@@ -1,6 +1,6 @@
 *Type: standard
 *ID: $axeHead$
-*Name: axeHead
+*Name: Axehead
 *ispickupable: True
 *pickup: "" ~2,0
 *lookat: "This is useless without a shaft." ~1,5

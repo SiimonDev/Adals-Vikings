@@ -1,4 +1,5 @@
 #include "Level_Camp_Clearing.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Camp_Clearing::Level_Camp_Clearing(Player &player, ActionWheel &actionWheel)
@@ -7,6 +8,11 @@ Level_Camp_Clearing::Level_Camp_Clearing(Player &player, ActionWheel &actionWhee
 	, mFade2(false)
 {
 	mBackgroundID = LevelFolder::Camp_Clearing;
+}
+
+void Level_Camp_Clearing::restartSounds()
+{
+	AudioPlayer::playHDDSound(HDDSound::Church_Outside_Ambient, true, 20);
 }
 
 void Level_Camp_Clearing::update(sf::Time &frametime)
@@ -33,8 +39,9 @@ void Level_Camp_Clearing::update(sf::Time &frametime)
 			}
 		}
 	}
-	changeLevel();
+	
 	Level::update(frametime);
+	changeLevel();
 }
 
 void Level_Camp_Clearing::render(IndexRenderer &iRenderer)
@@ -56,9 +63,9 @@ void Level_Camp_Clearing::load()
 	mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1160, 724));
 	if (!Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest))
 		mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
-	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && !mPlayer.hasItemInInventory("bearDeer"))
+	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && !mPlayer->hasItemInInventory("bearDeer"))
 		mNpcs["Leifr"]->setDialogue("LeifrFire_ClearingCamp");
-	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && mPlayer.hasItemInInventory("bearDeer"))
+	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && mPlayer->hasItemInInventory("bearDeer"))
 		mNpcs["Leifr"]->setDialogue("LeifrBear_ClearingCamp");
 
 	/*------------------- Brynja ----------------*/
@@ -111,6 +118,12 @@ void Level_Camp_Clearing::load()
 	mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 2);
 
 	mCurrentFootsteps = Footsteps::Dirt;
+
+
+	/* Debug */
+	//mPortals[CampToForestRoad]->setWorking(true);
+	//mPortals[CampToRoad]->setWorking(true);
+	/* ===== */
 }
 
 void Level_Camp_Clearing::unload()
@@ -122,9 +135,17 @@ void Level_Camp_Clearing::unload()
 void Level_Camp_Clearing::changeLevel()
 {
 	if (mPortals[CampToRoad]->getActivated() && mPortals[CampToRoad]->getWorking())
+	{
 		LVLMI.changeLevel(LevelFolder::Road);
+		AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
+		mRestartSounds = true;
+	}
 	else if (mPortals[CampToForestRoad]->getActivated() && mPortals[CampToForestRoad]->getWorking())
+	{
 		LVLMI.changeLevel(LevelFolder::Forest_Road);
+		AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
+		mRestartSounds = true;
+	}
 }
 
 void Level_Camp_Clearing::checkInteractEvents()
@@ -138,8 +159,8 @@ void Level_Camp_Clearing::checkEvents()
 	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_Brynja) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))
 		if (DialogHandler::getDialogue("Brynja_ClearingCamp").getHasStopped())
 		{
-		Act1Events::handleEvent(Act1Event::CampClearing_Brynja);
-		mPortals[CampToRoad]->setWorking(true);
+			Act1Events::handleEvent(Act1Event::CampClearing_Brynja);
+			mPortals[CampToRoad]->setWorking(true);
 		}
 
 	if (DialogHandler::getDialogue("Valdis_ClearingCamp").getActiveConversation())
@@ -157,7 +178,7 @@ void Level_Camp_Clearing::checkEvents()
 		Act1Events::triggerEvent(Act1Event::CampClearing_TalkedToAll);
 	}
 
-	if (!Act1Events::hasBeenTriggered(Act1Event::GotBeerDeerPelt) && mPlayer.hasItemInInventory("bearDeer"))
+	if (!Act1Events::hasBeenTriggered(Act1Event::GotBeerDeerPelt) && mPlayer->hasItemInInventory("bearDeer"))
 		Act1Events::triggerEvent(Act1Event::GotBeerDeerPelt);
 
 	if (!Act1Events::hasBeenTriggered(Act1Event::CampClearing_Leifr) && Act1Events::hasBeenTriggered(Act1Event::GotBeerDeerPelt))

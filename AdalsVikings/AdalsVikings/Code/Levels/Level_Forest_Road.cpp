@@ -1,4 +1,5 @@
 #include "Level_Forest_Road.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Forest_Road::Level_Forest_Road(Player &player, ActionWheel &actionWheel)
@@ -7,10 +8,15 @@ Level_Forest_Road::Level_Forest_Road(Player &player, ActionWheel &actionWheel)
 	mBackgroundID = LevelFolder::Forest_Road;
 }
 
+void Level_Forest_Road::restartSounds()
+{
+	AudioPlayer::playHDDSound(HDDSound::Forest_Road_Ambient, true, 20);
+}
+
 void Level_Forest_Road::update(sf::Time &frametime)
 {
-	changeLevel();
 	Level::update(frametime);
+	changeLevel();
 }
 
 void Level_Forest_Road::render(IndexRenderer &iRenderer)
@@ -41,9 +47,17 @@ void Level_Forest_Road::unload()
 void Level_Forest_Road::changeLevel()
 {
 	if (mPortals[ForestRoadToCamp]->getActivated() && mPortals[ForestRoadToCamp]->getWorking())
+	{
 		LVLMI.changeLevel(LevelFolder::Camp_Clearing);
+		AudioPlayer::stopHDDSound(HDDSound::Forest_Road_Ambient);
+		mRestartSounds = true;
+	}
 	else if (mPortals[ForestRoadToForestCamp]->getActivated() && mPortals[ForestRoadToForestCamp]->getWorking())
+	{
 		LVLMI.changeLevel(LevelFolder::Forest_Camp);
+		AudioPlayer::stopHDDSound(HDDSound::Forest_Road_Ambient);
+		mRestartSounds = true;
+	}
 }
 
 void Level_Forest_Road::checkInteractEvents()

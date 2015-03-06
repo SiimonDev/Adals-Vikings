@@ -27,7 +27,7 @@ index: $99
 scale: $1.0
 hascollision: $false
 ############
-*id: $birdAtChurch
+*id: $birdAtChurchInvisible
 position: $X:1297 $Y:256
 interactPosition: $X:0 $Y:0
 index: $99

@@ -1,4 +1,4 @@
-*Type: standard
+*Type: invisible
 *ID: $bearPelt$
 *Name: Bear Pelt
 *ispickupable: True
@@ -6,6 +6,6 @@
 *lookat: "Who would just leave a perfectly good pelt like this?" ~3,0
 *deny: "I can't do that." ~1,5
 *denywith: 
-*combine: $antlers$ $bearDeer$ "This will hopefully be a good enough costume." ~2,5; 
+*combine: 
 *interact: 
-*texture: "img_bearPelt_id.png"
+*invisible: X:   Y:

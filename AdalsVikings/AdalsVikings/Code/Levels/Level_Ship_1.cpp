@@ -21,13 +21,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 	mWaveAnimation.animate(frametime);
 	mRopeAnimation.animate(frametime);
 	if (KeyboardState::isPressed(sf::Keyboard::F))
-		mPlayer.addItemToInventory("bucket");
-
-	if(BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen) && !BoatEvents::hasBeenHandled(BoatEvent::IntroScreen))
-	{
-		if (!mPlayer.isDestinationReached())
-			BoatEvents::handleEvent(BoatEvent::IntroScreen);
-	}
+		mPlayer->addItemToInventory("bucket");
 
 	if (BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
 	{
@@ -47,14 +41,14 @@ void Level_Ship_1::update(sf::Time &frametime)
 
 	if (BoatEvents::hasBeenTriggered(BoatEvent::GivenBucketToLeifr) && !BoatEvents::hasBeenHandled(BoatEvent::GivenBucketToLeifr))
 	{
-		mPlayer.removeItemFromInventory("bucket");
+		mPlayer->removeItemFromInventory("bucket");
 		DialogHandler::startDialogue("BucketDialogue_Ship1");
 
 		BoatEvents::handleEvent(BoatEvent::GivenBucketToLeifr);
 	}
 	if (BoatEvents::hasBeenTriggered(BoatEvent::FluteFromAlfr) && !BoatEvents::hasBeenHandled(BoatEvent::FluteFromAlfr))
 	{
-		mPlayer.addItemToInventory("flute");
+		mPlayer->addItemToInventory("flute");
 
 		BoatEvents::handleEvent(BoatEvent::FluteFromAlfr);
 	}
@@ -65,7 +59,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 			//FadeI.setAlpha(0);
 			DialogHandler::getDialogue("Leifr_Ship1").disableOption(2);
 			DialogHandler::getDialogue("Alfr_Ship1").disableOption(3);
-			mPlayer.removeItemFromInventory("flute");
+			mPlayer->removeItemFromInventory("flute");
 			DialogHandler::startDialogue("BrynjaFlute_Ship1");
 			mStartBrynja = true;
 		}
@@ -107,9 +101,9 @@ void Level_Ship_1::update(sf::Time &frametime)
 
 		if (DialogHandler::getDialogue("BrynjaConversation_Ship1").getHasStopped() && mBrynjaConv)
 		{
-			mPlayer.addItemToInventory("fluteBroken");
+			mPlayer->addItemToInventory("fluteBroken");
 
-			mPlayer.addItemToInventory("map");
+			mPlayer->addItemToInventory("map");
 			DialogHandler::getDialogue("Brandr_Ship2").disableOption(2);
 			BoatEvents::handleEvent(BoatEvent::GottenMap);
 			BoatEvents::handleEvent(BoatEvent::DroppedFluteOnBrynja);
@@ -117,7 +111,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 	}
 	if (DialogHandler::getDialogue("BucketDialogue_Ship1").getHasStopped() && !mOldBucketAdded)
 	{
-		mPlayer.addItemToInventory("bucketBroken");
+		mPlayer->addItemToInventory("bucketBroken");
 		mOldBucketAdded = true;
 	}
 
@@ -127,7 +121,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 		DialogHandler::getDialogue("Finnr_Ship1").enableOption(2);
 		DialogHandler::getDialogue("Leifr_Ship1").enableOption(2);
 		DialogHandler::getDialogue("Alfr_Ship1").enableOption(3);
-		if (!mPlayer.hasItemInInventory("bucket"))
+		if (!mPlayer->hasItemInInventory("bucket"))
 			DialogHandler::getDialogue("Dagny_Ship2").enableOption(2);
 		BoatEvents::handleEvent(BoatEvent::TalkedToValdis);
 	}
@@ -138,7 +132,9 @@ void Level_Ship_1::update(sf::Time &frametime)
 void Level_Ship_1::render(IndexRenderer &iRenderer)
 {
 	if (BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen) && !BoatEvents::hasBeenHandled(BoatEvent::IntroScreen))
-		iRenderer.addSprite(mIntroScreen, 99999);
+	{
+		mShowInstroScreen = true;
+	}
 	CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
 	mWaveAnimation.render(iRenderer);
 	mRopeAnimation.render(iRenderer);
@@ -158,10 +154,6 @@ void Level_Ship_1::load()
 	RMI.loadResource(Texture::BackBoatRopeAnimation);
 	RMI.loadResource(Texture::BackBoatWaveAnimation);
 	RMI.loadResource(Footsteps::Hardwood);
-
-	mIntroScreen.setTexture(RMI.getResource(Texture::IntroScreen));
-	mIntroScreen.setScale(2, 2);
-	mIntroScreen.setPosition(150, 50);
 
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
 	mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -219,7 +211,7 @@ void Level_Ship_1::load()
 	mNpcs["Brynja"]->setDialogue("Brynja_Ship1");
 
 	if (!BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
-		mPlayer.setPosition(sf::Vector2f(1400, 750));
+		mPlayer->setPosition(sf::Vector2f(1400, 750));
 
 
 	mWaveAnimation.load(RMI.getResource(Texture::BackBoatWaveAnimation), sf::Vector2i(2, 2), sf::seconds(1), sf::seconds(0), true);

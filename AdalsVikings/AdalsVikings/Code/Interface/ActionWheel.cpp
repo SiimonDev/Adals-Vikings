@@ -60,7 +60,7 @@ void ActionWheel::update()
 	mLookSelected = false;
 	mButtonSelected = false;
 
-	if (MouseState::isPressed(sf::Mouse::Left, 0.5))
+	if (MouseState::isPressed(sf::Mouse::Left, 0.3))
 		mIsActive = true;
 	else
 		mIsReleased = true;
@@ -114,5 +114,4 @@ void ActionWheel::setfalse()
 	mButtonSelected = false;
 	mPickUpSelected = false;
 	mLookSelected = false;
-
 }

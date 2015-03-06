@@ -17,7 +17,6 @@ int mWidth = 1280;
 int mHeight = 720;
 
 IndexRenderer iRenderer;
-sf::RoundedRectangleShape roundedRect;
 
 bool runGame = false;
 
@@ -37,11 +36,6 @@ Game::Game()
 	LSI.initialize();
 	KeyboardState::initialize();
 	MouseState::initialize();
-
-	roundedRect.setSize(sf::Vector2f(100, 50));
-	roundedRect.setCornersRadius(5);
-	roundedRect.setOutlineThickness(5);
-	roundedRect.setPosition(10, 20);
 }
 
 Game::~Game()
@@ -97,10 +91,10 @@ void Game::update(sf::Time frameTime)
 		{
 			mWindow.close();
 		}
+		AudioPlayer::update(frameTime);
 	}
 
 	// Always Last
-	AudioPlayer::update(frameTime);
 	KeyboardState::update(frameTime);
 	MouseState::update(frameTime);
 	DebugI.update(frameTime);
@@ -110,6 +104,7 @@ void Game::render()
 {
 	mWindow.clear(sf::Color::Black);
 	iRenderer.clear();
+	
 	if (!LSI.getIsDone() && LSI.getIsStarted())
 	{
 		LSI.render(iRenderer);
@@ -126,8 +121,8 @@ void Game::render()
 			PathFinder::getCurrentTileMap().render(iRenderer);
 		}
 	}
+	
 	MouseState::render();
-	mWindow.draw(roundedRect);
 	mWindow.display();
 }
 

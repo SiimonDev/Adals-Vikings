@@ -1,4 +1,5 @@
 #include "Level_Forest_Camp.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Forest_Camp::Level_Forest_Camp(Player &player, ActionWheel &actionWheel)
@@ -7,13 +8,19 @@ Level_Forest_Camp::Level_Forest_Camp(Player &player, ActionWheel &actionWheel)
 	mBackgroundID = LevelFolder::Forest_Camp;
 }
 
+void Level_Forest_Camp::restartSounds()
+{
+	AudioPlayer::playHDDSound(HDDSound::Forest_Camp_Ambient, true, 20);
+}
+
 void Level_Forest_Camp::update(sf::Time &frametime)
 {
 	if (KeyboardState::isPressed(sf::Keyboard::Num1))
-		mPlayer.addItemToInventory("bearDeer");
+		mPlayer->addItemToInventory("bearDeer");
 	mFireAnimation.animate(frametime);
-	changeLevel();
+	
 	Level::update(frametime);
+	changeLevel();
 }
 
 void Level_Forest_Camp::render(IndexRenderer &iRenderer)
@@ -65,7 +72,11 @@ void Level_Forest_Camp::unload()
 void Level_Forest_Camp::changeLevel()
 {
 	if (mPortals[ForestCampToForestRoad]->getActivated() && mPortals[ForestCampToForestRoad]->getWorking())
+	{
 		LVLMI.changeLevel(LevelFolder::Forest_Road);
+		AudioPlayer::stopHDDSound(HDDSound::Forest_Camp_Ambient);
+		mRestartSounds = true;
+	}
 }
 
 void Level_Forest_Camp::checkInteractEvents()
@@ -79,14 +90,3 @@ void Level_Forest_Camp::checkEvents()
 		!Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest))
 		Act1Events::triggerEvent(Act1Event::ForestCamp_NeedFireQuest);
 }
-
-//void Level_Forest_Camp::setNearbyLevels()
-//{
-//	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = LVLMI.getCurrentLevels().begin(); it != LVLMI.getCurrentLevels().end(); ++it)
-//	{
-//		if (it->first == LevelFolder::Forest_Road)
-//			it->second->setIsNearbyLevel(true);
-//		else
-//			it->second->setIsNearbyLevel(false);
-//	}
-//}

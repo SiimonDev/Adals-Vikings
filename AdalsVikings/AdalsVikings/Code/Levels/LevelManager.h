@@ -4,6 +4,7 @@
 #include "..\Interface\ActionWheel.h"
 #include "..\Objects\ObjectHandler.h"
 #include "..\Interface\LoadingScreen.h"
+#include "..\Interface\HUD.h"
 #include "..\NPCs\NpcHandler.h"
 #include <SFML\Graphics.hpp>
 #include <map>
@@ -49,7 +50,8 @@ private:
 	LevelManager(const LevelManager&);
 	void operator=(const LevelManager&);
 
-	Player mPlayer;
+	HUD mHud;
+	Player* mPlayer;
 	ActionWheel mActionWheel;
 	LevelFolder::ID mCurrentID;
 	Act mCurrentAct;

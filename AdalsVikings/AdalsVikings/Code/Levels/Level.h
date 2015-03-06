@@ -66,7 +66,7 @@ protected:
 	std::ofstream mOfstream;
 
 	ActionWheel *mActionWheel;
-	Player &mPlayer;
+	Player* mPlayer;
 	TileMap mTileMap;
 
 	std::string mTileMapFilePath;

@@ -1,4 +1,4 @@
-*Type: standard
+*Type: invisible
 *ID: $antlers$
 *Name: Antlers
 *ispickupable: True
@@ -6,6 +6,6 @@
 *lookat: "These could be used for... something." ~2,5
 *deny: "I can't do that." ~1,5
 *denywith: 
-*combine: $bearPelt$ $bearDeer$ "This will hopefully be a good enough costume." ~2,5; 
+*combine: 
 *interact: 
-*texture: "img_antlers_id.png"
+*invisible: X:   Y:

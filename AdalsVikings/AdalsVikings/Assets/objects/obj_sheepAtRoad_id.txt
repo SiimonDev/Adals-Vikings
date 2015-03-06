@@ -1,4 +1,4 @@
-*Type: invisible
+*Type: animated
 *ID: $sheepAtRoad$
 *Name: Sheep
 *ispickupable: True
@@ -8,4 +8,5 @@
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:  Y:
+*texture: "img_sheepAtRoad_id.png"
+*animation: X:7 Y:3 ~5,0 ~2,0

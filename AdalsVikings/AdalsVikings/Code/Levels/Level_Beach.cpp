@@ -55,8 +55,8 @@ void Level_Beach::load()
 
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro) && !Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
 	{
-		mPortals[BeachToRoad]->setCannotDialogue("I was told no to leave the beach!");
-		mPortals[BeachToTavernOutside]->setCannotDialogue("I was told no to leave the beach!");
+		mPortals[BeachToRoad]->setCannotDialogue("I was told not to leave the beach!");
+		mPortals[BeachToTavernOutside]->setCannotDialogue("I was told not to leave the beach!");
 
 		mCutSceneView.setCenter(1920 / 2 - 450, 1080 / 2 + 270);
 		mCutSceneView.setSize(1920, 1080);
@@ -69,9 +69,9 @@ void Level_Beach::load()
 		mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
 		mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
 
-		mPlayer.setPosition(sf::Vector2f(410, 1070));
-		mPlayer.setFlip(true);
-		mPlayer.UpdateAnimationStyle();
+		mPlayer->setPosition(sf::Vector2f(410, 1070));
+		mPlayer->setFlip(true);
+		mPlayer->UpdateAnimationStyle();
 
 		mNpcs["Brandr"]->setFlip(true);
 		mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
@@ -186,8 +186,6 @@ void Level_Beach::unload()
 	RMI.unloadResource(Texture::YngvarrSadIdle);
 	RMI.unloadResource(Texture::YngvarrSadTalk);
 
-	AudioPlayer::stopHDDSound(HDDSound::Beach_Ambient);
-	AudioPlayer::stopHDDSound(HDDSound::ExplorerTheme_Music);
 	Level::unload();
 }
 
@@ -322,9 +320,9 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 				mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 1);
 				mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 1);
 
-				mPlayer.setPosition(sf::Vector2f(760, 800));
-				mPlayer.setFlip(false);
-				mPlayer.setAnimationStyle(AnimationType::Idle);
+				mPlayer->setPosition(sf::Vector2f(760, 800));
+				mPlayer->setFlip(false);
+				mPlayer->setAnimationStyle(AnimationType::Idle);
 
 				mEndingFade1 = true;
 			}
@@ -375,6 +373,7 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 void Level_Beach::talkToNpcs()
 {
 	/* Debug stuff */
+	//Act1Events::handleEvent(Act1Event::Beach_Ending);
 	//Act1Events::handleEvent(Act1Event::Beach_Intro);
 
 	//Act1Events::handleEvent(Act1Event::Beach_Dagny);

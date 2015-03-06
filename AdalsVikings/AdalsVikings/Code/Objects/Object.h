@@ -86,6 +86,7 @@ private:
 	bool mCollision;
 	bool mCanPickUp;
 	bool mDisplayDescription;
+	
 	int mIndex;
 
 	std::map<std::string, Dialog> mInteractDialogs;

@@ -139,7 +139,6 @@ void AudioPlayer::unload()
 
 	// Delete all the Music
 	for (std::map<HDDSound::ID, sf::Music*>::iterator it = mHDDSound.begin(); it != mHDDSound.end(); ++it){
-		it->second->stop();
 		delete it->second;
 	}
 	mHDDSound.clear();

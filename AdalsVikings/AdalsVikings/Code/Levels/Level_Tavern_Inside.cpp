@@ -10,14 +10,14 @@ Level_Tavern_Inside::Level_Tavern_Inside(Player &player, ActionWheel &actionWhee
 void Level_Tavern_Inside::update(sf::Time &frametime)
 {
 	if (KeyboardState::isPressed(sf::Keyboard::Num1))
-		mPlayer.addItemToInventory("cross");
+		mPlayer->addItemToInventory("cross");
 	else if (KeyboardState::isPressed(sf::Keyboard::Num2))
-		mPlayer.addItemToInventory("ropePiece");
+		mPlayer->addItemToInventory("ropePiece");
 	if (Act1Events::hasBeenTriggered(Act1Event::TavernInside_GetAxeHead) && !Act1Events::hasBeenHandled(Act1Event::TavernInside_GetAxeHead))
 	{
 		if (DialogHandler::getDialogue("Brandr_Tavern").getText() == "Not like I've got \nmuch of a choice.")
 		{
-			mPlayer.addItemToInventory("axeHead");
+			mPlayer->addItemToInventory("axeHead");
 			Act1Events::handleEvent(Act1Event::TavernInside_GetAxeHead);
 		}
 	}
@@ -29,7 +29,7 @@ void Level_Tavern_Inside::update(sf::Time &frametime)
 			FadeI.fadeOut(frametime);
 			if (FadeI.getFaded())
 			{
-				mPlayer.removeItemFromInventory("axe");
+				mPlayer->removeItemFromInventory("axe");
 				mNpcs.clear();
 				mFade1 = true;
 			}

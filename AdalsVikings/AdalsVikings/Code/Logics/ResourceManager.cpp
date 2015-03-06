@@ -58,7 +58,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::PauseMenuMainMenuButton] = "assets/images/interface/pauseManu/button_main_menu.png";
 	mTexturePathMap[Texture::PauseMenuExitButton] = "assets/images/interface/pauseManu/button_exit.png";
 	mTexturePathMap[Texture::PauseMenuBackground] = "assets/images/interface/pauseManu/InGame_menu.png";
-	mTexturePathMap[Texture::IntroScreen] = "assets/images/interface/tutorial2.png";
+	mTexturePathMap[Texture::IntroScreen] = "assets/images/interface/tutorial3.png";
 	mTexturePathMap[Texture::TextBackgroundPaper] = "assets/images/textbackgorund.jpg";
 
 	mTexturePathMap[Texture::FrontBoatWaveAnimation] = "assets/MapFiles/Ship2/waves.png";
@@ -143,7 +143,7 @@ ResourceManager::ResourceManager()
 	mHDDSoundPathMap[HDDSound::Boat_Music] = "assets/sounds/music/Boat_music.ogg";
 
 	mHDDSoundPathMap[HDDSound::Beach_Ambient] = "assets/sounds/ambient/beach_ambient.ogg";
-	mHDDSoundPathMap[HDDSound::ExplorerTheme_Music] = "assets/sounds/music/exp_theme.ogg";
+	mHDDSoundPathMap[HDDSound::ExplorerTheme_Music] = "assets/sounds/music/beach_road_theme.ogg";
 	mHDDSoundPathMap[HDDSound::Beach_Wave] = "assets/sounds/beach/wave.ogg";
 
 	mHDDSoundPathMap[HDDSound::Road_Ambient] = "assets/sounds/ambient/road_ambient.ogg";

@@ -25,6 +25,7 @@
     <ClCompile Include="Code\Dialog\pugixml.cpp" />
     <ClCompile Include="code\Interface\ActionWheel.cpp" />
     <ClCompile Include="code\Interface\Button.cpp" />
+    <ClCompile Include="Code\Interface\HUD.cpp" />
     <ClCompile Include="Code\Interface\Inventory.cpp" />
     <ClCompile Include="Code\Interface\InvTile.cpp" />
     <ClCompile Include="Code\Interface\LoadingScreen.cpp" />
@@ -81,6 +82,7 @@
     <ClInclude Include="Code\Dialog\pugixml.hpp" />
     <ClInclude Include="code\Interface\ActionWheel.h" />
     <ClInclude Include="code\Interface\Button.h" />
+    <ClInclude Include="Code\Interface\HUD.h" />
     <ClInclude Include="Code\Interface\Inventory.h" />
     <ClInclude Include="Code\Interface\InvTile.h" />
     <ClInclude Include="Code\Interface\LoadingScreen.h" />

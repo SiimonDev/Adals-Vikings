@@ -17,9 +17,9 @@ public:
 
 private:
 	bool mGameStart;
+	bool mShowInstroScreen;
 	bool mOldBucketAdded;
 	bool mStartBrynja, mBrynjaFade1, mBrynjaFade2, mBrynjaConv;
-	sf::Sprite mIntroScreen;
 
 	Animation mRopeAnimation;
 	Animation mWaveAnimation;

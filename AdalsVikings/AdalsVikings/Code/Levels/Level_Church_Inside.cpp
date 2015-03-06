@@ -40,7 +40,6 @@ void Level_Church_Inside::load()
 
 void Level_Church_Inside::unload()
 {
-	AudioPlayer::stopHDDSound(HDDSound::Church_Inside_Ambient);
 	RMI.unloadResource(Footsteps::Church);
 	Level::unload();
 }

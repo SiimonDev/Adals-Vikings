@@ -37,7 +37,6 @@ void Level_Tavern_Outside::load()
 
 void Level_Tavern_Outside::unload()
 {
-	AudioPlayer::stopHDDSound(HDDSound::Tavern_Outside_Ambient);
 	RMI.unloadResource(Footsteps::Dirt);
 	Level::unload();
 }

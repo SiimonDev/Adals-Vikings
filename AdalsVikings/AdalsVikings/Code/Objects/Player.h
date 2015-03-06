@@ -3,6 +3,7 @@
 #include "..\Logics\IndexRenderer.h"
 #include "..\Logics\Animation.h"
 #include "..\Interface\Inventory.h"
+#include "..\Interface\HUD.h"
 #include <SFML\Graphics.hpp>
 
 typedef std::vector<sf::Vertex> Path;
@@ -53,7 +54,7 @@ namespace AnimationType
 class Player
 {
 public:
-	Player();
+	Player(HUD &hud);
 
 	void load();
 	void unload();
@@ -67,6 +68,7 @@ public:
 	void saveInventory();
 	void refreshInventory();
 	void clearInventory();
+	void toggleInventory();
 	void move(sf::Time &frameTime);
 	void walkPath(Path &path);
 	void playFootstepSound();
@@ -104,6 +106,7 @@ private:
 
 	int mWidth;
 	int mHeight;
+	int mPlayerPadding;
 
 	bool mDestinationReached;
 	bool mTargetReached;
@@ -119,6 +122,7 @@ private:
 	float mDistanceTraveled;
 	float mTotalDistance;
 
+	HUD* mHud;
 	Inventory mInventory;
 	Animation mPlayerAnimation;
 	Intention::ID mIntention;

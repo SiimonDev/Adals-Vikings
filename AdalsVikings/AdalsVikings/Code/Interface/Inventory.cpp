@@ -227,6 +227,7 @@ void Inventory::saveInventoryToFile()
 			file << std::endl;
 		}
 	}
+	file.close();
 }
 
 void Inventory::loadInventoryFromFile()

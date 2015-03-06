@@ -31,6 +31,7 @@ LevelManager &LevelManager::getInstance()
 LevelManager::LevelManager()
 : mLoadedPlayer(false)
 {
+	mPlayer = new Player(mHud);
 }
 
 void LevelManager::load()
@@ -38,8 +39,9 @@ void LevelManager::load()
 	NpcHandler::load();
 	DialogWindow::load();
 	DialogHandler::load();
-	mPlayer.load();
-	mPlayer.clearInventory();
+	mHud.load();
+	mPlayer->load();
+	mPlayer->clearInventory();
 	mActionWheel.load();
 }
 
@@ -48,15 +50,17 @@ void LevelManager::unload()
 	NpcHandler::unload();
 	DialogWindow::unload();
 	DialogHandler::unload();
-	mPlayer.unload();
+	mHud.unload();
+	mPlayer->unload();
 	mActionWheel.unload();
 	PathFinder::unload();
 	unloadCurrentAct();
+	delete mPlayer;
 }
 
 void LevelManager::unloadCurrentAct()
 {
-	mPlayer.saveInventory();
+	mPlayer->saveInventory();
 
 	AudioPlayer::unload();
 	PortalLoader::unload();
@@ -66,14 +70,25 @@ void LevelManager::unloadCurrentAct()
 	mLevelMap.clear();
 }
 
-void LevelManager::update(sf::Time &frametime)
+void LevelManager::update(sf::Time &frameTime)
 {
-	mLevelMap[mCurrentID]->update(frametime);
-	DialogWindow::update(frametime);
+	mHud.update(frameTime);
+	if (mHud.isInventoryButtonReleased())
+		mPlayer->toggleInventory();
+
+	if (BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen) && !BoatEvents::hasBeenHandled(BoatEvent::IntroScreen))
+	{
+		mHud.displayHelp(true);
+		BoatEvents::handleEvent(BoatEvent::IntroScreen);
+	}
+
+	mLevelMap[mCurrentID]->update(frameTime);
+	DialogWindow::update(frameTime);
 }
 
 void LevelManager::render(IndexRenderer &iRenderer)
 {
+	mHud.render(iRenderer);
 	mLevelMap[mCurrentID]->render(iRenderer);
 	DialogWindow::render(iRenderer);
 }
@@ -85,8 +100,8 @@ void LevelManager::changeLevel(LevelFolder::ID id)
 	std::cout << "===== Changing Level =====" << std::endl;
 	std::cout << "==========================" << std::endl;
 
-	mPlayer.saveInventory();
-	mPlayer.refreshInventory();
+	mPlayer->saveInventory();
+	mPlayer->refreshInventory();
 	mLevelMap[mCurrentID]->saveObjects();
 	mCurrentID = id;
 	mLevelMap[mCurrentID]->refreshLevel();
@@ -112,8 +127,8 @@ void LevelManager::loadBoatScene()
 {
 	mCurrentAct = Ship;
 
-	mLevelMap[LevelFolder::Ship_1] = std::move(LevelPtr(new Level_Ship_1(mPlayer, mActionWheel)));
-	mLevelMap[LevelFolder::Ship_2] = std::move(LevelPtr(new Level_Ship_2(mPlayer, mActionWheel)));
+	mLevelMap[LevelFolder::Ship_1] = std::move(LevelPtr(new Level_Ship_1(*mPlayer, mActionWheel)));
+	mLevelMap[LevelFolder::Ship_2] = std::move(LevelPtr(new Level_Ship_2(*mPlayer, mActionWheel)));
 	mCurrentID = LevelFolder::Ship_2;
 	baseLoad();
 }
@@ -123,16 +138,16 @@ void LevelManager::loadAct1()
 	mCurrentAct = Act1;
 
 	// Assing ;) all the levels
-	mLevelMap[LevelFolder::Beach] = LevelPtr(new Level_Beach(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Road] = LevelPtr(new Level_Road(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Forest_Road] = LevelPtr(new Level_Forest_Road(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Forest_Camp] = LevelPtr(new Level_Forest_Camp(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Church_Outside] = LevelPtr(new Level_Church_Outside(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Church_Inside] = LevelPtr(new Level_Church_Inside(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Tavern_Outside] = LevelPtr(new Level_Tavern_Outside(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Tavern_Inside] = LevelPtr(new Level_Tavern_Inside(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Camp_Clearing] = LevelPtr(new Level_Camp_Clearing(mPlayer, mActionWheel));
-	mLevelMap[LevelFolder::Camp_Finished] = LevelPtr(new Level_Camp_Finished(mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Beach] = LevelPtr(new Level_Beach(*mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Road] = LevelPtr(new Level_Road(*mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Forest_Road] = LevelPtr(new Level_Forest_Road(*mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Forest_Camp] = LevelPtr(new Level_Forest_Camp(*mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Church_Outside] = LevelPtr(new Level_Church_Outside(*mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Church_Inside] = LevelPtr(new Level_Church_Inside(*mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Tavern_Outside] = LevelPtr(new Level_Tavern_Outside(*mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Tavern_Inside] = LevelPtr(new Level_Tavern_Inside(*mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Camp_Clearing] = LevelPtr(new Level_Camp_Clearing(*mPlayer, mActionWheel));
+	mLevelMap[LevelFolder::Camp_Finished] = LevelPtr(new Level_Camp_Finished(*mPlayer, mActionWheel));
 
 	mCurrentID = LevelFolder::Beach;
 	baseLoad();
@@ -148,7 +163,7 @@ void LevelManager::baseLoad()
 	// onödig komentar
 	Act1Events::initialize();
 	PortalLoader::load();
-	mPlayer.refreshInventory();
+	mPlayer->refreshInventory();
 
 	// Load all the levels
 	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
@@ -183,7 +198,7 @@ void LevelManager::unloadCacheLevels()
 		{
 			std::cout << "UNLOAD: " << it->first << std::endl;
 			it->second->unload();
-			mPlayer.saveInventory();
+			mPlayer->saveInventory();
 			it->second->setLoaded(false);
 		}
 	}

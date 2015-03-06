@@ -72,7 +72,6 @@ void Level_Church_Outside::load()
 
 void Level_Church_Outside::unload()
 {
-	AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
 	RMI.unloadResource(Footsteps::Dirt);
 	Level::unload();
 }

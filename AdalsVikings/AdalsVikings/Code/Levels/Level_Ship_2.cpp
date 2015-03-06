@@ -7,7 +7,7 @@
 
 Level_Ship_2::Level_Ship_2(Player &player, ActionWheel &actionWheel)
 	: Level(player, actionWheel)
-	, mGameStart(false)
+	, mShowIntroScreen(false)
 	, mDone(false)
 	, mEnd(false)
 	, mStartedGiveDialogue(false)
@@ -40,7 +40,7 @@ void Level_Ship_2::update(sf::Time &frameTime)
 	}
 	if (!BoatEvents::hasBeenHandled(BoatEvent::GivenMapToBrandr) && BoatEvents::hasBeenTriggered(BoatEvent::GivenMapToBrandr))
 	{
-		mPlayer.removeItemFromInventory("map");
+		mPlayer->removeItemFromInventory("map");
 		if (!mStartedGiveDialogue)
 		{
 			DialogHandler::getDialogue("GivenMapToBrandr_Ship2").startDialogue();
