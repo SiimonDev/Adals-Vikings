@@ -77,19 +77,19 @@ void Level_Beach::load()
 		mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Brandr"]->setPosition(sf::Vector2f(400, 1120));
 		mNpcs["Brandr"]->setDialogue("Intro_Beach");
-		mNpcs["Brandr"]->setIndex(5);
+		mNpcs["Brandr"]->setIndex(14);
 
 		mNpcs["Brynja"]->setFlip(false);
 		mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(600, 1070));
 		mNpcs["Brynja"]->setDialogue("Intro_Beach");
-		mNpcs["Brynja"]->setIndex(4);
+		mNpcs["Brynja"]->setIndex(14);
 
 		mNpcs["Valdis"]->setFlip(false);
 		mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Valdis"]->setPosition(sf::Vector2f(600, 1120));
 		mNpcs["Valdis"]->setDialogue("Valdis_Beach");
-		mNpcs["Valdis"]->setIndex(5);
+		mNpcs["Valdis"]->setIndex(14);
 
 		/* ==== Load Npcs and set right position, dialogue, scale and so on... ===== */
 		mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
@@ -108,7 +108,7 @@ void Level_Beach::load()
 		mNpcs["Yngvarr"]->setPosition(sf::Vector2f(350, 760));
 		mNpcs["Yngvarr"]->setInteractionPosition(sf::Vector2f(420, 760));
 		mNpcs["Yngvarr"]->setDialogue("Yngvarr_Beach");
-		mNpcs["Yngvarr"]->setIndex(5);
+		mNpcs["Yngvarr"]->setIndex(14);
 
 		/* ==== Yngvarr ===== */
 		mNpcs["Dagny"]->setFlip(true);
@@ -116,7 +116,7 @@ void Level_Beach::load()
 		mNpcs["Dagny"]->setPosition(sf::Vector2f(250, 760));
 		mNpcs["Dagny"]->setInteractionPosition(sf::Vector2f(300, 760));
 		mNpcs["Dagny"]->setDialogue("Dagny_Beach");
-		mNpcs["Dagny"]->setIndex(5);
+		mNpcs["Dagny"]->setIndex(14);
 
 		/* ==== Alfr ===== */
 		mNpcs["Alfr"]->setFlip(false);
@@ -124,7 +124,7 @@ void Level_Beach::load()
 		mNpcs["Alfr"]->setPosition(sf::Vector2f(1250, 590));
 		mNpcs["Alfr"]->setInteractionPosition(sf::Vector2f(1200, 590));
 		mNpcs["Alfr"]->setDialogue("Alfr_Beach");
-		mNpcs["Alfr"]->setIndex(5);
+		mNpcs["Alfr"]->setIndex(14);
 
 		/* ==== Leifr ===== */
 		RMI.loadResource(Texture::LeifrIdle);
@@ -136,7 +136,7 @@ void Level_Beach::load()
 		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 580));
 		mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(750, 580));
 		mNpcs["Leifr"]->setDialogue("Leifr_Beach");
-		mNpcs["Leifr"]->setIndex(5);
+		mNpcs["Leifr"]->setIndex(14);
 
 		/* ==== Finnr ===== */
 		mNpcs["Finnr"]->setFlip(false);
@@ -144,7 +144,7 @@ void Level_Beach::load()
 		mNpcs["Finnr"]->setPosition(sf::Vector2f(1600, 520));
 		mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(1550, 520));
 		mNpcs["Finnr"]->setDialogue("Finnr_Beach");
-		mNpcs["Finnr"]->setIndex(3);
+		mNpcs["Finnr"]->setIndex(12);
 		/* ================================================================ */
 
 		Level::load();
@@ -274,43 +274,43 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 				mNpcs["Brynja"]->setFlip(true);
 				mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(580, 760));
-				mNpcs["Brynja"]->setIndex(4);
+				mNpcs["Brynja"]->setIndex(14);
 				mNpcs["Brynja"]->updateAnimationStyle();
 
 				mNpcs["Brandr"]->setFlip(true);
 				mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Brandr"]->setPosition(sf::Vector2f(600, 800));
-				mNpcs["Brandr"]->setIndex(5);
+				mNpcs["Brandr"]->setIndex(15);
 				mNpcs["Brandr"]->updateAnimationStyle();
 
 				mNpcs["Valdis"]->setFlip(false);
 				mNpcs["Valdis"]->setPosition(sf::Vector2f(700, 680));
-				mNpcs["Valdis"]->setIndex(3);
+				mNpcs["Valdis"]->setIndex(13);
 				mNpcs["Valdis"]->updateAnimationStyle();
 
 				mNpcs["Finnr"]->setFlip(false);
 				mNpcs["Finnr"]->setPosition(sf::Vector2f(720, 720));
-				mNpcs["Finnr"]->setIndex(4);
+				mNpcs["Finnr"]->setIndex(14);
 				mNpcs["Finnr"]->updateAnimationStyle();
 
 				mNpcs["Leifr"]->setFlip(false);
 				mNpcs["Leifr"]->setPosition(sf::Vector2f(740, 760));
-				mNpcs["Leifr"]->setIndex(5);
+				mNpcs["Leifr"]->setIndex(15);
 				mNpcs["Leifr"]->updateAnimationStyle();
 
 				mNpcs["Alfr"]->setFlip(false);
 				mNpcs["Alfr"]->setPosition(sf::Vector2f(740, 840));
-				mNpcs["Alfr"]->setIndex(7);
+				mNpcs["Alfr"]->setIndex(17);
 				mNpcs["Alfr"]->updateAnimationStyle();
 
 				mNpcs["Yngvarr"]->setFlip(false);
 				mNpcs["Yngvarr"]->setPosition(sf::Vector2f(720, 880));
-				mNpcs["Yngvarr"]->setIndex(8);
+				mNpcs["Yngvarr"]->setIndex(18);
 				mNpcs["Yngvarr"]->updateAnimationStyle();
 
 				mNpcs["Dagny"]->setFlip(false);
 				mNpcs["Dagny"]->setPosition(sf::Vector2f(700, 920));
-				mNpcs["Dagny"]->setIndex(9);
+				mNpcs["Dagny"]->setIndex(19);
 				mNpcs["Dagny"]->updateAnimationStyle();
 
 				mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
@@ -383,8 +383,8 @@ void Level_Beach::talkToNpcs()
 	//Act1Events::handleEvent(Act1Event::Beach_Valdis);
 	//Act1Events::handleEvent(Act1Event::Beach_Finnr);
 
-	//mPortals[BeachToRoad]->setWorking(true);
-	//mPortals[BeachToTavernOutside]->setWorking(true);
+	mPortals[BeachToRoad]->setWorking(true);
+	mPortals[BeachToTavernOutside]->setWorking(true);
 	/*=============*/
 
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Ending))
