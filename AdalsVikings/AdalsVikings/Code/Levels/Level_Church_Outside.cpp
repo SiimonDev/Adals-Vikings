@@ -2,8 +2,8 @@
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
-Level_Church_Outside::Level_Church_Outside(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Church_Outside::Level_Church_Outside(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Church_Outside;
 }
@@ -60,7 +60,7 @@ void Level_Church_Outside::render(IndexRenderer &iRenderer)
 void Level_Church_Outside::load()
 {
 	RMI.loadResource(Footsteps::Dirt);
-	mNpcs["Princess"] = NpcPtr(new Npc(NpcHandler::getNpc("Princess")));
+	mNpcs["Princess"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Princess")));
 	mNpcs["Princess"]->setDialogue("Princess_ChurchOutside");
 	mPortals[Outside_ChurchToRoad] = &PortalLoader::getPortal(Outside_ChurchToRoad);
 	mPortals[Outside_ChurchToChurch] = &PortalLoader::getPortal(Outside_ChurchToChurch);

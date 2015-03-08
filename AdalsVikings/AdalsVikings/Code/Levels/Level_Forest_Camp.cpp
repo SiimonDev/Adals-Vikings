@@ -2,8 +2,8 @@
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
-Level_Forest_Camp::Level_Forest_Camp(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Forest_Camp::Level_Forest_Camp(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Forest_Camp;
 }
@@ -40,14 +40,14 @@ void Level_Forest_Camp::load()
 	RMI.loadResource(Texture::FireForestCampAnimation);
 	RMI.loadResource(Texture::DruidsForest1);
 
-	mNpcs["DruidLeader"] = NpcPtr(new Npc(NpcHandler::getNpc("DruidLeader")));
-	mNpcs["Druids"] = NpcPtr(new Npc(NpcHandler::getNpc("Druids")));
+	mNpcs["DruidLeader"] = NpcPtr(new Npc(NpcHandlerI.getNpc("DruidLeader")));
+	mNpcs["Druids"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druids")));
 	mNpcs["DruidLeader"]->setDialogue("Druids_ForestCamp1");
 	mNpcs["Druids"]->setDialogue("Druids_ForestCamp1");
 
 	if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
 	{
-		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
+		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
 		mNpcs["Leifr"]->setDialogue("Leifr_ForestCamp");
 	}
 

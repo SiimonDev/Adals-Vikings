@@ -2,8 +2,8 @@
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
-Level_Tavern_Inside::Level_Tavern_Inside(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Tavern_Inside::Level_Tavern_Inside(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Tavern_Inside;
 }
@@ -69,11 +69,11 @@ void Level_Tavern_Inside::load()
 
 	if (!Act1Events::hasBeenHandled(Act1Event::TavernInside_GiveAxeToBrandr))
 	{
-		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
-		mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
-		mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
-		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
-		mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
+		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brandr")));
+		mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Alfr")));
+		mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Dagny")));
+		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
+		mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Yngvarr")));
 
 		mNpcs["Brandr"]->setscale(sf::Vector2f(0.8, 0.8));
 		mNpcs["Brandr"]->setPosition(sf::Vector2f(605, 930));

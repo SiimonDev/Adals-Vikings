@@ -5,7 +5,7 @@ class Level_Template : public Level
 {
 public:
 	//General Functions
-	Level_Template(Player &player, ActionWheel &actionWheel);
+	Level_Template(Player &player, HUD &hud, ActionWheel &actionWheel);
 
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);

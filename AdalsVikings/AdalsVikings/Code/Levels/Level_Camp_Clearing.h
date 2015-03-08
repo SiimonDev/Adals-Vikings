@@ -5,7 +5,7 @@ class Level_Camp_Clearing : public Level
 {
 public:
 	//General Functions
-	Level_Camp_Clearing(Player &player, ActionWheel &actionWheel);
+	Level_Camp_Clearing(Player &player, HUD &hud, ActionWheel &actionWheel);
 
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);

@@ -47,17 +47,19 @@ void HUD::update(sf::Time frameTime)
 {
 	if (mDisplayHelp)
 	{
-		mOKButton.update();
-		if (mOKButton.isReleased())
+		if (mOKButton.isReleased() || mHelpButton.isReleased())
 			mDisplayHelp = false;
+
+		mOKButton.update();
+		mHelpButton.update();
 	}
 	else
 	{
-		mInventoryButton.update();
-		mHelpButton.update();
-
 		if (isHelpButtonReleased())
 			mDisplayHelp = true;
+
+		mInventoryButton.update();
+		mHelpButton.update();
 	}
 }
 void HUD::render(IndexRenderer &iRenderer)
@@ -67,16 +69,18 @@ void HUD::render(IndexRenderer &iRenderer)
 		mOKButton.render(iRenderer);
 		iRenderer.addSprite(mHelpPanel, 99998);
 	}
-	else
-	{
-		mInventoryButton.render(iRenderer);
-		mHelpButton.render(iRenderer);
-	}
+	mInventoryButton.render(iRenderer);
+	mHelpButton.render(iRenderer);
 }
 
 void HUD::displayHelp(bool value)
 {
 	mDisplayHelp = value;
+}
+
+bool HUD::isHelpActive()
+{
+	return mDisplayHelp;
 }
 
 bool HUD::isInventoryButtonReleased()
@@ -91,15 +95,15 @@ bool HUD::isHelpButtonReleased()
 
 bool HUD::isButtonClicked()
 {
-	return mInventoryButton.isClicked() || mHelpButton.isClicked();
+	return mInventoryButton.isClicked() || mHelpButton.isClicked() || mOKButton.isClicked();
 }
 
 bool HUD::isButtonPressed()
 {
-	return mInventoryButton.isPressed() || mHelpButton.isPressed();
+	return mInventoryButton.isPressed() || mHelpButton.isPressed() || mOKButton.isPressed();
 }
 
 bool HUD::isButtonReleased()
 {
-	return mInventoryButton.isReleased() || mHelpButton.isReleased();
+	return mInventoryButton.isReleased() || mHelpButton.isReleased() || mOKButton.isReleased();
 }

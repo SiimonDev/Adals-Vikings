@@ -2,8 +2,8 @@
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
-Level_Church_Inside::Level_Church_Inside(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Church_Inside::Level_Church_Inside(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Church_Inside;
 }
@@ -31,7 +31,7 @@ void Level_Church_Inside::load()
 	mPortals[ChurchToOutside_Church] = &PortalLoader::getPortal(ChurchToOutside_Church);
 	mPortals[ChurchToOutside_Church]->setWorking(true);
 
-	mNpcs["Beor"] = NpcPtr(new Npc(NpcHandler::getNpc("Beor")));
+	mNpcs["Beor"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Beor")));
 	mNpcs["Beor"]->setDialogue("Beor_ChurchInside");
 
 	Level::load();

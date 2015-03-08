@@ -2,8 +2,8 @@
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
-Level_Forest_Road::Level_Forest_Road(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Forest_Road::Level_Forest_Road(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Forest_Road;
 }

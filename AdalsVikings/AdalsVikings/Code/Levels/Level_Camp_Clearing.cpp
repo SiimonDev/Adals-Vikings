@@ -2,8 +2,8 @@
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
-Level_Camp_Clearing::Level_Camp_Clearing(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Camp_Clearing::Level_Camp_Clearing(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 	, mFade1(false)
 	, mFade2(false)
 {
@@ -53,9 +53,9 @@ void Level_Camp_Clearing::render(IndexRenderer &iRenderer)
 void Level_Camp_Clearing::load()
 {
 	RMI.loadResource(Footsteps::Dirt);
-	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
-	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
-	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
+	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brynja")));
+	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
 
 	/*------------------- Leifr ----------------*/
 	mNpcs["Leifr"]->setscale(sf::Vector2f(0.4, 0.4));
@@ -86,7 +86,7 @@ void Level_Camp_Clearing::load()
 
 	if (Act1Events::hasBeenHandled(Act1Event::TavernInside_GiveAxeToBrandr))
 	{
-		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
+		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brandr")));
 		mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Brandr"]->setPosition(sf::Vector2f(1370, 850));
 		mNpcs["Brandr"]->setInteractionPosition(sf::Vector2f(1100, 250));

@@ -14,6 +14,8 @@ public:
 	void render(IndexRenderer &iRenderer);
 	void displayHelp(bool value);
 
+	bool isHelpActive();
+
 	bool isInventoryButtonReleased();
 	bool isHelpButtonReleased();
 
@@ -23,6 +25,7 @@ public:
 
 private:
 	bool mDisplayHelp;
+	bool mOldDisplayHelp;
 
 	Button mInventoryButton;
 	Button mHelpButton;

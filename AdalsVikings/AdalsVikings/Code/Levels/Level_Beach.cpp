@@ -8,8 +8,8 @@
 
 static Animation mWaveAnimation;
 
-Level_Beach::Level_Beach(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Beach::Level_Beach(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 	, mIntroFade1(false)
 {
 	mBackgroundID = LevelFolder::Beach;
@@ -64,10 +64,10 @@ void Level_Beach::load()
 
 		//FadeI.setAlpha(255);
 
-		mNpcs["Seagull"] = NpcPtr(new Npc(NpcHandler::getNpc("Seagull")));
-		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
-		mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
-		mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+		mNpcs["Seagull"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Seagull")));
+		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brandr")));
+		mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brynja")));
+		mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
 
 		mPlayer->setPosition(sf::Vector2f(410, 1070));
 		mPlayer->setFlip(true);
@@ -92,11 +92,11 @@ void Level_Beach::load()
 		mNpcs["Valdis"]->setIndex(14);
 
 		/* ==== Load Npcs and set right position, dialogue, scale and so on... ===== */
-		mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
-		mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
-		mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
-		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
-		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
+		mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Yngvarr")));
+		mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Dagny")));
+		mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Alfr")));
+		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
+		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
 
 		/* ==== Yngvarr ===== */
 		RMI.loadResource(Texture::YngvarrSadIdle);

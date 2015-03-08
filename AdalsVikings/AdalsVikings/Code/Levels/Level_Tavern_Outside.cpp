@@ -2,8 +2,8 @@
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
-Level_Tavern_Outside::Level_Tavern_Outside(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Tavern_Outside::Level_Tavern_Outside(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Tavern_Outside;
 }

@@ -95,9 +95,6 @@
     <ClCompile Include="Code\Logics\BoatEvents.cpp">
       <Filter>Source Files\Logics</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Dialog\DialogWindow.cpp">
-      <Filter>Source Files\Dialog</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Interface\LoadingScreen.cpp">
       <Filter>Source Files\Interface</Filter>
     </ClCompile>
@@ -157,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="Code\Interface\HUD.cpp">
       <Filter>Source Files\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Dialog\PlayerMonologue.cpp">
+      <Filter>Source Files\Dialog</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -241,9 +241,6 @@
     <ClInclude Include="Code\Logics\AudioPlayer.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Dialog\DialogWindow.h">
-      <Filter>Header Files\Dialog</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Dialog\DialogHandler.h">
       <Filter>Header Files\Dialog</Filter>
     </ClInclude>
@@ -327,6 +324,9 @@
     </ClInclude>
     <ClInclude Include="Code\Interface\HUD.h">
       <Filter>Header Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Dialog\PlayerMonologue.h">
+      <Filter>Header Files\Dialog</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

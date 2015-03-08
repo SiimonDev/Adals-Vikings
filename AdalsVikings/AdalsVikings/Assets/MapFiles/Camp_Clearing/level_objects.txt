@@ -3,13 +3,13 @@
 position: $X:945 $Y:805
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $boxInCamp
 position: $X:720 $Y:793
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############

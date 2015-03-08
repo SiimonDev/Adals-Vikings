@@ -4,7 +4,7 @@
 class Level_Ship_1 : public Level
 {
 public:
-	Level_Ship_1(Player &player, ActionWheel &actionWheel);
+	Level_Ship_1(Player &player, HUD &hud, ActionWheel &actionWheel);
 
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);
@@ -17,7 +17,6 @@ public:
 
 private:
 	bool mGameStart;
-	bool mShowInstroScreen;
 	bool mOldBucketAdded;
 	bool mStartBrynja, mBrynjaFade1, mBrynjaFade2, mBrynjaConv;
 

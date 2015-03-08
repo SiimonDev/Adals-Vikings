@@ -5,7 +5,7 @@ class Level_Tavern_Outside : public Level
 {
 public:
 	//General Functions
-	Level_Tavern_Outside(Player &player, ActionWheel &actionWheel);
+	Level_Tavern_Outside(Player &player, HUD &hud, ActionWheel &actionWheel);
 
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);

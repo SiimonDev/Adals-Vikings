@@ -4,8 +4,8 @@
 #include "..\Logics\WindowState.h"
 #include <iostream>
 
-Level_Ship_1::Level_Ship_1(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Ship_1::Level_Ship_1(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 	, mGameStart(false)
 	, mOldBucketAdded(false)
 	, mBrynjaFade1(false)
@@ -22,6 +22,12 @@ void Level_Ship_1::update(sf::Time &frametime)
 	mRopeAnimation.animate(frametime);
 	if (KeyboardState::isPressed(sf::Keyboard::F))
 		mPlayer->addItemToInventory("bucket");
+
+	if (BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen) && !BoatEvents::hasBeenHandled(BoatEvent::IntroScreen))
+	{
+		mHud->displayHelp(true);
+		BoatEvents::handleEvent(BoatEvent::IntroScreen);
+	}
 
 	if (BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
 	{
@@ -136,10 +142,6 @@ void Level_Ship_1::update(sf::Time &frametime)
 
 void Level_Ship_1::render(IndexRenderer &iRenderer)
 {
-	if (BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen) && !BoatEvents::hasBeenHandled(BoatEvent::IntroScreen))
-	{
-		mShowInstroScreen = true;
-	}
 	CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
 	mWaveAnimation.render(iRenderer);
 	mRopeAnimation.render(iRenderer);
@@ -160,17 +162,17 @@ void Level_Ship_1::load()
 	RMI.loadResource(Texture::BackBoatWaveAnimation);
 	RMI.loadResource(Footsteps::Hardwood);
 
-	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
 	mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
 	mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisSittingTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 	mNpcs["Valdis"]->setProportions(sf::Vector2f(150, 134.5));
 	mNpcs["Valdis"]->setscale(sf::Vector2f(1.1f, 1.1f));
 	mNpcs["Valdis"]->setIndex(14);
 
-	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
-	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandler::getNpc("Finnr")));
-	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
-	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandler::getNpc("Alfr")));
+	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
+	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
+	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brynja")));
+	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Alfr")));
 	mNpcs["Alfr"]->setIndex(16);
 	mNpcs["Leifr"]->setIdleAnimation(Texture::LeifrSitIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 	mNpcs["Leifr"]->SetTalkAnimation(Texture::LeifrSitTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);

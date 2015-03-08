@@ -5,18 +5,24 @@
 
 typedef std::unique_ptr<Npc> NpcPtr;
 
+#define NpcHandlerI NpcHandler::getInstance()
+
 class NpcHandler
 {
 public:
-	static void load();
-	static void unload();
+	static NpcHandler &getInstance();
 
-	static std::map<std::string, NpcPtr> &getNpcs();
-	static Npc &getNpc(std::string id);
-	static bool isInConversation();
+	void load();
+	void unload();
+
+	std::map<std::string, NpcPtr> &getNpcs();
+	Npc &getNpc(std::string id);
+	bool isInConversation();
 
 private:
 	NpcHandler();
 	NpcHandler(NpcHandler&);
 	void operator=(NpcHandler&);
+
+	std::map<std::string, NpcPtr> mNpcMap;
 };

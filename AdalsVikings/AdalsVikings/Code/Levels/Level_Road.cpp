@@ -3,8 +3,8 @@
 #include "Level_Beach.h"
 #include <iostream>
 
-Level_Road::Level_Road(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Road::Level_Road(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Road;
 }
@@ -89,7 +89,7 @@ void Level_Road::load()
 		mPortals[RoadToFarm]->setCannotDialogue("I Should probably help find that scroll first...");
 		mPortals[RoadToCamp]->setCannotDialogue("I Should probably help find that scroll first...");
 
-		mNpcs["Mailman"] = NpcPtr(new Npc(NpcHandler::getNpc("Mailman")));
+		mNpcs["Mailman"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Mailman")));
 		mNpcs["Mailman"]->setDialogue("Mailman_Road");
 	}
 	
