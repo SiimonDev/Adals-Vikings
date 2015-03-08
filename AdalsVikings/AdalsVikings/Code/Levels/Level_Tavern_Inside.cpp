@@ -81,7 +81,7 @@ void Level_Tavern_Inside::load()
 		mNpcs["Brandr"]->setFlip(true);
 		mNpcs["Brandr"]->setDialogue("Brandr_Tavern");
 
-		mNpcs["Alfr"]->setscale(sf::Vector2f(1, 1));
+		mNpcs["Alfr"]->setscale(sf::Vector2f(0.85f, 0.85f));
 		mNpcs["Alfr"]->setPosition(sf::Vector2f(1830, 1030));
 		mNpcs["Alfr"]->setIndex(22);
 		mNpcs["Alfr"]->setDialogue("Alfr_Tavern");
@@ -92,13 +92,13 @@ void Level_Tavern_Inside::load()
 		mNpcs["Dagny"]->setFlip(true);
 		mNpcs["Dagny"]->setDialogue("Dagny_Tavern");
 
-		mNpcs["Finnr"]->setscale(sf::Vector2f(0.8, 0.8));
+		mNpcs["Finnr"]->setscale(sf::Vector2f(0.7, 0.7));
 		mNpcs["Finnr"]->setPosition(sf::Vector2f(960, 785));
 		mNpcs["Finnr"]->setIndex(4);
 		mNpcs["Finnr"]->setFlip(true);
 		mNpcs["Finnr"]->setDialogue("Finnr_Tavern");
 
-		mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.8, 0.8));
+		mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.75f, 0.75f));
 		mNpcs["Yngvarr"]->setPosition(sf::Vector2f(1615, 800));
 		mNpcs["Yngvarr"]->setIndex(9);
 		mNpcs["Yngvarr"]->setDialogue("Yngvarr_Tavern");
@@ -115,7 +115,7 @@ void Level_Tavern_Inside::load()
 	// Add Index from every NPC to the map
 	mTileMap.setIndexOnMap(mNpcs["Brandr"]->getIndexRect(), mNpcs["Brandr"]->getIndex() - 2);
 	mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 2);
-	mTileMap.setIndexOnMap(mNpcs["Dagny"]->getIndexRect(), mNpcs["Dagny"]->getIndex() - 2);
+	//mTileMap.setIndexOnMap(mNpcs["Dagny"]->getIndexRect(), mNpcs["Dagny"]->getIndex() - 2); // NOT NEEDED ON THIS LEVEL
 	mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 2);
 	mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 2);
 
