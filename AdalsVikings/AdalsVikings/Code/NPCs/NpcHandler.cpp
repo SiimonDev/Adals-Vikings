@@ -3,10 +3,14 @@
 
 #define CreateNpc mNpcMap.insert(std::make_pair
 
-static std::map<std::string, NpcPtr> mNpcMap;
-
 NpcHandler::NpcHandler()
 {
+}
+
+NpcHandler &NpcHandler::getInstance()
+{
+	static NpcHandler instance;
+	return instance;
 }
 
 void NpcHandler::load()

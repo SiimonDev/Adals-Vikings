@@ -1,8 +1,8 @@
 #include "Level_Camp_Finished.h"
 #include <iostream>
 
-Level_Camp_Finished::Level_Camp_Finished(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Camp_Finished::Level_Camp_Finished(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Camp_Finished;
 }
@@ -21,9 +21,9 @@ void Level_Camp_Finished::render(IndexRenderer &iRenderer)
 void Level_Camp_Finished::load()
 {
 	RMI.loadResource(Footsteps::Dirt);
-	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
-	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
-	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
+	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brynja")));
+	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
 
 	mNpcs["Leifr"]->setscale(sf::Vector2f(0.42, 0.42));
 	mNpcs["Brynja"]->setscale(sf::Vector2f(0.42, 0.42));

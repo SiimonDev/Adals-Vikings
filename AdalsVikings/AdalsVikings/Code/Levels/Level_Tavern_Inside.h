@@ -5,7 +5,7 @@ class Level_Tavern_Inside : public Level
 {
 public:
 	//General Functions
-	Level_Tavern_Inside(Player &player, ActionWheel &actionWheel);
+	Level_Tavern_Inside(Player &player, HUD &hud, ActionWheel &actionWheel);
 
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);
@@ -14,7 +14,7 @@ public:
 	void changeLevel();
 	void checkInteractEvents();
 	void checkEvents();
-
+	void restartSounds();
 private:
 
 	bool mFade1, mFade2;

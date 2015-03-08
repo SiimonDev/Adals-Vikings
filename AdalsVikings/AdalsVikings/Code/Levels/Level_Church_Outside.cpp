@@ -2,8 +2,8 @@
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
-Level_Church_Outside::Level_Church_Outside(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Church_Outside::Level_Church_Outside(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Church_Outside;
 }
@@ -11,6 +11,7 @@ Level_Church_Outside::Level_Church_Outside(Player &player, ActionWheel &actionWh
 void Level_Church_Outside::restartSounds()
 {
 	AudioPlayer::playHDDSound(HDDSound::Church_Outside_Ambient, true, 100);
+	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, 20);
 }
 
 void Level_Church_Outside::update(sf::Time &frametime)
@@ -59,7 +60,7 @@ void Level_Church_Outside::render(IndexRenderer &iRenderer)
 void Level_Church_Outside::load()
 {
 	RMI.loadResource(Footsteps::Dirt);
-	mNpcs["Princess"] = NpcPtr(new Npc(NpcHandler::getNpc("Princess")));
+	mNpcs["Princess"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Princess")));
 	mNpcs["Princess"]->setDialogue("Princess_ChurchOutside");
 	mPortals[Outside_ChurchToRoad] = &PortalLoader::getPortal(Outside_ChurchToRoad);
 	mPortals[Outside_ChurchToChurch] = &PortalLoader::getPortal(Outside_ChurchToChurch);
@@ -82,6 +83,7 @@ void Level_Church_Outside::changeLevel()
 	{
 		LVLMI.changeLevel(LevelFolder::Road);
 		AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Church_Music);
 		mRestartSounds = true;
 	}
 	else if (mPortals[Outside_ChurchToChurch]->getActivated() && mPortals[Outside_ChurchToChurch]->getWorking())

@@ -2,8 +2,8 @@
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
-Level_Forest_Camp::Level_Forest_Camp(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Forest_Camp::Level_Forest_Camp(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Forest_Camp;
 }
@@ -11,6 +11,7 @@ Level_Forest_Camp::Level_Forest_Camp(Player &player, ActionWheel &actionWheel)
 void Level_Forest_Camp::restartSounds()
 {
 	AudioPlayer::playHDDSound(HDDSound::Forest_Camp_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, 20);
 }
 
 void Level_Forest_Camp::update(sf::Time &frametime)
@@ -59,7 +60,7 @@ void Level_Forest_Camp::load()
 
 	if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
 	{
-		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
+		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
 		mNpcs["Leifr"]->setDialogue("Leifr_ForestCamp");
 		mNpcs["Leifr"]->setPosition(sf::Vector2f(1450, 580));
 		mNpcs["Leifr"]->setscale(sf::Vector2f(0.6f, 0.6f));

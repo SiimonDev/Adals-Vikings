@@ -1,9 +1,45 @@
 #include "Button.h"
 #include <iostream>
 
-Button::Button():
-mText(""), mPosition(0, 0), mDescription(""), mOrigin(ButtonOrigin::UpperLeft), mScale(1, 1), mEnabled(true)
+Button::Button() :
+mText(""), mPosition(0, 0), mDescription(""), mOrigin(ButtonOrigin::UpperLeft), mScale(1, 1), 
+mEnabled(true),
+mIsClicked(false),
+mIsPressed(false),
+mIsReleased(false)
 {
+}
+
+Button::Button(Texture::ID texID, sf::Vector2f position) :
+mText(""), mPosition(position), mDescription(""), mOrigin(ButtonOrigin::UpperLeft), mScale(1, 1),
+mEnabled(true),
+mIsClicked(false),
+mIsPressed(false),
+mIsReleased(false)
+{
+	setSprites(texID);
+}
+
+Button::Button(Texture::ID texID, Font::ID fontID, sf::Vector2f position, std::string description) :
+mText(""), mPosition(position), mDescription(description), mOrigin(ButtonOrigin::UpperLeft), mScale(1, 1),
+mEnabled(true),
+mIsClicked(false),
+mIsPressed(false),
+mIsReleased(false)
+{
+	setSprites(texID);
+	setTextStuff(fontID, "", mDescription);
+}
+
+Button::Button(Texture::ID texID, Font::ID fontID, std::string text, sf::Vector2f position, std::string description) :
+mText(text), mPosition(position), mDescription(description), mOrigin(ButtonOrigin::UpperLeft), mScale(1, 1),
+mEnabled(true),
+mIsClicked(false),
+mIsPressed(false),
+mIsReleased(false)
+{
+	setSprites(texID);
+	setTextStuff(fontID, text, mDescription);
 }
 
 void Button::setTextStuff(Font::ID fontID, std::string text, std::string description)
@@ -13,26 +49,6 @@ void Button::setTextStuff(Font::ID fontID, std::string text, std::string descrip
 	setDescription(description);
 	setTextSize(24);
 	setDescriptionSize(24);
-}
-
-Button::Button(Texture::ID texID, sf::Vector2f position) :
-mText(""), mPosition(position), mDescription(""), mOrigin(ButtonOrigin::UpperLeft), mScale(1, 1), mEnabled(true)
-{
-	setSprites(texID);
-}
-
-Button::Button(Texture::ID texID, Font::ID fontID, sf::Vector2f position, std::string description) :
-mText(""), mPosition(position), mDescription(description), mOrigin(ButtonOrigin::UpperLeft), mScale(1, 1), mEnabled(true)
-{
-	setSprites(texID);
-	setTextStuff(fontID, "", mDescription);
-}
-
-Button::Button(Texture::ID texID, Font::ID fontID, std::string text, sf::Vector2f position, std::string description) :
-mText(text), mPosition(position), mDescription(description), mOrigin(ButtonOrigin::UpperLeft), mScale(1, 1), mEnabled(true)
-{
-	setSprites(texID);
-	setTextStuff(fontID, text, mDescription);
 }
 
 void Button::setSprites(Texture::ID id)

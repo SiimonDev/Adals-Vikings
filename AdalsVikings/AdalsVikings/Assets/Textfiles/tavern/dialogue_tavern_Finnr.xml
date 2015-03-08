@@ -47,7 +47,7 @@
 			<gotoContainer />
 		</option>
 		<option choice_text="It was nice talking to you." disabled="false">
-			<text character="Yngvarr" disabled="false" default="false" say="You've got some problems kid." timer="2.0"  turned="false"/>
+			
 			<stopConversation />
 		</option>
 		<stopOption />

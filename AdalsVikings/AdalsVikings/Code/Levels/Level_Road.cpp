@@ -3,8 +3,8 @@
 #include "Level_Beach.h"
 #include <iostream>
 
-Level_Road::Level_Road(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Road::Level_Road(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Road;
 }
@@ -12,6 +12,7 @@ Level_Road::Level_Road(Player &player, ActionWheel &actionWheel)
 void Level_Road::restartSounds()
 {
 	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
 }
 
 void Level_Road::update(sf::Time &frametime)
@@ -88,7 +89,7 @@ void Level_Road::load()
 		mPortals[RoadToFarm]->setCannotDialogue("I Should probably help find that scroll first...");
 		mPortals[RoadToCamp]->setCannotDialogue("I Should probably help find that scroll first...");
 
-		mNpcs["Mailman"] = NpcPtr(new Npc(NpcHandler::getNpc("Mailman")));
+		mNpcs["Mailman"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Mailman")));
 		mNpcs["Mailman"]->setDialogue("Mailman_Road");
 	}
 	
@@ -126,18 +127,21 @@ void Level_Road::changeLevel()
 	{
 		LVLMI.changeLevel(LevelFolder::Church_Outside);
 		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
 		mRestartSounds = true;
 	}
 	else if (mPortals[RoadToFarm]->getActivated() && mPortals[RoadToFarm]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Forest_Road);
 		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
 		mRestartSounds = true;
 	}
 	if (mPortals[RoadToCamp]->getActivated() && mPortals[RoadToCamp]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Camp_Clearing);
 		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
 		mRestartSounds = true;
 	}
 }

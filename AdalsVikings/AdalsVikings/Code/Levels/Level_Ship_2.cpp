@@ -5,8 +5,8 @@
 #include "..\Logics\BoatEvents.h"
 #include <iostream>
 
-Level_Ship_2::Level_Ship_2(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Ship_2::Level_Ship_2(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 	, mShowIntroScreen(false)
 	, mDone(false)
 	, mEnd(false)
@@ -78,15 +78,15 @@ void Level_Ship_2::load()
 	mPortals[Ship2ToShip1] = &PortalLoader::getPortal(Ship2ToShip1); // This does not create a new portal it only references the one in PortalLoader;
 	mPortals[Ship2ToShip1]->setWorking(true);
 
-	mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandler::getNpc("Dagny")));
+	mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Dagny")));
 	mNpcs["Dagny"]->setIndex(14);
 
-	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
+	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brandr")));
 	mNpcs["Brandr"]->setIndex(14);
 	mNpcs["Brandr"]->SetTalkAnimation(Texture::BrandrAngryTalk, sf::Vector2i(4, 1), sf::milliseconds(550), sf::Time::Zero);
 	mNpcs["Brandr"]->setIdleAnimation(Texture::BrandrAngryIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(3.7));
 
-	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandler::getNpc("Yngvarr")));
+	mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Yngvarr")));
 	mNpcs["Yngvarr"]->setIndex(14);
 
 	if (!BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue))

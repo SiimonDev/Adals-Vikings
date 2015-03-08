@@ -36,12 +36,8 @@ GoBack_ChurchInside assets/textfiles/church/Dialogue_exit_church.xml
 Valdis_ClearingCamp assets/textfiles/camp/Dialogue_valdis_camp.xml
 Brynja_ClearingCamp assets/textfiles/camp/Dialogue_Brynja_camp.xml
 Leifr_ClearingCamp assets/textfiles/camp/Dialogue_Leifr_camp.xml
-LeifrFire_ClearingCamp assets/textfiles/camp/Dialogue_LeifrBear_camp.xml
-LeifrBear_ClearingCamp assets/textfiles/camp/Dialogue_LeifrFinishedBear_camp.xml
 -----------------------FOREST CAMP----------------------------
-Druids_ForestCamp1 assets/textfiles/forestCamp/Dialogue_forest_druids.xml
-Leifr_ForestCamp assets/textfiles/forestCamp/Dialogue_Leifr_ForestCamp.xml
-BearDeer_ForestCamp assets/textfiles/forestCamp/Dialogue_forest_druids2.xml
+Druids_ForestCamp1 assets/textfiles/forestCamp/Dialogue_forest_druids1.xml
 -----------------------TAVERN INSIDE----------------------------
 Brandr_Tavern assets/textfiles/tavern/Dialogue_brandr_tavern.xml
 Alfr_Tavern assets/textfiles/tavern/dialogue_tavern_alfr.xml

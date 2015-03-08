@@ -2,8 +2,8 @@
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
-Level_Camp_Clearing::Level_Camp_Clearing(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Camp_Clearing::Level_Camp_Clearing(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 	, mFade1(false)
 	, mFade2(false)
 {
@@ -13,6 +13,7 @@ Level_Camp_Clearing::Level_Camp_Clearing(Player &player, ActionWheel &actionWhee
 void Level_Camp_Clearing::restartSounds()
 {
 	AudioPlayer::playHDDSound(HDDSound::Church_Outside_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, 20);
 }
 
 void Level_Camp_Clearing::update(sf::Time &frametime)
@@ -53,9 +54,9 @@ void Level_Camp_Clearing::render(IndexRenderer &iRenderer)
 void Level_Camp_Clearing::load()
 {
 	RMI.loadResource(Footsteps::Dirt);
-	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
-	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandler::getNpc("Brynja")));
-	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandler::getNpc("Valdis")));
+	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
+	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brynja")));
+	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
 
 	/*------------------- Leifr ----------------*/
 	mNpcs["Leifr"]->setscale(sf::Vector2f(0.4, 0.4));
@@ -86,7 +87,7 @@ void Level_Camp_Clearing::load()
 
 	if (Act1Events::hasBeenHandled(Act1Event::TavernInside_GiveAxeToBrandr))
 	{
-		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandler::getNpc("Brandr")));
+		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brandr")));
 		mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Brandr"]->setPosition(sf::Vector2f(1370, 850));
 		mNpcs["Brandr"]->setInteractionPosition(sf::Vector2f(1100, 250));
@@ -139,12 +140,14 @@ void Level_Camp_Clearing::changeLevel()
 	{
 		LVLMI.changeLevel(LevelFolder::Road);
 		AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Church_Music);
 		mRestartSounds = true;
 	}
 	else if (mPortals[CampToForestRoad]->getActivated() && mPortals[CampToForestRoad]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Forest_Road);
 		AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Church_Music);
 		mRestartSounds = true;
 	}
 }

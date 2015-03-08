@@ -8,9 +8,10 @@
 #include "..\Logics\Fade.h"
 #include "..\Logics\Fade.h"
 #include "..\Interface\ActionWheel.h"
+#include "..\Interface\HUD.h"
 #include "..\Objects\Player.h"
 #include "..\Objects\ObjectHandler.h"
-#include "..\Dialog\DialogWindow.h"
+#include "..\Dialog\PlayerMonologue.h"
 #include "..\Dialog\DialogHandler.h"
 #include "..\NPCs\NpcHandler.h"
 #include "LevelManager.h"
@@ -24,7 +25,7 @@
 class Level
 {
 public:
-	Level(Player &player, ActionWheel &ActionWheel);
+	Level(Player &player, HUD &hud, ActionWheel &ActionWheel);
 	virtual void updateObjects(sf::Time frameTime);
 	virtual void updateNPCs(sf::Time frameTime);
 	virtual void updateDialog(sf::Time frameTime);
@@ -49,7 +50,6 @@ public:
 	virtual std::vector<LevelFolder::ID> getConnectedLevels();
 
 protected:
-	virtual void setDialogPosition();
 	virtual void restartSounds();
 
 	std::vector<int> mBackgroundsIndexes;
@@ -67,6 +67,7 @@ protected:
 
 	ActionWheel *mActionWheel;
 	Player* mPlayer;
+	HUD* mHud;
 	TileMap mTileMap;
 
 	std::string mTileMapFilePath;
@@ -77,10 +78,13 @@ protected:
 
 	int mObjIndex;
 
+	sf::Time mConversationCooldownTime;
+
 	bool mWalkToObject;
 	bool mWalkToNPC;
 	bool mIsInConversation;
 	bool mOldIsInConversation;
+	bool mConversationStopped;
 	bool mIsNearbyLevel, mIsLoaded, mHasBeenReset;
 	bool mRestartSounds;
 };

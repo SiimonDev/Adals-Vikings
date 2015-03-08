@@ -133,26 +133,31 @@ ResourceManager::ResourceManager()
 
 
 	/* =========== Set Sound File paths =========== */
-	mSoundPathMap[Sound::InventoryOpen] = "assets/sounds/Inventory (open).ogg";
-	mSoundPathMap[Sound::InventoryClose] = "assets/sounds/Inventory (close).ogg";
-	mSoundPathMap[Sound::PickUpItem] = "assets/sounds/Pick_up_item.ogg";
+	mSoundPathMap[Sound::InventoryOpen] = "assets/sounds/interface/Inventory (open).ogg";
+	mSoundPathMap[Sound::InventoryClose] = "assets/sounds/interface/Inventory (close).ogg";
+	mSoundPathMap[Sound::PickUpItem] = "assets/sounds/interface/Pick_up_item.ogg";
 	/* ============================================ */
 
 
 	/* =========== Set HDDSound File paths =========== */
-	mHDDSoundPathMap[HDDSound::Boat_Ambient] = "assets/sounds/ambient/boat_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Boat_Music] = "assets/sounds/music/Boat_music.ogg";
+	mHDDSoundPathMap[HDDSound::Beach_Road_Tavern_Outside_Music] = "assets/sounds/music/beach_road_tavern_outside_music.ogg";
+	mHDDSoundPathMap[HDDSound::Camp_Finished_Music] = "assets/sounds/music/camp_finished_music.ogg";
+	mHDDSoundPathMap[HDDSound::Church_Music] = "assets/sounds/music/church_music.ogg";
+	mHDDSoundPathMap[HDDSound::Forest_Music] = "assets/sounds/music/forest_music_3spoopy5me.ogg";
+	mHDDSoundPathMap[HDDSound::Hils_Gate_Music] = "assets/sounds/music/hils_gate_music.ogg";
+	mHDDSoundPathMap[HDDSound::Tavern_Inside_Music] = "assets/sounds/music/tavern_inside_music.ogg";
 
+	mHDDSoundPathMap[HDDSound::Boat_Ambient] = "assets/sounds/ambient/boat_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Beach_Ambient] = "assets/sounds/ambient/beach_ambient.ogg";
-	mHDDSoundPathMap[HDDSound::ExplorerTheme_Music] = "assets/sounds/music/beach_road_theme.ogg";
-	mHDDSoundPathMap[HDDSound::Beach_Wave] = "assets/sounds/beach/wave.ogg";
-
 	mHDDSoundPathMap[HDDSound::Road_Ambient] = "assets/sounds/ambient/road_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Tavern_Outside_Ambient] = "assets/sounds/ambient/tavern_outside_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Church_Inside_Ambient] = "assets/sounds/ambient/church_inside_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Church_Outside_Ambient] = "assets/sounds/ambient/church_outside_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Forest_Road_Ambient] = "assets/sounds/ambient/forest_road_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Forest_Camp_Ambient] = "assets/sounds/ambient/forest_camp_ambient.ogg";
+
+	mHDDSoundPathMap[HDDSound::Beach_Wave] = "assets/sounds/beach/wave.ogg";
 	/* =============================================== */
 
 
