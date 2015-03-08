@@ -1,10 +1,16 @@
 #include "Level_Tavern_Inside.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Tavern_Inside::Level_Tavern_Inside(Player &player, ActionWheel &actionWheel)
 	: Level(player, actionWheel)
 {
 	mBackgroundID = LevelFolder::Tavern_Inside;
+}
+
+void Level_Tavern_Inside::restartSounds()
+{
+	AudioPlayer::playHDDSound(HDDSound::Tavern_Inside_Music, true, 20);
 }
 
 void Level_Tavern_Inside::update(sf::Time &frametime)
@@ -45,8 +51,9 @@ void Level_Tavern_Inside::update(sf::Time &frametime)
 			}
 		}
 	}
-	changeLevel();
+	
 	Level::update(frametime);
+	changeLevel();
 }
 
 void Level_Tavern_Inside::render(IndexRenderer &iRenderer)
@@ -126,6 +133,8 @@ void Level_Tavern_Inside::changeLevel()
 	if (mPortals[TavernInsideToTavernOutside]->getActivated() && mPortals[TavernInsideToTavernOutside]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Tavern_Outside);
+		AudioPlayer::stopHDDSound(HDDSound::Tavern_Inside_Music);
+		mRestartSounds = true;
 	}
 }
 

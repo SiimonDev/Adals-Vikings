@@ -9,8 +9,8 @@ static bool mMute = false;
 
 // 0.0 - 1.0
 static double masterSoundScale = 1.0f;
-static double soundEffectsScale = 0.5f;
-static double musicScale = 1.0f;
+static double soundEffectsScale = 0.7f;
+static double musicScale = 0.5f;
 
 AudioPlayer::AudioPlayer()
 {
@@ -57,20 +57,19 @@ void AudioPlayer::stopSound(std::string audioID)
 
 void AudioPlayer::playHDDSound(HDDSound::ID id, bool loop, float volume)
 {
-	sf::Music* music = new sf::Music();
-	if (!music->openFromFile(RMI.getFilePath(id)))
-		std::cout << "Failed to load music: " << RMI.getFilePath(id);
-	music->setVolume(volume * masterSoundScale * musicScale);
-	music->setLoop(loop);
-	music->play();
-
 	if (mHDDSound.find(id) == mHDDSound.end()) {
+		sf::Music* music = new sf::Music();
+		if (!music->openFromFile(RMI.getFilePath(id)))
+			std::cout << "Failed to load music: " << RMI.getFilePath(id);
+		music->setVolume(volume * masterSoundScale * musicScale);
+		music->setLoop(loop);
+		music->play();
+
 		mHDDSound[id] = music;
 	}
 	else {
-		delete mHDDSound[id];
-		mHDDSound.erase(id);
-		mHDDSound[id] = music;
+		mHDDSound[id]->setVolume(volume * masterSoundScale * musicScale);
+		mHDDSound[id]->setLoop(loop);
 	}
 }
 void AudioPlayer::stopHDDSound(HDDSound::ID id)

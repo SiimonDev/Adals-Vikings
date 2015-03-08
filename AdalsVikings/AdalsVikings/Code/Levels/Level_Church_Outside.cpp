@@ -11,6 +11,7 @@ Level_Church_Outside::Level_Church_Outside(Player &player, ActionWheel &actionWh
 void Level_Church_Outside::restartSounds()
 {
 	AudioPlayer::playHDDSound(HDDSound::Church_Outside_Ambient, true, 100);
+	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, 20);
 }
 
 void Level_Church_Outside::update(sf::Time &frametime)
@@ -82,6 +83,7 @@ void Level_Church_Outside::changeLevel()
 	{
 		LVLMI.changeLevel(LevelFolder::Road);
 		AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Church_Music);
 		mRestartSounds = true;
 	}
 	else if (mPortals[Outside_ChurchToChurch]->getActivated() && mPortals[Outside_ChurchToChurch]->getWorking())

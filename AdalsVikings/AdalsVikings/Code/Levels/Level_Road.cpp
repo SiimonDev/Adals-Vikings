@@ -12,6 +12,7 @@ Level_Road::Level_Road(Player &player, ActionWheel &actionWheel)
 void Level_Road::restartSounds()
 {
 	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
 }
 
 void Level_Road::update(sf::Time &frametime)
@@ -126,18 +127,21 @@ void Level_Road::changeLevel()
 	{
 		LVLMI.changeLevel(LevelFolder::Church_Outside);
 		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
 		mRestartSounds = true;
 	}
 	else if (mPortals[RoadToFarm]->getActivated() && mPortals[RoadToFarm]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Forest_Road);
 		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
 		mRestartSounds = true;
 	}
 	if (mPortals[RoadToCamp]->getActivated() && mPortals[RoadToCamp]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Camp_Clearing);
 		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
 		mRestartSounds = true;
 	}
 }

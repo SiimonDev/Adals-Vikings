@@ -18,7 +18,7 @@ Level_Beach::Level_Beach(Player &player, ActionWheel &actionWheel)
 void Level_Beach::restartSounds()
 {
 	AudioPlayer::playHDDSound(HDDSound::Beach_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::ExplorerTheme_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
 }
 
 void Level_Beach::update(sf::Time &frametime)
@@ -383,8 +383,8 @@ void Level_Beach::talkToNpcs()
 	//Act1Events::handleEvent(Act1Event::Beach_Valdis);
 	//Act1Events::handleEvent(Act1Event::Beach_Finnr);
 
-	mPortals[BeachToRoad]->setWorking(true);
-	mPortals[BeachToTavernOutside]->setWorking(true);
+	//mPortals[BeachToRoad]->setWorking(true);
+	//mPortals[BeachToTavernOutside]->setWorking(true);
 	/*=============*/
 
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Ending))

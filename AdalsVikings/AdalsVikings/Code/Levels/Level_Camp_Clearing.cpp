@@ -13,6 +13,7 @@ Level_Camp_Clearing::Level_Camp_Clearing(Player &player, ActionWheel &actionWhee
 void Level_Camp_Clearing::restartSounds()
 {
 	AudioPlayer::playHDDSound(HDDSound::Church_Outside_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, 20);
 }
 
 void Level_Camp_Clearing::update(sf::Time &frametime)
@@ -138,12 +139,14 @@ void Level_Camp_Clearing::changeLevel()
 	{
 		LVLMI.changeLevel(LevelFolder::Road);
 		AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Church_Music);
 		mRestartSounds = true;
 	}
 	else if (mPortals[CampToForestRoad]->getActivated() && mPortals[CampToForestRoad]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Forest_Road);
 		AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Church_Music);
 		mRestartSounds = true;
 	}
 }

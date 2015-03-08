@@ -11,6 +11,7 @@ Level_Church_Inside::Level_Church_Inside(Player &player, ActionWheel &actionWhee
 void Level_Church_Inside::restartSounds()
 {
 	AudioPlayer::playHDDSound(HDDSound::Church_Inside_Ambient, true, 100);
+	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, 20);
 }
 
 void Level_Church_Inside::update(sf::Time &frametime)

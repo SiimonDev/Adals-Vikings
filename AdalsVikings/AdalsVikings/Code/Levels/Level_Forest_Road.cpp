@@ -11,6 +11,7 @@ Level_Forest_Road::Level_Forest_Road(Player &player, ActionWheel &actionWheel)
 void Level_Forest_Road::restartSounds()
 {
 	AudioPlayer::playHDDSound(HDDSound::Forest_Road_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, 20);
 }
 
 void Level_Forest_Road::update(sf::Time &frametime)
@@ -50,6 +51,7 @@ void Level_Forest_Road::changeLevel()
 	{
 		LVLMI.changeLevel(LevelFolder::Camp_Clearing);
 		AudioPlayer::stopHDDSound(HDDSound::Forest_Road_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Forest_Music);
 		mRestartSounds = true;
 	}
 	else if (mPortals[ForestRoadToForestCamp]->getActivated() && mPortals[ForestRoadToForestCamp]->getWorking())
