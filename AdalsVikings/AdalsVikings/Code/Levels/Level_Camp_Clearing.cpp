@@ -36,6 +36,7 @@ void Level_Camp_Clearing::update(sf::Time &frametime)
 
 			if (FadeI.getFaded())
 			{
+				Act1Events::handleEvent(Act1Event::CampClearing_Leifr);
 				mFade2 = true;
 			}
 		}
