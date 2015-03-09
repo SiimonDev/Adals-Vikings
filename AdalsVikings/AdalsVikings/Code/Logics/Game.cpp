@@ -21,7 +21,7 @@ IndexRenderer iRenderer;
 bool runGame = false;
 
 Game::Game()
-	:mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
+	:mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings"/*, sf::Style::Fullscreen*/)
 {
 	mWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
 	mWindow.setVerticalSyncEnabled(false);
