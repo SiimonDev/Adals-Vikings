@@ -9,4 +9,4 @@
 *combine: 
 *interact: 
 *texture: "img_ato1_id.png"
-*animation: X:1  Y:3  ~2,0 ~3,0
+*animation: X:1   Y:3   ~2,0 ~3,0

@@ -1,4 +1,4 @@
-*Type: invisible
+*Type: standard
 *ID: $rope$
 *Name: Rope
 *ispickupable: True
@@ -8,4 +8,4 @@
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:  Y:
+*texture: "img_rope_id.png"

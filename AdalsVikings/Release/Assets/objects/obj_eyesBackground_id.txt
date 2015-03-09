@@ -1,6 +1,6 @@
 *Type: invisible
 *ID: $eyesBackground$
-*Name: Eyes In Forest
+*Name: Scary Eyes
 *ispickupable: False
 *pickup: "No." ~2,0
 *lookat: "Let's not go that way." ~2,0
@@ -8,4 +8,4 @@
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:  Y:
+*invisible: X:    Y:

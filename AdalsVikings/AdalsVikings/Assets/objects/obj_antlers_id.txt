@@ -6,6 +6,6 @@
 *lookat: "That's nice..." ~1,5
 *deny: "I can't do that" ~1,5
 *denywith: 
-*combine: 
+*combine: $bearPelt$ $beerDeer$ "This will hopefully be a good enough costume..." ~2,5; 
 *interact: 
 *texture: "img_antlers_id.png"

@@ -1,6 +1,6 @@
 *Type: invisible
 *ID: $sign12$
-*Name: Sign 12
+*Name: Sign
 *ispickupable: False
 *pickup: "Nah." ~2,0
 *lookat: "Do not add more signs unless your name is Jacob!" ~3,0
@@ -8,4 +8,4 @@
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:  Y:
+*invisible: X:   Y:

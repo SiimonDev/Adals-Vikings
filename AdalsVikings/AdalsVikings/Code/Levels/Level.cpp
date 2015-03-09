@@ -337,12 +337,12 @@ void Level::update(sf::Time &frameTime)
 	mPlayer->setFootsteps(mCurrentFootsteps);
 	checkEvents();
 
-	if (KeyboardState::isPressed(sf::Keyboard::F5))
-	{
-		OBHI.initialize();
-		resetLevel();
-		refreshLevel();
-	}
+	//if (KeyboardState::isPressed(sf::Keyboard::F5))
+	//{
+	//	OBHI.initialize();
+	//	resetLevel();
+	//	refreshLevel();
+	//}
 
 	if (mRestartSounds)
 	{

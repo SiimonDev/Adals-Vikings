@@ -45,11 +45,11 @@ void Level_Forest_Camp::load()
 	RMI.loadResource(Texture::FireForestCampAnimation);
 	RMI.loadResource(Texture::DruidsForest1);
 
-	mNpcs["DruidLeader"] = NpcPtr(new Npc(NpcHandler::getNpc("DruidLeader")));
-	mNpcs["Druids"] = NpcPtr(new Npc(NpcHandler::getNpc("Druids")));
-	mNpcs["Hipster druid"] = NpcPtr(new Npc(NpcHandler::getNpc("Hipster druid")));
-	mNpcs["Dennis"] = NpcPtr(new Npc(NpcHandler::getNpc("Dennis")));
-	mNpcs["Druid2"] = NpcPtr(new Npc(NpcHandler::getNpc("Druid2")));
+	mNpcs["DruidLeader"] = NpcPtr(new Npc(NpcHandlerI.getNpc("DruidLeader")));
+	mNpcs["Druids"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druids")));
+	mNpcs["Hipster druid"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Hipster druid")));
+	mNpcs["Dennis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Dennis")));
+	mNpcs["Druid2"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druid2")));
 
 	mNpcs["DruidLeader"]->setDialogue("Druids_ForestCamp1");
 	mNpcs["Druids"]->setDialogue("Druids_ForestCamp1");

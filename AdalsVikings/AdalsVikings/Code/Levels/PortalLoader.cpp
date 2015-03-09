@@ -15,7 +15,7 @@ void PortalLoader::load()
 	if (LVLMI.getCurrentAct() == Ship)
 	{
 		mPortalMap[Ship1ToShip2] = PortalPtr(new Portal(LevelFolder::Ship_1, sf::Vector2f(110, 1080), sf::Vector2f(0, 0), sf::Vector2f(200, 750), sf::Vector2f(0, 750)));
-		mPortalMap[Ship2ToShip1] = PortalPtr(new Portal(LevelFolder::Ship_2, sf::Vector2f(110, 1080), sf::Vector2f(1790, 0), sf::Vector2f(1700, 750), sf::Vector2f(1900, 750)));
+		mPortalMap[Ship2ToShip1] = PortalPtr(new Portal(LevelFolder::Ship_2, sf::Vector2f(130, 1080), sf::Vector2f(1790, 0), sf::Vector2f(1700, 750), sf::Vector2f(1900, 750)));
 
 		//needed for first Portal
 		mPortalMap[Ship1ToShip2]->setGateway(&*mPortalMap[Ship2ToShip1]);

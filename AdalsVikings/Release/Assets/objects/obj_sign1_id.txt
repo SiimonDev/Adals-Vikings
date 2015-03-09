@@ -1,6 +1,6 @@
 *Type: invisible
 *ID: $sign1$
-*Name: Sign 1
+*Name: Sign
 *ispickupable: False
 *pickup: "Nah." ~2,0
 *lookat: "Private property (Do not trespass unless it’s on Parrik’s land)." ~3,0
@@ -8,4 +8,4 @@
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:  Y:
+*invisible: X:   Y:
