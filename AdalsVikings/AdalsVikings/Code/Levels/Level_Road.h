@@ -5,7 +5,7 @@ class Level_Road : public Level
 {
 public:
 	//General Functions
-	Level_Road(Player &player, ActionWheel &actionWheel);
+	Level_Road(Player &player, HUD &hud, ActionWheel &actionWheel);
 
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);

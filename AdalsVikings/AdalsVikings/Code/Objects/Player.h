@@ -54,7 +54,7 @@ namespace AnimationType
 class Player
 {
 public:
-	Player(HUD &hud);
+	Player();
 
 	void load();
 	void unload();
@@ -122,7 +122,6 @@ private:
 	float mDistanceTraveled;
 	float mTotalDistance;
 
-	HUD* mHud;
 	Inventory mInventory;
 	Animation mPlayerAnimation;
 	Intention::ID mIntention;

@@ -2,8 +2,8 @@
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
-Level_Forest_Camp::Level_Forest_Camp(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Forest_Camp::Level_Forest_Camp(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Forest_Camp;
 }
@@ -11,6 +11,7 @@ Level_Forest_Camp::Level_Forest_Camp(Player &player, ActionWheel &actionWheel)
 void Level_Forest_Camp::restartSounds()
 {
 	AudioPlayer::playHDDSound(HDDSound::Forest_Camp_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, 20);
 }
 
 void Level_Forest_Camp::update(sf::Time &frametime)
@@ -18,6 +19,11 @@ void Level_Forest_Camp::update(sf::Time &frametime)
 	if (KeyboardState::isPressed(sf::Keyboard::Num1))
 		mPlayer->addItemToInventory("bearDeer");
 	mFireAnimation.animate(frametime);
+
+	if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
+	{
+
+	}
 	
 	Level::update(frametime);
 	changeLevel();
@@ -41,14 +47,27 @@ void Level_Forest_Camp::load()
 
 	mNpcs["DruidLeader"] = NpcPtr(new Npc(NpcHandler::getNpc("DruidLeader")));
 	mNpcs["Druids"] = NpcPtr(new Npc(NpcHandler::getNpc("Druids")));
+	mNpcs["Hipster druid"] = NpcPtr(new Npc(NpcHandler::getNpc("Hipster druid")));
+	mNpcs["Dennis"] = NpcPtr(new Npc(NpcHandler::getNpc("Dennis")));
+	mNpcs["Druid2"] = NpcPtr(new Npc(NpcHandler::getNpc("Druid2")));
+
 	mNpcs["DruidLeader"]->setDialogue("Druids_ForestCamp1");
 	mNpcs["Druids"]->setDialogue("Druids_ForestCamp1");
 
+	mNpcs["Druid2"]->setDialogue("Druids_ForestCamp1");
+	mNpcs["Hipster druid"]->setDialogue("Druids_ForestCamp1");
+	mNpcs["Dennis"]->setDialogue("Druids_ForestCamp1");
+
 	if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
 	{
-		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandler::getNpc("Leifr")));
+		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
 		mNpcs["Leifr"]->setDialogue("Leifr_ForestCamp");
+		mNpcs["Leifr"]->setPosition(sf::Vector2f(1450, 580));
+		mNpcs["Leifr"]->setscale(sf::Vector2f(0.6f, 0.6f));
+		mNpcs["Leifr"]->setIndex(1);
+		mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1560, 565));
 	}
+	
 
 	mFireAnimation.load(RMI.getResource(Texture::FireForestCampAnimation), sf::Vector2i(2, 4), sf::milliseconds(2000), sf::Time::Zero, true);
 	mFireAnimation.setIndex(9999);
@@ -81,7 +100,8 @@ void Level_Forest_Camp::changeLevel()
 
 void Level_Forest_Camp::checkInteractEvents()
 {
-
+	if (mDroppedItemID == "bearDeer" && mCurrentNPCID == "Leifr" && !Act1Events::hasBeenTriggered(Act1Event::ForestCamp_BeerDeer))
+		Act1Events::triggerEvent(Act1Event::ForestCamp_BeerDeer);
 }
 void Level_Forest_Camp::checkEvents()
 {

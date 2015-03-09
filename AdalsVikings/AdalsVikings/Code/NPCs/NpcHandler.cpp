@@ -3,10 +3,14 @@
 
 #define CreateNpc mNpcMap.insert(std::make_pair
 
-static std::map<std::string, NpcPtr> mNpcMap;
-
 NpcHandler::NpcHandler()
 {
+}
+
+NpcHandler &NpcHandler::getInstance()
+{
+	static NpcHandler instance;
+	return instance;
 }
 
 void NpcHandler::load()
@@ -27,6 +31,9 @@ void NpcHandler::load()
 	NpcPtr Beor(new Npc(Font::Skranji_regular));
 	NpcPtr Druids(new Npc(Font::Skranji_regular));
 	NpcPtr DruidLeader(new Npc(Font::Skranji_regular));
+	NpcPtr HipsterDruid(new Npc(Font::Skranji_regular));
+	NpcPtr Druid2(new Npc(Font::Skranji_regular));
+	NpcPtr Dennis(new Npc(Font::Skranji_regular));
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -173,10 +180,28 @@ void NpcHandler::load()
 	DruidLeader->setFlip(false);
 
 	Druids->setName("Druids");
-	Druids->setPosition(sf::Vector2f(0, 450));
-	Druids->setInvisibleRect(sf::Vector2f(565, 630));
+	Druids->setPosition(sf::Vector2f(0, 400));
+	Druids->setInvisibleRect(sf::Vector2f(430, 100));
 	Druids->setColor(sf::Color(176, 196, 222));
 	Druids->setIsInvisble(true);
+
+	HipsterDruid->setName("Hipster druid");
+	HipsterDruid->setPosition(sf::Vector2f(0, 510));
+	HipsterDruid->setInvisibleRect(sf::Vector2f(120, 230));
+	HipsterDruid->setColor(sf::Color(176, 196, 222));
+	HipsterDruid->setIsInvisble(true);
+
+	Druid2->setName("Druid2");
+	Druid2->setPosition(sf::Vector2f(405, 510));
+	Druid2->setInvisibleRect(sf::Vector2f(125, 116));
+	Druid2->setColor(sf::Color(176, 196, 222));
+	Druid2->setIsInvisble(true);
+
+	Dennis->setName("Dennis");
+	Dennis->setPosition(sf::Vector2f(440, 680));
+	Dennis->setInvisibleRect(sf::Vector2f(150, 220));
+	Dennis->setColor(sf::Color(176, 196, 222));
+	Dennis->setIsInvisble(true);
 
 	CreateNpc("Valdis", std::move(Valdis)));
 	CreateNpc("Leifr", std::move(Leifr)));
@@ -192,6 +217,9 @@ void NpcHandler::load()
 	CreateNpc("Beor", std::move(Beor)));
 	CreateNpc("DruidLeader", std::move(DruidLeader)));
 	CreateNpc("Druids", std::move(Druids)));
+	CreateNpc("Hipster druid", std::move(HipsterDruid)));
+	CreateNpc("Dennis", std::move(Dennis)));
+	CreateNpc("Druid2", std::move(Druid2)));
 }
 
 void NpcHandler::unload()

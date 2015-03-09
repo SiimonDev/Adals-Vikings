@@ -1,6 +1,6 @@
 *Type: standard
 *ID: $ropePiece$
-*Name: ropePiece
+*Name: Piece of Rope
 *ispickupable: False
 *pickup: "This might come in handy." ~2,0
 *lookat: "You can really just this for anything." ~1,5

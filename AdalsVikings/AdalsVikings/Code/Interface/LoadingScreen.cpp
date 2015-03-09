@@ -38,7 +38,6 @@ LoadingScreen::~LoadingScreen()
 
 bool LoadingScreen::update(sf::Time frameTime)
 {
-
 	if (mFinished)
 		mIsDone = true;
 	else

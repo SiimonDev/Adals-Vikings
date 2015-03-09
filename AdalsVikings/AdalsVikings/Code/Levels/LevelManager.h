@@ -51,7 +51,7 @@ private:
 	void operator=(const LevelManager&);
 
 	HUD mHud;
-	Player* mPlayer;
+	Player mPlayer;
 	ActionWheel mActionWheel;
 	LevelFolder::ID mCurrentID;
 	Act mCurrentAct;

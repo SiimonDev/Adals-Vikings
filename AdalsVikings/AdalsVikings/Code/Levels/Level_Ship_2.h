@@ -4,7 +4,7 @@
 class Level_Ship_2 : public Level
 {
 public:
-	Level_Ship_2(Player &player, ActionWheel &ActionWheel);
+	Level_Ship_2(Player &player, HUD &hud, ActionWheel &ActionWheel);
 
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);

@@ -2,8 +2,8 @@
 #include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
-Level_Tavern_Outside::Level_Tavern_Outside(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Tavern_Outside::Level_Tavern_Outside(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Tavern_Outside;
 }
@@ -11,6 +11,7 @@ Level_Tavern_Outside::Level_Tavern_Outside(Player &player, ActionWheel &actionWh
 void Level_Tavern_Outside::restartSounds()
 {
 	AudioPlayer::playHDDSound(HDDSound::Tavern_Outside_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
 }
 
 void Level_Tavern_Outside::update(sf::Time &frametime)
@@ -53,6 +54,7 @@ void Level_Tavern_Outside::changeLevel()
 	{
 		LVLMI.changeLevel(LevelFolder::Tavern_Inside);
 		AudioPlayer::stopHDDSound(HDDSound::Tavern_Outside_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
 		mRestartSounds = true;
 	}
 }

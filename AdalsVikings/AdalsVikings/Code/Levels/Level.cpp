@@ -5,13 +5,14 @@
 #include <vector>
 #include <string>
 
-Level::Level(Player &player, ActionWheel &ActionWheel)
+Level::Level(Player &player, HUD &hud, ActionWheel &actionWheel)
 : mPlayer(&player)
+, mHud(&hud)
+, mActionWheel(&actionWheel)
 , mIsNearbyLevel(false)
 , mIsLoaded(false)
 , mHasBeenReset(false)
 {
-	mActionWheel = &ActionWheel;
 }
 
 void Level::updateObjects(sf::Time frameTime)
@@ -80,7 +81,7 @@ void Level::updateObjects(sf::Time frameTime)
 			else
 				mPlayer->setFlip(false);
 			Dialog dialog = Dialog(mObjects[mObjIndex]->getLookAtDialog());
-			DialogWindow::displayDialog(dialog);
+			PlayerMonologueI.displayDialog(dialog);
 			mPlayer->setIntention(Intention::None);
 			mWalkToObject = false;
 
@@ -93,7 +94,7 @@ void Level::updateObjects(sf::Time frameTime)
 				mPlayer->setFlip(false);
 
 			Dialog dialog = (mObjects[mObjIndex]->interactWithObject("player"));
-			DialogWindow::displayDialog(dialog);
+			PlayerMonologueI.displayDialog(dialog);
 			mPlayer->setIntention(Intention::None);
 			mWalkToObject = false;
 		}
@@ -104,7 +105,7 @@ void Level::updateObjects(sf::Time frameTime)
 			else
 				mPlayer->setFlip(false);
 			Dialog dialog = Dialog(mObjects[mObjIndex]->getPickupDialog());
-			DialogWindow::displayDialog(dialog);
+			PlayerMonologueI.displayDialog(dialog);
 			if (mObjects[mObjIndex]->isPickupable())
 			{
 				mPlayer->setAnimationStyle(AnimationType::Pickup);
@@ -126,7 +127,7 @@ void Level::updateObjects(sf::Time frameTime)
 			else
 				mPlayer->setFlip(false);
 			Dialog dialog = Dialog(OBHI.getObject(mDroppedItemID).interactWithObject(mObjects[mObjIndex]->getObjID()));
-			DialogWindow::displayDialog(dialog);
+			PlayerMonologueI.displayDialog(dialog);
 			mPlayer->setIntention(Intention::None);
 			mWalkToObject = false;
 		}
@@ -204,7 +205,7 @@ void Level::updateNPCs(sf::Time frameTime)
 				mPlayer->setFlip(false);
 			mPlayer->UpdateAnimationStyle();
 			Dialog dialog = Dialog(mNpcs[mCurrentNPCID]->getLookText(), 2);
-			DialogWindow::displayDialog(dialog);
+			PlayerMonologueI.displayDialog(dialog);
 		}
 		else if (mPlayer->getIntention() == Intention::Talk)
 		{
@@ -225,7 +226,7 @@ void Level::updateNPCs(sf::Time frameTime)
 				mPlayer->setFlip(false);
 			mPlayer->UpdateAnimationStyle();
 			Dialog dialog = Dialog(mNpcs[mCurrentNPCID]->getUseText(), 2);
-			DialogWindow::displayDialog(dialog);
+			PlayerMonologueI.displayDialog(dialog);
 		}
 		else if (mPlayer->getIntention() == Intention::Interact)
 		{
@@ -236,7 +237,7 @@ void Level::updateNPCs(sf::Time frameTime)
 			mPlayer->UpdateAnimationStyle();
 			checkInteractEvents();
 			Dialog dialog = Dialog(OBHI.getObject(mDroppedItemID).interactWithObject(mCurrentNPCID));
-			DialogWindow::displayDialog(dialog);
+			PlayerMonologueI.displayDialog(dialog);
 		}
 		mWalkToNPC = false;
 	}
@@ -321,9 +322,10 @@ void Level::updateDialog(sf::Time frameTime)
 
 			for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
 				iz->second->setAnimationStyle("Idle");
+
+			mConversationStopped = true;
 		}
 	}
-	setDialogPosition();
 }
 
 void Level::update(sf::Time &frameTime)
@@ -334,7 +336,6 @@ void Level::update(sf::Time &frameTime)
 	mPlayer->update(frameTime);
 	mPlayer->setFootsteps(mCurrentFootsteps);
 	checkEvents();
-	setDialogPosition();
 
 	if (KeyboardState::isPressed(sf::Keyboard::F5))
 	{
@@ -348,13 +349,30 @@ void Level::update(sf::Time &frameTime)
 		restartSounds();
 		mRestartSounds = false;
 	}
-	
-	if (!mIsInConversation && FadeI.getFaded() && !(mPlayer->isInventoryActive() || mPlayer->getSnappedObjectID() != ""))
-		mActionWheel->update();
+
 	if (!mIsInConversation && !mOldIsInConversation && FadeI.getFaded())
 	{
-		mPlayer->move(frameTime);
-		updateObjects(frameTime);
+		// This adds a "cooldown timer" after finishing a conversation
+		// meaning there is a short time after a conversation where player input is ignored
+		if (mConversationStopped)
+		{
+			mConversationCooldownTime += frameTime;
+			if (mConversationCooldownTime >= sf::seconds(0.5f))
+			{
+				mConversationCooldownTime = sf::seconds(0);
+				mConversationStopped = false;
+			}
+		}
+		else
+		{
+			if (!(mHud->isHelpActive() || mPlayer->isInventoryActive() || mPlayer->getSnappedObjectID() != ""))
+				mActionWheel->update();
+			if (!mHud->isHelpActive() && !mHud->isButtonReleased())
+			{
+				mPlayer->move(frameTime);
+				updateObjects(frameTime);
+			}
+		}
 	}
 	mOldIsInConversation = mIsInConversation;
 
@@ -580,13 +598,6 @@ void Level::checkInteractEvents()
 void Level::checkEvents()
 {
 
-}
-
-void Level::setDialogPosition()
-{
-	DialogWindow::setPosition(sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left +
-		mPlayer->getSprite().getGlobalBounds().width / 2,
-		mPlayer->getSprite().getGlobalBounds().top));
 }
 
 void Level::restartSounds()

@@ -4,7 +4,7 @@
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\Debug.h"
 #include "..\Logics\KeyboardState.h"
-#include "..\Dialog\DialogWindow.h"
+#include "..\Dialog\PlayerMonologue.h"
 #include <iostream>
 
 Portal::Portal(LevelFolder::ID levelID, sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn)
@@ -93,7 +93,7 @@ void Portal::portalTravel(Player &player)
 		else
 		{
 			Dialog dialog = Dialog(mCannotDialogue, 2);
-			DialogWindow::displayDialog(dialog);
+			PlayerMonologueI.displayDialog(dialog);
 		}
 	}
 }

@@ -7,7 +7,7 @@
 #include <iostream>
 #include <math.h>
 
-Player::Player(HUD &hud)
+Player::Player()
 	: mDestinationReached(true)
 	, mTargetReached(true)
 	, mVelocity()
@@ -15,7 +15,6 @@ Player::Player(HUD &hud)
 	, mPlayerAnimation()
 	, mName("Ulfr")
 	, mIntention(Intention::None)
-	, mHud(&hud)
 {
 	mSpeed = 6.f;
 	mPlayerPadding = 20;
@@ -131,7 +130,7 @@ void Player::render(IndexRenderer &iRenderer)
 
 void Player::move(sf::Time &frameTime)
 {
-	if (MouseState::isReleased(sf::Mouse::Left, 0.3) && !mInventory.isActive() && !mHud->isButtonReleased() && !mHud->isButtonReleased())
+	if (MouseState::isReleased(sf::Mouse::Left, 0.3) && !mInventory.isActive())
 		walkPath(PathFinder::getPath(getPosition(), sf::Vector2f(MouseState::getMousePosition())));
 
 	if (!mTargetReached && !mDestinationReached)

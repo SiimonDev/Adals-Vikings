@@ -6,7 +6,7 @@ class Level_Beach : public Level
 {
 public:
 	//General Functions
-	Level_Beach(Player &player, ActionWheel &actionWheel);
+	Level_Beach(Player &player, HUD &hud, ActionWheel &actionWheel);
 
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);

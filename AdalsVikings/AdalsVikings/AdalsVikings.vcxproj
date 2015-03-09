@@ -21,7 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Code\Dialog\DialogHandler.cpp" />
     <ClCompile Include="Code\Dialog\DialogueTree.cpp" />
-    <ClCompile Include="Code\Dialog\DialogWindow.cpp" />
+    <ClCompile Include="Code\Dialog\PlayerMonologue.cpp" />
     <ClCompile Include="Code\Dialog\pugixml.cpp" />
     <ClCompile Include="code\Interface\ActionWheel.cpp" />
     <ClCompile Include="code\Interface\Button.cpp" />
@@ -77,7 +77,7 @@
     <ClInclude Include="Code\Dialog\Dialog.h" />
     <ClInclude Include="Code\Dialog\DialogHandler.h" />
     <ClInclude Include="Code\Dialog\DialogueTree.h" />
-    <ClInclude Include="Code\Dialog\DialogWindow.h" />
+    <ClInclude Include="Code\Dialog\PlayerMonologue.h" />
     <ClInclude Include="Code\Dialog\pugiconfig.hpp" />
     <ClInclude Include="Code\Dialog\pugixml.hpp" />
     <ClInclude Include="code\Interface\ActionWheel.h" />

@@ -1,8 +1,8 @@
 #include "Level_Template.h"
 #include <iostream>
 
-Level_Template::Level_Template(Player &player, ActionWheel &actionWheel)
-	: Level(player, actionWheel)
+Level_Template::Level_Template(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
 {
 	mBackgroundID = LevelFolder::Church_Outside;
 }
