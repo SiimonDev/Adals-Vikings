@@ -6,6 +6,6 @@
 *lookat: "This is going to fall apart any minute now... I have to fasten it with something." ~1,5
 *deny: "It might be sharp, but it'll fall apart if I were to swing it." ~2,0
 *denywith: 
-*combine: 
+*combine: $rope$ $axe$ "" ~0; 
 *interact: 
 *texture: "img_axeUnfinished_id.png"

@@ -6,6 +6,6 @@
 *lookat: "It's a strong Viking rope." ~2,0
 *deny: "I can't do that." ~1,5
 *denywith: 
-*combine: 
+*combine: $axeUnfinished$ $axe$ "" ~0; 
 *interact: 
 *texture: "img_rope_id.png"
