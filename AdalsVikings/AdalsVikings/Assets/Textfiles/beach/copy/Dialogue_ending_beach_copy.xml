@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="Why would I use Brandr?" />
-	<lookText lookText="That's Brandr" />
+	<lookText lookText="That's Brandr." />
 	<text character="Brandr" turned="true" timer="2.4" say="Great Vikings of Adal." />
 	<text character="Brandr" say="There is a wide land before us." timer="3.3" />
 	<text character="Brandr" say="With riches of many kinds." timer="3.3" />
@@ -28,7 +28,7 @@
 	<text character="Brandr" say="A camp." timer="1.8" />
 	<text character="Brandr" say="Yes." timer="1.8" />
 	<text character="Brandr" say="Yngvarr, Dagny, Finnr, and Alfr," timer="3.5" />
-	<text character="Brandr" say="with me!" timer="2.2" />
+	<text character="Brandr" say="With me!" timer="2.2" />
 	<text character="Brandr" say="We will raid some building down the coast." timer="3.5" />
 	<text character="Brandr" say="Yeah." timer="1.8" />
 	<text timer="1.2" />

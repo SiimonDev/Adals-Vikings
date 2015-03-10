@@ -7,16 +7,16 @@
 	<text character="Dagny" disabled="false" default="false" disablePrevious="" say="I don't know" timer="1.6" />
 	<text character="Dagny" disabled="false" default="false" disablePrevious="" say="More grand, perhaps?" timer="2.0" />
 	<text character="Ulfr" disabled="false" default="false" say="I mean..." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="it's a country like any other" timer="2.2" />
+	<text character="Ulfr" disabled="false" default="false" say="It's a country like any other..." timer="2.2" />
 	<text character="Dagny" disabled="false" default="false" say="Just thought it'd be more exciting." timer="2.4" turned="true" />
-	<text character="Dagny" say="Like," timer="1.5" disabled="false" default="false" />
-	<text character="Dagny" say="a hundred men with axes running towards us when we dock," timer="3.5" default="false" disabled="false" />
-	<text character="Dagny" say="and us (me) slaying them with intense hatred." timer="3.0" disabled="false" default="false" />
+	<text character="Dagny" say="Like..." timer="1.5" disabled="false" default="false" />
+	<text character="Dagny" say="A hundred men with axes running towards us when we dock." timer="3.5" default="false" disabled="false" />
+	<text character="Dagny" say="And us (me) slaying them with intense hatred." timer="3.0" disabled="false" default="false" />
 	<text character="Ulfr" say="..." timer="1.5" disabled="false" default="false" turned="false" />
 	<text character="Ulfr" say="Well, I'm..." timer="2.0" default="false" disabled="false" />
 	<text character="Ulfr" say="...I'm sorry you're dissapointed." default="false" disabled="false" timer="2.4" />
-	<text character="Ulfr" default="true" disabled="true" say="Hey Dagny!" timer="1.5" />
 	<text character="Dagny" default="true" disabled="true" say="uh-huh" timer="1.5" />
+	<text character="Ulfr" default="true" disabled="true" say="Hey Dagny!" timer="1.5" />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />
