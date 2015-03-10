@@ -1,7 +1,7 @@
 *Type: invisible
 *ID: $lifebuoy$
 *Name: Lifebuoy
-*ispickupable: True
+*ispickupable: False
 *pickup: "Nah, someone might need it." ~2,0
 *lookat: "A real life saver." ~2,0
 *deny: "I can't do that." ~1,5

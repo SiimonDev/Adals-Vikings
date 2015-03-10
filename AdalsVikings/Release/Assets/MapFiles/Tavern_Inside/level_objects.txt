@@ -3,63 +3,63 @@
 position: $X:1872 $Y:842
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $goldRegister
 position: $X:1705 $Y:625
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $holeInTheCeiling
 position: $X:790 $Y:120
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $tavernDeadSunflowers
 position: $X:1786 $Y:660
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $tavernShelf
 position: $X:1453 $Y:483
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $tavernSign
 position: $X:1194 $Y:760
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $tavernPoster1
 position: $X:300 $Y:484
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $tavernPoster2
 position: $X:384 $Y:564
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $antlers
 position: $X:1495 $Y:640
 interactPosition: $X:0 $Y:0
 index: $11
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $bearPelt
@@ -69,10 +69,3 @@ index: $1
 scale: $0.8
 hascollision: $false
 ############
-
-
-
-
-
-
-
