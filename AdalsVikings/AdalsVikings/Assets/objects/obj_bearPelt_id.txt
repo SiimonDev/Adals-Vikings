@@ -5,7 +5,7 @@
 *pickup: "This might be useful..." ~2,5
 *lookat: "Who would just leave a perfectly good pelt like this?" ~3,0
 *deny: "I can't do that." ~1,5
-*denywith: $flowers$ "Trying to charm the bear, are we?" ~3,0; $mead$ "Bears don't drink." ~3,0; 
+*denywith: $flowers$ "Trying to charm the bear, are we?" ~3,0; $mead$ "Bears don't drink." ~3,0; $candle$ "Why burn such a nice fur?" ~3,0; $torch$ "Why burn such a nice fur?" ~3,0; $ropePiece$ "You want a bear on a leash? The answer is no." ~3,0; $rope$ "You want a bear on a leash? The answer is no." ~3,0; $bucketBroken$ "The pelt doesn’t fit in there." ~3,0; $meat$ "Don't feed the bear." ~3,0; 
 *combine: $antlers$ $bearDeer$ "This will hopefully be a good enough costume..." ~2,5; 
 *interact: 
 *texture: "img_bearPelt_id.png"
