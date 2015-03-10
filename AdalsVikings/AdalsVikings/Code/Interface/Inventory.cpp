@@ -1,4 +1,5 @@
 #include "Inventory.h"
+#include "..\Dialog\PlayerMonologue.h"
 #include "..\Logics\AudioPlayer.h"
 #include "..\Logics\MouseState.h"
 #include "..\Logics\BoatEvents.h"
@@ -102,6 +103,7 @@ void Inventory::update(sf::Time frameTime)
 						{
 							CombineDialog newObjDialog = mSnappedObject->combineWithObject(invTiles[x][y].getObjectID());
 
+							PlayerMonologueI.displayDialog(newObjDialog);
 							if (newObjDialog.mResultID != ""){
 								invTiles[x][y].removeObject();
 								addItemToInventory(newObjDialog.mResultID);

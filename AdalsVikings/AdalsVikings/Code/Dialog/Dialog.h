@@ -17,7 +17,7 @@ struct Dialog
 	double mTimer;
 };
 
-struct CombineDialog
+struct CombineDialog : public Dialog
 {
 	CombineDialog() :
 		mDialog(""), mTimer(0), mResultID("")

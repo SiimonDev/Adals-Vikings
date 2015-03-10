@@ -14,9 +14,8 @@ Debug &Debug::getInstance()
 
 void Debug::update(sf::Time frameTime)
 {
-	/*if (KeyboardState::isPressed(sf::Keyboard::F1))
-		mDebugMode = !mDebugMode;*/
-
+	if (KeyboardState::isPressed(sf::Keyboard::F1))
+		mDebugMode = !mDebugMode;
 }
 
 bool Debug::debugMode()

@@ -13,8 +13,7 @@ class PlayerMonologue
 public:
 	static PlayerMonologue &getInstance();
 
-	void intitalize(Player &player);
-
+	void setPosition(sf::Vector2f pos);
 	void setText(std::string text);
 	void setOutlineColor(sf::Color &color);
 
@@ -26,8 +25,6 @@ public:
 	void render(IndexRenderer &iRenderer);
 
 private:
-	Player* mPlayer;
-
 	sf::Time mTimePassed;
 	sf::Text mText;
 	sf::Vector2f mPosition;

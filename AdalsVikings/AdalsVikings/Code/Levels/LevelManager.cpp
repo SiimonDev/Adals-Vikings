@@ -31,7 +31,7 @@ LevelManager &LevelManager::getInstance()
 LevelManager::LevelManager()
 : mLoadedPlayer(false)
 {
-	PlayerMonologueI.intitalize(mPlayer);
+
 }
 
 void LevelManager::load()
@@ -74,6 +74,17 @@ void LevelManager::update(sf::Time &frameTime)
 	mHud.update(frameTime);
 	if (mHud.isInventoryButtonReleased())
 		mPlayer.toggleInventory();
+
+	if (!mPlayer.isInventoryActive())
+	{
+		sf::Vector2f playerPos = (sf::Vector2f(mPlayer.getSprite().getGlobalBounds().left + mPlayer.getSprite().getGlobalBounds().width / 2, mPlayer.getSprite().getGlobalBounds().top));
+		PlayerMonologueI.setPosition(playerPos);
+	}
+	else
+	{
+		sf::Vector2f monologuePos = (sf::Vector2f(1920 / 2, 1080 / 4));
+		PlayerMonologueI.setPosition(monologuePos);
+	}
 
 	mLevelMap[mCurrentID]->update(frameTime);
 	PlayerMonologueI.update(frameTime);

@@ -12,9 +12,9 @@ PlayerMonologue &PlayerMonologue::getInstance()
 	return instance;
 }
 
-void PlayerMonologue::intitalize(Player &player)
+void PlayerMonologue::setPosition(sf::Vector2f pos)
 {
-	mPlayer = &player;
+	mPosition = sf::Vector2f(pos.x - (mText.getGlobalBounds().width / 2), pos.y - (pos.y / 10));
 }
 
 void PlayerMonologue::setText(std::string text)
@@ -90,14 +90,14 @@ void PlayerMonologue::displayDialog(Dialog &dialog)
 	mDisplay = true;
 }
 
-void PlayerMonologue::update(sf::Time &time)
+void PlayerMonologue::update(sf::Time &frameTime)
 {
 	if (mDisplay)
 	{
-		mTimePassed += time;
+		mTimePassed += frameTime;
 		if (mTimePassed.asSeconds() >= mCurrentDialog.mTimer)
 		{
-			mTimePassed = sf::Time::Zero;
+			mTimePassed = sf::seconds(0);
 			mDisplay = false;
 		}
 
@@ -105,17 +105,13 @@ void PlayerMonologue::update(sf::Time &time)
 		mTextRect.setSize(sf::Vector2f(mText.getGlobalBounds().width + 20, mText.getGlobalBounds().height + 16));
 		mTextRect.setPosition(mPosition.x - 10, mPosition.y + (mTextRect.getSize().y));
 	}
-
-	sf::Vector2f playerPos = (sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left + mPlayer->getSprite().getGlobalBounds().width / 2, mPlayer->getSprite().getGlobalBounds().top));
-
-	mPosition = sf::Vector2f(playerPos.x - (mText.getGlobalBounds().width / 2), playerPos.y - (playerPos.y / 10));
 }
 
 void PlayerMonologue::render(IndexRenderer &iRenderer)
 {
 	if (mDisplay)
 	{
-		iRenderer.addText(mText, 99999 + 1);
-		iRenderer.addShape(mTextRect, 99999);
+		iRenderer.addText(mText, 99999999 + 1);
+		iRenderer.addShape(mTextRect, 99999999);
 	}
 }
