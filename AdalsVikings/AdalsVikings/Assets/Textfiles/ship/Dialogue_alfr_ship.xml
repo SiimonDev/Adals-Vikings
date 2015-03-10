@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="Why would I use Alfr?" />
-	<lookText lookText="That's Alfr." />
+	<lookText lookText="That’s Alfr, the village Skald. He’s great at any instrument. Though I’ve heard his singing voice is awful." />
 	<text character="Ulfr" disabled="false" default="false" say="Nice to see you in a good mood, Skald." timer="2.5"  turned="false"/>
 	<text character="Alfr" disabled="false" default="false" disablePrevious="" say="What can i say?" timer="2.4"  turned="true"/>
 	<text character="Alfr" disabled="false" default="false" disablePrevious="" say="It's a lovely day." timer="2.5" />
@@ -81,6 +81,8 @@
 		</option>
 		<option choice_text="I'll talk to you later." disabled="false">
 			<stopConversation />
+			<text character="Ulfr" say="I'll talk to you later." timer="1.8"></text>
+			<text character="Alfr" say="Bye." timer="1.5"></text>
 		</option>
 		<stopOption />
 	</option_container>
