@@ -16,6 +16,7 @@
 #include "..\Dialog\DialogHandler.h"
 #include "..\Dialog\PlayerMonologue.h"
 #include "..\Logics\AudioPlayer.h"
+#include "..\Logics\Debug.h"
 #include <iostream>
 
 LevelManager &LevelManager::getInstance()
@@ -31,7 +32,7 @@ LevelManager &LevelManager::getInstance()
 LevelManager::LevelManager()
 : mLoadedPlayer(false)
 {
-
+	DebugI.initialize(mPlayer);
 }
 
 void LevelManager::load()

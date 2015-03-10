@@ -89,6 +89,13 @@ void Inventory::update(sf::Time frameTime)
 
 				if (invTiles[x][y].isInside(MouseState::getMousePosition()))
 				{
+					if (invTiles[x][y].hasObject())
+					{
+						invTiles[x][y].getObject().enableDescription(true);
+						invTiles[x][y].getObject().setDescription(invTiles[x][y].getObject().getName());
+					}
+					
+
 					if (MouseState::isPressed(sf::Mouse::Left) && !mHasSnappedObject)
 					{
 						if (invTiles[x][y].hasObject()){
@@ -97,13 +104,21 @@ void Inventory::update(sf::Time frameTime)
 							mHasSnappedObject = true;
 						}
 					}
+					else if (MouseState::isPressed(sf::Mouse::Left) && mHasSnappedObject)
+					{
+						if (invTiles[x][y].hasObject()){
+							invTiles[x][y].getObject().setDescription("Combine " + mSnappedObject->getName() + " with " + invTiles[x][y].getObject().getName());
+						}
+					}
 					else if (!MouseState::isPressed(sf::Mouse::Left) && mHasSnappedObject)
 					{
 						if (invTiles[x][y].hasObject())
 						{
 							CombineDialog newObjDialog = mSnappedObject->combineWithObject(invTiles[x][y].getObjectID());
-
+							if (newObjDialog.mDefault)
+								newObjDialog = invTiles[x][y].getObject().combineWithObject(mSnappedObject->getObjID());
 							PlayerMonologueI.displayDialog(newObjDialog);
+
 							if (newObjDialog.mResultID != ""){
 								invTiles[x][y].removeObject();
 								addItemToInventory(newObjDialog.mResultID);
@@ -117,11 +132,6 @@ void Inventory::update(sf::Time frameTime)
 						delete mSnappedObject;
 						mHasSnappedObject = false;
 					}
-					else
-					{
-						if (invTiles[x][y].hasObject())
-							invTiles[x][y].getObject().enableDescription(true);
-					}
 				}
 				else
 				{
@@ -131,8 +141,9 @@ void Inventory::update(sf::Time frameTime)
 			}
 		}
 
-		if (!isInside(MouseState::getMousePosition()) && mHasSnappedObject){
-			toggleInventory();
+		if (!isInside(MouseState::getMousePosition())){
+			if (mHasSnappedObject || MouseState::isPressed(sf::Mouse::Left))
+				toggleInventory();
 		}
 	}
 

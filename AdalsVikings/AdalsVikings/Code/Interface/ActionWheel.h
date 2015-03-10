@@ -10,7 +10,9 @@ public:
 	bool isTalkSelected();
 	bool isPickUpSelected();
 	bool isLookSelected();
-	void setfalse();
+	bool isPressed();
+	bool isActive();
+	void setActive(bool active);
 
 	sf::Vector2f getPosition();
 
@@ -32,6 +34,7 @@ private:
 	int mIndex;
 
 	bool mIsActive;
+	bool mIsPressed;
 	bool mIsReleased;
 
 	bool mButtonSelected;

@@ -1,6 +1,6 @@
 *Type: standard
 *ID: $bucketBroken$
-*Name: bucketBroken
+*Name: Broken bucket
 *ispickupable: True
 *pickup: "" ~2,0
 *lookat: "What can you do with a broken bucket?" ~1,5

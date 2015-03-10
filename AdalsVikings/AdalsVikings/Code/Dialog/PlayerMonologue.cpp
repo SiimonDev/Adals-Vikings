@@ -111,7 +111,7 @@ void PlayerMonologue::render(IndexRenderer &iRenderer)
 {
 	if (mDisplay)
 	{
-		iRenderer.addText(mText, 99999999 + 1);
-		iRenderer.addShape(mTextRect, 99999999);
+		iRenderer.addText(mText, 9000000 + 1);
+		iRenderer.addShape(mTextRect, 9000000);
 	}
 }

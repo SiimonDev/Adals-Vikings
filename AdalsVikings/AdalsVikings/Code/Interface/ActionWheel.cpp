@@ -11,10 +11,46 @@ ActionWheel::ActionWheel()
 	mIndex = 9999999;
 }
 
-bool ActionWheel::isButtonSelected() { return mButtonSelected; };
-bool ActionWheel::isTalkSelected() { return mTalkSelected; };
-bool ActionWheel::isPickUpSelected() { return mPickUpSelected; };
-bool ActionWheel::isLookSelected() { return mLookSelected; };
+bool ActionWheel::isButtonSelected()
+{
+	if (mIsActive)
+		return mButtonSelected;
+	else
+		return false;
+}
+bool ActionWheel::isTalkSelected()
+{
+	if (mIsActive)
+		return mTalkSelected;
+	else
+		return false;
+}
+bool ActionWheel::isPickUpSelected()
+{
+	if (mIsActive)
+		return mPickUpSelected;
+	else
+		return false;
+}
+bool ActionWheel::isLookSelected()
+{
+	if (mIsActive)
+		return mLookSelected;
+	else
+		return false;
+}
+bool ActionWheel::isPressed()
+{
+	return mIsPressed;
+}
+bool ActionWheel::isActive()
+{
+	return mIsActive;
+}
+void ActionWheel::setActive(bool active)
+{
+	mIsActive = active;
+}
 
 sf::Vector2f ActionWheel::getPosition(){ return mPosition; }
 
@@ -61,11 +97,11 @@ void ActionWheel::update()
 	mButtonSelected = false;
 
 	if (MouseState::isPressed(sf::Mouse::Left, 0.3))
-		mIsActive = true;
+		mIsPressed = true;
 	else
 		mIsReleased = true;
 
-	if (mIsActive)
+	if (mIsActive && mIsPressed)
 	{
 		button1.update();
 		button2.update();
@@ -96,22 +132,15 @@ void ActionWheel::update()
 	}
 
 	if (mIsReleased)
-		mIsActive = false;
+		mIsPressed = false;
 }
 
 void ActionWheel::render(IndexRenderer &iRenderer)
 {
-	if (mIsActive)
+	if (mIsActive && mIsPressed)
 	{
 		button1.render(iRenderer);
 		button2.render(iRenderer);
 		button3.render(iRenderer);
 	}
-}
-void ActionWheel::setfalse()
-{
-	mTalkSelected = false;
-	mButtonSelected = false;
-	mPickUpSelected = false;
-	mLookSelected = false;
 }

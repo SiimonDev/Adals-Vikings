@@ -1,5 +1,6 @@
 #include "Object.h"
 #include "..\Logics\ResourceManager.h"
+#include "..\Objects\ObjectHandler.h"
 #include "..\Logics\KeyboardState.h"
 #include "..\Logics\MouseState.h"
 #include "..\Logics\Debug.h"
@@ -194,8 +195,9 @@ CombineDialog Object::combineWithObject(std::string id)
 			return mCombineObjects[id];
 		}
 	}
-	dialog.mDialog = getDenyDialog(id).mDialog;
-	dialog.mTimer = getDenyDialog(id).mTimer;
+
+	dialog = getDenyDialog(id);
+
 	return dialog;
 }
 Dialog Object::getPickupDialog()
@@ -322,6 +324,7 @@ void Object::readVariablesFromFile()
 			start = line.find("~", 0);
 			std::string dialogTimer = line.substr(start + 1, (line.size() - start) - 1);
 
+			mPickupDialog.mDefault = true;
 			mPickupDialog.mDialog = dialogText;
 			mPickupDialog.mTimer = atof(dialogTimer.c_str());
 
@@ -336,6 +339,7 @@ void Object::readVariablesFromFile()
 			start = line.find("~", 0);
 			std::string dialogTimer = line.substr(start + 1, (line.size() - start) - 1);
 
+			mLookAtDialog.mDefault = true;
 			mLookAtDialog.mDialog = dialogText;
 			mLookAtDialog.mTimer = atof(dialogTimer.c_str());
 
@@ -350,6 +354,7 @@ void Object::readVariablesFromFile()
 			start = line.find("~", 0);
 			std::string dialogTimer = line.substr(start + 1, (line.size() - start) - 1);
 
+			mDenyDialog.mDefault = true;
 			mDenyDialog.mDialog = dialogText;
 			mDenyDialog.mTimer = atof(dialogTimer.c_str());
 
