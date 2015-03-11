@@ -14,7 +14,7 @@
 	<text character="Mailman" say="I'll be going now..." timer="1.7" />
 	<text character="Ulfr" say="But..." timer="1.5" turned="true" />
 	<text character="Ulfr" say="You were supposed to help me out here!" timer="1.5" />
-	<text character="Mailman" say="And i will!" timer="1.7" turned="false" />
+	<text character="Mailman" say="And I will!" timer="1.7" turned="false" />
 	<text character="Mailman" say="I promise!" timer="1.7" />
 	<text character="Mailman" say="Just..." timer="1.7" />
 	<text character="Mailman" say="Uh..." timer="1.7" />
