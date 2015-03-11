@@ -114,8 +114,16 @@ void Player::update(sf::Time &frameTime)
 		mCurrentAlpha = newAlpha;
 
 	// Update the player scale
-	mScale.x = ((0.35 / 120.f) * mCurrentAlpha);
-	mScale.y = (0.35 / 120.f) * mCurrentAlpha;
+	if (!mIsBear)
+	{
+		mScale.x = ((0.35 / 120.f) * mCurrentAlpha);
+		mScale.y = (0.35 / 120.f) * mCurrentAlpha;
+	}
+	else
+	{
+		mScale.x = ((0.6 / 120.f) * mCurrentAlpha);
+		mScale.y = (0.6 / 120.f) * mCurrentAlpha;
+	}
 
 	playFootstepSound();
 }
@@ -263,7 +271,10 @@ void Player::setAnimationStyle(AnimationType::ID type)
 	{
 		setFlip(true);
 		mPlayerAnimation.flip(mFlip);
-		mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		if (!mIsBear)
+			mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		else
+			mPlayerAnimation.load(RMI.getResource(Texture::BearWalk), Frames(6, 2), sf::milliseconds(800), sf::seconds(0), true);
 
 		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height);
 		mAnimationStyle = AnimationStyle::Right;
@@ -272,7 +283,10 @@ void Player::setAnimationStyle(AnimationType::ID type)
 	{
 		setFlip(false);
 		mPlayerAnimation.flip(mFlip);
-		mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		if (!mIsBear)
+			mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		else
+			mPlayerAnimation.load(RMI.getResource(Texture::BearWalk), Frames(6, 2), sf::milliseconds(800), sf::seconds(0), true);
 
 		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height);
 		mAnimationStyle = AnimationStyle::Left;
@@ -303,7 +317,10 @@ void Player::setAnimationStyle(AnimationType::ID type)
 	else if (type == AnimationType::Idle && (mAnimationStyle != AnimationStyle::PlayerIdle))
 	{
 		mPlayerAnimation.flip(mFlip);
-		mPlayerAnimation.load(RMI.getResource(Texture::UlfrIdle), Frames(6, 3), sf::milliseconds(1300), sf::seconds(7), true);
+		if (!mIsBear)
+			mPlayerAnimation.load(RMI.getResource(Texture::UlfrIdle), Frames(6, 3), sf::milliseconds(1300), sf::seconds(7), true);
+		else
+			mPlayerAnimation.load(RMI.getResource(Texture::BearIdle), Frames(1, 1), sf::milliseconds(1300), sf::seconds(7), true);
 
 		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
 		mAnimationStyle = AnimationStyle::PlayerIdle;
@@ -317,7 +334,10 @@ void Player::setAnimationStyle(AnimationType::ID type)
 	else if (type == AnimationType::Movement && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y > 0 && mAnimationStyle != AnimationStyle::Down)
 	{
 		mPlayerAnimation.flip(mFlip);
-		mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		if (!mIsBear)
+			mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		else
+			mPlayerAnimation.load(RMI.getResource(Texture::BearWalk), Frames(6, 2), sf::milliseconds(800), sf::seconds(0), true);
 
 		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
 		mAnimationStyle = AnimationStyle::Down;
@@ -325,7 +345,10 @@ void Player::setAnimationStyle(AnimationType::ID type)
 	else if (type == AnimationType::TalkToNpc && mAnimationStyle != AnimationStyle::PlayerTalk)
 	{
 		mPlayerAnimation.flip(mFlip);
-		mPlayerAnimation.load(RMI.getResource(Texture::UlfrTalkToNpc), Frames(5, 2), sf::milliseconds(800), sf::Time::Zero, true);
+		if (!mIsBear)
+			mPlayerAnimation.load(RMI.getResource(Texture::UlfrTalkToNpc), Frames(5, 2), sf::milliseconds(800), sf::Time::Zero, true);
+		else
+			mPlayerAnimation.load(RMI.getResource(Texture::BearIdle), Frames(1, 1), sf::milliseconds(1300), sf::seconds(7), true);
 
 		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
 		mAnimationStyle = AnimationStyle::PlayerTalk;
@@ -374,4 +397,9 @@ void Player::UpdateAnimationStyle()
 {
 	mAnimationStyle = AnimationStyle::Update;
 	setAnimationStyle(AnimationType::Idle);
+}
+
+void Player::setBearCostume(bool value)
+{
+	mIsBear = value;
 }

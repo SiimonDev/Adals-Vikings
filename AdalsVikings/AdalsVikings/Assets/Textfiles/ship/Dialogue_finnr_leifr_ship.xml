@@ -38,6 +38,9 @@
 			<gotoContainer />
 		</option>
 		<option choice_text="Great... I'll see you later." disabled="false">
+			<text say="Great... I'll see you later." timer="1.8" character="Ulfr"></text>
+			<text character="Finnr" say="See you, Ulfr." timer="1.8"></text>
+			<text character="Leifr" say="Bye, friend." timer="1.8"></text>
 			<stopConversation />
 		</option>
 		<stopOption />

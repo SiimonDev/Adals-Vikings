@@ -104,6 +104,8 @@ namespace Texture
 		PrincessTalk,
 		BeorIdle,
 		BeorTalk,
+		BearWalk,
+		BearIdle,
 		SIZE
 	};
 }

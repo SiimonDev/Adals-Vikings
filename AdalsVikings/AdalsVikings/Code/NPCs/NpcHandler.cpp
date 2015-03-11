@@ -33,7 +33,10 @@ void NpcHandler::load()
 	NpcPtr DruidLeader(new Npc(Font::Skranji_regular));
 	NpcPtr HipsterDruid(new Npc(Font::Skranji_regular));
 	NpcPtr Druid2(new Npc(Font::Skranji_regular));
+	NpcPtr Druid3(new Npc(Font::Skranji_regular));
+	NpcPtr Druid4(new Npc(Font::Skranji_regular));
 	NpcPtr Dennis(new Npc(Font::Skranji_regular));
+	NpcPtr HiddenLeifr(new Npc(Font::Skranji_regular));
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -182,26 +185,51 @@ void NpcHandler::load()
 	Druids->setName("Druids");
 	Druids->setPosition(sf::Vector2f(0, 400));
 	Druids->setInvisibleRect(sf::Vector2f(430, 100));
+	Druid3->setInteractionPosition(sf::Vector2f(811, 726));
 	Druids->setColor(sf::Color(176, 196, 222));
 	Druids->setIsInvisble(true);
 
-	HipsterDruid->setName("Hipster druid");
+	HipsterDruid->setName("Hipster Druid");
 	HipsterDruid->setPosition(sf::Vector2f(0, 510));
 	HipsterDruid->setInvisibleRect(sf::Vector2f(120, 230));
+	HipsterDruid->setInteractionPosition(sf::Vector2f(811, 726));
 	HipsterDruid->setColor(sf::Color(176, 196, 222));
 	HipsterDruid->setIsInvisble(true);
 
-	Druid2->setName("Druid2");
+	Druid2->setName("Irish Druid");
 	Druid2->setPosition(sf::Vector2f(405, 510));
 	Druid2->setInvisibleRect(sf::Vector2f(125, 116));
+	Druid2->setInteractionPosition(sf::Vector2f(811, 726));
 	Druid2->setColor(sf::Color(176, 196, 222));
 	Druid2->setIsInvisble(true);
+
+	Druid3->setName("Socially Awkward Druid");
+	Druid3->setPosition(sf::Vector2f(133, 490));
+	Druid3->setInvisibleRect(sf::Vector2f(103, 150));
+	Druid3->setInteractionPosition(sf::Vector2f(811, 726));
+	Druid3->setColor(sf::Color(176, 196, 222));
+	Druid3->setIsInvisble(true);
+
+	Druid4->setName("Handsome Druid");
+	Druid4->setPosition(sf::Vector2f(120, 850));
+	Druid4->setInvisibleRect(sf::Vector2f(150, 182));
+	Druid4->setInteractionPosition(sf::Vector2f(811, 726));
+	Druid4->setColor(sf::Color(176, 196, 222));
+	Druid4->setIsInvisble(true);
 
 	Dennis->setName("Dennis");
 	Dennis->setPosition(sf::Vector2f(440, 680));
 	Dennis->setInvisibleRect(sf::Vector2f(150, 220));
+	Dennis->setInteractionPosition(sf::Vector2f(811, 726));
 	Dennis->setColor(sf::Color(176, 196, 222));
 	Dennis->setIsInvisble(true);
+
+	HiddenLeifr->setName("Leifr");
+	HiddenLeifr->setPosition(sf::Vector2f(440, 680));
+	HiddenLeifr->setInvisibleRect(sf::Vector2f(40, 80));
+	HiddenLeifr->setInteractionPosition(sf::Vector2f(811, 726));
+	HiddenLeifr->setColor(sf::Color(176, 196, 222));
+	HiddenLeifr->setIsInvisble(true);
 
 	CreateNpc("Valdis", std::move(Valdis)));
 	CreateNpc("Leifr", std::move(Leifr)));
@@ -220,6 +248,9 @@ void NpcHandler::load()
 	CreateNpc("Hipster druid", std::move(HipsterDruid)));
 	CreateNpc("Dennis", std::move(Dennis)));
 	CreateNpc("Druid2", std::move(Druid2)));
+	CreateNpc("Druid3", std::move(Druid3)));
+	CreateNpc("Druid4", std::move(Druid4)));
+	CreateNpc("HiddenLeifr", std::move(HiddenLeifr)));
 }
 
 void NpcHandler::unload()

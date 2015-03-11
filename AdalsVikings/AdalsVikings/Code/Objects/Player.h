@@ -74,6 +74,8 @@ public:
 	void playFootstepSound();
 	void UpdateAnimationStyle();
 
+	void setBearCostume(bool value);
+
 	sf::Sprite getSprite();
 	sf::Vector2f getPosition();
 	std::string getDroppedObjectID();
@@ -111,6 +113,7 @@ private:
 	bool mDestinationReached;
 	bool mTargetReached;
 	bool mFlip;
+	bool mIsBear;
 
 	std::string mName;
 

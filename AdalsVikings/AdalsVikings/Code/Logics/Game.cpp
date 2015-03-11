@@ -13,8 +13,8 @@
 
 sf::Time frameTime = sf::seconds(1.f / 60.f);
 
-int mWidth = 1920;
-int mHeight = 1080;
+int mWidth = 1280;
+int mHeight = 720;
 
 IndexRenderer iRenderer;
 
