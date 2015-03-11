@@ -13,15 +13,15 @@
 
 sf::Time frameTime = sf::seconds(1.f / 60.f);
 
-int mWidth = 1920;
-int mHeight = 1080;
+int mWidth = 1280;
+int mHeight = 720;
 
 IndexRenderer iRenderer;
 
 bool runGame = false;
 
 Game::Game()
-	:mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings", sf::Style::Fullscreen)
+	:mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
 {
 	mWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
 	mWindow.setVerticalSyncEnabled(false);

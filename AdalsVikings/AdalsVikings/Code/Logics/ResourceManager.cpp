@@ -117,6 +117,8 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::PrincessTalk] = "assets/images/Princess/character_princess_talk.png";
 	mTexturePathMap[Texture::BeorIdle] = "assets/images/Beor/character_priest_blink.png";
 	mTexturePathMap[Texture::BeorTalk] = "assets/images/Beor/character_priest_happy_talk.png";
+	mTexturePathMap[Texture::BearIdle] = "assets/images/Bear/character_bear_idle.png";
+	mTexturePathMap[Texture::BearWalk] = "assets/images/Bear/character_bear_walking.png";
 	/* ============================================ */
 
 

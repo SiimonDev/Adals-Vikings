@@ -93,7 +93,7 @@ void InvTile::update(sf::Time frameTime)
 	mScale.y = 1;
 	if (mHasObject)
 	{
-		sf::Vector2f objSize = sf::Vector2f(mObject->getSprite().getTexture()->getSize());
+		sf::Vector2f objSize = sf::Vector2f(mObject->getSprite().getTextureRect().width, mObject->getSprite().getTextureRect().height);
 		if (objSize.x > mSize.x)
 		{
 			mScale.x = (mSize.x / objSize.x);

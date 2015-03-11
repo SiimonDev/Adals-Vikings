@@ -28,7 +28,7 @@
 			<text character="Ulfr" say="Have you seen Adal's map around here?" timer="2.5" turned="false" />
 			<text character="Alfr" say="Why would Adal need a map?" timer="2.4" turned="true" />
 			<text character="Alfr" say="I've sang songs of his deeds." timer="2.4" />
-			<text character="Alfr" say="How he leap Björn Ironside's gap," timer="2.5" />
+			<text character="Alfr" say="How he leap Bjorn Ironside's gap," timer="2.5" />
 			<text character="Alfr" say="and dueled in the razing of Leeds." timer="3.0" />
 			<text character="Alfr" say="How he ravished the East with his vassals," timer="2.5" />
 			<text character="Alfr" say="and defeated the Sumi up high." timer="3.0" />

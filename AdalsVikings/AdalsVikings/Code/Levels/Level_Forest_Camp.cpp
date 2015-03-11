@@ -18,11 +18,110 @@ void Level_Forest_Camp::update(sf::Time &frametime)
 {
 	if (KeyboardState::isPressed(sf::Keyboard::Num1))
 		mPlayer->addItemToInventory("bearDeer");
+	if (KeyboardState::isPressed(sf::Keyboard::Num2))
+		mPlayer->addItemToInventory("stickWetCloth");
 	mFireAnimation.animate(frametime);
 
 	if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
 	{
+		if (mPlayer->hasItemInInventory("bearDeer"))
+			mPlayer->removeItemFromInventory("bearDeer");
 
+		if (!mFade1)
+		{
+
+			FadeI.fadeOut(frametime);
+			if (FadeI.getFaded())
+			{
+				mPlayer->setBearCostume(true);
+				mPlayer->UpdateAnimationStyle();
+				mNpcs.erase("Leifr");
+				mNpcs["HiddenLeifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("HiddenLeifr")));
+				mNpcs["HiddenLeifr"]->setPosition(sf::Vector2f(1570, 508));
+				mFade1 = true;
+			}
+		}
+		if (!mFade2 && mFade1)
+		{
+			FadeI.fadeIn(frametime);
+			if (FadeI.getFaded())
+			{
+				DialogHandler::getDialogue("Leifr_BeforeDruids").startDialogue();
+				mFade2 = true;
+			}
+		}
+		if (DialogHandler::getDialogue("Leifr_BeforeDruids").getHasStopped() && !mDestinationReached && mFade2)
+		{
+			if (!mSuperPath)
+			{
+				Path path = PathFinder::getPath(mPlayer->getPosition(), sf::Vector2f(800, 900));
+				mPlayer->walkPath(path);
+				mSuperPath = true;
+			}
+			if (mPlayer->isDestinationReached())
+			{
+				mNpcs["HiddenLeifr"]->setPosition(sf::Vector2f(800, 900));
+				mDestinationReached = true;
+			}
+		}
+
+		if (mDestinationReached && !DialogHandler::getDialogue("Druids2_ForestCamp").getActiveConversation() && !DialogHandler::getDialogue("Druids2_ForestCamp").getHasStopped())
+			DialogHandler::getDialogue("Druids2_ForestCamp").startDialogue();
+
+		if (DialogHandler::getDialogue("Druids2_ForestCamp").getHasStopped())
+		{
+			if (!mFade3)
+			{
+				FadeI.fadeOut(frametime);
+				if (FadeI.getFaded())
+				{
+					RMI.unloadResource(Texture::DruidsForest1);
+					mNpcs.erase("DruidLeader");
+					mNpcs.erase("Druid2");
+					mNpcs.erase("Dennis");
+					mNpcs.erase("Druid3");
+					mNpcs.erase("Druid4");
+					mNpcs.erase("Hipster Druid");
+					mNpcs.erase("Druids");
+					mFade3 = true;
+				}
+			}
+			if (!mFade4 && mFade3)
+			{
+				FadeI.fadeIn(frametime);
+				if (FadeI.getFaded())
+				{
+					mFade4 = true;
+					DialogHandler::getDialogue("Leifr_AfterDruids").startDialogue();
+				}
+			}
+			if (DialogHandler::getDialogue("Leifr_AfterDruids").getHasStopped())
+			{
+				if (!mFade5)
+				{
+					FadeI.fadeOut(frametime);
+
+					if (FadeI.getFaded())
+					{
+						mNpcs.erase("HiddenLeifr");
+						mPlayer->setBearCostume(false);
+						mPlayer->UpdateAnimationStyle();
+						mFade5 = true;
+					}
+				}
+
+				if (mFade5 && !mFade6)
+				{
+					FadeI.fadeIn(frametime);
+
+					if (FadeI.getFaded())
+					{
+						mFade6 = true;
+						Act1Events::handleEvent(Act1Event::ForestCamp_BeerDeer);
+					}
+				}
+			}
+		}
 	}
 	
 	Level::update(frametime);
@@ -32,7 +131,8 @@ void Level_Forest_Camp::update(sf::Time &frametime)
 void Level_Forest_Camp::render(IndexRenderer &iRenderer)
 { 
 	mFireAnimation.render(iRenderer);
-	iRenderer.addSprite(mDruids, 50);
+	if (!mFade3)
+		iRenderer.addSprite(mDruids, 50);
 	Level::render(iRenderer);
 }
 
@@ -44,29 +144,34 @@ void Level_Forest_Camp::load()
 
 	RMI.loadResource(Texture::FireForestCampAnimation);
 	RMI.loadResource(Texture::DruidsForest1);
+	RMI.loadResource(Texture::BearWalk);
+	RMI.loadResource(Texture::BearIdle);
 
 	mNpcs["DruidLeader"] = NpcPtr(new Npc(NpcHandlerI.getNpc("DruidLeader")));
 	mNpcs["Druids"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druids")));
 	mNpcs["Hipster druid"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Hipster druid")));
 	mNpcs["Dennis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Dennis")));
 	mNpcs["Druid2"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druid2")));
+	mNpcs["Druid3"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druid3")));
+	mNpcs["Druid4"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druid4")));
 
 	mNpcs["DruidLeader"]->setDialogue("Druids_ForestCamp1");
 	mNpcs["Druids"]->setDialogue("Druids_ForestCamp1");
 
 	mNpcs["Druid2"]->setDialogue("Druids_ForestCamp1");
+	mNpcs["Druid3"]->setDialogue("Druids_ForestCamp1");
+	mNpcs["Druid4"]->setDialogue("Druids_ForestCamp1");
 	mNpcs["Hipster druid"]->setDialogue("Druids_ForestCamp1");
 	mNpcs["Dennis"]->setDialogue("Druids_ForestCamp1");
 
-	if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
-	{
+	
 		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
 		mNpcs["Leifr"]->setDialogue("Leifr_ForestCamp");
 		mNpcs["Leifr"]->setPosition(sf::Vector2f(1450, 580));
 		mNpcs["Leifr"]->setscale(sf::Vector2f(0.6f, 0.6f));
 		mNpcs["Leifr"]->setIndex(1);
 		mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1560, 565));
-	}
+	
 	
 
 	mFireAnimation.load(RMI.getResource(Texture::FireForestCampAnimation), sf::Vector2i(2, 4), sf::milliseconds(2000), sf::Time::Zero, true);
@@ -85,6 +190,9 @@ void Level_Forest_Camp::unload()
 {
 	RMI.unloadResource(Footsteps::Dirt);
 	RMI.unloadResource(Texture::FireForestCampAnimation);
+	RMI.unloadResource(Texture::DruidsForest1);
+	RMI.unloadResource(Texture::BearWalk);
+	RMI.unloadResource(Texture::BearIdle);
 	Level::unload();
 }
 
@@ -101,7 +209,7 @@ void Level_Forest_Camp::changeLevel()
 void Level_Forest_Camp::checkInteractEvents()
 {
 	if (mDroppedItemID == "bearDeer" && mCurrentNPCID == "Leifr" && !Act1Events::hasBeenTriggered(Act1Event::ForestCamp_BeerDeer))
-		Act1Events::triggerEvent(Act1Event::ForestCamp_BeerDeer);
+			Act1Events::triggerEvent(Act1Event::ForestCamp_BeerDeer);
 }
 void Level_Forest_Camp::checkEvents()
 {

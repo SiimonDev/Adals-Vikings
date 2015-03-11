@@ -19,4 +19,6 @@ public:
 private:
 	sf::Sprite mDruids;
 	Animation mFireAnimation;
+
+	bool mFade1, mFade2, mFade3, mFade4, mFade5, mFade6, mDestinationReached, mSuperPath;
 };
