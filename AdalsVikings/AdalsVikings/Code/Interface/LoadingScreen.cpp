@@ -34,6 +34,7 @@ void LoadingScreen::initialize()
 LoadingScreen::~LoadingScreen()
 {
 	terminate();
+	//mThread->join();
 }
 
 bool LoadingScreen::update(sf::Time frameTime)

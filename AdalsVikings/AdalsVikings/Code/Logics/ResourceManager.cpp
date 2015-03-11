@@ -170,6 +170,9 @@ ResourceManager::ResourceManager()
 	mBackgroundsPathMap[LevelFolder::Beach] = "assets/MapFiles/Beach/";
 	mBackgroundsPathMap[LevelFolder::Beach_Hills] = "assets/MapFiles/Beach_Hills/";
 	mBackgroundsPathMap[LevelFolder::Road] = "assets/MapFiles/Road/";
+	mBackgroundsPathMap[LevelFolder::Farm_1] = "assets/MapFiles/Farm_1/";
+	mBackgroundsPathMap[LevelFolder::Farm_2] = "assets/MapFiles/Farm_2/";
+	mBackgroundsPathMap[LevelFolder::City_Gates] = "assets/MapFiles/City_Gates/";
 	mBackgroundsPathMap[LevelFolder::Forest_Road] = "assets/MapFiles/Forest_Road/";
 	mBackgroundsPathMap[LevelFolder::Forest_Camp] = "assets/MapFiles/Forest_Camp/";
 	mBackgroundsPathMap[LevelFolder::Church_Outside] = "assets/MapFiles/Church_Outside/";

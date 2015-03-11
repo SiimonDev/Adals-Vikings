@@ -12,6 +12,9 @@
 #include "Level_Camp_Clearing.h"
 #include "Level_Camp_Finished.h"
 #include "Level_Road.h"
+#include "Level_Farm_1.h"
+#include "Level_Farm_2.h"
+#include "Level_City_Gates.h"
 #include "Level_Beach.h"
 #include "Level_Beach_Hills.h"
 #include "..\Dialog\DialogHandler.h"
@@ -147,6 +150,9 @@ void LevelManager::loadAct1()
 	mLevelMap[LevelFolder::Beach] = LevelPtr(new Level_Beach(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Beach_Hills] = LevelPtr(new Level_Beach_Hills(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Road] = LevelPtr(new Level_Road(mPlayer, mHud, mActionWheel));
+	mLevelMap[LevelFolder::Farm_1] = LevelPtr(new Level_Farm_1(mPlayer, mHud, mActionWheel));
+	mLevelMap[LevelFolder::Farm_2] = LevelPtr(new Level_Farm_2(mPlayer, mHud, mActionWheel));
+	mLevelMap[LevelFolder::City_Gates] = LevelPtr(new Level_City_Gates(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Forest_Road] = LevelPtr(new Level_Forest_Road(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Forest_Camp] = LevelPtr(new Level_Forest_Camp(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Church_Outside] = LevelPtr(new Level_Church_Outside(mPlayer, mHud, mActionWheel));
@@ -156,7 +162,7 @@ void LevelManager::loadAct1()
 	mLevelMap[LevelFolder::Camp_Clearing] = LevelPtr(new Level_Camp_Clearing(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Camp_Finished] = LevelPtr(new Level_Camp_Finished(mPlayer, mHud, mActionWheel));
 
-	mCurrentID = LevelFolder::Forest_Camp;
+	mCurrentID = LevelFolder::Beach;
 	baseLoad();
 }
 

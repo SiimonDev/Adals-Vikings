@@ -1,0 +1,12 @@
+*Type: animated
+*ID: $hen1$
+*Name: Hen
+*ispickupable: True
+*pickup: "Don't think so..." ~2,5
+*lookat: "That's nice..." ~1,5
+*deny: "I can't do that" ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_hen1_id.png"
+*animation: X:9   Y:1   ~2,5 ~3,0

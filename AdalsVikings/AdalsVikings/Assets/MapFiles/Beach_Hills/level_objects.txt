@@ -1,5 +1,5 @@
 ############
-*id: $beachHillCat
+*id: $catHills
 position: $X:1750 $Y:970
 interactPosition: $X:0 $Y:0
 index: $20

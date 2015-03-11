@@ -1,0 +1,15 @@
+############
+*id: $pitchfork
+position: $X:90 $Y:300
+interactPosition: $X:0 $Y:0
+index: $3
+scale: $1.0
+hascollision: $false
+############
+*id: $snail
+position: $X:740 $Y:470
+interactPosition: $X:0 $Y:0
+index: $3
+scale: $1.0
+hascollision: $false
+############

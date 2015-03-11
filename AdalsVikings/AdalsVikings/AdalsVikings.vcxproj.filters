@@ -161,6 +161,15 @@
     <ClCompile Include="Code\Levels\Level_Beach_Hills.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Farm_1.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Farm_2.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_City_Gates.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Dialog\Dialog.h">
@@ -332,6 +341,15 @@
       <Filter>Header Files\Dialog</Filter>
     </ClInclude>
     <ClInclude Include="Code\Levels\Level_Beach_Hills.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Farm_1.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Farm_2.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_City_Gates.h">
       <Filter>Header Files\Levels</Filter>
     </ClInclude>
   </ItemGroup>

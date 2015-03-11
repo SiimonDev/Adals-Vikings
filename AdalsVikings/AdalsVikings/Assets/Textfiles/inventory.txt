@@ -1,6 +1,6 @@
-slot_0.0: $bucketBroken
-slot_0.1: $torch
-slot_0.2: $bucket
+slot_0.0: 
+slot_0.1: 
+slot_0.2: 
 slot_0.3: 
 slot_1.0: 
 slot_1.1: 
