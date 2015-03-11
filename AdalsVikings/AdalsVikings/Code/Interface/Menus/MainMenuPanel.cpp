@@ -2,7 +2,7 @@
 #include "..\..\Logics\AudioPlayer.h"
 
 MainMenuPanel::MainMenuPanel() :
- mAnimationTime(sf::milliseconds(500)), mTimePassed(sf::Time::Zero)
+ mAnimationTime(sf::milliseconds(750)), mTimePassed(sf::Time::Zero)
 {
 	mCurrentEvent = MenuEvent::NONE;
 	mAxeAnimation.restart();

@@ -158,6 +158,9 @@
     <ClCompile Include="Code\Dialog\PlayerMonologue.cpp">
       <Filter>Source Files\Dialog</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Beach_Hills.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Dialog\Dialog.h">
@@ -327,6 +330,9 @@
     </ClInclude>
     <ClInclude Include="Code\Dialog\PlayerMonologue.h">
       <Filter>Header Files\Dialog</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Beach_Hills.h">
+      <Filter>Header Files\Levels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

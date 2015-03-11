@@ -7,10 +7,15 @@ Level_Template::Level_Template(Player &player, HUD &hud, ActionWheel &actionWhee
 	mBackgroundID = LevelFolder::Church_Outside;
 }
 
+void Level_Template::restartSounds()
+{
+
+}
+
 void Level_Template::update(sf::Time &frametime)
 {
-	changeLevel();
 	Level::update(frametime);
+	changeLevel();
 }
 
 void Level_Template::render(IndexRenderer &iRenderer)

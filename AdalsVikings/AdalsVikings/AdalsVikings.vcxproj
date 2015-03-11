@@ -35,6 +35,7 @@
     <ClCompile Include="Code\Interface\Menus\PauseMenuPanel.cpp" />
     <ClCompile Include="Code\Interface\TextButton.cpp" />
     <ClCompile Include="Code\Levels\Level_Beach.cpp" />
+    <ClCompile Include="Code\Levels\Level_Beach_Hills.cpp" />
     <ClCompile Include="Code\Levels\Level_Camp_Finished.cpp" />
     <ClCompile Include="Code\Levels\Level_Camp_Clearing.cpp" />
     <ClCompile Include="Code\Levels\Level_Church_Outside.cpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="Code\Interface\Menus\PauseMenuPanel.h" />
     <ClInclude Include="Code\Interface\TextButton.h" />
     <ClInclude Include="Code\Levels\Level_Beach.h" />
+    <ClInclude Include="Code\Levels\Level_Beach_Hills.h" />
     <ClInclude Include="Code\Levels\Level_Camp_Clearing.h" />
     <ClInclude Include="Code\Levels\Level_Camp_Finished.h" />
     <ClInclude Include="Code\Levels\Level_Church_Outside.h" />

@@ -22,7 +22,7 @@ void Level::updateObjects(sf::Time frameTime)
 	{
 		mObjects[i]->update(frameTime);
 
-		if (mObjects[i]->isInside(sf::Vector2i(mActionWheel->getPosition())))
+		if (mObjects[i]->isInside(sf::Vector2i(mActionWheel->getPosition())) && mActionWheel->isPressed())
 			mActionWheel->setActive(true);
 
 		if (mActionWheel->isButtonSelected())
@@ -149,7 +149,7 @@ void Level::updateNPCs(sf::Time frameTime)
 	{
 		it->second->update(frameTime);
 
-		if (it->second->isInside(sf::Vector2i(mActionWheel->getPosition())))
+		if (it->second->isInside(sf::Vector2i(mActionWheel->getPosition())) && mActionWheel->isPressed())
 			mActionWheel->setActive(true);
 
 		if (mActionWheel->isButtonSelected())

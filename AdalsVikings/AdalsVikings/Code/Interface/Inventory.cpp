@@ -141,10 +141,10 @@ void Inventory::update(sf::Time frameTime)
 			}
 		}
 
-		/*if (!isInside(MouseState::getMousePosition())){
-			if (mHasSnappedObject || MouseState::isReleased(sf::Mouse::Left))
+		if (!isInside(MouseState::getMousePosition())){
+			if (mHasSnappedObject /*|| MouseState::isReleased(sf::Mouse::Left)*/)
 				toggleInventory();
-		}*/
+		}
 	}
 
 	if (mDroppedSnappedObj)

@@ -62,8 +62,16 @@ void Level_Beach::load()
 		mCutSceneView.setSize(1920, 1080);
 		mCutSceneView.zoom(0.5);
 
-		//FadeI.setAlpha(255);
+		/* ===== Load necessary resources ===== */
+		RMI.loadResource(Texture::LeifrIdle);
+		RMI.loadResource(Texture::LeifrTalk);
 
+		/* ==== Load Npcs and set right position, dialogue, scale and so on... ===== */
+		mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Yngvarr")));
+		mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Dagny")));
+		mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Alfr")));
+		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
+		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
 		mNpcs["Seagull"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Seagull")));
 		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brandr")));
 		mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brynja")));
@@ -86,17 +94,10 @@ void Level_Beach::load()
 		mNpcs["Brynja"]->setIndex(14);
 
 		mNpcs["Valdis"]->setFlip(false);
-		mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
+		mNpcs["Valdis"]->setscale(sf::Vector2f(0.45f, 0.45f));
 		mNpcs["Valdis"]->setPosition(sf::Vector2f(600, 1120));
 		mNpcs["Valdis"]->setDialogue("Valdis_Beach");
 		mNpcs["Valdis"]->setIndex(14);
-
-		/* ==== Load Npcs and set right position, dialogue, scale and so on... ===== */
-		mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Yngvarr")));
-		mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Dagny")));
-		mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Alfr")));
-		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
-		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
 
 		/* ==== Yngvarr ===== */
 		RMI.loadResource(Texture::YngvarrSadIdle);
@@ -110,7 +111,7 @@ void Level_Beach::load()
 		mNpcs["Yngvarr"]->setDialogue("Yngvarr_Beach");
 		mNpcs["Yngvarr"]->setIndex(14);
 
-		/* ==== Yngvarr ===== */
+		/* ==== Dagny ===== */
 		mNpcs["Dagny"]->setFlip(true);
 		mNpcs["Dagny"]->setscale(sf::Vector2f(0.5, 0.5));
 		mNpcs["Dagny"]->setPosition(sf::Vector2f(250, 760));
@@ -127,13 +128,11 @@ void Level_Beach::load()
 		mNpcs["Alfr"]->setIndex(14);
 
 		/* ==== Leifr ===== */
-		RMI.loadResource(Texture::LeifrIdle);
-		RMI.loadResource(Texture::LeifrTalk);
 		mNpcs["Leifr"]->setIdleAnimation(Texture::LeifrIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(7.2));
 		mNpcs["Leifr"]->SetTalkAnimation(Texture::LeifrTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 		mNpcs["Leifr"]->setFlip(true);
-		mNpcs["Leifr"]->setscale(sf::Vector2f(0.4, 0.4));
-		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 580));
+		mNpcs["Leifr"]->setscale(sf::Vector2f(0.4f, 0.4f));
+		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 550));
 		mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(750, 580));
 		mNpcs["Leifr"]->setDialogue("Leifr_Beach");
 		mNpcs["Leifr"]->setIndex(14);
@@ -159,7 +158,7 @@ void Level_Beach::load()
 		// Add Index from every NPC to the map
 		mTileMap.setIndexOnMap(mNpcs["Brandr"]->getIndexRect(), mNpcs["Brandr"]->getIndex() - 1);
 		mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
-		mTileMap.setIndexOnMap(mNpcs["Leifr"]->getIndexRect(), mNpcs["Leifr"]->getIndex() - 1);
+		//mTileMap.setIndexOnMap(mNpcs["Leifr"]->getIndexRect(), mNpcs["Leifr"]->getIndex() - 1);
 		mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 1);
 		mTileMap.setIndexOnMap(mNpcs["Dagny"]->getIndexRect(), mNpcs["Dagny"]->getIndex() - 1);
 		mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 1);
@@ -312,13 +311,6 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 				mNpcs["Dagny"]->setPosition(sf::Vector2f(700, 920));
 				mNpcs["Dagny"]->setIndex(19);
 				mNpcs["Dagny"]->updateAnimationStyle();
-
-				mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
-				mTileMap.setIndexOnMap(mNpcs["Leifr"]->getIndexRect(), mNpcs["Leifr"]->getIndex() - 1);
-				mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 1);
-				mTileMap.setIndexOnMap(mNpcs["Dagny"]->getIndexRect(), mNpcs["Dagny"]->getIndex() - 1);
-				mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 1);
-				mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 1);
 
 				mPlayer->setPosition(sf::Vector2f(760, 800));
 				mPlayer->setFlip(false);

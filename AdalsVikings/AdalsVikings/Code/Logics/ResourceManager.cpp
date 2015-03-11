@@ -166,6 +166,7 @@ ResourceManager::ResourceManager()
 	mBackgroundsPathMap[LevelFolder::Ship_1] = "assets/MapFiles/Ship1/";
 	mBackgroundsPathMap[LevelFolder::Ship_2] = "assets/MapFiles/Ship2/";
 	mBackgroundsPathMap[LevelFolder::Beach] = "assets/MapFiles/Beach/";
+	mBackgroundsPathMap[LevelFolder::Beach_Hills] = "assets/MapFiles/Beach_Hills/";
 	mBackgroundsPathMap[LevelFolder::Road] = "assets/MapFiles/Road/";
 	mBackgroundsPathMap[LevelFolder::Forest_Road] = "assets/MapFiles/Forest_Road/";
 	mBackgroundsPathMap[LevelFolder::Forest_Camp] = "assets/MapFiles/Forest_Camp/";

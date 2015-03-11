@@ -24,7 +24,7 @@
 			<text character="Leifr" turned="true" say="Uh..." timer="1.8"></text>
 			<text character="Ulfr" turned="false" say="I'm joking, Leifr." timer="2.0"></text>
 			<text character="Ulfr" say="Don't worry." timer="2.0"></text>
-			<gotoContainer></gotoContainer>
+			<gotoContainer />
 		</option>
 		
 		<option disabled="false" disablePrevious="false" choice_text="So...how are you feeling?">
@@ -33,11 +33,13 @@
 			<text character="Leifr" say="We'll see how long that lasts, though." timer="2.5"></text>
 			<gotoContainer />
 		</option>
+		
 		<option disabled="false" disablePrevious="true" choice_text="I'll see you around.">
 			<text character="Ulfr" turned="false" say="I'll see you around." timer="2.0"></text>
 			<text character="Leifr" turned="turned" say="Bye." timer="1.5"></text>
 			<stopConversation />
 		</option>
+		
 		<stopOption />
 	</option_container>
 	<stopConversation />

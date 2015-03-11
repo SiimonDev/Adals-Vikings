@@ -19,16 +19,16 @@ void HUD::load()
 	mHelpPanel.setPosition(150, 50);
 
 	mInventoryButton = Button(Texture::InventoryButton, Font::Font1, sf::Vector2f(), " Toggle Inventory");
-	mInventoryButton.setPosition(sf::Vector2f(40, 10));
-	mInventoryButton.setDescriptionPosition(sf::Vector2f(-50, 110));
-	mInventoryButton.setScale(sf::Vector2f(0.7f, 0.7f));
+	mInventoryButton.setPosition(sf::Vector2f(30, 10));
+	mInventoryButton.setDescriptionPosition(sf::Vector2f(-35, 90));
+	mInventoryButton.setScale(sf::Vector2f(0.5f, 0.5f));
 	mInventoryButton.setDescriptionStyle(sf::Text::Bold);
 	mInventoryButton.setIndex(99999);
 
-	mHelpButton = Button(Texture::HelpButton, Font::Font1, sf::Vector2f(), " Help");
-	mHelpButton.setPosition(sf::Vector2f(170, 10));
-	mHelpButton.setDescriptionPosition(sf::Vector2f(0, 110));
-	mHelpButton.setScale(sf::Vector2f(0.5f, 0.5f));
+	mHelpButton = Button(Texture::HelpButton, Font::Font1, sf::Vector2f(), "Help");
+	mHelpButton.setPosition(sf::Vector2f(150, 10));
+	mHelpButton.setDescriptionPosition(sf::Vector2f(0, 90));
+	mHelpButton.setScale(sf::Vector2f(0.3f, 0.3f));
 	mHelpButton.setDescriptionStyle(sf::Text::Bold);
 	mHelpButton.setIndex(99999);
 

@@ -168,6 +168,7 @@ namespace LevelFolder
 		Ship_1,
 		Ship_2,
 		Beach,
+		Beach_Hills,
 		Road,
 		Forest_Road,
 		Forest_Camp,

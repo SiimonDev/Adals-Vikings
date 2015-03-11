@@ -13,6 +13,7 @@
 #include "Level_Camp_Finished.h"
 #include "Level_Road.h"
 #include "Level_Beach.h"
+#include "Level_Beach_Hills.h"
 #include "..\Dialog\DialogHandler.h"
 #include "..\Dialog\PlayerMonologue.h"
 #include "..\Logics\AudioPlayer.h"
@@ -144,6 +145,7 @@ void LevelManager::loadAct1()
 
 	// Assing ;) all the levels
 	mLevelMap[LevelFolder::Beach] = LevelPtr(new Level_Beach(mPlayer, mHud, mActionWheel));
+	mLevelMap[LevelFolder::Beach_Hills] = LevelPtr(new Level_Beach_Hills(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Road] = LevelPtr(new Level_Road(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Forest_Road] = LevelPtr(new Level_Forest_Road(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Forest_Camp] = LevelPtr(new Level_Forest_Camp(mPlayer, mHud, mActionWheel));
