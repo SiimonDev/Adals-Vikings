@@ -96,7 +96,7 @@ void ActionWheel::update()
 	mLookSelected = false;
 	mButtonSelected = false;
 
-	if (MouseState::isPressed(sf::Mouse::Left, 0.3))
+	if (MouseState::isPressed(sf::Mouse::Right))
 		mIsPressed = true;
 	else
 		mIsReleased = true;
@@ -129,6 +129,9 @@ void ActionWheel::update()
 	else
 	{
 		mPosition = sf::Vector2f(MouseState::getMousePosition());
+		button1.setPosition(mPosition + button1Position);
+		button2.setPosition(mPosition + button2Position);
+		button3.setPosition(mPosition + button3Position);
 	}
 
 	if (mIsReleased)

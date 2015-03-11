@@ -42,7 +42,11 @@ void DialogueTree::load()
 		std::string copyStr = "_copy.xml";
 		std::string segment = "";
 		std::string container;
-		container = mFilePath.substr(0, mFilePath.find("Dialogue", 0));
+
+		std::transform(mFilePath.begin(), mFilePath.end(), mFilePath.begin(), ::tolower);
+		
+		container = mFilePath.substr(0, mFilePath.find("dialogue", 0));
+
 		std::stringstream linestream;
 		linestream << mFilePath;
 
@@ -75,6 +79,19 @@ void DialogueTree::render(IndexRenderer &iRenderer)
 
 	if (mActiveConversation == true)
 	{
+		/* This will probably work... maby? */
+		if (mPrintText.getPosition().x <= 5)
+		{
+			mDialogueRectangle.setPosition(5, mDialogueRectangle.getPosition().y);
+			mPrintText.setPosition(mDialogueRectangle.getPosition().x + 15, mPrintText.getPosition().y);
+		}
+		else if (mDialogueRectangle.getPosition().x + (mDialogueRectangle.getSize().x) >= 1910)
+		{
+			mDialogueRectangle.setPosition(1910 - (mDialogueRectangle.getSize().x), mDialogueRectangle.getPosition().y);
+			mPrintText.setPosition(mDialogueRectangle.getPosition().x + 10, mPrintText.getPosition().y);
+		}
+		/* ================================ */
+
 		for (int i = 0; i < mOptionsVector.size(); i++)
 			iRenderer.addText(mOptionsVector[i], 99999);
 
@@ -92,7 +109,7 @@ void DialogueTree::render(IndexRenderer &iRenderer)
 }
 void DialogueTree::update(sf::Time &frameTime)
 {
-	if (MouseState::isClicked(sf::Mouse::Left))
+	if (MouseState::isClicked(sf::Mouse::Right))
 	{
 		mWait = false;
 	}
@@ -133,21 +150,13 @@ void DialogueTree::startDialogue()
 				mPrintText.setCharacterSize(30);
 
 				if (as_utf8(mNode.attribute("turned").as_string()) == "true")
-				{
 					mFaceWay = true;
-				}
 				else if (as_utf8(mNode.attribute("turned").as_string()) == "false")
-				{
 					mFaceWay = false;
-				}
 				if (as_utf8(mNode.attribute("turnedPlayer").as_string()) == "true")
-				{
 					mFacePlayer = true;
-				}
 				else if (as_utf8(mNode.attribute("turnedPlayer").as_string()) == "")
-				{
 					mFacePlayer = false;
-				}
 
 				std::string tmpStr = mNode.attribute("say").as_string();
 				std::string tmpStr2 = mNode.attribute("say").as_string();

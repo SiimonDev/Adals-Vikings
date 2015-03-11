@@ -104,6 +104,17 @@ void PlayerMonologue::update(sf::Time &frameTime)
 		mText.setPosition(mPosition);
 		mTextRect.setSize(sf::Vector2f(mText.getGlobalBounds().width + 20, mText.getGlobalBounds().height + 16));
 		mTextRect.setPosition(mPosition.x - 10, mPosition.y + (mTextRect.getSize().y));
+
+		if (mTextRect.getPosition().x <= 5)
+		{
+			mTextRect.setPosition(5, mTextRect.getPosition().y);
+			mText.setPosition(mTextRect.getPosition().x + 15, mText.getPosition().y);
+		}
+		else if (mTextRect.getPosition().x + (mTextRect.getSize().x) >= 1915)
+		{
+			mTextRect.setPosition(1915 - (mTextRect.getSize().x), mTextRect.getPosition().y);
+			mText.setPosition(mTextRect.getPosition().x + 15, mText.getPosition().y);
+		}
 	}
 }
 
@@ -111,7 +122,7 @@ void PlayerMonologue::render(IndexRenderer &iRenderer)
 {
 	if (mDisplay)
 	{
-		iRenderer.addText(mText, 9000000 + 1);
-		iRenderer.addShape(mTextRect, 9000000);
+		iRenderer.addText(mText, 9900000 + 1);
+		iRenderer.addShape(mTextRect, 9900000);
 	}
 }

@@ -141,10 +141,10 @@ void Inventory::update(sf::Time frameTime)
 			}
 		}
 
-		if (!isInside(MouseState::getMousePosition())){
-			if (mHasSnappedObject || MouseState::isPressed(sf::Mouse::Left))
+		/*if (!isInside(MouseState::getMousePosition())){
+			if (mHasSnappedObject || MouseState::isReleased(sf::Mouse::Left))
 				toggleInventory();
-		}
+		}*/
 	}
 
 	if (mDroppedSnappedObj)
@@ -199,7 +199,7 @@ bool Inventory::addItemToInventory(std::string objectID)
 			if (!invTiles[x][y].hasObject())
 			{
 				Object* obj = new Object(OBHI.getObject(objectID));
-				obj->setIndex(9999999);
+				obj->setIndex(mIndex + 5);
 				invTiles[x][y].setObject(obj);
 				invTiles[x][y].load();
 				return true;

@@ -40,7 +40,7 @@ Leifr_ClearingCamp assets/textfiles/camp/Dialogue_Leifr_camp.xml
 Druids_ForestCamp1 assets/textfiles/forestCamp/Dialogue_forest_druids1.xml
 -----------------------TAVERN INSIDE----------------------------
 Brandr_Tavern assets/textfiles/tavern/Dialogue_brandr_tavern.xml
-Alfr_Tavern assets/textfiles/tavern/dialogue_tavern_alfr.xml
+Alfr_Tavern assets/textfiles/tavern/dialogue_alfr_tavern.xml
 Dagny_Tavern assets/textfiles/tavern/Dialogue_dagny_tavern.xml
-Finnr_Tavern assets/textfiles/tavern/dialogue_tavern_Finnr.xml
-Yngvarr_Tavern assets/textfiles/tavern/dialogue_tavern_yngvarr.xml
+Finnr_Tavern assets/textfiles/tavern/dialogue_finnr_tavern.xml
+Yngvarr_Tavern assets/textfiles/tavern/dialogue_yngvarr_tavern.xml
