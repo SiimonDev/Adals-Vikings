@@ -130,6 +130,8 @@ void Level::updateObjects(sf::Time frameTime)
 				mPlayer->setFlip(true);
 			else
 				mPlayer->setFlip(false);
+
+			checkInteractEvents();
 			Dialog dialog = Dialog(OBHI.getObject(mDroppedItemID).interactWithObject(mObjects[mObjIndex]->getObjID()));
 			PlayerMonologueI.displayDialog(dialog);
 			mPlayer->setIntention(Intention::None);

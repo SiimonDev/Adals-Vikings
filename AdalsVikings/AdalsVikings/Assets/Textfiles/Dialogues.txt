@@ -44,6 +44,7 @@ Leifr_ForestCamp assets/textfiles/forestCamp/Dialogue_Leifr_ForestCamp.xml
 Druids2_ForestCamp assets/textfiles/forestCamp/Dialogue_forest_druids2.xml
 Leifr_BeforeDruids assets/textfiles/forestCamp/Dialogue_LeifrBear_ForestCamp.xml
 Leifr_AfterDruids assets/textfiles/forestCamp/Dialogue_leifrAfterDruids_ForestCamp.xml
+FireDeny_ForestCamp assets/textfiles/forestCamp/Dialogue_forest_FireDeny.xml
 -----------------------TAVERN INSIDE----------------------------
 Brandr_Tavern assets/textfiles/tavern/Dialogue_brandr_tavern.xml
 Alfr_Tavern assets/textfiles/tavern/dialogue_alfr_tavern.xml

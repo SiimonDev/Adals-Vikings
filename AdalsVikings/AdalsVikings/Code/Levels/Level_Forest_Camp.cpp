@@ -124,6 +124,21 @@ void Level_Forest_Camp::update(sf::Time &frametime)
 		}
 	}
 	
+	/*if (Act1Events::hasBeenTriggered(Act1Event::ForestCampFire) && !Act1Events::hasBeenHandled(Act1Event::ForestCampFire))
+	{
+		if (!Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
+		{
+			DialogHandler::getDialogue("FireDeny_ForestCamp").startDialogue();
+
+		}
+		else if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
+		{
+			mPlayer->removeItemFromInventory("stickWetCloth");
+			mPlayer->addItemToInventory("torch");
+			Act1Events::handleEvent(Act1Event::ForestCampFire);
+		}
+	}*/
+
 	Level::update(frametime);
 	changeLevel();
 }
@@ -210,6 +225,21 @@ void Level_Forest_Camp::checkInteractEvents()
 {
 	if (mDroppedItemID == "bearDeer" && mCurrentNPCID == "Leifr" && !Act1Events::hasBeenTriggered(Act1Event::ForestCamp_BeerDeer))
 			Act1Events::triggerEvent(Act1Event::ForestCamp_BeerDeer);
+
+	if (mDroppedItemID == "stickWetCloth" && mObjects[mObjIndex]->getObjID() == "forestCampFire" && !Act1Events::hasBeenTriggered(Act1Event::ForestCampFire))
+	{
+		if (!Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
+		{
+			DialogHandler::getDialogue("FireDeny_ForestCamp").startDialogue();
+
+		}
+		else if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
+		{
+			mPlayer->removeItemFromInventory("stickWetCloth");
+			mPlayer->addItemToInventory("torch");
+			Act1Events::handleEvent(Act1Event::ForestCampFire);
+		}
+	}
 }
 void Level_Forest_Camp::checkEvents()
 {

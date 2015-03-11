@@ -27,6 +27,7 @@ namespace Act1Event
 		ForestCamp_BeerDeer,
 		LightCampFire,
 		CampFinished_Conversation,
+		ForestCampFire,
 		EVENT_SIZE
 	};
 }
