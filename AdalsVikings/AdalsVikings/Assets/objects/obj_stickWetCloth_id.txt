@@ -5,7 +5,7 @@
 *pickup: "Oh... nasty." ~2,0
 *lookat: "What to do..." ~1,5
 *deny: "I don't want to get oil everywhere..." ~1,5
-*denywith: 
+*denywith: $bucketBroken$ "This won't light the torch." ~3,0; 
 *combine: 
 *interact: 
 *texture: "img_stickWetCloth_id.png"

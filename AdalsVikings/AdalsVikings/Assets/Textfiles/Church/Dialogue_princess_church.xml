@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="She would probably kill me if i stole her pinecones..." />
-	<lookText lookText="It's a bitch" />
-	<text character="Ulfr" disabled="false" default="false" say="Hello" timer="1.5"  turned="false"/>
+	<lookText lookText="What's a small girl like her doing out here all alone?" />
+	<text character="Ulfr" disabled="false" default="false" say="Hello." timer="1.5"  turned="false"/>
 	<text character="Girl" disabled="false" default="false" disablePrevious="" say="What do you want?" timer="2.0" />
 	<text character="Girl" disabled="false" default="false" say="Can't you see I'm busy?" timer="2.0" />
 	<text character="Ulfr" say="With what?" timer="1.5" default="false" disabled="false"></text>

@@ -46,6 +46,8 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::LookButton] = "assets/images/interface/buttons/interface_look.png";
 	mTexturePathMap[Texture::TakeButton] = "assets/images/interface/buttons/interface_take.png";
 	mTexturePathMap[Texture::TalkButton] = "assets/images/interface/buttons/interface_talk.png";
+	mTexturePathMap[Texture::HelpButton] = "assets/images/interface/buttons/help_button.png";
+	mTexturePathMap[Texture::InventoryButton] = "assets/images/interface/buttons/inventory_button_small.png";
 
 	mTexturePathMap[Texture::MainMenuPlayButton] = "assets/images/interface/MainMenu/button_play.png";
 	mTexturePathMap[Texture::MainMenuOptionsButton] = "assets/images/interface/MainMenu/button_options_disabled.png";
@@ -78,8 +80,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::InventoryTile] = "assets/images/InventoryTile.png";
 
 	mTexturePathMap[Texture::CursorDefault] = "assets/images/cursor.png";
-	mTexturePathMap[Texture::CursorArrow] = "assets/images/cursor_arrow.png";
-	mTexturePathMap[Texture::CursorInteract] = "assets/images/cursor_interact.png";
+	mTexturePathMap[Texture::CursorArrow] = "assets/images/cursor_arrow2.png";
 
 	mTexturePathMap[Texture::BrandrIdle] = "assets/images/Brandr/character_brandr_blink.png";
 	mTexturePathMap[Texture::BrandrTalk] = "assets/images/Brandr/character_brandr_talk.png";

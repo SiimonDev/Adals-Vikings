@@ -9,6 +9,8 @@ HUD::HUD()
 void HUD::load()
 {
 	RMI.loadResource(Texture::Button1);
+	RMI.loadResource(Texture::HelpButton);
+	RMI.loadResource(Texture::InventoryButton);
 	RMI.loadResource(Font::Font1);
 	RMI.loadResource(Texture::IntroScreen);
 
@@ -16,17 +18,17 @@ void HUD::load()
 	mHelpPanel.setScale(2, 2);
 	mHelpPanel.setPosition(150, 50);
 
-	mInventoryButton = Button(Texture::Button1, Font::Font1, sf::Vector2f(), " Toggle Inventory");
-	mInventoryButton.setPosition(sf::Vector2f(10, 10));
-	mInventoryButton.setDescriptionPosition(sf::Vector2f(0, 60));
-	mInventoryButton.setScale(sf::Vector2f(1.0f, 1.0f));
+	mInventoryButton = Button(Texture::InventoryButton, Font::Font1, sf::Vector2f(), " Toggle Inventory");
+	mInventoryButton.setPosition(sf::Vector2f(40, 10));
+	mInventoryButton.setDescriptionPosition(sf::Vector2f(-50, 110));
+	mInventoryButton.setScale(sf::Vector2f(0.7f, 0.7f));
 	mInventoryButton.setDescriptionStyle(sf::Text::Bold);
 	mInventoryButton.setIndex(99999);
 
-	mHelpButton = Button(Texture::Button1, Font::Font1, sf::Vector2f(), " Help");
-	mHelpButton.setPosition(sf::Vector2f(100, 10));
-	mHelpButton.setDescriptionPosition(sf::Vector2f(0, 60));
-	mHelpButton.setScale(sf::Vector2f(1.0f, 1.0f));
+	mHelpButton = Button(Texture::HelpButton, Font::Font1, sf::Vector2f(), " Help");
+	mHelpButton.setPosition(sf::Vector2f(170, 10));
+	mHelpButton.setDescriptionPosition(sf::Vector2f(0, 110));
+	mHelpButton.setScale(sf::Vector2f(0.5f, 0.5f));
 	mHelpButton.setDescriptionStyle(sf::Text::Bold);
 	mHelpButton.setIndex(99999);
 
@@ -40,6 +42,8 @@ void HUD::load()
 }
 void HUD::unload()
 {
+	RMI.unloadResource(Texture::Button1);
+	RMI.unloadResource(Texture::HelpButton);
 	RMI.unloadResource(Texture::Button1);
 	RMI.unloadResource(Font::Font1);
 }

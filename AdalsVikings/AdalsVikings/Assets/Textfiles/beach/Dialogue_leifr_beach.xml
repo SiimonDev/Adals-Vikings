@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="I should probably try talking to him instead" />
-	<lookText lookText="That's Leifr" />
+	<lookText lookText="My buddy Leifr. He’s the most peaceful dude I know, and he’s always there to help." />
 	<text character="Leifr" turned="true" timer="2.5" say="How does it feel, Ulfr?" />
 	<text character="Ulfr" say="How does what feel?" timer="2.3" turned="false"></text>
 	<text character="Leifr" say="Our destination." timer="2.4" turned="true"></text>

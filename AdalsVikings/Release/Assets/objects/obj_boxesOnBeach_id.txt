@@ -3,9 +3,9 @@
 *Name: Boxes
 *ispickupable: False
 *pickup: "I'm not a thief." ~2,0
-*lookat: "Filled with... cloth and sticks." ~3,0
+*lookat: "Filled with... Brandr's "private runes"..." ~3,0
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:175    Y:115
+*invisible: X:175     Y:115

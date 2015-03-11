@@ -1,4 +1,5 @@
 #include "Inventory.h"
+#include "..\Dialog\PlayerMonologue.h"
 #include "..\Logics\AudioPlayer.h"
 #include "..\Logics\MouseState.h"
 #include "..\Logics\BoatEvents.h"
@@ -88,6 +89,13 @@ void Inventory::update(sf::Time frameTime)
 
 				if (invTiles[x][y].isInside(MouseState::getMousePosition()))
 				{
+					if (invTiles[x][y].hasObject())
+					{
+						invTiles[x][y].getObject().enableDescription(true);
+						invTiles[x][y].getObject().setDescription(invTiles[x][y].getObject().getName());
+					}
+					
+
 					if (MouseState::isPressed(sf::Mouse::Left) && !mHasSnappedObject)
 					{
 						if (invTiles[x][y].hasObject()){
@@ -96,11 +104,20 @@ void Inventory::update(sf::Time frameTime)
 							mHasSnappedObject = true;
 						}
 					}
+					else if (MouseState::isPressed(sf::Mouse::Left) && mHasSnappedObject)
+					{
+						if (invTiles[x][y].hasObject()){
+							invTiles[x][y].getObject().setDescription("Combine " + mSnappedObject->getName() + " with " + invTiles[x][y].getObject().getName());
+						}
+					}
 					else if (!MouseState::isPressed(sf::Mouse::Left) && mHasSnappedObject)
 					{
 						if (invTiles[x][y].hasObject())
 						{
 							CombineDialog newObjDialog = mSnappedObject->combineWithObject(invTiles[x][y].getObjectID());
+							if (newObjDialog.mDefault)
+								newObjDialog = invTiles[x][y].getObject().combineWithObject(mSnappedObject->getObjID());
+							PlayerMonologueI.displayDialog(newObjDialog);
 
 							if (newObjDialog.mResultID != ""){
 								invTiles[x][y].removeObject();
@@ -115,11 +132,6 @@ void Inventory::update(sf::Time frameTime)
 						delete mSnappedObject;
 						mHasSnappedObject = false;
 					}
-					else
-					{
-						if (invTiles[x][y].hasObject())
-							invTiles[x][y].getObject().enableDescription(true);
-					}
 				}
 				else
 				{
@@ -129,9 +141,10 @@ void Inventory::update(sf::Time frameTime)
 			}
 		}
 
-		if (!isInside(MouseState::getMousePosition()) && mHasSnappedObject){
-			toggleInventory();
-		}
+		/*if (!isInside(MouseState::getMousePosition())){
+			if (mHasSnappedObject || MouseState::isReleased(sf::Mouse::Left))
+				toggleInventory();
+		}*/
 	}
 
 	if (mDroppedSnappedObj)
@@ -186,7 +199,7 @@ bool Inventory::addItemToInventory(std::string objectID)
 			if (!invTiles[x][y].hasObject())
 			{
 				Object* obj = new Object(OBHI.getObject(objectID));
-				obj->setIndex(9999999);
+				obj->setIndex(mIndex + 5);
 				invTiles[x][y].setObject(obj);
 				invTiles[x][y].load();
 				return true;

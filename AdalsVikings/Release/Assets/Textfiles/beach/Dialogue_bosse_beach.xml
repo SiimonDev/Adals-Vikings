@@ -2,10 +2,10 @@
 <conversation>
 	<useText useText="I don't want to get my clothes wet..." />
 	<lookText lookText="That is one AWESOME bird!" />
-	<text character="Ulfr" default="false" disabled="false" say="Hey!" timer="1.5" turned="true"></text>
-	<text character="Bosse" default="false" disabled="false" say="Hya!!" timer="1.5" turned="false"></text>
-	<text character="Ulfr" default="false" disabled="false" say="What's your name, little fellow?" timer="2.5" turned="true"></text><text character="Bosse" default="false" disabled="false" say="Hya! Hya!" timer="1.5" turned="false"></text>
-	<text timer="1.3"></text>
+	<text character="Ulfr" default="true" disabled="false" say="Hey!" timer="1.5" turned="true"></text>
+	<text character="Bosse" default="true" disabled="false" say="Hya!!" timer="1.5" turned="false"></text>
+	<text character="Ulfr" default="false" disabled="false" say="What's your name, little fellow?" timer="2.5" turned="true"></text><text character="Bosse" default="true" disabled="false" say="Hya! Hya!" timer="1.5" turned="false"></text>
+	
 	<text character="Bosse" default="false" disabled="false" say="...hya!? Hya!" timer="1.5" turned="false"></text><text character="Ulfr" default="false" disabled="false" say="Bosse? That's a strange name." timer="1.5" turned="true"></text>
 	<text character="Ulfr" default="false" disabled="false" say="...why am I talking to a seagull?" timer="2.6" turnedPlayer="true"></text><text character="Bosse" default="true" disabled="false" say="Hyaaa!" timer="1.3" turned="false"></text>
 	

@@ -21,6 +21,10 @@ void Level::updateObjects(sf::Time frameTime)
 	for (int i = 0; i < mObjects.size(); i++)
 	{
 		mObjects[i]->update(frameTime);
+
+		if (mObjects[i]->isInside(sf::Vector2i(mActionWheel->getPosition())))
+			mActionWheel->setActive(true);
+
 		if (mActionWheel->isButtonSelected())
 		{
 			if (mObjects[i]->isInside(sf::Vector2i(mActionWheel->getPosition())))
@@ -145,6 +149,9 @@ void Level::updateNPCs(sf::Time frameTime)
 	{
 		it->second->update(frameTime);
 
+		if (it->second->isInside(sf::Vector2i(mActionWheel->getPosition())))
+			mActionWheel->setActive(true);
+
 		if (mActionWheel->isButtonSelected())
 		{
 			if (it->second->isInside(sf::Vector2i(mActionWheel->getPosition())))
@@ -157,7 +164,7 @@ void Level::updateNPCs(sf::Time frameTime)
 				else if (mActionWheel->isTalkSelected())
 				{
 					mPlayer->setIntention(Intention::Talk);
-					mActionWheel->setfalse();
+					mActionWheel->setActive(false);
 				}
 				else if (mActionWheel->isPickUpSelected())
 					mPlayer->setIntention(Intention::PickUp);
@@ -330,6 +337,7 @@ void Level::updateDialog(sf::Time frameTime)
 
 void Level::update(sf::Time &frameTime)
 {
+	
 	MouseState::setCursorType(CursorType::Default);
 	updateDialog(frameTime);
 	updateNPCs(frameTime);
@@ -337,18 +345,21 @@ void Level::update(sf::Time &frameTime)
 	mPlayer->setFootsteps(mCurrentFootsteps);
 	checkEvents();
 
-	//if (KeyboardState::isPressed(sf::Keyboard::F5))
-	//{
-	//	OBHI.initialize();
-	//	resetLevel();
-	//	refreshLevel();
-	//}
+	if (KeyboardState::isPressed(sf::Keyboard::F5))
+	{
+		OBHI.initialize();
+		resetLevel();
+		refreshLevel();
+	}
 
 	if (mRestartSounds)
 	{
 		restartSounds();
 		mRestartSounds = false;
 	}
+
+	if (!mActionWheel->isPressed() && mActionWheel->isActive())
+		mActionWheel->setActive(false);
 
 	if (!mIsInConversation && !mOldIsInConversation && FadeI.getFaded())
 	{
@@ -387,6 +398,8 @@ void Level::update(sf::Time &frameTime)
 		else
 			it->second->walkPath(*mPlayer);
 	}
+
+	
 }
 
 void Level::render(IndexRenderer &iRenderer)

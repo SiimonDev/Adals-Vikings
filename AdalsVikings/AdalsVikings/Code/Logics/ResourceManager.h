@@ -33,6 +33,8 @@ namespace Texture
 		LookButton,
 		TakeButton,
 		TalkButton,
+		HelpButton,
+		InventoryButton,
 		IntroScreen,
 
 		MainMenuPlayButton,
@@ -65,7 +67,6 @@ namespace Texture
 
 		CursorDefault,
 		CursorArrow,
-		CursorInteract,
 
 		BrandrIdle,
 		BrandrTalk,

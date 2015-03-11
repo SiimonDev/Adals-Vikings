@@ -79,11 +79,11 @@ void Button::update()
 	{
 		if (isInsideButton(MouseState::getMousePosition()))
 		{
-			if (MouseState::isClicked(sf::Mouse::Left))
+			if (MouseState::isClicked(sf::Mouse::Left) || MouseState::isClicked(sf::Mouse::Right))
 				mIsClicked = true;
-			if (MouseState::isReleased(sf::Mouse::Left))
+			if (MouseState::isReleased(sf::Mouse::Left) || MouseState::isReleased(sf::Mouse::Right))
 				mIsReleased = true;
-			if (MouseState::isPressed(sf::Mouse::Left))
+			if (MouseState::isPressed(sf::Mouse::Left) || MouseState::isPressed(sf::Mouse::Right))
 			{
 				mIsPressed = true;
 				mSprite.setTextureRect(sf::IntRect(sf::Vector2i(0, mSize.y * 2), sf::Vector2i(mSize.x, mSize.y)));
