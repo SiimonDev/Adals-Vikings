@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="I don't think im strong enough to do that. " />
-	<lookText lookText="That's Leifr" />
+	<lookText lookText="My buddy Leifr. He’s the most peaceful dude I know, and he’s always there to help." />
 	<text character="Leifr" default="false" disabled="false" say="Why are you looking so down Ulfr?" timer="2.8" turned="true"></text>
 	<text character="Ulfr" default="false" disabled="false" say="There are Druids in that forest." timer="2.4" turned="false"></text>
 	<text character="Ulfr" default="false" disabled="false" say="And they got this great fire that we could use to light our campfire." timer="3.5" turned="false"></text><text character="Ulfr" default="false" disabled="false" say="But they won't let me take the fire..." timer="2.4" turned="false"></text>
@@ -11,7 +11,7 @@
 	<text character="Leifr" default="false" disabled="false" say="Uh... Tell you what, if you manage to find a bear costume." timer="3.3" turned="true"></text><text character="Leifr" default="false" disabled="false" say="I'll help you convince the druids to give you some fire!" timer="2.4" turned="true"></text>
 	<text character="Ulfr" default="false" disabled="false" say="Uh... Right." timer="2.4" turned="false"></text>
 	<text character="Leifr" default="true" disabled="true" say="Found the bear costume yet?" timer="2.4" turned="true"></text>
-	<text character="Ulfr" default="true" disabled="true" say="Not yet, not that I believe there exists a bear deer costume..." timer="3.0" turned="false"></text>
+	<text character="Ulfr" default="true" disabled="true" say="Not yet, not that I believe there exists a bear deer costume..." timer="3.0" turned="false"></text><text character="Leifr" default="true" disabled="true" say="Then make one!" timer="2.4" turned="true"></text>
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />

@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="Why would I use Alfr?" />
-	<lookText lookText="Yep... that's still Alfr." />
-	<text character="Alfr" disabled="false" default="false" say="Shall I play a tune to celebrate our landing?" turned="false" timer="2.0" />
-	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="If we have time in the production schedule, then yeah sure." timer="3.0"  turned="true"/>
+	<lookText lookText="That’s Alfr, the village Skald. He’s great at any instrument. Though I’ve heard his singing voice is awful." />
+	<text character="Alfr" disabled="false" default="true" say="Shall I play a tune to celebrate our landing?" turned="false" timer="2.0" />
+	<text character="Ulfr" disabled="false" default="true" disablePrevious="" say="If we have time in the production schedule, then yeah sure." timer="3.0"  turned="true"/>
 	
 	
-	<text character="Ulfr" disabled="true" default="true" say="I shouldn't bother him." timer="2.0"  turned="true"/>
+	
 	
 	
 	<stopConversation />
