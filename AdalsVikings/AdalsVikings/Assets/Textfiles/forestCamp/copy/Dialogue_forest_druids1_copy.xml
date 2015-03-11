@@ -102,6 +102,8 @@
 			<stopConversation />
 		</option>
 		<option choice_text="I'll just... leave... ok bye" disabled="false">
+			<text character="Ulfr" disabled="false" default="false" say="I'm just... going go leave... Ok bye." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Peace." timer="2.5" turned="false" />
 			<stopConversation />
 		</option>
 		<stopOption />

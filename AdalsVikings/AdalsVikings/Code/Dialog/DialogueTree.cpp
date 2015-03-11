@@ -34,6 +34,7 @@ DialogueTree::DialogueTree(Font::ID fontID)
 }
 void DialogueTree::load()
 {
+	std::cout << "Loading: " + mFilePath << std::endl;
 	mDialogue.load_file(mFilePath.c_str());
 	std::string copyFolder = "copy/";
 	mPrintText.setFont(RMI.getResource(mFontID));
