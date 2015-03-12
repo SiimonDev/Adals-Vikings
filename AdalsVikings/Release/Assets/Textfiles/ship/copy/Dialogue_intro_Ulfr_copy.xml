@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
-	<useText useText="Why would anyone want to use Him?" />
-	<lookText lookText="Seems like they are fighting over something." />
+	<useText useText="Ehm... no." />
+	<lookText lookText="I'm just wonderful, aren't I?" />
 	<text character="Ulfr" turnedPlayer="true" say="Ugh..." timer="2.5" />
 	<text character="Ulfr" say="What's that noise?" timer="2.3" />
 	<stopConversation />

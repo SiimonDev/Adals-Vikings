@@ -20,3 +20,10 @@ index: $99
 scale: $1
 hascollision: $false
 ############
+*id: $catBoat
+position: $X:316 $Y:530
+interactPosition: $X:0 $Y:0
+index: $11
+scale: $1
+hascollision: $false
+############

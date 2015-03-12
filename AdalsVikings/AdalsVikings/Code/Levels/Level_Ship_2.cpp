@@ -22,6 +22,7 @@ Level_Ship_2::Level_Ship_2(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Ship_2::update(sf::Time &frameTime)
 {
+	mSeaAnimation.animate(frameTime);
 	mWaveAnimation.animate(frameTime);
 	if (BoatEvents::hasBeenTriggered(BoatEvent::PickedUpBucket) && !BoatEvents::hasBeenHandled(BoatEvent::PickedUpBucket))
 	{
@@ -66,6 +67,7 @@ void Level_Ship_2::render(IndexRenderer &iRenderer)
 		CurrentWindow.setView(mCutsceneView);
 	else
 		CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
+	mSeaAnimation.render(iRenderer);
 	mWaveAnimation.render(iRenderer);
 	Level::render(iRenderer);
 }
@@ -75,6 +77,7 @@ void Level_Ship_2::load()
 	RMI.loadResource(Texture::BrandrAngryTalk);
 	RMI.loadResource(Texture::BrandrAngryIdle);
 	RMI.loadResource(Texture::FrontBoatWaveAnimation);
+	RMI.loadResource(Texture::WaveAnimationBoat);
 	mPortals[Ship2ToShip1] = &PortalLoader::getPortal(Ship2ToShip1); // This does not create a new portal it only references the one in PortalLoader;
 	mPortals[Ship2ToShip1]->setWorking(true);
 
@@ -119,11 +122,17 @@ void Level_Ship_2::load()
 	mNpcs["Brandr"]->setDialogue("Brandr_Ship2");
 	mNpcs["Yngvarr"]->setDialogue("Yngvarr_Ship2");
 
+	mSeaAnimation.load(RMI.getResource(Texture::WaveAnimationBoat), sf::Vector2i(6, 12), sf::seconds(12), sf::seconds(0), true);
+	mSeaAnimation.setIndex(2);
+	mSeaAnimation.getSprite().setOrigin(0, 0);
+	mSeaAnimation.setProportions(sf::Vector2f(1920, 600));
+	mSeaAnimation.setPosition(sf::Vector2f(0, 240));
+
 	mWaveAnimation.load(RMI.getResource(Texture::FrontBoatWaveAnimation), sf::Vector2i(2, 2), sf::seconds(1), sf::seconds(0), true);
 	mWaveAnimation.setIndex(200);
-	mWaveAnimation.setProportions(sf::Vector2f(1440, 78));
+	mWaveAnimation.setProportions(sf::Vector2f(1440, 60));
 	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
-	mWaveAnimation.setPosition(sf::Vector2f(1920, 1060));
+	mWaveAnimation.setPosition(sf::Vector2f(1920, 1080));
 
 	mCurrentFootsteps = Footsteps::Hardwood;
 }
@@ -133,6 +142,7 @@ void Level_Ship_2::unload()
 	RMI.unloadResource(Texture::BrandrAngryTalk);
 	RMI.unloadResource(Texture::BrandrAngryIdle);
 	RMI.unloadResource(Texture::FrontBoatWaveAnimation);
+	RMI.unloadResource(Texture::WaveAnimationBoat);
 	Level::unload();
 }
 

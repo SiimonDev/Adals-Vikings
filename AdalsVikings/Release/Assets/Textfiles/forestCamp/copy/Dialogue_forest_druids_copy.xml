@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="I'd rather not, they might be contagious..." />
+	<lookText lookText="They look a bit... before their time." />
+	<text character="Druid Leader" disabled="false" default="false" say="Who DARES disturb our sacred ritual!?" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Oh hey, sorry" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="I got a little lost." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Hope you're not mad, are you?" timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="Well, this is a dark dark forest after all." timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="Don't sweat it." timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="We are the Druid Leaders of the forest." timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="But don't associate us with the Druid Leaders of the mountain." timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="Totally different cult, they are so mainstream." timer="2.0" turned="false" />
+	<option_container disabled="false">
+		<option choice_text="Ursa Vercus, where have I heard that before?" disabled="true">
+			<text character="Ulfr" disablePrevious="false" say="Ursa Vercus, where have I heard that before?" timer="1.2" />
+			<text character="Druid Leader" disabled="false" default="false" say="Ursa Cervus... And perhaps he has spoken to you in a dream?" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Perhaps you are answering his calling right now?" timer="2.0" turned="false" />
+			<text character="Ulfr" disablePrevious="false" timer="1.2" say="Actually... I think it's latin." />
+			<text character="Druid Leader" disabled="false" default="false" say="What is this &quot;Latin&quot; you speak of?" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Is it an ancient tongue of beasts?" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Do you know of the Ursa Cervus?!" timer="2.0" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="URSA CERVUS" timer="2.0" turned="false" />
+			<text character="Ulfr" disablePrevious="false" say="uh..." timer="1.2" />
+			<text character="Ulfr" disablePrevious="false" say="Maybe?" timer="1.2" />
+			<text character="Druid Leader" disabled="false" default="false" say="Tell us what he looked like then." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="We will know if you speak the truth." timer="2.0" turned="false" />
+			<text character="Ulfr" disablePrevious="false" say="He looks like a..." timer="1.2" />
+			<text character="Ulfr" disablePrevious="false" say="...Bear deer?" timer="1.2" />
+			<text character="Druid Leader" disabled="false" default="false" say="..." timer="2.0" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="BEAR DEER!" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Yeah pretty much." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="We've been waiting for him for quite some time now." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Like..." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Two entire days man." timer="2.0" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="Guess he's maybe just shy?" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="HA-HA!" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="SHY!?" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="URSA CERVUS?" timer="2.0" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="URSA CERVUS" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="...uh" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="I suppose we are a bit rowdy." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" timer="2.0" turned="false" say="But that makes no difference." />
+			<text character="Druid Leader" disabled="false" default="false" timer="2.0" turned="false" say="He will appear soon enough, I know it." />
+			<text character="Ulfr" disabled="false" default="false" say="wait... who will appear?" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Ursa Cervus, of cour-" timer="1.0" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="URSA CERVUS" timer="2.0" turned="false" />
+			<text character="Hipster Druid Leader" disabled="false" default="false" say="the bear deer!" timer="1.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="...right." timer="2.0" turned="false" disablePrevious="true" />
+			<gotoContainer />
+		</option>
+		<option choice_text="What are you guys doing out here, anyway?" disabled="false">
+			<text character="Ulfr" say="What are you guys doing out here, anyway?" timer="2.0" />
+			<text character="Druid Leader" disabled="false" default="false" say="We are pleasing the forest god of this forest. " timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Ursa Cervus" timer="2.0" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="URSA CERVUS" timer="2.0" turned="false" />
+			<text character="Ulfr" say="You are pleasing a forest god by burning... wood?" timer="2.0" />
+			<text character="Druid Leader" disabled="false" default="false" say="This isn't his timber, dummy." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="This is from the northern forest." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="And the god of that forest is a dick, so mainstream." timer="2.0" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="A DICK!" timer="2.0" turned="false" enable="Ursa Vercus, where have i heard that before?" disablePrevious="true" />
+			<gotoBaseContainer />
+		</option>
+		<option choice_text="Can i borrow some of your fire?" disabled="false">
+			<text character="Ulfr" say="Can I borrow some of your fire?" timer="1.4" />
+			<text character="Druid Leader" disabled="false" default="false" say="How does one &quot;borrow&quot; fire?" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="You &quot;Take&quot; fire" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Beside, is fire even ours to give or take?" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="And no. " timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="You can't." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="This is OUR sacred flame!" timer="2.0" turned="false" />
+			<text character="Ulfr" say="But i thought you said one can't own-" timer="1.4" />
+			<text character="Druid Leader" disabled="false" default="false" say="OUR SACRED FLAME!" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="THE FLAME THAT URSA CERVUS-" timer="1.2" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="URSA CERVUS" timer="2.0" turned="false" />
+			<text character="Hipster Druid Leader" disabled="false" default="false" say="the bear deer!" timer="1.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="-will be drawn to" timer="1.2" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="so no, you can't have any." timer="2.0" turned="false" enable="Just a little fire, please?" disablePrevious="true" />
+			<gotoContainer />
+		</option>
+		<option choice_text="What is your friend burning over there?" disabled="false">
+			<text character="Ulfr" say="What is your friend burning over there?" timer="1.4" />
+			<text character="Druid Leader" disabled="false" default="false" say="Who? Jeff?" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Those are marshmallows." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="They are pretty cool." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="But I don't expect you to ever have heard of them." timer="2.0" turned="false" disablePrevious="true" />
+			<gotoContainer />
+		</option>
+		<option choice_text="Just a little fire, please?" disabled="true">
+			<text character="Ulfr" say="Just a little fire, please?" timer="1.4" />
+			<text character="Druid Leader" disabled="false" default="false" say="no." timer="2.0" turned="false" />
+			<text character="Ulfr" say="Pretty please?" timer="1.4" />
+			<text character="Druid Leader" disabled="false" default="false" say="well..." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="No." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="The only one to share in this, our flame, is Ursa Cervus-" timer="1.7" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="URSA CERVUS" timer="2.0" turned="false" />
+			<text character="Hipster Druid Leader" disabled="false" default="false" say="the bear deer!" timer="1.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="...our god himself." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="So I am sorry, my short tiny friend." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="You can't have our fire." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="NONE!" timer="2.0" turned="false" disablePrevious="true" />
+			<gotoBaseContainer />
+		</option>
+		<option choice_text="I'll just... leave... ok bye" disabled="false">
+			<text character="Ulfr" say="I'll just leave then..." timer="1.4" default="true" enable="true" turned="false" disabled="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Peace." timer="2.0" turned="false" />
+			<stopConversation />
+		</option>
+		<stopOption />
+	</option_container>
+	<stopConversation />
+</conversation>

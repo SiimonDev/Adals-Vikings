@@ -2,7 +2,7 @@
 <conversation>
 	
 	<useText useText="Why would I use Brandr?" />
-	<lookText lookText="That's Brandr." />
+	<lookText lookText="Our *great* leader, Brandr. I wonder what trouble he’ll get us into next, the idiot." />
 	<text character="Brandr" turned="true" timer="2.4" say="Great Vikings of Adal." />
 	<text character="Brandr" say="There is a wide land before us." timer="3.3"></text>
 	<text character="Brandr" say="With riches of many kinds." timer="3.3"></text>

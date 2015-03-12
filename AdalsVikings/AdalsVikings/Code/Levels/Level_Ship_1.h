@@ -22,4 +22,5 @@ private:
 
 	Animation mRopeAnimation;
 	Animation mWaveAnimation;
+	Animation mSeaAnimation;
 };

@@ -15,8 +15,8 @@ void HUD::load()
 	RMI.loadResource(Texture::IntroScreen);
 
 	mHelpPanel.setTexture(RMI.getResource(Texture::IntroScreen));
-	mHelpPanel.setScale(2, 2);
-	mHelpPanel.setPosition(150, 50);
+	mHelpPanel.setScale(1, 1);
+	mHelpPanel.setPosition(0, 0);
 
 	mInventoryButton = Button(Texture::InventoryButton, Font::Font1, sf::Vector2f(), " Toggle Inventory");
 	mInventoryButton.setPosition(sf::Vector2f(30, 10));

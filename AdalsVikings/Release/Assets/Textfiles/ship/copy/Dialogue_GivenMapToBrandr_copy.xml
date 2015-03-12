@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
-	<useText useText="I Really can't pick her up... Too heavy." />
-	<lookText lookText="Looks like Brynja is sleeping tight." />
+	<useText useText="If you see this you are doing something wrong..." />
+	<lookText lookText="If you see this, you are doing something wrong." />
 	<text character="Ulfr" default="false" disabled="false" say="I found the map. " timer="1.7" />
 	<text character="Brandr" default="false" disabled="false" say="Well, give it to me!" timer="2.0" />
 	<text character="Brandr" default="false" disabled="false" say="Now let's see..." timer="2.2" />

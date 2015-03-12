@@ -53,6 +53,7 @@ namespace Texture
 		FrontBoatWaveAnimation,
 		BackBoatRopeAnimation,
 		BackBoatWaveAnimation,
+		WaveAnimationBoat,
 		WaveAnimation,
 		AxeAnimation,
 		FireForestCampAnimation,

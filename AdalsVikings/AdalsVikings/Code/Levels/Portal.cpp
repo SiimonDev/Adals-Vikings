@@ -16,6 +16,7 @@ Portal::Portal(LevelFolder::ID levelID, sf::Vector2f area, sf::Vector2f position
 	, mPortalMovement(portalMovement)
 	, mPlayerSpawn(mPlayerSpawn)
 	, mCurrentLevel(levelID)
+	, mCursorRotation(0)
 {
 	mArea.setPosition(position);
 	mArea.setFillColor(sf::Color(255, 0, 0, 50));
@@ -60,7 +61,7 @@ void Portal::setPosition(sf::Vector2f &position)
 void Portal::setActive()
 {
 	if (isInside())
-		MouseState::setCursorType(CursorType::Arrow);
+		MouseState::setCursorType(CursorType::Arrow, mCursorRotation);
 	if (isInside() && MouseState::isClicked(sf::Mouse::Left))
 		mIsActive = true;
 	else if (MouseState::isClicked(sf::Mouse::Left))
@@ -75,6 +76,10 @@ void Portal::setActivate(bool value)
 void Portal::setWorking(bool value)
 {
 	mWorking = value;
+}
+void Portal::setCursorRotation(float rotation)
+{
+	mCursorRotation = rotation;
 }
 void Portal::portalTravel(Player &player)
 {
@@ -140,6 +145,10 @@ bool Portal::getActivated()
 sf::Vector2f &Portal::getSpawn()
 {
 	return mPlayerSpawn;
+}
+float Portal::getCursorRotation()
+{
+	return mCursorRotation;
 }
 
 LevelFolder::ID Portal::getCurrentLevel()
