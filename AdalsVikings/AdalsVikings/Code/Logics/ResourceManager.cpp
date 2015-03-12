@@ -70,6 +70,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::WaveAnimation] = "assets/MapFiles/Beach/waves.png";
 	mTexturePathMap[Texture::AxeAnimation] = "assets/images/Interface/MainMenu/flying_axe.png";
 	mTexturePathMap[Texture::FireForestCampAnimation] = "assets/Mapfiles/Forest_Camp/background_forestcamp_fire.png";
+	mTexturePathMap[Texture::FireCampAnimation] = "assets/Mapfiles/Camp_Finished/background_camp_fire.png";
 	mTexturePathMap[Texture::DruidsForest1] = "assets/Mapfiles/Forest_Camp/background_forestcamp_druids_1.png";
 	mTexturePathMap[Texture::DruidsForest2] = "assets/Mapfiles/Forest_Camp/background_forestcamp_druids_2.png";
 	mTexturePathMap[Texture::DruidLeaderIdle] = "assets/Images/Druid/druid_lord_swag.png";
