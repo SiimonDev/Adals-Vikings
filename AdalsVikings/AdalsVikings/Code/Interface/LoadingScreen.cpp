@@ -38,7 +38,7 @@ void LoadingScreen::initialize()
 
 	mBackground.setTexture(RMI.getResource(Texture::LoadingScreenBackground));
 	mBackground.setPosition(0, 0);
-	mLoadAnimation.load(RMI.getResource(Texture::LoadingThingyAnimation), sf::Vector2i(3, 4), sf::milliseconds(1000), sf::seconds(0), true);
+	mLoadAnimation.load(RMI.getResource(Texture::LoadingThingyAnimation), sf::Vector2i(3, 4), sf::milliseconds(3500), sf::seconds(0), true);
 	mLoadAnimation.getSprite().setOrigin(mLoadAnimation.getSpriteSize().x / 2, mLoadAnimation.getSpriteSize().y / 2);
 	mLoadAnimation.setPosition(sf::Vector2f(1920 / 2, 1080 / 2));
 	mLoadAnimation.setProportions(sf::Vector2f(954, 259));
