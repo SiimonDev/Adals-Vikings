@@ -34,7 +34,6 @@ public:
 	void setPosition(sf::Vector2f position);
 	void setFlip(bool value);
 	void setscale(sf::Vector2f scale);
-	void setProportions(sf::Vector2f proportions);
 	void setIndex(int index);
 	void setCollisionRect(sf::IntRect &rect);
 	void setIndexRect(sf::IntRect &rect);
@@ -73,7 +72,6 @@ private:
 	std::string mName, mDialogue;
 
 	Animation mAnimation;
-	sf::Vector2f mProportions;
 	sf::Vector2f mPosition;
 	sf::Vector2f mInteractionPosition;
 	sf::Vector2f mScale;

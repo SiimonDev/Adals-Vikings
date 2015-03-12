@@ -46,7 +46,8 @@ private:
 	void operator=(LoadingScreen&);
 
 	sf::Text mLoadingText;
-	sf::Font mFont;
+	sf::Sprite mBackground;
+	Animation mLoadAnimation;
 
 	ThreadPtr mThread;
 	LoadTask mTask;

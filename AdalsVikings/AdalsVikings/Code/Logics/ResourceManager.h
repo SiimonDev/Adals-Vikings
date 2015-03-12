@@ -34,8 +34,13 @@ namespace Texture
 		TakeButton,
 		TalkButton,
 		HelpButton,
+		OKButton,
 		InventoryButton,
 		IntroScreen,
+
+		LoadingScreenBackground,
+		LoadingScreenBackgroundX,
+		LoadingThingyAnimation,
 
 		MainMenuPlayButton,
 		MainMenuOptionsButton,
@@ -48,7 +53,6 @@ namespace Texture
 		PauseMenuMainMenuButton,
 		PauseMenuExitButton,
 		PauseMenuBackground,
-		TextBackgroundPaper,
 
 		FrontBoatWaveAnimation,
 		BackBoatRopeAnimation,

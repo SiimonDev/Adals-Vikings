@@ -47,6 +47,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::TakeButton] = "assets/images/interface/buttons/interface_take.png";
 	mTexturePathMap[Texture::TalkButton] = "assets/images/interface/buttons/interface_talk.png";
 	mTexturePathMap[Texture::HelpButton] = "assets/images/interface/buttons/help_button.png";
+	mTexturePathMap[Texture::OKButton] = "assets/images/interface/buttons/ok_button.png";
 	mTexturePathMap[Texture::InventoryButton] = "assets/images/interface/buttons/inventory_button_small.png";
 
 	mTexturePathMap[Texture::MainMenuPlayButton] = "assets/images/interface/MainMenu/button_play.png";
@@ -61,7 +62,10 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::PauseMenuExitButton] = "assets/images/interface/pauseManu/button_exit.png";
 	mTexturePathMap[Texture::PauseMenuBackground] = "assets/images/interface/pauseManu/InGame_menu.png";
 	mTexturePathMap[Texture::IntroScreen] = "assets/images/interface/tutorial.png";
-	mTexturePathMap[Texture::TextBackgroundPaper] = "assets/images/textbackgorund.jpg";
+
+	mTexturePathMap[Texture::LoadingScreenBackground] = "assets/images/interface/loadingscreen/loading_screen_background.png";
+	mTexturePathMap[Texture::LoadingScreenBackgroundX] = "assets/images/interface/loadingscreen/loading_screen_background_100.png";
+	mTexturePathMap[Texture::LoadingThingyAnimation] = "assets/images/interface/loadingscreen/loading_screen.png";
 
 	mTexturePathMap[Texture::FrontBoatWaveAnimation] = "assets/MapFiles/Ship2/waves.png";
 	mTexturePathMap[Texture::BackBoatRopeAnimation] = "assets/MapFiles/Ship1/rope.png";
