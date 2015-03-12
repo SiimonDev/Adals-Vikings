@@ -3,7 +3,7 @@
 	<useText useText="Why would anyone want to use Him?" />
 	<lookText lookText="Seems like they are fighting over something." />
 	<text character="Brynja" say="Ugh..." timer="2" turned="true"></text>
-	<text character="Brynja" say="Why would hit me like that, Valdis?" timer="3"></text>
+	<text character="Brynja" say="Why would you hit me like that, Valdis?" timer="3"></text>
 	<text character="Valdis" say="You had a spider on you." timer="2.2" turned="false"></text>
 	<text character="Brynja" say="Oh." timer="1.5" turned="true"></text>
 	<text timer="1.8"></text>
@@ -12,7 +12,7 @@
 	<text character="Ulfr" say="I was just wondering, have you seen Adal's map lately?" timer="4" turned="true"></text>
 	<text character="Brynja" say="Adal gave us a map?" timer="2.2" turned="false"></text>
 	<text character="Brynja" say="Strange, I never saw it." timer="2.2" turned="BrynjaFlute"></text>
-	<text character="Brynja" say="I did find this strange paper by the supplies" timer="3" turned="false"></text>
+	<text character="Brynja" say="I did find this strange paper by the supplies." timer="3" turned="false"></text>
 	<text character="Brynja" say="Figured it was one of Brandr's paintings." timer="3"></text>
 	<text character="Ulfr" say="Hold on." timer="2.2" turned="true"></text>
 	<text character="Ulfr" say="Brandr PAINTS!?" timer="2.2" turned="true"></text>
@@ -28,7 +28,7 @@
 	<text character="Brynja" say="Oh yeah." timer="2.2" turned="false"></text>
 	<text character="Brynja" say="They're all terrible." timer="3.3" turned="false"></text>
 	<text character="Ulfr" say="Well, it's going to be hard not to tease him about that, but..." timer="4" turned="true"></text>
-	<text character="Ulfr" say="Alright" timer="1.5" turned="true"></text>
+	<text character="Ulfr" say="Alright." timer="1.5" turned="true"></text>
 	<text character="Ulfr" say="You've got a deal." timer="2.2" turned="true"></text>
 	<text character="Brynja" say="Great." timer="1.5" turned="false"></text>
 	<text character="Brynja" say="Here you go." timer="2.2" turned="false"></text>

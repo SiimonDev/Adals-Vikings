@@ -2,7 +2,7 @@
 <conversation>
 	<useText useText="Why would anyone want to use Him?" />
 	<lookText lookText="Seems like they are fighting over something." />
-	<text character="Ulfr" say="Bee boo baa beeee daaa" timer="5" turned="true"></text>
+	<text character="Ulfr" say="Bee boo baa beeee daaa." timer="5" turned="true"></text>
 	<text timer="2.2"></text>
 	<text character="Ulfr" say="Damned."></text>
 	<text character="Ulfr" say="Nothing I do today seems to work." timer="3"></text>
@@ -15,7 +15,7 @@
 	<text timer="3"></text>
 	<text character="Ulfr" say="What?" timer="1.5" turned="true"></text>
 	<text character="Valdis" say="The flute." timer="3" turned="false"></text>
-	<text character="Valdis" say="Hit her with it" timer="3"></text>
+	<text character="Valdis" say="Hit her with it." timer="3"></text>
 	<text character="Ulfr" say="No!" timer="1" turned="true"></text>
 	<text character="Ulfr" say="Of course not!" timer="1.5"></text>
 	<text character="Ulfr" say="I'm not going to do that!" timer="2"></text>

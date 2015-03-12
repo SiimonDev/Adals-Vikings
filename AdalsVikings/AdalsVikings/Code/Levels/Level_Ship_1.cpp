@@ -18,6 +18,7 @@ Level_Ship_1::Level_Ship_1(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Ship_1::update(sf::Time &frametime)
 {
+	mSeaAnimation.animate(frametime);
 	mWaveAnimation.animate(frametime);
 	mRopeAnimation.animate(frametime);
 	if (KeyboardState::isPressed(sf::Keyboard::F))
@@ -78,7 +79,6 @@ void Level_Ship_1::update(sf::Time &frametime)
 				RMI.unloadResource(Texture::BrynjaSleeping);
 				mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 				mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
-				mNpcs["Brynja"]->setProportions(sf::Vector2f(290, 452));
 				mNpcs["Brynja"]->setscale(sf::Vector2f(0.5f, 0.5f));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
 				mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
@@ -143,6 +143,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 void Level_Ship_1::render(IndexRenderer &iRenderer)
 {
 	CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
+	mSeaAnimation.render(iRenderer);
 	mWaveAnimation.render(iRenderer);
 	mRopeAnimation.render(iRenderer);
 	Level::render(iRenderer);
@@ -160,13 +161,12 @@ void Level_Ship_1::load()
 	RMI.loadResource(Texture::LeifrSitTalk);
 	RMI.loadResource(Texture::BackBoatRopeAnimation);
 	RMI.loadResource(Texture::BackBoatWaveAnimation);
+	RMI.loadResource(Texture::WaveAnimationBoat);
 	RMI.loadResource(Footsteps::Hardwood);
 
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
 	mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
 	mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisSittingTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
-	mNpcs["Valdis"]->setProportions(sf::Vector2f(150, 134.5));
-	mNpcs["Valdis"]->setscale(sf::Vector2f(1.1f, 1.1f));
 	mNpcs["Valdis"]->setIndex(14);
 
 	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
@@ -187,7 +187,6 @@ void Level_Ship_1::load()
 
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 730));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(900, 710));
-		mNpcs["Brynja"]->setProportions(sf::Vector2f(504, 160));
 		mNpcs["Brynja"]->setscale(sf::Vector2f(0.6f, 0.6f));
 	}
 
@@ -221,11 +220,17 @@ void Level_Ship_1::load()
 		mPlayer->setPosition(sf::Vector2f(1400, 750));
 
 
+	mSeaAnimation.load(RMI.getResource(Texture::WaveAnimationBoat), sf::Vector2i(6, 12), sf::seconds(12), sf::seconds(0), true);
+	mSeaAnimation.setIndex(2);
+	mSeaAnimation.getSprite().setOrigin(0, 0);
+	mSeaAnimation.setProportions(sf::Vector2f(1920, 600));
+	mSeaAnimation.setPosition(sf::Vector2f(0, 240));
+
 	mWaveAnimation.load(RMI.getResource(Texture::BackBoatWaveAnimation), sf::Vector2i(2, 2), sf::seconds(1), sf::seconds(0), true);
 	mWaveAnimation.setIndex(200);
-	mWaveAnimation.setProportions(sf::Vector2f(1850, 120));
+	mWaveAnimation.setProportions(sf::Vector2f(1920, 120));
 	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
-	mWaveAnimation.setPosition(sf::Vector2f(1920, 1060));
+	mWaveAnimation.setPosition(sf::Vector2f(1920, 1080));
 
 	mRopeAnimation.load(RMI.getResource(Texture::BackBoatRopeAnimation), sf::Vector2i(4, 1), sf::seconds(1.5), sf::seconds(0), true);
 	mRopeAnimation.setIndex(11);
@@ -246,6 +251,7 @@ void Level_Ship_1::unload()
 	RMI.unloadResource(Texture::LeifrSitTalk);
 	RMI.unloadResource(Texture::BackBoatRopeAnimation);
 	RMI.unloadResource(Texture::BackBoatWaveAnimation);
+	RMI.unloadResource(Texture::WaveAnimationBoat);
 	RMI.unloadResource(Footsteps::Hardwood);
 	Level::unload();
 }

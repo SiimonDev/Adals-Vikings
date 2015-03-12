@@ -102,7 +102,7 @@
 		</option>
 		<option choice_text="I'll just... goodbye" disabled="false">
 			<text character="Ulfr" timer="1.5" say="I'll just... goodbye." disablePrevious="true" />
-			<text character="Mailman" timer="1.6" say="I can't find it!" disablePrevious="true" turned="true" />
+			<text character="Mailman" timer="1.6" say="O-Okay..." disablePrevious="true" turned="true" />
 			<stopConversation />
 		</option>
 		<stopOption />

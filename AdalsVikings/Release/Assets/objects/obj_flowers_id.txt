@@ -1,4 +1,4 @@
-*Type: invisible
+*Type: standard
 *ID: $flowers$
 *Name: Flowers
 *ispickupable: True
@@ -8,4 +8,4 @@
 *denywith: $candle$ "The flower is too pretty to burn." ~3,0; $torch$ "The flower is too pretty to burn." ~3,0; $rope$ "I need more than one flower to make a bouquet." ~3,0; $ropePiece$ "I need more than one flower to make a bouquet." ~3,0; $bucketBroken$ "I don’t need a bucket to carry a simple flower." ~3,0; $meat$ "I should let a professional handle this." ~3,0; 
 *combine: 
 *interact: 
-*invisible: X:    Y:
+*texture: "img_flowers_id.png"

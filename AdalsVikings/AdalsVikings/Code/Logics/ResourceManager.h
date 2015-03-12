@@ -34,8 +34,13 @@ namespace Texture
 		TakeButton,
 		TalkButton,
 		HelpButton,
+		OKButton,
 		InventoryButton,
 		IntroScreen,
+
+		LoadingScreenBackground,
+		LoadingScreenBackgroundX,
+		LoadingThingyAnimation,
 
 		MainMenuPlayButton,
 		MainMenuOptionsButton,
@@ -48,11 +53,11 @@ namespace Texture
 		PauseMenuMainMenuButton,
 		PauseMenuExitButton,
 		PauseMenuBackground,
-		TextBackgroundPaper,
 
 		FrontBoatWaveAnimation,
 		BackBoatRopeAnimation,
 		BackBoatWaveAnimation,
+		WaveAnimationBoat,
 		WaveAnimation,
 		AxeAnimation,
 		FireForestCampAnimation,
@@ -184,6 +189,13 @@ namespace LevelFolder
 		Tavern_Inside,
 		Camp_Clearing,
 		Camp_Finished,
+
+		Cavern_Left,
+		Cavern_Right,
+		Cliffs_Down,
+		Cliffs_Up,
+		Hills,
+		Ruins,
 		SIZE
 	};
 };

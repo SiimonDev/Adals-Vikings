@@ -56,7 +56,7 @@
 			<gotoBaseContainer></gotoBaseContainer>
 		</option>
 		<option choice_text="I'll be going now." disabled="false">
-			<text character="Ulfr" timer="2.8" say="I'll be going now." default="false" disabled="false" turnedPlayer="true"/><text character="Beor" timer="2.0" say="Ok, Come back anytime... Sonny..." default="true" disabled="true"/>
+			<text character="Ulfr" timer="1.8" say="I'll be going now." default="false" disabled="false" turnedPlayer="true"/><text character="Beor" timer="2.0" say="Hope to see you again, my son." default="true" disabled="true"/>
 			<stopConversation></stopConversation>
 		</option>
 		<stopOption />
