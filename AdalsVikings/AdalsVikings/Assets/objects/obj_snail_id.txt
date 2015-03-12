@@ -1,6 +1,6 @@
 *Type: standard
 *ID: $snail$
-*Name: Awsom Snail
+*Name: Awesome Snail
 *ispickupable: False
 *pickup: "Maby not..." ~2,0
 *lookat: "Thats a cool looking snail." ~3,0
