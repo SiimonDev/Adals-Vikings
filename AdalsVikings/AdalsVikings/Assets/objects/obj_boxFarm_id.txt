@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $boxFarm$
-*Name: Box
+*Name: Boxes
 *ispickupable: False
 *pickup: "I'm no thief, I'm a Viking!" ~2,0
-*lookat: "It's empty. Right." ~1,5
+*lookat: "All empty. Right." ~1,5
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:   Y:
+*invisible: X:  195 Y:130
