@@ -182,6 +182,13 @@ ResourceManager::ResourceManager()
 	mBackgroundsPathMap[LevelFolder::Tavern_Inside] = "assets/MapFiles/Tavern_Inside/";
 	mBackgroundsPathMap[LevelFolder::Camp_Clearing] = "assets/MapFiles/Camp_Clearing/";
 	mBackgroundsPathMap[LevelFolder::Camp_Finished] = "assets/MapFiles/Camp_Finished/";
+
+	mBackgroundsPathMap[LevelFolder::Cavern_Left] = "assets/MapFiles/Cavern_Left/";
+	mBackgroundsPathMap[LevelFolder::Cavern_Right] = "assets/MapFiles/Cavern_Right/";
+	mBackgroundsPathMap[LevelFolder::Cliffs_Down] = "assets/MapFiles/Cliffs_Down/";
+	mBackgroundsPathMap[LevelFolder::Cliffs_Up] = "assets/MapFiles/Cliffs_Up/";
+	mBackgroundsPathMap[LevelFolder::Hills] = "assets/MapFiles/Hills/";
+	mBackgroundsPathMap[LevelFolder::Ruins] = "assets/MapFiles/Ruins/";
 	/* =================================================== */
 
 

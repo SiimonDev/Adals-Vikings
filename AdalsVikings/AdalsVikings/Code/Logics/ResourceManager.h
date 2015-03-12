@@ -184,6 +184,13 @@ namespace LevelFolder
 		Tavern_Inside,
 		Camp_Clearing,
 		Camp_Finished,
+
+		Cavern_Left,
+		Cavern_Right,
+		Cliffs_Down,
+		Cliffs_Up,
+		Hills,
+		Ruins,
 		SIZE
 	};
 };
