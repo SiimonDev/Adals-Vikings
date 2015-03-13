@@ -79,7 +79,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 				RMI.unloadResource(Texture::BrynjaSleeping);
 				mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 				mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
-				mNpcs["Brynja"]->setProportions(sf::Vector2f(145, 226));
+				mNpcs["Brynja"]->setscale(sf::Vector2f(0.5f, 0.5f));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
 				mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
 				mNpcs["Brynja"]->updateAnimationStyle();
@@ -167,7 +167,10 @@ void Level_Ship_1::load()
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
 	mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
 	mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisSittingTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
+<<<<<<< HEAD
 	mNpcs["Valdis"]->setProportions(sf::Vector2f(251, 269));
+=======
+>>>>>>> origin/Zero-Memory-leaks-1.0
 	mNpcs["Valdis"]->setIndex(14);
 
 	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
@@ -188,7 +191,7 @@ void Level_Ship_1::load()
 
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 730));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(900, 710));
-		mNpcs["Brynja"]->setProportions(sf::Vector2f(302.5, 96));
+		mNpcs["Brynja"]->setscale(sf::Vector2f(0.6f, 0.6f));
 	}
 
 	Level::load();

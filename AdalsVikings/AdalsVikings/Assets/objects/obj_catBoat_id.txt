@@ -1,7 +1,7 @@
 *Type: animated
 *ID: $catBoat$
 *Name: Cat
-*ispickupable: False
+*ispickupable: True
 *pickup: "I don't want to wake her up." ~3,0
 *lookat: "Aaaww." ~2,0
 *deny: "Nah." ~1,5
@@ -9,4 +9,4 @@
 *combine: 
 *interact: 
 *texture: "img_catBoat_id.png"
-*animation: X:4      Y:1      ~2,0 ~2,0
+*animation: X:4       Y:1       ~2,0 ~2,0

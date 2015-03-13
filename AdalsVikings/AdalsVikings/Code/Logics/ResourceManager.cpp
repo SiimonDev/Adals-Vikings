@@ -47,6 +47,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::TakeButton] = "assets/images/interface/buttons/interface_take.png";
 	mTexturePathMap[Texture::TalkButton] = "assets/images/interface/buttons/interface_talk.png";
 	mTexturePathMap[Texture::HelpButton] = "assets/images/interface/buttons/help_button.png";
+	mTexturePathMap[Texture::OKButton] = "assets/images/interface/buttons/ok_button.png";
 	mTexturePathMap[Texture::InventoryButton] = "assets/images/interface/buttons/inventory_button_small.png";
 
 	mTexturePathMap[Texture::MainMenuPlayButton] = "assets/images/interface/MainMenu/button_play.png";
@@ -61,7 +62,10 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::PauseMenuExitButton] = "assets/images/interface/pauseManu/button_exit.png";
 	mTexturePathMap[Texture::PauseMenuBackground] = "assets/images/interface/pauseManu/InGame_menu.png";
 	mTexturePathMap[Texture::IntroScreen] = "assets/images/interface/tutorial.png";
-	mTexturePathMap[Texture::TextBackgroundPaper] = "assets/images/textbackgorund.jpg";
+
+	mTexturePathMap[Texture::LoadingScreenBackground] = "assets/images/interface/loadingscreen/loading_screen_background.png";
+	mTexturePathMap[Texture::LoadingScreenBackgroundX] = "assets/images/interface/loadingscreen/loading_screen_background_100.png";
+	mTexturePathMap[Texture::LoadingThingyAnimation] = "assets/images/interface/loadingscreen/loading_screen.png";
 
 	mTexturePathMap[Texture::FrontBoatWaveAnimation] = "assets/MapFiles/Ship2/waves.png";
 	mTexturePathMap[Texture::BackBoatRopeAnimation] = "assets/MapFiles/Ship1/rope.png";
@@ -71,6 +75,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::WaveAnimation] = "assets/MapFiles/Beach/waves.png";
 	mTexturePathMap[Texture::AxeAnimation] = "assets/images/Interface/MainMenu/flying_axe.png";
 	mTexturePathMap[Texture::FireForestCampAnimation] = "assets/Mapfiles/Forest_Camp/background_forestcamp_fire.png";
+	mTexturePathMap[Texture::FireCampAnimation] = "assets/Mapfiles/Camp_Finished/background_camp_fire.png";
 	mTexturePathMap[Texture::DruidsForest1] = "assets/Mapfiles/Forest_Camp/background_forestcamp_druids_1.png";
 	mTexturePathMap[Texture::DruidsForest2] = "assets/Mapfiles/Forest_Camp/background_forestcamp_druids_2.png";
 	mTexturePathMap[Texture::DruidLeaderIdle] = "assets/Images/Druid/druid_lord_swag.png";
@@ -182,6 +187,13 @@ ResourceManager::ResourceManager()
 	mBackgroundsPathMap[LevelFolder::Tavern_Inside] = "assets/MapFiles/Tavern_Inside/";
 	mBackgroundsPathMap[LevelFolder::Camp_Clearing] = "assets/MapFiles/Camp_Clearing/";
 	mBackgroundsPathMap[LevelFolder::Camp_Finished] = "assets/MapFiles/Camp_Finished/";
+
+	mBackgroundsPathMap[LevelFolder::Cavern_Left] = "assets/MapFiles/Cavern_Left/";
+	mBackgroundsPathMap[LevelFolder::Cavern_Right] = "assets/MapFiles/Cavern_Right/";
+	mBackgroundsPathMap[LevelFolder::Cliffs_Down] = "assets/MapFiles/Cliffs_Down/";
+	mBackgroundsPathMap[LevelFolder::Cliffs_Up] = "assets/MapFiles/Cliffs_Up/";
+	mBackgroundsPathMap[LevelFolder::Hills] = "assets/MapFiles/Hills/";
+	mBackgroundsPathMap[LevelFolder::Ruins] = "assets/MapFiles/Ruins/";
 	/* =================================================== */
 
 

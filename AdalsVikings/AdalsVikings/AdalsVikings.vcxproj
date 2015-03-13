@@ -33,19 +33,24 @@
     <ClCompile Include="Code\Interface\Menus\MenuHandler.cpp" />
     <ClCompile Include="Code\Interface\Menus\MenuPanel.cpp" />
     <ClCompile Include="Code\Interface\Menus\PauseMenuPanel.cpp" />
-    <ClCompile Include="Code\Interface\TextButton.cpp" />
     <ClCompile Include="Code\Levels\Level_Beach.cpp" />
     <ClCompile Include="Code\Levels\Level_Beach_Hills.cpp" />
     <ClCompile Include="Code\Levels\Level_Camp_Finished.cpp" />
     <ClCompile Include="Code\Levels\Level_Camp_Clearing.cpp" />
+    <ClCompile Include="Code\Levels\Level_Cavern_Left.cpp" />
+    <ClCompile Include="Code\Levels\Level_Cavern_Right.cpp" />
     <ClCompile Include="Code\Levels\Level_Church_Outside.cpp" />
     <ClCompile Include="Code\Levels\Level.cpp" />
     <ClCompile Include="Code\Levels\Level_Church_Inside.cpp" />
     <ClCompile Include="Code\Levels\Level_City_Gates.cpp" />
+    <ClCompile Include="Code\Levels\Level_Cliffs_Down.cpp" />
+    <ClCompile Include="Code\Levels\Level_Cliffs_Up.cpp" />
     <ClCompile Include="Code\Levels\Level_Farm_1.cpp" />
     <ClCompile Include="Code\Levels\Level_Farm_2.cpp" />
     <ClCompile Include="Code\Levels\Level_Forest_Camp.cpp" />
     <ClCompile Include="Code\Levels\Level_Forest_Road.cpp" />
+    <ClCompile Include="Code\Levels\Level_Hills.cpp" />
+    <ClCompile Include="Code\Levels\Level_Ruins.cpp" />
     <ClCompile Include="Code\Levels\Level_Tavern_Inside.cpp" />
     <ClCompile Include="Code\Levels\Level_Tavern_Outside.cpp" />
     <ClCompile Include="Code\Levels\Portal.cpp" />
@@ -94,19 +99,24 @@
     <ClInclude Include="Code\Interface\Menus\MenuHandler.h" />
     <ClInclude Include="Code\Interface\Menus\MenuPanel.h" />
     <ClInclude Include="Code\Interface\Menus\PauseMenuPanel.h" />
-    <ClInclude Include="Code\Interface\TextButton.h" />
     <ClInclude Include="Code\Levels\Level_Beach.h" />
     <ClInclude Include="Code\Levels\Level_Beach_Hills.h" />
     <ClInclude Include="Code\Levels\Level_Camp_Clearing.h" />
     <ClInclude Include="Code\Levels\Level_Camp_Finished.h" />
+    <ClInclude Include="Code\Levels\Level_Cavern_Left.h" />
+    <ClInclude Include="Code\Levels\Level_Cavern_Right.h" />
     <ClInclude Include="Code\Levels\Level_Church_Outside.h" />
     <ClInclude Include="Code\Levels\Level.h" />
     <ClInclude Include="Code\Levels\Level_Church_Inside.h" />
     <ClInclude Include="Code\Levels\Level_City_Gates.h" />
+    <ClInclude Include="Code\Levels\Level_Cliffs_Down.h" />
+    <ClInclude Include="Code\Levels\Level_Cliffs_Up.h" />
     <ClInclude Include="Code\Levels\Level_Farm_1.h" />
     <ClInclude Include="Code\Levels\Level_Farm_2.h" />
     <ClInclude Include="Code\Levels\Level_Forest_Camp.h" />
     <ClInclude Include="Code\Levels\Level_Forest_Road.h" />
+    <ClInclude Include="Code\Levels\Level_Hills.h" />
+    <ClInclude Include="Code\Levels\Level_Ruins.h" />
     <ClInclude Include="Code\Levels\Level_Tavern_Inside.h" />
     <ClInclude Include="Code\Levels\Level_Tavern_Outside.h" />
     <ClInclude Include="Code\Levels\Portal.h" />
@@ -261,7 +271,7 @@
       <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
@@ -283,7 +293,7 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>

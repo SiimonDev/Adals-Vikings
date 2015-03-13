@@ -6,13 +6,14 @@
 #include "..\Levels\PortalLoader.h"
 #include <iostream>
 #include <memory>
+#include <time.h>
 
 LoadingScreen::LoadingScreen()
 : mIsDone(false)
  , mStart(false)
  , mTask(None)
 {
-	mFont.loadFromFile("Assets/fonts/font1.ttf");
+	
 }
 
 LoadingScreen & LoadingScreen::getInstance()
@@ -29,6 +30,19 @@ void LoadingScreen::initialize()
 {
 	mThread = ThreadPtr(new std::thread(&LoadingScreen::runTask, this));
 	mThread->detach();
+
+	RMI.loadResource(Texture::LoadingScreenBackground);
+	RMI.loadResource(Texture::LoadingScreenBackgroundX);
+	RMI.loadResource(Texture::LoadingThingyAnimation);
+	RMI.loadResource(Font::Font1);
+
+	mBackground.setTexture(RMI.getResource(Texture::LoadingScreenBackground));
+	mBackground.setPosition(0, 0);
+	mLoadAnimation.load(RMI.getResource(Texture::LoadingThingyAnimation), sf::Vector2i(3, 4), sf::milliseconds(3500), sf::seconds(0), true);
+	mLoadAnimation.getSprite().setOrigin(mLoadAnimation.getSpriteSize().x / 2, mLoadAnimation.getSpriteSize().y / 2);
+	mLoadAnimation.setPosition(sf::Vector2f(1920 / 2, 1080 / 2));
+	mLoadAnimation.setProportions(sf::Vector2f(954, 259));
+	mLoadAnimation.setIndex(22);
 }
 
 LoadingScreen::~LoadingScreen()
@@ -42,16 +56,17 @@ bool LoadingScreen::update(sf::Time frameTime)
 	if (mFinished)
 		mIsDone = true;
 	else
+	{
+		mLoadAnimation.animate(frameTime);
 		mIsDone = false;
+	}
 	return mIsDone;
 }
 
 void LoadingScreen::render(IndexRenderer &iRenderer)
 {
-	mLoadingText.setFont(mFont);
-	mLoadingText.setString("Loading Resources");
-	mLoadingText.setPosition(1920 / 2.f, 1080 / 2.f + 50.f);
-	iRenderer.addText(mLoadingText, 99999);
+	iRenderer.addSprite(mBackground, 20);
+	mLoadAnimation.render(iRenderer);
 }
 
 void LoadingScreen::startLoading(LoadTask task)
@@ -59,6 +74,13 @@ void LoadingScreen::startLoading(LoadTask task)
 	mTask = task;
 	if (mTask != LoadTask::LoadNearbyLevels)
 	{
+		srand(time(NULL));
+		int stuff = (rand() % 10) + 1;
+		if (stuff == 1)
+			mBackground.setTexture(RMI.getResource(Texture::LoadingScreenBackgroundX));
+		else
+			mBackground.setTexture(RMI.getResource(Texture::LoadingScreenBackground));
+
 		mStart = true;
 		mFinished = false;
 	}
@@ -104,7 +126,7 @@ void LoadingScreen::runTask()
 				MHI.unload(MenuID::MainMenu);
 				MHI.load(MenuID::PauseMenu);
 				LVLMI.load();
-				LVLMI.loadBoatScene();
+				LVLMI.loadAct1();
 			}
 			else if (mTask == LoadTask::LoadMenu)
 			{

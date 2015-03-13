@@ -33,6 +33,8 @@ enum PortalId
 	TavernOutsideToBeach,
 	TavernOutsideToTavernInside,
 	TavernInsideToTavernOutside,
+	CampFinishedToCampClearing,
+	CampClearingToCamPFinished,
 };
 class PortalLoader
 {
