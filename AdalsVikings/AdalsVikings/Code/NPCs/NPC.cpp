@@ -19,6 +19,8 @@ Npc::Npc(Font::ID id)
 	mTextRect.setFillColor(sf::Color(0, 0, 0, 200));
 	mTextRect.setOutlineColor(sf::Color(100, 0, 0, 200));
 
+	mScale = sf::Vector2f(1, 1);
+
 	mTextRect.setCornerPointCount(40);
 	mTextRect.setCornersRadius(10);
 	mTextRect.setOutlineThickness(3);
@@ -91,7 +93,7 @@ void Npc::load()
 		RMI.loadResource(mTalkTexture);
 		mAnimation.flip(mFlip);
 		mAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
-		mAnimation.setProportions(mProportions);
+		//mAnimation.setProportions(mProportions);
 
 		float npcWith = float(mAnimation.getSpriteSize().x * mScale.x);
 		float npcHeight = float(mAnimation.getSpriteSize().y * mScale.y);

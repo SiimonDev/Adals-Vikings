@@ -63,7 +63,9 @@ private:
 	sf::Text mPrintText;
 	sf::Sprite mTextBackground;
 	sf::RoundedRectangleShape mDialogueRectangle;
+	sf::RoundedRectangleShape mOptionsRectangle;
 	std::vector<sf::RectangleShape> mRectangleVector;
+	sf::Vector2f mSize;
 	std::vector<sf::Text> mOptionsVector;
 	std::string mName, mText, mUseText, mLookText, mEnable;
 	float mTimer;

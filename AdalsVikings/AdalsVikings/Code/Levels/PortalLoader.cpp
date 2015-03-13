@@ -43,7 +43,7 @@ void PortalLoader::load()
 		mPortalMap[TavernOutsideToBeach] = PortalPtr(new Portal(LevelFolder::Tavern_Outside, sf::Vector2f(100, 1080), sf::Vector2f(0, 0), sf::Vector2f(100, 1065), sf::Vector2f(0, 1065)));
 		mPortalMap[TavernOutsideToTavernInside] = PortalPtr(new Portal(LevelFolder::Tavern_Outside, sf::Vector2f(130, 300), sf::Vector2f(930, 600), sf::Vector2f(975, 885), sf::Vector2f(975, 885)));
 		mPortalMap[TavernInsideToTavernOutside] = PortalPtr(new Portal(LevelFolder::Tavern_Inside, sf::Vector2f(250, 705), sf::Vector2f(0, 235), sf::Vector2f(220, 945), sf::Vector2f(220, 945)));
-
+		
 		//connect the portals
 		mPortalMap[BeachToRoad]->setGateway(&*mPortalMap[RoadToBeach]);
 		mPortalMap[RoadToBeach]->setGateway(&*mPortalMap[BeachToRoad]);
