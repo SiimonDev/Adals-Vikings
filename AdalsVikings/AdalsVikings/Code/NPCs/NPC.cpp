@@ -19,6 +19,8 @@ Npc::Npc(Font::ID id)
 	mTextRect.setFillColor(sf::Color(0, 0, 0, 200));
 	mTextRect.setOutlineColor(sf::Color(100, 0, 0, 200));
 
+	mScale = sf::Vector2f(1, 1);
+
 	mTextRect.setCornerPointCount(40);
 	mTextRect.setCornersRadius(10);
 	mTextRect.setOutlineThickness(3);
@@ -30,7 +32,7 @@ void Npc::render(IndexRenderer &iRenderer)
 	if (!mIsInvisble)
 	{
 		mAnimation.getSprite().setOrigin(sf::Vector2f(mAnimation.getSpriteSize().x / 2, mAnimation.getSpriteSize().y));
-		mAnimation.setScaleFromHeight(mProportions.y * mScale.y);
+		mAnimation.setScale(mScale);
 		mAnimation.setPosition(mPosition);
 		mAnimation.render(iRenderer);
 	}
@@ -66,11 +68,11 @@ void Npc::updateDescription()
 	if (!mIsInvisble)
 	{
 		mDescription.setPosition(sf::Vector2f(mPosition.x - (mDescription.getGlobalBounds().width / 2),
-			mPosition.y - (mAnimation.getSpriteSize().y * mScale.y) - (mDescription.getGlobalBounds().height) - 10));
+			mPosition.y - (mAnimation.getSpriteSize().y  * mScale.x) - (mDescription.getGlobalBounds().height) - 10));
 
 		mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 40, mDescription.getGlobalBounds().height + 10));
 		mTextRect.setPosition(sf::Vector2f(mPosition.x - (mTextRect.getGlobalBounds().width / 2),
-			mPosition.y - (mAnimation.getSpriteSize().y * mScale.y)));
+			mPosition.y - (mAnimation.getSpriteSize().y) * mScale.y));
 	}
 	else
 	{
@@ -91,7 +93,6 @@ void Npc::load()
 		RMI.loadResource(mTalkTexture);
 		mAnimation.flip(mFlip);
 		mAnimation.load(RMI.getResource(mIdleTexture), mIdleFrames, mIdleDuration, mIdleWaitTime, true);
-		mAnimation.setProportions(mProportions);
 
 		float npcWith = float(mAnimation.getSpriteSize().x * mScale.x);
 		float npcHeight = float(mAnimation.getSpriteSize().y * mScale.y);
@@ -126,9 +127,9 @@ bool Npc::isInside(sf::Vector2i &pos)
 {
 	if (!mIsInvisble)
 		return
-			(pos.x >= mPosition.x - ((mAnimation.getSpriteSize().x / 2) * mScale.x) &&
-			pos.x <= mPosition.x + ((mAnimation.getSpriteSize().x / 2) * mScale.x) &&
-			pos.y >= mPosition.y - (mAnimation.getSpriteSize().y * mScale.y) &&
+		(pos.x >= mPosition.x - ((mAnimation.getSpriteSize().x / 2) * mScale.x) &&
+		pos.x <= mPosition.x + ((mAnimation.getSpriteSize().x / 2) * mScale.x) &&
+		pos.y >= mPosition.y - (mAnimation.getSpriteSize().y * mScale.y) &&
 			pos.y <= mPosition.y);
 	else
 		return
@@ -178,10 +179,6 @@ void Npc::setInteractionPosition(sf::Vector2f &interPos)
 void Npc::setPosition(sf::Vector2f position)
 {
 	mPosition = position;
-}
-void Npc::setProportions(sf::Vector2f proportions)
-{
-	mProportions = proportions;
 }
 void Npc::setFlip(bool value)
 {

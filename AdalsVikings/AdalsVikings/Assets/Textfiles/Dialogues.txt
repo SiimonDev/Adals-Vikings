@@ -38,6 +38,9 @@ Brynja_ClearingCamp assets/textfiles/camp/Dialogue_Brynja_camp.xml
 Leifr_ClearingCamp assets/textfiles/camp/Dialogue_Leifr_camp.xml
 LeifrBear_ClearingCamp assets/textfiles/camp/Dialogue_LeifrFinishedBear_camp.xml
 LeifrFire_ClearingCamp assets/textfiles/camp/Dialogue_LeifrBear_camp.xml
+BrandrBrynja_ClearingCamp assets/textfiles/camp/Dialogue_brandrBrynja_camp.xml
+-----------------------CAMP FINISHED----------------------------
+All_FinishedCamp assets/textfiles/camp/Dialogue_all_camp2.xml
 -----------------------FOREST CAMP----------------------------
 Druids_ForestCamp1 assets/textfiles/forestCamp/Dialogue_forest_druids.xml
 Leifr_ForestCamp assets/textfiles/forestCamp/Dialogue_Leifr_ForestCamp.xml

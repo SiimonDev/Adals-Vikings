@@ -15,10 +15,10 @@ void Level_Tavern_Inside::restartSounds()
 
 void Level_Tavern_Inside::update(sf::Time &frametime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::Num1))
+	/*if (KeyboardState::isPressed(sf::Keyboard::Num1))
 		mPlayer->addItemToInventory("cross");
 	else if (KeyboardState::isPressed(sf::Keyboard::Num2))
-		mPlayer->addItemToInventory("ropePiece");
+		mPlayer->addItemToInventory("ropePiece");*/
 	if (Act1Events::hasBeenTriggered(Act1Event::TavernInside_GetAxeHead) && !Act1Events::hasBeenHandled(Act1Event::TavernInside_GetAxeHead))
 	{
 		if (DialogHandler::getDialogue("Brandr_Tavern").getText() == "Not like I've got \nmuch of a choice.")

@@ -29,9 +29,11 @@ public:
 	void setIdleFrame(sf::Vector2i &frame);
 	void setProportions(sf::Vector2f proportions);
 	void setScaleFromHeight(float height);
+	void setScale(sf::Vector2f &scale);
 	void setPadding(float padding);
 
 	const sf::Vector2i &getSpriteSize();
+	const sf::Vector2i &getScaledSpriteSize();
 	sf::Sprite &getSprite();
 	sf::Vector2i &getFrames();
 	int getCurrentFrame();
@@ -47,7 +49,7 @@ private:
 	sf::Vector2i mFrames;
 	sf::Vector2i mSpriteSize;
 	sf::Vector2i mIdleFrame;
-	sf::Vector2f mProportions;
+	sf::Vector2f mScale;
 	sf::Vector2f mPosition;
 
 	sf::Time mDuration;

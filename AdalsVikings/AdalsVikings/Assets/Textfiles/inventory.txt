@@ -1,7 +1,7 @@
-slot_0.0: 
-slot_0.1: 
-slot_0.2: 
-slot_0.3: 
+slot_0.0: $sheepAtRoad
+slot_0.1: $cross
+slot_0.2: $toolsAtChurch
+slot_0.3: $cloth
 slot_1.0: 
 slot_1.1: 
 slot_1.2: 

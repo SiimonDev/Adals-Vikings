@@ -2,9 +2,9 @@
 *ID: $hen2$
 *Name: Another Hen
 *ispickupable: True
-*pickup: "Don't think so..." ~2,5
-*lookat: "That's nice..." ~1,5
-*deny: "I can't do that" ~1,5
+*pickup: "No, really. I don't steal chickens." ~3,5
+*lookat: "They look so carefree." ~2,5
+*deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 

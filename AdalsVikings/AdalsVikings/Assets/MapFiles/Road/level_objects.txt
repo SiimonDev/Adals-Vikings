@@ -1,11 +1,4 @@
 ############
-*id: $scroll
-position: $X:680 $Y:900
-interactPosition: $X:0 $Y:0
-index: $9
-scale: $0.6
-hascollision: $false
-############
 *id: $yellowFieldBackground
 position: $X:639 $Y:460
 interactPosition: $X:0 $Y:0
@@ -69,12 +62,3 @@ index: $21
 scale: $0.6
 hascollision: $false
 ############
-*id: $sheepAtRoad
-position: $X:1635 $Y:945
-interactPosition: $X:0 $Y:0
-index: $21
-scale: $1.5
-hascollision: $false
-############
-
-

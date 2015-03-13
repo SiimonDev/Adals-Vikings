@@ -55,14 +55,20 @@ void MouseState::render()
 	CurrentWindow.draw(*mSprite);
 }
 
-void MouseState::setCursorType(CursorType::ID id)
+void MouseState::setCursorType(CursorType::ID id, float rotation)
 {
 	delete mSprite;
 	mSprite = new sf::Sprite;
 	if (id == CursorType::Default)
+	{
 		mSprite->setTexture(RMI.getResource(Texture::CursorDefault));
+	}
 	else if (id == CursorType::Arrow)
+	{
 		mSprite->setTexture(RMI.getResource(Texture::CursorArrow));
+		mSprite->setOrigin(mSprite->getTextureRect().width / 2, mSprite->getTextureRect().height / 2);
+		mSprite->setRotation(rotation);
+	}
 }
 
 void MouseState::checkEvents(sf::Event::EventType event)

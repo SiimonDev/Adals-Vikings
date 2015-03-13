@@ -19,7 +19,7 @@ public:
 	static void render();
 	static void checkEvents(sf::Event::EventType event);
 
-	static void setCursorType(CursorType::ID id);
+	static void setCursorType(CursorType::ID id, float rotation = 0);
 
 	static sf::Vector2i getMousePosition();
 	static bool isClicked(sf::Mouse::Button button);

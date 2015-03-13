@@ -24,12 +24,14 @@ public:
 	void walkPath(Player &player);
 	void setCannotDialogue(std::string string);
 	void setWorking(bool value);
+	void setCursorRotation(float rotation);
 
 	bool getActivated();
 	bool getWorking();
 	bool getWalkAble();
 	bool isInside();
 	sf::Vector2f &getSpawn();
+	float getCursorRotation();
 
 	LevelFolder::ID getCurrentLevel();
 	LevelFolder::ID getConnectedLevel();
@@ -43,4 +45,5 @@ private:
 	LevelFolder::ID mCurrentLevel;
 
 	bool mIsActive, mSwitchPortal, mWalkable, mWorking;
+	float mCursorRotation;
 };

@@ -15,6 +15,8 @@ enum PortalId
 	RoadToOutside_Chuch,
 	RoadToFarm,
 	FarmToRoad,
+	Farm1ToFarm2,
+	Farm2ToFarm1,
 	RoadToGates,
 	GatesToRoad,
 	CampToForestRoad,
@@ -31,6 +33,8 @@ enum PortalId
 	TavernOutsideToBeach,
 	TavernOutsideToTavernInside,
 	TavernInsideToTavernOutside,
+	CampFinishedToCampClearing,
+	CampClearingToCamPFinished,
 };
 class PortalLoader
 {

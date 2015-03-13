@@ -8,15 +8,15 @@ HUD::HUD()
 
 void HUD::load()
 {
-	RMI.loadResource(Texture::Button1);
+	RMI.loadResource(Texture::OKButton);
 	RMI.loadResource(Texture::HelpButton);
 	RMI.loadResource(Texture::InventoryButton);
 	RMI.loadResource(Font::Font1);
 	RMI.loadResource(Texture::IntroScreen);
 
 	mHelpPanel.setTexture(RMI.getResource(Texture::IntroScreen));
-	mHelpPanel.setScale(2, 2);
-	mHelpPanel.setPosition(150, 50);
+	mHelpPanel.setScale(1, 1);
+	mHelpPanel.setPosition(0, 0);
 
 	mInventoryButton = Button(Texture::InventoryButton, Font::Font1, sf::Vector2f(), " Toggle Inventory");
 	mInventoryButton.setPosition(sf::Vector2f(30, 10));
@@ -32,17 +32,17 @@ void HUD::load()
 	mHelpButton.setDescriptionStyle(sf::Text::Bold);
 	mHelpButton.setIndex(99999);
 
-	mOKButton = Button(Texture::Button1, Font::Font1, "OK", sf::Vector2f(), " I Understand");
-	mOKButton.setPosition(sf::Vector2f(1700, 900));
+	mOKButton = Button(Texture::OKButton, Font::Font1, sf::Vector2f(), "I Understand");
+	mOKButton.setPosition(sf::Vector2f(1650, 920));
 	mOKButton.setDescriptionPosition(sf::Vector2f(0, 60));
-	mOKButton.setScale(sf::Vector2f(2.0f, 2.0f));
+	mOKButton.setScale(sf::Vector2f(1.6f, 1.6f));
 	mOKButton.setOrigin(ButtonOrigin::Center);
 	mOKButton.setDescriptionStyle(sf::Text::Bold);
 	mOKButton.setIndex(99999);
 }
 void HUD::unload()
 {
-	RMI.unloadResource(Texture::Button1);
+	RMI.unloadResource(Texture::OKButton);
 	RMI.unloadResource(Texture::HelpButton);
 	RMI.unloadResource(Texture::Button1);
 	RMI.unloadResource(Font::Font1);

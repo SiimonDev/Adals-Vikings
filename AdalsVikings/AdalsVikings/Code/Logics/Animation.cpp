@@ -8,6 +8,7 @@ Animation::Animation()
 	, mFrames(0, 0)
 	, mCurrentFrame(0)
 	, mIdleFrame(1, 1)
+	, mScale(1, 1)
 	, mPadding(0)
 	, mDuration(sf::Time::Zero)
 	, mElapsedTime(sf::Time::Zero)
@@ -25,6 +26,7 @@ Animation::Animation(sf::Sprite &sprite)
 	, mFrames(0, 0)
 	, mCurrentFrame(0)
 	, mIdleFrame(1, 1)
+	, mScale(1, 1)
 	, mPadding(0)
 	, mDuration(sf::Time::Zero)
 	, mElapsedTime(sf::Time::Zero)
@@ -44,7 +46,6 @@ void Animation::load(sf::Texture &texture, sf::Vector2i frames, sf::Time duratio
 	setRepeating(repeating);
 	setIdleDuration(idle);
 	mSprite.setTexture(texture);
-	mProportions = sf::Vector2f(mSpriteSize);
 	mIdleTime = mIdleDuration;
 	mIsFinished = false;
 
@@ -127,7 +128,7 @@ void Animation::animate(sf::Time &frameTime)
 
 void Animation::render(IndexRenderer &iRenderer)
 {
-	mSprite.setScale(mProportions);
+	mSprite.setScale(mScale);
 	mSprite.setPosition(mPosition);
 	iRenderer.addSprite(mSprite, mIndex);
 }
@@ -194,13 +195,17 @@ void Animation::setIdleFrame(sf::Vector2i &frame)
 }
 void Animation::setProportions(sf::Vector2f proportions)
 {
-	mProportions.x = ((proportions.x / abs(mSprite.getTextureRect().width)));
-	mProportions.y = ((proportions.y / abs(mSprite.getTextureRect().height)));
+	mScale.x = ((proportions.x / abs(mSprite.getTextureRect().width)));
+	mScale.y = ((proportions.y / abs(mSprite.getTextureRect().height)));
 }
 void Animation::setScaleFromHeight(float height)
 {
-	mProportions.y = ((height / abs(mSprite.getTextureRect().height)));
-	mProportions.x = mProportions.y;
+	mScale.y = ((height / abs(mSprite.getTextureRect().height)));
+	mScale.x = mScale.y;
+}
+void Animation::setScale(sf::Vector2f &scale)
+{
+	mScale = scale;
 }
 void Animation::setPadding(float padding)
 {
@@ -210,6 +215,10 @@ void Animation::setPadding(float padding)
 const sf::Vector2i &Animation::getSpriteSize()
 {
 	return sf::Vector2i(abs(mSprite.getTextureRect().width), abs(mSprite.getTextureRect().height));
+}
+const sf::Vector2i &Animation::getScaledSpriteSize()
+{
+	return sf::Vector2i(abs(mSprite.getTextureRect().width) * mScale.x, abs(mSprite.getTextureRect().height) * mScale.y);
 }
 sf::Sprite &Animation::getSprite()
 {

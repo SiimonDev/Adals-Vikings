@@ -28,4 +28,5 @@ private:
 	float mZoom, mAlpha, mEnd;
 
 	Animation mWaveAnimation;
+	Animation mSeaAnimation;
 };

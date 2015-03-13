@@ -17,6 +17,12 @@
 #include "Level_City_Gates.h"
 #include "Level_Beach.h"
 #include "Level_Beach_Hills.h"
+#include "Level_Cavern_Left.h"
+#include "Level_Cavern_Right.h"
+#include "Level_Cliffs_Down.h"
+#include "Level_Cliffs_Up.h"
+#include "Level_Hills.h"
+#include "Level_Ruins.h"
 #include "..\Dialog\DialogHandler.h"
 #include "..\Dialog\PlayerMonologue.h"
 #include "..\Logics\AudioPlayer.h"
@@ -161,6 +167,13 @@ void LevelManager::loadAct1()
 	mLevelMap[LevelFolder::Tavern_Inside] = LevelPtr(new Level_Tavern_Inside(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Camp_Clearing] = LevelPtr(new Level_Camp_Clearing(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Camp_Finished] = LevelPtr(new Level_Camp_Finished(mPlayer, mHud, mActionWheel));
+
+	//mLevelMap[LevelFolder::Cavern_Left] = LevelPtr(new Level_Cavern_Left(mPlayer, mHud, mActionWheel));
+	//mLevelMap[LevelFolder::Cavern_Right] = LevelPtr(new Level_Cavern_Right(mPlayer, mHud, mActionWheel));
+	//mLevelMap[LevelFolder::Cliffs_Down] = LevelPtr(new Level_Cliffs_Down(mPlayer, mHud, mActionWheel));
+	//mLevelMap[LevelFolder::Cliffs_Up] = LevelPtr(new Level_Cliffs_Up(mPlayer, mHud, mActionWheel));
+	//mLevelMap[LevelFolder::Hills] = LevelPtr(new Level_Hills(mPlayer, mHud, mActionWheel));
+	//mLevelMap[LevelFolder::Ruins] = LevelPtr(new Level_Ruins(mPlayer, mHud, mActionWheel));
 
 	mCurrentID = LevelFolder::Beach;
 	baseLoad();
