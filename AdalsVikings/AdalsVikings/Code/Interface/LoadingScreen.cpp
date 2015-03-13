@@ -75,7 +75,7 @@ void LoadingScreen::startLoading(LoadTask task)
 	if (mTask != LoadTask::LoadNearbyLevels)
 	{
 		srand(time(NULL));
-		int stuff = (rand() % 2) + 1;
+		int stuff = (rand() % 10) + 1;
 		if (stuff == 1)
 			mBackground.setTexture(RMI.getResource(Texture::LoadingScreenBackgroundX));
 		else
@@ -126,7 +126,7 @@ void LoadingScreen::runTask()
 				MHI.unload(MenuID::MainMenu);
 				MHI.load(MenuID::PauseMenu);
 				LVLMI.load();
-				LVLMI.loadBoatScene();
+				LVLMI.loadAct1();
 			}
 			else if (mTask == LoadTask::LoadMenu)
 			{
