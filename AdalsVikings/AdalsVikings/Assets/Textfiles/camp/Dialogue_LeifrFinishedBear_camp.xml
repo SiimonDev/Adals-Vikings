@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="I don't think im strong enough to do that. " />
-	<lookText  lookText="My buddy Leifr. He’s the most peaceful dude I know, and he’s always there to help. "/>
+	<lookText  lookText="My buddy Leifr. He's the most peaceful dude I know, and he's always there to help. "/>
 	<text character="Ulfr" default="false" disabled="false" say="I got a bear deer costume!" timer="2.3" turned="false"></text>
 	<text character="Ulfr" default="false" disabled="false" say="Or you know, something like that..." timer="2.3" turned="false"></text>
 	<text character="Leifr" default="false" disabled="false" say="Great! I'll meet you in the forest" timer="2.3" turned="true"></text>

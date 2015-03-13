@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="Why would I use Dagny?" />
-	<lookText lookText="That’s Dagny. She’s a bit... aggressive. I better just stay away from her as much as possible. " />
+	<lookText lookText="That's Dagny. She's a bit... aggressive. I better just stay away from her as much as possible. " />
 	<text character="Ulfr" timer="0.1" turned="true"></text>
 	<text character="Dagny" disabled="false" default="false" say="I expected it to be..." timer="2.2"  turned="true"/>
 	<text character="Dagny" disabled="false" default="false" disablePrevious="" say="I don't know" timer="1.6" />

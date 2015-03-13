@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="I'd rather not, i kinda like being... not dead." />
-	<lookText  lookText="That’s Valdis. She’s probably the smartest one of us all. If only her ego wasn’t so big."/>
+	<lookText  lookText="That's Valdis. She's probably the smartest one of us all. If only her ego wasn't so big."/>
 	<text character="Valdis" disabled="false" default="false" say="By the gods, we need a fire." timer="2.0"  turned="true"/>
 	<text character="Valdis" disabled="false" default="false" disablePrevious="" say="If we're not careful, we'll all freeze to death before even reaching the Anglian walls." timer="3.3" />
 	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="Didn't think about it, but yeah." timer="2.2"  turned="false"/>

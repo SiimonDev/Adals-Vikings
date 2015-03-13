@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="Why would I use Yngvarr?" />
-	<lookText lookText="That’s Yngvarr, Brandr’s right hand man. He’s extremely loyal, even if it is to that blonde bastard. " />
+	<lookText lookText="That's Yngvarr, Brandr's right hand man. He's extremely loyal, even if it is to that blonde bastard. " />
 	<text character="Ulfr" disabled="false" default="false" say="Hey, Yngvarr." timer="1.5"  turned="false"/>
 	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="Where did Brandr wander off to?" timer="2.2" />
 	

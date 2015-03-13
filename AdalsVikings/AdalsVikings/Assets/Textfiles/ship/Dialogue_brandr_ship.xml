@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="Why would anyone want to use Him?" />
-	<lookText lookText="Our &quot;great&quot; leader, Brandr. I just hope he won’t steer us into a bunch of cliffs, or to the wrong continent." />
+	<lookText lookText="Our &quot;great&quot; leader, Brandr. I just hope he won't steer us into a bunch of cliffs, or to the wrong continent." />
 	<text character="Ulfr" disabled="false" default="false" say="What's going on here, Br-" timer="1.2"  turned="false"/>
 	<text character="Brandr" disabled="false" default="false" disablePrevious="true" say="YNGVARR!" timer="1.0"  turned="true"/>
 	<text character="Brandr" disabled="false" default="false" disablePrevious="" say="Where is my father's map?" timer="2.2" />
