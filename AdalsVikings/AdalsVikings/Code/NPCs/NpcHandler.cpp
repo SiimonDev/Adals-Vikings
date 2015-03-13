@@ -55,7 +55,7 @@ void NpcHandler::load()
 	Leifr->setInteractionPosition(sf::Vector2f(650, 725));
 	Leifr->setColor(sf::Color(72, 209, 204));
 	Leifr->setIndex(14);
-	Leifr->setscale(sf::Vector2f(0.5f, 0.5f));
+	Leifr->setscale(sf::Vector2f(0.4f, 0.4f));
 	Leifr->setFlip(false);
 
 	Finnr->setName("Finnr");

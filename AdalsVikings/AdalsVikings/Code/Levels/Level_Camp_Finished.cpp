@@ -67,7 +67,7 @@ void Level_Camp_Finished::load()
 	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
 	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brandr")));
 
-	mNpcs["Leifr"]->setscale(sf::Vector2f(0.42, 0.42));
+	mNpcs["Leifr"]->setscale(sf::Vector2f(0.32, 0.32));
 	mNpcs["Brynja"]->setscale(sf::Vector2f(0.42, 0.42));
 	mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
 	mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.42, 0.42));
@@ -93,9 +93,14 @@ void Level_Camp_Finished::load()
 	mNpcs["Alfr"]->setFlip(true);
 	mNpcs["Finnr"]->setFlip(false);
 
-	mNpcs["Valdis"]->setDialogue("Valdis_ClearingCamp");
-	mNpcs["Brynja"]->setDialogue("Brynja_ClearingCamp");
-	mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
+	mNpcs["Leifr"]->setIndex(10);
+	mNpcs["Brynja"]->setIndex(5);
+	mNpcs["Valdis"]->setIndex(5);
+	mNpcs["Yngvarr"]->setIndex(5);
+	mNpcs["Dagny"]->setIndex(10);
+	mNpcs["Alfr"]->setIndex(10);
+	mNpcs["Finnr"]->setIndex(10);
+	mNpcs["Brandr"]->setIndex(5);
 	Level::load();
 
 	mCurrentFootsteps = Footsteps::Dirt;

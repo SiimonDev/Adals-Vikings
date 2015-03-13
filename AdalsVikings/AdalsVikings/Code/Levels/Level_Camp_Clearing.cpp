@@ -79,7 +79,7 @@ void Level_Camp_Clearing::load()
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
 
 	/*------------------- Leifr ----------------*/
-	mNpcs["Leifr"]->setscale(sf::Vector2f(0.4, 0.4));
+	mNpcs["Leifr"]->setscale(sf::Vector2f(0.3, 0.3));
 	mNpcs["Leifr"]->setIndex(10);
 	mNpcs["Leifr"]->setPosition(sf::Vector2f(1035, 729));
 	mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1160, 724));
@@ -91,14 +91,14 @@ void Level_Camp_Clearing::load()
 		mNpcs["Leifr"]->setDialogue("LeifrBear_ClearingCamp");
 
 	/*------------------- Brynja ----------------*/
-	mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
+	mNpcs["Brynja"]->setscale(sf::Vector2f(0.45, 0.45));
 	mNpcs["Brynja"]->setIndex(10);
 	mNpcs["Brynja"]->setPosition(sf::Vector2f(1500, 850));
 	mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(1385, 825));
 	mNpcs["Brynja"]->setDialogue("Brynja_ClearingCamp");
 
 	/*------------------- Valdis ----------------*/
-	mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
+	mNpcs["Valdis"]->setscale(sf::Vector2f(0.45, 0.45));
 	mNpcs["Valdis"]->setIndex(10);
 	mNpcs["Valdis"]->setPosition(sf::Vector2f(645, 860));
 	mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(750, 860));
