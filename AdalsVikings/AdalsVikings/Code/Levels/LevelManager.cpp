@@ -175,7 +175,7 @@ void LevelManager::loadAct1()
 	mLevelMap[LevelFolder::Hills] = LevelPtr(new Level_Hills(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Ruins] = LevelPtr(new Level_Ruins(mPlayer, mHud, mActionWheel));
 
-	mCurrentID = LevelFolder::Cavern_Right;
+	mCurrentID = LevelFolder::Beach;
 	baseLoad();
 }
 
