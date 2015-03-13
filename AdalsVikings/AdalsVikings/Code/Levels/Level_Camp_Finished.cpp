@@ -67,7 +67,7 @@ void Level_Camp_Finished::load()
 	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
 	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brandr")));
 
-	mNpcs["Leifr"]->setscale(sf::Vector2f(0.42, 0.42));
+	mNpcs["Leifr"]->setscale(sf::Vector2f(0.3, 0.3));
 	mNpcs["Brynja"]->setscale(sf::Vector2f(0.42, 0.42));
 	mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
 	mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.42, 0.42));

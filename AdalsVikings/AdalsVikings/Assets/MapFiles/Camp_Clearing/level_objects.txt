@@ -13,10 +13,3 @@ index: $99
 scale: $1
 hascollision: $false
 ############
-*id: $cloth
-position: $X:710 $Y:752
-interactPosition: $X:0 $Y:0
-index: $10
-scale: $1
-hascollision: $false
-############

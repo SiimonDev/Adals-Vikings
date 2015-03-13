@@ -12,7 +12,7 @@
 	<text character="Ulfr" say="We're not going to stay too long, are we?" timer="3.3" turned="false" />
 	<text character="Leifr" say="Not to my knowledge, no." timer="3" turned="true" />
 	<text timer="2.2" />
-	<option_container disabled="false">
+	<option_container disabled="true">
 		<option disabled="false" choice_text="...where do you think the gold is, then?">
 			<text character="Ulfr" turned="false" disablePrevious="false" timer="3.0" say="...where do you think the gold is, then?" />
 			<text character="Leifr" turned="true" say="I saw some big fortress from up that hill behind me." disabled="" timer="3.5" />
@@ -26,7 +26,7 @@
 			<text character="Ulfr" say="Don't worry." timer="2.0" />
 			<gotoContainer />
 		</option>
-		<option disabled="false" disablePrevious="false" choice_text="So...how are you feeling?">
+		<option disabled="true" disablePrevious="false" choice_text="So...how are you feeling?">
 			<text character="Ulfr" turned="false" disablePrevious="true" timer="2.5" say="So... how are you feeling?" />
 			<text character="Leifr" turned="turned" say="Good enough." timer="2.0" />
 			<text character="Leifr" say="We'll see how long that lasts, though." timer="2.5" />

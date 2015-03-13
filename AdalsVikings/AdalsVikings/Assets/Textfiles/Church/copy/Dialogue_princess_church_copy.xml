@@ -2,27 +2,27 @@
 <conversation>
 	<useText useText="She would probably kill me if i stole her pinecones..." />
 	<lookText lookText="What's a small girl like her doing out here all alone?" />
-	<text character="Ulfr" disabled="false" default="false" say="Hello." timer="1.5" turned="false" />
-	<text character="Girl" disabled="false" default="false" disablePrevious="" say="What do you want?" timer="2.0" />
-	<text character="Girl" disabled="false" default="false" say="Can't you see I'm busy?" timer="2.0" />
-	<text character="Ulfr" say="With what?" timer="1.5" default="false" disabled="false" />
-	<text character="Ulfr" say="Pinecones?" timer="2.0" default="false" disabled="false" />
-	<text character="Girl" say="You got a problem with that?" timer="2.0" default="false" disabled="false" />
-	<text character="Ulfr" say="Not really." timer="1.8" default="false" disabled="false" />
-	<text character="Ulfr" say="Just found it peculiar, is all." timer="2.0" default="false" disabled="false" />
-	<text character="Girl" say="What are you supposed to be anyway?" timer="2.2" default="false" disabled="false" />
-	<text character="Girl" say="Irish or something?" timer="2.0" default="false" disabled="false" />
-	<text character="Ulfr" say="Why does everyone assume that?" timer="2.5" default="false" disabled="false" />
-	<text character="Ulfr" say="I'm a Viking for Thor's sake!" timer="2.2" default="false" disabled="false" />
-	<text character="Girl" default="false" disabled="false" say="Ha-ha~" timer="2.0" />
-	<text character="Girl" default="false" disabled="false" say="Wow, you should be a comedian." timer="2.2" />
-	<text character="Girl" default="false" disabled="false" say="That's really funny." timer="2.0" />
-	<text character="Ulfr" default="false" disabled="false" say="You're the one to talk." timer="2.0" />
-	<text character="Ulfr" default="false" disabled="false" say="Playing around with bloody pinecones." timer="2.5" />
-	<text character="Ulfr" default="false" disabled="false" say="What are you, five years old?" timer="2.2" />
-	<text character="Girl" default="false" disabled="false" say="Hey, don't talk shit about my pinecones, asshole!" timer="3.0" />
-	<text character="Girl" default="false" disabled="false" say="You know what, I'm leaving." timer="2.3" />
-	<text character="Girl" default="false" disabled="false" say="I'll find someplace quiet where idiots like you won't find me." timer="3.0" />
+	<text character="Ulfr" disabled="true" default="false" say="Hello." timer="1.5" turned="false" />
+	<text character="Girl" disabled="true" default="false" disablePrevious="" say="What do you want?" timer="2.0" />
+	<text character="Girl" disabled="true" default="false" say="Can't you see I'm busy?" timer="2.0" />
+	<text character="Ulfr" say="With what?" timer="1.5" default="false" disabled="true" />
+	<text character="Ulfr" say="Pinecones?" timer="2.0" default="false" disabled="true" />
+	<text character="Girl" say="You got a problem with that?" timer="2.0" default="false" disabled="true" />
+	<text character="Ulfr" say="Not really." timer="1.8" default="false" disabled="true" />
+	<text character="Ulfr" say="Just found it peculiar, is all." timer="2.0" default="false" disabled="true" />
+	<text character="Girl" say="What are you supposed to be anyway?" timer="2.2" default="false" disabled="true" />
+	<text character="Girl" say="Irish or something?" timer="2.0" default="false" disabled="true" />
+	<text character="Ulfr" say="Why does everyone assume that?" timer="2.5" default="false" disabled="true" />
+	<text character="Ulfr" say="I'm a Viking for Thor's sake!" timer="2.2" default="false" disabled="true" />
+	<text character="Girl" default="false" disabled="true" say="Ha-ha~" timer="2.0" />
+	<text character="Girl" default="false" disabled="true" say="Wow, you should be a comedian." timer="2.2" />
+	<text character="Girl" default="false" disabled="true" say="That's really funny." timer="2.0" />
+	<text character="Ulfr" default="false" disabled="true" say="You're the one to talk." timer="2.0" />
+	<text character="Ulfr" default="false" disabled="true" say="Playing around with bloody pinecones." timer="2.5" />
+	<text character="Ulfr" default="false" disabled="true" say="What are you, five years old?" timer="2.2" />
+	<text character="Girl" default="false" disabled="true" say="Hey, don't talk shit about my pinecones, asshole!" timer="3.0" />
+	<text character="Girl" default="false" disabled="true" say="You know what, I'm leaving." timer="2.3" />
+	<text character="Girl" default="false" disabled="true" say="I'll find someplace quiet where idiots like you won't find me." timer="3.0" />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />

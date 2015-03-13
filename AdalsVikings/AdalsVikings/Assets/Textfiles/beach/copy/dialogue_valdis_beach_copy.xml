@@ -2,18 +2,18 @@
 <conversation>
 	<useText useText="Why would I use Valdis?" />
 	<lookText lookText="She seems to be stuck in a staring contest with the ocean." />
-	<text character="Ulfr" disabled="false" default="false" say="Hello there, Valdis" turned="true" timer="2.0" />
-	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="Enjoying the view?" timer="2.0" />
-	<text character="Valdis" disabled="false" default="false" disablePrevious="" say="I can't believe we just traveled across this entire ocean." timer="3.2" turned="true" />
-	<text character="Ulfr" disabled="false" default="false" say="Huh." timer="1.0" />
-	<text character="Ulfr" disabled="false" default="false" say="Valdis cannot believe something." timer="2.0" />
-	<text character="Ulfr" disabled="false" default="false" say="What a rare sight." timer="2.0" />
-	<text character="Valdis" say="Watch the sarcasm, little Ulfr." timer="2.2" default="false" disabled="false" turned="false" />
-	<text character="Ulfr" say="Will do, will do." timer="1.8" default="false" disabled="false" turned="true" />
-	<text character="Valdis" default="false" disabled="false" turned="true" />
-	<text character="Ulfr" say="Hey Valdis!" timer="1.5" disabled="true" default="true" />
-	<text character="Valdis" say="Hey Ulfr!" timer="1.5" disabled="true" default="true" />
-	<text character="Valdis" default="false" disabled="false" turned="true" />
+	<text character="Ulfr" disabled="true" default="false" say="Hello there, Valdis" turned="true" timer="2.0" />
+	<text character="Ulfr" disabled="true" default="false" disablePrevious="" say="Enjoying the view?" timer="2.0" />
+	<text character="Valdis" disabled="true" default="false" disablePrevious="" say="I can't believe we just traveled across this entire ocean." timer="3.2" turned="true" />
+	<text character="Ulfr" disabled="true" default="false" say="Huh." timer="1.0" />
+	<text character="Ulfr" disabled="true" default="false" say="Valdis cannot believe something." timer="2.0" />
+	<text character="Ulfr" disabled="true" default="false" say="What a rare sight." timer="2.0" />
+	<text character="Valdis" say="Watch the sarcasm, little Ulfr." timer="2.2" default="false" disabled="true" turned="false" />
+	<text character="Ulfr" say="Will do, will do." timer="1.8" default="false" disabled="true" turned="true" />
+	<text character="Valdis" default="false" disabled="true" turned="true" />
+	<text character="Ulfr" say="Hey Valdis!" timer="1.5" disabled="false" default="true" />
+	<text character="Valdis" say="Hey Ulfr!" timer="1.5" disabled="false" default="true" />
+	<text character="Valdis" default="false" disabled="true" turned="true" />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />
