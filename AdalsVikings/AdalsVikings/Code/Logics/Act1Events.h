@@ -28,6 +28,7 @@ namespace Act1Event
 		LightCampFire,
 		CampFinished_Conversation,
 		ForestCampFire,
+		AfterCampRoad_Conversation,
 		EVENT_SIZE
 	};
 }

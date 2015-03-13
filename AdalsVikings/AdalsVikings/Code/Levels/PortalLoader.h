@@ -35,6 +35,8 @@ enum PortalId
 	TavernInsideToTavernOutside,
 	CampFinishedToCampClearing,
 	CampClearingToCamPFinished,
+	CampFinishedToRoad,
+	RoadToCampFinished
 };
 class PortalLoader
 {

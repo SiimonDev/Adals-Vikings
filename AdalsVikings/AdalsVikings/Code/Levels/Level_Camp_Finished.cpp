@@ -28,7 +28,9 @@ void Level_Camp_Finished::update(sf::Time &frametime)
 			if (FadeI.getFaded())
 			{
 				mFade2 = true;
+				mNpcs.clear();
 				Act1Events::handleEvent(Act1Event::CampFinished_Conversation);
+				LVLMI.changeLevel(LevelFolder::Road);
 			}
 		}
 	}
@@ -46,6 +48,8 @@ void Level_Camp_Finished::render(IndexRenderer &iRenderer)
 void Level_Camp_Finished::load()
 {
 	RMI.loadResource(Footsteps::Dirt);
+	mPortals[CampFinishedToRoad] = &PortalLoader::getPortal(CampFinishedToRoad);
+	mPortals[CampFinishedToRoad]->setCannotDialogue("Hello!");
 
 	RMI.loadResource(Texture::FireCampAnimation);
 
