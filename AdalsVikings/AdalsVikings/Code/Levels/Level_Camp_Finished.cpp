@@ -67,14 +67,14 @@ void Level_Camp_Finished::load()
 	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
 	mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brandr")));
 
-	mNpcs["Leifr"]->setscale(sf::Vector2f(0.32, 0.32));
-	mNpcs["Brynja"]->setscale(sf::Vector2f(0.42, 0.42));
-	mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
-	mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.42, 0.42));
-	mNpcs["Dagny"]->setscale(sf::Vector2f(0.42, 0.42));
-	mNpcs["Alfr"]->setscale(sf::Vector2f(0.4, 0.4));
-	mNpcs["Finnr"]->setscale(sf::Vector2f(0.42, 0.42));
-	mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
+	mNpcs["Leifr"]->setScale(sf::Vector2f(0.32, 0.32));
+	mNpcs["Brynja"]->setScale(sf::Vector2f(0.42, 0.42));
+	mNpcs["Valdis"]->setScale(sf::Vector2f(0.4, 0.4));
+	mNpcs["Yngvarr"]->setScale(sf::Vector2f(0.42, 0.42));
+	mNpcs["Dagny"]->setScale(sf::Vector2f(0.42, 0.42));
+	mNpcs["Alfr"]->setScale(sf::Vector2f(0.4, 0.4));
+	mNpcs["Finnr"]->setScale(sf::Vector2f(0.42, 0.42));
+	mNpcs["Brandr"]->setScale(sf::Vector2f(0.4, 0.4));
 
 	mNpcs["Leifr"]->setPosition(sf::Vector2f(800, 880));
 	mNpcs["Brynja"]->setPosition(sf::Vector2f(890,760));

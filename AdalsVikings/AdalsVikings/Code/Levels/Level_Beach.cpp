@@ -82,19 +82,19 @@ void Level_Beach::load()
 		mPlayer->UpdateAnimationStyle();
 
 		mNpcs["Brandr"]->setFlip(true);
-		mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
+		mNpcs["Brandr"]->setScale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Brandr"]->setPosition(sf::Vector2f(400, 1120));
 		mNpcs["Brandr"]->setDialogue("Intro_Beach");
 		mNpcs["Brandr"]->setIndex(14);
 
 		mNpcs["Brynja"]->setFlip(false);
-		mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
+		mNpcs["Brynja"]->setScale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(600, 1070));
 		mNpcs["Brynja"]->setDialogue("Intro_Beach");
 		mNpcs["Brynja"]->setIndex(14);
 
 		mNpcs["Valdis"]->setFlip(false);
-		mNpcs["Valdis"]->setscale(sf::Vector2f(0.45f, 0.45f));
+		mNpcs["Valdis"]->setScale(sf::Vector2f(0.45f, 0.45f));
 		mNpcs["Valdis"]->setPosition(sf::Vector2f(600, 1120));
 		mNpcs["Valdis"]->setDialogue("Valdis_Beach");
 		mNpcs["Valdis"]->setIndex(14);
@@ -105,7 +105,7 @@ void Level_Beach::load()
 		mNpcs["Yngvarr"]->setIdleAnimation(Texture::YngvarrSadIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(7));
 		mNpcs["Yngvarr"]->SetTalkAnimation(Texture::YngvarrSadTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 		mNpcs["Yngvarr"]->setFlip(false);
-		mNpcs["Yngvarr"]->setscale(sf::Vector2f(0.4, 0.4));
+		mNpcs["Yngvarr"]->setScale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Yngvarr"]->setPosition(sf::Vector2f(350, 760));
 		mNpcs["Yngvarr"]->setInteractionPosition(sf::Vector2f(420, 760));
 		mNpcs["Yngvarr"]->setDialogue("Yngvarr_Beach");
@@ -113,7 +113,7 @@ void Level_Beach::load()
 
 		/* ==== Dagny ===== */
 		mNpcs["Dagny"]->setFlip(true);
-		mNpcs["Dagny"]->setscale(sf::Vector2f(0.5, 0.5));
+		mNpcs["Dagny"]->setScale(sf::Vector2f(0.5, 0.5));
 		mNpcs["Dagny"]->setPosition(sf::Vector2f(250, 760));
 		mNpcs["Dagny"]->setInteractionPosition(sf::Vector2f(300, 760));
 		mNpcs["Dagny"]->setDialogue("Dagny_Beach");
@@ -121,7 +121,7 @@ void Level_Beach::load()
 
 		/* ==== Alfr ===== */
 		mNpcs["Alfr"]->setFlip(false);
-		mNpcs["Alfr"]->setscale(sf::Vector2f(0.35, 0.35));
+		mNpcs["Alfr"]->setScale(sf::Vector2f(0.35, 0.35));
 		mNpcs["Alfr"]->setPosition(sf::Vector2f(1250, 590));
 		mNpcs["Alfr"]->setInteractionPosition(sf::Vector2f(1200, 590));
 		mNpcs["Alfr"]->setDialogue("Alfr_Beach");
@@ -129,7 +129,7 @@ void Level_Beach::load()
 
 		/* ==== Leifr ===== */
 		mNpcs["Leifr"]->setFlip(true);
-		mNpcs["Leifr"]->setscale(sf::Vector2f(0.3f, 0.3f));
+		mNpcs["Leifr"]->setScale(sf::Vector2f(0.3f, 0.3f));
 		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 550));
 		mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(750, 580));
 		mNpcs["Leifr"]->setDialogue("Leifr_Beach");
@@ -137,7 +137,7 @@ void Level_Beach::load()
 
 		/* ==== Finnr ===== */
 		mNpcs["Finnr"]->setFlip(false);
-		mNpcs["Finnr"]->setscale(sf::Vector2f(0.4, 0.4));
+		mNpcs["Finnr"]->setScale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Finnr"]->setPosition(sf::Vector2f(1600, 520));
 		mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(1550, 520));
 		mNpcs["Finnr"]->setDialogue("Finnr_Beach");
@@ -234,7 +234,7 @@ void Level_Beach::introCutscene(sf::Time &frameTime)
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(2000, 0));
 
 				mNpcs["Valdis"]->setFlip(true);
-				mNpcs["Valdis"]->setscale(sf::Vector2f(0.4, 0.4));
+				mNpcs["Valdis"]->setScale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Valdis"]->setPosition(sf::Vector2f(1600, 720));
 				mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(1550, 720));
 				mNpcs["Valdis"]->updateAnimationStyle();
@@ -269,13 +269,13 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 				//FadeI.setAlpha(255);
 
 				mNpcs["Brynja"]->setFlip(true);
-				mNpcs["Brynja"]->setscale(sf::Vector2f(0.4, 0.4));
+				mNpcs["Brynja"]->setScale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(580, 760));
 				mNpcs["Brynja"]->setIndex(14);
 				mNpcs["Brynja"]->updateAnimationStyle();
 
 				mNpcs["Brandr"]->setFlip(true);
-				mNpcs["Brandr"]->setscale(sf::Vector2f(0.4, 0.4));
+				mNpcs["Brandr"]->setScale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Brandr"]->setPosition(sf::Vector2f(600, 800));
 				mNpcs["Brandr"]->setIndex(15);
 				mNpcs["Brandr"]->updateAnimationStyle();

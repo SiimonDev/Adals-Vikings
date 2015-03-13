@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="Yeah, havn't had my ass kicked in ages now." />
-	<lookText lookText="That’s Yngvarr, Brandr’s right hand man. He’s extremely loyal, even if it is to that blonde bastard." />
+	<lookText lookText="That's Yngvarr, Brandr's right hand man. He's extremely loyal, even if it is to that blonde bastard." />
 	<text character="Ulfr" disabled="false" default="false" say="Hey yngvarr." timer="2.0" turned="false" />
 	<text character="Yngvarr" disabled="false" default="false" say="Whatcha want, scrub?" timer="2.0" turned="false" />
 	<option_container disabled="false">

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="Yeah, probably shouldn't, don't you think?" />
-	<lookText lookText="Our *great* leader, Brandr. I wonder what trouble he’ll get us into next, the idiot." />
+	<lookText lookText="Our *great* leader, Brandr. I wonder what trouble he'll get us into next, the idiot." />
 	<text character="Ulfr" disabled="false" default="false" say="Hey Brandr." timer="2.0" turned="false" />
 	<text character="Ulfr" disabled="false" default="false" say="What's going on out here?" timer="2.0" turned="false" />
 	<text character="Brandr" disabled="false" default="false" say="Can't you see?" timer="2.0" turned="false" />

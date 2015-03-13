@@ -68,7 +68,7 @@ void Npc::updateDescription()
 	if (!mIsInvisble)
 	{
 		mDescription.setPosition(sf::Vector2f(mPosition.x - (mDescription.getGlobalBounds().width / 2),
-			mPosition.y - (mAnimation.getSpriteSize().y  * mScale.x) - (mDescription.getGlobalBounds().height) - 10));
+			mPosition.y - (mAnimation.getSpriteSize().y * mScale.x) - (mDescription.getGlobalBounds().height) - 10));
 
 		mTextRect.setSize(sf::Vector2f(mDescription.getGlobalBounds().width + 40, mDescription.getGlobalBounds().height + 10));
 		mTextRect.setPosition(sf::Vector2f(mPosition.x - (mTextRect.getGlobalBounds().width / 2),
@@ -199,7 +199,7 @@ void Npc::SetTalkAnimation(Texture::ID id, sf::Vector2i &talkFrames, sf::Time du
 	mTalkDuration = duration;
 	mTalkWaitTime = talkduration;
 }
-void Npc::setscale(sf::Vector2f scale)
+void Npc::setScale(sf::Vector2f scale)
 {
 	mScale = scale;
 }
