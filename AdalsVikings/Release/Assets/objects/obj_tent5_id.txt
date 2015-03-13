@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $tent5$
+*Name: Tent
+*ispickupable: False
+*pickup: "But where would we sleep?" ~2,0
+*lookat: "Alfr sleeps here. I feel bad for his neighbors." ~3,0
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:  310  Y:125

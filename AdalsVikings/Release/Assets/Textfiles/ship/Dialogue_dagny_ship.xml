@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="I don't think I can use Dagny for much" />
+	<lookText lookText="That’s Dagny. She’s a bit... aggressive. I better just stay away from her as much as possible." />
+	<text character="Ulfr" disabled="false" default="false" say="Uh, hey Dagny." timer="2.0"  turned="false"/>
+	<text character="Dagny" disabled="false" default="false" disablePrevious="" say="What do you want, wimp?" timer="2.0"  turned="true"/>
+	
+	
+	<text character="Ulfr" disabled="true" default="true" say="Hey Dagny!" timer="1.6"  turned="false"/>
+	<text character="Dagny" disabled="true" default="true" say="Hey wimp!" timer="1.6"  turned="true"/>
+	<option_container disabled="false">
+		<option choice_text="...you wouldn't have happened to see a map around here, have you?" disabled="true">
+			<text say="...you wouldn't have happened to see a map around here, have you?" timer="3.3"  character="Ulfr" turned="false"/>
+			<text character="Dagny" say="Yes, of course!" timer="2.0"  turned="true"/>
+			<text character="Dagny" say="It's right here in my pocket, next to my steel sword," timer="2.5" />
+			<text character="Dagny" say="my sack of gold," timer="2.0" />
+			<text character="Dagny" say="and my magical flying eight-legged horse." timer="2.4" />
+			<text character="Ulfr" say="" timer="1.0"  turned="false"/>
+			<text character="Ulfr" say="...could you find some altruism in there too?" timer="2.5" />
+			<text character="Dagny" say="Do you want me to punch you?" timer="2.2"  turned="true"/>
+			<text character="Ulfr" say="That would be a no." timer="2.0" disablePrevious="true"  turned="false"/>
+			<gotoContainer />
+		</option>
+		<option choice_text="Um, that bucket behind you... can I borrow it for a while?" disabled="true">
+			<text character="Ulfr" say="Um, that bucket behind you... can I borrow it for a while?" timer="2.7"  turned="false"/>
+			<text character="Dagny" say="A bucket?" timer="1.8"  turned="true"/>
+			<text character="Dagny" say="You think I'm standing here to watch over a bucket?" timer="2.5" />
+			<text character="Dagny" say="Just take the damn thing!" timer="2.0" disablePrevious="true"/>
+			<gotoBaseContainer />
+		</option>
+		<option choice_text="Are you excited for the big raid?" disabled="false">
+			<text character="Ulfr" say="Are you excited for the big raid?" timer="2.0"  turned="false"/>
+			<text character="Dagny" say="Well, I am going to drink the blood of our enemies, so..." timer="2.5"  turned="true"/>
+			<text character="Dagny" say="Yeah." timer="1.3" />
+			<text character="Dagny" say="Pretty excited." timer="1.7" disablePrevious="false" />
+			<gotoContainer />
+		</option>
+		<option choice_text="What's going on with your brother?" disabled="false">
+			<text character="Ulfr" say="What's going on with your brother?" timer="2.2" turned="false"></text>
+			<text character="Dagny" say="Yngvarr?" timer="1.8" turned="true"></text>
+			<text character="Dagny" say="He's getting bossed around by Brandr, as always." timer="2.5"></text>
+			<text character="Dagny" say="Big baby." timer="1.8"></text>
+			<gotoContainer></gotoContainer>
+		</option>
+		<option choice_text="Bye."><text character="Ulfr" say="Yeah... bye." timer="1.5" turned="false"></text>
+			<text character="Dagny" say="Uh-huh." timer="1.5" turned="true"></text>
+			<stopConversation />
+		</option>
+		
+			
+		<stopOption />
+	</option_container>
+	<stopConversation />
+	<mall info="Endast Mall Efter Detta!" disabled="true">
+		<useText useText="Why would I use Brandr?" />
+		<lookText lookText="That's Brandr" />
+		<text character="Ulfr" default="false" disabled="false" disablePrevious="false" turned="true" timer="2.2" say="hej" />
+		<text character="Brandr" disablePrevious="false" timer="" say="DUrr" />
+		<text character="Valdis" />
+		<text character="Alfr" />
+		<text character="Brynja" />
+		<text character="Dagny" />
+		<text character="Finnr" />
+		<text character="Guard" />
+		<text character="Leifr" />
+		<text character="Mailman" />
+		<text character="Miner" />
+		<text character="Priest" />
+		<text character="Princess" />
+		<text character="Valdis" />
+		<text character="Yngvarr" />
+		
+		<option_container disabled="false">
+			<option disabled="false" choice_text="do you even?">
+				<text character="Brandr" disablePrevious="false" timer="3.3" say="hej!" />
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="What do you want!?">
+						<text character="Ulfr" disablePrevious="false" timer="2.5" say="durr" />
+						<text character="Brandr" disablePrevious="false" timer="2.4" say="murh" />
+						<option_container disabled="false">
+							<option disabled="false" disablePrevious="true" choice_text="Disable Previous">
+								<text character="Ulfr" disablePrevious="false" timer="2.4" say="Disable Previous" />
+								<gotoBaseContainer />
+							</option>
+							<stopOption />
+						</option_container>
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="NOPE">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="NUHU">!</text>
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="durr">
+						<text character="Brandr" disablePrevious="false" timer="2.5" say="disable" />
+						<gotoContainer />
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="jimmie had a little farm that was brown and red and green, why was it brown and red and green?">
+				<text character="Brandr" disablePrevious="true" timer="3.3" say="Never Happened" />
+				<gotoContainer />
+			</option>
+			<option disabled="false" disablePrevious="true" choice_text="exit conversation">
+				<stopConversation />
+			</option>
+			<stopOption />
+		</option_container>
+		<option_container disabled="true">
+			<option disabled="false" disablePrevious="false" choice_text="hello">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="hello" />
+				<text character="Brandr" disablePrevious="true" timer="2.5" say="hi!" />
+				<gotoContainer />
+			</option>
+			<stopOption />
+		</option_container>
+	</mall>
+</conversation>

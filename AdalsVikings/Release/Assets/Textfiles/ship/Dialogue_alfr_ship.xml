@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why would I use Alfr?" />
+	<lookText lookText="That’s Alfr, the village Skald. He’s great at any instrument. Though I’ve heard his singing voice is awful." />
+	<text character="Ulfr" disabled="false" default="false" say="Nice to see you in a good mood, Skald." timer="2.5"  turned="false"/>
+	<text character="Alfr" disabled="false" default="false" disablePrevious="" say="What can i say?" timer="2.4"  turned="true"/>
+	<text character="Alfr" disabled="false" default="false" disablePrevious="" say="It's a lovely day." timer="2.5" />
+	<text character="Ulfr" disabled="false" default="false" say="Er..." timer="1.0"  turned="false"/>
+	<text character="Ulfr" disabled="false" default="false" say="The sun's not even up yet, Alfr." timer="2.5" />
+	<text character="Alfr" disabled="false" default="false" say="But the light shines through." timer="2.5"  turned="true"/>
+	<text character="Ulfr" default="false" disabled="false" timer="2.0" say="Of course it does."  turned="false"/>
+	<text character="Ulfr" default="true" disabled="true" say="Hey Alfr!" timer="1.4" />
+	<text character="Alfr" default="true" disabled="true" say="Hey!" timer="1.4"  turned="true"/>
+	<option_container disabled="false">
+		<option choice_text="What more things about Adal have you embellished?" disabled="false">
+			<text character="Ulfr" say="What more things about Adal have you embellished?" timer="3.0"  turned="false"/>
+			<text character="Alfr" timer="1.4"  turned="false" say="..."/>
+			<text character="Alfr" timer="1.4"  turned="true" say="..."/>
+			<text character="Alfr" say="A wizard never reveals his tricks." timer="2.4"  turned="true"/>
+			<text character="Ulfr" say="You're not a wizard though..." timer="2.4"  turned="false"/>
+			<text character="Alfr" timer="1.5" say="..."  turned="true"/>
+			<text character="Alfr" say="But i tell magical tales, do I not?" timer="2.5" />
+			<text character="Ulfr" say="You're not going to tell me, are you?" timer="2.5"  turned="false"/>
+			<text character="Alfr" say="No I am not." timer="2.0" disablePrevious="false" />
+			<gotoContainer />
+		</option>
+		<option choice_text="Have you seen Adal's map around here?" disabled="true">
+			<text character="Ulfr" say="Have you seen Adal's map around here?" timer="2.5"  turned="false"/>
+			<text character="Alfr" say="Why would Adal need a map?" timer="2.4"  turned="true"/>
+			<text character="Alfr" say="I've sang songs of his deeds." timer="2.4" />
+			<text character="Alfr" say="How he leap Bjorn Ironside's gap," timer="2.5" />
+			<text character="Alfr" say="and dueled in the razing of Leeds." timer="3.0" />
+			<text character="Alfr" say="How he ravished the East with his vassals," timer="2.5" />
+			<text character="Alfr" say="and defeated the Sumi up high." timer="3.0" />
+			<text character="Alfr" say="How he burned down lot of Karl's castles." timer="2.5" />
+			<text character="Alfr" timer="3.0" say="And broke free from the &quot;Snake-in-the-eye&quot;." />
+			<text character="Ulfr" say="Hold on. &quot;Snake-in-the-eye&quot;?" timer="2.5"  turned="false"/>
+			<text character="Ulfr" say="The king of Sjaelland?" timer="2.0" />
+			<text character="Alfr" say="Erm... yes" timer="2.0"  turned="true"/>
+			<text character="Ulfr" say="But Adal never broke free." timer="2.4"  turned="false"/>
+			<text character="Ulfr" timer="2.5" say="He's still an underling house of Knytling." />
+			<text character="Alfr" say="..." timer="1.4"  turned="true"/>
+			<text character="Alfr" say="All good tales deserve a bit of embellishment, don't you think?" timer="3.5" />
+			<gotoBaseContainer />
+		</option>
+		<option choice_text="...do you know any good ways of waking people up?" disabled="true">
+			<text character="Ulfr" say="...do you know any good ways of waking people up?" timer="2.5"  turned="false"/>
+			<text character="Alfr" turned="true" timer="1.0" say="    "></text>
+			<text character="Alfr" turned="True" timer="1.0" say="    "></text>
+			<text character="Alfr" say="MUSIC!" timer="1.8"  turned="true"/>
+			<text character="Ulfr" say="Really?" timer="1.8"  turned="false"/>
+			<text character="Alfr" say="Certainly." timer="1.8"  turned="true"/>
+			<text character="Alfr" default="" say="Play a tune, sing a song." timer="2.2" />
+			<text character="Alfr" say="They will dance all day long!" timer="2.4" />
+			<text character="Ulfr" say="Even a massive shieldmaiden?" timer="2.4"  turned="false"/>
+			<text character="Alfr" say="Oh. We're talking about Brynja here." timer="2.6"  turned="true"/>
+			<text character="Alfr" say="In that case..." timer="2.0" />
+			<text character="Alfr" say="...you'll need one hell of a large instrument." timer="2.5" />
+			<text character="Alfr" say="Though I left all my horns back in the village..." timer="3.3" />
+			<text character="Alfr" say="..." timer="1.4" />
+			<text character="Alfr" say="Aha!" timer="1.4" />
+			<text character="Alfr" say="I know!" timer="1.4" />
+			<text character="Alfr" say="Take my flute." timer="2.0" />
+			<text character="Alfr" say="It's the closest you'll get to that sort of a sound." timer="3.3" />
+			<text character="Ulfr" say="Right. Well, thank you, Alfr." timer="2.4"  turned="false"/>
+			<text character="Ulfr" say="I'll return it once I'm done." timer="2.2"  turned="false"/>
+			<text character="Alfr" say="No need." timer="1.6"  turned="true"/>
+			<text character="Alfr" say="I've heard you play before." timer="2.2" />
+			<text character="Alfr" say="And, well..." timer="2.0" />
+			<text character="Alfr" say="You need the practice." timer="2.4"  disablePrevious="true"/>
+			<gotoContainer />
+		</option>
+		<option choice_text="So... how you holding up?" disabled="false">
+			<text character="Ulfr" say="So... how you holding up?" timer="2.2"  turned="false"/>
+			<text character="Ulfr" say="Just thinking of the whole, &quot;Go kill a bunch of Anglians&quot; thing." timer="3.5" />
+			<text character="Alfr" say="Perfectly so." timer="2.0"  turned="true"/>
+			<text character="Alfr" say="I mean..." timer="1.6" />
+			<text character="Alfr" say="I'm just the Skald." timer="2.0" />
+			<text character="Alfr" say="I'm here for moral support more than anything else." timer="3.5" />
+			<gotoContainer />
+		</option>
+		<option choice_text="I'll talk to you later." disabled="false">
+			<stopConversation />
+			<text character="Ulfr" say="I'll talk to you later." timer="1.8"></text>
+			<text character="Alfr" say="Bye." timer="1.5"></text>
+		</option>
+		<stopOption />
+	</option_container>
+	<stopConversation />
+	<mall info="Endast Mall Efter Detta!" disabled="true">
+		<useText useText="Why would I use Brandr?" />
+		<lookText lookText="That's Brandr" />
+		<text character="Ulfr" default="false" disabled="false" disablePrevious="false" turned="true" timer="2.2" say="hej" />
+		<text character="Brandr" disablePrevious="false" timer="" say="DUrr" />
+		<text character="Valdis" />
+		<text character="Alfr" />
+		<text character="Brynja" />
+		<text character="Dagny" />
+		<text character="Finnr" />
+		<text character="Guard" />
+		<text character="Leifr" />
+		<text character="Mailman" />
+		<text character="Miner" />
+		<text character="Priest" />
+		<text character="Princess" />
+		<text character="Valdis" />
+		<text character="Yngvarr" />
+		
+		<option_container disabled="false">
+			<option disabled="false" choice_text="do you even?">
+				<text character="Brandr" disablePrevious="false" timer="3.3" say="hej!" />
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="What do you want!?">
+						<text character="Ulfr" disablePrevious="false" timer="2.5" say="durr" />
+						<text character="Brandr" disablePrevious="false" timer="2.4" say="murh" />
+						<option_container disabled="false">
+							<option disabled="false" disablePrevious="true" choice_text="Disable Previous">
+								<text character="Ulfr" disablePrevious="false" timer="2.4" say="Disable Previous" />
+								<gotoBaseContainer />
+							</option>
+							<stopOption />
+						</option_container>
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="NOPE">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="NUHU">!</text>
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="durr">
+						<text character="Brandr" disablePrevious="false" timer="2.5" say="disable" />
+						<gotoContainer />
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="jimmie had a little farm that was brown and red and green, why was it brown and red and green?">
+				<text character="Brandr" disablePrevious="true" timer="3.3" say="Never Happened" />
+				<gotoContainer />
+			</option>
+			<option disabled="false" disablePrevious="true" choice_text="exit conversation">
+				<stopConversation />
+			</option>
+			<stopOption />
+		</option_container>
+		<option_container disabled="true">
+			<option disabled="false" disablePrevious="false" choice_text="hello">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="hello" />
+				<text character="Brandr" disablePrevious="true" timer="2.5" say="hi!" />
+				<gotoContainer />
+			</option>
+			<stopOption />
+		</option_container>
+	</mall>
+</conversation>

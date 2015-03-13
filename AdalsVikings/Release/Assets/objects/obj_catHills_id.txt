@@ -1,0 +1,12 @@
+*Type: animated
+*ID: $catHills$
+*Name: Sunbathing Cat
+*ispickupable: False
+*pickup: "...Those claws look pretty sharp." ~3,0
+*lookat: "Looks like she is enjoying the sun." ~3,5
+*deny: "Uhmm... no thanks." ~2,0
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_catHills_id.png"
+*animation: X:5         Y:1         ~1,0 ~3,0

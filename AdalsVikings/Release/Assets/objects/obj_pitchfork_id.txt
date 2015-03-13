@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $pitchfork$
+*Name: Pitchfork
+*ispickupable: False
+*pickup: "That's not mine." ~2,0
+*lookat: "Sharp." ~1,5
+*deny: "Nope." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:65  Y:225

@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $hay$
+*Name: Hay
+*ispickupable: False
+*pickup: "Somebody worked real hard for this. I shouldn't take it." ~2,0
+*lookat: "Hey, you could sleep on this!" ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:   Y:
