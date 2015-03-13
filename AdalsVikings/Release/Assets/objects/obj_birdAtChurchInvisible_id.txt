@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $birdAtChurchInvisible$
+*Name: Bird
+*ispickupable: False
+*pickup: "It'll just fly away." ~2,0
+*lookat: "Chirp, chirp." ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:45   Y:30

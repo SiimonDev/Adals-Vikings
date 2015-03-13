@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $gravestone2$
 *Name: Gravestone
-*ispickupable: True
+*ispickupable: False
 *pickup: "Nah." ~2,0
 *lookat: "Here lies Calvin, the greatest of hackers. He died in a mineshaft down south." ~2,5
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X: 85   Y:150
+*invisible: X: 85    Y:150

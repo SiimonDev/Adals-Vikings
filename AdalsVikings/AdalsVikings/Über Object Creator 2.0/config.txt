@@ -1,0 +1,1 @@
+savePath: "C:\Users\Mans\Documents\GitHub\Adals-Vikings\AdalsVikings\AdalsVikings\Über Object Creator 2.0\objects"

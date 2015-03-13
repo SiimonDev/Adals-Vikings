@@ -1,0 +1,50 @@
+############
+*id: $hen1
+position: $X:1430 $Y:510
+interactPosition: $X:0 $Y:0
+index: $3
+scale: $1.0
+hascollision: $false
+############
+*id: $hen2
+position: $X:1510 $Y:490
+interactPosition: $X:0 $Y:0
+index: $3
+scale: $1.0
+hascollision: $false
+############
+*id: $catFarm
+position: $X:1055 $Y:495
+interactPosition: $X:0 $Y:0
+index: $3
+scale: $1.0
+hascollision: $false
+############
+*id: $hayFarm
+position: $X:1208 $Y:480
+interactPosition: $X:0 $Y:0
+index: $3
+scale: $1.0
+hascollision: $false
+############
+*id: $boxFarm
+position: $X:1595 $Y:415
+interactPosition: $X:0 $Y:0
+index: $3
+scale: $1.0
+hascollision: $false
+############
+*id: $sign8
+position: $X:366 $Y:544
+interactPosition: $X:0 $Y:0
+index: $3
+scale: $1.0
+hascollision: $false
+############
+*id: $pitchfork
+position: $X:959 $Y:505
+interactPosition: $X:0 $Y:0
+index: $3
+scale: $1.0
+hascollision: $false
+############

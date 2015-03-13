@@ -167,10 +167,6 @@ void Level_Ship_1::load()
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
 	mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
 	mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisSittingTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
-<<<<<<< HEAD
-	mNpcs["Valdis"]->setProportions(sf::Vector2f(251, 269));
-=======
->>>>>>> origin/Zero-Memory-leaks-1.0
 	mNpcs["Valdis"]->setIndex(14);
 
 	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
