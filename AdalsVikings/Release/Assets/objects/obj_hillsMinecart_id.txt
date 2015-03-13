@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $hillsMinecart$
+*Name: Minecart
+*ispickupable: False
+*pickup: "I see no use for this." ~2,0
+*lookat: "An old minecart. Useless." ~2,0
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: Y:

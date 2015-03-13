@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $tavernDeadSunflowers$
+*Name: Dead Sunflower
+*ispickupable: False
+*pickup: "I can't really use dead sunflowers. I can't really use sunflowers at all." ~3,5
+*lookat: "I guess the owner hasen't been around for a while." ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: 50   Y:300

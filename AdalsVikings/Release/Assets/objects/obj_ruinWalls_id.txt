@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $ruinWalls$
+*Name: Walls
+*ispickupable: False
+*pickup: "Nah." ~2,0
+*lookat: "Old crumbled walls. Looks like roman architecture." ~3,0
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:   Y:
