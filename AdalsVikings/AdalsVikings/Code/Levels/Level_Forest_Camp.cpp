@@ -16,8 +16,8 @@ void Level_Forest_Camp::restartSounds()
 
 void Level_Forest_Camp::update(sf::Time &frametime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::Num1))
-		mPlayer->addItemToInventory("bearDeer");
+	/*if (KeyboardState::isPressed(sf::Keyboard::Num1))
+		mPlayer->addItemToInventory("bearDeer");*/
 	if (KeyboardState::isPressed(sf::Keyboard::Num2))
 		mPlayer->addItemToInventory("stickWetCloth");
 	mFireAnimation.animate(frametime);
@@ -157,44 +157,47 @@ void Level_Forest_Camp::load()
 	mPortals[ForestCampToForestRoad] = &PortalLoader::getPortal(ForestCampToForestRoad);
 	mPortals[ForestCampToForestRoad]->setWorking(true);
 
-	RMI.loadResource(Texture::FireForestCampAnimation);
-	RMI.loadResource(Texture::DruidsForest1);
-	RMI.loadResource(Texture::BearWalk);
-	RMI.loadResource(Texture::BearIdle);
+	if (!Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
+	{
+		RMI.loadResource(Texture::FireForestCampAnimation);
+		RMI.loadResource(Texture::DruidsForest1);
+		RMI.loadResource(Texture::BearWalk);
+		RMI.loadResource(Texture::BearIdle);
 
-	mNpcs["DruidLeader"] = NpcPtr(new Npc(NpcHandlerI.getNpc("DruidLeader")));
-	mNpcs["Druids"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druids")));
-	mNpcs["Hipster druid"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Hipster druid")));
-	mNpcs["Dennis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Dennis")));
-	mNpcs["Druid2"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druid2")));
-	mNpcs["Druid3"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druid3")));
-	mNpcs["Druid4"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druid4")));
+		mNpcs["DruidLeader"] = NpcPtr(new Npc(NpcHandlerI.getNpc("DruidLeader")));
+		mNpcs["Druids"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druids")));
+		mNpcs["Hipster druid"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Hipster druid")));
+		mNpcs["Dennis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Dennis")));
+		mNpcs["Druid2"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druid2")));
+		mNpcs["Druid3"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druid3")));
+		mNpcs["Druid4"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Druid4")));
 
-	mNpcs["DruidLeader"]->setDialogue("Druids_ForestCamp1");
-	mNpcs["Druids"]->setDialogue("Druids_ForestCamp1");
+		mNpcs["DruidLeader"]->setDialogue("Druids_ForestCamp1");
+		mNpcs["Druids"]->setDialogue("Druids_ForestCamp1");
 
-	mNpcs["Druid2"]->setDialogue("Druids_ForestCamp1");
-	mNpcs["Druid3"]->setDialogue("Druids_ForestCamp1");
-	mNpcs["Druid4"]->setDialogue("Druids_ForestCamp1");
-	mNpcs["Hipster druid"]->setDialogue("Druids_ForestCamp1");
-	mNpcs["Dennis"]->setDialogue("Druids_ForestCamp1");
+		mNpcs["Druid2"]->setDialogue("Druids_ForestCamp1");
+		mNpcs["Druid3"]->setDialogue("Druids_ForestCamp1");
+		mNpcs["Druid4"]->setDialogue("Druids_ForestCamp1");
+		mNpcs["Hipster druid"]->setDialogue("Druids_ForestCamp1");
+		mNpcs["Dennis"]->setDialogue("Druids_ForestCamp1");
 
-	
-		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
-		mNpcs["Leifr"]->setDialogue("Leifr_ForestCamp");
-		mNpcs["Leifr"]->setPosition(sf::Vector2f(1450, 580));
-		mNpcs["Leifr"]->setscale(sf::Vector2f(0.3f, 0.3f));
-		mNpcs["Leifr"]->setIndex(1);
-		mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1560, 565));
-	
-	
+		if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
+		{
+			mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
+			mNpcs["Leifr"]->setDialogue("Leifr_ForestCamp");
+			mNpcs["Leifr"]->setPosition(sf::Vector2f(1450, 580));
+			mNpcs["Leifr"]->setscale(sf::Vector2f(0.3f, 0.3f));
+			mNpcs["Leifr"]->setIndex(1);
+			mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1560, 565));
+		}
 
-	mFireAnimation.load(RMI.getResource(Texture::FireForestCampAnimation), sf::Vector2i(2, 4), sf::milliseconds(2000), sf::Time::Zero, true);
-	mFireAnimation.setIndex(9999);
-	mFireAnimation.setProportions(sf::Vector2f(961, 541));
-	mFireAnimation.setScaleFromHeight(541 * 2);
+		mFireAnimation.load(RMI.getResource(Texture::FireForestCampAnimation), sf::Vector2i(2, 4), sf::milliseconds(2000), sf::Time::Zero, true);
+		mFireAnimation.setIndex(9999);
+		mFireAnimation.setProportions(sf::Vector2f(961, 541));
+		mFireAnimation.setScaleFromHeight(541 * 2);
 
-	mDruids.setTexture(RMI.getResource(Texture::DruidsForest1));
+		mDruids.setTexture(RMI.getResource(Texture::DruidsForest1));
+	}
 
 	Level::load();
 

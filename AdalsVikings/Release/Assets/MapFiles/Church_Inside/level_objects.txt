@@ -1,8 +1,0 @@
-############
-*id: $sheepInChurch
-position: $X:68 $Y:805
-interactPosition: $X:0 $Y:0
-index: $9
-scale: $1.0
-hascollision: $false
-############

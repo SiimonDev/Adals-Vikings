@@ -128,8 +128,6 @@ void Level_Beach::load()
 		mNpcs["Alfr"]->setIndex(14);
 
 		/* ==== Leifr ===== */
-		mNpcs["Leifr"]->setIdleAnimation(Texture::LeifrIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(7.2));
-		mNpcs["Leifr"]->SetTalkAnimation(Texture::LeifrTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 		mNpcs["Leifr"]->setFlip(true);
 		mNpcs["Leifr"]->setscale(sf::Vector2f(0.3f, 0.3f));
 		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 550));
