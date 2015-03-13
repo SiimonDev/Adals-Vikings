@@ -61,6 +61,7 @@ namespace Texture
 		WaveAnimation,
 		AxeAnimation,
 		FireForestCampAnimation,
+		FireCampAnimation,
 		DruidsForest1,
 		DruidsForest2,
 		DruidLeaderIdle,

@@ -167,7 +167,6 @@ void LevelManager::loadAct1()
 	mLevelMap[LevelFolder::Tavern_Inside] = LevelPtr(new Level_Tavern_Inside(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Camp_Clearing] = LevelPtr(new Level_Camp_Clearing(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Camp_Finished] = LevelPtr(new Level_Camp_Finished(mPlayer, mHud, mActionWheel));
-
 	mLevelMap[LevelFolder::Cavern_Left] = LevelPtr(new Level_Cavern_Left(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Cavern_Right] = LevelPtr(new Level_Cavern_Right(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Cliffs_Down] = LevelPtr(new Level_Cliffs_Down(mPlayer, mHud, mActionWheel));
