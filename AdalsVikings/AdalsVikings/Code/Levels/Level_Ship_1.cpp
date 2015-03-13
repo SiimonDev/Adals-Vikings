@@ -155,10 +155,10 @@ void Level_Ship_1::load()
 	mPortals[Ship1ToShip2]->setWorking(true);
 
 	RMI.loadResource(Texture::IntroScreen);
-	RMI.loadResource(Texture::ValdisSittingIdle);
+	/*RMI.loadResource(Texture::ValdisSittingIdle);
 	RMI.loadResource(Texture::ValdisSittingTalk);
 	RMI.loadResource(Texture::LeifrSitIdle);
-	RMI.loadResource(Texture::LeifrSitTalk);
+	RMI.loadResource(Texture::LeifrSitTalk);*/
 	RMI.loadResource(Texture::BackBoatRopeAnimation);
 	RMI.loadResource(Texture::BackBoatWaveAnimation);
 	RMI.loadResource(Texture::WaveAnimationBoat);
@@ -167,6 +167,10 @@ void Level_Ship_1::load()
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
 	mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
 	mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisSittingTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
+<<<<<<< HEAD
+	mNpcs["Valdis"]->setProportions(sf::Vector2f(251, 269));
+=======
+>>>>>>> origin/Zero-Memory-leaks-1.0
 	mNpcs["Valdis"]->setIndex(14);
 
 	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
@@ -243,12 +247,12 @@ void Level_Ship_1::load()
 void Level_Ship_1::unload()
 {
 	RMI.unloadResource(Texture::IntroScreen);
-	RMI.unloadResource(Texture::ValdisSittingIdle);
-	RMI.unloadResource(Texture::ValdisSittingTalk);
-	//RMI.loadResource(Texture::ValdisTalk);
-	//RMI.loadResource(Texture::ValdisIdle);
-	RMI.unloadResource(Texture::LeifrSitIdle);
-	RMI.unloadResource(Texture::LeifrSitTalk);
+	//RMI.unloadResource(Texture::ValdisSittingIdle);
+	//RMI.unloadResource(Texture::ValdisSittingTalk);
+	////RMI.loadResource(Texture::ValdisTalk);
+	////RMI.loadResource(Texture::ValdisIdle);
+	//RMI.unloadResource(Texture::LeifrSitIdle);
+	//RMI.unloadResource(Texture::LeifrSitTalk);
 	RMI.unloadResource(Texture::BackBoatRopeAnimation);
 	RMI.unloadResource(Texture::BackBoatWaveAnimation);
 	RMI.unloadResource(Texture::WaveAnimationBoat);
