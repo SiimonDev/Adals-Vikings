@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $holeInTheCeiling$
+*Name: Hole in the Ceiling
+*ispickupable: False
+*pickup: "Not sure what I'd do with an empty space." ~2,0
+*lookat: "You can see the sky. This place must have been abandoned a long time ago." ~5,0
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:500  Y:200

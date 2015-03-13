@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $gravestone1$
+*Name: Gravestone
+*ispickupable: False
+*pickup: "Nah." ~2,0
+*lookat: "Here lies John, Slayer of Worlds, and fantasy writer." ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:75   Y:130

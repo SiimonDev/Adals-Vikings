@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $helmet$
+*Name: Helmet
+*ispickupable: True
+*pickup: "This might come in handy" ~2,0
+*lookat: "That's nice..." ~1,5
+*deny: "I can't do that" ~1,5
+*denywith: $bucketBroken$ "The bucket is not worth putting a helmet on." ~3,0; 
+*combine: 
+*interact: 
+*texture: "img_helmet_id.png"

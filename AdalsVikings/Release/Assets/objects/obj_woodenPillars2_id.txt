@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $woodenPillars2$
+*Name: Wooden Pillars
+*ispickupable: False
+*pickup: "If I touch these the whole place might collapse." ~2,0
+*lookat: "Who put these here?" ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:    Y:
