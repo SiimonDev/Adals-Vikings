@@ -1,7 +1,7 @@
 *Type: animated
 *ID: $hen2$
 *Name: Another Hen
-*ispickupable: True
+*ispickupable: False
 *pickup: "No, really. I don't steal chickens." ~3,5
 *lookat: "They look so carefree." ~2,5
 *deny: "I can't do that." ~1,5
@@ -9,4 +9,4 @@
 *combine: 
 *interact: 
 *texture: "img_hen2_id.png"
-*animation: X:9    Y:1    ~2,5 ~3,5
+*animation: X:9     Y:1     ~2,5 ~3,5

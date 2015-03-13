@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $fortHills$
 *Name: Fort
-*ispickupable: True
+*ispickupable: False
 *pickup: "Unfortunaly I can not reach it." ~2,5
 *lookat: "What a massive building. I wonder who lives there." ~2,5
 *deny: "Nope." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:150 Y:50
+*invisible: X:150  Y:50

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="Naah." />
-	<lookText lookText="That’s Dagny. She’s a bit... aggressive. I better just stay away from her as much as possible." />
+	<lookText lookText="That's Dagny. She's a bit... aggressive. I better just stay away from her as much as possible." />
 	<text character="Ulfr" disabled="false" default="true" say="Hey Dagny" timer="1.5" turned="true" />
 	<text character="Dagny" disabled="false" default="true" disablePrevious="" say="Hello!" timer="1.5" turned="false" />
 	<option_container disabled="false">

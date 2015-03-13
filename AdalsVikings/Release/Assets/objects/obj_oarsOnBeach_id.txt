@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $oarsOnBeach$
 *Name: Oars
-*ispickupable: True
+*ispickupable: False
 *pickup: "Nah, someone else can deal with them." ~3,0
 *lookat: "Good wood." ~1,5
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:300  Y:45
+*invisible: X:300   Y:45

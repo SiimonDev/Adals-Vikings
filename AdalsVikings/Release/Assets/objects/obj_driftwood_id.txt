@@ -1,11 +1,11 @@
 *Type: invisible
 *ID: $driftwood$
 *Name: Driftwood
-*ispickupable: True
+*ispickupable: False
 *pickup: "I can't really use these for anything. Nor can I lift them." ~2,0
 *lookat: "Driftwood. From a shipwreck, I would guess." ~1,5
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:100  Y:150
+*invisible: X:100   Y:150

@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="I don't think I can use Dagny for much" />
-	<lookText lookText="That’s Dagny. She’s a bit... aggressive. I better just stay away from her as much as possible." />
+	<lookText lookText="That's Dagny. She's a bit... aggressive. I better just stay away from her as much as possible." />
 	<text character="Ulfr" disabled="false" default="false" say="Uh, hey Dagny." timer="2.0" turned="false" />
 	<text character="Dagny" disabled="false" default="false" disablePrevious="" say="What do you want, wimp?" timer="2.0" turned="true" />
 	<text character="Ulfr" disabled="true" default="true" say="Hey Dagny!" timer="1.6" turned="false" />
 	<text character="Dagny" disabled="true" default="true" say="Hey wimp!" timer="1.6" turned="true" />
 	<option_container disabled="false">
-		<option choice_text="...you wouldn't have happened to see a map around here, have you?" disabled="true">
+		<option choice_text="...you wouldn't have happened to see a map around here, have you?" disabled="false">
 			<text say="...you wouldn't have happened to see a map around here, have you?" timer="3.3" character="Ulfr" turned="false" />
 			<text character="Dagny" say="Yes, of course!" timer="2.0" turned="true" />
 			<text character="Dagny" say="It's right here in my pocket, next to my steel sword," timer="2.5" />
@@ -19,7 +19,7 @@
 			<text character="Ulfr" say="That would be a no." timer="2.0" disablePrevious="true" turned="false" />
 			<gotoContainer />
 		</option>
-		<option choice_text="Um, that bucket behind you... can I borrow it for a while?" disabled="true">
+		<option choice_text="Um, that bucket behind you... can I borrow it for a while?" disabled="false">
 			<text character="Ulfr" say="Um, that bucket behind you... can I borrow it for a while?" timer="2.7" turned="false" />
 			<text character="Dagny" say="A bucket?" timer="1.8" turned="true" />
 			<text character="Dagny" say="You think I'm standing here to watch over a bucket?" timer="2.5" />
