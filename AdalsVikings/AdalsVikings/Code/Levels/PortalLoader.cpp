@@ -45,7 +45,8 @@ void PortalLoader::load()
 		mPortalMap[TavernInsideToTavernOutside] = PortalPtr(new Portal(LevelFolder::Tavern_Inside, sf::Vector2f(250, 705), sf::Vector2f(0, 235), sf::Vector2f(220, 945), sf::Vector2f(220, 945)));
 		mPortalMap[CampClearingToCamPFinished] = PortalPtr(new Portal(LevelFolder::Camp_Clearing, sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0)));
 		mPortalMap[CampFinishedToCampClearing] = PortalPtr(new Portal(LevelFolder::Camp_Finished, sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0)));
-
+		mPortalMap[CampFinishedToRoad] = PortalPtr(new Portal(LevelFolder::Camp_Finished, sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0)));
+		mPortalMap[RoadToCampFinished] = PortalPtr(new Portal(LevelFolder::Road, sf::Vector2f(290, 270), sf::Vector2f(0, 450), sf::Vector2f(360, 691), sf::Vector2f(247, 676)));
 		//connect the portals
 		mPortalMap[BeachToRoad]->setGateway(&*mPortalMap[RoadToBeach]);
 		mPortalMap[RoadToBeach]->setGateway(&*mPortalMap[BeachToRoad]);
@@ -67,6 +68,8 @@ void PortalLoader::load()
 		mPortalMap[TavernInsideToTavernOutside]->setGateway(&*mPortalMap[TavernOutsideToTavernInside]);
 		mPortalMap[CampClearingToCamPFinished]->setGateway(&*mPortalMap[CampFinishedToCampClearing]);
 		mPortalMap[CampFinishedToCampClearing]->setGateway(&*mPortalMap[CampClearingToCamPFinished]);
+		mPortalMap[RoadToCampFinished]->setGateway(&*mPortalMap[CampFinishedToRoad]);
+		mPortalMap[CampFinishedToRoad]->setGateway(&*mPortalMap[RoadToCampFinished]);
 	}
 }
 

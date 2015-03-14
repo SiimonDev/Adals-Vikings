@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $churchHills$
+*Name: Stone Building
+*ispickupable: False
+*pickup: "Nope." ~2,0
+*lookat: "It has a tall tower, and is made out of stone. Freaky." ~3,0
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: Y:

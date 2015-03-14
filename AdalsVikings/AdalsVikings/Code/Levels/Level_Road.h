@@ -17,6 +17,6 @@ public:
 	void restartSounds();
 
 private:
-	bool mFade1, mFade2;
+	bool mFade1, mFade2, mFade3, mFade4, mFade5, mHasSpawned;
 };
 

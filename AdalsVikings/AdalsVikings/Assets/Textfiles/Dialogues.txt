@@ -27,6 +27,7 @@ Bosse_Beach assets/textfiles/beach/Dialogue_bosse_beach.xml
 -----------------------ROAD ----------------------------
 Mailman_Road assets/textfiles/road/Dialogue_mailman_road.xml
 GiveScroll_Road assets/textfiles/road/Dialogue_givescroll_road.xml
+All_Road assets/textfiles/road/Dialogue_all_road.xml
 -----------------------CHURCH OUTSIDE----------------------------
 Princess_ChurchOutside assets/textfiles/church/Dialogue_princess_church.xml
 -----------------------CHURCH INSIDE----------------------------
