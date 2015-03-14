@@ -2,43 +2,43 @@
 <conversation>
 	<useText useText="404" />
 	<lookText lookText="404" />
-	<text character="Leifr" disabled="true" default="false" say="Well then, Ulfr" timer="1.5" turned="true" />
-	<text character="Leifr" disabled="true" default="false" disablePrevious="" say="Where do you want us?" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Where do I..." timer="1.6" turned="true" />
-	<text character="Ulfr" disabled="true" default="false" say="What?" timer="1.5" turned="false" />
-	<text character="Valdis" disabled="true" default="false" say="It's your plan" timer="1.5" turned="false" />
-	<text character="Valdis" disabled="true" default="false" say="You make the rules" timer="1.5" turned="false" />
-	<text character="Valdis" disabled="true" default="false" say="How do we get into the city?" timer="1.6" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="...uh" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Good question" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="I..." timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Maybe, I..." timer="1.5" turned="false" />
-	<text character="Finnr" disabled="true" default="false" say="Why don't we explore the area outside the walls?" timer="1.8" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="That's..." timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="That's actually a really good plan" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Let's split up and search" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="That's actually a really good plan" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Let's split up and search" timer="1.5" turned="false" />
-	<text character="Alfr" disabled="true" default="false" say="Alright!" timer="1.5" turned="false" />
-	<text character="Alfr" disabled="true" default="false" say="I'll find someplace to play a good tune" timer="1.5" turned="false" />
-	<text character="Valdis" disabled="true" default="false" say="I'll go to those buildings to the northwest" timer="1.6" turned="false" />
-	<text character="Valdis" disabled="true" default="false" say="I think I spotted some interesting plants that way" timer="1.8" turned="false" />
-	<text character="Finnr" disabled="true" default="false" say="I'll come with you" timer="1.5" turned="false" />
-	<text character="Finnr" disabled="true" default="false" say="Maybe there's a way around" timer="1.5" turned="false" />
-	<text character="Finnr" disabled="true" default="false" say="I can go over the hills and find out!" timer="1.5" turned="false" />
-	<text character="Leifr" disabled="true" default="false" say="Sounds great" timer="1.5" turned="false" />
-	<text character="Leifr" disabled="true" default="false" say="Then I'll go keep a watch at the front" timer="1.6" turned="false" />
-	<text character="Leifr" disabled="true" default="false" timer="2.2" turned="false" say="See if those gates are as easily rammed as Brandr seems to think" />
-	<text character="Ulfr" disabled="true" default="false" timer="1.4" turned="false" say="Okay" />
-	<text character="Ulfr" disabled="true" default="false" timer="1.5" turned="false" say="I will..." />
-	<text character="Ulfr" disabled="true" default="false" timer="1.6" turned="false" say="Uh" />
-	<text character="Ulfr" disabled="true" default="false" timer="1.5" turned="false" say="Also look around" />
-	<text character="Ulfr" disabled="true" default="false" timer="1.5" turned="false" say="I suppose" />
-	<text character="Valdis" disabled="true" default="false" timer="1.5" turned="false" say="Then let's go!" />
-	<text character="Ulfr" disabled="true" default="false" timer="1.5" turned="false" say="Oh, gods" />
-	<text character="Ulfr" disabled="true" default="false" timer="2.0" turned="false" say="Why do I always have to get myself into trouble?" />
-	<text character="Ulfr" disabled="true" default="false" timer="1.4" turned="true" say="*Sigh*" />
-	<text character="Ulfr" disabled="true" default="false" timer="1.8" turned="true" say="Guess I'll have to find a way into the city" />
+	<text character="Leifr" disabled="false" default="false" say="Well then, Ulfr" timer="1.5" turned="true" />
+	<text character="Leifr" disabled="false" default="false" disablePrevious="" say="Where do you want us?" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Where do I..." timer="1.6" turned="true" />
+	<text character="Ulfr" disabled="false" default="false" say="What?" timer="1.5" turned="false" />
+	<text character="Valdis" disabled="false" default="false" say="It's your plan" timer="1.5" turned="false" />
+	<text character="Valdis" disabled="false" default="false" say="You make the rules" timer="1.5" turned="false" />
+	<text character="Valdis" disabled="false" default="false" say="How do we get into the city?" timer="1.6" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="...uh" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Good question" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="I..." timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Maybe, I..." timer="1.5" turned="false" />
+	<text character="Finnr" disabled="false" default="false" say="Why don't we explore the area outside the walls?" timer="1.8" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="That's..." timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="That's actually a really good plan" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Let's split up and search" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="That's actually a really good plan" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Let's split up and search" timer="1.5" turned="false" />
+	<text character="Alfr" disabled="false" default="false" say="Alright!" timer="1.5" turned="false" />
+	<text character="Alfr" disabled="false" default="false" say="I'll find someplace to play a good tune" timer="1.5" turned="false" />
+	<text character="Valdis" disabled="false" default="false" say="I'll go to those buildings to the northwest" timer="1.6" turned="false" />
+	<text character="Valdis" disabled="false" default="false" say="I think I spotted some interesting plants that way" timer="1.8" turned="false" />
+	<text character="Finnr" disabled="false" default="false" say="I'll come with you" timer="1.5" turned="false" />
+	<text character="Finnr" disabled="false" default="false" say="Maybe there's a way around" timer="1.5" turned="false" />
+	<text character="Finnr" disabled="false" default="false" say="I can go over the hills and find out!" timer="1.5" turned="false" />
+	<text character="Leifr" disabled="false" default="false" say="Sounds great" timer="1.5" turned="false" />
+	<text character="Leifr" disabled="false" default="false" say="Then I'll go keep a watch at the front" timer="1.6" turned="false" />
+	<text character="Leifr" disabled="false" default="false" timer="2.2" turned="false" say="See if those gates are as easily rammed as Brandr seems to think" />
+	<text character="Ulfr" disabled="false" default="false" timer="1.4" turned="false" say="Okay" />
+	<text character="Ulfr" disabled="false" default="false" timer="1.5" turned="false" say="I will..." />
+	<text character="Ulfr" disabled="false" default="false" timer="1.6" turned="false" say="Uh" />
+	<text character="Ulfr" disabled="false" default="false" timer="1.5" turned="false" say="Also look around" />
+	<text character="Ulfr" disabled="false" default="false" timer="1.5" turned="false" say="I suppose" />
+	<text character="Valdis" disabled="false" default="false" timer="1.5" turned="false" say="Then let's go!" />
+	<text character="Ulfr" disabled="false" default="false" timer="1.5" turned="false" say="Oh, gods" />
+	<text character="Ulfr" disabled="false" default="false" timer="2.0" turned="false" say="Why do I always have to get myself into trouble?" />
+	<text character="Ulfr" disabled="false" default="false" timer="1.4" turned="true" say="*Sigh*" />
+	<text character="Ulfr" disabled="false" default="false" timer="1.8" turned="true" say="Guess I'll have to find a way into the city" />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />
