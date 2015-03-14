@@ -100,7 +100,7 @@ void PortalLoader::load()
 		mPortalMap[GatesToCliffs] = PortalPtr(new Portal(LevelFolder::City_Gates, sf::Vector2f(255, 170), sf::Vector2f(1100, 910), sf::Vector2f(1190, 990), sf::Vector2f(1220, 1075)));
 		mPortalMap[GatesToCliffs]->setCursorRotation(90);
 
-		mPortalMap[CliffsToGates] = PortalPtr(new Portal(LevelFolder::Cliffs_Up, sf::Vector2f(420, 175), sf::Vector2f(0, 905), sf::Vector2f(185, 970), sf::Vector2f(20, 1050)));
+		mPortalMap[CliffsToGates] = PortalPtr(new Portal(LevelFolder::Cliffs_Up, sf::Vector2f(80, 430), sf::Vector2f(0, 250), sf::Vector2f(120, 525), sf::Vector2f(5, 525)));
 		mPortalMap[CliffsToGates]->setCursorRotation(-90);
 
 		//connect the portals
