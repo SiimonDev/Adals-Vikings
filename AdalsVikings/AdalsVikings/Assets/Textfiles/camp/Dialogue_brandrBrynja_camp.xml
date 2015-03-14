@@ -30,17 +30,4 @@
 	<text character="Ulfr" default="false" disabled="false" say="Will do." timer="2.0" turned="false"></text>
 	<text character="Ulfr" default="false" disabled="false" say="It’s nice to be appreciated." turnedPlayer="true" timer="2.5"></text>
 	<stopConversation></stopConversation>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 </conversation>

@@ -82,8 +82,8 @@ void DialogueTree::unload()
 //Praise the graphical people!!
 void DialogueTree::render(IndexRenderer &iRenderer)
 {
-	for (int i = 0; i < mRectangleVector.size(); i++)
-		iRenderer.addShape(mRectangleVector[i], 99999);
+	/*for (int i = 0; i < mRectangleVector.size(); i++)
+		iRenderer.addShape(mRectangleVector[i], 9999);*/
 
 	if (mActiveConversation == true)
 	{
@@ -104,7 +104,7 @@ void DialogueTree::render(IndexRenderer &iRenderer)
 			iRenderer.addText(mOptionsVector[i], 99999);
 
 		if (!mOptionsVector.empty())
-			iRenderer.addShape(mOptionsRectangle, 99999);
+			iRenderer.addShape(mOptionsRectangle, 9999);
 
 		if (mWait)
 		{

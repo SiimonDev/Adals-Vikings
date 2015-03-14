@@ -91,7 +91,8 @@ void Object::render(IndexRenderer &iRenderer)
 	}
 	else if (mType == ObjectType::Invisible){
 		if (DebugMode){
-			mRect.setPosition(sf::Vector2f(mPosition.x - (mSize.x / 2), mPosition.y - (mSize.y / 2)));
+			mRect.setScale(mScale);
+			mRect.setPosition(sf::Vector2f(mPosition.x - ((mSize.x / 2) * mScale.x), mPosition.y - ((mSize.y / 2) * mScale.y)));
 			iRenderer.addShape(mRect, mIndex);
 		}
 	}

@@ -8,6 +8,7 @@
 class Portal
 {
 public:
+	/* Level ID, Size, Position, Player Movement, Player Spawn */
 	Portal(LevelFolder::ID levelID, sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn);
 
 	void render(IndexRenderer &iRenderer);

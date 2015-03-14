@@ -22,7 +22,7 @@ void PauseMenuPanel::load()
 	mBackground.setOrigin(mBackground.getTexture()->getSize().x / 2, mBackground.getTexture()->getSize().y / 2);
 	mBackground.setPosition(960, 540);
 
-	resumeButton = Button(Texture::PauseMenuResumeButton, Font::Font1, sf::Vector2f(), "Resume the game");
+	resumeButton = Button(Texture::PauseMenuResumeButton, Font::Font1, sf::Vector2f()/*, "Resume the game"*/);
 	resumeButton.setPosition(sf::Vector2f(960, 300));
 	resumeButton.setOrigin(ButtonOrigin::Center);
 	resumeButton.setTextStyle(sf::Text::Bold);
@@ -30,7 +30,7 @@ void PauseMenuPanel::load()
 	resumeButton.setDescriptionPosition(sf::Vector2f(200, 0));
 	resumeButton.setIndex(mIndex + 1);
 
-	saveButton = Button(Texture::PauseMenuSaveButton, Font::Font1, sf::Vector2f(), "Resume the game");
+	saveButton = Button(Texture::PauseMenuSaveButton, Font::Font1, sf::Vector2f()/*, "Resume the game"*/);
 	saveButton.setPosition(sf::Vector2f(960, 433));
 	saveButton.setOrigin(ButtonOrigin::Center);
 	saveButton.setTextStyle(sf::Text::Bold);
@@ -39,7 +39,7 @@ void PauseMenuPanel::load()
 	saveButton.setIndex(mIndex + 1);
 	saveButton.setEnabled(false);
 
-	optionButton = Button(Texture::PauseMenuOptionsButton, Font::Font1, sf::Vector2f(), "Go to options menu");
+	optionButton = Button(Texture::PauseMenuOptionsButton, Font::Font1, sf::Vector2f()/*, "Go to options menu"*/);
 	optionButton.setPosition(sf::Vector2f(960, 569));
 	optionButton.setOrigin(ButtonOrigin::Center);
 	optionButton.setTextStyle(sf::Text::Bold);
@@ -48,7 +48,7 @@ void PauseMenuPanel::load()
 	optionButton.setIndex(mIndex + 1);
 	optionButton.setEnabled(false);
 
-	mainMenuButton = Button(Texture::PauseMenuMainMenuButton, Font::Font1, sf::Vector2f(), "Back to main menu");
+	mainMenuButton = Button(Texture::PauseMenuMainMenuButton, Font::Font1, sf::Vector2f()/*, "Back to main menu"*/);
 	mainMenuButton.setPosition(sf::Vector2f(960, 702));
 	mainMenuButton.setOrigin(ButtonOrigin::Center);
 	mainMenuButton.setTextStyle(sf::Text::Bold);
@@ -56,7 +56,7 @@ void PauseMenuPanel::load()
 	mainMenuButton.setDescriptionPosition(sf::Vector2f(200, 0));
 	mainMenuButton.setIndex(mIndex + 1);
 
-	exitButton = Button(Texture::PauseMenuExitButton, Font::Font1, sf::Vector2f(), "Exit the game");
+	exitButton = Button(Texture::PauseMenuExitButton, Font::Font1, sf::Vector2f()/*, "Exit the game"*/);
 	exitButton.setPosition(sf::Vector2f(960, 840));
 	exitButton.setOrigin(ButtonOrigin::Center);
 	exitButton.setTextStyle(sf::Text::Bold);

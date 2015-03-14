@@ -56,8 +56,8 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::MainMenuBackground] = "assets/images/Interface/MainMenu/menu_background.png";
 
 	mTexturePathMap[Texture::PauseMenuResumeButton] = "assets/images/interface/pauseManu/button_resume.png";
-	mTexturePathMap[Texture::PauseMenuSaveButton] = "assets/images/interface/pauseManu/button_save.png";
-	mTexturePathMap[Texture::PauseMenuOptionsButton] = "assets/images/interface/pauseManu/button_options.png";
+	mTexturePathMap[Texture::PauseMenuSaveButton] = "assets/images/interface/pauseManu/button_save_disabled.png";
+	mTexturePathMap[Texture::PauseMenuOptionsButton] = "assets/images/interface/pauseManu/button_options_disabled.png";
 	mTexturePathMap[Texture::PauseMenuMainMenuButton] = "assets/images/interface/pauseManu/button_main_menu.png";
 	mTexturePathMap[Texture::PauseMenuExitButton] = "assets/images/interface/pauseManu/button_exit.png";
 	mTexturePathMap[Texture::PauseMenuBackground] = "assets/images/interface/pauseManu/InGame_menu.png";
@@ -67,12 +67,14 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::LoadingScreenBackgroundX] = "assets/images/interface/loadingscreen/loading_screen_background_100.png";
 	mTexturePathMap[Texture::LoadingThingyAnimation] = "assets/images/interface/loadingscreen/loading_screen.png";
 
-	mTexturePathMap[Texture::FrontBoatWaveAnimation] = "assets/MapFiles/Ship2/waves.png";
 	mTexturePathMap[Texture::BackBoatRopeAnimation] = "assets/MapFiles/Ship1/rope.png";
 	mTexturePathMap[Texture::BackBoatWaveAnimation] = "assets/MapFiles/Ship1/waves.png";
+	mTexturePathMap[Texture::FrontBoatWaveAnimation] = "assets/MapFiles/Ship2/waves.png";
 	mTexturePathMap[Texture::WaveAnimationBoat] = "assets/MapFiles/Ship1/sea_animation.png";
+	mTexturePathMap[Texture::WaveAnimationCliffs] = "assets/MapFiles/Cliffs_Down/waves_small_5x9.png";
+	mTexturePathMap[Texture::WaveAnimationCliffsIdle] = "assets/MapFiles/Cliffs_Down/waves_small_idle_5x1.png";
+	mTexturePathMap[Texture::WaveAnimationBeach] = "assets/MapFiles/Beach/waves.png";
 
-	mTexturePathMap[Texture::WaveAnimation] = "assets/MapFiles/Beach/waves.png";
 	mTexturePathMap[Texture::AxeAnimation] = "assets/images/Interface/MainMenu/flying_axe.png";
 	mTexturePathMap[Texture::FireForestCampAnimation] = "assets/Mapfiles/Forest_Camp/background_forestcamp_fire.png";
 	mTexturePathMap[Texture::FireCampAnimation] = "assets/Mapfiles/Camp_Finished/background_camp_fire.png";

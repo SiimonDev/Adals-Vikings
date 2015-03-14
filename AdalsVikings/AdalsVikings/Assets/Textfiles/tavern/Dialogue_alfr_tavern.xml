@@ -5,9 +5,6 @@
 	<text character="Alfr" disabled="false" default="false" say="LET ME PLAY YOU A LITTLE SONG!" timer="2.0"  turned="false"/>
 	<text character="Ulfr" disabled="false" default="false" say="Uh-." timer="2.0"  turned="false"/><text character="Alfr" disabled="false" default="false" say="Did you like it?" timer="2.0"  turned="false"/>
 	
-	
-	
-	
 	<option_container disabled="false">
 		<option choice_text="Yeah, it was great" disabled="true">
 			<text character="Ulfr" disablePrevious="false" say="Yeah, it was great" timer="1.2" />
