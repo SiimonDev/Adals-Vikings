@@ -7,7 +7,7 @@ scale: $1.0
 hascollision: $false
 ############
 *id: $boxInCamp
-position: $X:720 $Y:793
+position: $X:720 $Y:800
 interactPosition: $X:0 $Y:0
 index: $99
 scale: $1.0

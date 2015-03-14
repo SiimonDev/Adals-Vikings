@@ -48,3 +48,10 @@ index: $99
 scale: $1
 hascollision: $false
 ############
+*id: $sheepChurchOutside
+position: $X:1590 $Y:840
+interactPosition: $X:0 $Y:300
+index: $99
+scale: $0.5
+hascollision: $false
+############

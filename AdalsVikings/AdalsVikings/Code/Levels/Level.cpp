@@ -264,37 +264,73 @@ void Level::updateDialog(sf::Time frameTime)
 		{
 			mIsInConversation = true;
 			it->second->update(frameTime);
-			for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
+
+			if (mNpcs.size() > 0)
 			{
-				if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() != "")
+				for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
 				{
-					iz->second->setFlip(it->second->getFacing());
-					iz->second->setAnimationStyle("Npc");
-					mPlayer->setAnimationStyle(AnimationType::Idle);
-					if (!iz->second->isInvisible())
+					if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() != "")
 					{
-						it->second->setTextPosition(sf::Vector2f(iz->second->getAnimation().getSprite().getGlobalBounds().left +
-							iz->second->getAnimation().getSprite().getGlobalBounds().width / 2,
-							iz->second->getAnimation().getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
+						iz->second->setFlip(it->second->getFacing());
+						iz->second->setAnimationStyle("Npc");
+						mPlayer->setAnimationStyle(AnimationType::Idle);
+						if (!iz->second->isInvisible())
+						{
+							it->second->setTextPosition(sf::Vector2f(iz->second->getAnimation().getSprite().getGlobalBounds().left +
+								iz->second->getAnimation().getSprite().getGlobalBounds().width / 2,
+								iz->second->getAnimation().getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
+						}
+						else if (iz->second->isInvisible())
+						{
+							it->second->setTextPosition(sf::Vector2f(iz->second->getInvisRect().getPosition().x +
+								iz->second->getInvisRect().getSize().x / 2,
+								iz->second->getInvisRect().getPosition().y));
+						}
+						it->second->setTextColor(iz->second->getColor());
 					}
-					else if (iz->second->isInvisible())
+					else if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() == "")
 					{
-						it->second->setTextPosition(sf::Vector2f(iz->second->getInvisRect().getPosition().x +
-							iz->second->getInvisRect().getSize().x / 2,
-							iz->second->getInvisRect().getPosition().y));
+						iz->second->setFlip(it->second->getFacing());
+						iz->second->setAnimationStyle("Idle");
 					}
-					it->second->setTextColor(iz->second->getColor());
+					else if (it->second->getCharacter() == mPlayer->getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
+					{
+						mPlayer->setFlip(it->second->getFacing());
+						mPlayer->setAnimationStyle(AnimationType::TalkToPlayer);
+						iz->second->setAnimationStyle("Idle");
+						it->second->setTextPosition(sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left +
+							mPlayer->getSprite().getGlobalBounds().width / 2,
+							mPlayer->getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
+						it->second->setTextColor(sf::Color::White);
+					}
+					else if (it->second->getCharacter() == mPlayer->getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() == "")
+					{
+						mPlayer->setFlip(it->second->getFacing());
+						mPlayer->setAnimationStyle(AnimationType::Idle);
+					}
+					else if (it->second->getCharacter() == mPlayer->getName() && !it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
+					{
+						mPlayer->setAnimationStyle(AnimationType::TalkToNpc);
+						iz->second->setAnimationStyle("Idle");
+						mPlayer->setFlip(it->second->getFacing());
+						it->second->setTextPosition(sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left +
+							mPlayer->getSprite().getGlobalBounds().width / 2,
+							mPlayer->getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
+						it->second->setTextColor(sf::Color::White);
+					}
+					else if (it->second->getCharacter() != iz->second->getName() && it->second->getCharacter() != mPlayer->getName())
+					{
+						iz->second->setAnimationStyle("Idle");
+						mPlayer->setAnimationStyle(AnimationType::Idle);
+					}
 				}
-				else if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() == "")
-				{
-					iz->second->setFlip(it->second->getFacing());
-					iz->second->setAnimationStyle("Idle");
-				}
-				else if (it->second->getCharacter() == mPlayer->getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
+			}
+			else
+			{
+				if (it->second->getCharacter() == mPlayer->getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
 				{
 					mPlayer->setFlip(it->second->getFacing());
 					mPlayer->setAnimationStyle(AnimationType::TalkToPlayer);
-					iz->second->setAnimationStyle("Idle");
 					it->second->setTextPosition(sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left +
 						mPlayer->getSprite().getGlobalBounds().width / 2,
 						mPlayer->getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
@@ -308,17 +344,11 @@ void Level::updateDialog(sf::Time frameTime)
 				else if (it->second->getCharacter() == mPlayer->getName() && !it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
 				{
 					mPlayer->setAnimationStyle(AnimationType::TalkToNpc);
-					iz->second->setAnimationStyle("Idle");
 					mPlayer->setFlip(it->second->getFacing());
 					it->second->setTextPosition(sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left +
-												mPlayer->getSprite().getGlobalBounds().width / 2,
-												mPlayer->getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
+						mPlayer->getSprite().getGlobalBounds().width / 2,
+						mPlayer->getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
 					it->second->setTextColor(sf::Color::White);
-				}
-				else if (it->second->getCharacter() != iz->second->getName() && it->second->getCharacter() != mPlayer->getName())
-				{
-					iz->second->setAnimationStyle("Idle");
-					mPlayer->setAnimationStyle(AnimationType::Idle);
 				}
 			}
 		}

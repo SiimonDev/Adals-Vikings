@@ -19,34 +19,78 @@ void PortalLoader::load()
 		mPortalMap[Ship2ToShip1] = PortalPtr(new Portal(LevelFolder::Ship_2, sf::Vector2f(110, 400), sf::Vector2f(1810, 400), sf::Vector2f(1700, 750), sf::Vector2f(1900, 750)));
 		mPortalMap[Ship2ToShip1]->setCursorRotation(90);
 
-		//needed for first Portal
+		//connect the portals
 		mPortalMap[Ship1ToShip2]->setGateway(&*mPortalMap[Ship2ToShip1]);
 		mPortalMap[Ship2ToShip1]->setGateway(&*mPortalMap[Ship1ToShip2]);
 	}
 	else if (LVLMI.getCurrentAct() == Act1)
 	{
 		mPortalMap[BeachToRoad] = PortalPtr(new Portal(LevelFolder::Beach, sf::Vector2f(150, 150), sf::Vector2f(0, 350), sf::Vector2f(170, 500), sf::Vector2f(0, 460)));
+		mPortalMap[BeachToRoad]->setCursorRotation(-90);
+
 		mPortalMap[RoadToBeach] = PortalPtr(new Portal(LevelFolder::Road, sf::Vector2f(550, 100), sf::Vector2f(50, 980), sf::Vector2f(460, 950), sf::Vector2f(360, 1079)));
+		mPortalMap[RoadToBeach]->setCursorRotation(-135);
+
 		mPortalMap[RoadToOutside_Chuch] = PortalPtr(new Portal(LevelFolder::Road, sf::Vector2f(400, 100), sf::Vector2f(1200, 980), sf::Vector2f(1260, 970), sf::Vector2f(1400, 1079)));
+		mPortalMap[RoadToOutside_Chuch]->setCursorRotation(135);
+
 		mPortalMap[Outside_ChurchToRoad] = PortalPtr(new Portal(LevelFolder::Church_Outside, sf::Vector2f(650, 50), sf::Vector2f(0, 1030), sf::Vector2f(515, 1005), sf::Vector2f(365, 1079)));
+		mPortalMap[Outside_ChurchToRoad]->setCursorRotation(-135);
+
 		mPortalMap[RoadToFarm] = PortalPtr(new Portal(LevelFolder::Road, sf::Vector2f(135, 140), sf::Vector2f(725, 470), sf::Vector2f(86, 650), sf::Vector2f(305, 686)));
+		mPortalMap[RoadToFarm]->setCursorRotation(45);
+
 		mPortalMap[FarmToRoad] = PortalPtr(new Portal(LevelFolder::Forest_Road, sf::Vector2f(170, 90), sf::Vector2f(1750, 640), sf::Vector2f(86, 680), sf::Vector2f(1920, 680)));
+		mPortalMap[FarmToRoad]->setCursorRotation(-90);
+
 		mPortalMap[ForestRoadToCamp] = PortalPtr(new Portal(LevelFolder::Forest_Road, sf::Vector2f(137, 123), sf::Vector2f(1777, 673), sf::Vector2f(1854, 733), sf::Vector2f(1854, 733)));
+		mPortalMap[ForestRoadToCamp]->setCursorRotation(90);
+
 		mPortalMap[CampToForestRoad] = PortalPtr(new Portal(LevelFolder::Camp_Clearing, sf::Vector2f(195, 120), sf::Vector2f(0, 600), sf::Vector2f(150, 630), sf::Vector2f(50, 630)));
+		mPortalMap[CampToForestRoad]->setCursorRotation(-90);
+
 		mPortalMap[Outside_ChurchToChurch] = PortalPtr(new Portal(LevelFolder::Church_Outside, sf::Vector2f(100, 230), sf::Vector2f(1270, 642), sf::Vector2f(1240, 870), sf::Vector2f(1240, 870)));
+		mPortalMap[Outside_ChurchToChurch]->setCursorRotation(45);
+
 		mPortalMap[ChurchToOutside_Church] = PortalPtr(new Portal(LevelFolder::Church_Inside, sf::Vector2f(295, 399), sf::Vector2f(1400, 0), sf::Vector2f(1545, 358), sf::Vector2f(1545, 358)));
+		mPortalMap[ChurchToOutside_Church]->setCursorRotation(45);
+
 		mPortalMap[RoadToCamp] = PortalPtr(new Portal(LevelFolder::Road, sf::Vector2f(290, 200), sf::Vector2f(0, 490), sf::Vector2f(360, 691), sf::Vector2f(247, 676)));
+		mPortalMap[RoadToCamp]->setCursorRotation(-90);
+
 		mPortalMap[CampToRoad] = PortalPtr(new Portal(LevelFolder::Camp_Clearing, sf::Vector2f(180, 170), sf::Vector2f(1450, 400), sf::Vector2f(1492, 595), sf::Vector2f(1540, 528)));
+		mPortalMap[CampToRoad]->setCursorRotation(45);
+
 		mPortalMap[ForestRoadToForestCamp] = PortalPtr(new Portal(LevelFolder::Forest_Road, sf::Vector2f(290, 270), sf::Vector2f(0, 550), sf::Vector2f(360, 691), sf::Vector2f(247, 676)));
+		mPortalMap[ForestRoadToForestCamp]->setCursorRotation(-90);
+		
 		mPortalMap[ForestCampToForestRoad] = PortalPtr(new Portal(LevelFolder::Forest_Camp, sf::Vector2f(240, 370), sf::Vector2f(1680, 470), sf::Vector2f(1870, 690), sf::Vector2f(1920, 690)));
+		mPortalMap[ForestCampToForestRoad]->setCursorRotation(90);
+
 		mPortalMap[BeachToTavernOutside] = PortalPtr(new Portal(LevelFolder::Beach, sf::Vector2f(410, 290), sf::Vector2f(1360, 0), sf::Vector2f(1480, 290), sf::Vector2f(1460, 185)));
+		mPortalMap[BeachToTavernOutside]->setCursorRotation(45);
+		
 		mPortalMap[TavernOutsideToBeach] = PortalPtr(new Portal(LevelFolder::Tavern_Outside, sf::Vector2f(100, 1080), sf::Vector2f(0, 0), sf::Vector2f(100, 1065), sf::Vector2f(0, 1065)));
+		mPortalMap[TavernOutsideToBeach]->setCursorRotation(-90);
+		
 		mPortalMap[TavernOutsideToTavernInside] = PortalPtr(new Portal(LevelFolder::Tavern_Outside, sf::Vector2f(130, 300), sf::Vector2f(930, 600), sf::Vector2f(975, 885), sf::Vector2f(975, 885)));
+		mPortalMap[TavernOutsideToTavernInside]->setCursorRotation(0);
+		
 		mPortalMap[TavernInsideToTavernOutside] = PortalPtr(new Portal(LevelFolder::Tavern_Inside, sf::Vector2f(250, 705), sf::Vector2f(0, 235), sf::Vector2f(220, 945), sf::Vector2f(220, 945)));
+		mPortalMap[TavernInsideToTavernOutside]->setCursorRotation(-90);
+		
 		mPortalMap[CampClearingToCamPFinished] = PortalPtr(new Portal(LevelFolder::Camp_Clearing, sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0)));
+		mPortalMap[CampClearingToCamPFinished]->setCursorRotation(0);
+		
 		mPortalMap[CampFinishedToCampClearing] = PortalPtr(new Portal(LevelFolder::Camp_Finished, sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0)));
+		mPortalMap[CampFinishedToCampClearing]->setCursorRotation(0);
+
 		mPortalMap[CampFinishedToRoad] = PortalPtr(new Portal(LevelFolder::Camp_Finished, sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0)));
+		mPortalMap[CampFinishedToRoad]->setCursorRotation(45);
+		
 		mPortalMap[RoadToCampFinished] = PortalPtr(new Portal(LevelFolder::Road, sf::Vector2f(290, 270), sf::Vector2f(0, 450), sf::Vector2f(360, 691), sf::Vector2f(247, 676)));
+		mPortalMap[RoadToCampFinished]->setCursorRotation(-90);
+
 		//connect the portals
 		mPortalMap[BeachToRoad]->setGateway(&*mPortalMap[RoadToBeach]);
 		mPortalMap[RoadToBeach]->setGateway(&*mPortalMap[BeachToRoad]);
