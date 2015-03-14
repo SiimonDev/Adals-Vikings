@@ -17,7 +17,7 @@ public:
 
 private:
 
-	bool mFade1, mFade2;
+	bool mFade1, mFade2, mHasSpawned;
 
 	Animation mCampFire;
 };
