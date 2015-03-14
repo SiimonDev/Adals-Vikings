@@ -118,11 +118,11 @@ void Level::updateObjects(sf::Time frameTime)
 					mPlayer->addItemToInventory(mObjects[mObjIndex]->getObjID());
 					PathFinder::getCurrentTileMap().removeCollision(mObjects[mObjIndex]->getCollisionRect());
 					delete mObjects[mObjIndex];
-					mObjects.erase(mObjects.begin() + mObjIndex);
-					mPlayer->setIntention(Intention::None);
+					mObjects.erase(mObjects.begin() + mObjIndex);	
 					mWalkToObject = false;
 				}
 			}
+			mPlayer->setIntention(Intention::None);
 		}
 		else if (mPlayer->getIntention() == Intention::Interact)
 		{
