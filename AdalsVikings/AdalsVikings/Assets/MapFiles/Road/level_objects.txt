@@ -70,9 +70,9 @@ scale: $1
 hascollision: $false
 ############
 *id: $sheepAtRoad
-position: $X:1635 $Y:945
+position: $X:1630 $Y:958
 interactPosition: $X:0 $Y:0
 index: $21
-scale: $1.5
+scale: $1.4
 hascollision: $false
 ############
