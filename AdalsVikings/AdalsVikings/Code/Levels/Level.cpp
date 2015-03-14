@@ -213,7 +213,7 @@ void Level::updateNPCs(sf::Time frameTime)
 			else
 				mPlayer->setFlip(false);
 			mPlayer->UpdateAnimationStyle();
-			Dialog dialog = Dialog(mNpcs[mCurrentNPCID]->getLookText(), 2);
+			Dialog dialog = Dialog(mNpcs[mCurrentNPCID]->getLookText(), mNpcs[mCurrentNPCID]->getLookTimer());
 			PlayerMonologueI.displayDialog(dialog);
 		}
 		else if (mPlayer->getIntention() == Intention::Talk)
@@ -234,7 +234,7 @@ void Level::updateNPCs(sf::Time frameTime)
 			else
 				mPlayer->setFlip(false);
 			mPlayer->UpdateAnimationStyle();
-			Dialog dialog = Dialog(mNpcs[mCurrentNPCID]->getUseText(), 2);
+			Dialog dialog = Dialog(mNpcs[mCurrentNPCID]->getUseText(), mNpcs[mCurrentNPCID]->getUseTimer());
 			PlayerMonologueI.displayDialog(dialog);
 		}
 		else if (mPlayer->getIntention() == Intention::Interact)

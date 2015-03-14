@@ -40,7 +40,7 @@ void PortalLoader::load()
 		mPortalMap[RoadToFarm] = PortalPtr(new Portal(LevelFolder::Road, sf::Vector2f(135, 140), sf::Vector2f(725, 470), sf::Vector2f(86, 650), sf::Vector2f(305, 686)));
 		mPortalMap[RoadToFarm]->setCursorRotation(45);
 
-		mPortalMap[FarmToRoad] = PortalPtr(new Portal(LevelFolder::Forest_Road, sf::Vector2f(170, 90), sf::Vector2f(1750, 640), sf::Vector2f(86, 680), sf::Vector2f(1920, 680)));
+		mPortalMap[FarmToRoad] = PortalPtr(new Portal(LevelFolder::Farm_1, sf::Vector2f(170, 90), sf::Vector2f(1750, 640), sf::Vector2f(86, 680), sf::Vector2f(1920, 680)));
 		mPortalMap[FarmToRoad]->setCursorRotation(-90);
 
 		mPortalMap[ForestRoadToCamp] = PortalPtr(new Portal(LevelFolder::Forest_Road, sf::Vector2f(137, 123), sf::Vector2f(1777, 673), sf::Vector2f(1854, 733), sf::Vector2f(1854, 733)));

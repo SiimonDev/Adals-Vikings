@@ -54,6 +54,8 @@ public:
 	sf::RectangleShape &getInvisRect();
 	std::string &getUseText();
 	std::string &getLookText();
+	float getLookTimer();
+	float getUseTimer();
 	sf::Vector2f &getPosition();
 	sf::Vector2f &getInteractionPosition();
 	sf::IntRect &getCollisionRect();

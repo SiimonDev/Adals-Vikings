@@ -153,6 +153,15 @@ std::string &Npc::getLookText()
 {
 	return DialogHandler::getDialogue(mDialogue).getLookText();
 }
+float Npc::getLookTimer()
+{
+	return DialogHandler::getDialogue(mDialogue).getLookTimer();
+}
+
+float Npc::getUseTimer()
+{
+	return DialogHandler::getDialogue(mDialogue).getUseTimer();
+}
 
 void Npc::startConversation()
 {

@@ -35,6 +35,8 @@ public:
 	std::string &getLookText();
 	bool getHasStopped();
 	float &getTimer();
+	float &getLookTimer();
+	float &getUseTimer();
 	bool &getActiveConversation();
 	bool &getWait();
 	bool &getEndConversation();
@@ -68,7 +70,7 @@ private:
 	sf::Vector2f mSize;
 	std::vector<sf::Text> mOptionsVector;
 	std::string mName, mText, mUseText, mLookText, mEnable;
-	float mTimer;
+	float mTimer, mLookTimer, mUseTimer;
 	bool mActiveConversation, mStart, mWait, mOptionSelected, mGoneDeep, 
 		mIsTalking, mStopConversation, mDraw, mEndConversation, mFaceWay, mFacePlayer;
 

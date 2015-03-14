@@ -594,6 +594,10 @@ std::string &DialogueTree::getUseText()
 	while (as_utf8(mNode.name()) != "useText")
 		mNode = mNode.next_sibling();
 
+	if (as_utf8(mNode.attribute("timer").as_string()) != "")
+		mUseTimer = mNode.attribute("timer").as_float();
+	else
+		mUseTimer = 2;
 	mUseText = as_utf8(mNode.attribute("useText").as_string());
 	return mUseText;
 }
@@ -608,6 +612,10 @@ std::string &DialogueTree::getLookText()
 	while (as_utf8(mNode.name()) != "lookText")
 		mNode = mNode.next_sibling();
 
+	if (as_utf8(mNode.attribute("timer").as_string()) != "")
+		mLookTimer = mNode.attribute("timer").as_float();
+	else
+		mLookTimer = 2;
 	mLookText = as_utf8(mNode.attribute("lookText").as_string());
 	return mLookText;
 }
@@ -753,6 +761,16 @@ bool &DialogueTree::getFacing()
 bool & DialogueTree::getFacePlayer()
 {
 	return mFacePlayer;
+}
+
+float & DialogueTree::getLookTimer()
+{
+	return mLookTimer;
+}
+
+float & DialogueTree::getUseTimer()
+{
+	return mUseTimer;
 }
 
 //Notes makes code easier to read, not this one though

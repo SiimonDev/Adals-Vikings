@@ -225,7 +225,7 @@ void Level_Road::changeLevel()
 	}
 	else if (mPortals[RoadToFarm]->getActivated() && mPortals[RoadToFarm]->getWorking())
 	{
-		LVLMI.changeLevel(LevelFolder::Forest_Road);
+		LVLMI.changeLevel(LevelFolder::Farm_1);
 		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
 		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
 		mRestartSounds = true;
