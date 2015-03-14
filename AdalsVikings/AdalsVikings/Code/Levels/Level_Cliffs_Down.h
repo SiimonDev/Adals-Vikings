@@ -15,4 +15,8 @@ public:
 	void checkInteractEvents();
 	void checkEvents();
 	void restartSounds();
+
+private:
+	Animation mWaveAnimation;
+	Animation mWaveAnimationIdle;
 };

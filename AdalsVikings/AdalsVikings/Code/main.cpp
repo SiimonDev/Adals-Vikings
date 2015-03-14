@@ -19,18 +19,18 @@
 
 //now write the entry point.  it is the 21st century, so write unicode programs.  this is the unicode entry point.
 
-int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmd, int show)
-{
-	Game game;
-	game.run();
-
-	return 0;
-}
-
-//int main()
+//int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmd, int show)
 //{
 //	Game game;
 //	game.run();
 //
 //	return 0;
 //}
+
+int main()
+{
+	Game game;
+	game.run();
+
+	return 0;
+}

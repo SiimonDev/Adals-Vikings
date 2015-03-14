@@ -130,7 +130,7 @@ void Level_Beach::load()
 		/* ==== Leifr ===== */
 		mNpcs["Leifr"]->setFlip(true);
 		mNpcs["Leifr"]->setScale(sf::Vector2f(0.3f, 0.3f));
-		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 550));
+		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 540));
 		mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(750, 580));
 		mNpcs["Leifr"]->setDialogue("Leifr_Beach");
 		mNpcs["Leifr"]->setIndex(14);
@@ -168,8 +168,8 @@ void Level_Beach::load()
 	else
 		Level::load();
 
-	RMI.loadResource(Texture::WaveAnimation);
-	mWaveAnimation.load(RMI.getResource(Texture::WaveAnimation), sf::Vector2i(10, 9), sf::seconds(10), sf::seconds(7), true);
+	RMI.loadResource(Texture::WaveAnimationBeach);
+	mWaveAnimation.load(RMI.getResource(Texture::WaveAnimationBeach), sf::Vector2i(10, 9), sf::seconds(10), sf::seconds(7), true);
 	mWaveAnimation.setIndex(4);
 	mWaveAnimation.setProportions(sf::Vector2f(1170, 640));
 	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
@@ -179,7 +179,7 @@ void Level_Beach::load()
 
 void Level_Beach::unload()
 {
-	RMI.unloadResource(Texture::WaveAnimation);
+	RMI.unloadResource(Texture::WaveAnimationBeach);
 	RMI.unloadResource(Texture::YngvarrSadIdle);
 	RMI.unloadResource(Texture::YngvarrSadTalk);
 

@@ -126,7 +126,7 @@ void LoadingScreen::runTask()
 				MHI.unload(MenuID::MainMenu);
 				MHI.load(MenuID::PauseMenu);
 				LVLMI.load();
-				LVLMI.loadBoatScene();
+				LVLMI.loadAct1();
 			}
 			else if (mTask == LoadTask::LoadMenu)
 			{

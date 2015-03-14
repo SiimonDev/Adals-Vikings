@@ -1,11 +1,4 @@
 ############
-*id: $bucket
-position: $X:1490 $Y:601
-interactPosition: $X:0 $Y:0
-index: $11
-scale: $0.6
-hascollision: $false
-############
 *id: $oars
 position: $X:1200 $Y:651
 interactPosition: $X:0 $Y:0

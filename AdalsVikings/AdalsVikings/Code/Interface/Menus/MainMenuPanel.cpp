@@ -27,7 +27,7 @@ void MainMenuPanel::load()
 	mAxeAnimation.setIndex(50);
 	mAxeAnimation.restart();
 
-	playButton = Button(Texture::MainMenuPlayButton, Font::Font1, sf::Vector2f(), "Start a new Game");
+	playButton = Button(Texture::MainMenuPlayButton, Font::Font1, sf::Vector2f());
 	playButton.setPosition(sf::Vector2f(1010, 275));
 	playButton.setOrigin(ButtonOrigin::Center);
 	playButton.setTextStyle(sf::Text::Bold);
@@ -35,7 +35,7 @@ void MainMenuPanel::load()
 	playButton.setDescriptionPosition(sf::Vector2f(200, 0));
 	playButton.setIndex(10);
 
-	optionButton = Button(Texture::MainMenuOptionsButton, Font::Font1, sf::Vector2f(), "Go to options menu");
+	optionButton = Button(Texture::MainMenuOptionsButton, Font::Font1, sf::Vector2f());
 	optionButton.setPosition(sf::Vector2f(960, 550));
 	optionButton.setOrigin(ButtonOrigin::Center);
 	optionButton.setTextStyle(sf::Text::Bold);
@@ -44,7 +44,7 @@ void MainMenuPanel::load()
 	optionButton.setIndex(10);
 	optionButton.setEnabled(false);
 
-	exitButton = Button(Texture::MainMenuQuitButton, Font::Font1, sf::Vector2f(), "Exit the game");
+	exitButton = Button(Texture::MainMenuQuitButton, Font::Font1, sf::Vector2f());
 	exitButton.setPosition(sf::Vector2f(900, 810));
 	exitButton.setOrigin(ButtonOrigin::Center);
 	exitButton.setTextStyle(sf::Text::Bold);
