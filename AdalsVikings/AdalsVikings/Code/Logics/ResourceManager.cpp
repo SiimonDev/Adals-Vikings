@@ -56,8 +56,8 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::MainMenuBackground] = "assets/images/Interface/MainMenu/menu_background.png";
 
 	mTexturePathMap[Texture::PauseMenuResumeButton] = "assets/images/interface/pauseManu/button_resume.png";
-	mTexturePathMap[Texture::PauseMenuSaveButton] = "assets/images/interface/pauseManu/button_save.png";
-	mTexturePathMap[Texture::PauseMenuOptionsButton] = "assets/images/interface/pauseManu/button_options.png";
+	mTexturePathMap[Texture::PauseMenuSaveButton] = "assets/images/interface/pauseManu/button_save_disabled.png";
+	mTexturePathMap[Texture::PauseMenuOptionsButton] = "assets/images/interface/pauseManu/button_options_disabled.png";
 	mTexturePathMap[Texture::PauseMenuMainMenuButton] = "assets/images/interface/pauseManu/button_main_menu.png";
 	mTexturePathMap[Texture::PauseMenuExitButton] = "assets/images/interface/pauseManu/button_exit.png";
 	mTexturePathMap[Texture::PauseMenuBackground] = "assets/images/interface/pauseManu/InGame_menu.png";

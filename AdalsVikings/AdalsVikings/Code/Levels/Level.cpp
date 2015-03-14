@@ -62,7 +62,7 @@ void Level::updateObjects(sf::Time frameTime)
 		}
 		else
 		{
-			if (mObjects[i]->isInside(MouseState::getMousePosition()))
+			if (mObjects[i]->isInside(MouseState::getMousePosition()) && !mIsInConversation)
 			{
 				mObjects[i]->enableDescription(true);
 				if (mPlayer->getSnappedObjectID() != "")
@@ -191,7 +191,7 @@ void Level::updateNPCs(sf::Time frameTime)
 		}
 		else
 		{
-			if (it->second->isInside(MouseState::getMousePosition()))
+			if (it->second->isInside(MouseState::getMousePosition()) && !mIsInConversation)
 			{
 				it->second->enableDescription(true);
 				if (mPlayer->getSnappedObjectID() != "")
@@ -343,6 +343,7 @@ void Level::update(sf::Time &frameTime)
 	MouseState::setCursorType(CursorType::Default);
 	updateDialog(frameTime);
 	updateNPCs(frameTime);
+	updateObjects(frameTime);
 	mPlayer->update(frameTime);
 	mPlayer->setFootsteps(mCurrentFootsteps);
 	checkEvents();
@@ -383,7 +384,6 @@ void Level::update(sf::Time &frameTime)
 			if (!mHud->isHelpActive() && !mHud->isButtonReleased())
 			{
 				mPlayer->move(frameTime);
-				updateObjects(frameTime);
 			}
 		}
 	}

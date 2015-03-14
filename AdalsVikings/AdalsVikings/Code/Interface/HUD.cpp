@@ -32,7 +32,7 @@ void HUD::load()
 	mHelpButton.setDescriptionStyle(sf::Text::Bold);
 	mHelpButton.setIndex(99999);
 
-	mOKButton = Button(Texture::OKButton, Font::Font1, sf::Vector2f(), "I Understand");
+	mOKButton = Button(Texture::OKButton, Font::Font1, sf::Vector2f()/*, "I Understand"*/);
 	mOKButton.setPosition(sf::Vector2f(1650, 920));
 	mOKButton.setDescriptionPosition(sf::Vector2f(0, 60));
 	mOKButton.setScale(sf::Vector2f(1.6f, 1.6f));

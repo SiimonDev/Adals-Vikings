@@ -122,7 +122,7 @@ void Level_Beach::load()
 		/* ==== Alfr ===== */
 		mNpcs["Alfr"]->setFlip(false);
 		mNpcs["Alfr"]->setScale(sf::Vector2f(0.35, 0.35));
-		mNpcs["Alfr"]->setPosition(sf::Vector2f(1250, 590));
+		mNpcs["Alfr"]->setPosition(sf::Vector2f(1250, 580));
 		mNpcs["Alfr"]->setInteractionPosition(sf::Vector2f(1200, 590));
 		mNpcs["Alfr"]->setDialogue("Alfr_Beach");
 		mNpcs["Alfr"]->setIndex(14);
