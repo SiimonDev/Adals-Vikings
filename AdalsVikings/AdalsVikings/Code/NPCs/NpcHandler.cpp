@@ -37,6 +37,7 @@ void NpcHandler::load()
 	NpcPtr Druid4(new Npc(Font::Skranji_regular));
 	NpcPtr Dennis(new Npc(Font::Skranji_regular));
 	NpcPtr HiddenLeifr(new Npc(Font::Skranji_regular));
+	NpcPtr Guard(new Npc(Font::Skranji_regular));
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -158,6 +159,16 @@ void NpcHandler::load()
 	Beor->setIndex(3);
 	Beor->setScale(sf::Vector2f(0.65f, 0.65f));
 	Beor->setFlip(true);
+
+	Guard->setName("Guard");
+	Guard->setIdleAnimation(Texture::BeorIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(5));
+	Guard->SetTalkAnimation(Texture::BeorTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
+	Guard->setPosition(sf::Vector2f(450, 790));
+	Guard->setInteractionPosition(sf::Vector2f(700, 780));
+	Guard->setColor(sf::Color(176, 196, 222));
+	Guard->setIndex(3);
+	Guard->setScale(sf::Vector2f(0.65f, 0.65f));
+	Guard->setFlip(true);
 
 	DruidLeader->setName("Druid Leader");
 	DruidLeader->setIdleAnimation(Texture::DruidLeaderIdle, sf::Vector2i(1, 1), sf::milliseconds(0), sf::seconds(999));

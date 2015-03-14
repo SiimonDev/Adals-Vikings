@@ -152,6 +152,7 @@ void Level_Road::load()
 	mPortals[RoadToBeach] = &PortalLoader::getPortal(RoadToBeach);
 	mPortals[RoadToOutside_Chuch] = &PortalLoader::getPortal(RoadToOutside_Chuch);
 	mPortals[RoadToFarm] = &PortalLoader::getPortal(RoadToFarm);
+	mPortals[RoadToGates] = &PortalLoader::getPortal(RoadToGates);
 
 	mPortals[RoadToBeach]->setWorking(true);
 
@@ -180,15 +181,22 @@ void Level_Road::load()
 			mPortals[RoadToFarm]->setCannotDialogue("I should report to Brynja before I start exploring...");
 			mPortals[RoadToCamp]->setWorking(true);
 		}
-		if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
-		{
-			mPortals[RoadToBeach]->setWorking(true);
-			mPortals[RoadToFarm]->setWorking(true);
-			mPortals[RoadToOutside_Chuch]->setWorking(true);
-			mPortals[RoadToCamp]->setWorking(false);
-			mPortals[RoadToCamp]->setCannotDialogue("If I go back there Brandr will kill me...");
-			//mPortals[RoadToGates]->setWorking(true);
-		}
+		//if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
+		//{
+		//	mPortals[RoadToBeach]->setWorking(true);
+		//	mPortals[RoadToFarm]->setWorking(true);
+		//	mPortals[RoadToOutside_Chuch]->setWorking(true);
+		//	mPortals[RoadToCamp]->setWorking(false);
+		//	mPortals[RoadToCamp]->setCannotDialogue("If I go back there Brandr will kill me...");
+		//	//mPortals[RoadToGates]->setWorking(true);
+		//}
+
+		mPortals[RoadToBeach]->setWorking(true);
+		mPortals[RoadToFarm]->setWorking(true);
+		mPortals[RoadToOutside_Chuch]->setWorking(true);
+		mPortals[RoadToGates]->setWorking(true);
+		mPortals[RoadToCamp]->setWorking(false);
+		mPortals[RoadToCamp]->setCannotDialogue("If I go back there Brandr will kill me...");
 
 	Level::load();
 	mCurrentFootsteps = Footsteps::Dirt;
@@ -225,6 +233,13 @@ void Level_Road::changeLevel()
 	if (mPortals[RoadToCamp]->getActivated() && mPortals[RoadToCamp]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Camp_Clearing);
+		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
+		mRestartSounds = true;
+	}
+	if (mPortals[RoadToGates]->getActivated() && mPortals[RoadToGates]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::City_Gates);
 		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
 		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
 		mRestartSounds = true;

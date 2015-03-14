@@ -2,76 +2,76 @@
 <conversation>
 	<useText useText="404" />
 	<lookText lookText="404" />
-	<text character="Ulfr" disabled="true" default="false" say="There we go." timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" disablePrevious="" say="Nice and warm" timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="Lovely" timer="1.5" turned="true" />
-	<text character="Brandr" disabled="true" default="false" say="Now perhaps we can speak of important matters" timer="1.8" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="Like, for example..." timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="...when we are to charge the Anglian stronghold" timer="2.0" turned="false" />
-	<text character="Yngvarr" disabled="true" default="false" say="I say we do it straight away!" timer="1.6" turned="false" />
-	<text character="Dagny" disabled="true" default="false" say="Aye, this I can agree with" timer="1.6" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="We have yet to spill a drop of Anglian blood" timer="1.8" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="And we've been here for hours" timer="1.5" turned="false" />
-	<text character="Brynja" disabled="true" default="false" say="We cannot just attack them" timer="1.5" turned="false" />
-	<text character="Brynja" disabled="true" default="false" say="They have a bloody wall!" timer="1.6" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="So we need a way to break down their gates" timer="1.8" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="We can do that" timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="Look to the west" timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="To the woods" timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="An infinite supply of timber" timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="And my father showed me how to make a good battering ram" timer="1.8" turned="false" />
-	<text character="Yngvarr" disabled="true" default="false" say="Yes!" timer="1.4" turned="false" />
-	<text character="Yngvarr" disabled="true" default="false" say="Let us break their door!" timer="1.5" turned="false" />
-	<text character="Brynja" disabled="true" default="false" say="...yes" timer="1.5" turned="false" />
-	<text character="Brynja" disabled="true" default="false" say="We can fight our way to their riches!" timer="1.5" turned="false" />
-	<text character="Dagny" disabled="true" default="false" say="AND DRINK THE BLOOD OF THEIR YOUNG!" timer="1.6" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Woah, woah" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Hold on now" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="You're really going to charge them?" timer="1.6" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="But we're only nine!" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="They have dozens of soldiers within their walls!" timer="1.7" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Dozens!" timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="...How do you know that?" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Uh, a mailman told me" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="But it doesn't matter" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="If we charge them, we will lose, and we will die" timer="1.8" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="We will accomplish nothing" timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="Just because you are weak does not mean we are as well" timer="2.2" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="We, the real Vikings, will defeat the Anglians" timer="2.2" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="We will overcome any obstacle to get their gold" timer="2.2" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="Or have you forgotten your debt to my father, Ulfr?" timer="2.2" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="I have not" timer="1.5" turned="false" />
-	<text character="Brynja" disabled="true" default="false" say="Then how do you propose we take their gold?" timer="1.6" turned="false" />
-	<text character="Brynja" disabled="true" default="false" say="Ask them?" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="I... I don't know" timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="But charging those gates will give us nothing" timer="1.7" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Instead..." timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="We should open them..." timer="1.6" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="...from the inside" timer="1.6" turned="false" />
-	<text character="Brynja" disabled="true" default="false" say="...what?" timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="Ha-Ha!" timer="1.6" turned="false" />
-	<text character="Dagny" disabled="true" default="false" say="Really? That's your grand plan?" timer="1.6" turned="false" />
-	<text character="Leifr" disabled="true" default="false" say="Now, now" timer="1.5" turned="false" />
-	<text character="Leifr" disabled="true" default="false" say="I don't think it's that bad of an idea" timer="1.6" turned="false" />
-	<text character="Finnr" disabled="true" default="false" say="Yeah!" timer="1.5" turned="false" />
-	<text character="Finnr" disabled="true" default="false" say="If Ulfr can get us in, then it would make the gold stealing a lot easier!" timer="2.2" turned="false" />
-	<text character="Valdis" disabled="true" default="false" say="I have to agree" timer="1.5" turned="false" />
-	<text character="Valdis" disabled="true" default="false" say="We're not really in the shape, or have the numbers, to lay siege to such a fort" timer="2.4" turned="false" />
-	<text character="Alfr" disabled="true" default="false" say="..." timer="1.4" turned="false" />
-	<text character="Alfr" disabled="true" default="false" say="I don't really know what's going on, but I didn't bring any weapons" timer="1.5" turned="false" />
-	<text character="Alfr" disabled="true" default="false" say="So I'm going to have to go with Ulfr's plan" timer="1.7" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Oh, you guys" timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="Bah!" timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="So be it then" timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="You fools can leave, if that is what you want" timer="1.7" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="Yngvarr!" timer="1.4" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="Dagny!" timer="1.4" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="Start chopping down some trees" timer="1.5" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="We've got a battering ram to build!" timer="1.5" turned="false" />
-	<text character="Brynja" disabled="true" default="false" say="..." timer="1.4" turned="false" />
-	<text character="Brynja" disabled="true" default="false" say="It is not wise to disobey our leader, Ulfr" timer="1.6" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="It is not wise to watch your friends die" timer="1.6" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="In fact, I imagine it to be very traumatic" timer="1.6" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="There we go." timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="Nice and warm" timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="Lovely" timer="1.5" turned="true" />
+	<text character="Brandr" disabled="false" default="false" say="Now perhaps we can speak of important matters" timer="1.8" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="Like, for example..." timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="...when we are to charge the Anglian stronghold" timer="2.0" turned="false" />
+	<text character="Yngvarr" disabled="false" default="false" say="I say we do it straight away!" timer="1.6" turned="false" />
+	<text character="Dagny" disabled="false" default="false" say="Aye, this I can agree with" timer="1.6" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="We have yet to spill a drop of Anglian blood" timer="1.8" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="And we've been here for hours" timer="1.5" turned="false" />
+	<text character="Brynja" disabled="false" default="false" say="We cannot just attack them" timer="1.5" turned="false" />
+	<text character="Brynja" disabled="false" default="false" say="They have a bloody wall!" timer="1.6" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="So we need a way to break down their gates" timer="1.8" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="We can do that" timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="Look to the west" timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="To the woods" timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="An infinite supply of timber" timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="And my father showed me how to make a good battering ram" timer="1.8" turned="false" />
+	<text character="Yngvarr" disabled="false" default="false" say="Yes!" timer="1.4" turned="false" />
+	<text character="Yngvarr" disabled="false" default="false" say="Let us break their door!" timer="1.5" turned="false" />
+	<text character="Brynja" disabled="false" default="false" say="...yes" timer="1.5" turned="false" />
+	<text character="Brynja" disabled="false" default="false" say="We can fight our way to their riches!" timer="1.5" turned="false" />
+	<text character="Dagny" disabled="false" default="false" say="AND DRINK THE BLOOD OF THEIR YOUNG!" timer="1.6" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Woah, woah" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Hold on now" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="You're really going to charge them?" timer="1.6" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="But we're only nine!" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="They have dozens of soldiers within their walls!" timer="1.7" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Dozens!" timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="...How do you know that?" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Uh, a mailman told me" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="But it doesn't matter" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="If we charge them, we will lose, and we will die" timer="1.8" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="We will accomplish nothing" timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="Just because you are weak does not mean we are as well" timer="2.2" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="We, the real Vikings, will defeat the Anglians" timer="2.2" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="We will overcome any obstacle to get their gold" timer="2.2" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="Or have you forgotten your debt to my father, Ulfr?" timer="2.2" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="I have not" timer="1.5" turned="false" />
+	<text character="Brynja" disabled="false" default="false" say="Then how do you propose we take their gold?" timer="1.6" turned="false" />
+	<text character="Brynja" disabled="false" default="false" say="Ask them?" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="I... I don't know" timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="But charging those gates will give us nothing" timer="1.7" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Instead..." timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="We should open them..." timer="1.6" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="...from the inside" timer="1.6" turned="false" />
+	<text character="Brynja" disabled="false" default="false" say="...what?" timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="Ha-Ha!" timer="1.6" turned="false" />
+	<text character="Dagny" disabled="false" default="false" say="Really? That's your grand plan?" timer="1.6" turned="false" />
+	<text character="Leifr" disabled="false" default="false" say="Now, now" timer="1.5" turned="false" />
+	<text character="Leifr" disabled="false" default="false" say="I don't think it's that bad of an idea" timer="1.6" turned="false" />
+	<text character="Finnr" disabled="false" default="false" say="Yeah!" timer="1.5" turned="false" />
+	<text character="Finnr" disabled="false" default="false" say="If Ulfr can get us in, then it would make the gold stealing a lot easier!" timer="2.2" turned="false" />
+	<text character="Valdis" disabled="false" default="false" say="I have to agree" timer="1.5" turned="false" />
+	<text character="Valdis" disabled="false" default="false" say="We're not really in the shape, or have the numbers, to lay siege to such a fort" timer="2.4" turned="false" />
+	<text character="Alfr" disabled="false" default="false" say="..." timer="1.4" turned="false" />
+	<text character="Alfr" disabled="false" default="false" say="I don't really know what's going on, but I didn't bring any weapons" timer="1.5" turned="false" />
+	<text character="Alfr" disabled="false" default="false" say="So I'm going to have to go with Ulfr's plan" timer="1.7" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Oh, you guys" timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="Bah!" timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="So be it then" timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="You fools can leave, if that is what you want" timer="1.7" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="Yngvarr!" timer="1.4" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="Dagny!" timer="1.4" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="Start chopping down some trees" timer="1.5" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="We've got a battering ram to build!" timer="1.5" turned="false" />
+	<text character="Brynja" disabled="false" default="false" say="..." timer="1.4" turned="false" />
+	<text character="Brynja" disabled="false" default="false" say="It is not wise to disobey our leader, Ulfr" timer="1.6" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="It is not wise to watch your friends die" timer="1.6" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="In fact, I imagine it to be very traumatic" timer="1.6" turned="false" />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />
