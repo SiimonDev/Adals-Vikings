@@ -91,6 +91,12 @@ void PortalLoader::load()
 		mPortalMap[RoadToCampFinished] = PortalPtr(new Portal(LevelFolder::Road, sf::Vector2f(290, 270), sf::Vector2f(0, 450), sf::Vector2f(360, 691), sf::Vector2f(247, 676)));
 		mPortalMap[RoadToCampFinished]->setCursorRotation(-90);
 
+		mPortalMap[RoadToGates] = PortalPtr(new Portal(LevelFolder::Road, sf::Vector2f(240, 100), sf::Vector2f(1680, 560), sf::Vector2f(1815, 605), sf::Vector2f(1915, 600)));
+		mPortalMap[GatesToRoad] = PortalPtr(new Portal(LevelFolder::City_Gates, sf::Vector2f(420, 175), sf::Vector2f(0, 905), sf::Vector2f(185, 970), sf::Vector2f(20, 1050)));
+
+		mPortalMap[GatesToCliffs] = PortalPtr(new Portal(LevelFolder::City_Gates, sf::Vector2f(255, 170), sf::Vector2f(1100, 910), sf::Vector2f(1190, 990), sf::Vector2f(1220, 1075)));
+		mPortalMap[CliffsToGates] = PortalPtr(new Portal(LevelFolder::Cliffs_Up, sf::Vector2f(420, 175), sf::Vector2f(0, 905), sf::Vector2f(185, 970), sf::Vector2f(20, 1050)));
+
 		//connect the portals
 		mPortalMap[BeachToRoad]->setGateway(&*mPortalMap[RoadToBeach]);
 		mPortalMap[RoadToBeach]->setGateway(&*mPortalMap[BeachToRoad]);
@@ -114,6 +120,11 @@ void PortalLoader::load()
 		mPortalMap[CampFinishedToCampClearing]->setGateway(&*mPortalMap[CampClearingToCamPFinished]);
 		mPortalMap[RoadToCampFinished]->setGateway(&*mPortalMap[CampFinishedToRoad]);
 		mPortalMap[CampFinishedToRoad]->setGateway(&*mPortalMap[RoadToCampFinished]);
+		mPortalMap[RoadToGates]->setGateway(&*mPortalMap[GatesToRoad]);
+		mPortalMap[GatesToRoad]->setGateway(&*mPortalMap[RoadToGates]);
+
+		mPortalMap[GatesToCliffs]->setGateway(&*mPortalMap[CliffsToGates]);
+		mPortalMap[CliffsToGates]->setGateway(&*mPortalMap[GatesToCliffs]);
 	}
 }
 
