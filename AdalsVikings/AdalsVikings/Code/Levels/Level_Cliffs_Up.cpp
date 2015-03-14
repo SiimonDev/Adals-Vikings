@@ -14,6 +14,8 @@ void Level_Cliffs_Up::restartSounds()
 
 void Level_Cliffs_Up::update(sf::Time &frametime)
 {
+
+
 	Level::update(frametime);
 	changeLevel();
 }
@@ -25,6 +27,8 @@ void Level_Cliffs_Up::render(IndexRenderer &iRenderer)
 
 void Level_Cliffs_Up::load()
 {
+	mPortals[CliffsToGates] = &PortalLoader::getPortal(CliffsToGates);
+	mPortals[CliffsToGates]->setWorking(true);
 	Level::load();
 }
 
@@ -35,6 +39,10 @@ void Level_Cliffs_Up::unload()
 
 void Level_Cliffs_Up::changeLevel()
 {
+	if (mPortals[CliffsToGates]->getActivated() && mPortals[CliffsToGates]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::City_Gates);
+	}
 }
 
 void Level_Cliffs_Up::checkInteractEvents()
