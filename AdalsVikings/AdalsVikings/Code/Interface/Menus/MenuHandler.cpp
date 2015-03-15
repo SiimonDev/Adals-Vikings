@@ -13,6 +13,7 @@ MenuHandler &MenuHandler::getInstance()
 
 MenuHandler::MenuHandler()
 {
+	mActive = true;
 	// Main Menu Section
 	mMainMenuPanels.push_back(&mMainMenuPanel);
 	mMainMenuPanels.push_back(&mPlayPanel);
@@ -54,32 +55,42 @@ void MenuHandler::unload(MenuID menuID)
 
 void MenuHandler::update(sf::Time frameTime)
 {
-	mCurrentEvent = MenuEvent::NONE;
-	if (hasActiveMenu())
+	if (mActive || mCurrentID == MenuID::MainMenu)
 	{
-		mActiveMenuPanels[mActiveMenuPanels.size() - 1]->update(frameTime);
-		mCurrentEvent = mActiveMenuPanels[mActiveMenuPanels.size() - 1]->getEvent();
-
-		if (mActiveMenuPanels[0]->getEvent() == MenuEvent::PlayPressed)
+		mCurrentEvent = MenuEvent::NONE;
+		if (hasActiveMenu())
 		{
-			mActiveMenuPanels.push_back(&mPlayPanel);
-			mActiveMenuPanels[0]->update(frameTime);
-		}
+			mActiveMenuPanels[mActiveMenuPanels.size() - 1]->update(frameTime);
+			mCurrentEvent = mActiveMenuPanels[mActiveMenuPanels.size() - 1]->getEvent();
 
-		if (KeyboardState::isPressed(sf::Keyboard::Escape))
-		{
-			popMenu();
+			if (mCurrentEvent == MenuEvent::PlayPressed)
+			{
+				mActiveMenuPanels.push_back(&mPlayPanel);
+				mActiveMenuPanels[0]->update(frameTime);
+			}
+			else if (mCurrentEvent == MenuEvent::BackToMenuPressed)
+			{
+				popMenu();
+			}
+
+			if (KeyboardState::isPressed(sf::Keyboard::Escape))
+			{
+				popMenu();
+			}
 		}
-	}
-	else if (KeyboardState::isPressed(sf::Keyboard::Escape) && mCurrentID == MenuID::PauseMenu)
-	{
-		mActiveMenuPanels.push_back(mPauseMenuPanels[0]);
+		else if (KeyboardState::isPressed(sf::Keyboard::Escape) && mCurrentID == MenuID::PauseMenu)
+		{
+			mActiveMenuPanels.push_back(mPauseMenuPanels[0]);
+		}
 	}
 }
 void MenuHandler::render(IndexRenderer &iRenderer)
 {
-	for (int i = 0; i < mActiveMenuPanels.size(); i++){
-		mActiveMenuPanels[i]->render(iRenderer);
+	if (mActive || mCurrentID == MenuID::MainMenu)
+	{
+		for (int i = 0; i < mActiveMenuPanels.size(); i++){
+			mActiveMenuPanels[i]->render(iRenderer);
+		}
 	}
 }
 
@@ -97,4 +108,15 @@ MenuEvent MenuHandler::getEvent()
 bool MenuHandler::hasActiveMenu()
 {
 	return !mActiveMenuPanels.empty();
+}
+
+void MenuHandler::setActive(bool active)
+{
+	if (mCurrentID != MenuID::MainMenu)
+	{
+		mActive = active;
+		mActiveMenuPanels.clear();
+	}
+	else
+		mActive = true;
 }

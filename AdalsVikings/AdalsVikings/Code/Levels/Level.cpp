@@ -411,6 +411,7 @@ void Level::update(sf::Time &frameTime)
 		}
 		else
 		{
+			MHI.setActive(true);
 			if (!(mHud->isHelpActive() || mPlayer->isInventoryActive() || mPlayer->getSnappedObjectID() != ""))
 				mActionWheel->update();
 			if (!mHud->isHelpActive() && !mHud->isButtonReleased())
@@ -419,6 +420,8 @@ void Level::update(sf::Time &frameTime)
 			}
 		}
 	}
+	else
+		MHI.setActive(false);
 	mOldIsInConversation = mIsInConversation;
 
 	// Do the portal thing

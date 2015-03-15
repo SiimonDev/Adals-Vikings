@@ -23,6 +23,7 @@ public:
 	void popMenu();
 
 	bool hasActiveMenu();
+	void setActive(bool active);
 
 	MenuEvent getEvent();
 
@@ -41,4 +42,6 @@ private:
 	MenuPanels mActiveMenuPanels;
 	MenuPanels mMainMenuPanels;
 	MenuPanels mPauseMenuPanels;
+
+	bool mActive;
 };

@@ -42,18 +42,6 @@ Game::~Game()
 
 }
 
-void Game::resize(int width, int height)
-{
-	mWidth = width;
-	mHeight = height;
-
-	iRenderer.resize(width, height);
-
-	cout << "---- Window Resized! ----" << endl;
-	cout << "Width: " << mWidth << endl;
-	cout << "Height: " << mHeight << endl;
-}
-
 void Game::update(sf::Time frameTime)
 {
 	if (!LSI.getIsDone() && LSI.getIsStarted())
@@ -140,10 +128,6 @@ void Game::processEvents()
 			mWindow.close();
 			break;
 
-		case sf::Event::Resized:
-			resize(event.size.width, event.size.height);
-			break;
-
 		default:
 			break;
 		}
@@ -161,6 +145,10 @@ void Game::run()
 		timeSinceLastUpdate += clock.restart();
 		while (timeSinceLastUpdate >= frameTime)
 		{
+			/* ======== Prevents the game from freezing ======== */
+			if (timeSinceLastUpdate > sf::seconds(4))
+				timeSinceLastUpdate = sf::seconds(0);
+			/* ================================================= */
 			timeSinceLastUpdate -= frameTime;
 			update(frameTime);
 			processEvents();

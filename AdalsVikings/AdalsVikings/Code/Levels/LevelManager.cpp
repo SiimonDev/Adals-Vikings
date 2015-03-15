@@ -267,7 +267,7 @@ void LevelManager::loadAct1(bool reset)
 	mLevelMap[LevelFolder::Hills] = LevelPtr(new Level_Hills(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Ruins] = LevelPtr(new Level_Ruins(mPlayer, mHud, mActionWheel));
 
-	if (mLoadedLevelID == LevelFolder::NONE)
+	if (reset)
 	{
 		mCurrentLevelID = LevelFolder::Beach;  //<--- Change this if you want to spawn on a different level
 		baseLoad(true);

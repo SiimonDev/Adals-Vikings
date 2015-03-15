@@ -60,7 +60,7 @@ void PlayPanel::update(sf::Time frameTime)
 	}
 	else if (menuButton.isClicked())
 	{
-		mCurrentEvent = MenuEvent::MainMenuPressed;
+		mCurrentEvent = MenuEvent::BackToMenuPressed;
 	}
 }
 
