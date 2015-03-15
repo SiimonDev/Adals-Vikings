@@ -40,6 +40,14 @@ enum PortalId
 	GatesToCliffs,
 	CliffsToGates,
 	CliffsToRuins,
+	CliffsTopToCliffsBottom,
+	CliffsBottomToCliffsTop,
+	CliffsToCaverns,
+	CavernsToCliffs,
+	CavernsRightToLeft,
+	CavernsLeftToRight,
+	FarmToHills,
+	HillsToFarm,
 	RuinsToCliffs
 };
 class PortalLoader

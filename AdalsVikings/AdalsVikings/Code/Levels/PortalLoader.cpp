@@ -37,10 +37,10 @@ void PortalLoader::load()
 		mPortalMap[Outside_ChurchToRoad] = PortalPtr(new Portal(LevelFolder::Church_Outside, sf::Vector2f(650, 50), sf::Vector2f(0, 1030), sf::Vector2f(515, 1005), sf::Vector2f(365, 1079)));
 		mPortalMap[Outside_ChurchToRoad]->setCursorRotation(-135);
 
-		mPortalMap[RoadToFarm] = PortalPtr(new Portal(LevelFolder::Road, sf::Vector2f(135, 140), sf::Vector2f(725, 470), sf::Vector2f(86, 650), sf::Vector2f(305, 686)));
+		mPortalMap[RoadToFarm] = PortalPtr(new Portal(LevelFolder::Road, sf::Vector2f(135, 140), sf::Vector2f(725, 470), sf::Vector2f(745, 660), sf::Vector2f(745, 660)));
 		mPortalMap[RoadToFarm]->setCursorRotation(45);
 
-		mPortalMap[FarmToRoad] = PortalPtr(new Portal(LevelFolder::Farm_1, sf::Vector2f(170, 90), sf::Vector2f(1750, 640), sf::Vector2f(86, 680), sf::Vector2f(1920, 680)));
+		mPortalMap[FarmToRoad] = PortalPtr(new Portal(LevelFolder::Farm_1, sf::Vector2f(500, 75), sf::Vector2f(280, 1005), sf::Vector2f(585, 1050), sf::Vector2f(585, 1050)));
 		mPortalMap[FarmToRoad]->setCursorRotation(-90);
 
 		mPortalMap[ForestRoadToCamp] = PortalPtr(new Portal(LevelFolder::Forest_Road, sf::Vector2f(137, 123), sf::Vector2f(1777, 673), sf::Vector2f(1854, 733), sf::Vector2f(1854, 733)));
@@ -100,8 +100,44 @@ void PortalLoader::load()
 		mPortalMap[GatesToCliffs] = PortalPtr(new Portal(LevelFolder::City_Gates, sf::Vector2f(255, 170), sf::Vector2f(1100, 910), sf::Vector2f(1190, 990), sf::Vector2f(1220, 1075)));
 		mPortalMap[GatesToCliffs]->setCursorRotation(180);
 
-		mPortalMap[CliffsToGates] = PortalPtr(new Portal(LevelFolder::Cliffs_Up, sf::Vector2f(80, 430), sf::Vector2f(0, 250), sf::Vector2f(120, 525), sf::Vector2f(5, 525)));
+		mPortalMap[CliffsToGates] = PortalPtr(new Portal(LevelFolder::Cliffs_Up, sf::Vector2f(465, 280), sf::Vector2f(815, 245), sf::Vector2f(1200, 440), sf::Vector2f(1200, 440)));
 		mPortalMap[CliffsToGates]->setCursorRotation(-90);
+
+		mPortalMap[CliffsToRuins] = PortalPtr(new Portal(LevelFolder::Cliffs_Up, sf::Vector2f(80, 430), sf::Vector2f(0, 250), sf::Vector2f(120, 525), sf::Vector2f(5, 525)));
+		mPortalMap[CliffsToRuins]->setCursorRotation(-90);
+
+		mPortalMap[RuinsToCliffs] = PortalPtr(new Portal(LevelFolder::Ruins, sf::Vector2f(200, 545), sf::Vector2f(1540, 50), sf::Vector2f(1570, 570), sf::Vector2f(1570, 570)));
+		mPortalMap[RuinsToCliffs]->setCursorRotation(-90);
+
+		mPortalMap[CliffsTopToCliffsBottom] = PortalPtr(new Portal(LevelFolder::Cliffs_Up, sf::Vector2f(600, 220), sf::Vector2f(740, 860), sf::Vector2f(1200, 900), sf::Vector2f(1200, 900)));
+		mPortalMap[CliffsTopToCliffsBottom]->setCursorRotation(180);
+
+		mPortalMap[CliffsBottomToCliffsTop] = PortalPtr(new Portal(LevelFolder::Cliffs_Down, sf::Vector2f(55, 540), sf::Vector2f(765, 0), sf::Vector2f(800, 530), sf::Vector2f(800, 530)));
+		mPortalMap[CliffsBottomToCliffsTop]->setCursorRotation(-90);
+
+		mPortalMap[CliffsToCaverns] = PortalPtr(new Portal(LevelFolder::Cliffs_Down, sf::Vector2f(320, 285), sf::Vector2f(30, 115), sf::Vector2f(165, 410), sf::Vector2f(165, 410)));
+		mPortalMap[CliffsToCaverns]->setCursorRotation(180);
+
+		mPortalMap[CavernsToCliffs] = PortalPtr(new Portal(LevelFolder::Cavern_Right, sf::Vector2f(315, 755), sf::Vector2f(1470, 0), sf::Vector2f(1525, 650), sf::Vector2f(1525, 650)));
+		mPortalMap[CavernsToCliffs]->setCursorRotation(-90);
+
+		mPortalMap[CavernsRightToLeft] = PortalPtr(new Portal(LevelFolder::Cavern_Right, sf::Vector2f(70, 690), sf::Vector2f(0, 390), sf::Vector2f(90, 840), sf::Vector2f(90, 840)));
+		mPortalMap[CavernsRightToLeft]->setCursorRotation(180);
+
+		mPortalMap[CavernsLeftToRight] = PortalPtr(new Portal(LevelFolder::Cavern_Left, sf::Vector2f(70, 690), sf::Vector2f(1850, 390), sf::Vector2f(1860, 770), sf::Vector2f(1860, 770)));
+		mPortalMap[CavernsLeftToRight]->setCursorRotation(-90);
+
+		mPortalMap[Farm1ToFarm2] = PortalPtr(new Portal(LevelFolder::Farm_1, sf::Vector2f(300, 150), sf::Vector2f(580, 665), sf::Vector2f(715, 770), sf::Vector2f(715, 770)));
+		mPortalMap[Farm1ToFarm2]->setCursorRotation(180);
+
+		mPortalMap[Farm2ToFarm1] = PortalPtr(new Portal(LevelFolder::Farm_2, sf::Vector2f(120, 225), sf::Vector2f(0, 695), sf::Vector2f(60, 795), sf::Vector2f(60, 795)));
+		mPortalMap[Farm2ToFarm1]->setCursorRotation(-90);
+
+		mPortalMap[FarmToHills] = PortalPtr(new Portal(LevelFolder::Farm_1, sf::Vector2f(295, 145), sf::Vector2f(0, 810), sf::Vector2f(240, 910), sf::Vector2f(40, 860)));
+		mPortalMap[FarmToHills]->setCursorRotation(180);
+
+		mPortalMap[HillsToFarm] = PortalPtr(new Portal(LevelFolder::Hills, sf::Vector2f(455, 60), sf::Vector2f(450, 1020), sf::Vector2f(660, 1050), sf::Vector2f(660, 1050)));
+		mPortalMap[HillsToFarm]->setCursorRotation(-90);
 
 		//connect the portals
 		mPortalMap[BeachToRoad]->setGateway(&*mPortalMap[RoadToBeach]);
@@ -131,6 +167,18 @@ void PortalLoader::load()
 
 		mPortalMap[GatesToCliffs]->setGateway(&*mPortalMap[CliffsToGates]);
 		mPortalMap[CliffsToGates]->setGateway(&*mPortalMap[GatesToCliffs]);
+		mPortalMap[CliffsTopToCliffsBottom]->setGateway(&*mPortalMap[CliffsBottomToCliffsTop]);
+		mPortalMap[CliffsBottomToCliffsTop]->setGateway(&*mPortalMap[CliffsTopToCliffsBottom]);
+		mPortalMap[CliffsToCaverns]->setGateway(&*mPortalMap[CavernsToCliffs]);
+		mPortalMap[CavernsToCliffs]->setGateway(&*mPortalMap[CliffsToCaverns]);
+		mPortalMap[CavernsRightToLeft]->setGateway(&*mPortalMap[CavernsLeftToRight]);
+		mPortalMap[CavernsLeftToRight]->setGateway(&*mPortalMap[CavernsRightToLeft]);
+		mPortalMap[Farm1ToFarm2]->setGateway(&*mPortalMap[Farm2ToFarm1]);
+		mPortalMap[Farm2ToFarm1]->setGateway(&*mPortalMap[Farm1ToFarm2]);
+		mPortalMap[CliffsToRuins]->setGateway(&*mPortalMap[RuinsToCliffs]);
+		mPortalMap[RuinsToCliffs]->setGateway(&*mPortalMap[CliffsToRuins]);
+		mPortalMap[FarmToHills]->setGateway(&*mPortalMap[HillsToFarm]);
+		mPortalMap[HillsToFarm]->setGateway(&*mPortalMap[FarmToHills]);
 	}
 }
 

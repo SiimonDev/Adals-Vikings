@@ -25,6 +25,12 @@ void Level_Farm_2::render(IndexRenderer &iRenderer)
 
 void Level_Farm_2::load()
 {
+	mPortals[Farm2ToFarm1] = &PortalLoader::getPortal(Farm2ToFarm1);
+	mPortals[Farm2ToFarm1]->setWorking(true);
+
+	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
+	mNpcs["Valdis"]->setDialogue("Valdis_Farm");
+
 	Level::load();
 }
 
@@ -35,6 +41,10 @@ void Level_Farm_2::unload()
 
 void Level_Farm_2::changeLevel()
 {
+	if (mPortals[Farm2ToFarm1]->getActivated() && mPortals[Farm2ToFarm1]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::Farm_1);
+	}
 }
 
 void Level_Farm_2::checkInteractEvents()

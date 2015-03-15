@@ -25,6 +25,13 @@ void Level_Cavern_Left::render(IndexRenderer &iRenderer)
 
 void Level_Cavern_Left::load()
 {
+	mPortals[CavernsLeftToRight] = &PortalLoader::getPortal(CavernsLeftToRight);
+	mPortals[CavernsLeftToRight]->setWorking(true);
+
+	mNpcs["Miner"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Miner")));
+
+	mNpcs["Miner"]->setDialogue("Miner_Cavern");
+
 	Level::load();
 }
 
@@ -35,6 +42,10 @@ void Level_Cavern_Left::unload()
 
 void Level_Cavern_Left::changeLevel()
 {
+	if (mPortals[CavernsLeftToRight]->getActivated() && mPortals[CavernsLeftToRight]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::Cavern_Right);
+	}
 }
 
 void Level_Cavern_Left::checkInteractEvents()

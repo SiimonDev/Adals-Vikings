@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="I'm not going to jump into that..." />
+	<lookText lookText="It's a hole, smartass." />
+	<text character="Ulfr" disabled="false" default="false" say="What the-" timer="2.0"  turned="false"/>
+	<text character="Miner" disabled="false" default="false" say="YO-HO, MY BOY!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Long time since I've had a visitor!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="What be ye name?" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Uh... Ulfr?" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Lovely name, astounding!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="I'm Labina the miner." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Best miner of the eastern coast!" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Gold you say?" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="INDEED!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Been digging this hole of mine for many a years now." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="And you've found gold?!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="OF COURSE!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Just... not lately..." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Under a bit of a dry spell." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Really, for how long?" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="27 years." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="You've been digging here for 27 years?" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Oh no, way longer than that." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Started out as a teenager." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Brother of mine always called me a fool." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="BUT I SURE SHOWED HIM!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Got me some gold!" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="...27 years ago?" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Still counts." timer="2.0"  turned="false"/>
+	<option_container disabled="false">
+		<option choice_text="How stable is this cave of yours?" disabled="true">
+			<text character="Ulfr" disabled="false" default="false" say="How stable is this cave?" timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="Cave? " timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="This is a mine, boy!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="A real one, with ores of all kinds!" timer="2.0"  turned="false"/>
+			<text character="Ulfr" disabled="false" default="false" say="Alright, how steady is the mine?" timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="Not very, sadly." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="That's why I've been quite careful lately." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Especially after most of my friends died." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="They died? That's awful." timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="Eh, such is life." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Can end in many ways." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Best of which is doing what you love." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="And they sure did love their mining." timer="2.0"  turned="false"/>
+			
+			
+			
+			
+			<gotoContainer />
+		</option>
+		<option choice_text="If i ask nicely, could you leave this place?">
+			<text character="Ulfr" disabled="false" default="false" say="If i asked nicely, would you leave this place?" timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="Are you mad?" timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="I've spent my entire life in this hole!" timer="2.0"  turned="false"/>
+			<text character="Ulfr" disabled="false" default="false" say="Why." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Why havn't you tried finding another place to mine these years?" timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="Well... i kinda have." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="There's this place up the western hills." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Tried digging there once." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="But me and mine were driven away." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Why? What happened?" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="A MASSIVE BEAST CAME DOWN THE HILLSIDE!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="TOOK THE MINE AS IT'S LAIR!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="It was horrible really. Quite horrible." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Can only imagine..." timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="But to answer your quesiton." timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="Yes, i suppose." timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="If the mine was cleared, and the beast vanquished..." timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="Then I would leave this wretched hole." timer="2.0"  turned="false"/>
+			
+			
+			
+			
+			
+			
+			<gotoBaseContainer />
+		</option><option choice_text="The wolf is gone.">
+			<text character="Ulfr" disabled="false" default="false" say="I've taken care of the wolf." timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="...You what?" timer="2.0"  turned="false"/>
+			<text character="Ulfr" disabled="false" default="false" say="The wolf." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="It's gone." timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="I've spent my entire life in this hole!" timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="THAT'S AMAZING!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="...Well, better get moving then!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Just need Lonnie with me first." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Lonnie?" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="He should be over there, somewhere in the back." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Fetch him for me, will you?" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="I'll ready my packing in the meantime." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="Man, where is my pickaxe?" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="...need help finding that one too?" timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="If you would, please." timer="2.0"  turned="false"/>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<gotoBaseContainer />
+		</option><option choice_text="Found &quot;Lonnie&quot;">
+			<text character="Ulfr" disabled="false" default="false" say="I uh... I found your friend." timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="Dear me, He has gotten quite skinny." timer="2.0"  turned="false"/>
+			<text character="Ulfr" disabled="false" default="false" say="...He's dead, Labina." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="He is literally a skeleton, this is his skull." timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="Oh. Well then." timer="2.0"  turned="false"/>
+			<text character="Miner" disabled="false" default="false" say="I guess... well that means." timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="MORE GOLD FOR ME! HA-HA!" timer="2.0"  turned="false"/><text character="Miner" disabled="false" default="false" say="I'll be on my way now, thanks for everything boy!" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="He didn't even take the skull with him... or the axe.." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="What an asshole." timer="2.0"  turned="false"/>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<gotoBaseContainer />
+		</option>
+		
+		<option choice_text="It was nice talking to you." disabled="false">
+			<stopConversation />
+		</option>
+		<stopOption />
+	</option_container>
+	<stopConversation />
+	<mall info="Endast Mall Efter Detta!" disabled="true">
+		<useText useText="Why would I use Brandr?" />
+		<lookText lookText="That's Brandr" />
+		<text character="Ulfr" default="false" disabled="false" disablePrevious="false" turned="true" timer="2.2" say="hej" />
+		<text character="Brandr" disablePrevious="false" timer="" say="DUrr" />
+		<text character="Valdis" />
+		<text character="Alfr" />
+		<text character="Brynja" />
+		<text character="Dagny" />
+		<text character="Finnr" />
+		<text character="Guard" />
+		<text character="Leifr" />
+		<text character="Mailman" />
+		<text character="Miner" />
+		<text character="Priest" />
+		<text character="Princess" />
+		<text character="Valdis" />
+		<text character="Yngvarr" />
+		
+		<option_container disabled="false">
+			<option disabled="false" choice_text="do you even?">
+				<text character="Brandr" disablePrevious="false" timer="3.3" say="hej!" />
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="What do you want!?">
+						<text character="Ulfr" disablePrevious="false" timer="2.5" say="durr" />
+						<text character="Brandr" disablePrevious="false" timer="2.4" say="murh" />
+						<option_container disabled="false">
+							<option disabled="false" disablePrevious="true" choice_text="Disable Previous">
+								<text character="Ulfr" disablePrevious="false" timer="2.4" say="Disable Previous" />
+								<gotoBaseContainer />
+							</option>
+							<stopOption />
+						</option_container>
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="NOPE">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="NUHU">!</text>
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="durr">
+						<text character="Brandr" disablePrevious="false" timer="2.5" say="disable" />
+						<gotoContainer />
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="jimmie had a little farm that was brown and red and green, why was it brown and red and green?">
+				<text character="Brandr" disablePrevious="true" timer="3.3" say="Never Happened" />
+				<gotoContainer />
+			</option>
+			<option disabled="false" disablePrevious="true" choice_text="exit conversation">
+				<stopConversation />
+			</option>
+			<stopOption />
+		</option_container>
+		<option_container disabled="true">
+			<option disabled="false" disablePrevious="false" choice_text="hello">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="hello" />
+				<text character="Brandr" disablePrevious="true" timer="2.5" say="hi!" />
+				<gotoContainer />
+			</option>
+			<stopOption />
+		</option_container>
+	</mall>
+</conversation>

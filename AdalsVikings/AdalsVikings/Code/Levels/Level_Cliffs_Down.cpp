@@ -14,10 +14,19 @@ void Level_Cliffs_Down::restartSounds()
 
 void Level_Cliffs_Down::update(sf::Time &frametime)
 {
+	if (!mCannotGo)
+	{
+		if (Act1Events::hasBeenHandled(Act1Event::TooDarkToGo))
+		{
+			mPortals[CliffsToCaverns]->setWorking(false);
+			mPortals[CliffsToCaverns]->setCannotDialogue("It's too dark to go in there, I need to find something to make it brighter.");
+			mCannotGo = true;
+		}
+	}
 	mWaveAnimation.animate(frametime);
 	mWaveAnimationIdle.animate(frametime);
 	Level::update(frametime);
-	changeLevel();
+	changeLevel(frametime);
 }
 
 void Level_Cliffs_Down::render(IndexRenderer &iRenderer)
@@ -31,6 +40,11 @@ void Level_Cliffs_Down::render(IndexRenderer &iRenderer)
 
 void Level_Cliffs_Down::load()
 {
+	mPortals[CliffsBottomToCliffsTop] = &PortalLoader::getPortal(CliffsBottomToCliffsTop);
+	mPortals[CliffsToCaverns] = &PortalLoader::getPortal(CliffsToCaverns);
+	mPortals[CliffsToCaverns]->setWorking(true);
+	mPortals[CliffsBottomToCliffsTop]->setWorking(true);
+
 	Level::load();
 
 	RMI.loadResource(Texture::WaveAnimationCliffs);
@@ -48,6 +62,16 @@ void Level_Cliffs_Down::load()
 	mWaveAnimationIdle.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
 	mWaveAnimationIdle.setPadding(2);
 	mWaveAnimationIdle.setPosition(sf::Vector2f(1920 + 20, 1080 + 20));
+
+	if (Act1Events::hasBeenHandled(Act1Event::TooDarkToGo))
+	{
+		mPortals[CliffsToCaverns]->setWorking(false);
+		mPortals[CliffsToCaverns]->setCannotDialogue("It's too dark to go in there, I need to find something to make it brighter.");
+	}
+	if (Act1Events::hasBeenHandled(Act1Event::GotCandleLight))
+	{
+		mPortals[CliffsToCaverns]->setWorking(true);
+	}
 }
 
 void Level_Cliffs_Down::unload()
@@ -57,8 +81,16 @@ void Level_Cliffs_Down::unload()
 	RMI.unloadResource(Texture::WaveAnimationCliffsIdle);
 }
 
-void Level_Cliffs_Down::changeLevel()
+void Level_Cliffs_Down::changeLevel(sf::Time &frametime)
 {
+	if (mPortals[CliffsBottomToCliffsTop]->getActivated() && mPortals[CliffsBottomToCliffsTop]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::Cliffs_Up);
+	}
+	if (mPortals[CliffsToCaverns]->getActivated() && mPortals[CliffsToCaverns]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::Cavern_Right);
+	}
 }
 
 void Level_Cliffs_Down::checkInteractEvents()

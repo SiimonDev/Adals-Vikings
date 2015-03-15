@@ -38,6 +38,12 @@ void NpcHandler::load()
 	NpcPtr Dennis(new Npc(Font::Skranji_regular));
 	NpcPtr HiddenLeifr(new Npc(Font::Skranji_regular));
 	NpcPtr Guard(new Npc(Font::Skranji_regular));
+	NpcPtr Aethelberth(new Npc(Font::Skranji_regular));
+	NpcPtr Cerdic(new Npc(Font::Skranji_regular));
+	NpcPtr Leofstan(new Npc(Font::Skranji_regular));
+	NpcPtr Miner(new Npc(Font::Skranji_regular));
+	NpcPtr Osgar(new Npc(Font::Skranji_regular));
+
 
 	Valdis->setName("Valdis");
 	Valdis->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -161,14 +167,64 @@ void NpcHandler::load()
 	Beor->setFlip(true);
 
 	Guard->setName("Guard");
-	Guard->setIdleAnimation(Texture::BeorIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(5));
-	Guard->SetTalkAnimation(Texture::BeorTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
-	Guard->setPosition(sf::Vector2f(450, 790));
-	Guard->setInteractionPosition(sf::Vector2f(700, 780));
+	Guard->setIdleAnimation(Texture::GuardIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(5));
+	Guard->SetTalkAnimation(Texture::GuardTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
+	Guard->setPosition(sf::Vector2f(965, 730));
+	Guard->setInteractionPosition(sf::Vector2f(1095, 730));
 	Guard->setColor(sf::Color(176, 196, 222));
 	Guard->setIndex(3);
-	Guard->setScale(sf::Vector2f(0.65f, 0.65f));
-	Guard->setFlip(true);
+	Guard->setScale(sf::Vector2f(0.6f, 0.6f));
+	Guard->setFlip(false);
+
+	Aethelberth->setName("Aethelberth");
+	Aethelberth->setIdleAnimation(Texture::AethelberthIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(7));
+	Aethelberth->SetTalkAnimation(Texture::AethelberthTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
+	Aethelberth->setPosition(sf::Vector2f(590, 760));
+	Aethelberth->setInteractionPosition(sf::Vector2f(770, 750));
+	Aethelberth->setColor(sf::Color(176, 196, 222));
+	Aethelberth->setIndex(12);
+	Aethelberth->setScale(sf::Vector2f(0.55f, 0.55f));
+	Aethelberth->setFlip(false);
+
+	Cerdic->setName("Cerdic");
+	Cerdic->setIdleAnimation(Texture::CerdicIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(3.5));
+	Cerdic->SetTalkAnimation(Texture::CerdicTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
+	Cerdic->setPosition(sf::Vector2f(270, 855));
+	Cerdic->setInteractionPosition(sf::Vector2f(420, 850));
+	Cerdic->setColor(sf::Color(176, 196, 222));
+	Cerdic->setIndex(3);
+	Cerdic->setScale(sf::Vector2f(0.65f, 0.65f));
+	Cerdic->setFlip(false);
+
+	Leofstan->setName("Leofstan");
+	Leofstan->setIdleAnimation(Texture::LeofstanIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(10));
+	Leofstan->SetTalkAnimation(Texture::LeofstanTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
+	Leofstan->setPosition(sf::Vector2f(162, 625));
+	Leofstan->setInteractionPosition(sf::Vector2f(310, 620));
+	Leofstan->setColor(sf::Color(176, 196, 222));
+	Leofstan->setIndex(4);
+	Leofstan->setScale(sf::Vector2f(0.65f, 0.65f));
+	Leofstan->setFlip(false);
+
+	Miner->setName("Miner");
+	Miner->setIdleAnimation(Texture::MinerIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(5));
+	Miner->SetTalkAnimation(Texture::MinerTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
+	Miner->setPosition(sf::Vector2f(700, 890));
+	Miner->setInteractionPosition(sf::Vector2f(950, 860));
+	Miner->setColor(sf::Color(176, 196, 222));
+	Miner->setIndex(8);
+	Miner->setScale(sf::Vector2f(0.7f, 0.7f));
+	Miner->setFlip(false);
+
+	Osgar->setName("Osgar");
+	Osgar->setIdleAnimation(Texture::OsgarIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(5));
+	Osgar->SetTalkAnimation(Texture::OsgarTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
+	Osgar->setPosition(sf::Vector2f(300, 570));
+	Osgar->setInteractionPosition(sf::Vector2f(440, 575));
+	Osgar->setColor(sf::Color(176, 196, 222));
+	Osgar->setIndex(3);
+	Osgar->setScale(sf::Vector2f(0.4f, 0.4f));
+	Osgar->setFlip(false);
 
 	DruidLeader->setName("Druid Leader");
 	DruidLeader->setIdleAnimation(Texture::DruidLeaderIdle, sf::Vector2i(1, 1), sf::milliseconds(0), sf::seconds(999));
@@ -249,6 +305,12 @@ void NpcHandler::load()
 	CreateNpc("Druid3", std::move(Druid3)));
 	CreateNpc("Druid4", std::move(Druid4)));
 	CreateNpc("HiddenLeifr", std::move(HiddenLeifr)));
+	CreateNpc("Guard", std::move(Guard)));
+	CreateNpc("Aethelberth", std::move(Aethelberth)));
+	CreateNpc("Cerdic", std::move(Cerdic)));
+	CreateNpc("Leofstan", std::move(Leofstan)));
+	CreateNpc("Miner", std::move(Miner)));
+	CreateNpc("Osgar", std::move(Osgar)));
 }
 
 void NpcHandler::unload()
