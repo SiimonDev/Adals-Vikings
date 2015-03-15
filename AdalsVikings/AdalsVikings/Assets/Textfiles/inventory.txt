@@ -1,13 +1,13 @@
-slot_0.0: $sleepingMeat
+slot_0.0: $fluteBroken
 slot_0.1: 
-slot_0.2: 
-slot_0.3: 
-slot_1.0: 
-slot_1.1: 
-slot_1.2: 
+slot_0.2: $stick
+slot_0.3: $mead
+slot_1.0: $candle
+slot_1.1: $cloth
+slot_1.2: $bearDeer
 slot_1.3: 
 slot_2.0: 
-slot_2.1: 
+slot_2.1: $meat
 slot_2.2: 
 slot_2.3: 
 slot_3.0: 

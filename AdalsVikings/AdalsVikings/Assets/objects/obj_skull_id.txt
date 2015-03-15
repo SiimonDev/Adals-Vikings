@@ -1,11 +1,11 @@
-*Type: invisible
+*Type: standard
 *ID: $skull$
 *Name: Skull
 *ispickupable: True
-*pickup: "" ~2,0
+*pickup: "To be or not to be, that is the question." ~2,0
 *lookat: "By Oden... where's the rest of him?" ~2,5
 *deny: "I can't do that." ~1,5
 *denywith: 
-*combine: 
+*combine: $helmet$ $skullHelmet$ "I hope the guard dosen't think I'¨m a murderer after this." ~2,5; 
 *interact: 
-*invisible: X:   Y:
+*texture: "img_skull_id.png"

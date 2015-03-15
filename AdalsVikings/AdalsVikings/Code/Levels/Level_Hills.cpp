@@ -14,6 +14,32 @@ void Level_Hills::restartSounds()
 
 void Level_Hills::update(sf::Time &frametime)
 {
+	if (Act1Events::hasBeenTriggered(Act1Event::GivenSleepingMeatToWolf) && !Act1Events::hasBeenHandled(Act1Event::GivenSleepingMeatToWolf))
+	{
+		if (!mFade1)
+		{
+			FadeI.fadeOut(frametime);
+
+			if (FadeI.getFaded())
+			{
+				mFade1 = true;
+			}
+		}
+		if (mFade1 && !mFade2)
+		{
+			FadeI.fadeIn(frametime);
+			if (FadeI.getFaded())
+			{
+				mFade2 = true;
+				DialogHandler::getDialogue("Ulfr_Hills").startDialogue();
+			}
+		}
+		if (DialogHandler::getDialogue("Ulfr_Hills").getHasStopped())
+		{
+			DialogHandler::getDialogue("Miner_Cavern").enableOption(3);
+			Act1Events::handleEvent(Act1Event::GivenSleepingMeatToWolf);
+		}
+	}
 	Level::update(frametime);
 	changeLevel();
 }
@@ -52,7 +78,8 @@ void Level_Hills::changeLevel()
 
 void Level_Hills::checkInteractEvents()
 {
-
+	if (mDroppedItemID == "sleepingMeat" && mObjects[mObjIndex]->getObjID() == "ShackEntrance" && !Act1Events::hasBeenTriggered(Act1Event::GivenSleepingMeatToWolf))
+		Act1Events::triggerEvent(Act1Event::GivenSleepingMeatToWolf);
 }
 void Level_Hills::checkEvents()
 {

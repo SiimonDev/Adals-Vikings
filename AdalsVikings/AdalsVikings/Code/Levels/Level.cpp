@@ -422,15 +422,19 @@ void Level::update(sf::Time &frameTime)
 	mOldIsInConversation = mIsInConversation;
 
 	// Do the portal thing
-	for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+	if (!mIsInConversation)
 	{
-		if (!it->second->getWalkAble())
+
+		for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 		{
-			it->second->update(frameTime, *mPlayer);
-			it->second->portalTravel(*mPlayer);
+			if (!it->second->getWalkAble())
+			{
+				it->second->update(frameTime, *mPlayer);
+				it->second->portalTravel(*mPlayer);
+			}
+			else
+				it->second->walkPath(*mPlayer);
 		}
-		else
-			it->second->walkPath(*mPlayer);
 	}
 
 	

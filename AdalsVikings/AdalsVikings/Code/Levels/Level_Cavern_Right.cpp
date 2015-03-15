@@ -17,14 +17,16 @@ void Level_Cavern_Right::restartSounds()
 
 void Level_Cavern_Right::update(sf::Time &frametime)
 {
+	if (Act1Events::hasBeenHandled(Act1Event::GivenSkullToMiner) && !mPlayer->hasItemInInventory("helmet") && !mPlayer->hasItemInInventory("skullHelmet"))
+		mPlayer->addItemToInventory("helmet");
 	if (Act1Events::hasBeenTriggered(Act1Event::TooDarkToGo) && !Act1Events::hasBeenHandled(Act1Event::TooDarkToGo))
 	{
 		if (!DialogHandler::getDialogue("Ulfr_Cavern").getActiveConversation() && !DialogHandler::getDialogue("Ulfr_Cavern").getHasStopped())
 			DialogHandler::getDialogue("Ulfr_Cavern").startDialogue();
 		if (DialogHandler::getDialogue("Ulfr_Cavern").getHasStopped())
 		{
+			Act1Events::handleEvent(Act1Event::TooDarkToGo);
 			LVLMI.changeLevel(LevelFolder::Cliffs_Down);
-			Act1Events::hasBeenHandled(Act1Event::TooDarkToGo);
 		}
 	}
 	Level::update(frametime);

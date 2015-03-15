@@ -71,7 +71,6 @@ void Level_Farm_1::update(sf::Time &frametime)
 		{
 			if (!mFade1)
 			{
-
 				FadeI.fadeOut(frametime);
 
 				if (FadeI.getFaded())

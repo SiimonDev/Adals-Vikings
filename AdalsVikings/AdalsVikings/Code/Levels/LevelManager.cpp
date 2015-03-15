@@ -274,10 +274,10 @@ void LevelManager::loadAct1(bool reset)
 	}
 	else
 	{
-		if (mLoadedLevelID != LevelFolder::NONE)
+		if (reset)
 			mCurrentLevelID = mLoadedLevelID;
 		else
-			mCurrentLevelID = LevelFolder::Farm_1;
+			mCurrentLevelID = LevelFolder::Beach;
 
 		baseLoad(false);
 	}

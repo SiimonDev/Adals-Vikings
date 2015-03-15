@@ -43,6 +43,9 @@ namespace Act1Event
 		GivenFlowerToValdis,
 		GivenMeadToValdis,
 		GivenSleepingMeatToWolf,
+		GivenSkullToMiner,
+		MinedSomeGold,
+		GivenSkullHelmetToGuard,
 		EVENT_SIZE
 	};
 }
