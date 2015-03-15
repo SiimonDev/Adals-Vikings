@@ -1,0 +1,3 @@
+*mapID: 3
+*currentActID: 2
+*playerPos: 729.54, 782.006

@@ -37,7 +37,7 @@ void PauseMenuPanel::load()
 	saveButton.setDescriptionStyle(sf::Text::Bold);
 	saveButton.setDescriptionPosition(sf::Vector2f(200, 0));
 	saveButton.setIndex(mIndex + 1);
-	saveButton.setEnabled(false);
+	saveButton.setEnabled(true);
 
 	optionButton = Button(Texture::PauseMenuOptionsButton, Font::Font1, sf::Vector2f()/*, "Go to options menu"*/);
 	optionButton.setPosition(sf::Vector2f(960, 569));
@@ -89,6 +89,14 @@ void PauseMenuPanel::update(sf::Time frameTime)
 	if (resumeButton.isClicked())
 	{
 		mCurrentEvent = MenuEvent::ResumePressed;
+	}
+	else if (saveButton.isClicked())
+	{
+		mCurrentEvent = MenuEvent::SavePressed;
+	}
+	else if (optionButton.isClicked())
+	{
+		mCurrentEvent = MenuEvent::OptionsPressed;
 	}
 	else if (mainMenuButton.isClicked())
 	{

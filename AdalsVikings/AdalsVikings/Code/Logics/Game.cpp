@@ -66,8 +66,7 @@ void Game::update(sf::Time frameTime)
 		MHI.update(frameTime);
 		if (runGame)
 		{
-			if (!MHI.hasActiveMenu())
-				LVLMI.update(frameTime);
+			LVLMI.update(frameTime);
 
 			// Check for pause menu events
 			if (MHI.getEvent() == MenuEvent::MainMenuPressed)
@@ -85,6 +84,11 @@ void Game::update(sf::Time frameTime)
 		if (MHI.getEvent() == MenuEvent::NewGamePressed)
 		{
 			LSI.startLoading(LoadTask::StartGame);
+			runGame = true;
+		}
+		else if (MHI.getEvent() == MenuEvent::LoadGamePressed)
+		{
+			LSI.startLoading(LoadTask::LoadGame);
 			runGame = true;
 		}
 		else if (MHI.getEvent() == MenuEvent::ExitGamePressed)

@@ -120,9 +120,9 @@ void Level::updateObjects(sf::Time frameTime)
 					delete mObjects[mObjIndex];
 					mObjects.erase(mObjects.begin() + mObjIndex);	
 					mWalkToObject = false;
+					mPlayer->setIntention(Intention::None);
 				}
 			}
-			mPlayer->setIntention(Intention::None);
 		}
 		else if (mPlayer->getIntention() == Intention::Interact)
 		{

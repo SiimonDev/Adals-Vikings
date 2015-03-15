@@ -6,10 +6,14 @@
 enum MenuEvent
 {
 	NONE,
+	PlayPressed,
 	NewGamePressed,
 	ExitGamePressed,
 	MainMenuPressed,
-	ResumePressed
+	ResumePressed,
+	SavePressed,
+	OptionsPressed,
+	LoadGamePressed
 };
 
 class MenuPanel;

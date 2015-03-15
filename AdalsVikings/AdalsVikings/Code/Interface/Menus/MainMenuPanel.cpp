@@ -5,12 +5,10 @@ MainMenuPanel::MainMenuPanel() :
  mAnimationTime(sf::milliseconds(750)), mTimePassed(sf::Time::Zero)
 {
 	mCurrentEvent = MenuEvent::NONE;
-	mAxeAnimation.restart();
 }
 
 void MainMenuPanel::load()
 {
-	RMI.loadResource(Font::Font1);
 	RMI.loadResource(Texture::MainMenuPlayButton);
 	RMI.loadResource(Texture::MainMenuOptionsButton);
 	RMI.loadResource(Texture::MainMenuQuitButton);
@@ -25,7 +23,6 @@ void MainMenuPanel::load()
 	mAxeAnimation.setPosition(sf::Vector2f(1920, 1080));
 	mAxeAnimation.setIdleFrame(sf::Vector2i(5, 1));
 	mAxeAnimation.setIndex(50);
-	mAxeAnimation.restart();
 
 	playButton = Button(Texture::MainMenuPlayButton, Font::Font1, sf::Vector2f());
 	playButton.setPosition(sf::Vector2f(1010, 275));
@@ -77,6 +74,8 @@ void MainMenuPanel::update(sf::Time frameTime)
 		optionButton.update();
 		exitButton.update();
 	}
+	else
+		mAxeAnimation.animate(frameTime);
 
 	if (mAnimateAxe)
 	{
@@ -84,17 +83,24 @@ void MainMenuPanel::update(sf::Time frameTime)
 
 		if (mTimePassed >= mAnimationTime)
 		{
-			mTimePassed = sf::Time::Zero;
+			mTimePassed = sf::seconds(0);
 			
 			if (mPlay)
-				mCurrentEvent = MenuEvent::NewGamePressed;
+			{
+				playButton.update();
+				mAxeAnimation.restart();
+				mCurrentEvent = MenuEvent::PlayPressed;
+				mPlay = false;
+			}
 			else if (mQuit)
+			{
 				mCurrentEvent = MenuEvent::ExitGamePressed;
+				mQuit = false;
+			}
+
+			mAnimateAxe = false;
 		}
 	}
-
-	if (mAnimateAxe)
-		mAxeAnimation.animate(frameTime);
 
 	if (playButton.isClicked())
 	{

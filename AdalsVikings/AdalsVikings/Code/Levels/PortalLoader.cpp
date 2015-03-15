@@ -12,7 +12,7 @@ void PortalLoader::load()
 	if (mPortalMap.size() != 0)
 		mPortalMap.clear();
 
-	if (LVLMI.getCurrentAct() == Ship)
+	if (LVLMI.getCurrentAct() == Act::Ship)
 	{
 		mPortalMap[Ship1ToShip2] = PortalPtr(new Portal(LevelFolder::Ship_1, sf::Vector2f(110, 400), sf::Vector2f(0, 400), sf::Vector2f(200, 750), sf::Vector2f(0, 750)));
 		mPortalMap[Ship1ToShip2]->setCursorRotation(-90);
@@ -23,7 +23,7 @@ void PortalLoader::load()
 		mPortalMap[Ship1ToShip2]->setGateway(&*mPortalMap[Ship2ToShip1]);
 		mPortalMap[Ship2ToShip1]->setGateway(&*mPortalMap[Ship1ToShip2]);
 	}
-	else if (LVLMI.getCurrentAct() == Act1)
+	else if (LVLMI.getCurrentAct() == Act::Act1)
 	{
 		mPortalMap[BeachToRoad] = PortalPtr(new Portal(LevelFolder::Beach, sf::Vector2f(150, 150), sf::Vector2f(0, 350), sf::Vector2f(170, 500), sf::Vector2f(0, 460)));
 		mPortalMap[BeachToRoad]->setCursorRotation(-90);

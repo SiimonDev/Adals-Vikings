@@ -137,6 +137,12 @@ void Animation::restart()
 {
 	mCurrentFrame = 0;
 	mStop = false;
+	mIsFinished = false;
+
+	if (mIsFlipped)
+		mSprite.setTextureRect(sf::IntRect(mSpriteSize.x, 0, -mSpriteSize.x, mSpriteSize.y));
+	else
+		mSprite.setTextureRect(sf::IntRect(0, 0, mSpriteSize.x, mSpriteSize.y));
 }
 void Animation::flip(bool value)
 {

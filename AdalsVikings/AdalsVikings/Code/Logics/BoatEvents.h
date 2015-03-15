@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 namespace BoatEvent
 {
 	enum ID
@@ -21,9 +23,10 @@ namespace BoatEvent
 class BoatEvents
 {
 public:
-	static void initialize();
+	static void initialize(std::string filePath = "");
 	static void triggerEvent(BoatEvent::ID event);
 	static void handleEvent(BoatEvent::ID event);
+	static void saveEvents(std::string filePath);
 	static void resetEvents();
 
 	static bool hasBeenHandled(BoatEvent::ID event);
