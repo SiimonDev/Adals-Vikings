@@ -43,6 +43,8 @@ void NpcHandler::load()
 	NpcPtr Leofstan(new Npc(Font::Skranji_regular));
 	NpcPtr Miner(new Npc(Font::Skranji_regular));
 	NpcPtr Osgar(new Npc(Font::Skranji_regular));
+	NpcPtr Jacob(new Npc(Font::Skranji_regular));
+	NpcPtr Parrik(new Npc(Font::Skranji_regular));
 
 
 	Valdis->setName("Valdis");
@@ -285,6 +287,20 @@ void NpcHandler::load()
 	HiddenLeifr->setColor(sf::Color(176, 196, 222));
 	HiddenLeifr->setIsInvisble(true);
 
+	Jacob->setName("Jacob");
+	Jacob->setPosition(sf::Vector2f(190, 365));
+	Jacob->setInvisibleRect(sf::Vector2f(90, 135));
+	Jacob->setInteractionPosition(sf::Vector2f(205, 530));
+	Jacob->setColor(sf::Color(176, 196, 222));
+	Jacob->setIsInvisble(true);
+
+	Parrik->setName("Parrik");
+	Parrik->setPosition(sf::Vector2f(715, 355));
+	Parrik->setInvisibleRect(sf::Vector2f(55, 175));
+	Parrik->setInteractionPosition(sf::Vector2f(700, 520));
+	Parrik->setColor(sf::Color(176, 196, 222));
+	Parrik->setIsInvisble(true);
+
 	CreateNpc("Valdis", std::move(Valdis)));
 	CreateNpc("Leifr", std::move(Leifr)));
 	CreateNpc("Finnr", std::move(Finnr)));
@@ -311,6 +327,8 @@ void NpcHandler::load()
 	CreateNpc("Leofstan", std::move(Leofstan)));
 	CreateNpc("Miner", std::move(Miner)));
 	CreateNpc("Osgar", std::move(Osgar)));
+	CreateNpc("Jacob", std::move(Jacob)));
+	CreateNpc("Parrik", std::move(Parrik)));
 }
 
 void NpcHandler::unload()

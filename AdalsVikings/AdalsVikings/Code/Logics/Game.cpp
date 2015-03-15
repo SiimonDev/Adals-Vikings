@@ -24,7 +24,6 @@ Game::Game()
 	:mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings"/*, sf::Style::Fullscreen*/)
 {
 	mWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
-	mWindow.setVerticalSyncEnabled(false);
 	mWindow.setMouseCursorVisible(false);
 
 	icon.loadFromFile("assets/images/interface/icon_32.png");
@@ -129,7 +128,7 @@ void Game::render()
 void Game::processEvents()
 {
 	sf::Event event;
-	while (mWindow.pollEvent(event))
+	if (mWindow.pollEvent(event))
 	{
 		switch (event.type)
 		{

@@ -2,7 +2,7 @@
 *ID: $mead$
 *Name: Mead
 *ispickupable: True
-*pickup: "This might come in handy" ~2,0
+*pickup: "I don't really drink but..." ~2,0
 *lookat: "That's nice..." ~1,5
 *deny: "I can't do that" ~1,5
 *denywith: $flowers$ "I shouldn't do this on my own." ~3,0; $candle$ "Pouring mead over the candle would put it out and I don't want that." ~3,0; $torch$ "There is no point in heating the mead." ~3,0; $cross$ "I bet I can find something more useful to do with the mead than wasting it on this cross." ~3,0; $rope$ "The rope's craving for mead is incredibly absent." ~3,0; $ropePiece$ "The rope's craving for mead is incredibly absent." ~3,0; $axeHead$ "Axe heads can’t drink." ~3,0; $bucketBroken$ "The mead is already in a glass, no need for the bucket." ~3,0; $meat$ "I need help with this." ~3,0; 

@@ -14,6 +14,26 @@ void Level_Farm_2::restartSounds()
 
 void Level_Farm_2::update(sf::Time &frametime)
 {
+	if (Act1Events::hasBeenTriggered(Act1Event::TalkedToJacob) && !Act1Events::hasBeenHandled(Act1Event::TalkedToJacob))
+	{
+		DialogHandler::getDialogue("Parrik_Farm").enableOption(2);
+		Act1Events::handleEvent(Act1Event::TalkedToJacob);
+	}
+	if (Act1Events::hasBeenTriggered(Act1Event::TalkedToParrik) && !Act1Events::hasBeenHandled(Act1Event::TalkedToParrik))
+	{
+		DialogHandler::getDialogue("Jacob_Farm").enableOption(3);
+		Act1Events::handleEvent(Act1Event::TalkedToParrik);
+	}
+	if (Act1Events::hasBeenTriggered(Act1Event::SolvedConflict) && !Act1Events::hasBeenHandled(Act1Event::SolvedConflict))
+	{
+		if (DialogHandler::getDialogue("Jacob_Farm").getHasStopped())
+		{
+			mNpcs.erase("Jacob");
+			mNpcs.erase("Parrik");
+			Act1Events::handleEvent(Act1Event::SolvedConflict);
+		}
+	}
+
 	Level::update(frametime);
 	changeLevel();
 }
@@ -28,8 +48,12 @@ void Level_Farm_2::load()
 	mPortals[Farm2ToFarm1] = &PortalLoader::getPortal(Farm2ToFarm1);
 	mPortals[Farm2ToFarm1]->setWorking(true);
 
-	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
-	mNpcs["Valdis"]->setDialogue("Valdis_Farm");
+
+	mNpcs["Jacob"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Jacob")));
+	mNpcs["Parrik"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Parrik")));
+
+	mNpcs["Jacob"]->setDialogue("Jacob_Farm");
+	mNpcs["Parrik"]->setDialogue("Parrik_Farm");
 
 	Level::load();
 }
@@ -50,8 +74,17 @@ void Level_Farm_2::changeLevel()
 void Level_Farm_2::checkInteractEvents()
 {
 
+
 }
 void Level_Farm_2::checkEvents()
 {
+	if (!Act1Events::hasBeenTriggered(Act1Event::TalkedToJacob) && DialogHandler::getDialogue("Jacob_Farm").getIsOptionDisabled(2) && DialogHandler::getDialogue("Jacob_Farm").getHasStopped())
+		Act1Events::triggerEvent(Act1Event::TalkedToJacob);
+
+	if (!Act1Events::hasBeenTriggered(Act1Event::TalkedToParrik) && Act1Events::hasBeenHandled(Act1Event::TalkedToJacob) && DialogHandler::getDialogue("Parrik_Farm").getIsOptionDisabled(2) && DialogHandler::getDialogue("Parrik_Farm").getHasStopped())
+		Act1Events::triggerEvent(Act1Event::TalkedToParrik);
+
+	if (!Act1Events::hasBeenTriggered(Act1Event::SolvedConflict) && Act1Events::hasBeenHandled(Act1Event::TalkedToParrik) && DialogHandler::getDialogue("Jacob_Farm").getIsOptionDisabled(3) && DialogHandler::getDialogue("Jacob_Farm").getHasStopped())
+		Act1Events::triggerEvent(Act1Event::SolvedConflict);
 
 }

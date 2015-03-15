@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Well I can't exactly huff and puff his house down.." />
+	<lookText lookText="Seems like someone likes to stay at home." />
+	<text character="Ulfr" say="Hello?" disabled="false" default="true" timer="2.0" turned="false" />
+	<text character="Ulfr" say="..." disabled="false" default="false" timer="1.4" />
+	<text character="Ulfr" say="... hello?" disabled="false" default="false" timer="2.3" />
+	<text character="Jacob" say="WHAT IS IT?" disabled="false" default="false" timer="2.3" />
+	<text character="Ulfr" say="Who are you?" disabled="false" default="false" timer="2.3" />
+	<text character="Jacob" say="Me?" disabled="false" default="false" timer="1.8" />
+	<text character="Jacob" say="I'm Jacob!" disabled="false" default="false" timer="2.3" />
+	<text character="Jacob" say="I'm a farmer!" disabled="false" default="false" timer="2.3" />
+	<text character="Jacob" say="Who in the name of god are you?" disabled="false" default="false" timer="2.8" />
+	<text character="Ulfr" say="I'm Ulfr." disabled="false" default="false" timer="2.3" />
+	<text character="Jacob" say="...Just Ulfr?" disabled="false" default="false" timer="2.3" />
+	<text character="Jacob" say="Nothing else?" disabled="false" default="false" timer="2.3" />
+	<text character="Ulfr" say="Uh..." disabled="false" default="false" timer="2.3" />
+	<text character="Ulfr" say="I'm a Viking?" disabled="false" default="false" timer="2.3" />
+	<text character="Jacob" say="HAH!" disabled="false" default="false" timer="1.8" />
+	<text character="Jacob" say="AHAHA!" disabled="false" default="false" timer="2.3" />
+	<text character="Jacob" say="You must be that new jester I've heard so much about!" disabled="false" default="false" timer="2.8" />
+	<text character="Jacob" say="The king loves you!" disabled="false" default="false" timer="2.4" />
+	<text character="Jacob" say="I thought your name was Dealic?" disabled="false" default="false" timer="2.4" />
+	<text character="Ulfr" say="Uh..." disabled="false" default="false" timer="2.3" />
+	<text character="Ulfr" say="I go by many a name." disabled="false" default="false" timer="2.4" />
+	<text character="Jacob" say="..." disabled="false" default="false" timer="1.3" />
+	<text character="Jacob" say="...why?" disabled="false" default="false" timer="2.2" />
+	<text character="Ulfr" say="It's a joke." disabled="false" default="false" timer="2.2" />
+	<text character="Jacob" say="HAHAHA!" disabled="false" default="false" timer="2.3" />
+	<text character="Jacob" say="CLASSIC!" disabled="false" default="false" timer="2.4" />
+	<option_container disabled="false">
+		<option choice_text="Why do you have so many signs in your yard?" disabled="false">
+			<text character="Ulfr" say="Why do you have so many signs in your yard?" timer="2.4" turned="false" default="false" disabled="false" />
+			<text character="Jacob" say="My signs?" disabled="false" default="false" timer="1.8" />
+			<text character="Jacob" say="They're for protection!" disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="Against that bastard Parrik, beyond the fence." disabled="false" default="false" timer="2.4" />
+			<text character="Jacob" say="He's a thief, that one!" disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="Stole some of my hay, he did!" disabled="false" default="false" timer="2.3" />
+			<text character="Ulfr" say="How awful." timer="2.2" turned="false" default="false" disabled="false" />
+			<text character="Jacob" say="You're telling me!" disabled="false" default="false" timer="2.2" />
+			<text character="Jacob" say="I've been meaning to get back at him for a while now." disabled="false" default="false" timer="2.8" />
+			<text character="Jacob" say="But I can't leave my place in here, else he might come back and steal some more!" disabled="false" default="false" timer="3.2" />
+			<text character="Ulfr" say="What a... dilemma." timer="2.2" turned="false" default="false" disabled="false" />
+			<text character="Jacob" say="That's the least you could say." disabled="false" default="false" timer="2.4" disablePrevious="true" />
+			<gotoBaseContainer />
+		</option>
+		<option choice_text="I've got to say, you've got some lovely flowers over there." disabled="false">
+			<text character="Ulfr" say="I've got to say, you've got some lovely flowers over there." disabled="false" default="false" timer="2.5" />
+			<text character="Jacob" say="Oh!" disabled="false" default="false" timer="1.4" />
+			<text character="Jacob" say="You noticed my prize winning orchid, Betty!" disabled="false" default="false" timer="2.4" />
+			<text character="Jacob" say="Anyone would." disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="She's a beauty, that one." disabled="false" default="false" timer="2.4" />
+			<text character="Jacob" say="The best I've ever owned." disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="...why do you ask?" disabled="false" default="false" timer="2.4" />
+			<text character="Ulfr" say="Oh, I was just wondering..." disabled="false" default="false" timer="2.3" />
+			<text character="Ulfr" say="...uh..." disabled="false" default="false" timer="2.2" />
+			<text character="Ulfr" say="Could I have it?" disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="You what, mate?" disabled="false" default="false" timer="2.4" />
+			<text character="Jacob" say="You WHAT?" disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="MATE?" disabled="false" default="false" timer="1.8" />
+			<text character="Ulfr" say="Oh, come on." disabled="false" default="false" timer="2.3" />
+			<text character="Ulfr" say="I really need it." disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="SHE!" disabled="false" default="false" timer="1.7" />
+			<text character="Jacob" say="SHE IS A SHE!" disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="NOT AN *IT*!" disabled="false" default="false" timer="2.3" />
+			<text character="Ulfr" say="Alright." disabled="false" default="false" timer="2.3" />
+			<text character="Ulfr" say="Can I have her?" disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="NO!" disabled="false" default="false" timer="2.3" />
+			<text character="Ulfr" say="So..." disabled="false" default="false" timer="1.8" />
+			<text character="Ulfr" say="...there is no way in hell that I'll be able to get my hands on that flo..." disabled="false" default="false" timer="2.8" />
+			<text character="Ulfr" say="...on that orchid." disabled="false" default="false" timer="2.2" />
+			<text character="Jacob" say="..." disabled="false" default="false" timer="1.7" />
+			<text character="Jacob" say="...maybe." disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="You are really famous after all." disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="And have brought joy to so many." disabled="false" default="false" timer="2.4" />
+			<text character="Jacob" say="But only if you do something for me first." disabled="false" default="false" timer="2.3" />
+			<text character="Ulfr" say="Really?" disabled="false" default="false" timer="2.0" />
+			<text character="Ulfr" say="Great!" disabled="false" default="false" timer="2.0" />
+			<text character="Ulfr" say="What do I have to do?" disabled="false" default="false" timer="2.2" />
+			<text character="Jacob" say="..." disabled="false" default="false" timer="1.2" />
+			<text character="Jacob" say="...I want you to steal my neighbor's hay." disabled="false" default="false" timer="2.3" />
+			<text character="Ulfr" say="..." disabled="false" default="false" timer="1.4" />
+			<text character="Ulfr" say="Uh..." disabled="false" default="false" timer="2.0" />
+			<text character="Ulfr" say="Like..." disabled="false" default="false" timer="2.0" />
+			<text character="Ulfr" say="All of it?" disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="ALL OF IT." disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="YES!" disabled="false" default="false" timer="1.8" />
+			<text character="Jacob" say="STEAL IT ALL!" disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="But only if you do something for me first." disabled="false" default="false" timer="2.3" />
+			<text character="Ulfr" say="Okay..." disabled="false" default="false" timer="2.0" />
+			<text character="Ulfr" say="I'll go do that..." disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="HAHAHA!" disabled="false" default="false" timer="2.3" disablePrevious="true" />
+			<gotoBaseContainer />
+		</option>
+		<option choice_text="I'm back to settle things." disabled="true">
+			<text character="Ulfr" say="I'm back to settle things." timer="2.2" turned="true" default="false" disabled="false" />
+			<text character="Jacob" say="Settle?" disabled="false" default="false" timer="2.2" />
+			<text character="Jacob" say="What do you mean?" disabled="false" default="false" timer="2.3" />
+			<text character="Jacob" say="Where's the hay?" disabled="false" default="false" timer="2.4" />
+			<text character="Ulfr" say="I won't steal it." timer="2.2" turned="true" default="false" disabled="false" />
+			<text character="Ulfr" say="I want you to go talk to him." timer="2.3" turned="true" default="false" disabled="false" />
+			<text character="Ulfr" say="He never stole your hay, and your hatred of him is unjust." timer="2.8" turned="true" default="false" disabled="false" />
+			<text character="Ulfr" say="I'm back to settle things." timer="2.2" turned="true" default="false" disabled="false" />
+			<text character="Jacob" say="WHAT?!" disabled="false" default="false" timer="2.2" />
+			<text character="Ulfr" say="SILENCE!" timer="2.2" turned="true" default="false" disabled="false" />
+			<text character="Ulfr" say="DEALIC THE FUNNY HAS SPOKEN!" timer="2.4" turned="true" default="false" disabled="false" />
+			<text character="Ulfr" say="YOU SHALL GO SPEAK TO THY NEIGHBOR!" timer="2.3" turned="true" default="false" disabled="false" />
+			<text character="Ulfr" say="AND TAKETH HIS OFFER OF PEACE!" timer="2.4" turned="true" default="false" disabled="false" />
+			<text character="Jacob" say="..." disabled="false" default="false" timer="2.2" />
+			<text character="Jacob" say="W-What?" disabled="false" default="false" timer="2.3" />
+			<text character="Ulfr" say="..." timer="1.8" turned="true" default="false" disabled="false" />
+			<text character="Ulfr" say="Go talk to him." timer="2.4" turned="true" default="false" disabled="false" />
+			<text character="Ulfr" say="NOW!" timer="2.2" turned="true" default="false" disabled="false" />
+			<text character="Jacob" say="O-Okay..." disabled="false" default="false" timer="2.2" />
+			<text character="Jacob" say="I'm sorry..." disabled="false" default="false" timer="2.3" />
+			<text character="Ulfr" say="..." timer="2.4" turned="true" default="false" disabled="false" />
+			<text character="Ulfr" say="AND I'LL TAKE YOUR FLOWER WITH ME!" timer="2.5" turned="true" default="false" disabled="false" />
+			<text character="Jacob" say="B-But!" disabled="false" default="false" timer="2.2" />
+			<text character="Jacob" say="..." disabled="false" default="false" timer="1.7" />
+			<text character="Jacob" say="Okay..." disabled="false" default="false" timer="1.7" />
+			<text character="Ulfr" say="Huh." timer="2.3" turned="true" default="false" turnedplayer="true" disabled="false" />
+			<text character="Ulfr" say="Poor guy." timer="2.3" turned="true" default="false" turnedplayer="true" disabled="false" />
+			<text character="Ulfr" say="I almost feel bad for him." timer="2.4" turned="true" default="false" turnedplayer="true" disabled="false" />
+			<text character="Ulfr" say="Oh well, time to pluck some flowers." timer="2.5" turned="true" default="false" turnedplayer="true" disabled="false" />
+			<stopConversation />
+		</option>
+		<option choice_text="I'll be back later. Promise.">
+			<text character="Ulfr" say="I'll be back later. Promise." timer="2.4" turned="true" default="false" disabled="false" />
+			<stopConversation />
+		</option>
+		<stopOption />
+	</option_container>
+	<stopConversation />
+</conversation>

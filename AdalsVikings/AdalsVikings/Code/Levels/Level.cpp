@@ -113,15 +113,17 @@ void Level::updateObjects(sf::Time frameTime)
 			if (mObjects[mObjIndex]->isPickupable())
 			{
 				mPlayer->setAnimationStyle(AnimationType::Pickup);
-				if (mPlayer->getAnimation().getStopped())
+				if (mPlayer->getAnimation().getFinished())
 				{
 					mPlayer->addItemToInventory(mObjects[mObjIndex]->getObjID());
 					PathFinder::getCurrentTileMap().removeCollision(mObjects[mObjIndex]->getCollisionRect());
 					delete mObjects[mObjIndex];
 					mObjects.erase(mObjects.begin() + mObjIndex);	
 					mWalkToObject = false;
+					mPlayer->setIntention(Intention::None);
 				}
 			}
+			else
 			mPlayer->setIntention(Intention::None);
 		}
 		else if (mPlayer->getIntention() == Intention::Interact)

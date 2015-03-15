@@ -35,6 +35,12 @@ namespace Act1Event
 		Ruins_RockSlide,
 		GotCandleLight,
 		TooDarkToGo,
+		TalkedToJacob,
+		TalkedToParrik,
+		SolvedConflict,
+		GivenFlowerToValdis,
+		GivenMeadToValdis,
+		GivenSleepingMeatToWolf,
 		EVENT_SIZE
 	};
 }

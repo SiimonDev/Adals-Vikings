@@ -71,5 +71,11 @@ Leostand_Ruins assets/textfiles/ruins/Dialogue_Osgar_ruins.xml
 Biker_Ruins assets/textfiles/ruins/Dialogue_bikers_ruins.xml
 -----------------------FARMS ----------------------------
 Valdis_Farm assets/textfiles/farm/Dialogue_valdis_farm.xml
+Jacob_Farm assets/textfiles/farm/Dialogue_jacob_farm.xml
+Parrik_Farm assets/textfiles/farm/Dialogue_parrik_farm.xml
+Mead_Farm assets/textfiles/farm/Dialogue_mead_farm.xml
+Flower_Farm assets/textfiles/farm/Dialogue_flower_farm.xml
 -----------------------CLIFFS ----------------------------
 Ulfr_Cliffs assets/textfiles/cliffs/Dialogue_ulfr_cliffs.xml
+-----------------------HILLS ----------------------------
+Finnr_Hills assets/textfiles/hills/Dialogue_finnr_hills.xml

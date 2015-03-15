@@ -57,6 +57,8 @@ void Animation::load(sf::Texture &texture, sf::Vector2i frames, sf::Time duratio
 
 void Animation::animate(sf::Time &frameTime)
 {
+	mIsFinished = false;
+
 	if (!idle(frameTime))
 	{
 		if (!mStop)
@@ -101,6 +103,7 @@ void Animation::animate(sf::Time &frameTime)
 					else
 						textureRect = sf::IntRect(0, 0, mSpriteSize.x, mSpriteSize.y);
 
+					mIsFinished = true;
 					mIdleTime = mIdleDuration;
 
 					if (idle(frameTime))

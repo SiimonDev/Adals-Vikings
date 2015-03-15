@@ -29,6 +29,10 @@ void Level_Hills::load()
 	mPortals[HillsToFarm]->setWorking(true);
 
 	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
+	mNpcs["Finnr"]->setPosition(sf::Vector2f(800, 830));
+	mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(720, 825));
+	mNpcs["Finnr"]->setScale(sf::Vector2f(0.45, 0.45));
+	mNpcs["Finnr"]->setDialogue("Finnr_Hills");
 
 	Level::load();
 }

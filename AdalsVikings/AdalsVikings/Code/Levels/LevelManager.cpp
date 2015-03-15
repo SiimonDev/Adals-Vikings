@@ -1,4 +1,4 @@
-Får se#include "LevelManager.h"
+#include "LevelManager.h"
 #include "PortalLoader.h"
 #include "Level.h"
 #include "Level_Ship_1.h"
@@ -175,7 +175,7 @@ void LevelManager::loadAct1()
 	mLevelMap[LevelFolder::Hills] = LevelPtr(new Level_Hills(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Ruins] = LevelPtr(new Level_Ruins(mPlayer, mHud, mActionWheel));
 
-	mCurrentID = LevelFolder::Tavern_Inside;
+	mCurrentID = LevelFolder::Farm_2;
 	baseLoad();
 }
 

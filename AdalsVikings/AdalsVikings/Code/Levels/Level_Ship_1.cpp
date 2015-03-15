@@ -178,7 +178,7 @@ void Level_Ship_1::load()
 	mNpcs["Leifr"]->setIdleAnimation(Texture::LeifrSitIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 	mNpcs["Leifr"]->SetTalkAnimation(Texture::LeifrSitTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
 
-	if (!mStartBrynja)
+	if (!BoatEvents::hasBeenHandled(BoatEvent::DroppedFluteOnBrynja))
 	{
 		RMI.loadResource(Texture::BrynjaIdle);
 		RMI.loadResource(Texture::BrynjaTalk);
@@ -189,6 +189,16 @@ void Level_Ship_1::load()
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 730));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(900, 710));
 		mNpcs["Brynja"]->setScale(sf::Vector2f(0.6f, 0.6f));
+	}
+	else
+	{
+		mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+		mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
+		mNpcs["Brynja"]->setScale(sf::Vector2f(0.5f, 0.5f));
+		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
+		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
+		mNpcs["Brynja"]->updateAnimationStyle();
+		mNpcs["Brynja"]->setFlip(true);
 	}
 
 	Level::load();
