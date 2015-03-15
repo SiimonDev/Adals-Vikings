@@ -44,11 +44,6 @@ void IndexRenderer::display()
 	}
 }
 
-void IndexRenderer::resize(int width, int height)
-{
-
-}
-
 sf::View IndexRenderer::getLetterboxView(sf::View view)
 {
 	float windowRatio = CurrentWindow.getSize().x / (float)CurrentWindow.getSize().y;

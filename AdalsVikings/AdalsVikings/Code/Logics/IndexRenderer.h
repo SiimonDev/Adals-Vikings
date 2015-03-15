@@ -48,7 +48,6 @@ public:
 	void addText(sf::Text &text, int index);
 	void clear();
 	void display();
-	void resize(int width, int height);
 
 	sf::View getLetterboxView(sf::View view);
 private:
