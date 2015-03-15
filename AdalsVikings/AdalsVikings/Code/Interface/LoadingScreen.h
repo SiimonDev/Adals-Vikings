@@ -11,6 +11,7 @@ typedef std::unique_ptr<std::thread> ThreadPtr;
 enum LoadTask
 {
 	StartGame,
+	LoadGame,
 	LoadBoat,
 	LoadAct1,
 	LoadTest,

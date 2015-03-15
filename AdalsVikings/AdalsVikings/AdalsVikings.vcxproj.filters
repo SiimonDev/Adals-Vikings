@@ -185,6 +185,9 @@
     <ClCompile Include="Code\Levels\Level_Ruins.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Interface\Menus\PlayPanel.cpp">
+      <Filter>Source Files\Interface\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Dialog\Dialog.h">
@@ -381,6 +384,12 @@
     </ClInclude>
     <ClInclude Include="Code\Levels\Level_Ruins.h">
       <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Interface\Menus\PlayPanel.h">
+      <Filter>Header Files\Interface\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\FolderHelper.h">
+      <Filter>Header Files\Logics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

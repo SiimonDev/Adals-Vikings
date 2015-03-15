@@ -1,6 +1,7 @@
 #pragma once
 #include "MainMenuPanel.h"
 #include "PauseMenuPanel.h"
+#include "PlayPanel.h"
 
 #define MHI MenuHandler::getInstance()
 
@@ -32,6 +33,10 @@ private:
 
 	MenuID mCurrentID;
 	MenuEvent mCurrentEvent;
+
+	MainMenuPanel mMainMenuPanel;
+	PlayPanel mPlayPanel;
+	PauseMenuPanel mPauseMenuPanel;
 
 	MenuPanels mActiveMenuPanels;
 	MenuPanels mMainMenuPanels;

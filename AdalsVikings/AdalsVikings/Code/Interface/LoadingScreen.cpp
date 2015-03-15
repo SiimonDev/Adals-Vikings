@@ -112,11 +112,7 @@ void LoadingScreen::runTask()
 		while (timeSinceLastUpdate >= frameTime)
 		{
 			timeSinceLastUpdate -= frameTime;
-			if (mTask == LoadTask::None)
-			{
-
-			}
-			else if (mTask == LoadTask::LoadNearbyLevels)
+			if (mTask == LoadTask::LoadNearbyLevels)
 			{
 				LVLMI.unloadCacheLevels();
 				LVLMI.loadNearbyLevels();
@@ -126,7 +122,12 @@ void LoadingScreen::runTask()
 				MHI.unload(MenuID::MainMenu);
 				MHI.load(MenuID::PauseMenu);
 				LVLMI.load();
-				LVLMI.loadAct1();
+			}
+			else if (mTask == LoadTask::LoadGame)
+			{
+				MHI.unload(MenuID::MainMenu);
+				MHI.load(MenuID::PauseMenu);
+				LVLMI.load(false);
 			}
 			else if (mTask == LoadTask::LoadMenu)
 			{
@@ -137,14 +138,9 @@ void LoadingScreen::runTask()
 			else if (mTask == LoadTask::LoadAct1)
 			{
 				LVLMI.unloadCurrentAct();
-				LVLMI.loadAct1();
+				LVLMI.loadAct1(true);
 				mStart = false;
 				mFinished = true;
-			}
-			else if (mTask == LoadTask::LoadTest)
-			{
-				/*LVLMI.unloadCurrentAct();
-				LVLMI.loadBoatScene();*/
 			}
 			mTask = LoadTask::None;
 

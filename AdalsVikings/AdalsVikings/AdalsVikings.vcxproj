@@ -33,6 +33,7 @@
     <ClCompile Include="Code\Interface\Menus\MenuHandler.cpp" />
     <ClCompile Include="Code\Interface\Menus\MenuPanel.cpp" />
     <ClCompile Include="Code\Interface\Menus\PauseMenuPanel.cpp" />
+    <ClCompile Include="Code\Interface\Menus\PlayPanel.cpp" />
     <ClCompile Include="Code\Levels\Level_Beach.cpp" />
     <ClCompile Include="Code\Levels\Level_Beach_Hills.cpp" />
     <ClCompile Include="Code\Levels\Level_Camp_Finished.cpp" />
@@ -99,6 +100,7 @@
     <ClInclude Include="Code\Interface\Menus\MenuHandler.h" />
     <ClInclude Include="Code\Interface\Menus\MenuPanel.h" />
     <ClInclude Include="Code\Interface\Menus\PauseMenuPanel.h" />
+    <ClInclude Include="Code\Interface\Menus\PlayPanel.h" />
     <ClInclude Include="Code\Levels\Level_Beach.h" />
     <ClInclude Include="Code\Levels\Level_Beach_Hills.h" />
     <ClInclude Include="Code\Levels\Level_Camp_Clearing.h" />
@@ -132,6 +134,7 @@
     <ClInclude Include="Code\Logics\AudioPlayer.h" />
     <ClInclude Include="Code\Logics\Debug.h" />
     <ClInclude Include="Code\Logics\Fade.h" />
+    <ClInclude Include="Code\Logics\FolderHelper.h" />
     <ClInclude Include="Code\Logics\Game.h" />
     <ClInclude Include="Code\Logics\IndexRenderer.h" />
     <ClInclude Include="Code\Logics\KeyboardState.h" />

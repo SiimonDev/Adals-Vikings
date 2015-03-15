@@ -276,7 +276,7 @@ bool Object::hasCollision()
 
 void Object::readVariablesFromFile()
 {
-	////std::cout << "--- LOADING ITEM! ---" << std::endl;
+	//std::cout << "--- LOADING ITEM! ---" << std::endl;
 	std::ifstream itemFile(mFilePath);
 	std::string line;
 	while (std::getline(itemFile, line))
@@ -293,7 +293,7 @@ void Object::readVariablesFromFile()
 			else if (type == "invisible")
 				mType = ObjectType::Invisible;
 
-			////std::cout << "Type: " << type << std::endl;
+			//std::cout << "Type: " << type << std::endl;
 		}
 		else if (line.find("*ID:") != std::string::npos)
 		{
@@ -302,19 +302,19 @@ void Object::readVariablesFromFile()
 			std::string subString = line.substr(start + 1, (end - start) - 1);
 
 			mObjectID = subString;
-			////std::cout << "ID: " << mObjectID << std::endl;
+			//std::cout << "ID: " << mObjectID << std::endl;
 		}
 		else if (line.find("*Name:") != std::string::npos)
 		{
 			line.erase(0, 7);
 			mName = line;
-			////std::cout << "Name: " << mName << std::endl;
+			//std::cout << "Name: " << mName << std::endl;
 		}
 		else if (line.find("*ispickupable:") != std::string::npos)
 		{
 			line.erase(0, 15);
 			mCanPickUp = (line == "True");
-			////std::cout << "isPickupable: " << mCanPickUp << std::endl;
+			//std::cout << "isPickupable: " << mCanPickUp << std::endl;
 		}
 		else if (line.find("*pickup:") != std::string::npos)
 		{

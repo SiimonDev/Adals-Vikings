@@ -27,7 +27,7 @@
 #include "..\Dialog\PlayerMonologue.h"
 #include "..\Logics\AudioPlayer.h"
 #include "..\Logics\Debug.h"
-#include <iostream>
+#include "..\Logics\FolderHelper.h"
 
 LevelManager &LevelManager::getInstance()
 {
@@ -43,19 +43,44 @@ LevelManager::LevelManager()
 : mLoadedPlayer(false)
 {
 	DebugI.initialize(mPlayer);
+	mSavePath = "assets/saves/";
 }
 
-void LevelManager::load()
+void LevelManager::load(bool reset)
 {
+	mLoadedLevelID = LevelFolder::NONE;
+	mLoadedActID = Act::NONE;
+	mLoadedPlayerPos = sf::Vector2f(-1, -1);
+
 	NpcHandlerI.load();
 	PlayerMonologueI.load();
 	DialogHandler::load();
 	mHud.load();
-	mPlayer.load();
-	mPlayer.clearInventory();
 	mActionWheel.load();
-}
+	mPlayer.load();
 
+	if (reset)
+	{
+		BoatEvents::initialize();
+		Act1Events::initialize();
+		mPlayer.clearInventory();
+
+		loadBoatScene(reset); //<--- Change this if you want to spawn on a different act
+	}
+	else
+	{
+		BoatEvents::initialize(mSavePath + "BoatEvents.txt");
+		Act1Events::initialize(mSavePath + "Act1Events.txt");
+		loadSettings(mSavePath);
+		
+		if (mLoadedActID == Act::Ship)
+			loadBoatScene(reset);
+		else if (mLoadedActID == Act::Act1)
+			loadAct1(reset);
+
+		mPlayer.setPosition(mLoadedPlayerPos);
+	}
+}
 void LevelManager::unload()
 {
 	NpcHandlerI.unload();
@@ -67,7 +92,6 @@ void LevelManager::unload()
 	PathFinder::unload();
 	unloadCurrentAct();
 }
-
 void LevelManager::unloadCurrentAct()
 {
 	mPlayer.saveInventory();
@@ -82,32 +106,36 @@ void LevelManager::unloadCurrentAct()
 
 void LevelManager::update(sf::Time &frameTime)
 {
-	mHud.update(frameTime);
-	if (mHud.isInventoryButtonReleased())
-		mPlayer.toggleInventory();
-
-	if (!mPlayer.isInventoryActive())
+	if (!MHI.hasActiveMenu())
 	{
-		sf::Vector2f playerPos = (sf::Vector2f(mPlayer.getSprite().getGlobalBounds().left + mPlayer.getSprite().getGlobalBounds().width / 2, mPlayer.getSprite().getGlobalBounds().top));
-		PlayerMonologueI.setPosition(playerPos);
-	}
-	else
-	{
-		sf::Vector2f monologuePos = (sf::Vector2f(1920 / 2, 1080 / 4));
-		PlayerMonologueI.setPosition(monologuePos);
+		mHud.update(frameTime);
+		if (mHud.isInventoryButtonReleased())
+			mPlayer.toggleInventory();
+
+		if (!mPlayer.isInventoryActive())
+		{
+			sf::Vector2f playerPos = (sf::Vector2f(mPlayer.getSprite().getGlobalBounds().left + mPlayer.getSprite().getGlobalBounds().width / 2, mPlayer.getSprite().getGlobalBounds().top));
+			PlayerMonologueI.setPosition(playerPos);
+		}
+		else
+		{
+			sf::Vector2f monologuePos = (sf::Vector2f(1920 / 2, 1080 / 4));
+			PlayerMonologueI.setPosition(monologuePos);
+		}
+
+		mLevelMap[mCurrentLevelID]->update(frameTime);
+		PlayerMonologueI.update(frameTime);
 	}
 
-	mLevelMap[mCurrentID]->update(frameTime);
-	PlayerMonologueI.update(frameTime);
+	if (MHI.getEvent() == MenuEvent::SavePressed)
+		save(mSavePath);
 }
-
 void LevelManager::render(IndexRenderer &iRenderer)
 {
 	mHud.render(iRenderer);
-	mLevelMap[mCurrentID]->render(iRenderer);
+	mLevelMap[mCurrentLevelID]->render(iRenderer);
 	PlayerMonologueI.render(iRenderer);
 }
-
 void LevelManager::changeLevel(LevelFolder::ID id)
 {
 	std::cout << std::endl;
@@ -117,20 +145,20 @@ void LevelManager::changeLevel(LevelFolder::ID id)
 
 	mPlayer.saveInventory();
 	mPlayer.refreshInventory();
-	mLevelMap[mCurrentID]->saveObjects();
-	mCurrentID = id;
-	mLevelMap[mCurrentID]->refreshLevel();
+	mLevelMap[mCurrentLevelID]->saveObjects();
+	mCurrentLevelID = id;
+	mLevelMap[mCurrentLevelID]->refreshLevel();
+	save(mSavePath);
 
 	setNearbyLevels();
 	LSI.startLoading(LoadTask::LoadNearbyLevels);
-	PathFinder::setTileMap(mLevelMap[mCurrentID]->getTileMap());
+	PathFinder::setTileMap(mLevelMap[mCurrentLevelID]->getTileMap());
 }
-
 void LevelManager::setNearbyLevels()
 {
 	mNearbyLevels.clear();
-	mNearbyLevels = mLevelMap[mCurrentID]->getConnectedLevels();
-	mNearbyLevels.push_back(mCurrentID);
+	mNearbyLevels = mLevelMap[mCurrentLevelID]->getConnectedLevels();
+	mNearbyLevels.push_back(mCurrentLevelID);
 
 	resetNearbyLevels();
 
@@ -138,19 +166,83 @@ void LevelManager::setNearbyLevels()
 		mLevelMap[levelID]->setIsNearbyLevel(true);
 }
 
-void LevelManager::loadBoatScene()
+void LevelManager::save(std::string savePath)
 {
-	mCurrentAct = Ship;
+	// Save All the events
+	if (mCurrentActID == Act::Ship)
+		BoatEvents::saveEvents(savePath + "BoatEvents.txt");
+	else if (mCurrentActID == Act::Act1)
+		Act1Events::saveEvents(savePath + "Act1Events.txt");
+
+	// Save some stuff
+	std::ofstream itemFile(savePath + "SaveStuff.txt");
+	itemFile << "*mapID: " << mCurrentLevelID << std::endl;
+	itemFile << "*currentActID: " << mCurrentActID << std::endl;
+	itemFile << "*playerPos: " << mPlayer.getPosition().x << ", " << mPlayer.getPosition().y << std::endl;
+	itemFile.close();
+}
+void LevelManager::loadSettings(std::string savePath)
+{
+	// Load Some Stuff
+	std::ifstream itemFile(savePath + "SaveStuff.txt");
+	std::string line;
+	while (std::getline(itemFile, line))
+	{
+		if (line.find("*mapID:") != std::string::npos)
+		{
+			int start = line.find(" ", 0);
+			int end = line.size();
+			std::string subString = line.substr(start + 1, (end - start) - 1);
+
+			mLoadedLevelID = static_cast<LevelFolder::ID>(atoi(subString.c_str()));
+		}
+		else if (line.find("*currentActID:") != std::string::npos)
+		{
+			int start = line.find(" ", 0);
+			int end = line.size();
+			std::string subString = line.substr(start + 1, (end - start) - 1);
+
+			mLoadedActID = static_cast<Act::ID>(atoi(subString.c_str()));
+		}
+		else if (line.find("*playerPos:") != std::string::npos)
+		{
+			int start = line.find(" ", 0);
+			int end = line.find(", ", 0);
+			std::string subString = line.substr(start + 1, (end - start) - 1);
+			float xPos = atof(subString.c_str());
+
+			start = end;
+			end = line.size();
+			subString = line.substr(start + 1, (end - start) - 1);
+			float yPos = atof(subString.c_str());
+
+			mLoadedPlayerPos = sf::Vector2f(xPos, yPos);
+		}
+	}
+	itemFile.close();
+}
+void LevelManager::loadBoatScene(bool reset)
+{
+	mCurrentActID = Act::Ship;
 
 	mLevelMap[LevelFolder::Ship_1] = std::move(LevelPtr(new Level_Ship_1(mPlayer, mHud, mActionWheel)));
 	mLevelMap[LevelFolder::Ship_2] = std::move(LevelPtr(new Level_Ship_2(mPlayer, mHud, mActionWheel)));
-	mCurrentID = LevelFolder::Ship_2;
-	baseLoad();
-}
 
-void LevelManager::loadAct1()
+	if (reset){
+		mCurrentLevelID = LevelFolder::Ship_2; //<--- Change this if you want to spawn on a different level
+		baseLoad(true);
+	}
+	else{
+		if (mLoadedLevelID != LevelFolder::NONE)
+			mCurrentLevelID = mLoadedLevelID;
+		else
+			mCurrentLevelID = LevelFolder::Ship_2;
+		baseLoad(false);
+	}
+}
+void LevelManager::loadAct1(bool reset)
 {
-	mCurrentAct = Act1;
+	mCurrentActID = Act::Act1;
 
 	// Assing ;) all the levels
 	mLevelMap[LevelFolder::Beach] = LevelPtr(new Level_Beach(mPlayer, mHud, mActionWheel));
@@ -175,19 +267,29 @@ void LevelManager::loadAct1()
 	mLevelMap[LevelFolder::Hills] = LevelPtr(new Level_Hills(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Ruins] = LevelPtr(new Level_Ruins(mPlayer, mHud, mActionWheel));
 
-	mCurrentID = LevelFolder::Farm_2;
-	baseLoad();
+	if (mLoadedLevelID == LevelFolder::NONE)
+	{
+		mCurrentLevelID = LevelFolder::Beach;  //<--- Change this if you want to spawn on a different level
+		baseLoad(true);
+	}
+	else
+	{
+		if (mLoadedLevelID != LevelFolder::NONE)
+			mCurrentLevelID = mLoadedLevelID;
+		else
+			mCurrentLevelID = LevelFolder::Farm_1;
+
+		baseLoad(false);
+	}
 }
 
-Act &LevelManager::getCurrentAct()
+Act::ID &LevelManager::getCurrentAct()
 {
-	return mCurrentAct;
+	return mCurrentActID;
 }
-
-void LevelManager::baseLoad()
+void LevelManager::baseLoad(bool reset)
 {
 	// onödig komentar
-	Act1Events::initialize();
 	PortalLoader::load();
 	mPlayer.refreshInventory();
 
@@ -195,17 +297,17 @@ void LevelManager::baseLoad()
 	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
 	{
 		it->second->setBackgroundID();
-		it->second->resetLevel();
+		if (reset)
+			it->second->resetLevel();
 	}
-	mLevelMap[mCurrentID]->setIsNearbyLevel(true);
-	mLevelMap[mCurrentID]->setBackgroundID();
-	mLevelMap[mCurrentID]->load();
+	mLevelMap[mCurrentLevelID]->setIsNearbyLevel(true);
+	mLevelMap[mCurrentLevelID]->setBackgroundID();
+	mLevelMap[mCurrentLevelID]->load();
 	setNearbyLevels();
 	loadNearbyLevels();
 
-	PathFinder::setTileMap(mLevelMap[mCurrentID]->getTileMap());
+	PathFinder::setTileMap(mLevelMap[mCurrentLevelID]->getTileMap());
 }
-
 void LevelManager::loadNearbyLevels()
 {
 	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it){
@@ -216,30 +318,26 @@ void LevelManager::loadNearbyLevels()
 		}
 	}
 }
-
 void LevelManager::unloadCacheLevels()
 {
 	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it){
-		if (it->first != mCurrentID &&!it->second->getIsNearbyLevel() && it->second->getIsLoaded())
+		if (it->first != mCurrentLevelID &&!it->second->getIsNearbyLevel() && it->second->getIsLoaded())
 		{
 			std::cout << "Unloading Level: ID: " << it->first << std::endl;
 			it->second->unload();
-			mPlayer.saveInventory();
 			it->second->setLoaded(false);
 		}
 	}
 }
-
 std::map<LevelFolder::ID, LevelPtr> & LevelManager::getCurrentLevels()
 {
 	return mLevelMap;
 }
-
 void LevelManager::resetNearbyLevels()
 {
 	for (std::map<LevelFolder::ID, LevelPtr>::iterator it = mLevelMap.begin(); it != mLevelMap.end(); ++it)
 	{
-		if (it->first != mCurrentID)
+		if (it->first != mCurrentLevelID)
 			it->second->setIsNearbyLevel(false);
 	}
 }

@@ -47,6 +47,11 @@ namespace Texture
 		MainMenuQuitButton,
 		MainMenuBackground,
 
+		PlayMenuNewGameButton,
+		PlayMenuLoadGameButton,
+		PlayMenuMenuButton,
+		PlayMenuBackground,
+
 		PauseMenuResumeButton,
 		PauseMenuSaveButton,
 		PauseMenuOptionsButton,
@@ -188,6 +193,7 @@ namespace LevelFolder
 {
 	enum ID
 	{
+		NONE,
 		Ship_1,
 		Ship_2,
 		Beach,

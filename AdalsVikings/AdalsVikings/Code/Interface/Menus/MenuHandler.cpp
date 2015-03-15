@@ -14,10 +14,11 @@ MenuHandler &MenuHandler::getInstance()
 MenuHandler::MenuHandler()
 {
 	// Main Menu Section
-	mMainMenuPanels.push_back(new MainMenuPanel());
+	mMainMenuPanels.push_back(&mMainMenuPanel);
+	mMainMenuPanels.push_back(&mPlayPanel);
 
 	// Pause Menu Section
-	mPauseMenuPanels.push_back(new PauseMenuPanel());
+	mPauseMenuPanels.push_back(&mPauseMenuPanel);
 
 	load(MenuID::MainMenu);
 }
@@ -30,7 +31,7 @@ void MenuHandler::load(MenuID menuID)
 		for each (MenuPanel* panel in mMainMenuPanels)
 			panel->load();
 		
-		mActiveMenuPanels.push_back(mMainMenuPanels[0]);
+		mActiveMenuPanels.push_back(&mMainMenuPanel);
 	}
 	if (menuID == MenuID::PauseMenu){
 		for each (MenuPanel* panel in mPauseMenuPanels)
@@ -56,8 +57,14 @@ void MenuHandler::update(sf::Time frameTime)
 	mCurrentEvent = MenuEvent::NONE;
 	if (hasActiveMenu())
 	{
-		mActiveMenuPanels.at(mActiveMenuPanels.size() - 1)->update(frameTime);
-		mCurrentEvent = mActiveMenuPanels.at(mActiveMenuPanels.size() - 1)->getEvent();
+		mActiveMenuPanels[mActiveMenuPanels.size() - 1]->update(frameTime);
+		mCurrentEvent = mActiveMenuPanels[mActiveMenuPanels.size() - 1]->getEvent();
+
+		if (mActiveMenuPanels[0]->getEvent() == MenuEvent::PlayPressed)
+		{
+			mActiveMenuPanels.push_back(&mPlayPanel);
+			mActiveMenuPanels[0]->update(frameTime);
+		}
 
 		if (KeyboardState::isPressed(sf::Keyboard::Escape))
 		{
@@ -78,7 +85,7 @@ void MenuHandler::render(IndexRenderer &iRenderer)
 
 void MenuHandler::popMenu()
 {
-	if (!hasActiveMenu() || mCurrentID == MenuID::PauseMenu)
+	if (mActiveMenuPanels.size() > 1 || mCurrentID == MenuID::PauseMenu)
 		mActiveMenuPanels.pop_back();
 }
 

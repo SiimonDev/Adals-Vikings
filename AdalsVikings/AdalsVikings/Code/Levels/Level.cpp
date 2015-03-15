@@ -124,7 +124,7 @@ void Level::updateObjects(sf::Time frameTime)
 				}
 			}
 			else
-			mPlayer->setIntention(Intention::None);
+				mPlayer->setIntention(Intention::None);
 		}
 		else if (mPlayer->getIntention() == Intention::Interact)
 		{

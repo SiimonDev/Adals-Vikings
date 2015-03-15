@@ -12,11 +12,15 @@
 
 #define LVLMI LevelManager::getInstance()
 
-enum Act
+namespace Act
 {
-	Ship,
-	Act1
-};
+	enum ID
+	{
+		NONE,
+		Ship,
+		Act1
+	};
+}
 
 class Level;
 typedef std::unique_ptr<Level> LevelPtr;
@@ -26,25 +30,27 @@ class LevelManager
 public:
 	static LevelManager &getInstance();
 
-	void load();
+	void load(bool reset = true);
 	void unload();
 	void unloadCurrentAct();
 	void update(sf::Time &frametime);
 	void render(IndexRenderer &iRenderer);
 	void changeLevel(LevelFolder::ID id);
 	void setNearbyLevels();
+	void save(std::string savePath);
+	void loadSettings(std::string savePath);
 
-	void loadBoatScene();
-	void loadAct1();
+	void loadBoatScene(bool reset);
+	void loadAct1(bool reset);
 	void resetNearbyLevels();
 	void loadNearbyLevels();
 	void unloadCacheLevels();
 
 	std::map<LevelFolder::ID, LevelPtr> &getCurrentLevels();
-	Act &getCurrentAct();
+	Act::ID &getCurrentAct();
 
 private:
-	void baseLoad();
+	void baseLoad(bool reset);
 
 	LevelManager();
 	LevelManager(const LevelManager&);
@@ -53,8 +59,14 @@ private:
 	HUD mHud;
 	Player mPlayer;
 	ActionWheel mActionWheel;
-	LevelFolder::ID mCurrentID;
-	Act mCurrentAct;
+
+	LevelFolder::ID mLoadedLevelID;
+	LevelFolder::ID mCurrentLevelID;
+	Act::ID mLoadedActID;
+	Act::ID mCurrentActID;
+
+	std::string mSavePath;
+	sf::Vector2f mLoadedPlayerPos;
 
 	std::vector<LevelFolder::ID> mNearbyLevels;
 	std::map<LevelFolder::ID, LevelPtr> mLevelMap;
