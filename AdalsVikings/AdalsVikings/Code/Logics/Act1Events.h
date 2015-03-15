@@ -29,6 +29,12 @@ namespace Act1Event
 		CampFinished_Conversation,
 		ForestCampFire,
 		AfterCampRoad_Conversation,
+		TalkedToGuard,
+		CliffsMonologue,
+		Ruins_Introduction,
+		Ruins_RockSlide,
+		GotCandleLight,
+		TooDarkToGo,
 		EVENT_SIZE
 	};
 }

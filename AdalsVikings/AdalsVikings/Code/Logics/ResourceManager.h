@@ -114,6 +114,19 @@ namespace Texture
 		BeorTalk,
 		BearWalk,
 		BearIdle,
+		AethelberthIdle,
+		AethelberthTalk,
+		CerdicIdle,
+		CerdicTalk,
+		GuardIdle,
+		GuardTalk,
+		LeofstanIdle,
+		LeofstanTalk,
+		MinerIdle,
+		MinerTalk,
+		OsgarIdle,
+		OsgarTalk,
+
 		SIZE
 	};
 }

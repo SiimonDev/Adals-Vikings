@@ -115,7 +115,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::YngvarrTalk] = "assets/images/Yngvarr/character_yngvarr_talk.png";
 	mTexturePathMap[Texture::YngvarrSadIdle] = "assets/images/Yngvarr/character_yngvarr_uneasy_blink.png";
 	mTexturePathMap[Texture::YngvarrSadTalk] = "assets/images/Yngvarr/character_yngvarr_uneasy_talk.png";
-	mTexturePathMap[Texture::SeagullIdle] = "assets/images/Seagull/character_fismås_idle.png";
+	mTexturePathMap[Texture::SeagullIdle] = "assets/images/Seagull/character_fismås_blink.png";
 	mTexturePathMap[Texture::SeagullTalk] = "assets/images/Seagull/character_fismås_talk.png";
 	mTexturePathMap[Texture::MailmanIdle] = "assets/images/Mailman/character_mailman_leaves_blink.png";
 	mTexturePathMap[Texture::MailManTalk] = "assets/images/Mailman/character_mailman_leaves_talk.png";
@@ -126,8 +126,20 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::PrincessTalk] = "assets/images/Princess/character_princess_talk.png";
 	mTexturePathMap[Texture::BeorIdle] = "assets/images/Beor/character_priest_blink.png";
 	mTexturePathMap[Texture::BeorTalk] = "assets/images/Beor/character_priest_happy_talk.png";
-	mTexturePathMap[Texture::BearIdle] = "assets/images/Bear/character_bear_idle.png";
+	mTexturePathMap[Texture::BearIdle] = "assets/images/Bear/character_bear_blink.png";
 	mTexturePathMap[Texture::BearWalk] = "assets/images/Bear/character_bear_walking.png";
+	mTexturePathMap[Texture::AethelberthIdle] = "assets/images/Aethelberth/character_aethelberth_blink.png";
+	mTexturePathMap[Texture::AethelberthTalk] = "assets/images/Aethelberth/character_aethelberth_talk.png";
+	mTexturePathMap[Texture::CerdicIdle] = "assets/images/Cerdic/character_cerdic_blink.png";
+	mTexturePathMap[Texture::CerdicTalk] = "assets/images/Cerdic/character_cerdic_talk.png";
+	mTexturePathMap[Texture::GuardIdle] = "assets/images/Guard/character_guard_blink.png";
+	mTexturePathMap[Texture::GuardTalk] = "assets/images/Guard/character_guard_talk.png";
+	mTexturePathMap[Texture::LeofstanIdle] = "assets/images/Leofstan/character_leofstan_blink.png";
+	mTexturePathMap[Texture::LeofstanTalk] = "assets/images/Leofstan/character_leofstan_talk.png";
+	mTexturePathMap[Texture::MinerIdle] = "assets/images/Miner/character_miner_blink.png";
+	mTexturePathMap[Texture::MinerTalk] = "assets/images/Miner/character_miner_talk.png";
+	mTexturePathMap[Texture::OsgarIdle] = "assets/images/Osgar/character_osgar_blink.png";
+	mTexturePathMap[Texture::OsgarTalk] = "assets/images/Osgar/character_osgar_talk.png";
 	/* ============================================ */
 
 

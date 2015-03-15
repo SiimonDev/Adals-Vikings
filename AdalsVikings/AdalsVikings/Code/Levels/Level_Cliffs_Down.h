@@ -11,7 +11,7 @@ public:
 	void render(IndexRenderer &iRenderer);
 	void load();
 	void unload();
-	void changeLevel();
+	void changeLevel(sf::Time &frametime);
 	void checkInteractEvents();
 	void checkEvents();
 	void restartSounds();
@@ -19,4 +19,5 @@ public:
 private:
 	Animation mWaveAnimation;
 	Animation mWaveAnimationIdle;
+	bool mCannotGo;
 };

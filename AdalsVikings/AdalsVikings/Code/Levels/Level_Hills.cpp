@@ -25,6 +25,11 @@ void Level_Hills::render(IndexRenderer &iRenderer)
 
 void Level_Hills::load()
 {
+	mPortals[HillsToFarm] = &PortalLoader::getPortal(HillsToFarm);
+	mPortals[HillsToFarm]->setWorking(true);
+
+	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
+
 	Level::load();
 }
 
@@ -35,6 +40,10 @@ void Level_Hills::unload()
 
 void Level_Hills::changeLevel()
 {
+	if (mPortals[HillsToFarm]->getActivated() && mPortals[HillsToFarm]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::Farm_1);
+	}
 }
 
 void Level_Hills::checkInteractEvents()
