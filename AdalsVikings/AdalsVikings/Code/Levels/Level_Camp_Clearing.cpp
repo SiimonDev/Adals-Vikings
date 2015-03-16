@@ -19,7 +19,7 @@ void Level_Camp_Clearing::restartSounds()
 void Level_Camp_Clearing::update(sf::Time &frametime)
 {
 	if (KeyboardState::isPressed(sf::Keyboard::Num8))
-		mPlayer->addItemToInventory("torch");
+		mPlayer->addItemToInventory("stick");
 
 	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_Leifr) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
 	{
@@ -175,6 +175,11 @@ void Level_Camp_Clearing::checkInteractEvents()
 	if (mDroppedItemID == "torch" && mObjects[mObjIndex]->getObjID() == "firePlaceCamp1" && !Act1Events::hasBeenTriggered(Act1Event::LightCampFire))
 	{
 		Act1Events::triggerEvent(Act1Event::LightCampFire);
+	}
+	if (mDroppedItemID == "stickCloth" && mObjects[mObjIndex]->getObjID() == "oilBarrel")
+	{
+		mPlayer->removeItemFromInventory("stickCloth");
+		mPlayer->addItemToInventory("stickWetCloth");
 	}
 }
 void Level_Camp_Clearing::checkEvents()

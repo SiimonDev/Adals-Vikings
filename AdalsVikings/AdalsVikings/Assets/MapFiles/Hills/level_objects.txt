@@ -3,6 +3,6 @@
 position: $X:1010 $Y:645
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############

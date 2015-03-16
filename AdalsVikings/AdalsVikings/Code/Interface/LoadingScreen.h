@@ -35,6 +35,7 @@ public:
 	void startLoading(LoadTask task);
 	void loadNearbyLevels();
 	void terminate();
+	void setIsWorking(bool value);
 
 	bool &getIsDone();
 	bool &getIsStarted();

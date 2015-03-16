@@ -16,10 +16,10 @@ void Level_Forest_Camp::restartSounds()
 
 void Level_Forest_Camp::update(sf::Time &frametime)
 {
-	/*if (KeyboardState::isPressed(sf::Keyboard::Num1))
+	if (KeyboardState::isPressed(sf::Keyboard::Num1))
 		mPlayer->addItemToInventory("bearDeer");
 	if (KeyboardState::isPressed(sf::Keyboard::Num2))
-		mPlayer->addItemToInventory("stickWetCloth");*/
+		mPlayer->addItemToInventory("stickWetCloth");
 	mFireAnimation.animate(frametime);
 
 	if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
@@ -159,7 +159,6 @@ void Level_Forest_Camp::load()
 
 	if (!Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
 	{
-		RMI.loadResource(Texture::FireForestCampAnimation);
 		RMI.loadResource(Texture::DruidsForest1);
 		RMI.loadResource(Texture::BearWalk);
 		RMI.loadResource(Texture::BearIdle);
@@ -181,23 +180,24 @@ void Level_Forest_Camp::load()
 		mNpcs["Hipster druid"]->setDialogue("Druids_ForestCamp1");
 		mNpcs["Dennis"]->setDialogue("Druids_ForestCamp1");
 
-		if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
-		{
+		/*if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
+		{*/
 			mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
 			mNpcs["Leifr"]->setDialogue("Leifr_ForestCamp");
 			mNpcs["Leifr"]->setPosition(sf::Vector2f(1450, 580));
 			mNpcs["Leifr"]->setScale(sf::Vector2f(0.3f, 0.3f));
 			mNpcs["Leifr"]->setIndex(1);
 			mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1560, 565));
-		}
-
-		mFireAnimation.load(RMI.getResource(Texture::FireForestCampAnimation), sf::Vector2i(2, 4), sf::milliseconds(2000), sf::Time::Zero, true);
-		mFireAnimation.setIndex(9999);
-		mFireAnimation.setProportions(sf::Vector2f(961, 541));
-		mFireAnimation.setScaleFromHeight(541 * 2);
+		//}
 
 		mDruids.setTexture(RMI.getResource(Texture::DruidsForest1));
 	}
+
+	RMI.loadResource(Texture::FireForestCampAnimation);
+	mFireAnimation.load(RMI.getResource(Texture::FireForestCampAnimation), sf::Vector2i(2, 4), sf::milliseconds(2000), sf::Time::Zero, true);
+	mFireAnimation.setIndex(9999);
+	mFireAnimation.setProportions(sf::Vector2f(961, 541));
+	mFireAnimation.setScaleFromHeight(541 * 2);
 
 	Level::load();
 

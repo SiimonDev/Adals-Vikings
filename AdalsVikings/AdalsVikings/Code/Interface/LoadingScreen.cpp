@@ -84,6 +84,10 @@ void LoadingScreen::startLoading(LoadTask task)
 		mStart = true;
 		mFinished = false;
 	}
+	else
+	{
+		mFinished = false;
+	}
 }
 
 void LoadingScreen::terminate()
@@ -93,7 +97,7 @@ void LoadingScreen::terminate()
 
 bool &LoadingScreen::getIsDone()
 {
-	return mIsDone;
+	return mFinished;
 }
 
 bool &LoadingScreen::getIsStarted()
@@ -153,4 +157,8 @@ void LoadingScreen::runTask()
 void LoadingScreen::loadNearbyLevels()
 {
 
+}
+void LoadingScreen::setIsWorking(bool value)
+{
+	mStart = value;
 }

@@ -55,6 +55,15 @@ void Level_Beach::load()
 
 	mNpcs["Seagull"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Seagull")));
 
+	RMI.loadResource(Texture::WaveAnimationBeach);
+	mWaveAnimation.load(RMI.getResource(Texture::WaveAnimationBeach), sf::Vector2i(10, 9), sf::seconds(10), sf::seconds(7), true);
+	mWaveAnimation.setIndex(4);
+	mWaveAnimation.setProportions(sf::Vector2f(1170, 640));
+	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
+	mWaveAnimation.setPadding(1);
+	mWaveAnimation.setPosition(sf::Vector2f(1920 + 3, 1080 + 3));
+
+
 	if (!Act1Events::hasBeenHandled(Act1Event::Beach_Ending))
 	{
 		mPortals[BeachToRoad]->setCannotDialogue("I was told not to leave the beach!");
@@ -162,20 +171,12 @@ void Level_Beach::load()
 		mTileMap.setIndexOnMap(mNpcs["Dagny"]->getIndexRect(), mNpcs["Dagny"]->getIndex() - 1);
 		mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 1);
 		mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 1);
-
-		Act1Events::triggerEvent(Act1Event::Beach_Intro);
-
 	}
 	else
 		Level::load();
 
-	RMI.loadResource(Texture::WaveAnimationBeach);
-	mWaveAnimation.load(RMI.getResource(Texture::WaveAnimationBeach), sf::Vector2i(10, 9), sf::seconds(10), sf::seconds(7), true);
-	mWaveAnimation.setIndex(4);
-	mWaveAnimation.setProportions(sf::Vector2f(1170, 640));
-	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
-	mWaveAnimation.setPadding(1);
-	mWaveAnimation.setPosition(sf::Vector2f(1920 + 3, 1080 + 3));
+		if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro))
+			Act1Events::triggerEvent(Act1Event::Beach_Intro);
 }
 
 void Level_Beach::unload()

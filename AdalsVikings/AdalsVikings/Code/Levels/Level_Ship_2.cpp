@@ -29,7 +29,7 @@ void Level_Ship_2::update(sf::Time &frameTime)
 		DialogHandler::getDialogue("Dagny_Ship2").disableOption(2);
 		BoatEvents::handleEvent(BoatEvent::PickedUpBucket);
 	}
-	if (DialogHandler::getDialogue("Brandr_Ship2").getHasStopped() && !BoatEvents::hasBeenHandled(BoatEvent::TalkedToBrandr))
+	if (BoatEvents::hasBeenTriggered(BoatEvent::TalkedToBrandr) && !BoatEvents::hasBeenHandled(BoatEvent::TalkedToBrandr))
 	{
 		DialogHandler::getDialogue("Brandr_Ship2").enableOption(2);
 		DialogHandler::getDialogue("Dagny_Ship2").enableOption(1);
@@ -192,4 +192,7 @@ void Level_Ship_2::checkEvents()
 {
 	if (!BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue))
 		BoatEvents::triggerEvent(BoatEvent::StartDialogue);
+
+	if (!BoatEvents::hasBeenTriggered(BoatEvent::TalkedToBrandr) && DialogHandler::getDialogue("Brandr_Ship2").getHasStopped())
+		BoatEvents::triggerEvent(BoatEvent::TalkedToBrandr);
 }

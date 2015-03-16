@@ -2,14 +2,14 @@
 <conversation>
 	<useText useText="I'm not going to jump into that..." />
 	<lookText lookText="It's a hole, smartass." />
-	<text character="Ulfr" disabled="false" default="false" say="I uh... I found your friend." timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Dear me, He has gotten quite skinny." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="...He's dead, Labina." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="He is literally a skeleton, this is his skull." timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Oh. Well then." timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="I guess... well that means." timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="MORE GOLD FOR ME! HA-HA!" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="I'll be on my way now, thanks for everything boy!" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="I uh... I found your friend." timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Dear me, He has gotten quite skinny." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="...He's dead, Labina." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="He is literally a skeleton, this is his skull." timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Oh. Well then." timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="I guess... well that means." timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="MORE GOLD FOR ME! HA-HA!" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="I'll be on my way now, thanks for everything boy!" timer="2.0" turned="false" />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />

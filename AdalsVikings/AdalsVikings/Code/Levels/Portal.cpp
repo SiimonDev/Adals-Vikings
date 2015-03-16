@@ -5,6 +5,7 @@
 #include "..\Logics\Debug.h"
 #include "..\Logics\KeyboardState.h"
 #include "..\Dialog\PlayerMonologue.h"
+#include "..\Interface\LoadingScreen.h"
 #include <iostream>
 
 Portal::Portal(LevelFolder::ID levelID, sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn)
@@ -89,13 +90,17 @@ void Portal::portalTravel(Player &player)
 		&& player.getSprite().getPosition().y < mArea.getGlobalBounds().top + mArea.getGlobalBounds().height
 		&& mIsActive == true)
 	{
-		if (mWorking)
+		if (mWorking && LSI.getIsDone())
 		{
 			mSwitchPortal = true;
 			player.setPosition(mConnectedPortal->getSpawn());
 			mConnectedPortal->setWalkable(true);
 		}
-		else
+		else if (mWorking && !LSI.getIsDone())
+		{
+			LSI.setIsWorking(true);
+		}
+		else if (!mWorking)
 		{
 			Dialog dialog = Dialog(mCannotDialogue, 2);
 			PlayerMonologueI.displayDialog(dialog);

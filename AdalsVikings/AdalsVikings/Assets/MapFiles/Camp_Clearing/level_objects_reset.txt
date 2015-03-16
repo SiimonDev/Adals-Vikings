@@ -20,3 +20,10 @@ index: $10
 scale: $1.0
 hascollision: $false
 ############
+*id: $oilBarrel
+position: $X:1410 $Y:530
+interactPosition: $X:-60 $Y:0
+index: $10
+scale: $0.4
+hascollision: $false
+############

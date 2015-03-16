@@ -2,20 +2,20 @@
 <conversation>
 	<useText useText="Err... pass?" />
 	<lookText lookText="He DOES have the black eyes of murder..." />
-	<text character="Ulfr" disabled="false" default="false" say="Um..." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="Hello?" timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="....z...." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="zZZzZzz...." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="...HELLO!" timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="...uh-" timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="...what?" timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="Uh." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="Right." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" timer="2.0" turned="false" say="Hey." />
-	<text character="Guard" disabled="false" default="false" say="Welcome to buisness..." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="State your Loftstowe." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="..." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="Shit." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Um..." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Hello?" timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="....z...." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="zZZzZzz...." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="...HELLO!" timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="...uh-" timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="...what?" timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="Uh." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="Right." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" timer="2.0" turned="false" say="Hey." />
+	<text character="Guard" disabled="true" default="false" say="Welcome to buisness..." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="State your Loftstowe." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="..." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="Shit." timer="2.0" turned="false" />
 	<option_container disabled="false">
 		<option choice_text="Who are you?" disabled="false">
 			<text character="Ulfr" disabled="false" default="false" say="Who are you?" timer="2.0" turned="false" />
@@ -55,7 +55,7 @@
 			<text character="Ulfr" disabled="false" default="false" say="Wel... not me... Ha-Ha!" timer="2.0" turned="false" disablePrevious="true" />
 			<gotoBaseContainer />
 		</option>
-		<option choice_text="Could you let me in?" disabled="false">
+		<option choice_text="Could you let me in?" disabled="true">
 			<text character="Ulfr" disabled="false" default="false" say="Can... can you let me in?" timer="2.0" turned="false" />
 			<text character="Guard" disabled="false" default="false" say="No." timer="2.0" turned="false" />
 			<text character="Ulfr" disabled="false" default="false" say="What? " timer="2.0" turned="false" />

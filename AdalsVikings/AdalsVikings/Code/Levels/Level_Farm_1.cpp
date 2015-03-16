@@ -43,7 +43,7 @@ void Level_Farm_1::update(sf::Time &frametime)
 					mFade1 = true;
 				}
 			}
-			if (!mFade1 && mFade2)
+			if (mFade1 && !mFade2)
 			{
 				FadeI.fadeIn(frametime);
 

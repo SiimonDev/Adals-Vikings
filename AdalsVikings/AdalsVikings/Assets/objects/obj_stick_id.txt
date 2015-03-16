@@ -6,6 +6,6 @@
 *lookat: "Not really too sturdy..." ~1,5
 *deny: "I can't do that." ~1,5
 *denywith: 
-*combine: 
+*combine: $stick$ $stickCloth$ "Well this will surely be useful" ~2,5; 
 *interact: 
 *texture: "img_stick_id.png"

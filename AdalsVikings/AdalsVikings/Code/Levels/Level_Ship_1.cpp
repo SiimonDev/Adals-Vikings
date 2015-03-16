@@ -181,6 +181,8 @@ void Level_Ship_1::load()
 	}
 	else
 	{
+		RMI.loadResource(Texture::BrynjaIdle);
+		RMI.loadResource(Texture::BrynjaTalk);
 		mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 		mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
 		mNpcs["Brynja"]->setScale(sf::Vector2f(0.5f, 0.5f));
@@ -246,6 +248,8 @@ void Level_Ship_1::unload()
 	RMI.unloadResource(Texture::BackBoatWaveAnimation);
 	RMI.unloadResource(Texture::WaveAnimationBoat);
 	RMI.unloadResource(Footsteps::Hardwood);
+	RMI.unloadResource(Texture::BrynjaIdle);
+	RMI.unloadResource(Texture::BrynjaTalk);
 	Level::unload();
 }
 

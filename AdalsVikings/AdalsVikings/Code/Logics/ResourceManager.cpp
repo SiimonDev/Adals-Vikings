@@ -120,8 +120,8 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::YngvarrTalk] = "assets/images/Yngvarr/character_yngvarr_talk.png";
 	mTexturePathMap[Texture::YngvarrSadIdle] = "assets/images/Yngvarr/character_yngvarr_uneasy_blink.png";
 	mTexturePathMap[Texture::YngvarrSadTalk] = "assets/images/Yngvarr/character_yngvarr_uneasy_talk.png";
-	mTexturePathMap[Texture::SeagullIdle] = "assets/images/Seagull/character_fismås_blink.png";
-	mTexturePathMap[Texture::SeagullTalk] = "assets/images/Seagull/character_fismås_talk.png";
+	mTexturePathMap[Texture::SeagullIdle] = "assets/images/Seagull/character_bosse_idle.png";
+	mTexturePathMap[Texture::SeagullTalk] = "assets/images/Seagull/character_bosse_talk.png";
 	mTexturePathMap[Texture::MailmanIdle] = "assets/images/Mailman/character_mailman_leaves_blink.png";
 	mTexturePathMap[Texture::MailManTalk] = "assets/images/Mailman/character_mailman_leaves_talk.png";
 	mTexturePathMap[Texture::MailManSadIdle] = "assets/images/Mailman/character_sad_mailman_leaves_blink.png";
@@ -131,7 +131,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::PrincessTalk] = "assets/images/Princess/character_princess_talk.png";
 	mTexturePathMap[Texture::BeorIdle] = "assets/images/Beor/character_priest_blink.png";
 	mTexturePathMap[Texture::BeorTalk] = "assets/images/Beor/character_priest_happy_talk.png";
-	mTexturePathMap[Texture::BearIdle] = "assets/images/Bear/character_bear_blink.png";
+	mTexturePathMap[Texture::BearIdle] = "assets/images/Bear/character_bear_idle.png";
 	mTexturePathMap[Texture::BearWalk] = "assets/images/Bear/character_bear_walking.png";
 	mTexturePathMap[Texture::AethelberthIdle] = "assets/images/Aethelberth/character_aethelberth_blink.png";
 	mTexturePathMap[Texture::AethelberthTalk] = "assets/images/Aethelberth/character_aethelberth_talk.png";
