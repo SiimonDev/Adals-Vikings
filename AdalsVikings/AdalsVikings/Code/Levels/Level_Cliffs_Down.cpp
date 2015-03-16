@@ -15,13 +15,6 @@ void Level_Cliffs_Down::restartSounds()
 
 void Level_Cliffs_Down::update(sf::Time &frametime)
 {
-	if (!Act1Events::hasBeenHandled(Act1Event::GivenSleepingMeatToWolf))
-	{
-		DialogHandler::getDialogue("Miner_Cavern").enableOption(3);
-		Act1Events::handleEvent(Act1Event::GivenSleepingMeatToWolf);
-	}
-	if (!Act1Events::hasBeenHandled(Act1Event::GotCandleLight))
-		Act1Events::handleEvent(Act1Event::GotCandleLight);
 	if (!mCannotGo)
 	{
 		if (Act1Events::hasBeenHandled(Act1Event::TooDarkToGo))

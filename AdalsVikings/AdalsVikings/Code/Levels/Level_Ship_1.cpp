@@ -47,46 +47,53 @@ void Level_Ship_1::update(sf::Time &frametime)
 
 	if (BoatEvents::hasBeenTriggered(BoatEvent::GivenBucketToLeifr) && !BoatEvents::hasBeenHandled(BoatEvent::GivenBucketToLeifr))
 	{
-		mPlayer->removeItemFromInventory("bucket");
-		DialogHandler::startDialogue("BucketDialogue_Ship1");
+		if (mPlayer->hasItemInInventory("bucket"))
+			mPlayer->removeItemFromInventory("bucket");
+		if (!DialogHandler::getDialogue("BucketDialogue_Ship1").getActiveConversation() && !DialogHandler::getDialogue("BucketDialogue_Ship1").getHasStopped())
+			DialogHandler::startDialogue("BucketDialogue_Ship1");
 
-		BoatEvents::handleEvent(BoatEvent::GivenBucketToLeifr);
+		if (DialogHandler::getDialogue("BucketDialogue_Ship1").getHasStopped())
+		{
+			mPlayer->addItemToInventory("bucketBroken");
+			BoatEvents::handleEvent(BoatEvent::GivenBucketToLeifr);
+		}
 	}
 	if (BoatEvents::hasBeenTriggered(BoatEvent::FluteFromAlfr) && !BoatEvents::hasBeenHandled(BoatEvent::FluteFromAlfr))
 	{
 		mPlayer->addItemToInventory("flute");
-
 		BoatEvents::handleEvent(BoatEvent::FluteFromAlfr);
 	}
 	if (BoatEvents::hasBeenTriggered(BoatEvent::DroppedFluteOnBrynja) && !BoatEvents::hasBeenHandled(BoatEvent::DroppedFluteOnBrynja))
 	{
-		if (mStartBrynja == false)
+		if (mPlayer->hasItemInInventory("flute"))
 		{
 			DialogHandler::getDialogue("Leifr_Ship1").disableOption(2);
 			DialogHandler::getDialogue("Alfr_Ship1").disableOption(3);
 			mPlayer->removeItemFromInventory("flute");
 			DialogHandler::startDialogue("BrynjaFlute_Ship1");
-			mStartBrynja = true;
 		}
 
-		if (DialogHandler::getDialogue("BrynjaFlute_Ship1").getHasStopped() && !mBrynjaFade1)
+		if (DialogHandler::getDialogue("BrynjaFlute_Ship1").getHasStopped())
 		{
-			FadeI.fadeOut(frametime);
-			if (FadeI.getFaded())
+			if (!mBrynjaFade1)
 			{
-				RMI.unloadResource(Texture::BrynjaSleeping);
-				mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
-				mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
-				mNpcs["Brynja"]->setScale(sf::Vector2f(0.5f, 0.5f));
-				mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
-				mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
-				mNpcs["Brynja"]->updateAnimationStyle();
-				mNpcs["Brynja"]->setFlip(true);
-				
-				mBrynjaFade1 = true;
+				FadeI.fadeOut(frametime);
+				if (FadeI.getFaded())
+				{
+					RMI.unloadResource(Texture::BrynjaSleeping);
+					mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+					mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
+					mNpcs["Brynja"]->setScale(sf::Vector2f(0.5f, 0.5f));
+					mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
+					mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
+					mNpcs["Brynja"]->updateAnimationStyle();
+					mNpcs["Brynja"]->setFlip(true);
+
+					mBrynjaFade1 = true;
+				}
 			}
 		}
-		else if (mBrynjaFade1 && !mBrynjaFade2)
+		if (mBrynjaFade1 && !mBrynjaFade2)
 		{
 			FadeI.fadeIn(frametime);
 
@@ -94,35 +101,29 @@ void Level_Ship_1::update(sf::Time &frametime)
 				mBrynjaFade2 = true;
 			}
 		}
-		else if (mBrynjaFade2 && !mBrynjaConv)
-		{
+		if (mBrynjaFade2 && !DialogHandler::getDialogue("BrynjaConversation_Ship1").getActiveConversation() && !DialogHandler::getDialogue("BrynjaConversation_Ship1").getHasStopped())
 			DialogHandler::startDialogue("BrynjaConversation_Ship1");
-			mBrynjaConv = true;
-		}
 
-		if (DialogHandler::getDialogue("BrynjaConversation_Ship1").getHasStopped() && mBrynjaConv)
+		if (DialogHandler::getDialogue("BrynjaConversation_Ship1").getHasStopped())
 		{
 			mPlayer->addItemToInventory("fluteBroken");
-
 			mPlayer->addItemToInventory("map");
 			DialogHandler::getDialogue("Brandr_Ship2").disableOption(2);
-			BoatEvents::handleEvent(BoatEvent::GottenMap);
+			if (!BoatEvents::hasBeenTriggered(BoatEvent::GottenMap))
+			{
+				BoatEvents::triggerEvent(BoatEvent::GottenMap);
+				BoatEvents::handleEvent(BoatEvent::GottenMap);
+			}
 			BoatEvents::handleEvent(BoatEvent::DroppedFluteOnBrynja);
 		}
 	}
-	if (DialogHandler::getDialogue("BucketDialogue_Ship1").getHasStopped() && !mOldBucketAdded)
-	{
-		mPlayer->addItemToInventory("bucketBroken");
-		mOldBucketAdded = true;
-	}
 
-	if (DialogHandler::getDialogue("Valdis_Ship1").getIsOptionDisabled(2) && BoatEvents::hasBeenHandled(BoatEvent::TalkedToBrandr) && 
-		!BoatEvents::hasBeenHandled(BoatEvent::TalkedToValdis) && DialogHandler::getDialogue("Valdis_Ship1").getHasStopped())
+	if (BoatEvents::hasBeenTriggered(BoatEvent::TalkedToValdis) && !BoatEvents::hasBeenHandled(BoatEvent::TalkedToValdis))
 	{
 		DialogHandler::getDialogue("Finnr_Ship1").enableOption(2);
 		DialogHandler::getDialogue("Leifr_Ship1").enableOption(2);
 		DialogHandler::getDialogue("Alfr_Ship1").enableOption(3);
-		if (!mPlayer->hasItemInInventory("bucket"))
+		if (!mPlayer->hasItemInInventory("bucket") || !mPlayer->hasItemInInventory("brokenBucket"))
 			DialogHandler::getDialogue("Dagny_Ship2").enableOption(2);
 		BoatEvents::handleEvent(BoatEvent::TalkedToValdis);
 	}
@@ -276,6 +277,10 @@ void Level_Ship_1::checkEvents()
 
 	if (DialogHandler::getDialogue("IntroUlfr_Ship1").getHasStopped() && !BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen))
 		BoatEvents::triggerEvent(BoatEvent::IntroScreen);
+
+	if (BoatEvents::hasBeenHandled(BoatEvent::TalkedToBrandr) && !BoatEvents::hasBeenTriggered(BoatEvent::TalkedToValdis) &&
+		DialogHandler::getDialogue("Valdis_Ship1").getIsOptionDisabled(2) && DialogHandler::getDialogue("Valdis_Ship1").getHasStopped())
+		BoatEvents::triggerEvent(BoatEvent::TalkedToValdis);
 
 }
 
