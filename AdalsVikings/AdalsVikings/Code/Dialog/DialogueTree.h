@@ -13,7 +13,7 @@ class DialogueTree
 public:
 	DialogueTree(Font::ID fontID);
 
-	void load();
+	void load(bool reset);
 	void unload();
 	void render(IndexRenderer &iRenderer);
 	void update(sf::Time &frametime);

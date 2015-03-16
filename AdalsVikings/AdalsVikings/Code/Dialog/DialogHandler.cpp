@@ -23,7 +23,7 @@ void DialogHandler::reloadConversations()
 		it->second->reloadConverstaion();
 }
 
-void DialogHandler::load()
+void DialogHandler::load(bool reset)
 {
 	RMI.loadResource(Font::Skranji_regular);
 	instream.open("assets/textfiles/Dialogues.txt");
@@ -41,7 +41,7 @@ void DialogHandler::load()
 			dialouge->setDialogue(filepath);
 
 			mDialogueMap.insert(std::make_pair(id, std::move(dialouge)));
-			mDialogueMap[id]->load();
+			mDialogueMap[id]->load(reset);
 		}
 	}
 

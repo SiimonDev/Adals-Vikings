@@ -54,7 +54,7 @@ void LevelManager::load(bool reset)
 
 	NpcHandlerI.load();
 	PlayerMonologueI.load();
-	DialogHandler::load();
+	DialogHandler::load(reset);
 	mHud.load();
 	mActionWheel.load();
 	mPlayer.load();
