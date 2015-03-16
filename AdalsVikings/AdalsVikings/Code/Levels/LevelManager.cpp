@@ -65,7 +65,7 @@ void LevelManager::load(bool reset)
 		Act1Events::initialize();
 		mPlayer.clearInventory();
 
-		loadAct1(reset); //<--- Change this if you want to spawn on a different act
+		loadBoatScene(reset); //<--- Change this if you want to spawn on a different act
 	}
 	else
 	{
@@ -168,6 +168,8 @@ void LevelManager::setNearbyLevels()
 
 void LevelManager::save(std::string savePath)
 {
+	mPlayer.saveInventory();
+	mLevelMap[mCurrentLevelID]->saveObjects();
 	// Save All the events
 	if (mCurrentActID == Act::Ship)
 		BoatEvents::saveEvents(savePath + "BoatEvents.txt");
@@ -269,7 +271,7 @@ void LevelManager::loadAct1(bool reset)
 
 	if (reset)
 	{
-		mCurrentLevelID = LevelFolder::Road;  //<--- Change this if you want to spawn on a different level
+		mCurrentLevelID = LevelFolder::Beach;  //<--- Change this if you want to spawn on a different level
 		baseLoad(true);
 	}
 	else

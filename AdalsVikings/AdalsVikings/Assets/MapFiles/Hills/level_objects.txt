@@ -3,7 +3,7 @@
 position: $X:1010 $Y:645
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1
+scale: $1.0
 hascollision: $false
 ############
 *id: $spiderweb

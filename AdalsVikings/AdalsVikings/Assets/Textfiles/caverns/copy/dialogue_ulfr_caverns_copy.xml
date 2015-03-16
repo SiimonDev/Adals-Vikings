@@ -2,7 +2,7 @@
 <conversation>
 	<useText useText="Why would I use Valdis?" />
 	<lookText lookText="She seems to be stuck in a staring contest with the ocean." />
-	<text character="Ulfr" disabled="true" default="false" say="He didn't even take the skull with him... or the axe.." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="What an asshole." timer="2.0" turned="false" disablePrevious="true" />
+	<text character="Ulfr" disabled="false" default="false" say="He didn't even take the skull with him... or the axe.." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="What an asshole." timer="2.0" turned="false" disablePrevious="true" />
 	<stopConversation />
 </conversation>

@@ -2,10 +2,10 @@
 <conversation>
 	<useText useText="Why would anyone want to use Him?" />
 	<lookText lookText="Our &quot;great&quot; leader, Brandr. I just hope he won't steer us into a bunch of cliffs, or to the wrong continent." />
-	<text character="Ulfr" disabled="false" default="false" say="What's going on here, Br-" timer="1.2" turned="false" />
-	<text character="Brandr" disabled="false" default="false" disablePrevious="true" say="YNGVARR!" timer="1.0" turned="true" />
-	<text character="Brandr" disabled="false" default="false" disablePrevious="" say="Where is my father's map?" timer="2.2" />
-	<text character="Brandr" disabled="false" default="false" say="Have you found it yet?" timer="2.0" />
+	<text character="Ulfr" disabled="true" default="false" say="What's going on here, Br-" timer="1.2" turned="false" />
+	<text character="Brandr" disabled="true" default="false" disablePrevious="true" say="YNGVARR!" timer="1.0" turned="true" />
+	<text character="Brandr" disabled="true" default="false" disablePrevious="" say="Where is my father's map?" timer="2.2" />
+	<text character="Brandr" disabled="true" default="false" say="Have you found it yet?" timer="2.0" />
 	<text character="Yngvarr" disabled="false" default="false" say="I'm sorry Brandr. " timer="2.0" turned="false" />
 	<text character="Yngvarr" disabled="false" default="false" say="I've checked the supplies and everything." timer="2.3" />
 	<text character="Yngvarr" default="false" disabled="false" say="I just can't seem to find it." timer="2.0" />
