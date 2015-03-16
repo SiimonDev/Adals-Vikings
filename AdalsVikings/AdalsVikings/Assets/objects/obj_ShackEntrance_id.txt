@@ -1,6 +1,6 @@
-*Type: animated
-*ID: $ato1$
-*Name: Animated Test Object 1
+*Type: invisible
+*ID: $ShackEntrance$
+*Name: Entrance To Shack
 *ispickupable: False
 *pickup: "This might come in handy" ~2,0
 *lookat: "That's nice..." ~1,5
@@ -8,5 +8,4 @@
 *denywith: 
 *combine: 
 *interact: 
-*texture: "img_ato1_id.png"
-*animation: X:1   Y:3   ~2,0 ~3,0
+*invisible: X: 35 Y:55

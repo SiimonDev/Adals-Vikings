@@ -13,11 +13,13 @@ MenuHandler &MenuHandler::getInstance()
 
 MenuHandler::MenuHandler()
 {
+	mActive = true;
 	// Main Menu Section
-	mMainMenuPanels.push_back(new MainMenuPanel());
+	mMainMenuPanels.push_back(&mMainMenuPanel);
+	mMainMenuPanels.push_back(&mPlayPanel);
 
 	// Pause Menu Section
-	mPauseMenuPanels.push_back(new PauseMenuPanel());
+	mPauseMenuPanels.push_back(&mPauseMenuPanel);
 
 	load(MenuID::MainMenu);
 }
@@ -30,7 +32,7 @@ void MenuHandler::load(MenuID menuID)
 		for each (MenuPanel* panel in mMainMenuPanels)
 			panel->load();
 		
-		mActiveMenuPanels.push_back(mMainMenuPanels[0]);
+		mActiveMenuPanels.push_back(&mMainMenuPanel);
 	}
 	if (menuID == MenuID::PauseMenu){
 		for each (MenuPanel* panel in mPauseMenuPanels)
@@ -53,32 +55,48 @@ void MenuHandler::unload(MenuID menuID)
 
 void MenuHandler::update(sf::Time frameTime)
 {
-	mCurrentEvent = MenuEvent::NONE;
-	if (hasActiveMenu())
+	if (mActive || mCurrentID == MenuID::MainMenu)
 	{
-		mActiveMenuPanels.at(mActiveMenuPanels.size() - 1)->update(frameTime);
-		mCurrentEvent = mActiveMenuPanels.at(mActiveMenuPanels.size() - 1)->getEvent();
-
-		if (KeyboardState::isPressed(sf::Keyboard::Escape))
+		mCurrentEvent = MenuEvent::NONE;
+		if (hasActiveMenu())
 		{
-			popMenu();
+			mActiveMenuPanels[mActiveMenuPanels.size() - 1]->update(frameTime);
+			mCurrentEvent = mActiveMenuPanels[mActiveMenuPanels.size() - 1]->getEvent();
+
+			if (mCurrentEvent == MenuEvent::PlayPressed)
+			{
+				mActiveMenuPanels.push_back(&mPlayPanel);
+				mActiveMenuPanels[0]->update(frameTime);
+			}
+			else if (mCurrentEvent == MenuEvent::BackToMenuPressed)
+			{
+				popMenu();
+			}
+
+			if (KeyboardState::isPressed(sf::Keyboard::Escape))
+			{
+				popMenu();
+			}
 		}
-	}
-	else if (KeyboardState::isPressed(sf::Keyboard::Escape) && mCurrentID == MenuID::PauseMenu)
-	{
-		mActiveMenuPanels.push_back(mPauseMenuPanels[0]);
+		else if (KeyboardState::isPressed(sf::Keyboard::Escape) && mCurrentID == MenuID::PauseMenu)
+		{
+			mActiveMenuPanels.push_back(mPauseMenuPanels[0]);
+		}
 	}
 }
 void MenuHandler::render(IndexRenderer &iRenderer)
 {
-	for (int i = 0; i < mActiveMenuPanels.size(); i++){
-		mActiveMenuPanels[i]->render(iRenderer);
+	if (mActive || mCurrentID == MenuID::MainMenu)
+	{
+		for (int i = 0; i < mActiveMenuPanels.size(); i++){
+			mActiveMenuPanels[i]->render(iRenderer);
+		}
 	}
 }
 
 void MenuHandler::popMenu()
 {
-	if (!hasActiveMenu() || mCurrentID == MenuID::PauseMenu)
+	if (mActiveMenuPanels.size() > 1 || mCurrentID == MenuID::PauseMenu)
 		mActiveMenuPanels.pop_back();
 }
 
@@ -90,4 +108,15 @@ MenuEvent MenuHandler::getEvent()
 bool MenuHandler::hasActiveMenu()
 {
 	return !mActiveMenuPanels.empty();
+}
+
+void MenuHandler::setActive(bool active)
+{
+	if (mCurrentID != MenuID::MainMenu)
+	{
+		mActive = active;
+		mActiveMenuPanels.clear();
+	}
+	else
+		mActive = true;
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why would I use Valdis?" />
+	<lookText lookText="She seems to be stuck in a staring contest with the ocean." />
+	<text character="Valdis" disabled="false" default="false" say="Get me something more to combine this with." turned="false" timer="2.3" />
+	<stopConversation />
+</conversation>

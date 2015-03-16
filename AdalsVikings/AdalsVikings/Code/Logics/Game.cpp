@@ -24,7 +24,6 @@ Game::Game()
 	:mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings"/*, sf::Style::Fullscreen*/)
 {
 	mWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
-	mWindow.setVerticalSyncEnabled(false);
 	mWindow.setMouseCursorVisible(false);
 
 	icon.loadFromFile("assets/images/interface/icon_32.png");
@@ -43,18 +42,6 @@ Game::~Game()
 
 }
 
-void Game::resize(int width, int height)
-{
-	mWidth = width;
-	mHeight = height;
-
-	iRenderer.resize(width, height);
-
-	cout << "---- Window Resized! ----" << endl;
-	cout << "Width: " << mWidth << endl;
-	cout << "Height: " << mHeight << endl;
-}
-
 void Game::update(sf::Time frameTime)
 {
 	if (!LSI.getIsDone() && LSI.getIsStarted())
@@ -66,8 +53,7 @@ void Game::update(sf::Time frameTime)
 		MHI.update(frameTime);
 		if (runGame)
 		{
-			if (!MHI.hasActiveMenu())
-				LVLMI.update(frameTime);
+			LVLMI.update(frameTime);
 
 			// Check for pause menu events
 			if (MHI.getEvent() == MenuEvent::MainMenuPressed)
@@ -85,6 +71,11 @@ void Game::update(sf::Time frameTime)
 		if (MHI.getEvent() == MenuEvent::NewGamePressed)
 		{
 			LSI.startLoading(LoadTask::StartGame);
+			runGame = true;
+		}
+		else if (MHI.getEvent() == MenuEvent::LoadGamePressed)
+		{
+			LSI.startLoading(LoadTask::LoadGame);
 			runGame = true;
 		}
 		else if (MHI.getEvent() == MenuEvent::ExitGamePressed)
@@ -129,16 +120,12 @@ void Game::render()
 void Game::processEvents()
 {
 	sf::Event event;
-	while (mWindow.pollEvent(event))
+	if (mWindow.pollEvent(event))
 	{
 		switch (event.type)
 		{
 		case sf::Event::Closed:
 			mWindow.close();
-			break;
-
-		case sf::Event::Resized:
-			resize(event.size.width, event.size.height);
 			break;
 
 		default:
@@ -158,6 +145,10 @@ void Game::run()
 		timeSinceLastUpdate += clock.restart();
 		while (timeSinceLastUpdate >= frameTime)
 		{
+			/* ======== Prevents the game from freezing ======== */
+			if (timeSinceLastUpdate > sf::seconds(4))
+				timeSinceLastUpdate = sf::seconds(0);
+			/* ================================================= */
 			timeSinceLastUpdate -= frameTime;
 			update(frameTime);
 			processEvents();

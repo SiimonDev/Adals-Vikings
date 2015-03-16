@@ -353,7 +353,7 @@ void Player::setAnimationStyle(AnimationType::ID type)
 		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
 		mAnimationStyle = AnimationStyle::PlayerTalk;
 	}
-	/*else if (type == AnimationType::TalkToPlayer && mAnimationStyle != AnimationStyle::PlayerMonolog)
+	else if (type == AnimationType::TalkToPlayer && mAnimationStyle != AnimationStyle::PlayerMonolog)
 	{
 		setFlip(false);
 		mPlayerAnimation.flip(mFlip);
@@ -361,7 +361,7 @@ void Player::setAnimationStyle(AnimationType::ID type)
 
 		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
 		mAnimationStyle = AnimationStyle::PlayerMonolog;
-	}*/
+	}
 	else if (type == AnimationType::Pickup && mAnimationStyle != AnimationStyle::PlayerPickup)
 	{
 		mPlayerAnimation.flip(mFlip);

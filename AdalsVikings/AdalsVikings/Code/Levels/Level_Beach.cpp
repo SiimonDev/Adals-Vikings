@@ -53,7 +53,9 @@ void Level_Beach::load()
 	if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))
 		mPortals[BeachToTavernOutside]->setWorking(true);
 
-	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro) && !Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
+	mNpcs["Seagull"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Seagull")));
+
+	if (!Act1Events::hasBeenHandled(Act1Event::Beach_Ending))
 	{
 		mPortals[BeachToRoad]->setCannotDialogue("I was told not to leave the beach!");
 		mPortals[BeachToTavernOutside]->setCannotDialogue("I was told not to leave the beach!");
@@ -72,7 +74,6 @@ void Level_Beach::load()
 		mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Alfr")));
 		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
 		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
-		mNpcs["Seagull"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Seagull")));
 		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brandr")));
 		mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brynja")));
 		mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));

@@ -4,7 +4,7 @@
 *ispickupable: True
 *pickup: "This might come in handy" ~2,0
 *lookat: "That's nice..." ~1,5
-*deny: "I can't do that" ~1,5
+*deny: "I am sorry, but the theme of the game is non violence." ~1,5
 *denywith: 
 *combine: 
 *interact: 

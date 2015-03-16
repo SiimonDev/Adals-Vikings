@@ -1,0 +1,3 @@
+*mapID: 1
+*currentActID: 1
+*playerPos: 1400, 750

@@ -14,12 +14,34 @@ void Level_City_Gates::restartSounds()
 
 void Level_City_Gates::update(sf::Time &frametime)
 {
+	if (KeyboardState::isPressed(sf::Keyboard::Num1))
+		mPlayer->addItemToInventory("skullHelmet");
 	if (Act1Events::hasBeenTriggered(Act1Event::TalkedToGuard) && !Act1Events::hasBeenHandled(Act1Event::TalkedToGuard))
 	{
 		if (DialogHandler::getDialogue("Ulfr_Gates").getHasStopped())
 		{
 			mPortals[GatesToCliffs]->setWorking(true);
 			Act1Events::handleEvent(Act1Event::TalkedToGuard);
+		}
+	}
+	if (Act1Events::hasBeenTriggered(Act1Event::GivenSkullHelmetToGuard) && !Act1Events::hasBeenHandled(Act1Event::GivenSkullHelmetToGuard))
+	{
+		if (!DialogHandler::getDialogue("Guard2_Gates").getActiveConversation() && !DialogHandler::getDialogue("Guard2_Gates").getHasStopped())
+		{
+			DialogHandler::getDialogue("Guard2_Gates").startDialogue();
+		}
+		if (DialogHandler::getDialogue("Guard2_Gates").getHasStopped())
+		{
+			if (!mFade1)
+			{
+				FadeI.fadeOut(frametime);
+
+				if (FadeI.getFaded())
+				{
+					mFade1 = true;
+					Act1Events::handleEvent(Act1Event::GivenSkullHelmetToGuard);
+				}
+			}
 		}
 	}
 	Level::update(frametime);
@@ -77,7 +99,8 @@ void Level_City_Gates::changeLevel()
 
 void Level_City_Gates::checkInteractEvents()
 {
-
+	if (mDroppedItemID == "skullHelmet" && mCurrentNPCID == "Guard" && !Act1Events::hasBeenTriggered(Act1Event::GivenSkullHelmetToGuard))
+		Act1Events::triggerEvent(Act1Event::GivenSkullHelmetToGuard);
 }
 void Level_City_Gates::checkEvents()
 {

@@ -181,22 +181,15 @@ void Level_Road::load()
 			mPortals[RoadToFarm]->setCannotDialogue("I should report to Brynja before I start exploring...");
 			mPortals[RoadToCamp]->setWorking(true);
 		}
-		//if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
-		//{
-		//	mPortals[RoadToBeach]->setWorking(true);
-		//	mPortals[RoadToFarm]->setWorking(true);
-		//	mPortals[RoadToOutside_Chuch]->setWorking(true);
-		//	mPortals[RoadToCamp]->setWorking(false);
-		//	mPortals[RoadToCamp]->setCannotDialogue("If I go back there Brandr will kill me...");
-		//	//mPortals[RoadToGates]->setWorking(true);
-		//}
-
-		mPortals[RoadToBeach]->setWorking(true);
-		mPortals[RoadToFarm]->setWorking(true);
-		mPortals[RoadToOutside_Chuch]->setWorking(true);
-		mPortals[RoadToGates]->setWorking(true);
-		mPortals[RoadToCamp]->setWorking(false);
-		mPortals[RoadToCamp]->setCannotDialogue("If I go back there Brandr will kill me...");
+		if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
+		{
+			mPortals[RoadToBeach]->setWorking(true);
+			mPortals[RoadToFarm]->setWorking(true);
+			mPortals[RoadToOutside_Chuch]->setWorking(true);
+			mPortals[RoadToCamp]->setWorking(false);
+			mPortals[RoadToCamp]->setCannotDialogue("If I go back there Brandr will kill me...");
+			mPortals[RoadToGates]->setWorking(true);
+		}
 
 	Level::load();
 	mCurrentFootsteps = Footsteps::Dirt;

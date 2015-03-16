@@ -39,7 +39,6 @@ void Level_Ship_1::update(sf::Time &frametime)
 			{
 				DialogHandler::getDialogue("IntroUlfr_Ship1").startDialogue();
 				mGameStart = true;
-				//FadeI.setAlpha(0);
 			}
 		}
 		if (DialogHandler::getDialogue("IntroUlfr_Ship1").getHasStopped())
@@ -63,7 +62,6 @@ void Level_Ship_1::update(sf::Time &frametime)
 	{
 		if (mStartBrynja == false)
 		{
-			//FadeI.setAlpha(0);
 			DialogHandler::getDialogue("Leifr_Ship1").disableOption(2);
 			DialogHandler::getDialogue("Alfr_Ship1").disableOption(3);
 			mPlayer->removeItemFromInventory("flute");
@@ -85,12 +83,6 @@ void Level_Ship_1::update(sf::Time &frametime)
 				mNpcs["Brynja"]->updateAnimationStyle();
 				mNpcs["Brynja"]->setFlip(true);
 				
-				//RMI.loadResource(Texture::ValdisTalk);
-				//RMI.loadResource(Texture::ValdisIdle);
-				//mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
-				//mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
-				//mNpcs["Valdis"]->setAnimationStyle("Idle");
-
 				mBrynjaFade1 = true;
 			}
 		}
@@ -98,9 +90,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 		{
 			FadeI.fadeIn(frametime);
 
-			if (FadeI.getFaded())
-			{
-				//FadeI.setAlpha(0);
+			if (FadeI.getFaded()){
 				mBrynjaFade2 = true;
 			}
 		}
@@ -155,14 +145,15 @@ void Level_Ship_1::load()
 	mPortals[Ship1ToShip2]->setWorking(true);
 
 	RMI.loadResource(Texture::IntroScreen);
-	/*RMI.loadResource(Texture::ValdisSittingIdle);
-	RMI.loadResource(Texture::ValdisSittingTalk);
-	RMI.loadResource(Texture::LeifrSitIdle);
-	RMI.loadResource(Texture::LeifrSitTalk);*/
 	RMI.loadResource(Texture::BackBoatRopeAnimation);
 	RMI.loadResource(Texture::BackBoatWaveAnimation);
 	RMI.loadResource(Texture::WaveAnimationBoat);
 	RMI.loadResource(Footsteps::Hardwood);
+
+	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
+	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
+	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brynja")));
+	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Alfr")));
 
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
 	mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
@@ -170,15 +161,13 @@ void Level_Ship_1::load()
 	mNpcs["Valdis"]->setScale(sf::Vector2f(0.3f, 0.3f));
 	mNpcs["Valdis"]->setIndex(14);
 
-	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
-	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
-	mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brynja")));
-	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Alfr")));
 	mNpcs["Alfr"]->setIndex(16);
+
 	mNpcs["Leifr"]->setIdleAnimation(Texture::LeifrSitIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 	mNpcs["Leifr"]->SetTalkAnimation(Texture::LeifrSitTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
+	mNpcs["Leifr"]->setScale(sf::Vector2f(0.5f, 0.5f));
 
-	if (!mStartBrynja)
+	if (!BoatEvents::hasBeenHandled(BoatEvent::DroppedFluteOnBrynja))
 	{
 		RMI.loadResource(Texture::BrynjaIdle);
 		RMI.loadResource(Texture::BrynjaTalk);
@@ -189,6 +178,16 @@ void Level_Ship_1::load()
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 730));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(900, 710));
 		mNpcs["Brynja"]->setScale(sf::Vector2f(0.6f, 0.6f));
+	}
+	else
+	{
+		mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+		mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
+		mNpcs["Brynja"]->setScale(sf::Vector2f(0.5f, 0.5f));
+		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
+		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
+		mNpcs["Brynja"]->updateAnimationStyle();
+		mNpcs["Brynja"]->setFlip(true);
 	}
 
 	Level::load();
@@ -220,7 +219,6 @@ void Level_Ship_1::load()
 	if (!BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
 		mPlayer->setPosition(sf::Vector2f(1400, 750));
 
-
 	mSeaAnimation.load(RMI.getResource(Texture::WaveAnimationBoat), sf::Vector2i(6, 12), sf::seconds(12), sf::seconds(0), true);
 	mSeaAnimation.setIndex(2);
 	mSeaAnimation.getSprite().setOrigin(0, 0);
@@ -244,12 +242,6 @@ void Level_Ship_1::load()
 void Level_Ship_1::unload()
 {
 	RMI.unloadResource(Texture::IntroScreen);
-	//RMI.unloadResource(Texture::ValdisSittingIdle);
-	//RMI.unloadResource(Texture::ValdisSittingTalk);
-	//RMI.loadResource(Texture::ValdisTalk);
-	//RMI.loadResource(Texture::ValdisIdle);
-	//RMI.unloadResource(Texture::LeifrSitIdle);
-	//RMI.unloadResource(Texture::LeifrSitTalk);
 	RMI.unloadResource(Texture::BackBoatRopeAnimation);
 	RMI.unloadResource(Texture::BackBoatWaveAnimation);
 	RMI.unloadResource(Texture::WaveAnimationBoat);

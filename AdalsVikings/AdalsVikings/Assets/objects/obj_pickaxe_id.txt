@@ -1,10 +1,10 @@
 *Type: standard
 *ID: $pickaxe$
-*Name: Pickaxe
+*Name: Old Pickaxe
 *ispickupable: True
-*pickup: "This could be useful." ~2,0
-*lookat: "Sharp..." ~1,5
-*deny: "I can't do that." ~1,5
+*pickup: "Now if only I had some sweet gold to mine." ~0,0
+*lookat: "Huh, I thought it would be more rusty after all these years." ~2,5
+*deny: "I mean, it could be used as a weapon, but..." ~2,5
 *denywith: 
 *combine: 
 *interact: 

@@ -16,6 +16,9 @@ void Level_Church_Inside::restartSounds()
 
 void Level_Church_Inside::update(sf::Time &frametime)
 {
+	if (Act1Events::hasBeenTriggered(Act1Event::GotCandleLight) && !Act1Events::hasBeenHandled(Act1Event::GotCandleLight))
+		Act1Events::handleEvent(Act1Event::GotCandleLight);
+
 	Level::update(frametime);
 	changeLevel();
 }
@@ -69,5 +72,6 @@ void Level_Church_Inside::checkInteractEvents()
 
 void Level_Church_Inside::checkEvents()
 {
-
+	if (mPlayer->hasItemInInventory("candle") && !Act1Events::hasBeenTriggered(Act1Event::GotCandleLight))
+		Act1Events::triggerEvent(Act1Event::GotCandleLight);
 }

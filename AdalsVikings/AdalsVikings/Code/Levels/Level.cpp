@@ -113,16 +113,18 @@ void Level::updateObjects(sf::Time frameTime)
 			if (mObjects[mObjIndex]->isPickupable())
 			{
 				mPlayer->setAnimationStyle(AnimationType::Pickup);
-				if (mPlayer->getAnimation().getStopped())
+				if (mPlayer->getAnimation().getFinished())
 				{
 					mPlayer->addItemToInventory(mObjects[mObjIndex]->getObjID());
 					PathFinder::getCurrentTileMap().removeCollision(mObjects[mObjIndex]->getCollisionRect());
 					delete mObjects[mObjIndex];
 					mObjects.erase(mObjects.begin() + mObjIndex);	
 					mWalkToObject = false;
+					mPlayer->setIntention(Intention::None);
 				}
 			}
-			mPlayer->setIntention(Intention::None);
+			else
+				mPlayer->setIntention(Intention::None);
 		}
 		else if (mPlayer->getIntention() == Intention::Interact)
 		{
@@ -409,6 +411,7 @@ void Level::update(sf::Time &frameTime)
 		}
 		else
 		{
+			MHI.setActive(true);
 			if (!(mHud->isHelpActive() || mPlayer->isInventoryActive() || mPlayer->getSnappedObjectID() != ""))
 				mActionWheel->update();
 			if (!mHud->isHelpActive() && !mHud->isButtonReleased())
@@ -417,18 +420,24 @@ void Level::update(sf::Time &frameTime)
 			}
 		}
 	}
+	else
+		MHI.setActive(false);
 	mOldIsInConversation = mIsInConversation;
 
 	// Do the portal thing
-	for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
+	if (!mIsInConversation)
 	{
-		if (!it->second->getWalkAble())
+
+		for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 		{
-			it->second->update(frameTime, *mPlayer);
-			it->second->portalTravel(*mPlayer);
+			if (!it->second->getWalkAble())
+			{
+				it->second->update(frameTime, *mPlayer);
+				it->second->portalTravel(*mPlayer);
+			}
+			else
+				it->second->walkPath(*mPlayer);
 		}
-		else
-			it->second->walkPath(*mPlayer);
 	}
 
 	

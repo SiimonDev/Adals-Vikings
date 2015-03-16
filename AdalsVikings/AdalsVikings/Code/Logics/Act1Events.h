@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 namespace Act1Event
 {
 	enum ID
@@ -35,6 +37,15 @@ namespace Act1Event
 		Ruins_RockSlide,
 		GotCandleLight,
 		TooDarkToGo,
+		TalkedToJacob,
+		TalkedToParrik,
+		SolvedConflict,
+		GivenFlowerToValdis,
+		GivenMeadToValdis,
+		GivenSleepingMeatToWolf,
+		GivenSkullToMiner,
+		MinedSomeGold,
+		GivenSkullHelmetToGuard,
 		EVENT_SIZE
 	};
 }
@@ -42,9 +53,10 @@ namespace Act1Event
 class Act1Events
 {
 public:
-	static void initialize();
+	static void initialize(std::string filePath = "");
 	static void triggerEvent(Act1Event::ID event);
 	static void handleEvent(Act1Event::ID event);
+	static void saveEvents(std::string filePath);
 	static void resetEvents();
 
 	static bool hasBeenHandled(Act1Event::ID event);
