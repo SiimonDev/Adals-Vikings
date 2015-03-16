@@ -39,7 +39,7 @@ DialogueTree::DialogueTree(Font::ID fontID)
 	mOptionsRectangle.setFillColor(sf::Color(0, 0, 0, 100));
 	mOptionsRectangle.setPosition(100.f - 2, 705.f + 30);
 }
-void DialogueTree::load()
+void DialogueTree::load(bool reset)
 {
 	std::cout << "Loading: " + mFilePath << std::endl;
 	mDialogue.load_file(mFilePath.c_str());
@@ -59,8 +59,7 @@ void DialogueTree::load()
 		linestream << mFilePath;
 
 		while (std::getline(linestream, segment, '/')) //splits the  line at ;
-		{
-		}
+		{}
 		mFilePath = container + copyFolder + segment;
 		if (mFilePath.find(copyStr) == std::string::npos)
 		{
@@ -68,7 +67,8 @@ void DialogueTree::load()
 			std::string tempStr = mystr + "_copy.xml";
 			mFilePath = tempStr;
 		}
-		mDialogue.save_file(mFilePath.c_str());
+		if (reset)
+			mDialogue.save_file(mFilePath.c_str());
 		mDialogue.load_file(mFilePath.c_str());
 	}
 	getUseText();

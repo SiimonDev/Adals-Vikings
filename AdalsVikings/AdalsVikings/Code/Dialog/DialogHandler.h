@@ -12,7 +12,7 @@ public:
 	static void startDialogue(std::string id);
 	static void reloadConversations();
 
-	static void load();
+	static void load(bool reset);
 	static void unload();
 
 	static DialogueTree &getDialogue(std::string id);
