@@ -1,6 +1,6 @@
 *Type: invisible
 *ID: $roadSign$
-*Name: Northwest
+*Name: Northwest: Farm. Don't touch Jakop's flowers. He's an angry man.
 *ispickupable: False
 *pickup: "Nah." ~2,0
 *lookat: "Northwest: Farm. Don't touch Jakop's flowers. He's an angry man." ~3,0

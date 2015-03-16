@@ -5,7 +5,7 @@
 	<text character="Finnr" say="Hey Ulfr." timer="1.6" turned="false" default="true" disabled="false"></text>
 	<text character="Ulfr" say="Hey Buddy." timer="1.6" turned="true" default="true" disabled="false"></text><text character="Ulfr" say="What are you doing here?" timer="1.6" turned="true" default="false" disabled="false"></text>
 	<text character="Finnr" say="I wanted to see if there was some other way into the city." timer="2.8" turned="false" default="false" disabled="false"></text>
-	<text character="Finnr" say="But it seems like the wall reaches all the way around." timer="2.6" turned="false" default="false" disabled="false"></text>
+	<text character="Finnr" say="But it seems like the wall reaches all the way around." timer="2.6" turned="false" default="false" disabled="false"></text><text character="Finnr" say="It's beautiful." timer="2.0" turned="false" default="false" disabled="false"></text><text character="Finnr" say="The hills remind me of my home in the north." timer="2.6" turned="false" default="false" disabled="false"></text><text character="Finnr" say="It's as if the northern giants have tossed rocks across the ocean for a thousand years." timer="3.3" turned="false" default="false" disabled="false"></text><text character="Finnr" say="And the rocks have piled up here, in this grand place." timer="2.6" turned="false" default="false" disabled="false"></text><text character="Ulfr" say="..." timer="1.8" turned="false" default="false" disabled="false"></text><text character="Ulfr" say="A bit poetic for my taste." timer="2.2" turned="false" default="false" disabled="false"></text><text character="Ulfr" say="But yeah, sure." timer="2.0" turned="false" default="false" disabled="false"></text>
 	
 	
 	
@@ -45,7 +45,7 @@
 			<gotoBaseContainer></gotoBaseContainer>
 		</option>
 		<option choice_text="Talk to you later." disabled="false">
-			<text character="Ulfr" say="Talk to you later." timer="2.2" turned="true" default="false" disabled="false"></text>
+			<text character="Ulfr" say="Talk to you later." timer="2.0" turned="true" default="false" disabled="false"></text><text character="Finnr" say="See you, Ulfr." timer="2.0" turned="true" default="false" disabled="false"></text>
 			<stopConversation></stopConversation>
 		</option>
 		<stopOption />

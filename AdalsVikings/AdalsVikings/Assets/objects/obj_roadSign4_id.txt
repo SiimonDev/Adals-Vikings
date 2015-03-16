@@ -1,6 +1,6 @@
 *Type: invisible
 *ID: $roadSign4$
-*Name: Southeast
+*Name: Southeast: Beach. No parties allowed.
 *ispickupable: False
 *pickup: "Nah." ~2,0
 *lookat: "Southeast: Beach. No parties allowed." ~2,5

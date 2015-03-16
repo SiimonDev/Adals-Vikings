@@ -2,22 +2,22 @@
 <conversation>
 	<useText useText="Yeah, probably shouldn't, don't you think?" />
 	<lookText lookText="Our *great* leader, Brandr. I wonder what trouble he'll get us into next, the idiot." />
-	<text character="Ulfr" disabled="true" default="false" say="Hey Brandr." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="What's going on out here?" timer="2.0" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="Can't you see?" timer="2.0" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="There is an almost unlimited supply of mead." timer="2.0" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="We'd be mad not to stay." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="but..." timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="you..." timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Uh." timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Brynja said that-" timer="2.0" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="SCREW BRYNJA!" timer="2.0" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="We have a right to enjoy ourselves too!" timer="2.0" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="...er..." timer="2.0" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="*Don't tell her i said that...*" timer="2.0" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="* She'd kill us both*" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Hey Brandr." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="What's going on out here?" timer="2.0" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="Can't you see?" timer="2.0" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="There is an almost unlimited supply of mead." timer="2.0" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="We'd be mad not to stay." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="but..." timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="you..." timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Uh." timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Brynja said that-" timer="2.0" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="SCREW BRYNJA!" timer="2.0" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="We have a right to enjoy ourselves too!" timer="2.0" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="...er..." timer="2.0" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="*Don't tell her i said that...*" timer="2.0" turned="false" />
+	<text character="Brandr" disabled="false" default="false" say="* She'd kill us both*" timer="2.0" turned="false" />
 	<option_container disabled="false">
-		<option choice_text="Please return to camp." disabled="true">
+		<option choice_text="Please return to camp." disabled="false">
 			<text character="Ulfr" disabled="false" default="false" say="Er... Brandr, can you please go to the camp?" timer="2.0" turned="false" />
 			<text character="Brandr" disabled="false" default="false" say="No." timer="2.0" turned="false" />
 			<text character="Ulfr" disabled="false" default="false" say="...Yes" timer="2.0" turned="false" />
