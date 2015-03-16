@@ -14,7 +14,14 @@ scale: $1.0
 hascollision: $false
 ############
 *id: $vegetation
-position: $X:336 $Y:93
+position: $X:336 $Y:130
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
+*id: $vegetation
+position: $X:1540 $Y:130
 interactPosition: $X:0 $Y:0
 index: $99
 scale: $1.0
