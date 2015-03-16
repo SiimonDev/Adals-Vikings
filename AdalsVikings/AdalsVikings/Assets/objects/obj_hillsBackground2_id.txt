@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $hillsBackground2$
+*Name: More Hills
+*ispickupable: False
+*pickup: "Ehm... no." ~2,0
+*lookat: "wow.. Hills like green turtles..." ~2,0
+*deny: "I can't do that" ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:300   Y:100
