@@ -69,7 +69,20 @@ index: $1
 scale: $0.8
 hascollision: $false
 ############
-
+*id: $meat
+position: $X:1590 $Y:650
+interactPosition: $X:0 $Y:0
+index: $10
+scale: $0.8
+hascollision: $false
+############
+*id: $mead
+position: $X:1360 $Y:467
+interactPosition: $X:0 $Y:0
+index: $30
+scale: $0.8
+hascollision: $false
+############
 
 
 

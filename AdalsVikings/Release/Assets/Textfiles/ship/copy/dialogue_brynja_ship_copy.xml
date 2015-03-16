@@ -3,6 +3,6 @@
 	<useText useText="I Really can't pick her up... Too heavy." />
 	<lookText lookText="Looks like Brynja is sleeping tight." />
 	<text character="Ulfr" disabled="false" default="false" say="I don't want to talk to her when she's sleeping..." timer="2.8" />
-	<text character="Ulfr" say="I should probably find a way to wake her up..." timer="2.3" default="true" disabled="true" />
+	<text character="Ulfr" disabled="true" default="true" say="I should probably find a way to wake her up..." timer="2.3" />
 	<stopConversation />
 </conversation>

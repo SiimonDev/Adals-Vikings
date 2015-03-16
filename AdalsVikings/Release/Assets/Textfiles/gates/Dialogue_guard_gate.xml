@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Err... pass?" />
+	<lookText lookText="He DOES have the black eyes of murder..." />
+	<text character="Ulfr" disabled="false" default="false" say="Um..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Hello?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="....z...." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="zZZzZzz...." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="...HELLO!" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="...uh-" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="...what?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Uh." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Right." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" timer="2.0"  turned="false" say="Hey."/><text character="Guard" disabled="false" default="false" say="Welcome to buisness..." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="State your Loftstowe." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="..." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Shit." timer="2.0"  turned="false"/>
+	
+	
+	
+	
+	
+	<option_container disabled="false">
+		<option choice_text="Who are you?" disabled="false">
+			<text character="Ulfr" disabled="false" default="false" say="Who are you?" timer="2.0"  turned="false"/>
+			<text character="Guard" disabled="false" default="false" say="Me?" timer="2.0"  turned="false"/>
+			<text character="Guard" disabled="false" default="false" say="No one." timer="2.0"  turned="false"/>
+			<text character="Guard" disabled="false" default="false" say="Or at least no one important." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Just a guard..." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="King Eadmunds guard..." timer="2.0"  turned="false"/>
+			<text character="Ulfr" disabled="false" default="false" say="Oh..." timer="2.0"  turned="false"/>
+			<text character="Ulfr" disabled="false" default="false" say="Sounds like fun..." timer="2.0"  turned="false"/>
+			<text character="Guard" disabled="false" default="false" say="Well, It might be the single most boring job in the world." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="And I've been a scribe for old linus!" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="He would dictate me to write two sentences a day." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="AND THEN COMPLAIN THAT I DIDN'T WRITE MORE!" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Still not as bad as this job..." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Do you know how long I've been standing here now?" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Hours? " timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Eight?" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Nine?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="What? No!" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Two Hours!" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Do you think me some beast from Suffolk?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="I'm a simple guard of Eadmund." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="What a pitiful existence..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Something is telling me he is a bit derpressed..." timer="2.0"  turned="false" disablePrevious="true"/>
+			
+			
+			<gotoContainer />
+		</option>
+		<option choice_text="What are you doing here?">
+			<text character="Ulfr" disabled="false" default="false" say="What are you doing here?" timer="2.0"  turned="false"/>
+			<text character="Guard" disabled="false" default="false" say="I'm watching the gates..." timer="2.0"  turned="false"/>
+			<text character="Ulfr" disabled="false" default="false" say="Just you? All alone?" timer="2.0"  turned="false"/>
+			<text character="Guard" disabled="false" default="false" say="Yes. so?" timer="2.0"  turned="false"/>
+			<text character="Ulfr" disabled="false" default="false" say="So the king doesn't fear any... attacks?" timer="2.0"  turned="false"/>
+			<text character="Guard" disabled="false" default="false" say="Not really..." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="The entire royal army is just beyond the western hills..." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Who'd be dumb enough to attack a city with such a force behind their back?" timer="2.0"  turned="false"/>
+			<text character="Ulfr" disabled="false" default="false" say="Wel... not me... Ha-Ha!" timer="2.0"  turned="false" disablePrevious="true"/>
+			
+			
+			
+			
+			
+			
+			
+			
+			<gotoBaseContainer />
+		</option>
+		<option choice_text="Could you let me in?" disabled="false">
+			<text character="Ulfr" disabled="false" default="false" say="Can... can you let me in?" timer="2.0"  turned="false"/>
+			<text character="Guard" disabled="false" default="false" say="No." timer="2.0"  turned="false"/>
+			<text character="Ulfr" disabled="false" default="false" say="What? " timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Why not?" timer="2.0"  turned="false"/>
+			<text character="Guard" disabled="false" default="false" say="Nothing personal kid." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Kings orders." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="-or at least the kings steward." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Not to let any suspicious individuals enter the city." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="I'm not suspicious..." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Also no Irishmen." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="The harvest festival has beugn, and the king wants no trouble in the city." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Thats very... rude..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Besides, I'm not Irish!" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Oh yeah? what are you then?" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="I'll have you know that I'm a Vi-" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="A vi..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Uh..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="A violinist?" timer="2.0"  turned="false"/>
+			<text character="Guard" disabled="false" default="false" say="A what?" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="A- Uh- Music... player..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="I play the music." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="You play the music?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Are you any good?" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="No..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="..." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="That's.." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Too bad?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Still not letting you in though." timer="2.0"  turned="false" disablePrevious="true"/>
+			<option_container>
+				<option choice_text="Could you let me in... Please?" disabled="false">
+				<text character="Ulfr" disabled="false" default="false" say="Could you let me in... Please?" timer="2.0"  turned="false"/>
+				<text character="Guard" disabled="false" default="false" say="No." timer="2.0"  turned="false"/>
+				<text character="Ulfr" disabled="false" default="false" say="But I'm not Irish!" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="But you ARE suspicious!" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="I'm not!" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Not Your call to make." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="What if i get someone to vouch for me?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Even if you could, and i doubt your ability to, NO!" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Now leave me alone!" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="The king doesn't want anybody, except for very specific people, to enter." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="What &quot;specific&quot; people?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Like the priest, and the courier." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="And that merchant from the south." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="You know." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Non-suspicious people." timer="2.0"  turned="false"/>
+				<option_container>
+				<option choice_text="Pretty please?" disabled="false">
+					<text character="Ulfr" disabled="false" default="false" say="Pretty please?" timer="2.0"  turned="false"/>
+					<text character="Guard" disabled="false" default="false" say="...no." timer="2.0"  turned="false"/>
+					<text character="Guard" disabled="false" default="false" say="Sweet talking won't change the answer." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Suspicious people, you included, are not allowed into the city." timer="2.0"  turned="false"/>
+					<option_container>
+					<option choice_text="Let me in and I'll make it worth your while" disabled="false">
+						<text character="Ulfr" disabled="false" default="false" say="Let me in, and i'll make it worth your while." timer="2.0"  turned="false"/>
+						<text character="Guard" disabled="false" default="false" say="What could you possibly do for me?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Run errands? Do favors?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="I don't need that, i need cahs, GOLD, MONEY!" timer="2.0"  turned="false"/>
+						<text character="Ulfr" disabled="false" default="false" say="Well... dont we all need it?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Well... i need it MORE" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Why?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Because i like it more!" timer="2.0"  turned="false"/>
+						<text character="Ulfr" disabled="false" default="false" say="Alright... can i help you with that then?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="You can't, because you are useless!" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Try me, you might be suprised" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="...Okay then." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="There was a bounty out for a leader of a rogue mercenary bad." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Aethelberth, is his name." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="They're stationed just down by the ruins, to the southeast." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="The king was going to deal with them once the army returned." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Then get down there and kill him for me..." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Bring me the skull as proof." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="I'll get the bounty, and you get to enter." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="...Are they tough?" timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Verily. Still up for it?" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="...uh, yes!" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Why not? I'll deal with em." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Hah. Good luck with it then." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="Also, remember to take the leaders helmet." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="It's a very distinct helmet." timer="2.0"  turned="false"/><text character="Guard" disabled="false" default="false" say="As if you could ever get within reach of it." timer="2.0"  turned="false"/>
+						<gotoBaseContainer></gotoBaseContainer>
+						
+					</option>
+						<stopOption></stopOption>
+					</option_container>
+				</option>
+				<stopOption></stopOption>
+			</option_container>
+				
+			</option>
+			<stopOption></stopOption>
+			</option_container>
+			
+		</option>
+		<option choice_text="Err... I'll be back." disabled="false">
+			<text character="Guard" disabled="false" default="false" say="Hah. Doubt it." timer="2.0"  turned="false"/>
+			<stopConversation />
+		</option>
+		
+		<stopOption />
+	</option_container>
+	<stopConversation />
+	<mall info="Endast Mall Efter Detta!" disabled="true">
+		<useText useText="Why would I use Brandr?" />
+		<lookText lookText="That's Brandr" />
+		<text character="Ulfr" default="false" disabled="false" disablePrevious="false" turned="true" timer="2.2" say="hej" />
+		<text character="Brandr" disablePrevious="false" timer="" say="DUrr" />
+		<text character="Valdis" />
+		<text character="Alfr" />
+		<text character="Brynja" />
+		<text character="Dagny" />
+		<text character="Finnr" />
+		<text character="Guard" />
+		<text character="Leifr" />
+		<text character="Mailman" />
+		<text character="Miner" />
+		<text character="Priest" />
+		<text character="Princess" />
+		<text character="Valdis" />
+		<text character="Yngvarr" />
+		
+		<option_container disabled="false">
+			<option disabled="false" choice_text="do you even?">
+				<text character="Brandr" disablePrevious="false" timer="3.3" say="hej!" />
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="What do you want!?">
+						<text character="Ulfr" disablePrevious="false" timer="2.5" say="durr" />
+						<text character="Brandr" disablePrevious="false" timer="2.4" say="murh" />
+						<option_container disabled="false">
+							<option disabled="false" disablePrevious="true" choice_text="Disable Previous">
+								<text character="Ulfr" disablePrevious="false" timer="2.4" say="Disable Previous" />
+								<gotoBaseContainer />
+							</option>
+							<stopOption />
+						</option_container>
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="NOPE">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="NUHU">!</text>
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="durr">
+						<text character="Brandr" disablePrevious="false" timer="2.5" say="disable" />
+						<gotoContainer />
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="jimmie had a little farm that was brown and red and green, why was it brown and red and green?">
+				<text character="Brandr" disablePrevious="true" timer="3.3" say="Never Happened" />
+				<gotoContainer />
+			</option>
+			<option disabled="false" disablePrevious="true" choice_text="exit conversation">
+				<stopConversation />
+			</option>
+			<stopOption />
+		</option_container>
+		<option_container disabled="true">
+			<option disabled="false" disablePrevious="false" choice_text="hello">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="hello" />
+				<text character="Brandr" disablePrevious="true" timer="2.5" say="hi!" />
+				<gotoContainer />
+			</option>
+			<stopOption />
+		</option_container>
+	</mall>
+</conversation>

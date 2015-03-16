@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Yeah. Let's not." />
+	<lookText lookText="That's one of the mercs,but he actually looks nice." />
+	<text character="Osgar" disabled="false" default="false" say="HELLO HOW ARE YOU!?" timer="2.0"  turned="false"/>
+	<text character="Ulfr" disabled="false" default="false" say="Ouch." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Why are you shouting?" timer="3.3"  turned="false"/><text character="Osgar" disabled="false" default="false" say="Oh, I'm sorry." timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="Ever since that Welsh fellow hit me over the head with a chair..." timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="I've had some trouble hearing y'all correctly." timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="HELLO HOW ARE YOU!?" timer="2.0"  turned="false"/>
+	<text character="Ulfr" disabled="false" default="false" say="That's awful!" timer="3.3"  turned="false"/>
+	<text character="Osgar" disabled="false" default="false" say="I know, RIGHT!?" timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="IT SURE WAS A FUN NIGHT." timer="2.0"  turned="false"/>
+	
+	
+	
+	
+	<option_container disabled="false">
+		<option choice_text="I SAID, THAT IS AWFUL!" disabled="true">
+			<text character="Ulfr" disabled="false" default="false" say="I SAID, THAT IS AWFUL!" timer="3.3"  turned="false"/>
+			<text character="Osgar" disabled="false" default="false" say="Thanks, i had it done Yesterday.." timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="It really does shine nice and bright." timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="Best scrubbing i ever got." timer="2.0"  turned="false"/>
+			
+			
+			
+			
+			
+			
+			
+			<gotoContainer />
+		</option>
+		<option choice_text="are *you* aware that the king has a bounty out for you?">
+			<text character="Ulfr" disabled="false" default="false" say="are *you* aware that the king has a bounty out for you?" timer="2.0"  turned="false"/>
+			<text character="Osgar" disabled="false" default="false" say="Uh, yes?" timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="Why wouldn't i be?" timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="I mean, it's here every year." timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="Sure, I'm a bit sad to miss it this year." timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="But hey, it could be worse." timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="Got all my friends here, and that's enough for me." timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="Just hope the king doesn't take out a bounty or send his army or sometihg..." timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="Would be quite the bummer." timer="2.0"  turned="false"/><text character="Osgar" disabled="false" default="false" say="But I'll just have to go to the festival next year instead." timer="2.0"  turned="false"/>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<gotoBaseContainer />
+		</option>
+		
+		<option choice_text="It was nice talking to you." disabled="false">
+			<text character="Ulfr" disabled="false" default="false" say="It was nice talking to you." timer="3.3"  turned="false"/><text character="Osgar" disabled="false" default="false" say="Hey, You kiss your mother with that mouth?" timer="2.0"  turned="false"/>
+			<stopConversation />
+		</option>
+		
+		<stopOption />
+	</option_container>
+	<stopConversation />
+	<mall info="Endast Mall Efter Detta!" disabled="true">
+		<useText useText="Why would I use Brandr?" />
+		<lookText lookText="That's Brandr" />
+		<text character="Ulfr" default="false" disabled="false" disablePrevious="false" turned="true" timer="2.2" say="hej" />
+		<text character="Brandr" disablePrevious="false" timer="" say="DUrr" />
+		<text character="Valdis" />
+		<text character="Alfr" />
+		<text character="Brynja" />
+		<text character="Dagny" />
+		<text character="Finnr" />
+		<text character="Guard" />
+		<text character="Leifr" />
+		<text character="Mailman" />
+		<text character="Miner" />
+		<text character="Priest" />
+		<text character="Princess" />
+		<text character="Valdis" />
+		<text character="Yngvarr" />
+		
+		<option_container disabled="false">
+			<option disabled="false" choice_text="do you even?">
+				<text character="Brandr" disablePrevious="false" timer="3.3" say="hej!" />
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="What do you want!?">
+						<text character="Ulfr" disablePrevious="false" timer="2.5" say="durr" />
+						<text character="Brandr" disablePrevious="false" timer="2.4" say="murh" />
+						<option_container disabled="false">
+							<option disabled="false" disablePrevious="true" choice_text="Disable Previous">
+								<text character="Ulfr" disablePrevious="false" timer="2.4" say="Disable Previous" />
+								<gotoBaseContainer />
+							</option>
+							<stopOption />
+						</option_container>
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="NOPE">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="NUHU">!</text>
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="durr">
+						<text character="Brandr" disablePrevious="false" timer="2.5" say="disable" />
+						<gotoContainer />
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="jimmie had a little farm that was brown and red and green, why was it brown and red and green?">
+				<text character="Brandr" disablePrevious="true" timer="3.3" say="Never Happened" />
+				<gotoContainer />
+			</option>
+			<option disabled="false" disablePrevious="true" choice_text="exit conversation">
+				<stopConversation />
+			</option>
+			<stopOption />
+		</option_container>
+		<option_container disabled="true">
+			<option disabled="false" disablePrevious="false" choice_text="hello">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="hello" />
+				<text character="Brandr" disablePrevious="true" timer="2.5" say="hi!" />
+				<gotoContainer />
+			</option>
+			<stopOption />
+		</option_container>
+	</mall>
+</conversation>

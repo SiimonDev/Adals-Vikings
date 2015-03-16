@@ -1,11 +1,11 @@
 *Type: standard
 *ID: $meat$
 *Name: Meat
-*ispickupable: False
+*ispickupable: True
 *pickup: "I'm not really hungry... but sure." ~2,0
 *lookat: "Juicy meat. It's suprisingly fresh." ~2,0
 *deny: "I don't think so." ~1,5
 *denywith: 
-*combine: 
+*combine: $sleepingAgent$ $sleepingMeat$ "This should probably put that wolf to sleep" ~2,5; 
 *interact: 
 *texture: "img_meat_id.png"

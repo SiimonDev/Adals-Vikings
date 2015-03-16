@@ -6,6 +6,6 @@
 *lookat: "That's nice..." ~1,5
 *deny: "I can't do that" ~1,5
 *denywith: $bucketBroken$ "The bucket is not worth putting a helmet on." ~3,0; 
-*combine: 
+*combine: $skull$ $skullHelmet$ "I hope the guard dosen't think I'm a murderer after this." ~2,5; 
 *interact: 
 *texture: "img_helmet_id.png"

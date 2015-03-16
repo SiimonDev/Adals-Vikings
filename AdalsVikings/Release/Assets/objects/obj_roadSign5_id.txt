@@ -1,6 +1,6 @@
 *Type: invisible
 *ID: $roadSign5$
-*Name: Northeast
+*Name: Northeast: Church. Not in usage. Beware the old priest. He's an asshole.
 *ispickupable: False
 *pickup: "Nah." ~2,0
 *lookat: "Northeast: Church. Not in usage. Beware the old priest. He's an asshole." ~2,5

@@ -1,0 +1,29 @@
+############
+*id: $ruinPillars
+position: $X:1281 $Y:355
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
+*id: $ruinWalls
+position: $X:595 $Y:286
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
+*id: $vegetation
+position: $X:336 $Y:130
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
+*id: $vegetation
+position: $X:1540 $Y:130
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############

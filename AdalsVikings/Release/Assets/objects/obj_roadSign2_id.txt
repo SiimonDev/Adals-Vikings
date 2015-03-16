@@ -1,6 +1,6 @@
 *Type: invisible
 *ID: $roadSign2$
-*Name: North
+*Name: North: City of Loftstowe. Don't litter.
 *ispickupable: False
 *pickup: "Nah." ~2,0
 *lookat: "North: City of Loftstowe. Don't litter." ~2,0

@@ -1,6 +1,6 @@
 *Type: invisible
 *ID: $ruinPillars$
-*Name: Ruin Pillars
+*Name: Pillars
 *ispickupable: False
 *pickup: "Hah, no." ~2,0
 *lookat: "Still standing after centuries. Impressive." ~2,5
@@ -8,4 +8,4 @@
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:   Y:
+*invisible: X:700   Y:370

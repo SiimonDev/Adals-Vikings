@@ -1,4 +1,4 @@
-*Type: invisible
+*Type: standard
 *ID: $pitchfork$
 *Name: Pitchfork
 *ispickupable: False
@@ -8,4 +8,4 @@
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:65  Y:225
+*texture: "img_pitchfork_id.png"
