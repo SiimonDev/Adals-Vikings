@@ -6,3 +6,38 @@ index: $99
 scale: $1.0
 hascollision: $false
 ############
+*id: $spiderweb
+position: $X:1783 $Y:382
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
+*id: $spiderweb
+position: $X:232 $Y:162
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
+*id: $hillsMinecart
+position: $X:1815 $Y:756
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
+*id: $hillsBackground
+position: $X:709 $Y:564
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
+*id: $hillsBackground2
+position: $X:1135 $Y:546
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############

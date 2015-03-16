@@ -130,6 +130,7 @@
 		</option>
 		<option choice_text="I'll be back later. Promise.">
 			<text character="Ulfr" say="I'll be back later. Promise." timer="2.4" turned="true" default="false" disabled="false"></text>
+			<text character="Jacob" timer="1.8" say="Bah."></text>
 			<stopConversation></stopConversation>
 		</option>
 		<stopOption />

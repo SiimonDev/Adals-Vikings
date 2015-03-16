@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $oilBarrel$
+*Name: Oil Barrel
+*ispickupable: False
+*pickup: "Woah. This is heavy." ~3,0
+*lookat: "It's filled with oil. I could dip something in it." ~1,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_oilBarrel_id.png"

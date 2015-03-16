@@ -4,7 +4,7 @@
 *ispickupable: True
 *pickup: "Now if only I had some sweet gold to mine." ~0,0
 *lookat: "Huh, I thought it would be more rusty after all these years." ~2,5
-*deny: "I am sorry, but the theme of the game is non violence." ~2,5
+*deny: "I mean, it could be used as a weapon, but..." ~2,5
 *denywith: 
 *combine: 
 *interact: 
