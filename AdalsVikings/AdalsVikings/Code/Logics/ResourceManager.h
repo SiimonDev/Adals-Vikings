@@ -213,6 +213,9 @@ namespace LevelFolder
 
 		Cavern_Left,
 		Cavern_Right,
+		Cavern_Ruins_Left,
+		Cavern_Ruins_Right,
+
 		Cliffs_Down,
 		Cliffs_Up,
 		Hills,

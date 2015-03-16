@@ -19,6 +19,8 @@
 #include "Level_Beach_Hills.h"
 #include "Level_Cavern_Left.h"
 #include "Level_Cavern_Right.h"
+#include "Level_Cavern_Ruins_Left.h"
+#include "Level_Cavern_Ruins_Right.h"
 #include "Level_Cliffs_Down.h"
 #include "Level_Cliffs_Up.h"
 #include "Level_Hills.h"
@@ -264,6 +266,9 @@ void LevelManager::loadAct1(bool reset)
 
 	mLevelMap[LevelFolder::Cavern_Left] = LevelPtr(new Level_Cavern_Left(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Cavern_Right] = LevelPtr(new Level_Cavern_Right(mPlayer, mHud, mActionWheel));
+	mLevelMap[LevelFolder::Cavern_Ruins_Left] = LevelPtr(new Level_Cavern_Ruins_Left(mPlayer, mHud, mActionWheel));
+	mLevelMap[LevelFolder::Cavern_Ruins_Right] = LevelPtr(new Level_Cavern_Ruins_Right(mPlayer, mHud, mActionWheel));
+
 	mLevelMap[LevelFolder::Cliffs_Down] = LevelPtr(new Level_Cliffs_Down(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Cliffs_Up] = LevelPtr(new Level_Cliffs_Up(mPlayer, mHud, mActionWheel));
 	mLevelMap[LevelFolder::Hills] = LevelPtr(new Level_Hills(mPlayer, mHud, mActionWheel));

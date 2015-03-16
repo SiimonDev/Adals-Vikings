@@ -188,6 +188,12 @@
     <ClCompile Include="Code\Interface\Menus\PlayPanel.cpp">
       <Filter>Source Files\Interface\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Cavern_Ruins_Right.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Levels\Level_Cavern_Ruins_Left.cpp">
+      <Filter>Source Files\Levels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Dialog\Dialog.h">
@@ -390,6 +396,12 @@
     </ClInclude>
     <ClInclude Include="Code\Logics\FolderHelper.h">
       <Filter>Header Files\Logics</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Cavern_Ruins_Right.h">
+      <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Levels\Level_Cavern_Ruins_Left.h">
+      <Filter>Header Files\Levels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

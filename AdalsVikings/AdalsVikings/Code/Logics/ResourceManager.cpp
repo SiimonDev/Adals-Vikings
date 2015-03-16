@@ -209,6 +209,8 @@ ResourceManager::ResourceManager()
 
 	mBackgroundsPathMap[LevelFolder::Cavern_Left] = "assets/MapFiles/Cavern_Left/";
 	mBackgroundsPathMap[LevelFolder::Cavern_Right] = "assets/MapFiles/Cavern_Right/";
+	mBackgroundsPathMap[LevelFolder::Cavern_Ruins_Left] = "assets/MapFiles/Cavern_Ruins_Left/";
+	mBackgroundsPathMap[LevelFolder::Cavern_Ruins_Right] = "assets/MapFiles/Cavern_Ruins_Right/";
 	mBackgroundsPathMap[LevelFolder::Cliffs_Down] = "assets/MapFiles/Cliffs_Down/";
 	mBackgroundsPathMap[LevelFolder::Cliffs_Up] = "assets/MapFiles/Cliffs_Up/";
 	mBackgroundsPathMap[LevelFolder::Hills] = "assets/MapFiles/Hills/";

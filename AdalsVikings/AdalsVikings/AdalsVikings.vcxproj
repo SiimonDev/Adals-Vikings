@@ -40,6 +40,8 @@
     <ClCompile Include="Code\Levels\Level_Camp_Clearing.cpp" />
     <ClCompile Include="Code\Levels\Level_Cavern_Left.cpp" />
     <ClCompile Include="Code\Levels\Level_Cavern_Right.cpp" />
+    <ClCompile Include="Code\Levels\Level_Cavern_Ruins_Left.cpp" />
+    <ClCompile Include="Code\Levels\Level_Cavern_Ruins_Right.cpp" />
     <ClCompile Include="Code\Levels\Level_Church_Outside.cpp" />
     <ClCompile Include="Code\Levels\Level.cpp" />
     <ClCompile Include="Code\Levels\Level_Church_Inside.cpp" />
@@ -107,6 +109,8 @@
     <ClInclude Include="Code\Levels\Level_Camp_Finished.h" />
     <ClInclude Include="Code\Levels\Level_Cavern_Left.h" />
     <ClInclude Include="Code\Levels\Level_Cavern_Right.h" />
+    <ClInclude Include="Code\Levels\Level_Cavern_Ruins_Left.h" />
+    <ClInclude Include="Code\Levels\Level_Cavern_Ruins_Right.h" />
     <ClInclude Include="Code\Levels\Level_Church_Outside.h" />
     <ClInclude Include="Code\Levels\Level.h" />
     <ClInclude Include="Code\Levels\Level_Church_Inside.h" />

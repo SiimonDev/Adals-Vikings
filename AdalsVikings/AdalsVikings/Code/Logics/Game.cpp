@@ -80,6 +80,7 @@ void Game::update(sf::Time frameTime)
 		}
 		else if (MHI.getEvent() == MenuEvent::ExitGamePressed)
 		{
+			LVLMI.save("assets/saves/");
 			mWindow.close();
 		}
 		AudioPlayer::update(frameTime);
