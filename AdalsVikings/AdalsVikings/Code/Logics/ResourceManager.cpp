@@ -260,6 +260,7 @@ void ResourceManager::loadResource(Font::ID id)
 	if (mFontCountMap[id] == 0)
 	{
 		FontPtr font(new sf::Font());
+		
 		font->loadFromFile(mFontPathMap[id]);
 		mFontMap.insert(std::make_pair(id, std::move(font)));
 	}

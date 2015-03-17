@@ -28,9 +28,9 @@ scale: $1.0
 hascollision: $false
 ############
 *id: $meatPile
-position: $X:1540 $Y:130
+position: $X:1440 $Y:480
 interactPosition: $X:0 $Y:0
-index: $99
+index: $120:59 2015-03-17
 scale: $1.0
 hascollision: $false
 ############

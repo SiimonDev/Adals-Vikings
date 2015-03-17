@@ -9,7 +9,7 @@
 	<text character="Yngvarr" disabled="false" default="false" say="What do you think?" timer="1.8"  turned="true"/>
 	<text character="Yngvarr" say="He went up the hill." default="false" disabled="false" timer="2.0"></text>
 	<text character="Yngvarr" say="To make plans with Brynja." default="false" disabled="false" timer="2.0"></text>
-	<text character="Yngvarr" default="false" disabled="false" say="" timer="0.7"></text>
+	<text character="Ulfr" default="false" disabled="false" say="..." timer="0.7" turned="false"></text>
 	<text character="Ulfr" say="What plans?" default="false" disabled="false" timer="1.6" turned="false"></text>
 	<text character="Yngvarr" say="..." timer="1.4" default="false" disabled="false" turned="true"></text>
 	<text character="Yngvarr" say="We'll just have to see." default="false" timer="2.0" disabled="false"></text>

@@ -49,6 +49,7 @@ Druids2_ForestCamp assets/textfiles/forestCamp/Dialogue_forest_druids2.xml
 Leifr_BeforeDruids assets/textfiles/forestCamp/Dialogue_LeifrBear_ForestCamp.xml
 Leifr_AfterDruids assets/textfiles/forestCamp/Dialogue_leifrAfterDruids_ForestCamp.xml
 FireDeny_ForestCamp assets/textfiles/forestCamp/Dialogue_forest_FireDeny.xml
+Ulfr_ForestRoad assets/textfiles/forestCamp/Dialogue_ulfr_forestRoad.xml
 -----------------------TAVERN INSIDE----------------------------
 Brandr_Tavern assets/textfiles/tavern/Dialogue_brandr_tavern.xml
 Alfr_Tavern assets/textfiles/tavern/dialogue_alfr_tavern.xml
@@ -65,6 +66,9 @@ Miner_Cavern assets/textfiles/caverns/Dialogue_miner_cavern.xml
 Ulfr_Cavern assets/textfiles/caverns/Dialogue_ulfr_cavern.xml
 UlfrAngry_Cavern assets/textfiles/caverns/Dialogue_ulfr_caverns.xml
 Skull_Cavern assets/textfiles/caverns/Dialogue_skull_Cavern.xml
+Destroyed_Cavern assets/textfiles/caverns/Dialogue_destroyed_cavern.xml
+SweetGold_Cavern assets/textfiles/caverns/Dialogue_sweetGold_cavern.xml
+Mining_Cavern assets/textfiles/caverns/Dialogue_UlfrMining_cavern.xml
 -----------------------RUINS ----------------------------
 AethelBerth_Ruins assets/textfiles/ruins/Dialogue_aethelberth_ruins.xml
 Cerdic_Ruins assets/textfiles/ruins/Dialogue_cedric_ruins.xml
@@ -77,6 +81,8 @@ Jacob_Farm assets/textfiles/farm/Dialogue_jacob_farm.xml
 Parrik_Farm assets/textfiles/farm/Dialogue_parrik_farm.xml
 Mead_Farm assets/textfiles/farm/Dialogue_mead_farm.xml
 Flower_Farm assets/textfiles/farm/Dialogue_flower_farm.xml
+GotAll_Farm assets/textfiles/farm/Dialogue_gotAll_farm.xml
+MadePill_Farm assets/textfiles/farm/Dialogue_madePill_farm.xml
 -----------------------CLIFFS ----------------------------
 Ulfr_Cliffs assets/textfiles/cliffs/Dialogue_ulfr_cliffs.xml
 -----------------------HILLS ----------------------------

@@ -276,7 +276,7 @@ void LevelManager::loadAct1(bool reset)
 
 	if (reset)
 	{
-		mCurrentLevelID = LevelFolder::Cliffs_Down;  //<--- Change this if you want to spawn on a different level
+		mCurrentLevelID = LevelFolder::Tavern_Inside;  //<--- Change this if you want to spawn on a different level
 		baseLoad(true);
 	}
 	else

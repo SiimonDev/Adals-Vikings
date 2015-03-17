@@ -17,14 +17,42 @@ void Level_Cavern_Right::restartSounds()
 
 void Level_Cavern_Right::update(sf::Time &frametime)
 {
+	if (Act1Events::hasBeenTriggered(Act1Event::SweetGold) && !Act1Events::hasBeenHandled(Act1Event::SweetGold))
+	{
+		if (!DialogHandler::getDialogue("SweetGold_Cavern").getActiveConversation() && !DialogHandler::getDialogue("SweetGold_Cavern").getHasStopped())
+			DialogHandler::startDialogue("SweetGold_Cavern");
+
+		if (DialogHandler::getDialogue("SweetGold_Cavern").getHasStopped())
+		{
+			mPortals[CavernsToCliffs]->setWorking(false);
+			mPortals[CavernsToCliffs]->setCannotDialogue("No, that gold solves everything! I need to mine it before I go!");
+		}
+	}
 	if (Act1Events::hasBeenTriggered(Act1Event::MinedSomeGold) && !Act1Events::hasBeenHandled(Act1Event::MinedSomeGold))
 	{
+		if (!DialogHandler::getDialogue("Mining_Cavern").getActiveConversation() && !DialogHandler::getDialogue("Mining_Cavern").getHasStopped())
+			DialogHandler::startDialogue("Mining_Cavern");
+
+		if (DialogHandler::getDialogue("Mining_Cavern").getHasStopped())
+		{
+			if (!mFade1)
+			{
+				FadeI.fadeOut(frametime);
+				
+				if (FadeI.getFaded())
+				{
+					LVLMI.changeLevel(LevelFolder::Cavern_Ruins_Right);
+					mPlayer->setPosition(sf::Vector2f(1390, 645));
+					mFade1 = true;
+				}
+			}
+		}
 	}
 	if (Act1Events::hasBeenHandled(Act1Event::GivenSkullToMiner))
 	{
 		for (int i = 0; i < mObjects.size(); i++)
 		{
-			if (mObjects[i]->getObjID() == "mineCart")
+			if (mObjects[i]->getObjID() == "minecart")
 			{
 				PathFinder::getCurrentTileMap().removeCollision(mObjects[i]->getCollisionRect());
 				delete mObjects[i];
@@ -32,8 +60,6 @@ void Level_Cavern_Right::update(sf::Time &frametime)
 			}
 		}
 	}
-	if (Act1Events::hasBeenHandled(Act1Event::GivenSkullToMiner) && !mPlayer->hasItemInInventory("helmet") && !mPlayer->hasItemInInventory("skullHelmet"))
-		mPlayer->addItemToInventory("helmet");
 	if (Act1Events::hasBeenTriggered(Act1Event::TooDarkToGo) && !Act1Events::hasBeenHandled(Act1Event::TooDarkToGo))
 	{
 		if (!DialogHandler::getDialogue("Ulfr_Cavern").getActiveConversation() && !DialogHandler::getDialogue("Ulfr_Cavern").getHasStopped())
@@ -42,8 +68,27 @@ void Level_Cavern_Right::update(sf::Time &frametime)
 		{
 			Act1Events::handleEvent(Act1Event::TooDarkToGo);
 			LVLMI.changeLevel(LevelFolder::Cliffs_Down);
+			mPlayer->setPosition(sf::Vector2f(165, 410));
 		}
 	}
+
+
+	if (!Act1Events::hasBeenHandled(Act1Event::GivenSkullToMiner))
+	{
+		if (mObjects[mObjIndex]->getObjID() == "gold" && mObjects[mObjIndex]->getIsWorking())
+		{
+			mObjects[mObjIndex]->enableObject(false);
+		}
+
+	}
+	else if (Act1Events::hasBeenHandled(Act1Event::GivenSkullToMiner))
+	{
+		if (mObjects[mObjIndex]->getObjID() == "gold" && !mObjects[mObjIndex]->getIsWorking())
+		{
+			mObjects[mObjIndex]->enableObject(true);
+		}
+	}
+
 	Level::update(frametime);
 	changeLevel();
 }
@@ -59,6 +104,7 @@ void Level_Cavern_Right::load()
 {
 	mPortals[CavernsToCliffs] = &PortalLoader::getPortal(CavernsToCliffs);
 	mPortals[CavernsRightToLeft] = &PortalLoader::getPortal(CavernsRightToLeft);
+	mPortals[CavernToCavernRuinsRight] = &PortalLoader::getPortal(CavernToCavernRuinsRight);
 	mPortals[CavernsRightToLeft]->setWorking(true);
 	mPortals[CavernsToCliffs]->setWorking(true);
 
@@ -84,7 +130,7 @@ void Level_Cavern_Right::changeLevel()
 
 void Level_Cavern_Right::checkInteractEvents()
 {
-	if (mDroppedItemID == "pickAxe" && mObjects[mObjIndex]->getObjID() == "gold" && !Act1Events::hasBeenTriggered(Act1Event::MinedSomeGold))
+	if (mDroppedItemID == "pickaxe" && mObjects[mObjIndex]->getObjID() == "gold" && !Act1Events::hasBeenTriggered(Act1Event::MinedSomeGold))
 		Act1Events::triggerEvent(Act1Event::MinedSomeGold);
 }
 void Level_Cavern_Right::checkEvents()
@@ -93,4 +139,7 @@ void Level_Cavern_Right::checkEvents()
 	{
 		Act1Events::triggerEvent(Act1Event::TooDarkToGo);
 	}
+
+	if (!Act1Events::hasBeenTriggered(Act1Event::SweetGold) && mObjects[mObjIndex]->getObjID() == "gold" && mObjects[mObjIndex]->getIsWorking())
+		Act1Events::triggerEvent(Act1Event::SweetGold);
 }

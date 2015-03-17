@@ -2,31 +2,31 @@
 <conversation>
 	<useText useText="Why? Just why?" />
 	<lookText lookText="Looks like a priest, might be a nice man." />
-	<text character="Beor" timer="2.3" say="Why, hello there!" turned="true" default="false" disabled="true" />
-	<text character="Beor" timer="2.8" say="Welcome to the lord's holy house." default="false" disabled="true" />
-	<text character="Beor" timer="1.8" say="I am Beorhtf-" default="false" disabled="true" />
-	<text character="Beor" timer="1.8" say="Beorht-" default="false" disabled="true" />
-	<text character="Beor" timer="2.3" say="My name is Beorhthfri-" default="false" disabled="true" />
-	<text character="Beor" timer="1.8" say="Beorhthfrith." default="false" disabled="true" />
-	<text character="Beor" timer="1.8" say="Beorhtfrith Beorthwu-" default="false" disabled="true" />
-	<text character="Beor" timer="1.8" say="Beorthwulfsson," default="false" disabled="true" />
-	<text character="Beor" timer="1.8" say="Beorhtfrith Beorthwulfsson." default="false" disabled="true" />
-	<text character="Ulfr" timer="1.8" say="That's..." default="false" disabled="true" turned="false" />
-	<text character="Ulfr" timer="2.3" say="That's a lovely name." default="false" disabled="true" turned="false" />
-	<text character="Beor" timer="2.8" say="So why have you come here, my child?" default="false" disabled="true" turned="true" />
-	<text character="Beor" timer="2.3" say="To share in the lord's word?" default="false" disabled="true" />
-	<text character="Beor" timer="2.4" say="To confess you sins?" default="false" disabled="true" />
-	<text character="Ulfr" timer="2.8" say="I came here to scout the place out." default="false" disabled="true" turned="false" />
-	<text character="Ulfr" timer="2.4" say="I'm a Viking, you see." default="false" disabled="true" turned="false" />
-	<text character="Beor" timer="1.4" say="Oh ho!" default="false" disabled="true" turned="true" />
-	<text character="Beor" timer="1.7" say="Good god." default="false" disabled="true" />
-	<text character="Beor" timer="2.8" say="You kids have such imagination these days." default="false" disabled="true" />
-	<text character="Ulfr" timer="2.8" say="I'm not a kid, I'm a vicious sea raider!" default="false" disabled="true" turned="false" />
-	<text character="Beor" timer="2.2" say="You sure are!" default="false" disabled="true" turned="true" />
-	<text character="Beor" timer="3.4" say="Now let's just make sure this vicious sea raider doesn't miss Sunday school." default="false" disabled="true" />
-	<text character="Ulfr" timer="2.8" say="The Anglians sure are easier to fool than I thought." default="false" disabled="true" turnedPlayer="true" />
-	<text character="Ulfr" timer="1.3" say="..." default="false" disabled="true" turned="false" />
-	<text character="Beor" timer="2.0" say="Come to repent?" default="true" disabled="false" />
+	<text character="Beor" timer="2.3" say="Why, hello there!" turned="true" default="false" disabled="false" />
+	<text character="Beor" timer="2.8" say="Welcome to the lord's holy house." default="false" disabled="false" />
+	<text character="Beor" timer="1.8" say="I am Beorhtf-" default="false" disabled="false" />
+	<text character="Beor" timer="1.8" say="Beorht-" default="false" disabled="false" />
+	<text character="Beor" timer="2.3" say="My name is Beorhthfri-" default="false" disabled="false" />
+	<text character="Beor" timer="1.8" say="Beorhthfrith." default="false" disabled="false" />
+	<text character="Beor" timer="1.8" say="Beorhtfrith Beorthwu-" default="false" disabled="false" />
+	<text character="Beor" timer="1.8" say="Beorthwulfsson," default="false" disabled="false" />
+	<text character="Beor" timer="1.8" say="Beorhtfrith Beorthwulfsson." default="false" disabled="false" />
+	<text character="Ulfr" timer="1.8" say="That's..." default="false" disabled="false" turned="false" />
+	<text character="Ulfr" timer="2.3" say="That's a lovely name." default="false" disabled="false" turned="false" />
+	<text character="Beor" timer="2.8" say="So why have you come here, my child?" default="false" disabled="false" turned="true" />
+	<text character="Beor" timer="2.3" say="To share in the lord's word?" default="false" disabled="false" />
+	<text character="Beor" timer="2.4" say="To confess you sins?" default="false" disabled="false" />
+	<text character="Ulfr" timer="2.8" say="I came here to scout the place out." default="false" disabled="false" turned="false" />
+	<text character="Ulfr" timer="2.4" say="I'm a Viking, you see." default="false" disabled="false" turned="false" />
+	<text character="Beor" timer="1.4" say="Oh ho!" default="false" disabled="false" turned="true" />
+	<text character="Beor" timer="1.7" say="Good god." default="false" disabled="false" />
+	<text character="Beor" timer="2.8" say="You kids have such imagination these days." default="false" disabled="false" />
+	<text character="Ulfr" timer="2.8" say="I'm not a kid, I'm a vicious sea raider!" default="false" disabled="false" turned="false" />
+	<text character="Beor" timer="2.2" say="You sure are!" default="false" disabled="false" turned="true" />
+	<text character="Beor" timer="3.4" say="Now let's just make sure this vicious sea raider doesn't miss Sunday school." default="false" disabled="false" />
+	<text character="Ulfr" timer="2.8" say="The Anglians sure are easier to fool than I thought." default="false" disabled="false" turnedPlayer="true" />
+	<text character="Ulfr" timer="1.3" say="..." default="false" disabled="false" turned="false" turnedPlayer="false" />
+	<text character="Beor" timer="2.0" say="Come to repent?" default="true" disabled="true" />
 	<option_container disabled="false">
 		<option choice_text="Do you have any gold out here?" disabled="false">
 			<text character="Ulfr" timer="2.4" say="Do you have any gold out here?" turned="false" />
@@ -34,7 +34,7 @@
 			<text character="Beor" timer="1.6" say="Riches?" turned="true" />
 			<text character="Beor" timer="2.2" say="None, I'm afraid." turned="true" />
 			<text character="Beor" timer="2.6" say="King Eadmund took it all." turned="true" />
-			<text timer="1.4" />
+			<text character="Beor" timer="1.4" say="..." turned="true" />
 			<text character="Beor" timer="1.8" say="...the bastard." turned="true" />
 			<gotoBaseContainer />
 		</option>
@@ -50,15 +50,15 @@
 			<text character="Beor" timer="3.0" say="The guards don't even check the southern shore anymore." turned="true" />
 			<text character="Beor" timer="2.2" say="Too afraid, or too conformable." turned="true" />
 			<text character="Beor" timer="2.3" say="Either one is bad enough." turned="true" />
-			<text timer="1.8" />
+			<text character="Beor" timer="1.8" say="..." turned="true" />
 			<text character="Beor" timer="2.2" say="Oh, I apologize for rambling." turned="true" />
 			<text character="Beor" timer="3.3" say="An old man like me would only bore a young Christian boy like yourself." turned="true" />
 			<text character="Ulfr" timer="1.8" say="Right." turned="false" />
 			<gotoBaseContainer />
 		</option>
 		<option choice_text="I'll be going now." disabled="false">
-			<text character="Ulfr" timer="1.8" say="I'll be going now." default="false" disabled="false" turnedPlayer="true" />
-			<text character="Beor" timer="2.0" say="Hope to see you again, my son." default="true" disabled="true" />
+			<text character="Ulfr" timer="1.8" say="I'll be going now." default="false" disabled="false" turned="false" />
+			<text character="Beor" timer="2.0" say="Hope to see you again, my son." default="true" disabled="true" turned="true" />
 			<stopConversation />
 		</option>
 		<stopOption />

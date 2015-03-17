@@ -16,6 +16,14 @@ void Level_Forest_Road::restartSounds()
 
 void Level_Forest_Road::update(sf::Time &frametime)
 {
+	if (Act1Events::hasBeenTriggered(Act1Event::ForestRoadConver) && !Act1Events::hasBeenHandled(Act1Event::ForestRoadConver))
+	{
+		if (!DialogHandler::getDialogue("Ulfr_ForestRoad").getActiveConversation() && !DialogHandler::getDialogue("Ulfr_ForestRoad").getHasStopped())
+			DialogHandler::getDialogue("Ulfr_ForestRoad").startDialogue();
+
+		if (DialogHandler::getDialogue("Ulfr_ForestRoad").getHasStopped())
+			Act1Events::handleEvent(Act1Event::ForestRoadConver);
+	}
 	Level::update(frametime);
 	changeLevel();
 }
@@ -68,5 +76,6 @@ void Level_Forest_Road::checkInteractEvents()
 }
 void Level_Forest_Road::checkEvents()
 {
-
+	if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && !Act1Events::hasBeenTriggered(Act1Event::ForestRoadConver))
+		Act1Events::triggerEvent(Act1Event::ForestRoadConver);
 }

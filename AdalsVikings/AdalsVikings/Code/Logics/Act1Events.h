@@ -46,6 +46,9 @@ namespace Act1Event
 		GivenSkullToMiner,
 		MinedSomeGold,
 		GivenSkullHelmetToGuard,
+		SweetGold,
+		PickupMeat,
+		ForestRoadConver,
 		EVENT_SIZE
 	};
 }

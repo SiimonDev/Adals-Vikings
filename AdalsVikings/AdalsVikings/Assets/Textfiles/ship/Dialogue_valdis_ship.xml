@@ -13,10 +13,11 @@
 			<text character="Ulfr" disablePrevious="false" timer="2.0" say="Just some water?" turned="true" />
 			<text character="Valdis" say="It might have been a bit more." timer="2.4" default="" turned="false" />
 			<text character="Valdis" say="Like a bucket full." timer="1.8" />
-			<text />
+			<text say="..." timer="1.3"  character="Valdis"/>
+			
 			<text character="Valdis" say="Still an accident, I swear." timer="2.0" turned="false" />
 			<text character="Ulfr" say="...sure." timer="1.5" turned="true" />
-			<text character="Valdis" say="" timer="1.4" turned="false" />
+			<text say="..." timer="1.4" turned="false"  character="Valdis"/>
 			<text character="Valdis" say="She was snoring, alright?" timer="2.0" />
 			<text character="Valdis" say="Give me a break." timer="2.0" disablePrevious="true" />
 			<gotoContainer />
@@ -30,12 +31,12 @@
 			<text character="Valdis" say="Perhaps that was it?" timer="2.4" />
 			<text character="Ulfr" say="It must have been!" timer="2.2" turned="true" />
 			<text character="Ulfr" say="Thank you, Valdis." timer="2.0" />
-			<text character="Ulfr" say="" timer="1.4" />
+			<text say="..." timer="0.8"  character="Ulfr" turned="true"/>
 			<text character="Ulfr" say="Oh crap." timer="1.5" />
 			<text character="Ulfr" say="That means I have to wake her up." timer="2.5" />
 			<text character="Valdis" say="Yeah, right." timer="2.0" turned="false" />
 			<text character="Valdis" say="Like you could do that." timer="2.4" />
-			<text character="Ulfr" say="" timer="1.4" turned="true" />
+			<text character="Ulfr" say="..." timer="0.8" turned="true" />
 			<text character="Ulfr" say="Well, I have to try." timer="2.0" disablePrevious="true" />
 			<gotoContainer />
 		</option>
@@ -47,8 +48,8 @@
 			<gotoContainer />
 		</option>
 		<option disabled="false" disablePrevious="false" choice_text="Great I'll see you later.">
-			<text say="Great I'll see you later." timer="2.0" character="Ulfr"></text>
-			<text say="Bye." character="Valdis" timer="1.5"></text>
+			<text say="Great I'll see you later." timer="2.0" character="Ulfr" turned="true"></text>
+			<text say="Bye." character="Valdis" timer="1.5" turned="false"></text>
 			<stopConversation />
 		</option>
 		<stopOption />

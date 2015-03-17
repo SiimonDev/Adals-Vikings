@@ -145,6 +145,21 @@ void PortalLoader::load()
 		mPortalMap[HillBeachToBeach] = PortalPtr(new Portal(LevelFolder::Beach_Hills, sf::Vector2f(555, 55), sf::Vector2f(915, 1025), sf::Vector2f(1280, 725), sf::Vector2f(1285, 1045)));
 		mPortalMap[HillBeachToBeach]->setCursorRotation(-90);
 
+		mPortalMap[CliffsToCRuins] = PortalPtr(new Portal(LevelFolder::Cliffs_Down, sf::Vector2f(320, 285), sf::Vector2f(30, 115), sf::Vector2f(165, 410), sf::Vector2f(165, 410)));
+		mPortalMap[CliffsToCRuins]->setCursorRotation(180);
+
+		mPortalMap[CRuinsToCLiffs] = PortalPtr(new Portal(LevelFolder::Cavern_Ruins_Right, sf::Vector2f(315, 755), sf::Vector2f(1470, 0), sf::Vector2f(1525, 650), sf::Vector2f(1525, 650)));
+		mPortalMap[CRuinsToCLiffs]->setCursorRotation(-90);
+
+		mPortalMap[CavernToCavernRuinsRight] = PortalPtr(new Portal(LevelFolder::Cavern_Right, sf::Vector2f(0, 690), sf::Vector2f(0, 0), sf::Vector2f(0, 0), sf::Vector2f(0, 0)));
+		mPortalMap[CavernToCavernRuinsRight]->setCursorRotation(180);
+
+		mPortalMap[CRuinsRightToCRuinsLeft] = PortalPtr(new Portal(LevelFolder::Cavern_Ruins_Right, sf::Vector2f(70, 690), sf::Vector2f(0, 390), sf::Vector2f(90, 840), sf::Vector2f(90, 840)));
+		mPortalMap[CRuinsRightToCRuinsLeft]->setCursorRotation(180);
+
+		mPortalMap[CRuinsLeftToCRuinsRight] = PortalPtr(new Portal(LevelFolder::Cavern_Ruins_Left, sf::Vector2f(70, 690), sf::Vector2f(1850, 390), sf::Vector2f(1860, 770), sf::Vector2f(1860, 770)));
+		mPortalMap[CRuinsLeftToCRuinsRight]->setCursorRotation(-90);
+
 		//connect the portals
 		mPortalMap[BeachToRoad]->setGateway(&*mPortalMap[RoadToBeach]);
 		mPortalMap[RoadToBeach]->setGateway(&*mPortalMap[BeachToRoad]);
@@ -187,6 +202,12 @@ void PortalLoader::load()
 		mPortalMap[HillsToFarm]->setGateway(&*mPortalMap[FarmToHills]);
 		mPortalMap[BeachToBeachHill]->setGateway(&*mPortalMap[HillBeachToBeach]);
 		mPortalMap[HillBeachToBeach]->setGateway(&*mPortalMap[BeachToBeachHill]);
+		mPortalMap[CliffsToCRuins]->setGateway(&*mPortalMap[CRuinsToCLiffs]);
+		mPortalMap[CRuinsToCLiffs]->setGateway(&*mPortalMap[CliffsToCRuins]);
+		mPortalMap[CRuinsLeftToCRuinsRight]->setGateway(&*mPortalMap[CRuinsRightToCRuinsLeft]);
+		mPortalMap[CRuinsRightToCRuinsLeft]->setGateway(&*mPortalMap[CRuinsLeftToCRuinsRight]);
+		mPortalMap[CavernToCavernRuinsRight]->setGateway(&*mPortalMap[CRuinsRightToCRuinsLeft]);
+
 	}
 }
 

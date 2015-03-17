@@ -185,7 +185,7 @@ void Level_Forest_Camp::load()
 			mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
 			mNpcs["Leifr"]->setDialogue("Leifr_ForestCamp");
 			mNpcs["Leifr"]->setPosition(sf::Vector2f(1450, 580));
-			mNpcs["Leifr"]->setScale(sf::Vector2f(0.3f, 0.3f));
+			mNpcs["Leifr"]->setScale(sf::Vector2f(0.45f, 0.45f));
 			mNpcs["Leifr"]->setIndex(1);
 			mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1560, 565));
 		//}

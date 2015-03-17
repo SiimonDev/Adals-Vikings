@@ -2,18 +2,18 @@
 <conversation>
 	<useText useText="Why would I use Yngvarr?" />
 	<lookText lookText="That's Yngvarr, Brandr's right hand man. He's extremely loyal, even if it is to that blonde bastard. " />
-	<text character="Ulfr" disabled="true" default="false" say="Hey, Yngvarr." timer="1.5" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" disablePrevious="" say="Where did Brandr wander off to?" timer="2.2" />
-	<text character="Yngvarr" disabled="true" default="false" say="What do you think?" timer="1.8" turned="true" />
-	<text character="Yngvarr" say="He went up the hill." default="false" disabled="true" timer="2.0" />
-	<text character="Yngvarr" say="To make plans with Brynja." default="false" disabled="true" timer="2.0" />
-	<text character="Yngvarr" default="false" disabled="true" say="" timer="0.7" />
-	<text character="Ulfr" say="What plans?" default="false" disabled="true" timer="1.6" turned="false" />
-	<text character="Yngvarr" say="..." timer="1.4" default="false" disabled="true" turned="true" />
-	<text character="Yngvarr" say="We'll just have to see." default="false" timer="2.0" disabled="true" />
-	<text character="Yngvarr" say="Now STAY on the beach." timer="2.0" default="false" disabled="true" />
-	<text character="Ulfr" say="Hey Yngvarr, where is Brandr?" timer="2.0" default="true" disabled="false" turned="false" />
-	<text character="Yngvarr" say="I told you, he's up the hill." timer="1.8" default="true" disabled="false" turned="true" />
+	<text character="Ulfr" disabled="false" default="false" say="Hey, Yngvarr." timer="1.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="Where did Brandr wander off to?" timer="2.2" />
+	<text character="Yngvarr" disabled="false" default="false" say="What do you think?" timer="1.8" turned="true" />
+	<text character="Yngvarr" say="He went up the hill." default="false" disabled="false" timer="2.0" />
+	<text character="Yngvarr" say="To make plans with Brynja." default="false" disabled="false" timer="2.0" />
+	<text character="Ulfr" default="false" disabled="false" say="..." timer="0.7" turned="false" />
+	<text character="Ulfr" say="What plans?" default="false" disabled="false" timer="1.6" turned="false" />
+	<text character="Yngvarr" say="..." timer="1.4" default="false" disabled="false" turned="true" />
+	<text character="Yngvarr" say="We'll just have to see." default="false" timer="2.0" disabled="false" />
+	<text character="Yngvarr" say="Now STAY on the beach." timer="2.0" default="false" disabled="false" />
+	<text character="Ulfr" say="Hey Yngvarr, where is Brandr?" timer="2.0" default="true" disabled="true" turned="false" />
+	<text character="Yngvarr" say="I told you, he's up the hill." timer="1.8" default="true" disabled="true" turned="true" />
 	<text character="Yngvarr" turned="false" timer="0.1" />
 	<stopConversation />
 </conversation>

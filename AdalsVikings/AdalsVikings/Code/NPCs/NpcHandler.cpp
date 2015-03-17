@@ -99,7 +99,7 @@ void NpcHandler::load()
 
 	Dagny->setName("Dagny");
 	Dagny->setIdleAnimation(Texture::DagnyIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(4));
-	Dagny->SetTalkAnimation(Texture::DagnyTalk, sf::Vector2i(4, 1), sf::milliseconds(350), sf::Time::Zero);
+	Dagny->SetTalkAnimation(Texture::DagnyTalk, sf::Vector2i(4, 1), sf::milliseconds(450), sf::Time::Zero);
 	Dagny->setPosition(sf::Vector2f(1565, 705));
 	Dagny->setInteractionPosition(sf::Vector2f(1680, 690));
 	Dagny->setColor(sf::Color(223, 42, 193));
@@ -232,10 +232,10 @@ void NpcHandler::load()
 	DruidLeader->setIdleAnimation(Texture::DruidLeaderIdle, sf::Vector2i(1, 1), sf::milliseconds(0), sf::seconds(999));
 	DruidLeader->SetTalkAnimation(Texture::DruidLeaderTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
 	DruidLeader->setPosition(sf::Vector2f(650, 790));
-	DruidLeader->setInteractionPosition(sf::Vector2f(700, 780));
+	DruidLeader->setInteractionPosition(sf::Vector2f(820, 770));
 	DruidLeader->setColor(sf::Color(176, 196, 222));
 	DruidLeader->setIndex(3);
-	DruidLeader->setScale(sf::Vector2f(0.65f, 0.65f));
+	DruidLeader->setScale(sf::Vector2f(1.f, 1.f));
 	DruidLeader->setFlip(false);
 
 	Druids->setName("Druids");

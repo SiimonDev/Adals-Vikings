@@ -18,17 +18,17 @@
 							<text character="Dagny" say="Then why did you even bring it up? Go away." timer="2.4" disablePrevious="false" />
 							<stopConversation />
 						</option>
-						<option choice_text="There are lots of druids in the woods nearby." disabled="true">
+						<option choice_text="There are lots of druids in the woods nearby." disabled="false">
 							<text say="There are lots of druids in the woods nearby." timer="2.5" character="Ulfr" />
 							<text character="Dagny" say="So? Druids are harmless. You have to stop worrying about stuff." timer="3.0" disablePrevious="true" />
 							<gotoContainer />
 						</option>
-						<option choice_text="This building might collapse!" disabled="true">
+						<option choice_text="This building might collapse!" disabled="false">
 							<text say="This building might collapse!" timer="2.0" character="Ulfr" />
 							<text character="Dagny" say="Nonsense, this building is safe like... another safe place. We'll stay here as long as Brandr is here." timer="3.0" disablePrevious="true" />
 							<gotoContainer />
 						</option>
-						<option choice_text="Brandr told me that you're weak and can't defend yourself." disabled="true">
+						<option choice_text="Brandr told me that you're weak and can't defend yourself." disabled="false">
 							<text character="Ulfr" say="Brandr told me that you're weak and can't defend yourself." timer="3.0" />
 							<text character="Dagny" say="What?! I better teach him a lesson." timer="2.2" />
 							<text character="Ulfr" say="..." timer="3.3" />

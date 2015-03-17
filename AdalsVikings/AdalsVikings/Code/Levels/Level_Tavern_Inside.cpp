@@ -47,9 +47,28 @@ void Level_Tavern_Inside::update(sf::Time &frametime)
 			if (FadeI.getFaded())
 			{
 				mFade2 = true;
+				for (int i = 0; i < mObjects.size(); i++)
+				{
+					if (mObjects[i]->getObjID() == "bearPelt" && !mObjects[i]->getIsWorking())
+					{
+						mObjects[i]->enableObject(true);
+					}
+				}
 				Act1Events::handleEvent(Act1Event::TavernInside_GiveAxeToBrandr);
 			}
 		}
+	}
+
+	if (!Act1Events::hasBeenHandled(Act1Event::TavernInside_GiveAxeToBrandr))
+	{
+		for (int i = 0; i < mObjects.size(); i++)
+		{
+			if (mObjects[i]->getObjID() == "bearPelt" && mObjects[i]->getIsWorking())
+			{
+				mObjects[i]->enableObject(false);
+			}
+		}
+
 	}
 	
 	Level::update(frametime);

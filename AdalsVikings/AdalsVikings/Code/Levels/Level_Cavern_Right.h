@@ -19,4 +19,5 @@ public:
 private:
 
 	sf::RectangleShape mDarkness;
+	bool mFade1;
 };

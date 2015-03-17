@@ -5,7 +5,7 @@
 *pickup: "I don't think that Jacob guy would like that." ~3,5
 *lookat: "That's some pretty flowers." ~2,5
 *deny: "I can't do that." ~1,5
-*denywith: $candle$ "The flower is too pretty to burn." ~3,0; $torch$ "The flower is too pretty to burn." ~3,0; $rope$ "I need more than one flower to make a bouquet." ~3,0; $ropePiece$ "I need more than one flower to make a bouquet." ~3,0; $bucketBroken$ "I don’t need a bucket to carry a simple flower." ~3,0; $meat$ "I should let a professional handle this." ~3,0; 
+*denywith: $candle$ "The flower is too pretty to burn." ~3,0; $torch$ "The flower is too pretty to burn." ~3,0; $rope$ "I need more than one flower to make a bouquet." ~3,0; $ropePiece$ "I need more than one flower to make a bouquet." ~3,0; $bucketBroken$ "I don’t need a bucket to carry a simple flower." ~3,0; $meat$ "I should let a professional handle this." ~3,0; $Valdis$ "" ~0; 
 *combine: 
 *interact: 
 *texture: "img_flowers_id.png"

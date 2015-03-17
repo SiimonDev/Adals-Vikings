@@ -17,7 +17,7 @@
 	<text character="Brandr" say="Now." timer="1.5" />
 	<text character="Yngvarr" say="Uh..." timer="2.1" />
 	<text character="Yngvarr" say="Bring what?" timer="1.8" />
-	<text timer="1.2" />
+	<text character="Brandr" say="..." timer="1.6" />
 	<text character="Brandr" say="My father's map!" timer="2.3" turned="true" />
 	<stopConversation />
 </conversation>

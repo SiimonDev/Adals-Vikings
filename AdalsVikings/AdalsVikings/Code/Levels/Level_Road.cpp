@@ -106,6 +106,13 @@ void Level_Road::update(sf::Time &frametime)
 			if (FadeI.getFaded())
 			{
 				mFade5 = true;
+				mPortals[RoadToBeach]->setWorking(true);
+				mPortals[RoadToFarm]->setWorking(true);
+				mPortals[RoadToOutside_Chuch]->setWorking(true);
+				mPortals[RoadToCamp]->setWorking(false);
+				mPortals[RoadToCamp]->setCannotDialogue("If I go back there Brandr will kill me...");
+				mPortals[RoadToGates]->setWorking(true);
+				Act1Events::handleEvent(Act1Event::AfterCampRoad_Conversation);
 			}
 		}
 	}
@@ -123,7 +130,7 @@ void Level_Road::load()
 {
 	mRestartSounds = true;
 	RMI.loadResource(Footsteps::Dirt);
-	if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
+	if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::AfterCampRoad_Conversation))
 	{
 		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
 		mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
@@ -179,9 +186,15 @@ void Level_Road::load()
 		if (Act1Events::hasBeenTriggered(Act1Event::ChurchInside_GoBackDialogue))
 		{
 			mPortals[RoadToFarm]->setCannotDialogue("I should report to Brynja before I start exploring...");
+			mPortals[RoadToGates]->setCannotDialogue("I should report to Brynja before I start exploring...");
 			mPortals[RoadToCamp]->setWorking(true);
 		}
-		if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
+		if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_Brynja))
+		{
+			mPortals[RoadToFarm]->setCannotDialogue("I should probably finish up the camp before exploring.");
+			mPortals[RoadToGates]->setCannotDialogue("I should probably finish up the camp before exploring.");
+		}
+		if (Act1Events::hasBeenHandled(Act1Event::AfterCampRoad_Conversation))
 		{
 			mPortals[RoadToBeach]->setWorking(true);
 			mPortals[RoadToFarm]->setWorking(true);

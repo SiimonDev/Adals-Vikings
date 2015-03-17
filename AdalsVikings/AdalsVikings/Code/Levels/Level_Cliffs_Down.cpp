@@ -17,6 +17,11 @@ void Level_Cliffs_Down::update(sf::Time &frametime)
 {
 	if (!Act1Events::hasBeenHandled(Act1Event::GotCandleLight))
 		Act1Events::handleEvent(Act1Event::GotCandleLight);
+	if (!Act1Events::hasBeenHandled(Act1Event::GivenSleepingMeatToWolf))
+	{
+		DialogHandler::getDialogue("Miner_Cavern").enableOption(3);
+		Act1Events::handleEvent(Act1Event::GivenSleepingMeatToWolf);
+	}
 	if (!mCannotGo)
 	{
 		if (Act1Events::hasBeenHandled(Act1Event::TooDarkToGo))
@@ -44,8 +49,16 @@ void Level_Cliffs_Down::render(IndexRenderer &iRenderer)
 void Level_Cliffs_Down::load()
 {
 	mPortals[CliffsBottomToCliffsTop] = &PortalLoader::getPortal(CliffsBottomToCliffsTop);
-	mPortals[CliffsToCaverns] = &PortalLoader::getPortal(CliffsToCaverns);
-	mPortals[CliffsToCaverns]->setWorking(true);
+	if (!Act1Events::hasBeenHandled(Act1Event::MinedSomeGold))
+	{
+		mPortals[CliffsToCaverns] = &PortalLoader::getPortal(CliffsToCaverns);
+		mPortals[CliffsToCaverns]->setWorking(true);
+	}
+	else
+	{
+		mPortals[CliffsToCRuins] = &PortalLoader::getPortal(CliffsToCRuins);
+		mPortals[CliffsToCRuins]->setWorking(true);
+	}
 	mPortals[CliffsBottomToCliffsTop]->setWorking(true);
 
 	Level::load();
@@ -79,9 +92,9 @@ void Level_Cliffs_Down::load()
 
 void Level_Cliffs_Down::unload()
 {
-	Level::unload();
 	RMI.unloadResource(Texture::WaveAnimationCliffs);
 	RMI.unloadResource(Texture::WaveAnimationCliffsIdle);
+	Level::unload();
 }
 
 void Level_Cliffs_Down::changeLevel(sf::Time &frametime)
@@ -90,9 +103,20 @@ void Level_Cliffs_Down::changeLevel(sf::Time &frametime)
 	{
 		LVLMI.changeLevel(LevelFolder::Cliffs_Up);
 	}
-	if (mPortals[CliffsToCaverns]->getActivated() && mPortals[CliffsToCaverns]->getWorking())
+	if (!Act1Events::hasBeenHandled(Act1Event::MinedSomeGold))
 	{
-		LVLMI.changeLevel(LevelFolder::Cavern_Right);
+
+		if (mPortals[CliffsToCaverns]->getActivated() && mPortals[CliffsToCaverns]->getWorking())
+		{
+			LVLMI.changeLevel(LevelFolder::Cavern_Right);
+		}
+	}
+	else
+	{
+		if (mPortals[CliffsToCRuins]->getActivated() && mPortals[CliffsToCRuins]->getWorking())
+		{
+			LVLMI.changeLevel(LevelFolder::Cavern_Ruins_Right);
+		}
 	}
 }
 
@@ -102,5 +126,4 @@ void Level_Cliffs_Down::checkInteractEvents()
 }
 void Level_Cliffs_Down::checkEvents()
 {
-
 }

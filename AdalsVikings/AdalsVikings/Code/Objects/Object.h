@@ -36,6 +36,7 @@ public:
 	void setDescription(std::string description);
 	void enableCollision(bool active);
 	void enableDescription(bool active);
+	void enableObject(bool value);
 
 	std::string getObjID();
 	std::string getName();
@@ -57,6 +58,7 @@ public:
 	bool isInside(sf::Vector2i &pos);
 	bool isPickupable();
 	bool hasCollision();
+	bool getIsWorking();
 
 private:
 	void readVariablesFromFile();
@@ -86,6 +88,7 @@ private:
 	bool mCollision;
 	bool mCanPickUp;
 	bool mDisplayDescription;
+	bool mIsWorking;
 	
 	int mIndex;
 

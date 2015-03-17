@@ -17,8 +17,8 @@ Level_Beach::Level_Beach(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Beach::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Beach_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Ambient, true, 50);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 50);
 }
 
 void Level_Beach::update(sf::Time &frametime)
@@ -50,9 +50,6 @@ void Level_Beach::load()
 	mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
 	mPortals[BeachToTavernOutside] = &PortalLoader::getPortal(BeachToTavernOutside);
 	mPortals[BeachToBeachHill] = &PortalLoader::getPortal(BeachToBeachHill);
-
-	if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))
-		mPortals[BeachToTavernOutside]->setWorking(true);
 
 	mNpcs["Seagull"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Seagull")));
 
@@ -143,7 +140,7 @@ void Level_Beach::load()
 		mNpcs["Leifr"]->setFlip(true);
 		mNpcs["Leifr"]->setScale(sf::Vector2f(0.3f, 0.3f));
 		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 540));
-		mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(750, 580));
+		mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(800, 525));
 		mNpcs["Leifr"]->setDialogue("Leifr_Beach");
 		mNpcs["Leifr"]->setIndex(14);
 
@@ -176,6 +173,9 @@ void Level_Beach::load()
 	}
 	else
 		Level::load();
+
+		if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))
+			mPortals[BeachToTavernOutside]->setWorking(true);
 
 		if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro))
 			Act1Events::triggerEvent(Act1Event::Beach_Intro);
@@ -323,7 +323,7 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 
 				mPlayer->setPosition(sf::Vector2f(760, 800));
 				mPlayer->setFlip(false);
-				mPlayer->setAnimationStyle(AnimationType::Idle);
+				mPlayer->UpdateAnimationStyle();
 
 				mEndingFade1 = true;
 			}

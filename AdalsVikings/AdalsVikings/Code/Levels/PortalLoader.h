@@ -49,6 +49,11 @@ enum PortalId
 	FarmToHills,
 	HillsToFarm,
 	RuinsToCliffs,
+	CavernToCavernRuinsRight,
+	CRuinsRightToCRuinsLeft,
+	CRuinsLeftToCRuinsRight,
+	CRuinsToCLiffs,
+	CliffsToCRuins,
 };
 class PortalLoader
 {

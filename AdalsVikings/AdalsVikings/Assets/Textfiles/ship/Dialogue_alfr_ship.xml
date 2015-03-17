@@ -9,8 +9,8 @@
 	<text character="Ulfr" disabled="false" default="false" say="The sun's not even up yet, Alfr." timer="2.5" />
 	<text character="Alfr" disabled="false" default="false" say="But the light shines through." timer="2.5"  turned="true"/>
 	<text character="Ulfr" disabled="false" default="false" say="Of course it does." timer="2.0" turned="false"/>
-	<text character="Ulfr" disabled="true"  default="true"  say="Hey Alfr!" timer="1.4" />
-	<text character="Alfr" disabled="true"  default="true"  say="Hey!" timer="1.4" />
+	<text character="Ulfr" disabled="true"  default="true"  say="Hey Alfr!" timer="1.4"  turned="false"/>
+	<text character="Alfr" disabled="true"  default="true"  say="Hey!" timer="1.4"  turned="true"/>
 	<option_container disabled="false">
 		<option choice_text="What more things about Adal have you embellished?" disabled="false">
 			<text character="Ulfr" say="What more things about Adal have you embellished?" timer="3.0"  turned="false"/>
@@ -21,7 +21,7 @@
 			<text character="Alfr" timer="1.5" say="..."  turned="true"/>
 			<text character="Alfr" say="But i tell magical tales, do I not?" timer="2.5" />
 			<text character="Ulfr" say="You're not going to tell me, are you?" timer="2.5"  turned="false"/>
-			<text character="Alfr" say="No I am not." timer="2.0" disablePrevious="false" />
+			<text character="Alfr" say="No I am not." timer="2.0" disablePrevious="false"  turned="true"/>
 			<gotoContainer />
 		</option>
 		<option choice_text="Have you seen Adal's map around here?" disabled="true">
@@ -45,8 +45,9 @@
 		</option>
 		<option choice_text="...do you know any good ways of waking people up?" disabled="true">
 			<text character="Ulfr" say="...do you know any good ways of waking people up?" timer="2.5"  turned="false"/>
-			<text character="Alfr" turned="true" timer="1.0" say="    "></text>
-			<text character="Alfr" turned="True" timer="1.0" say="    "></text>
+			<text character="Alfr" turned="false" timer="0.8" say="..."></text>
+			<text character="Alfr" turned="true" timer="0.8" say="..."></text>
+			
 			<text character="Alfr" say="MUSIC!" timer="1.8"  turned="true"/>
 			<text character="Ulfr" say="Really?" timer="1.8"  turned="false"/>
 			<text character="Alfr" say="Certainly." timer="1.8"  turned="true"/>

@@ -25,6 +25,8 @@ void Level_Cavern_Ruins_Left::render(IndexRenderer &iRenderer)
 
 void Level_Cavern_Ruins_Left::load()
 {
+	mPortals[CRuinsLeftToCRuinsRight] = &PortalLoader::getPortal(CRuinsLeftToCRuinsRight);
+	mPortals[CRuinsLeftToCRuinsRight]->setWorking(true);
 	Level::load();
 }
 
@@ -35,6 +37,10 @@ void Level_Cavern_Ruins_Left::unload()
 
 void Level_Cavern_Ruins_Left::changeLevel()
 {
+	if (mPortals[CRuinsLeftToCRuinsRight]->getActivated() && mPortals[CRuinsLeftToCRuinsRight]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::Cavern_Ruins_Right);
+	}
 }
 
 void Level_Cavern_Ruins_Left::checkInteractEvents()

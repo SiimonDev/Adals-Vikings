@@ -33,28 +33,39 @@ void Level_Farm_1::update(sf::Time &frametime)
 		}
 		else if (Act1Events::hasBeenHandled(Act1Event::GivenFlowerToValdis))
 		{
-			if (!mFade1)
+			if (!DialogHandler::getDialogue("GotAll_Farm").getActiveConversation() && !DialogHandler::getDialogue("GotAll_Farm").getHasStopped())
+				DialogHandler::getDialogue("GotAll_Farm").startDialogue();
+
+			if (DialogHandler::getDialogue("GotAll_Farm").getHasStopped())
 			{
 
-				FadeI.fadeOut(frametime);
-
-				if (FadeI.getFaded())
+				if (!mFade1)
 				{
-					mFade1 = true;
+					FadeI.fadeOut(frametime);
+
+					if (FadeI.getFaded())
+					{
+						mFade1 = true;
+					}
+				}
+				if (mFade1 && !mFade2)
+				{
+					FadeI.fadeIn(frametime);
+
+					if (FadeI.getFaded())
+					{
+						DialogHandler::getDialogue("MadePill_Farm").startDialogue();
+						mFade2 = true;
+					}
 				}
 			}
-			if (mFade1 && !mFade2)
+			if (DialogHandler::getDialogue("GotAll_Farm").getHasStopped())
 			{
-				FadeI.fadeIn(frametime);
-
-				if (FadeI.getFaded())
-				{
-					mFade2 = true;
-					mPlayer->addItemToInventory("sleepingAgent");
-					Act1Events::hasBeenHandled(Act1Event::GivenMeadToValdis);
-				}
+				mPlayer->addItemToInventory("sleepingAgent");
+				Act1Events::handleEvent(Act1Event::GivenMeadToValdis);
 			}
 		}
+
 	}
 	if (Act1Events::hasBeenTriggered(Act1Event::GivenFlowerToValdis) && !Act1Events::hasBeenHandled(Act1Event::GivenFlowerToValdis))
 	{
@@ -69,25 +80,35 @@ void Level_Farm_1::update(sf::Time &frametime)
 		}
 		else if (Act1Events::hasBeenHandled(Act1Event::GivenMeadToValdis))
 		{
-			if (!mFade1)
-			{
-				FadeI.fadeOut(frametime);
+			if (!DialogHandler::getDialogue("GotAll_Farm").getActiveConversation() && !DialogHandler::getDialogue("GotAll_Farm").getHasStopped())
+				DialogHandler::getDialogue("GotAll_Farm").startDialogue();
 
-				if (FadeI.getFaded())
+			if (DialogHandler::getDialogue("GotAll_Farm").getHasStopped())
+			{
+				if (!mFade1)
 				{
-					mFade1 = true;
+					FadeI.fadeOut(frametime);
+
+					if (FadeI.getFaded())
+					{
+						mFade1 = true;
+					}
+				}
+				if (mFade1 && !mFade2)
+				{
+					FadeI.fadeIn(frametime);
+
+					if (FadeI.getFaded())
+					{
+						DialogHandler::getDialogue("MadePill_Farm").startDialogue();
+						mFade2 = true;
+					}
 				}
 			}
-			if (mFade1 && !mFade2)
+			if (DialogHandler::getDialogue("MadePill_Farm").getHasStopped())
 			{
-				FadeI.fadeIn(frametime);
-
-				if (FadeI.getFaded())
-				{
-					mFade2 = true;
-					mPlayer->addItemToInventory("sleepingAgent");
-					Act1Events::hasBeenHandled(Act1Event::GivenFlowerToValdis);
-				}
+				mPlayer->addItemToInventory("sleepingPill");
+				Act1Events::handleEvent(Act1Event::GivenFlowerToValdis);
 			}
 		}
 	}
@@ -113,7 +134,7 @@ void Level_Farm_1::load()
 	mNpcs["Valdis"]->setDialogue("Valdis_Farm");
 	mNpcs["Valdis"]->setPosition(sf::Vector2f(840, 960));
 	mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(585, 970));
-	mNpcs["Valdis"]->setScale(sf::Vector2f(1, 1));
+	mNpcs["Valdis"]->setScale(sf::Vector2f(0.8, 0.8));
 
 	Level::load();
 }

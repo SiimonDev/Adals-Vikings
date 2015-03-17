@@ -20,58 +20,61 @@ void Level::updateObjects(sf::Time frameTime)
 	// Object update functions
 	for (int i = 0; i < mObjects.size(); i++)
 	{
-		mObjects[i]->update(frameTime);
-
-		if (mObjects[i]->isInside(sf::Vector2i(mActionWheel->getPosition())) && mActionWheel->isPressed())
-			mActionWheel->setActive(true);
-
-		if (mActionWheel->isButtonSelected())
+		if (mObjects[i]->getIsWorking())
 		{
-			if (mObjects[i]->isInside(sf::Vector2i(mActionWheel->getPosition())))
+			mObjects[i]->update(frameTime);
+
+			if (mObjects[i]->isInside(sf::Vector2i(mActionWheel->getPosition())) && mActionWheel->isPressed())
+				mActionWheel->setActive(true);
+
+			if (mActionWheel->isButtonSelected())
 			{
-				mObjIndex = i;
-				mWalkToObject = true;
+				if (mObjects[i]->isInside(sf::Vector2i(mActionWheel->getPosition())))
+				{
+					mObjIndex = i;
+					mWalkToObject = true;
 
-				if (mActionWheel->isLookSelected())
-					mPlayer->setIntention(Intention::Look);
-				else if (mActionWheel->isTalkSelected())
-					mPlayer->setIntention(Intention::Talk);
-				else if (mActionWheel->isPickUpSelected())
-					mPlayer->setIntention(Intention::PickUp);
+					if (mActionWheel->isLookSelected())
+						mPlayer->setIntention(Intention::Look);
+					else if (mActionWheel->isTalkSelected())
+						mPlayer->setIntention(Intention::Talk);
+					else if (mActionWheel->isPickUpSelected())
+						mPlayer->setIntention(Intention::PickUp);
 
-				sf::Vector2f interactPos = mObjects[mObjIndex]->getPosition() + mObjects[mObjIndex]->getInteractionPosition();
-				Path path = PathFinder::getPath(mPlayer->getPosition(), interactPos);
-				mPlayer->walkPath(path);
+					sf::Vector2f interactPos = mObjects[mObjIndex]->getPosition() + mObjects[mObjIndex]->getInteractionPosition();
+					Path path = PathFinder::getPath(mPlayer->getPosition(), interactPos);
+					mPlayer->walkPath(path);
+				}
+
 			}
-
-		}
-		else if (mPlayer->getDroppedObjectID() != "")
-		{
-			if (mObjects[i]->isInside(MouseState::getMousePosition()))
+			else if (mPlayer->getDroppedObjectID() != "")
 			{
-				mDroppedItemID = mPlayer->getDroppedObjectID();
-				mObjIndex = i;
-				mWalkToObject = true;
+				if (mObjects[i]->isInside(MouseState::getMousePosition()))
+				{
+					mDroppedItemID = mPlayer->getDroppedObjectID();
+					mObjIndex = i;
+					mWalkToObject = true;
 
-				mPlayer->setIntention(Intention::Interact);
+					mPlayer->setIntention(Intention::Interact);
 
-				sf::Vector2f interactPos = mObjects[mObjIndex]->getPosition() + mObjects[mObjIndex]->getInteractionPosition();
-				Path path = PathFinder::getPath(mPlayer->getPosition(), interactPos);
-				mPlayer->walkPath(path);
-			}
-		}
-		else
-		{
-			if (mObjects[i]->isInside(MouseState::getMousePosition()) && !mIsInConversation)
-			{
-				mObjects[i]->enableDescription(true);
-				if (mPlayer->getSnappedObjectID() != "")
-					mObjects[i]->setDescription("Use " + OBHI.getObject(mPlayer->getSnappedObjectID()).getName() + " on " + mObjects[i]->getName());
-				else
-					mObjects[i]->setDescription(mObjects[i]->getName());
+					sf::Vector2f interactPos = mObjects[mObjIndex]->getPosition() + mObjects[mObjIndex]->getInteractionPosition();
+					Path path = PathFinder::getPath(mPlayer->getPosition(), interactPos);
+					mPlayer->walkPath(path);
+				}
 			}
 			else
-				mObjects[i]->enableDescription(false);
+			{
+				if (mObjects[i]->isInside(MouseState::getMousePosition()) && !mIsInConversation)
+				{
+					mObjects[i]->enableDescription(true);
+					if (mPlayer->getSnappedObjectID() != "")
+						mObjects[i]->setDescription("Use " + OBHI.getObject(mPlayer->getSnappedObjectID()).getName() + " on " + mObjects[i]->getName());
+					else
+						mObjects[i]->setDescription(mObjects[i]->getName());
+				}
+				else
+					mObjects[i]->enableDescription(false);
+			}
 		}
 	}
 
@@ -115,12 +118,21 @@ void Level::updateObjects(sf::Time frameTime)
 				mPlayer->setAnimationStyle(AnimationType::Pickup);
 				if (mPlayer->getAnimation().getFinished())
 				{
-					mPlayer->addItemToInventory(mObjects[mObjIndex]->getObjID());
-					PathFinder::getCurrentTileMap().removeCollision(mObjects[mObjIndex]->getCollisionRect());
-					delete mObjects[mObjIndex];
-					mObjects.erase(mObjects.begin() + mObjIndex);	
-					mWalkToObject = false;
-					mPlayer->setIntention(Intention::None);
+					if (!Act1Events::hasBeenHandled(Act1Event::PickupMeat) && (mObjects[mObjIndex]->getObjID() == "meatPile"))
+					{
+						mPlayer->addItemToInventory("meat");
+						Act1Events::triggerEvent(Act1Event::PickupMeat);
+						Act1Events::handleEvent(Act1Event::PickupMeat);
+					}
+					else if (!(mObjects[mObjIndex]->getObjID() == "meatPile"))
+					{
+						mPlayer->addItemToInventory(mObjects[mObjIndex]->getObjID());
+						PathFinder::getCurrentTileMap().removeCollision(mObjects[mObjIndex]->getCollisionRect());
+						delete mObjects[mObjIndex];
+						mObjects.erase(mObjects.begin() + mObjIndex);
+					}
+						mWalkToObject = false;
+						mPlayer->setIntention(Intention::None);
 				}
 			}
 			else
@@ -273,9 +285,18 @@ void Level::updateDialog(sf::Time frameTime)
 				{
 					if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() != "")
 					{
-						iz->second->setFlip(it->second->getFacing());
-						iz->second->setAnimationStyle("Npc");
-						mPlayer->setAnimationStyle(AnimationType::Idle);
+						if (it->second->getText().find_first_not_of(".") != std::string::npos)
+						{
+							iz->second->setFlip(it->second->getFacing());
+							iz->second->setAnimationStyle("Npc");
+							mPlayer->UpdateAnimationStyle();
+						}
+						else
+						{
+							iz->second->setFlip(it->second->getFacing());
+							iz->second->updateAnimationStyle();
+							mPlayer->UpdateAnimationStyle();
+						}
 						if (!iz->second->isInvisible())
 						{
 							it->second->setTextPosition(sf::Vector2f(iz->second->getAnimation().getSprite().getGlobalBounds().left +
@@ -293,38 +314,45 @@ void Level::updateDialog(sf::Time frameTime)
 					else if (it->second->getCharacter() == iz->second->getName() && it->second->getPrintText().getString() == "")
 					{
 						iz->second->setFlip(it->second->getFacing());
-						iz->second->setAnimationStyle("Idle");
+						iz->second->updateAnimationStyle();
 					}
-					else if (it->second->getCharacter() == mPlayer->getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
+					else if (it->second->getCharacter() == mPlayer->getName() && it->second->getPrintText().getString() != "")
 					{
-						mPlayer->setFlip(it->second->getFacing());
-						mPlayer->setAnimationStyle(AnimationType::TalkToPlayer);
-						iz->second->setAnimationStyle("Idle");
+						if ((it->second->getText().find_first_not_of(".") != std::string::npos))
+						{
+							if (it->second->getFacePlayer())
+							{
+								mPlayer->setAnimationStyle(AnimationType::TalkToPlayer);
+							}
+							else
+							{
+								mPlayer->setFlip(it->second->getFacing());
+								mPlayer->setAnimationStyle(AnimationType::TalkToNpc);
+							}
+						}
+						else
+						{
+							mPlayer->setFlip(it->second->getFacing());
+							mPlayer->UpdateAnimationStyle();
+						}
+
+						iz->second->updateAnimationStyle();
 						it->second->setTextPosition(sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left +
 							mPlayer->getSprite().getGlobalBounds().width / 2,
 							mPlayer->getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
+
 						it->second->setTextColor(sf::Color::White);
+						
 					}
-					else if (it->second->getCharacter() == mPlayer->getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() == "")
+					else if (it->second->getCharacter() == mPlayer->getName() && it->second->getPrintText().getString() == "")
 					{
 						mPlayer->setFlip(it->second->getFacing());
-						mPlayer->setAnimationStyle(AnimationType::Idle);
+						mPlayer->UpdateAnimationStyle();
 					}
-					else if (it->second->getCharacter() == mPlayer->getName() && !it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
-					{
-						mPlayer->setAnimationStyle(AnimationType::TalkToNpc);
-						iz->second->setAnimationStyle("Idle");
-						mPlayer->setFlip(it->second->getFacing());
-						it->second->setTextPosition(sf::Vector2f(mPlayer->getSprite().getGlobalBounds().left +
-							mPlayer->getSprite().getGlobalBounds().width / 2,
-							mPlayer->getSprite().getGlobalBounds().top - it->second->getPrintText().getGlobalBounds().height / 2));
-						it->second->setTextColor(sf::Color::White);
-					}
-					else if (it->second->getCharacter() != iz->second->getName() && it->second->getCharacter() != mPlayer->getName())
-					{
-						iz->second->setAnimationStyle("Idle");
-						mPlayer->setAnimationStyle(AnimationType::Idle);
-					}
+					else if (it->second->getCharacter() != iz->second->getName())
+						iz->second->updateAnimationStyle();
+					else if ( it->second->getCharacter() != mPlayer->getName())
+						mPlayer->UpdateAnimationStyle();
 				}
 			}
 			else
@@ -341,7 +369,7 @@ void Level::updateDialog(sf::Time frameTime)
 				else if (it->second->getCharacter() == mPlayer->getName() && it->second->getFacePlayer() && it->second->getPrintText().getString() == "")
 				{
 					mPlayer->setFlip(it->second->getFacing());
-					mPlayer->setAnimationStyle(AnimationType::Idle);
+					mPlayer->UpdateAnimationStyle();
 				}
 				else if (it->second->getCharacter() == mPlayer->getName() && !it->second->getFacePlayer() && it->second->getPrintText().getString() != "")
 				{
@@ -362,7 +390,9 @@ void Level::updateDialog(sf::Time frameTime)
 			mIsInConversation = false;
 
 			for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
-				iz->second->setAnimationStyle("Idle");
+				iz->second->updateAnimationStyle();
+
+			mPlayer->UpdateAnimationStyle();
 
 			mConversationStopped = true;
 		}
@@ -592,15 +622,15 @@ void Level::refreshLevel()
 	for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 		it->second->setActivate(false);
 
-	// Reset objects
-	for each (Object* obj in mObjects){
-		mTileMap.removeCollision(obj->getCollisionRect());
-		obj->unload();
-		delete obj;
-	}
-	mObjects.clear();
+	 //Reset objects
+	 for each (Object* obj in mObjects){
+		 mTileMap.removeCollision(obj->getCollisionRect());
+		 obj->unload();
+		 delete obj;
+	 }
+	 mObjects.clear();
 
-	loadObjects();
+	 loadObjects();
 }
 
 void Level::load()

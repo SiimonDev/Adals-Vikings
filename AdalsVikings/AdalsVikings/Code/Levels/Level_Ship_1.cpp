@@ -81,13 +81,21 @@ void Level_Ship_1::update(sf::Time &frametime)
 				if (FadeI.getFaded())
 				{
 					RMI.unloadResource(Texture::BrynjaSleeping);
+					RMI.loadResource(Texture::ValdisIdle);
+					RMI.loadResource(Texture::ValdisTalk);
 					mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 					mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
 					mNpcs["Brynja"]->setScale(sf::Vector2f(0.5f, 0.5f));
-					mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
+					mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 718));
 					mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
-					mNpcs["Brynja"]->updateAnimationStyle();
 					mNpcs["Brynja"]->setFlip(true);
+					mNpcs["Brynja"]->updateAnimationStyle();
+
+					mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+					mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
+					mNpcs["Valdis"]->setPosition(sf::Vector2f(1230, 723));
+					mNpcs["Valdis"]->setScale(sf::Vector2f(0.5f, 0.5f));
+					mNpcs["Valdis"]->updateAnimationStyle();
 
 					mBrynjaFade1 = true;
 				}
@@ -157,9 +165,6 @@ void Level_Ship_1::load()
 	mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Alfr")));
 
 	mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
-	mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
-	mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisSittingTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
-	mNpcs["Valdis"]->setScale(sf::Vector2f(0.3f, 0.3f));
 	mNpcs["Valdis"]->setIndex(14);
 
 	mNpcs["Alfr"]->setIndex(16);
@@ -175,19 +180,28 @@ void Level_Ship_1::load()
 		RMI.loadResource(Texture::BrynjaSleeping);
 		mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaSleeping, sf::Vector2i(3, 4), sf::milliseconds(1200), sf::milliseconds(2000));
 		mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaSleeping, sf::Vector2i(3, 4), sf::milliseconds(1400), sf::milliseconds(2000));
-
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 730));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(900, 710));
 		mNpcs["Brynja"]->setScale(sf::Vector2f(0.6f, 0.6f));
+
+		mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
+		mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisSittingTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
+		mNpcs["Valdis"]->setScale(sf::Vector2f(0.3f, 0.3f));
 	}
 	else
 	{
 		RMI.loadResource(Texture::BrynjaIdle);
 		RMI.loadResource(Texture::BrynjaTalk);
+		RMI.loadResource(Texture::ValdisIdle);
+		RMI.loadResource(Texture::ValdisTalk);
+		mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+		mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
+		mNpcs["Valdis"]->setScale(sf::Vector2f(0.5f, 0.5f));
+		mNpcs["Valdis"]->setPosition(sf::Vector2f(1230, 723));
 		mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 		mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
 		mNpcs["Brynja"]->setScale(sf::Vector2f(0.5f, 0.5f));
-		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 708));
+		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 718));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
 		mNpcs["Brynja"]->updateAnimationStyle();
 		mNpcs["Brynja"]->setFlip(true);
@@ -195,8 +209,8 @@ void Level_Ship_1::load()
 
 	Level::load();
 
-	AudioPlayer::playHDDSound(HDDSound::Boat_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Boat_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Boat_Ambient, true, 50);
+	AudioPlayer::playHDDSound(HDDSound::Boat_Music, true, 50);
 
 	// Add Collision from every NPC to the map
 	mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
@@ -251,6 +265,8 @@ void Level_Ship_1::unload()
 	RMI.unloadResource(Footsteps::Hardwood);
 	RMI.unloadResource(Texture::BrynjaIdle);
 	RMI.unloadResource(Texture::BrynjaTalk);
+	RMI.unloadResource(Texture::ValdisIdle);
+	RMI.unloadResource(Texture::ValdisTalk);
 	Level::unload();
 }
 
