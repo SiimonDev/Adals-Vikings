@@ -25,6 +25,9 @@ void Level_Beach_Hills::render(IndexRenderer &iRenderer)
 
 void Level_Beach_Hills::load()
 {
+
+	mPortals[HillBeachToBeach] = &PortalLoader::getPortal(HillBeachToBeach);
+	mPortals[HillBeachToBeach]->setWorking(true);
 	Level::load();
 }
 
@@ -35,6 +38,10 @@ void Level_Beach_Hills::unload()
 
 void Level_Beach_Hills::changeLevel()
 {
+	if (mPortals[HillBeachToBeach]->getActivated() && mPortals[HillBeachToBeach]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::Beach);
+	}
 }
 
 void Level_Beach_Hills::checkInteractEvents()

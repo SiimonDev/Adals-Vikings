@@ -139,6 +139,12 @@ void PortalLoader::load()
 		mPortalMap[HillsToFarm] = PortalPtr(new Portal(LevelFolder::Hills, sf::Vector2f(455, 60), sf::Vector2f(450, 1020), sf::Vector2f(660, 1050), sf::Vector2f(660, 1050)));
 		mPortalMap[HillsToFarm]->setCursorRotation(-90);
 
+		mPortalMap[BeachToBeachHill] = PortalPtr(new Portal(LevelFolder::Beach, sf::Vector2f(210, 240), sf::Vector2f(540, 0), sf::Vector2f(690, 225), sf::Vector2f(690, 225)));
+		mPortalMap[BeachToBeachHill]->setCursorRotation(180);
+
+		mPortalMap[HillBeachToBeach] = PortalPtr(new Portal(LevelFolder::Beach_Hills, sf::Vector2f(555, 55), sf::Vector2f(915, 1025), sf::Vector2f(1280, 725), sf::Vector2f(1285, 1045)));
+		mPortalMap[HillBeachToBeach]->setCursorRotation(-90);
+
 		//connect the portals
 		mPortalMap[BeachToRoad]->setGateway(&*mPortalMap[RoadToBeach]);
 		mPortalMap[RoadToBeach]->setGateway(&*mPortalMap[BeachToRoad]);
@@ -179,6 +185,8 @@ void PortalLoader::load()
 		mPortalMap[RuinsToCliffs]->setGateway(&*mPortalMap[CliffsToRuins]);
 		mPortalMap[FarmToHills]->setGateway(&*mPortalMap[HillsToFarm]);
 		mPortalMap[HillsToFarm]->setGateway(&*mPortalMap[FarmToHills]);
+		mPortalMap[BeachToBeachHill]->setGateway(&*mPortalMap[HillBeachToBeach]);
+		mPortalMap[HillBeachToBeach]->setGateway(&*mPortalMap[BeachToBeachHill]);
 	}
 }
 

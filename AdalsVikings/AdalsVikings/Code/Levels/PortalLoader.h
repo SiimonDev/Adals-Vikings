@@ -10,7 +10,7 @@ enum PortalId
 	Ship2ToShip1,
 	BeachToRoad,
 	BeachToBeachHill,
-	BeachToHill,
+	HillBeachToBeach,
 	RoadToBeach,
 	RoadToOutside_Chuch,
 	RoadToFarm,
@@ -48,7 +48,7 @@ enum PortalId
 	CavernsLeftToRight,
 	FarmToHills,
 	HillsToFarm,
-	RuinsToCliffs
+	RuinsToCliffs,
 };
 class PortalLoader
 {
