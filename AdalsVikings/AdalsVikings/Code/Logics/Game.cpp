@@ -10,6 +10,7 @@
 #include "IndexRenderer.h"
 #include "AudioPlayer.h"
 #include "Fade.h"
+#include "VideoFile.h"
 
 sf::Time frameTime = sf::seconds(1.f / 60.f);
 
@@ -30,11 +31,11 @@ Game::Game()
 	mWindow.setIcon(32, 32, icon.getPixelsPtr());
 
 	WinState.initialize(mWindow);
-	OBHI.initialize();
-	FadeI.initialize();
-	LSI.initialize();
 	KeyboardState::initialize();
 	MouseState::initialize();
+	
+	LSI.initialize();
+	LSI.startLoading(LoadTask::BootGame);
 }
 
 Game::~Game()
@@ -58,7 +59,7 @@ void Game::update(sf::Time frameTime)
 			// Check for pause menu events
 			if (MHI.getEvent() == MenuEvent::MainMenuPressed)
 			{
-				LSI.startLoading(LoadTask::LoadMenu);
+				LSI.startLoading(LoadTask::LoadMainMenu);
 				runGame = false;
 			}
 			else if (MHI.getEvent() == MenuEvent::ResumePressed)
@@ -81,6 +82,10 @@ void Game::update(sf::Time frameTime)
 		else if (MHI.getEvent() == MenuEvent::ExitGamePressed)
 		{
 			LVLMI.save("assets/saves/");
+			mWindow.close();
+		}
+		else if (MHI.getEvent() == MenuEvent::ExitMainMenuPressed)
+		{
 			mWindow.close();
 		}
 		AudioPlayer::update(frameTime);

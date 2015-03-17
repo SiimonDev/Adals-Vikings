@@ -9,6 +9,7 @@ enum MenuEvent
 	PlayPressed,
 	NewGamePressed,
 	ExitGamePressed,
+	ExitMainMenuPressed,
 	MainMenuPressed,
 	BackToMenuPressed,
 	ResumePressed,

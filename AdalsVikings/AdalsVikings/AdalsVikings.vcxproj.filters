@@ -194,6 +194,9 @@
     <ClCompile Include="Code\Levels\Level_Cavern_Ruins_Left.cpp">
       <Filter>Source Files\Levels</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Logics\VideoFile.cpp">
+      <Filter>Source Files\Logics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Dialog\Dialog.h">
@@ -402,6 +405,9 @@
     </ClInclude>
     <ClInclude Include="Code\Levels\Level_Cavern_Ruins_Left.h">
       <Filter>Header Files\Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Logics\VideoFile.h">
+      <Filter>Header Files\Logics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
