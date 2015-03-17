@@ -22,5 +22,7 @@
 	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="Good" timer="2.0" turned="false" />
 	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="They are just past the beach, then north." timer="2.3" />
 	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="You should proably find them there." timer="2.3" />
+	<text character="Brynja" say="Go find Brandr and tell him to come back already." default="true" disabled="true" timer="2.3" />
+	<text character="Brynja" say="They are just past the beach, then north." default="true" disabled="true" timer="2.3" />
 	<stopConversation />
 </conversation>

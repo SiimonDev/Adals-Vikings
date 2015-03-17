@@ -2,8 +2,8 @@
 <conversation>
 	<useText useText="Why would I want to &quot;use&quot; Finnr?" />
 	<lookText lookText="My friend Finnr. We've known each other for a long time, and we're great friends, even if he's a bit strange at times." />
-	<text character="Ulfr" disabled="false" default="false" say="Hey Finnr." timer="2.0" turned="false" />
-	<text character="Finnr" disabled="false" default="false" say="Hey Ulfr, what's up?" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Hey Finnr." timer="2.0" turned="false" />
+	<text character="Finnr" disabled="true" default="false" say="Hey Ulfr, what's up?" timer="2.0" turned="false" />
 	<option_container disabled="false">
 		<option choice_text="I need to fix this axe." disabled="true">
 			<text character="Ulfr" disablePrevious="false" say="I need to fix this axe." timer="1.2" disabled="false" />

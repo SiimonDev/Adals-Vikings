@@ -24,5 +24,7 @@
 	<text character="Valdis" disabled="false" default="false" say="Now go!" timer="2.0" />
 	<text character="Ulfr" default="false" disabled="false" say="..." timer="1.5" />
 	<text character="Ulfr" disabled="false" default="false" say="Oden... i feel used." timer="2.0" turned="true" />
+	<text say="Have you checked out that smoke from the forest yet?" character="Valdis" timer="2.5" default="true" disabled="true" />
+	<text character="Valdis" say="We desperately need a fire!" timer="2.3" default="true" disabled="true" />
 	<stopConversation />
 </conversation>
