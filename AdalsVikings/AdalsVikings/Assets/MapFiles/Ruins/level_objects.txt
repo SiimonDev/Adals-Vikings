@@ -27,3 +27,10 @@ index: $99
 scale: $1.0
 hascollision: $false
 ############
+*id: $meatPile
+position: $X:1540 $Y:130
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
