@@ -7,7 +7,7 @@
 	<text character="Ulfr" say="My name is Ulfr." disabled="false" default="true" timer="2.4" turned="true" />
 	<text character="Parrik" say="Oh really? How interesting. Now bugger off!" disabled="false" default="true" timer="2.5" turned="true" />
 	<option_container disabled="false">
-		<option choice_text="Is that any way of treating a guest?" disabled="false">
+		<option choice_text="Is that any way of treating a guest?" disabled="true">
 			<text character="Ulfr" say="Is that any way of treating a guest?" timer="2.4" turned="false" default="false" disabled="false" />
 			<text character="Parrik" say="You're not in my home yet, trespasser." disabled="false" default="true" timer="2.4" turned="true" />
 			<text character="Ulfr" say="Trespasser?" timer="2.4" turned="false" default="false" disabled="false" />

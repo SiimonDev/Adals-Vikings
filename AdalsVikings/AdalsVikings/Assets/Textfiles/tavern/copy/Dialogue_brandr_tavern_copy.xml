@@ -18,7 +18,7 @@
 	<text character="Brandr" disabled="true" default="false" say="* She'd kill us both*" timer="2.0" turned="false" />
 	<text character="Brandr" say="Have you fixed my axe yet?" default="true" disabled="false" timer="2.2" />
 	<option_container disabled="false">
-		<option choice_text="Please return to camp." disabled="false">
+		<option choice_text="Please return to camp." disabled="true">
 			<text character="Ulfr" disabled="false" default="false" say="Er... Brandr, can you please go to the camp?" timer="2.0" turned="false" />
 			<text character="Brandr" disabled="false" default="false" say="No." timer="2.0" turned="false" />
 			<text character="Ulfr" disabled="false" default="false" say="...Yes" timer="2.0" turned="false" />
