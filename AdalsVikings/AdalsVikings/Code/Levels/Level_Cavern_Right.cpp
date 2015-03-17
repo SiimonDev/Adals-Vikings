@@ -17,6 +17,21 @@ void Level_Cavern_Right::restartSounds()
 
 void Level_Cavern_Right::update(sf::Time &frametime)
 {
+	if (Act1Events::hasBeenTriggered(Act1Event::MinedSomeGold) && !Act1Events::hasBeenHandled(Act1Event::MinedSomeGold))
+	{
+	}
+	if (Act1Events::hasBeenHandled(Act1Event::GivenSkullToMiner))
+	{
+		for (int i = 0; i < mObjects.size(); i++)
+		{
+			if (mObjects[i]->getObjID() == "mineCart")
+			{
+				PathFinder::getCurrentTileMap().removeCollision(mObjects[i]->getCollisionRect());
+				delete mObjects[i];
+				mObjects.erase(mObjects.begin() + i);
+			}
+		}
+	}
 	if (Act1Events::hasBeenHandled(Act1Event::GivenSkullToMiner) && !mPlayer->hasItemInInventory("helmet") && !mPlayer->hasItemInInventory("skullHelmet"))
 		mPlayer->addItemToInventory("helmet");
 	if (Act1Events::hasBeenTriggered(Act1Event::TooDarkToGo) && !Act1Events::hasBeenHandled(Act1Event::TooDarkToGo))
@@ -69,7 +84,8 @@ void Level_Cavern_Right::changeLevel()
 
 void Level_Cavern_Right::checkInteractEvents()
 {
-
+	if (mDroppedItemID == "pickAxe" && mObjects[mObjIndex]->getObjID() == "gold" && !Act1Events::hasBeenTriggered(Act1Event::MinedSomeGold))
+		Act1Events::triggerEvent(Act1Event::MinedSomeGold);
 }
 void Level_Cavern_Right::checkEvents()
 {

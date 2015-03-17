@@ -22,6 +22,8 @@ Level_Ship_2::Level_Ship_2(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Ship_2::update(sf::Time &frameTime)
 {
+	if (KeyboardState::isPressed(sf::Keyboard::Num1))
+		mPlayer->addItemToInventory("map");
 	mSeaAnimation.animate(frameTime);
 	mWaveAnimation.animate(frameTime);
 	if (BoatEvents::hasBeenTriggered(BoatEvent::PickedUpBucket) && !BoatEvents::hasBeenHandled(BoatEvent::PickedUpBucket))
@@ -41,17 +43,18 @@ void Level_Ship_2::update(sf::Time &frameTime)
 	}
 	if (!BoatEvents::hasBeenHandled(BoatEvent::GivenMapToBrandr) && BoatEvents::hasBeenTriggered(BoatEvent::GivenMapToBrandr))
 	{
-		mPlayer->removeItemFromInventory("map");
-		if (!mStartedGiveDialogue)
-		{
-			DialogHandler::getDialogue("GivenMapToBrandr_Ship2").startDialogue();
-			mStartedGiveDialogue = true;
-		}
-		if (DialogHandler::getDialogue("GivenMapToBrandr_Ship2").getHasStopped())
+		if (mPlayer->hasItemInInventory("map"))
+			mPlayer->removeItemFromInventory("map");
+
+		if (!DialogHandler::getDialogue("GivenMapToBrandr_Ship").getActiveConversation() && !DialogHandler::getDialogue("GivenMapToBrandr_Ship").getHasStopped())
+			DialogHandler::getDialogue("GivenMapToBrandr_Ship").startDialogue();
+
+		if (DialogHandler::getDialogue("GivenMapToBrandr_Ship").getHasStopped())
 		{
 			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())
 			{
+				LSI.startLoading(LoadTask::LoadAct1);
 				BoatEvents::handleEvent(BoatEvent::GivenMapToBrandr);
 			}
 		}
@@ -151,10 +154,6 @@ void Level_Ship_2::changeLevel(sf::Time &frameTime)
 	if (mPortals[Ship2ToShip1]->getActivated())
 	{
 		LVLMI.changeLevel(LevelFolder::Ship_1);
-	}
-	else if (BoatEvents::hasBeenHandled(BoatEvent::GivenMapToBrandr) && BoatEvents::hasBeenTriggered(BoatEvent::GivenMapToBrandr))
-	{
-		LSI.startLoading(LoadTask::LoadAct1);
 	}
 	else if (BoatEvents::hasBeenHandled(BoatEvent::StartDialogue) && BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
 		LVLMI.changeLevel(LevelFolder::Ship_1);

@@ -13,7 +13,7 @@ Intro_Ship2 assets/textfiles/ship/Dialogue_intro.xml
 Dagny_Ship2 assets/textfiles/ship/Dialogue_dagny_ship.xml
 Brandr_Ship2 assets/textfiles/ship/Dialogue_brandr_ship.xml
 Yngvarr_Ship2 assets/textfiles/ship/Dialogue_yngvarr_ship.xml
-GivenMapToBrandr_Ship2 assets/textfiles/ship/Dialogue_GivenMapToBrandr.xml
+GivenMapToBrandr_Ship assets/textfiles/ship/Dialogue_GivenMapToBrandr.xml
 -----------------------BEACH ----------------------------
 Alfr_Beach assets/textfiles/beach/Dialogue_alfr_beach.xml
 Dagny_Beach assets/textfiles/beach/Dialogue_dagny_beach.xml

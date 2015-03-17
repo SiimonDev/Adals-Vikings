@@ -2,22 +2,22 @@
 <conversation>
 	<useText useText="Why would I use Finnr?" />
 	<lookText lookText="That's Finnr" />
-	<text character="Finnr" disabled="false" default="false" say="You know..." timer="1.5" />
-	<text character="Finnr" disabled="false" default="false" disablePrevious="" say="I've heard so many stories of this place" timer="1.7" />
-	<text character="Finnr" disabled="false" default="false" disablePrevious="" say="But now that I'm here..." timer="1.7" />
-	<text character="Ulfr" disabled="false" default="false" say="Let me guess." timer="1.5" />
-	<text character="Ulfr" disabled="false" default="false" say="You're disappointed." timer="1.6" />
-	<text character="Finnr" disabled="false" default="false" say="Oh, not at all," timer="1.6" />
-	<text character="Finnr" say="I'm relieved!" timer="1.5" default="false" disabled="false" />
-	<text character="Finnr" say="Do you think I want to be brutalized by a bunch of dangerous Anglians?" timer="2.2" default="false" disabled="false" />
-	<text character="Ulfr" say="I'm sure Dagny would want to brutalize them." timer="1.8" disabled="false" default="false" />
+	<text character="Finnr" disabled="true" default="false" say="You know..." timer="1.5" />
+	<text character="Finnr" disabled="true" default="false" disablePrevious="" say="I've heard so many stories of this place" timer="1.7" />
+	<text character="Finnr" disabled="true" default="false" disablePrevious="" say="But now that I'm here..." timer="1.7" />
+	<text character="Ulfr" disabled="true" default="false" say="Let me guess." timer="1.5" />
+	<text character="Ulfr" disabled="true" default="false" say="You're disappointed." timer="1.6" />
+	<text character="Finnr" disabled="true" default="false" say="Oh, not at all," timer="1.6" />
+	<text character="Finnr" say="I'm relieved!" timer="1.5" default="false" disabled="true" />
+	<text character="Finnr" say="Do you think I want to be brutalized by a bunch of dangerous Anglians?" timer="2.2" default="false" disabled="true" />
+	<text character="Ulfr" say="I'm sure Dagny would want to brutalize them." timer="1.8" disabled="true" default="false" />
 	<text character="Finnr" say="..." timer="1.5" default="false" />
 	<text character="Finnr" say="...really?" timer="1.6" default="false" />
 	<text character="Ulfr" say="Oh yeah." timer="1.5" default="false" />
 	<text character="Ulfr" say="Does that... change your mind?" timer="1.6" default="false" />
 	<text character="Finnr" say="...maybe." timer="1.7" default="false" />
-	<text character="Ulfr" say="Hey Finnr!" timer="1.5" default="true" disabled="true" />
-	<text character="Finnr" say="Hey!" timer="1.5" default="true" disabled="true" />
+	<text character="Ulfr" say="Hey Finnr!" timer="1.5" default="true" disabled="false" />
+	<text character="Finnr" say="Hey!" timer="1.5" default="true" disabled="false" />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />

@@ -3,33 +3,33 @@
 	<useText useText="Well I can't exactly huff and puff his house down.." />
 	<lookText lookText="Seems like someone likes to stay at home." />
 	<text character="Ulfr" say="Hello?" disabled="false" default="true" timer="2.0" turned="false" />
-	<text character="Ulfr" say="..." disabled="false" default="false" timer="1.4" />
-	<text character="Ulfr" say="... hello?" disabled="false" default="false" timer="2.3" />
-	<text character="Jacob" say="WHAT IS IT?" disabled="false" default="false" timer="2.3" />
-	<text character="Ulfr" say="Who are you?" disabled="false" default="false" timer="2.3" />
-	<text character="Jacob" say="Me?" disabled="false" default="false" timer="1.8" />
-	<text character="Jacob" say="I'm Jacob!" disabled="false" default="false" timer="2.3" />
-	<text character="Jacob" say="I'm a farmer!" disabled="false" default="false" timer="2.3" />
-	<text character="Jacob" say="Who in the name of god are you?" disabled="false" default="false" timer="2.8" />
-	<text character="Ulfr" say="I'm Ulfr." disabled="false" default="false" timer="2.3" />
-	<text character="Jacob" say="...Just Ulfr?" disabled="false" default="false" timer="2.3" />
-	<text character="Jacob" say="Nothing else?" disabled="false" default="false" timer="2.3" />
-	<text character="Ulfr" say="Uh..." disabled="false" default="false" timer="2.3" />
-	<text character="Ulfr" say="I'm a Viking?" disabled="false" default="false" timer="2.3" />
-	<text character="Jacob" say="HAH!" disabled="false" default="false" timer="1.8" />
-	<text character="Jacob" say="AHAHA!" disabled="false" default="false" timer="2.3" />
-	<text character="Jacob" say="You must be that new jester I've heard so much about!" disabled="false" default="false" timer="2.8" />
-	<text character="Jacob" say="The king loves you!" disabled="false" default="false" timer="2.4" />
-	<text character="Jacob" say="I thought your name was Dealic?" disabled="false" default="false" timer="2.4" />
-	<text character="Ulfr" say="Uh..." disabled="false" default="false" timer="2.3" />
-	<text character="Ulfr" say="I go by many a name." disabled="false" default="false" timer="2.4" />
-	<text character="Jacob" say="..." disabled="false" default="false" timer="1.3" />
-	<text character="Jacob" say="...why?" disabled="false" default="false" timer="2.2" />
-	<text character="Ulfr" say="It's a joke." disabled="false" default="false" timer="2.2" />
-	<text character="Jacob" say="HAHAHA!" disabled="false" default="false" timer="2.3" />
-	<text character="Jacob" say="CLASSIC!" disabled="false" default="false" timer="2.4" />
+	<text character="Ulfr" say="..." disabled="true" default="false" timer="1.4" />
+	<text character="Ulfr" say="... hello?" disabled="true" default="false" timer="2.3" />
+	<text character="Jacob" say="WHAT IS IT?" disabled="true" default="false" timer="2.3" />
+	<text character="Ulfr" say="Who are you?" disabled="true" default="false" timer="2.3" />
+	<text character="Jacob" say="Me?" disabled="true" default="false" timer="1.8" />
+	<text character="Jacob" say="I'm Jacob!" disabled="true" default="false" timer="2.3" />
+	<text character="Jacob" say="I'm a farmer!" disabled="true" default="false" timer="2.3" />
+	<text character="Jacob" say="Who in the name of god are you?" disabled="true" default="false" timer="2.8" />
+	<text character="Ulfr" say="I'm Ulfr." disabled="true" default="false" timer="2.3" />
+	<text character="Jacob" say="...Just Ulfr?" disabled="true" default="false" timer="2.3" />
+	<text character="Jacob" say="Nothing else?" disabled="true" default="false" timer="2.3" />
+	<text character="Ulfr" say="Uh..." disabled="true" default="false" timer="2.3" />
+	<text character="Ulfr" say="I'm a Viking?" disabled="true" default="false" timer="2.3" />
+	<text character="Jacob" say="HAH!" disabled="true" default="false" timer="1.8" />
+	<text character="Jacob" say="AHAHA!" disabled="true" default="false" timer="2.3" />
+	<text character="Jacob" say="You must be that new jester I've heard so much about!" disabled="true" default="false" timer="2.8" />
+	<text character="Jacob" say="The king loves you!" disabled="true" default="false" timer="2.4" />
+	<text character="Jacob" say="I thought your name was Dealic?" disabled="true" default="false" timer="2.4" />
+	<text character="Ulfr" say="Uh..." disabled="true" default="false" timer="2.3" />
+	<text character="Ulfr" say="I go by many a name." disabled="true" default="false" timer="2.4" />
+	<text character="Jacob" say="..." disabled="true" default="false" timer="1.3" />
+	<text character="Jacob" say="...why?" disabled="true" default="false" timer="2.2" />
+	<text character="Ulfr" say="It's a joke." disabled="true" default="false" timer="2.2" />
+	<text character="Jacob" say="HAHAHA!" disabled="true" default="false" timer="2.3" />
+	<text character="Jacob" say="CLASSIC!" disabled="true" default="false" timer="2.4" />
 	<option_container disabled="false">
-		<option choice_text="Why do you have so many signs in your yard?" disabled="false">
+		<option choice_text="Why do you have so many signs in your yard?" disabled="true">
 			<text character="Ulfr" say="Why do you have so many signs in your yard?" timer="2.4" turned="false" default="false" disabled="false" />
 			<text character="Jacob" say="My signs?" disabled="false" default="false" timer="1.8" />
 			<text character="Jacob" say="They're for protection!" disabled="false" default="false" timer="2.3" />
@@ -44,7 +44,7 @@
 			<text character="Jacob" say="That's the least you could say." disabled="false" default="false" timer="2.4" disablePrevious="true" />
 			<gotoBaseContainer />
 		</option>
-		<option choice_text="I've got to say, you've got some lovely flowers over there." disabled="false">
+		<option choice_text="I've got to say, you've got some lovely flowers over there." disabled="true">
 			<text character="Ulfr" say="I've got to say, you've got some lovely flowers over there." disabled="false" default="false" timer="2.5" />
 			<text character="Jacob" say="Oh!" disabled="false" default="false" timer="1.4" />
 			<text character="Jacob" say="You noticed my prize winning orchid, Betty!" disabled="false" default="false" timer="2.4" />
@@ -92,7 +92,7 @@
 			<text character="Jacob" say="HAHAHA!" disabled="false" default="false" timer="2.3" disablePrevious="true" />
 			<gotoBaseContainer />
 		</option>
-		<option choice_text="I'm back to settle things." disabled="true">
+		<option choice_text="I'm back to settle things." disabled="false">
 			<text character="Ulfr" say="I'm back to settle things." timer="2.2" turned="true" default="false" disabled="false" />
 			<text character="Jacob" say="Settle?" disabled="false" default="false" timer="2.2" />
 			<text character="Jacob" say="What do you mean?" disabled="false" default="false" timer="2.3" />
