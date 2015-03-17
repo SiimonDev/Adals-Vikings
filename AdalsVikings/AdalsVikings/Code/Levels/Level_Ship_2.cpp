@@ -41,12 +41,11 @@ void Level_Ship_2::update(sf::Time &frameTime)
 	}
 	if (!BoatEvents::hasBeenHandled(BoatEvent::GivenMapToBrandr) && BoatEvents::hasBeenTriggered(BoatEvent::GivenMapToBrandr))
 	{
-		mPlayer->removeItemFromInventory("map");
-		if (!mStartedGiveDialogue)
-		{
+		if (mPlayer->hasItemInInventory("map"))
+			mPlayer->removeItemFromInventory("map");
+		if (!DialogHandler::getDialogue("GivenMapToBrandr_Ship2").getActiveConversation() && !!DialogHandler::getDialogue("GivenMapToBrandr_Ship2").getHasStopped())
 			DialogHandler::getDialogue("GivenMapToBrandr_Ship2").startDialogue();
-			mStartedGiveDialogue = true;
-		}
+
 		if (DialogHandler::getDialogue("GivenMapToBrandr_Ship2").getHasStopped())
 		{
 			FadeI.fadeOut(frameTime);
