@@ -3,62 +3,48 @@
 position: $X:1800 $Y:1000
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $ship
 position: $X:120 $Y:780
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $lifebuoy
 position: $X:1566 $Y:480
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $boxesOnBeach
 position: $X:1050 $Y:403
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $oarsOnBeach
 position: $X:450 $Y:450
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sailOnBeach
 position: $X:525 $Y:375
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $driftwood
 position: $X:1501 $Y:1002
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
-hascollision: $false
-############
-*id: $stick
-position: $X:1370 $Y:370
-interactPosition: $X:0 $Y:0
-index: $1
-scale: $0.6
-hascollision: $false
-############
-*id: $rope
-position: $X:952 $Y:454
-interactPosition: $X:0 $Y:0
-index: $1
-scale: $0.6
+scale: $1
 hascollision: $false
 ############

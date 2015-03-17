@@ -2,34 +2,34 @@
 <conversation>
 	<useText useText="Why? Just why?" />
 	<lookText lookText="The postman looks rather distressed. " />
-	<text character="Mailman" disabled="false" default="false" say="Oh dear." timer="1.4" turned="false" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="true" say="Oh, dear, dear." timer="1.4" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="Where can-" timer="1.4" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="Where can it-" timer="1.4" />
-	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="Excuse me?" timer="1.4" turned="true" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="Whoo!" timer="1.4" turned="false" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="" timer="1.4" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="Oh." timer="1.4" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="Uh..." timer="1.4" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="Hello there, little fellow!" timer="1.4" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="Welcome to Loftstowe, the greatest city in Norfolk!" timer="2.0" />
-	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="You know we just arrived? How?" timer="1.7" turned="true" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="Uh, of course?" timer="1.4" turned="false" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="We see your kind here all the time." timer="1.4" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="Err... not that that is bad..." timer="1.4" />
-	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="...Really?" timer="1.7" turned="true" />
-	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="Figured my &quot;kind&quot; would be rare..." timer="1.7" />
-	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="At least around these parts." timer="1.7" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="Oh no, friend." timer="1.4" turned="false" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="Saw it on you right away!" timer="1.4" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="" timer="1.4" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="You're Irish!" timer="1.4" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="..." timer="1.4" />
-	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="...Yes." timer="1.7" turned="true" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="My boss always says I'm terrible at reading people." timer="2.0" turned="false" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="But you seem to be the exception!" timer="1.6" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="If there's anything I can help you with, don't hesitate to ask." timer="2.2" />
-	<text character="Mailman" disabled="false" default="false" disablePrevious="" say="Name's Wil, by the way." timer="1.4" />
+	<text character="Mailman" disabled="true" default="false" say="Oh dear." timer="1.4" turned="false" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="true" say="Oh, dear, dear." timer="1.4" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="Where can-" timer="1.4" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="Where can it-" timer="1.4" />
+	<text character="Ulfr" disabled="true" default="false" disablePrevious="" say="Excuse me?" timer="1.4" turned="true" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="Whoo!" timer="1.4" turned="false" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="" timer="1.4" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="Oh." timer="1.4" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="Uh..." timer="1.4" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="Hello there, little fellow!" timer="1.4" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="Welcome to Loftstowe, the greatest city in Norfolk!" timer="2.0" />
+	<text character="Ulfr" disabled="true" default="false" disablePrevious="" say="You know we just arrived? How?" timer="1.7" turned="true" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="Uh, of course?" timer="1.4" turned="false" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="We see your kind here all the time." timer="1.4" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="Err... not that that is bad..." timer="1.4" />
+	<text character="Ulfr" disabled="true" default="false" disablePrevious="" say="...Really?" timer="1.7" turned="true" />
+	<text character="Ulfr" disabled="true" default="false" disablePrevious="" say="Figured my &quot;kind&quot; would be rare..." timer="1.7" />
+	<text character="Ulfr" disabled="true" default="false" disablePrevious="" say="At least around these parts." timer="1.7" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="Oh no, friend." timer="1.4" turned="false" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="Saw it on you right away!" timer="1.4" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="" timer="1.4" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="You're Irish!" timer="1.4" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="..." timer="1.4" />
+	<text character="Ulfr" disabled="true" default="false" disablePrevious="" say="...Yes." timer="1.7" turned="true" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="My boss always says I'm terrible at reading people." timer="2.0" turned="false" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="But you seem to be the exception!" timer="1.6" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="If there's anything I can help you with, don't hesitate to ask." timer="2.2" />
+	<text character="Mailman" disabled="true" default="false" disablePrevious="" say="Name's Wil, by the way." timer="1.4" />
 	<option_container disabled="false">
 		<option choice_text="Could you tell me about that fort over there?" disabled="false">
 			<text character="Ulfr" disablePrevious="false" say="Could you tell me about that fort over there?" timer="1.5" turned="true" />
@@ -100,7 +100,7 @@
 			<text character="Ulfr" timer="1.5" say="Awkward." disablePrevious="true" />
 			<gotoContainer />
 		</option>
-		<option choice_text="I'll just... goodbye" disabled="false">
+		<option choice_text="I'll just... goodbye" disabled="true">
 			<text character="Ulfr" timer="1.5" say="I'll just... goodbye." disablePrevious="true" />
 			<text character="Mailman" timer="1.6" say="O-Okay..." disablePrevious="true" turned="true" />
 			<stopConversation />
