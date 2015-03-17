@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "..\Logics\IndexRenderer.h"
+#include "..\Logics\VideoFile.h"
 #include "..\Interface\Menus\MenuHandler.h"
 #include <thread>
 
@@ -10,12 +11,13 @@ typedef std::unique_ptr<std::thread> ThreadPtr;
 
 enum LoadTask
 {
+	BootGame,
 	StartGame,
 	LoadGame,
 	LoadBoat,
 	LoadAct1,
 	LoadTest,
-	LoadMenu,
+	LoadMainMenu,
 	None,
 	LoadNearbyLevels,
 	Finished,
@@ -30,9 +32,9 @@ public:
 
 	void initialize();
 	void render(IndexRenderer &iRenderer);
-	bool update(sf::Time dt);
+	void update(sf::Time frameTime);
 
-	void startLoading(LoadTask task);
+	void startLoading(LoadTask task, sf::VideoFile* videoFile = NULL);
 	void loadNearbyLevels();
 	void terminate();
 	void setIsWorking(bool value);
@@ -47,6 +49,7 @@ private:
 	LoadingScreen(LoadingScreen&);
 	void operator=(LoadingScreen&);
 
+	sf::VideoFile* mCurrentVideo;
 	sf::Text mLoadingText;
 	sf::Sprite mBackground;
 	Animation mLoadAnimation;

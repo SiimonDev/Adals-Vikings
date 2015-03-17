@@ -94,7 +94,7 @@ void MainMenuPanel::update(sf::Time frameTime)
 			}
 			else if (mQuit)
 			{
-				mCurrentEvent = MenuEvent::ExitGamePressed;
+				mCurrentEvent = MenuEvent::ExitMainMenuPressed;
 				mQuit = false;
 			}
 

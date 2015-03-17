@@ -77,6 +77,7 @@
     <ClCompile Include="Code\Logics\PathFinder.cpp" />
     <ClCompile Include="Code\Logics\ResourceManager.cpp" />
     <ClCompile Include="Code\Logics\RoundedRectangleShape.cpp" />
+    <ClCompile Include="Code\Logics\VideoFile.cpp" />
     <ClCompile Include="Code\Logics\WindowState.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\NPCs\NPC.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="Code\Logics\PathFinder.h" />
     <ClInclude Include="Code\Logics\ResourceManager.h" />
     <ClInclude Include="Code\Logics\RoundedRectangleShape.h" />
+    <ClInclude Include="Code\Logics\VideoFile.h" />
     <ClInclude Include="Code\Logics\WindowState.h" />
     <ClInclude Include="Code\NPCs\NPC.h" />
     <ClInclude Include="Code\NPCs\NpcHandler.h" />
@@ -172,7 +174,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>

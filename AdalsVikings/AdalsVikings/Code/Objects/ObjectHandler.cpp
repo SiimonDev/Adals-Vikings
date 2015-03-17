@@ -47,18 +47,18 @@ std::vector<std::string> getAllObjectsFromFolder(const std::string &directory)
 void ObjectHandler::initialize()
 {
 	unload();
-	RMI.loadResource(Font::Font1);
+	RMI.loadResource(Font::Skranji_regular);
 	std::vector<std::string> objects = getAllObjectsFromFolder(mFolderPath);
 
 	for each (std::string file in objects){
-		Object* obj = new Object(Font::Font1, file);
+		Object* obj = new Object(Font::Skranji_regular, file);
 		mObjects[obj->getObjID()] = obj;
 	}
 }
 
 void ObjectHandler::unload()
 {
-	RMI.unloadResource(Font::Font1);
+	RMI.unloadResource(Font::Skranji_regular);
 	for (std::map<std::string, Object*>::const_iterator it = mObjects.begin(); it != mObjects.end(); it++)
 	{
 		it->second->unload();

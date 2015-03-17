@@ -20,8 +20,6 @@ MenuHandler::MenuHandler()
 
 	// Pause Menu Section
 	mPauseMenuPanels.push_back(&mPauseMenuPanel);
-
-	load(MenuID::MainMenu);
 }
 
 void MenuHandler::load(MenuID menuID)

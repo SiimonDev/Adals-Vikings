@@ -2,8 +2,10 @@
 #include "..\Logics\MouseState.h"
 #include "..\Logics\KeyboardState.h"
 #include "..\Logics\ResourceManager.h"
+#include "..\Logics\Fade.h"
 #include "..\Levels\LevelManager.h"
 #include "..\Levels\PortalLoader.h"
+#include "..\Logics\WindowState.h"
 #include <iostream>
 #include <memory>
 #include <time.h>
@@ -51,26 +53,56 @@ LoadingScreen::~LoadingScreen()
 	//mThread->join();
 }
 
-bool LoadingScreen::update(sf::Time frameTime)
+void LoadingScreen::update(sf::Time frameTime)
 {
+	if (mCurrentVideo != NULL)
+		mCurrentVideo->update(frameTime);
+
 	if (mFinished)
-		mIsDone = true;
+	{
+		if (mCurrentVideo != NULL)
+		{
+			if (mCurrentVideo->getStatus() == sf::VideoFile::Paused /*|| Skipp stuff here */)
+			{
+				mIsDone = true;
+				mStart = false;
+			}
+		}
+		else
+		{
+			mIsDone = true;
+			mStart = false;
+		}
+	}
 	else
 	{
-		mLoadAnimation.animate(frameTime);
+		if (mCurrentVideo == NULL)
+			mLoadAnimation.animate(frameTime);
 		mIsDone = false;
 	}
-	return mIsDone;
 }
 
 void LoadingScreen::render(IndexRenderer &iRenderer)
 {
-	iRenderer.addSprite(mBackground, 20);
-	mLoadAnimation.render(iRenderer);
+	if (mCurrentVideo != NULL)
+	{
+		mCurrentVideo->render(CurrentWindow);
+	}
+	else
+	{
+		iRenderer.addSprite(mBackground, 20);
+		mLoadAnimation.render(iRenderer);
+	}
 }
 
-void LoadingScreen::startLoading(LoadTask task)
+void LoadingScreen::startLoading(LoadTask task, sf::VideoFile* videoFile)
 {
+	mCurrentVideo = videoFile;
+	if (mCurrentVideo != NULL)
+	{
+		mCurrentVideo->restart();
+		mCurrentVideo->play();
+	}
 	mTask = task;
 	if (mTask != LoadTask::LoadNearbyLevels)
 	{
@@ -116,7 +148,13 @@ void LoadingScreen::runTask()
 		while (timeSinceLastUpdate >= frameTime)
 		{
 			timeSinceLastUpdate -= frameTime;
-			if (mTask == LoadTask::LoadNearbyLevels)
+			if (mTask == LoadTask::BootGame)
+			{
+				FadeI.initialize();
+				OBHI.initialize();
+				MHI.load(MenuID::MainMenu);
+			}
+			else if (mTask == LoadTask::LoadNearbyLevels)
 			{
 				LVLMI.unloadCacheLevels();
 				LVLMI.loadNearbyLevels();
@@ -133,7 +171,7 @@ void LoadingScreen::runTask()
 				MHI.load(MenuID::PauseMenu);
 				LVLMI.load(false);
 			}
-			else if (mTask == LoadTask::LoadMenu)
+			else if (mTask == LoadTask::LoadMainMenu)
 			{
 				LVLMI.unload();
 				MHI.unload(MenuID::PauseMenu);
