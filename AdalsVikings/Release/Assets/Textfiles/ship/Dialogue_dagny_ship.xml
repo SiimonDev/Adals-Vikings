@@ -15,7 +15,7 @@
 			<text character="Dagny" say="It's right here in my pocket, next to my steel sword," timer="2.5" />
 			<text character="Dagny" say="my sack of gold," timer="2.0" />
 			<text character="Dagny" say="and my magical flying eight-legged horse." timer="2.4" />
-			<text character="Ulfr" say="" timer="1.0"  turned="false"/>
+			<text character="Ulfr" say="..." timer="0.8"  turned="false"/>
 			<text character="Ulfr" say="...could you find some altruism in there too?" timer="2.5" />
 			<text character="Dagny" say="Do you want me to punch you?" timer="2.2"  turned="true"/>
 			<text character="Ulfr" say="That would be a no." timer="2.0" disablePrevious="true"  turned="false"/>

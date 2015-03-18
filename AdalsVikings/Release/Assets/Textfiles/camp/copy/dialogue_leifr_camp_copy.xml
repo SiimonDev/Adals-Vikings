@@ -21,6 +21,5 @@
 	<text character="Leifr" disabled="false" default="false" disablePrevious="" say="Sound good?" timer="2.0" turned="true" />
 	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="Sounds good." timer="2.0" turned="false" />
 	<text character="Leifr" disabled="true" default="true" disablePrevious="" say="Got me that fire yet?" timer="2.0" turned="true" />
-	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="Sounds good." timer="2.0" turned="false" />
 	<stopConversation />
 </conversation>

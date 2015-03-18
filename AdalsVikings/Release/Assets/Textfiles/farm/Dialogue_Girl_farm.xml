@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Isn't that illegal?" />
+	<lookText lookText="Oh goody, she is here..." />
+	<text character="Girl" say="OI!" disabled="false" default="false" timer="2.0" turned="false"></text>
+	<text character="Girl" say="What are you doing here?" disabled="false" default="false" timer="2.0" turned="false"></text>
+	<text character="Ulfr" say="What do you mean?" disabled="false" default="false" timer="2.3"></text><text character="Ulfr" say="I can go where i want." disabled="false" default="false" timer="2.3"></text>
+	<text character="Girl" say="But, but-" disabled="false" default="false" timer="2.0" turned="false"></text><text character="Girl" say="*sigh*" disabled="false" default="false" timer="2.0" turned="false"></text><text character="Girl" say="You're a bloody stalker, you know that?" disabled="false" default="false" timer="2.0" turned="false"></text><text character="Ulfr" say="What?!" disabled="false" default="false" timer="2.3"></text><text character="Ulfr" say="I'm not a stalker!" disabled="false" default="false" timer="2.3"></text><text character="Ulfr" say="I'm not even weird!" disabled="false" default="false" timer="2.3"></text>
+	<text character="Ulfr" say="Unlike you..." disabled="false" default="false" timer="2.3"></text>
+	<text character="Girl" say="Just throwing around insults all willy-nilly here, are we?" disabled="false" default="false" timer="2.0" turned="false"></text><text character="Girl" say="Are you really that desperate for attention?" disabled="false" default="false" timer="2.0" turned="false"></text><text character="Ulfr" say="What?!" disabled="false" default="false" timer="2.3"></text><text character="Ulfr" say="It was you who started it!" disabled="false" default="false" timer="2.3"></text>
+	<text character="Girl" say="Yeah, let's just blame the little girl." disabled="false" default="false" timer="2.0" turned="false"></text><text character="Girl" say="Go ahead." disabled="false" default="false" timer="2.0" turned="false"></text><text character="Girl" say="Who could blame you?" disabled="false" default="false" timer="2.0" turned="false"></text>
+	<text character="Ulfr" say="You're awful, you know this, right?" disabled="false" default="false" timer="2.3"></text><text character="Girl" say="Ugh." disabled="false" default="false" timer="2.0" turned="false"></text><text character="Girl" say="Could you like, PLEASE leave?" disabled="false" default="false" timer="2.0" turned="false"></text><text character="Girl" say="Trying to finish my pinecones here" disabled="false" default="false" timer="2.0" turned="false"></text><text character="Girl" say="And I don't feel like relocating AGAIN!" disabled="false" default="false" timer="2.0" turned="false"></text><text character="Girl" say="Just thanks to some stupid viking." disabled="false" default="false" timer="2.0" turned="false"></text>
+	<text character="Ulfr" say="HA!" disabled="false" default="false" timer="2.3"></text><text character="Ulfr" say="You just admitted it!" disabled="false" default="false" timer="2.3"></text><text character="Ulfr" say="I'm a Viking!" disabled="false" default="false" timer="2.3"></text>
+	<text character="Girl" say="A shitty viking." disabled="false" default="false" timer="2.0" turned="false"></text><text character="Ulfr" say="But a viking nonetheless." disabled="false" default="false" timer="2.3"></text><text character="Ulfr" say="And that makes all the difference." disabled="false" default="false" timer="2.3"></text>
+	<text character="Girl" say="..." disabled="false" default="false" timer="2.0" turned="false"></text>
+	<text character="Ulfr" say="..." disabled="false" default="false" timer="2.3"></text>
+	<text character="Girl" say="Are you going to stop talking now?" disabled="false" default="false" timer="2.0" turned="false"></text>
+	<text character="Ulfr" say="..." disabled="false" default="false" timer="2.3"></text><text character="Ulfr" say="...sure." disabled="false" default="false" timer="2.3"></text><text character="Ulfr" say="Hey again." disabled="true" default="true" timer="2.3"></text>
+	
+	
+	
+	
+	<text character="Girl" say="No." disabled="true" default="true" timer="2.0" turned="false"></text><text character="Girl" say="You just turn your little hiney, and walk away." disabled="true" default="true" timer="2.0" turned="false"></text><text character="Girl" say="I don't wanna talk." disabled="true" default="true" timer="2.0" turned="false"></text><text character="Girl" say="Don't even want to look at you." disabled="true" default="true" timer="2.0" turned="false"></text><text character="Girl" say="Leave." disabled="true" default="true" timer="2.0" turned="false"></text><text character="Girl" say="Now." disabled="true" default="true" timer="2.0" turned="false"></text>
+	<text character="Ulfr" say="Uh..." disabled="true" default="true" timer="2.3"></text>
+	<text character="Ulfr" say="Okay..." disabled="true" default="true" timer="2.4"></text>
+	
+	
+	
+	
+	
+	
+	<stopConversation />
+</conversation>

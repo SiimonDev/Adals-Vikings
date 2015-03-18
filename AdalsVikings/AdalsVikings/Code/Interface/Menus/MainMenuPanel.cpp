@@ -104,6 +104,7 @@ void MainMenuPanel::update(sf::Time frameTime)
 				mAxeAnimation.restart();
 				mCurrentEvent = MenuEvent::PlayPressed;
 				mPlay = false;
+				mPlaySound = false;
 			}
 			else if (mQuit)
 			{

@@ -6,7 +6,8 @@
 	<text character="Brynja" say="Why would you hit me like that, Valdis?" timer="3"></text>
 	<text character="Valdis" say="You had a spider on you." timer="2.2" turned="false"></text>
 	<text character="Brynja" say="Oh." timer="1.5" turned="true"></text>
-	<text timer="1.8"></text>
+	<text character="Brynja" say="..." timer="1.5" turned="true"></text>
+	
 	<text character="Ulfr" say="Hey Brynja..." timer="2.1" turned="true"></text>
 	<text character="Brynja" say="What is it, shorty?" timer="2" turned="false"></text>
 	<text character="Ulfr" say="I was just wondering, have you seen Adal's map lately?" timer="4" turned="true"></text>
@@ -19,7 +20,9 @@
 	<text character="Brynja" say="... Uh." timer="1" turned="false"></text>
 	<text character="Brynja" say="Yeah..." timer="1.4" turned="false"></text>
 	<text character="Brynja" say="I wasn't supposed to tell anyone, though..." timer="2.5" turned="false"></text>
-	<text timer="2.2"></text>
+	<text character="Brynja" say="..." timer="1.1" turned="false"></text>
+	<text character="Ulfr" say="..." timer="1.1" turned="true"></text>
+	
 	<text character="Brynja" say="Look. I'll give you this... Piece of paper." timer="3.2" turned="false"></text>
 	<text character="Brynja" say="But only if you promise not to talk  to Brandr about his... Uh, paintings." timer="5" turned="false"></text>
 	<text character="Brynja" say="Deal?" timer="2.2"></text>

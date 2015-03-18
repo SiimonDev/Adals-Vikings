@@ -37,6 +37,7 @@
 			<text character="Ulfr" disabled="false" default="false" say="Alright, how steady is the mine?" timer="2.0" turned="false" />
 			<text character="Miner" disabled="false" default="false" say="Not very, sadly." timer="2.0" turned="false" />
 			<text character="Miner" disabled="false" default="false" say="That's why I've been quite careful lately." timer="2.0" turned="false" />
+			<text character="Miner" disabled="false" default="false" say="I bet it's because of those ruins above. They're surely weighing down on my little lair." timer="3.4" turned="false" />
 			<text character="Miner" disabled="false" default="false" say="Especially after most of my friends died." timer="2.0" turned="false" />
 			<text character="Ulfr" disabled="false" default="false" say="They died? That's awful." timer="2.0" turned="false" />
 			<text character="Miner" disabled="false" default="false" say="Eh, such is life." timer="2.0" turned="false" />

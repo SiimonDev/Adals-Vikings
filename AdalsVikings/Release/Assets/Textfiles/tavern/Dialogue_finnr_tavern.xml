@@ -3,46 +3,46 @@
 	<useText useText="Why would I want to &quot;use&quot; Finnr?" />
 	<lookText lookText="My friend Finnr. We've known each other for a long time, and we're great friends, even if he's a bit strange at times." />
 	<text character="Ulfr" disabled="false" default="false" say="Hey Finnr." timer="2.0"  turned="false"/>
-	<text character="Finnr" disabled="false" default="false" say="Hey Ulfr, what's up?" timer="2.0"  turned="false"/>
+	<text character="Finnr" disabled="false" default="false" say="Hey Ulfr, what's up?" timer="2.0"  turned="true"/>
 
 	
 	<option_container disabled="false">
 		<option choice_text="I need to fix this axe." disabled="true">
-			<text character="Ulfr" disablePrevious="false" say="I need to fix this axe." timer="1.2"  disabled="false"/>
+			<text character="Ulfr" disablePrevious="false" say="I need to fix this axe." timer="1.2"  disabled="false" turned="false"/>
 			<text character="Ulfr" disablePrevious="false" say="Any ideas?" timer="1.2"  turned="false"/>
-			<text character="Finnr" disabled="false" default="false" say="Suppose any sturdy object to replace the handlw would work." timer="2.0"  turned="false"/>
-			<text character="Finnr" disabled="false" default="false" say="No idea where to find one though." timer="2.0"  turned="false"/>
+			<text character="Finnr" disabled="false" default="false" say="Suppose any sturdy object to replace the handle would work." timer="2.0"  turned="true"/>
+			<text character="Finnr" disabled="false" default="false" say="No idea where to find one though." timer="2.0" />
 			<text character="Ulfr" disabled="false" default="false" say="Mind helping me look for one?" timer="2.0"  turned="false"/>
-			<text character="Finnr" disabled="false" default="false" say="Sorry, not really interseted in leaving the tavern right now..." timer="2.0"  turned="false"/>
+			<text character="Finnr" disabled="false" default="false" say="Sorry, not really interseted in leaving the tavern right now..." timer="2.0"  turned="true"/>
 			<gotoContainer />
 		</option>
 		
-		<option choice_text="We should head back to camp">
+		<option choice_text="We should head back to camp" disabled="false">
 			<text character="Ulfr" disabled="false" default="false" say="We should head back to camp" timer="2.0"  turned="false"/>
-			<text character="Finnr" disabled="false" default="false" say="Nah, prefer staying here i think..." timer="2.0"  turned="false"/>
-			<text character="Finnr" disabled="false" default="false" say="Too many other vikings at the other camp..." timer="2.0"  turned="false"/>
+			<text character="Finnr" disabled="false" default="false" say="Nah, prefer staying here i think..." timer="2.0"  turned="true"/>
+			<text character="Finnr" disabled="false" default="false" say="Too many other vikings at the other camp..." timer="2.0" />
 			<text character="Ulfr" disabled="false" default="false" say="Did you just look at Dagny?" timer="2.0"  turned="false"/>
-			<text character="Finnr" disabled="false" default="false" say="Er.. no?" timer="2.0"  turned="false"/>
+			<text character="Finnr" disabled="false" default="false" say="Er.. no?" timer="2.0"  turned="true"/>
 			<text character="Ulfr" disabled="false" default="false" say="You still like her, don't you?" timer="2.0"  turned="false"/>
 			<text character="Ulfr" disabled="false" default="false" say="Why don't you just go and talk to her?" timer="2.0"  turned="false"/>
-			<text character="Finnr" disabled="false" default="false" say="As if, I have no idea what to say." timer="2.0"  turned="false"/>
+			<text character="Finnr" disabled="false" default="false" say="As if, I have no idea what to say." timer="2.0"  turned="true"/>
 			<text character="Ulfr" disabled="false" default="false" say="Just speak from your heart." timer="2.0"  turned="false"/>
-			<text character="Finnr" disabled="false" default="false" say="Don't have the guts for that... yet." timer="2.0"  turned="false"/>
+			<text character="Finnr" disabled="false" default="false" say="Don't have the guts for that... yet." timer="2.0"  turned="true"/>
 			<text character="Ulfr" disabled="false" default="false" say="No guts, no glory... no Dagny" timer="2.0"  turned="false"/>
 			<gotoBaseContainer />
 		</option>
 		
 		<option choice_text="What's up?" disabled="false">
 			<text character="Ulfr" disabled="false" default="false" say="What you thinking about?" timer="2.0"  turned="false"/>
-			<text character="Finnr" disabled="false" default="false" say="Not much, you know, the usual." timer="2.0"  turned="false"/>
+			<text character="Finnr" disabled="false" default="false" say="Not much, you know, the usual." timer="2.0"  turned="true"/>
 			<text character="Ulfr" disabled="false" default="false" say="What do you mean?" timer="2.0"  turned="false"/>
-			<text character="Finnr" disabled="false" default="false" say="Hungry like a Viking, Sober like a Dane." timer="2.0"  turned="false"/>
+			<text character="Finnr" disabled="false" default="false" say="Hungry like a Viking, Sober like a Dane." timer="2.0"  turned="true"/>
 			<gotoContainer />
 		</option>
 		
 		<option choice_text="It was nice talking to you." disabled="false">
-			<text say="It was nice talking to you." timer="2.0" character="Ulfr"></text>
-			<text character="Finnr" say="See you, Ulfr." timer="2.0"></text>
+			<text say="It was nice talking to you." timer="2.0" character="Ulfr" turned="false"></text>
+			<text character="Finnr" say="See you, Ulfr." timer="2.0" turned="true"></text>
 			<stopConversation />
 		</option>
 		<stopOption />

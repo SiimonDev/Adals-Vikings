@@ -2,7 +2,7 @@
 *ID: $bucket$
 *Name: Bucket
 *ispickupable: True
-*pickup: "This might wake Brynja up! I'll need to fill it up first... and I can't do it myself..." ~3,0
+*pickup: "I hope it's okay for me to borrow this." ~3,0
 *lookat: "I'll need some help to fill it up." ~1,5
 *deny: "I just... no. " ~1,5
 *denywith: $Dagny$ "I'm not suicidal." ~1,5; $Alfr$ "Like he'd help." ~1,5; $Valdis$ "I don't want to disturb her." ~1,5; $Leifr$ "" ~0; $Brynja$ "I need to fill it up first." ~2,5; 

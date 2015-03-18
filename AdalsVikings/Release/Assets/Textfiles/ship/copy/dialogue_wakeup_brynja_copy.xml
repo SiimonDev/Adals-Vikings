@@ -3,16 +3,16 @@
 	<useText useText="Why would anyone want to use Him?" />
 	<lookText lookText="Seems like they are fighting over something." />
 	<text character="Ulfr" say="Bee boo baa beeee daaa." timer="5" turned="true" />
-	<text timer="2.2" />
+	<text character="Ulfr" say="..." timer="0.8" turned="true" />
 	<text character="Ulfr" say="Damned." />
 	<text character="Ulfr" say="Nothing I do today seems to work." timer="3" />
 	<text character="Ulfr" say="There has to be some other way of waking her up!" timer="4" />
 	<text character="Valdis" turned="false" say="You Know..." timer="2.2" />
 	<text character="Ulfr" say="Yes?" timer="1.3" turned="true" />
 	<text character="Ulfr" say="Do you know of another way?" timer="2.2" />
-	<text timer="3" />
+	<text character="Valdis" say="..." timer="1.2" turned="false" />
 	<text character="Valdis" say="You could hit her with it." timer="2.2" turned="false" />
-	<text timer="3" />
+	<text character="Ulfr" say="..." turned="true" timer="1.0" />
 	<text character="Ulfr" say="What?" timer="1.5" turned="true" />
 	<text character="Valdis" say="The flute." timer="3" turned="false" />
 	<text character="Valdis" say="Hit her with it." timer="3" />
@@ -22,7 +22,7 @@
 	<text character="Valdis" say="What, afraid of getting hit by a girl?" timer="3" turned="false" />
 	<text character="Ulfr" say="Yes!" timer="2" turned="true" />
 	<text character="Ulfr" say="Very much so!" timer="2.2" turned="true" />
-	<text timer="2" />
+	<text character="Valdis" say="..." timer="1.3" turned="false" />
 	<text character="Valdis" say="Right." timer="1.3" turned="false" />
 	<text character="Valdis" say="Yeah." timer="2.2" turned="false" />
 	<text character="Valdis" say="That's actually pretty fair." timer="3" />

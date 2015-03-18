@@ -15,7 +15,7 @@ hascollision: $false
 ############
 *id: $candle
 position: $X:1204 $Y:78
-interactPosition: $X:0 $Y:0
+interactPosition: $X:90 $Y:350
 index: $4
 scale: $1.0
 hascollision: $false
