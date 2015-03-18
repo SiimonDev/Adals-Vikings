@@ -276,6 +276,9 @@ void Level::updateDialog(sf::Time frameTime)
 	{
 		if (it->second->getActiveConversation())
 		{
+			if(PlayerMonologueI.getDisplay())
+				PlayerMonologueI.setDisplay(false);
+
 			mIsInConversation = true;
 			it->second->update(frameTime);
 
@@ -383,18 +386,18 @@ void Level::updateDialog(sf::Time frameTime)
 			}
 		}
 
-		if (it->second->getEndConversation() == true)
+		if (it->second->getEndConversation() && mIsInConversation)
 		{
 			DialogHandler::reloadConversations();
-			it->second->setEndConversation(false);
 			mIsInConversation = false;
+			mConversationStopped = true;
+			it->second->setEndConversation(false);
 
 			for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
 				iz->second->updateAnimationStyle();
 
 			mPlayer->UpdateAnimationStyle();
 
-			mConversationStopped = true;
 		}
 	}
 }
@@ -433,7 +436,7 @@ void Level::update(sf::Time &frameTime)
 		if (mConversationStopped)
 		{
 			mConversationCooldownTime += frameTime;
-			if (mConversationCooldownTime >= sf::seconds(0.5f))
+			if (mConversationCooldownTime >= sf::seconds(0.2f))
 			{
 				mConversationCooldownTime = sf::seconds(0);
 				mConversationStopped = false;
@@ -466,7 +469,14 @@ void Level::update(sf::Time &frameTime)
 				it->second->portalTravel(*mPlayer);
 			}
 			else
+			{
+				mConversationCooldownTime = sf::seconds(0);
+				mConversationStopped = false;
+
+				if (PlayerMonologueI.getDisplay())
+					PlayerMonologueI.setDisplay(false);
 				it->second->walkPath(*mPlayer);
+			}
 		}
 	}
 

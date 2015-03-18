@@ -21,8 +21,6 @@ void Level_Ship_1::update(sf::Time &frametime)
 	mSeaAnimation.animate(frametime);
 	mWaveAnimation.animate(frametime);
 	mRopeAnimation.animate(frametime);
-	if (KeyboardState::isPressed(sf::Keyboard::F))
-		mPlayer->addItemToInventory("bucket");
 
 	if (BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen) && !BoatEvents::hasBeenHandled(BoatEvent::IntroScreen))
 	{
@@ -34,9 +32,11 @@ void Level_Ship_1::update(sf::Time &frametime)
 	{
 		if (!mGameStart)
 		{
+			mPlayer->setPosition(sf::Vector2f(1400, 750));
 			FadeI.fadeIn(frametime);
 			if (FadeI.getFaded())
 			{
+				if (!DialogHandler::getDialogue("IntroUlfr_Ship1").getActiveConversation() && !DialogHandler::getDialogue("IntroUlfr_Ship1").getHasStopped())
 				DialogHandler::getDialogue("IntroUlfr_Ship1").startDialogue();
 				mGameStart = true;
 			}
@@ -233,8 +233,8 @@ void Level_Ship_1::load()
 	mNpcs["Alfr"]->setDialogue("Alfr_Ship1");
 	mNpcs["Brynja"]->setDialogue("Brynja_Ship1");
 
-	if (!BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
-		mPlayer->setPosition(sf::Vector2f(1400, 750));
+	/*if (!BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
+		mPlayer->setPosition(sf::Vector2f(1400, 750));*/
 
 	mSeaAnimation.load(RMI.getResource(Texture::WaveAnimationBoat), sf::Vector2i(6, 12), sf::seconds(12), sf::seconds(0), true);
 	mSeaAnimation.setIndex(2);
@@ -288,7 +288,7 @@ void Level_Ship_1::checkEvents()
 		BoatEvents::triggerEvent(BoatEvent::FluteFromAlfr);
 
 	// Check if ulfrs startdialogue has been triggered
-	if (!BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue) && BoatEvents::hasBeenHandled(BoatEvent::StartDialogue))
+	if (!BoatEvents::hasBeenTriggered(BoatEvent::UlfrStartDialogue))
 		BoatEvents::triggerEvent(BoatEvent::UlfrStartDialogue);
 
 	if (DialogHandler::getDialogue("IntroUlfr_Ship1").getHasStopped() && !BoatEvents::hasBeenTriggered(BoatEvent::IntroScreen))
@@ -302,6 +302,6 @@ void Level_Ship_1::checkEvents()
 
 void Level_Ship_1::changeLevel(sf::Time &frameTime)
 {
-	if (mPortals[Ship1ToShip2]->getActivated())
+	if (mPortals[Ship1ToShip2]->getActivated() && mPortals[Ship1ToShip2]->getWorking())
 		LVLMI.changeLevel(LevelFolder::Ship_2);
 }

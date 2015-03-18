@@ -180,15 +180,15 @@ void Level_Forest_Camp::load()
 		mNpcs["Hipster druid"]->setDialogue("Druids_ForestCamp1");
 		mNpcs["Dennis"]->setDialogue("Druids_ForestCamp1");
 
-		/*if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
-		{*/
+		if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
+		{
 			mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
 			mNpcs["Leifr"]->setDialogue("Leifr_ForestCamp");
 			mNpcs["Leifr"]->setPosition(sf::Vector2f(1450, 580));
 			mNpcs["Leifr"]->setScale(sf::Vector2f(0.45f, 0.45f));
 			mNpcs["Leifr"]->setIndex(1);
 			mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1560, 565));
-		//}
+		}
 
 		mDruids.setTexture(RMI.getResource(Texture::DruidsForest1));
 	}

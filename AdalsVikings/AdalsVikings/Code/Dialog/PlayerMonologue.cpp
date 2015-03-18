@@ -126,3 +126,13 @@ void PlayerMonologue::render(IndexRenderer &iRenderer)
 		iRenderer.addShape(mTextRect, 9900000);
 	}
 }
+
+void PlayerMonologue::setDisplay(bool value)
+{
+	mDisplay = value;
+}
+
+bool & PlayerMonologue::getDisplay()
+{
+	return mDisplay;
+}

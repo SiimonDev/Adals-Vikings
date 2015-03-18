@@ -16,7 +16,7 @@ void PortalLoader::load()
 	{
 		mPortalMap[Ship1ToShip2] = PortalPtr(new Portal(LevelFolder::Ship_1, sf::Vector2f(110, 400), sf::Vector2f(0, 400), sf::Vector2f(200, 750), sf::Vector2f(0, 750)));
 		mPortalMap[Ship1ToShip2]->setCursorRotation(-90);
-		mPortalMap[Ship2ToShip1] = PortalPtr(new Portal(LevelFolder::Ship_2, sf::Vector2f(110, 400), sf::Vector2f(1810, 400), sf::Vector2f(1700, 750), sf::Vector2f(1900, 750)));
+		mPortalMap[Ship2ToShip1] = PortalPtr(new Portal(LevelFolder::Ship_2, sf::Vector2f(110, 400), sf::Vector2f(1810, 400), sf::Vector2f(1700, 730), sf::Vector2f(1860, 730)));
 		mPortalMap[Ship2ToShip1]->setCursorRotation(90);
 
 		//connect the portals

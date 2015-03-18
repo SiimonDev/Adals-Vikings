@@ -16,6 +16,7 @@ public:
 	void setPosition(sf::Vector2f pos);
 	void setText(std::string text);
 	void setOutlineColor(sf::Color &color);
+	void setDisplay(bool value);
 
 	void load();
 	void unload();
@@ -24,6 +25,7 @@ public:
 	void update(sf::Time &time);
 	void render(IndexRenderer &iRenderer);
 
+	bool &getDisplay();
 private:
 	sf::Time mTimePassed;
 	sf::Text mText;

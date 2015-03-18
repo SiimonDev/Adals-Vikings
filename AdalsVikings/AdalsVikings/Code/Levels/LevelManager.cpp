@@ -240,7 +240,7 @@ void LevelManager::loadBoatScene(bool reset)
 		if (mLoadedLevelID != LevelFolder::NONE)
 			mCurrentLevelID = mLoadedLevelID;
 		else
-			mCurrentLevelID = LevelFolder::Ship_2;
+			mCurrentLevelID = LevelFolder::Ship_1;
 		baseLoad(false);
 	}
 }
@@ -276,7 +276,7 @@ void LevelManager::loadAct1(bool reset)
 
 	if (reset)
 	{
-		mCurrentLevelID = LevelFolder::Tavern_Inside;  //<--- Change this if you want to spawn on a different level
+		mCurrentLevelID = LevelFolder::Beach;  //<--- Change this if you want to spawn on a different level
 		baseLoad(true);
 	}
 	else

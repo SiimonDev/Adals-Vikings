@@ -128,7 +128,7 @@ void Level_Road::render(IndexRenderer &iRenderer)
 
 void Level_Road::load()
 {
-	mRestartSounds = true;
+
 	RMI.loadResource(Footsteps::Dirt);
 	if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::AfterCampRoad_Conversation))
 	{

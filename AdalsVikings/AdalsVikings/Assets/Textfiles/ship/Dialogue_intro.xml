@@ -18,8 +18,6 @@
 	<text character="Yngvarr" say="Uh..." timer="2.1"></text>
 	<text character="Yngvarr" say="Bring what?" timer="1.8"></text>
 	<text character="Brandr" say="..." timer="1.6"></text>
-	
 	<text character="Brandr" say="My father's map!" timer="2.3" turned="true"></text>
-	
 	<stopConversation />
 </conversation>

@@ -24,13 +24,29 @@ void Level_Ship_2::update(sf::Time &frameTime)
 {
 	if (KeyboardState::isPressed(sf::Keyboard::Num1))
 		mPlayer->addItemToInventory("map");
+
 	mSeaAnimation.animate(frameTime);
 	mWaveAnimation.animate(frameTime);
-	if (BoatEvents::hasBeenTriggered(BoatEvent::PickedUpBucket) && !BoatEvents::hasBeenHandled(BoatEvent::PickedUpBucket))
+
+	if (!BoatEvents::hasBeenHandled(BoatEvent::StartDialogue) && BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue))
 	{
-		DialogHandler::getDialogue("Dagny_Ship2").disableOption(2);
-		BoatEvents::handleEvent(BoatEvent::PickedUpBucket);
+		if (!DialogHandler::getDialogue("Intro_Ship2").getActiveConversation() && !DialogHandler::getDialogue("Intro_Ship2").getHasStopped())
+			DialogHandler::startDialogue("Intro_Ship2");
+
+		if (DialogHandler::getDialogue("Intro_Ship2").getHasStopped())
+		{
+			FadeI.fadeOut(frameTime);
+			if (FadeI.getFaded())
+			{
+				LVLMI.changeLevel(LevelFolder::Ship_1);
+				BoatEvents::handleEvent(BoatEvent::StartDialogue);
+			}
+		}
 	}
+
+	if ((mPlayer->hasItemInInventory("bucket") || mPlayer->hasItemInInventory("brokenBucket")) && !DialogHandler::getDialogue("Dagny_Ship2").getIsOptionDisabled(2))
+		DialogHandler::getDialogue("Dagny_Ship2").disableOption(2);
+
 	if (BoatEvents::hasBeenTriggered(BoatEvent::TalkedToBrandr) && !BoatEvents::hasBeenHandled(BoatEvent::TalkedToBrandr))
 	{
 		DialogHandler::getDialogue("Brandr_Ship2").enableOption(2);
@@ -59,17 +75,18 @@ void Level_Ship_2::update(sf::Time &frameTime)
 			}
 		}
 	}
-	runCutscene(frameTime);
+
+	//runCutscene(frameTime);
 	changeLevel(frameTime);
 	Level::update(frameTime);
 }
 
 void Level_Ship_2::render(IndexRenderer &iRenderer)
 {
-	if (!BoatEvents::hasBeenHandled(BoatEvent::StartDialogue))
+	/*if (!BoatEvents::hasBeenHandled(BoatEvent::StartDialogue))
 		CurrentWindow.setView(mCutsceneView);
 	else
-		CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
+		CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));*/
 	mSeaAnimation.render(iRenderer);
 	mWaveAnimation.render(iRenderer);
 	Level::render(iRenderer);
@@ -151,34 +168,29 @@ void Level_Ship_2::unload()
 
 void Level_Ship_2::changeLevel(sf::Time &frameTime)
 {
-	if (mPortals[Ship2ToShip1]->getActivated())
+	if (mPortals[Ship2ToShip1]->getActivated() && mPortals[Ship2ToShip1]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Ship_1);
 	}
-	else if (BoatEvents::hasBeenHandled(BoatEvent::StartDialogue) && BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue) && !BoatEvents::hasBeenHandled(BoatEvent::UlfrStartDialogue))
-		LVLMI.changeLevel(LevelFolder::Ship_1);
 }
 
 void Level_Ship_2::runCutscene(sf::Time &frameTime)
 {
-	if (!BoatEvents::hasBeenHandled(BoatEvent::StartDialogue) && BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue))
+	/*if (!BoatEvents::hasBeenHandled(BoatEvent::StartDialogue) && BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue))
 	{
-		if (!mDone)
-		{
-			//FadeI.setAlpha(0);
+		if (!DialogHandler::getDialogue("Intro_Ship2").getActiveConversation() && !DialogHandler::getDialogue("Intro_Ship2").getHasStopped())
 			DialogHandler::getDialogue("Intro_Ship2").startDialogue();
-			mDone = true;
-		}
+
 		if (DialogHandler::getDialogue("Intro_Ship2").getHasStopped())
 		{
 			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())
 			{
-				//FadeI.setAlpha(255);
+				LVLMI.changeLevel(LevelFolder::Ship_1);
 				BoatEvents::handleEvent(BoatEvent::StartDialogue);
 			}
 		}
-	}
+	}*/
 }
 
 void Level_Ship_2::checkInteractEvents()
