@@ -1,4 +1,5 @@
 #include "Level_Cavern_Ruins_Right.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Cavern_Ruins_Right::Level_Cavern_Ruins_Right(Player &player, HUD &hud, ActionWheel &actionWheel)
@@ -9,7 +10,8 @@ Level_Cavern_Ruins_Right::Level_Cavern_Ruins_Right(Player &player, HUD &hud, Act
 
 void Level_Cavern_Ruins_Right::restartSounds()
 {
-
+	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Cavern_Ambient, true, 20);
 }
 
 void Level_Cavern_Ruins_Right::update(sf::Time &frametime)
@@ -62,6 +64,9 @@ void Level_Cavern_Ruins_Right::changeLevel()
 	if (mPortals[CRuinsToCLiffs]->getActivated() && mPortals[CRuinsToCLiffs]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Cliffs_Down);
+		AudioPlayer::stopHDDSound(HDDSound::Forest_Music);
+		AudioPlayer::stopHDDSound(HDDSound::Cavern_Ambient);
+		mRestartSounds = true;
 	}
 	if (mPortals[CRuinsRightToCRuinsLeft]->getActivated() && mPortals[CRuinsRightToCRuinsLeft]->getWorking())
 	{

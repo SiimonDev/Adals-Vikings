@@ -1,4 +1,5 @@
 #include "Level_Beach_Hills.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Beach_Hills::Level_Beach_Hills(Player &player, HUD &hud, ActionWheel &actionWheel)
@@ -9,7 +10,8 @@ Level_Beach_Hills::Level_Beach_Hills(Player &player, HUD &hud, ActionWheel &acti
 
 void Level_Beach_Hills::restartSounds()
 {
-
+	AudioPlayer::playHDDSound(HDDSound::Beach_Ambient, true, 50);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 50);
 }
 
 void Level_Beach_Hills::update(sf::Time &frametime)
@@ -41,6 +43,8 @@ void Level_Beach_Hills::changeLevel()
 	if (mPortals[HillBeachToBeach]->getActivated() && mPortals[HillBeachToBeach]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Beach);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Ambient);
+		mRestartSounds = true;
 	}
 }
 

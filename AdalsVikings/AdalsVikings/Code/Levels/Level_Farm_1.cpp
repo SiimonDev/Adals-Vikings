@@ -1,4 +1,5 @@
 #include "Level_Farm_1.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Farm_1::Level_Farm_1(Player &player, HUD &hud, ActionWheel &actionWheel)
@@ -9,7 +10,8 @@ Level_Farm_1::Level_Farm_1(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Farm_1::restartSounds()
 {
-
+	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
 }
 
 void Level_Farm_1::update(sf::Time &frametime)
@@ -157,6 +159,9 @@ void Level_Farm_1::changeLevel()
 	if (mPortals[FarmToHills]->getActivated() && mPortals[FarmToHills]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Hills);
+		AudioPlayer::stopHDDSound(HDDSound::Road_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
+		mRestartSounds = true;
 	}
 }
 

@@ -1,4 +1,5 @@
 #include "Level_Cavern_Left.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Cavern_Left::Level_Cavern_Left(Player &player, HUD &hud, ActionWheel &actionWheel)
@@ -9,7 +10,8 @@ Level_Cavern_Left::Level_Cavern_Left(Player &player, HUD &hud, ActionWheel &acti
 
 void Level_Cavern_Left::restartSounds()
 {
-
+	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Cavern_Ambient, true, 20);
 }
 
 void Level_Cavern_Left::update(sf::Time &frametime)

@@ -384,20 +384,19 @@ void Level::updateDialog(sf::Time frameTime)
 					it->second->setTextColor(sf::Color::White);
 				}
 			}
-		}
+			if (it->second->getEndConversation())
+			{
+				DialogHandler::reloadConversations();
+				mIsInConversation = false;
+				mConversationStopped = true;
+				it->second->setEndConversation(false);
 
-		if (it->second->getEndConversation() && mIsInConversation)
-		{
-			DialogHandler::reloadConversations();
-			mIsInConversation = false;
-			mConversationStopped = true;
-			it->second->setEndConversation(false);
+				for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
+					iz->second->updateAnimationStyle();
 
-			for (std::map<std::string, NpcPtr>::const_iterator iz = mNpcs.begin(); iz != mNpcs.end(); iz++)
-				iz->second->updateAnimationStyle();
+				mPlayer->UpdateAnimationStyle();
 
-			mPlayer->UpdateAnimationStyle();
-
+			}
 		}
 	}
 }

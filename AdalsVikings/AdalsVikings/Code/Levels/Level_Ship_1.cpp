@@ -18,6 +18,9 @@ Level_Ship_1::Level_Ship_1(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Ship_1::update(sf::Time &frametime)
 {
+	if (KeyboardState::isPressed(sf::Keyboard::Num1))
+		mPlayer->addItemToInventory("flute");
+
 	mSeaAnimation.animate(frametime);
 	mWaveAnimation.animate(frametime);
 	mRopeAnimation.animate(frametime);
@@ -54,9 +57,39 @@ void Level_Ship_1::update(sf::Time &frametime)
 
 		if (DialogHandler::getDialogue("BucketDialogue_Ship1").getHasStopped())
 		{
-			mPlayer->addItemToInventory("bucketBroken");
-			BoatEvents::handleEvent(BoatEvent::GivenBucketToLeifr);
+			if (!mBucketFade1)
+			{
+				FadeI.fadeOut(frametime);
+				if (FadeI.getFaded())
+				{
+					if (!FadeI.getWait())
+					{
+						AudioPlayer::playSound(Sound::BucketBreak, "Leifr", false);
+						FadeI.setWaitDuration(sf::seconds(2));
+					}
+					FadeI.wait(frametime);
+					if (FadeI.getFinishedWaiting())
+					{
+						mBucketFade1 = true;
+					}
+				}
+			}
+			if (mBucketFade1 && !mBucketFade2)
+			{
+				FadeI.fadeIn(frametime);
+
+				if (FadeI.getFaded())
+				{
+					DialogHandler::startDialogue("BucketDialogue2_Ship1");
+					mBucketFade2 = true;
+				}
+			}
 		}
+			if (DialogHandler::getDialogue("BucketDialogue2_Ship1").getHasStopped())
+			{
+				mPlayer->addItemToInventory("bucketBroken");
+				BoatEvents::handleEvent(BoatEvent::GivenBucketToLeifr);
+			}
 	}
 	if (BoatEvents::hasBeenTriggered(BoatEvent::FluteFromAlfr) && !BoatEvents::hasBeenHandled(BoatEvent::FluteFromAlfr))
 	{
@@ -80,24 +113,34 @@ void Level_Ship_1::update(sf::Time &frametime)
 				FadeI.fadeOut(frametime);
 				if (FadeI.getFaded())
 				{
-					RMI.unloadResource(Texture::BrynjaSleeping);
-					RMI.loadResource(Texture::ValdisIdle);
-					RMI.loadResource(Texture::ValdisTalk);
-					mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
-					mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
-					mNpcs["Brynja"]->setScale(sf::Vector2f(0.5f, 0.5f));
-					mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 718));
-					mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
-					mNpcs["Brynja"]->setFlip(true);
-					mNpcs["Brynja"]->updateAnimationStyle();
+					if (!FadeI.getWait())
+					{
+						AudioPlayer::playSound(Sound::ValdisHitBrynja, "Valdis", false, 30.f);
+						FadeI.setWaitDuration(sf::seconds(1));
+					}
+					FadeI.wait(frametime);
+					if (FadeI.getFinishedWaiting())
+					{
+						RMI.unloadResource(Texture::BrynjaSleeping);
+						RMI.loadResource(Texture::ValdisIdle);
+						RMI.loadResource(Texture::ValdisTalk);
+						mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+						mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
+						mNpcs["Brynja"]->setScale(sf::Vector2f(0.5f, 0.5f));
+						mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 718));
+						mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
+						mNpcs["Brynja"]->setDialogue("BrynjaAwake_ship");
+						mNpcs["Brynja"]->setFlip(true);
+						mNpcs["Brynja"]->updateAnimationStyle();
 
-					mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
-					mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
-					mNpcs["Valdis"]->setPosition(sf::Vector2f(1230, 723));
-					mNpcs["Valdis"]->setScale(sf::Vector2f(0.5f, 0.5f));
-					mNpcs["Valdis"]->updateAnimationStyle();
+						mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
+						mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisTalk, sf::Vector2i(2, 1), sf::milliseconds(650), sf::Time::Zero);
+						mNpcs["Valdis"]->setPosition(sf::Vector2f(1230, 723));
+						mNpcs["Valdis"]->setScale(sf::Vector2f(0.5f, 0.5f));
+						mNpcs["Valdis"]->updateAnimationStyle();
 
-					mBrynjaFade1 = true;
+						mBrynjaFade1 = true;
+					}
 				}
 			}
 		}
@@ -158,6 +201,8 @@ void Level_Ship_1::load()
 	RMI.loadResource(Texture::BackBoatWaveAnimation);
 	RMI.loadResource(Texture::WaveAnimationBoat);
 	RMI.loadResource(Footsteps::Hardwood);
+	RMI.loadResource(Sound::BucketBreak);
+	RMI.loadResource(Sound::ValdisHitBrynja);
 
 	mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
 	mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
@@ -183,6 +228,7 @@ void Level_Ship_1::load()
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 730));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(900, 710));
 		mNpcs["Brynja"]->setScale(sf::Vector2f(0.6f, 0.6f));
+		mNpcs["Brynja"]->setDialogue("Brynja_Ship1");
 
 		mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisSittingIdle, sf::Vector2i(2, 1), sf::milliseconds(350), sf::seconds(7));
 		mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisSittingTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
@@ -200,6 +246,7 @@ void Level_Ship_1::load()
 		mNpcs["Valdis"]->setPosition(sf::Vector2f(1230, 723));
 		mNpcs["Brynja"]->setIdleAnimation(Texture::BrynjaIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 		mNpcs["Brynja"]->SetTalkAnimation(Texture::BrynjaTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
+		mNpcs["Brynja"]->setDialogue("BrynjaAwake_ship");
 		mNpcs["Brynja"]->setScale(sf::Vector2f(0.5f, 0.5f));
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(1080, 718));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
@@ -267,6 +314,8 @@ void Level_Ship_1::unload()
 	RMI.unloadResource(Texture::BrynjaTalk);
 	RMI.unloadResource(Texture::ValdisIdle);
 	RMI.unloadResource(Texture::ValdisTalk);
+	RMI.unloadResource(Sound::BucketBreak);
+	RMI.unloadResource(Sound::ValdisHitBrynja);
 	Level::unload();
 }
 

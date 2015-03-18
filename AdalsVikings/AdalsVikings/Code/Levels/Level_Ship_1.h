@@ -18,7 +18,7 @@ public:
 private:
 	bool mGameStart;
 	bool mOldBucketAdded;
-	bool mStartBrynja, mBrynjaFade1, mBrynjaFade2, mBrynjaConv;
+	bool mStartBrynja, mBrynjaFade1, mBrynjaFade2, mBrynjaConv, mBucketFade1, mBucketFade2;
 
 	Animation mRopeAnimation;
 	Animation mWaveAnimation;

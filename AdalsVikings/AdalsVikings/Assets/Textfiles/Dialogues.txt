@@ -6,8 +6,10 @@ Valdis_Ship1 assets/textfiles/ship/Dialogue_valdis_ship.xml
 Brynja_Ship1 assets/textfiles/ship/Dialogue_brynja_ship.xml
 IntroUlfr_Ship1 assets/textfiles/ship/Dialogue_intro_Ulfr.xml
 BucketDialogue_Ship1 assets/textfiles/ship/Dialogue_leifr_bucket.xml
+BucketDialogue2_Ship1 assets/textfiles/ship/Dialogue_leifr_bucket2.xml
 BrynjaFlute_Ship1 assets/textfiles/ship/Dialogue_WakeUp_Brynja.xml
 BrynjaConversation_Ship1 assets/textfiles/ship/Dialogue_Brynja_Ulfr.xml
+BrynjaAwake_ship assets/textfiles/ship/Dialogue_brynjaAwake_ship.xml
 -----------------------SHIP 2----------------------------
 Intro_Ship2 assets/textfiles/ship/Dialogue_intro.xml
 Dagny_Ship2 assets/textfiles/ship/Dialogue_dagny_ship.xml
@@ -40,6 +42,7 @@ Leifr_ClearingCamp assets/textfiles/camp/Dialogue_Leifr_camp.xml
 LeifrBear_ClearingCamp assets/textfiles/camp/Dialogue_LeifrFinishedBear_camp.xml
 LeifrFire_ClearingCamp assets/textfiles/camp/Dialogue_LeifrBear_camp.xml
 BrandrBrynja_ClearingCamp assets/textfiles/camp/Dialogue_brandrBrynja_camp.xml
+LeifrAFterDruids_ClearingCamp assets/textfiles/camp/Dialogue_LeifrAFterDruids_camp.xml
 -----------------------CAMP FINISHED----------------------------
 All_FinishedCamp assets/textfiles/camp/Dialogue_all_camp2.xml
 -----------------------FOREST CAMP----------------------------

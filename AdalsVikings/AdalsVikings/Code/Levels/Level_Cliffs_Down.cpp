@@ -1,5 +1,9 @@
 #include "Level_Cliffs_Down.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
+
+static Animation mWaveAnimation;
+static Animation mWaveAnimationIdle;
 
 Level_Cliffs_Down::Level_Cliffs_Down(Player &player, HUD &hud, ActionWheel &actionWheel)
 	: Level(player, hud, actionWheel)
@@ -10,7 +14,8 @@ Level_Cliffs_Down::Level_Cliffs_Down(Player &player, HUD &hud, ActionWheel &acti
 
 void Level_Cliffs_Down::restartSounds()
 {
-
+	AudioPlayer::playHDDSound(HDDSound::Cliffs_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
 }
 
 void Level_Cliffs_Down::update(sf::Time &frametime)
@@ -31,6 +36,10 @@ void Level_Cliffs_Down::update(sf::Time &frametime)
 			mCannotGo = true;
 		}
 	}
+
+	if (mWaveAnimation.getCurrentFrame() == 1)
+		AudioPlayer::playHDDSound(HDDSound::Cliffs_Wave, false, 20);
+
 	mWaveAnimation.animate(frametime);
 	mWaveAnimationIdle.animate(frametime);
 	Level::update(frametime);
@@ -109,6 +118,9 @@ void Level_Cliffs_Down::changeLevel(sf::Time &frametime)
 		if (mPortals[CliffsToCaverns]->getActivated() && mPortals[CliffsToCaverns]->getWorking())
 		{
 			LVLMI.changeLevel(LevelFolder::Cavern_Right);
+			AudioPlayer::stopHDDSound(HDDSound::Cliffs_Ambient);
+			AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
+			mRestartSounds = true;
 		}
 	}
 	else
@@ -116,6 +128,9 @@ void Level_Cliffs_Down::changeLevel(sf::Time &frametime)
 		if (mPortals[CliffsToCRuins]->getActivated() && mPortals[CliffsToCRuins]->getWorking())
 		{
 			LVLMI.changeLevel(LevelFolder::Cavern_Ruins_Right);
+			AudioPlayer::stopHDDSound(HDDSound::Cliffs_Ambient);
+			AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
+			mRestartSounds = true;
 		}
 	}
 }

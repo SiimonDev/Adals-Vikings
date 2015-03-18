@@ -3,6 +3,6 @@
 	<useText useText="Ehm... no." />
 	<lookText lookText="I'm just wonderful, aren't I?" />
 	<text character="Ulfr" turnedPlayer="true" say="Ugh..." timer="2.5"></text>
-	<text character="Ulfr" say="What's that noise?" timer="2.3"></text>
+	<text character="Ulfr" say="I better go check so Brandr and Yngvarr dosen't kill eachother" timer="2.3"></text>
 	<stopConversation></stopConversation>
 </conversation>

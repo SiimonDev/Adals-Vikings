@@ -7,6 +7,7 @@
 #include <iostream>
 
 static Animation mWaveAnimation;
+static Animation mRockAnimation;
 
 Level_Beach::Level_Beach(Player &player, HUD &hud, ActionWheel &actionWheel)
 	: Level(player, hud, actionWheel)
@@ -28,8 +29,12 @@ void Level_Beach::update(sf::Time &frametime)
 	endingCutscene(frametime);
 
 	mWaveAnimation.animate(frametime);
+	mRockAnimation.animate(frametime);
 	if (mWaveAnimation.getCurrentFrame() == 1)
 		AudioPlayer::playHDDSound(HDDSound::Beach_Wave, false, 20);
+
+	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro))
+		Act1Events::triggerEvent(Act1Event::Beach_Intro);
 
 	Level::update(frametime);
 	changeLevel();
@@ -40,6 +45,7 @@ void Level_Beach::render(IndexRenderer &iRenderer)
 	if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
 		CurrentWindow.setView(mCutSceneView);
 
+	mRockAnimation.render(iRenderer);
 	mWaveAnimation.render(iRenderer);
 	Level::render(iRenderer);
 }
@@ -53,6 +59,14 @@ void Level_Beach::load()
 
 	mNpcs["Seagull"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Seagull")));
 
+	RMI.loadResource(Texture::SeagullRock);
+	mRockAnimation.load(RMI.getResource(Texture::SeagullRock), sf::Vector2i(4, 1), sf::seconds(1), sf::Time::Zero, true);
+	mRockAnimation.setProportions(sf::Vector2f(124, 76));
+	mRockAnimation.setScale(sf::Vector2f(0.55f, 0.55f));
+	mRockAnimation.getSprite().setOrigin(mRockAnimation.getSpriteSize().x / 2, mRockAnimation.getSpriteSize().y);
+	mRockAnimation.setPosition(sf::Vector2f(1800, 460));
+	mRockAnimation.setIndex(16);
+
 	RMI.loadResource(Texture::WaveAnimationBeach);
 	mWaveAnimation.load(RMI.getResource(Texture::WaveAnimationBeach), sf::Vector2i(10, 9), sf::seconds(10), sf::seconds(7), true);
 	mWaveAnimation.setIndex(4);
@@ -60,7 +74,6 @@ void Level_Beach::load()
 	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
 	mWaveAnimation.setPadding(1);
 	mWaveAnimation.setPosition(sf::Vector2f(1920 + 3, 1080 + 3));
-
 
 	if (!Act1Events::hasBeenHandled(Act1Event::Beach_Ending))
 	{
@@ -105,6 +118,7 @@ void Level_Beach::load()
 		mNpcs["Valdis"]->setFlip(false);
 		mNpcs["Valdis"]->setScale(sf::Vector2f(0.45f, 0.45f));
 		mNpcs["Valdis"]->setPosition(sf::Vector2f(600, 1120));
+		mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(1515, 700));
 		mNpcs["Valdis"]->setDialogue("Valdis_Beach");
 		mNpcs["Valdis"]->setIndex(14);
 
@@ -132,7 +146,7 @@ void Level_Beach::load()
 		mNpcs["Alfr"]->setFlip(false);
 		mNpcs["Alfr"]->setScale(sf::Vector2f(0.35, 0.35));
 		mNpcs["Alfr"]->setPosition(sf::Vector2f(1250, 580));
-		mNpcs["Alfr"]->setInteractionPosition(sf::Vector2f(1200, 590));
+		mNpcs["Alfr"]->setInteractionPosition(sf::Vector2f(1170, 560));
 		mNpcs["Alfr"]->setDialogue("Alfr_Beach");
 		mNpcs["Alfr"]->setIndex(14);
 
@@ -147,8 +161,8 @@ void Level_Beach::load()
 		/* ==== Finnr ===== */
 		mNpcs["Finnr"]->setFlip(false);
 		mNpcs["Finnr"]->setScale(sf::Vector2f(0.4, 0.4));
-		mNpcs["Finnr"]->setPosition(sf::Vector2f(1600, 520));
-		mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(1550, 520));
+		mNpcs["Finnr"]->setPosition(sf::Vector2f(1615, 520));
+		mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(1530, 515));
 		mNpcs["Finnr"]->setDialogue("Finnr_Beach");
 		mNpcs["Finnr"]->setIndex(12);
 		/* ================================================================ */
@@ -176,14 +190,12 @@ void Level_Beach::load()
 
 		if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))
 			mPortals[BeachToTavernOutside]->setWorking(true);
-
-		if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro))
-			Act1Events::triggerEvent(Act1Event::Beach_Intro);
 }
 
 void Level_Beach::unload()
 {
 	RMI.unloadResource(Texture::WaveAnimationBeach);
+	RMI.unloadResource(Texture::SeagullRock);
 	RMI.unloadResource(Texture::YngvarrSadIdle);
 	RMI.unloadResource(Texture::YngvarrSadTalk);
 
@@ -247,7 +259,6 @@ void Level_Beach::introCutscene(sf::Time &frameTime)
 				mNpcs["Valdis"]->setFlip(true);
 				mNpcs["Valdis"]->setScale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Valdis"]->setPosition(sf::Vector2f(1600, 720));
-				mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(1550, 720));
 				mNpcs["Valdis"]->updateAnimationStyle();
 
 				mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
@@ -374,20 +385,6 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 
 void Level_Beach::talkToNpcs()
 {
-	/* Debug stuff */
-	//Act1Events::handleEvent(Act1Event::Beach_Ending);
-	//Act1Events::handleEvent(Act1Event::Beach_Intro);
-
-	//Act1Events::handleEvent(Act1Event::Beach_Dagny);
-	//Act1Events::handleEvent(Act1Event::Beach_Leifr);
-	//Act1Events::handleEvent(Act1Event::Beach_Yngvarr);
-	//Act1Events::handleEvent(Act1Event::Beach_Alfr);
-	//Act1Events::handleEvent(Act1Event::Beach_Valdis);
-	//Act1Events::handleEvent(Act1Event::Beach_Finnr);
-
-	//mPortals[BeachToRoad]->setWorking(true);
-	//mPortals[BeachToTavernOutside]->setWorking(true);
-	/*=============*/
 
 	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Ending))
 	{

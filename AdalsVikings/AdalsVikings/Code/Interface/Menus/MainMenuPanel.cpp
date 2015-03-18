@@ -1,5 +1,6 @@
 #include "MainMenuPanel.h"
 #include "..\..\Logics\AudioPlayer.h"
+#include "..\..\Logics\fade.h"
 
 MainMenuPanel::MainMenuPanel() :
  mAnimationTime(sf::milliseconds(750)), mTimePassed(sf::Time::Zero)
@@ -14,10 +15,13 @@ void MainMenuPanel::load()
 	RMI.loadResource(Texture::MainMenuQuitButton);
 	RMI.loadResource(Texture::MainMenuBackground);
 	RMI.loadResource(Texture::AxeAnimation);
+	RMI.loadResource(Sound::MainMenuAxeSound);
+
+	AudioPlayer::playHDDSound(HDDSound::Anlgian_Music, true);
 
 	mBackground.setTexture(RMI.getResource(Texture::MainMenuBackground));
 
-	mAxeAnimation.load(RMI.getResource(Texture::AxeAnimation), Frames(5, 1), sf::milliseconds(400), sf::seconds(0.1), false);
+	mAxeAnimation.load(RMI.getResource(Texture::AxeAnimation), Frames(5, 1), sf::milliseconds(588), sf::seconds(0.1), false);
 	mAxeAnimation.getSprite().setOrigin(mAxeAnimation.getSprite().getTextureRect().width, mAxeAnimation.getSprite().getTextureRect().height);
 	mAxeAnimation.setProportions(sf::Vector2f(1605, 968));
 	mAxeAnimation.setPosition(sf::Vector2f(1920, 1080));
@@ -63,6 +67,8 @@ void MainMenuPanel::unload()
 	RMI.unloadResource(Texture::MainMenuQuitButton);
 	RMI.unloadResource(Texture::MainMenuBackground);
 	RMI.unloadResource(Texture::AxeAnimation);
+	RMI.unloadResource(Sound::MainMenuAxeSound);
+	AudioPlayer::stopHDDSound(HDDSound::Anlgian_Music);
 }
 
 void MainMenuPanel::update(sf::Time frameTime)
@@ -75,7 +81,14 @@ void MainMenuPanel::update(sf::Time frameTime)
 		exitButton.update();
 	}
 	else
+	{
+		if (!mPlaySound)
+		{
+			AudioPlayer::playSound(Sound::MainMenuAxeSound, "axe", false);
+			mPlaySound = true;
+		}
 		mAxeAnimation.animate(frameTime);
+	}
 
 	if (mAnimateAxe)
 	{
@@ -84,7 +97,7 @@ void MainMenuPanel::update(sf::Time frameTime)
 		if (mTimePassed >= mAnimationTime)
 		{
 			mTimePassed = sf::seconds(0);
-			
+
 			if (mPlay)
 			{
 				playButton.update();

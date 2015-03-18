@@ -1,11 +1,11 @@
 *Type: standard
 *ID: $stickWetCloth$
-*Name: stickWetCloth
+*Name: Oiled stick with cloth
 *ispickupable: True
 *pickup: "Oh... nasty." ~2,0
 *lookat: "What to do..." ~1,5
 *deny: "I don't want to get oil everywhere..." ~1,5
-*denywith: $bucketBroken$ "This won't light the torch." ~3,0; 
+*denywith: $bucketBroken$ "This won't light the torch." ~3,0; $oilBarrel$ "It's alredy covered with oil, I don't think it needs any more..." ~3,0; 
 *combine: 
-*interact: 
+*interact: $forestCampFire$ "Woah! Now I got a torch that I could use to start the campfire!" ~3,0; 
 *texture: "img_stickWetCloth_id.png"

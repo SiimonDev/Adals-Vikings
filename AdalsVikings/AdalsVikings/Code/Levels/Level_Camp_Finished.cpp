@@ -1,4 +1,5 @@
 #include "Level_Camp_Finished.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Camp_Finished::Level_Camp_Finished(Player &player, HUD &hud, ActionWheel &actionWheel)
@@ -7,6 +8,12 @@ Level_Camp_Finished::Level_Camp_Finished(Player &player, HUD &hud, ActionWheel &
 	mBackgroundID = LevelFolder::Camp_Finished;
 }
 
+void Level_Camp_Finished::restartSounds()
+{
+	AudioPlayer::playHDDSound(HDDSound::Camp_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Fire_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, 20);
+}
 void Level_Camp_Finished::update(sf::Time &frametime)
 {
 	mCampFire.animate(frametime);
@@ -38,6 +45,10 @@ void Level_Camp_Finished::update(sf::Time &frametime)
 				mNpcs.clear();
 				Act1Events::handleEvent(Act1Event::CampFinished_Conversation);
 				LVLMI.changeLevel(LevelFolder::Road);
+				AudioPlayer::stopHDDSound(HDDSound::Camp_Ambient);
+				AudioPlayer::stopHDDSound(HDDSound::Fire_Ambient);
+				AudioPlayer::stopHDDSound(HDDSound::Church_Music);
+				mRestartSounds = true;
 			}
 		}
 	}
@@ -112,6 +123,8 @@ void Level_Camp_Finished::load()
 		mNpcs["Finnr"]->setIndex(10);
 		mNpcs["Brandr"]->setIndex(5);
 		mCurrentFootsteps = Footsteps::Dirt;
+		AudioPlayer::stopHDDSound(HDDSound::Forest_Camp_Ambient);
+		mRestartSounds = true;
 	}
 	Level::load();
 
