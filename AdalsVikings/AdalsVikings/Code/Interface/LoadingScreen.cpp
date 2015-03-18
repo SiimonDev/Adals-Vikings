@@ -125,9 +125,7 @@ void LoadingScreen::startLoading(LoadTask task, sf::VideoFile* videoFile)
 	}
 	else
 	{
-		mStart = true;
 		mFinished = false;
-		mIsDone = false;
 	}
 }
 
