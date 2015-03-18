@@ -25,6 +25,7 @@ namespace sf
 		void render(sf::RenderWindow &window);
 		
 		void setPosition(const sf::Vector2f &position);
+		void setPosition(const float x, const float y);
 		void setSize(const sf::Vector2f &size);
 		void setSize(const float x, const float y);
 

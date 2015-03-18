@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 *mapID: 5
 *currentActID: 2
 *playerPos: 360, 1079
+=======
+*mapID: 1
+*currentActID: 1
+*playerPos: 0, 0
+>>>>>>> 13d53e710e8aa373902c0e65c1944d1b2925d9e0

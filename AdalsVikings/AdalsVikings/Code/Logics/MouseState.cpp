@@ -16,6 +16,7 @@ static sf::Sprite* mSprite;
 
 void MouseState::initialize()
 {
+	CurrentWindow.pushGLStates();
 	RMI.loadResource(Texture::CursorDefault);
 	RMI.loadResource(Texture::CursorArrow);
 	mSprite = new sf::Sprite();
@@ -28,6 +29,7 @@ void MouseState::initialize()
 		timeDown.insert(std::make_pair(i, 0));
 	}
 	hasFocus = true;
+	CurrentWindow.popGLStates();
 }
 
 void MouseState::update(sf::Time frameTime)

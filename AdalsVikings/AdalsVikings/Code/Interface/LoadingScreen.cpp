@@ -17,6 +17,10 @@ LoadingScreen::LoadingScreen()
 {
 	
 }
+LoadingScreen::~LoadingScreen()
+{
+	terminate();
+}
 
 LoadingScreen & LoadingScreen::getInstance()
 {
@@ -27,7 +31,6 @@ LoadingScreen & LoadingScreen::getInstance()
 
 	return *instance;
 }
-
 void LoadingScreen::initialize()
 {
 	mThread = ThreadPtr(new std::thread(&LoadingScreen::runTask, this));
@@ -47,12 +50,6 @@ void LoadingScreen::initialize()
 	mLoadAnimation.setIndex(22);
 }
 
-LoadingScreen::~LoadingScreen()
-{
-	terminate();
-	//mThread->join();
-}
-
 void LoadingScreen::update(sf::Time frameTime)
 {
 	if (mCurrentVideo != NULL)
@@ -62,7 +59,7 @@ void LoadingScreen::update(sf::Time frameTime)
 	{
 		if (mCurrentVideo != NULL)
 		{
-			if (mCurrentVideo->getStatus() == sf::VideoFile::Paused /*|| Skipp stuff here */)
+			if (mCurrentVideo->getStatus() == sf::VideoFile::Paused || KeyboardState::isPressed(sf::Keyboard::Space))
 			{
 				mIsDone = true;
 				mStart = false;
@@ -76,16 +73,17 @@ void LoadingScreen::update(sf::Time frameTime)
 	}
 	else
 	{
-		if (mCurrentVideo == NULL)
+		if (!mFinished)
 			mLoadAnimation.animate(frameTime);
 		mIsDone = false;
 	}
 }
-
 void LoadingScreen::render(IndexRenderer &iRenderer)
 {
 	if (mCurrentVideo != NULL)
 	{
+		if (!mFinished)
+			mLoadAnimation.render(iRenderer);
 		mCurrentVideo->render(CurrentWindow);
 	}
 	else
@@ -102,6 +100,14 @@ void LoadingScreen::startLoading(LoadTask task, sf::VideoFile* videoFile)
 	{
 		mCurrentVideo->restart();
 		mCurrentVideo->play();
+
+		mLoadAnimation.setPosition(sf::Vector2f(200, 1000));
+		mLoadAnimation.setScale(sf::Vector2f(0.3f, 0.3f));
+	}
+	else
+	{
+		mLoadAnimation.setPosition(sf::Vector2f(1920 / 2, 1080 / 2));
+		mLoadAnimation.setScale(sf::Vector2f(1.0f, 1.0f));
 	}
 	mTask = task;
 	if (mTask != LoadTask::LoadNearbyLevels)
@@ -115,10 +121,13 @@ void LoadingScreen::startLoading(LoadTask task, sf::VideoFile* videoFile)
 
 		mStart = true;
 		mFinished = false;
+		mIsDone = false;
 	}
 	else
 	{
+		mStart = true;
 		mFinished = false;
+		mIsDone = false;
 	}
 }
 
@@ -126,12 +135,10 @@ void LoadingScreen::terminate()
 {
 	mTask = LoadTask::Finished;
 }
-
 bool &LoadingScreen::getIsDone()
 {
-	return mFinished;
+	return mIsDone;
 }
-
 bool &LoadingScreen::getIsStarted()
 {
 	return mStart;
@@ -181,8 +188,8 @@ void LoadingScreen::runTask()
 			{
 				LVLMI.unloadCurrentAct();
 				LVLMI.loadAct1(true);
-				mStart = false;
-				mFinished = true;
+				//mStart = false;
+				//mFinished = true;
 			}
 			mTask = LoadTask::None;
 
