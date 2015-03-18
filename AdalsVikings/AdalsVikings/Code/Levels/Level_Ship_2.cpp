@@ -83,10 +83,10 @@ void Level_Ship_2::update(sf::Time &frameTime)
 
 void Level_Ship_2::render(IndexRenderer &iRenderer)
 {
-	/*if (!BoatEvents::hasBeenHandled(BoatEvent::StartDialogue))
+	if (!BoatEvents::hasBeenHandled(BoatEvent::StartDialogue))
 		CurrentWindow.setView(mCutsceneView);
 	else
-		CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));*/
+		CurrentWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
 	mSeaAnimation.render(iRenderer);
 	mWaveAnimation.render(iRenderer);
 	Level::render(iRenderer);
