@@ -186,7 +186,7 @@ void VideoFile::OpenAVI(LPCSTR szFile)
 	AVIFileInit();													// Opens The AVIFile Library
 
 	if (AVIStreamOpenFromFile(&pavi, szFile, streamtypeVIDEO, 0, OF_READ, NULL) != 0)
-		MessageBox(HWND_DESKTOP, "Failed To Open The AVI Stream", "Error", MB_OK | MB_ICONEXCLAMATION);
+		MessageBox(HWND_DESKTOP,"Failed To Open The AVI Stream", "Error", MB_OK | MB_ICONEXCLAMATION);
 
 	AVIStreamInfo(pavi, &psi, sizeof(psi));							// Reads Information About The Stream Into psi
 	mWidth = psi.rcFrame.right - psi.rcFrame.left;					// Width Is Right Side Of Frame Minus Left

@@ -19,7 +19,7 @@
 			<text character="Leifr" say="Though it'll probably take one hell of a feat to attack something like that." timer="5" />
 			<text character="Ulfr" turned="false" say="Don't Worry about it." timer="2.2" />
 			<text character="Ulfr" say="I'll do it in an afternoon." timer="2.2" />
-			<text character="Ulfr" say="" timer="1.0" />
+			<text character="Ulfr" say="..." timer="1.0" />
 			<text character="Leifr" turned="true" say="Uh..." timer="1.8" />
 			<text character="Ulfr" turned="false" say="I'm joking, Leifr." timer="2.0" />
 			<text character="Ulfr" say="Don't worry." timer="2.0" />
@@ -27,13 +27,13 @@
 		</option>
 		<option disabled="false" disablePrevious="false" choice_text="So...how are you feeling?">
 			<text character="Ulfr" turned="false" disablePrevious="true" timer="2.5" say="So... how are you feeling?" />
-			<text character="Leifr" say="Good enough." timer="2.0" />
+			<text character="Leifr" say="Good enough." timer="2.0" turned="true" />
 			<text character="Leifr" say="We'll see how long that lasts, though." timer="2.5" />
 			<gotoContainer />
 		</option>
 		<option disabled="false" disablePrevious="true" choice_text="I'll see you around.">
 			<text character="Ulfr" turned="false" say="I'll see you around." timer="2.0" />
-			<text character="Leifr" turned="turned" say="Bye, friend." timer="1.5" />
+			<text character="Leifr" turned="true" say="Bye, friend." timer="1.5" />
 			<stopConversation />
 		</option>
 		<stopOption />

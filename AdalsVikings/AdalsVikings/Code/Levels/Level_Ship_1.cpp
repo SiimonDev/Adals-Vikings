@@ -18,9 +18,6 @@ Level_Ship_1::Level_Ship_1(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Ship_1::update(sf::Time &frametime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::Num1))
-		mPlayer->addItemToInventory("flute");
-
 	mSeaAnimation.animate(frametime);
 	mWaveAnimation.animate(frametime);
 	mRopeAnimation.animate(frametime);

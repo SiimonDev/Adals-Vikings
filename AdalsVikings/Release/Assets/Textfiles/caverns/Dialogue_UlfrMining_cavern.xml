@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why would I use Valdis?" />
+	<lookText lookText="She seems to be stuck in a staring contest with the ocean." />
+	<text character="Ulfr" disabled="false" default="false" say="Now..." timer="1.8"  turned="true"/>
+	<text character="Ulfr" disabled="false" default="false" say="Just have to..." timer="1.8"  turned="true"/>
+	<text character="Ulfr" disabled="false" default="false" say="Gently..." timer="1.8"  turned="true"/>
+	
+	
+	
+	<stopConversation></stopConversation>
+</conversation>

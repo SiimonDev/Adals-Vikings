@@ -2,10 +2,10 @@
 <conversation>
 	<useText useText="Why would I use Valdis?" />
 	<lookText lookText="She seems to be stuck in a staring contest with the ocean." />
-	<text character="Valdis" disabled="false" default="false" say="Here you go." turned="false" timer="2.3" />
-	<text character="Valdis" disabled="false" default="false" say="It turned out like a small white ball, but it'll work all the same." turned="false" timer="2.8" />
-	<text character="Valdis" disabled="false" default="false" say="But I will have to make due." turned="false" timer="2.3" />
-	<text character="Ulfr" disabled="false" default="false" say="Thanks Valdis, this exactly what I needed!" timer="3.0" turned="true" />
-	<text character="Ulfr" disabled="false" default="false" say="Now I only need a way to make it swallow this pill..." timer="3.0" turnedPlayer="true" />
+	<text character="Valdis" disabled="true" default="false" say="Here you go." turned="false" timer="2.3" />
+	<text character="Valdis" disabled="true" default="false" say="It turned out like a small white ball, but it'll work all the same." turned="false" timer="2.8" />
+	<text character="Valdis" disabled="true" default="false" say="But I will have to make due." turned="false" timer="2.3" />
+	<text character="Ulfr" disabled="true" default="false" say="Thanks Valdis, this exactly what I needed!" timer="3.0" turned="true" />
+	<text character="Ulfr" disabled="true" default="false" say="Now I only need a way to make it swallow this pill..." timer="3.0" turnedPlayer="true" />
 	<stopConversation />
 </conversation>

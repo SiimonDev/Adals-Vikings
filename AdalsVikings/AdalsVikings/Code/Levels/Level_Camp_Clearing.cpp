@@ -18,8 +18,6 @@ void Level_Camp_Clearing::restartSounds()
 
 void Level_Camp_Clearing::update(sf::Time &frametime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::Num8))
-		mPlayer->addItemToInventory("bearDeer");
 	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_Leifr) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
 	{
 		if (DialogHandler::getDialogue("LeifrBear_ClearingCamp").getHasStopped() && !mFade1)

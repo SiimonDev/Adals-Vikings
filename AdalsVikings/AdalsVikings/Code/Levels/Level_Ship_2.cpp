@@ -22,8 +22,6 @@ Level_Ship_2::Level_Ship_2(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Ship_2::update(sf::Time &frameTime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::Num1))
-		mPlayer->addItemToInventory("map");
 
 	mSeaAnimation.animate(frameTime);
 	mWaveAnimation.animate(frameTime);

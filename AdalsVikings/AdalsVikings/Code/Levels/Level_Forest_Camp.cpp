@@ -16,8 +16,6 @@ void Level_Forest_Camp::restartSounds()
 
 void Level_Forest_Camp::update(sf::Time &frametime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::Num8))
-		mPlayer->addItemToInventory("torch");
 	mFireAnimation.animate(frametime);
 
 	if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))

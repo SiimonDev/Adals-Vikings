@@ -16,7 +16,7 @@ void Level_Farm_1::restartSounds()
 
 void Level_Farm_1::update(sf::Time &frametime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::Num3))
+	if (KeyboardState::isPressed(sf::Keyboard::Num1))
 	{
 		mPlayer->addItemToInventory("mead");
 		mPlayer->addItemToInventory("flowers");
@@ -24,6 +24,7 @@ void Level_Farm_1::update(sf::Time &frametime)
 	}
 	if (Act1Events::hasBeenTriggered(Act1Event::GivenMeadToValdis) && !Act1Events::hasBeenHandled(Act1Event::GivenMeadToValdis))
 	{
+		if (mPlayer->hasItemInInventory("mead"))
 		mPlayer->removeItemFromInventory("mead");
 		if (!Act1Events::hasBeenHandled(Act1Event::GivenFlowerToValdis))
 		{
@@ -40,7 +41,6 @@ void Level_Farm_1::update(sf::Time &frametime)
 
 			if (DialogHandler::getDialogue("GotAll_Farm").getHasStopped())
 			{
-
 				if (!mFade1)
 				{
 					FadeI.fadeOut(frametime);
@@ -61,9 +61,9 @@ void Level_Farm_1::update(sf::Time &frametime)
 					}
 				}
 			}
-			if (DialogHandler::getDialogue("GotAll_Farm").getHasStopped())
+			if (DialogHandler::getDialogue("MadePill_Farm").getHasStopped())
 			{
-				mPlayer->addItemToInventory("sleepingAgent");
+				mPlayer->addItemToInventory("sleepingPill");
 				Act1Events::handleEvent(Act1Event::GivenMeadToValdis);
 			}
 		}
@@ -71,7 +71,8 @@ void Level_Farm_1::update(sf::Time &frametime)
 	}
 	if (Act1Events::hasBeenTriggered(Act1Event::GivenFlowerToValdis) && !Act1Events::hasBeenHandled(Act1Event::GivenFlowerToValdis))
 	{
-		mPlayer->removeItemFromInventory("flowers");
+		if (mPlayer->hasItemInInventory("flowers"))
+			mPlayer->removeItemFromInventory("flowers");
 		if (!Act1Events::hasBeenHandled(Act1Event::GivenMeadToValdis))
 		{
 			if (!DialogHandler::getDialogue("Flower_Farm").getActiveConversation() && !DialogHandler::getDialogue("Flower_Farm").getHasStopped())
