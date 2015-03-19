@@ -28,7 +28,7 @@ void MainMenuPanel::load()
 	mAxeAnimation.setIdleFrame(sf::Vector2i(5, 1));
 	mAxeAnimation.setIndex(50);
 
-	playButton = Button(Texture::MainMenuPlayButton, Font::Font1, sf::Vector2f());
+	playButton = Button(Texture::MainMenuPlayButton, sf::Vector2f());
 	playButton.setPosition(sf::Vector2f(1010, 275));
 	playButton.setOrigin(ButtonOrigin::Center);
 	playButton.setTextStyle(sf::Text::Bold);
@@ -36,7 +36,7 @@ void MainMenuPanel::load()
 	playButton.setDescriptionPosition(sf::Vector2f(200, 0));
 	playButton.setIndex(10);
 
-	optionButton = Button(Texture::MainMenuOptionsButton, Font::Font1, sf::Vector2f());
+	optionButton = Button(Texture::MainMenuOptionsButton, sf::Vector2f());
 	optionButton.setPosition(sf::Vector2f(960, 550));
 	optionButton.setOrigin(ButtonOrigin::Center);
 	optionButton.setTextStyle(sf::Text::Bold);
@@ -45,7 +45,7 @@ void MainMenuPanel::load()
 	optionButton.setIndex(10);
 	optionButton.setEnabled(false);
 
-	exitButton = Button(Texture::MainMenuQuitButton, Font::Font1, sf::Vector2f());
+	exitButton = Button(Texture::MainMenuQuitButton, sf::Vector2f());
 	exitButton.setPosition(sf::Vector2f(900, 810));
 	exitButton.setOrigin(ButtonOrigin::Center);
 	exitButton.setTextStyle(sf::Text::Bold);
@@ -61,7 +61,6 @@ void MainMenuPanel::load()
 
 void MainMenuPanel::unload()
 {
-	RMI.unloadResource(Font::Font1);
 	RMI.unloadResource(Texture::MainMenuPlayButton);
 	RMI.unloadResource(Texture::MainMenuOptionsButton);
 	RMI.unloadResource(Texture::MainMenuQuitButton);
@@ -104,6 +103,7 @@ void MainMenuPanel::update(sf::Time frameTime)
 				mAxeAnimation.restart();
 				mCurrentEvent = MenuEvent::PlayPressed;
 				mPlay = false;
+				mPlaySound = false;
 			}
 			else if (mQuit)
 			{

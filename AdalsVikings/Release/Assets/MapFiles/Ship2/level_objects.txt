@@ -1,34 +1,34 @@
 ############
 *id: $bucket
-position: $X:1490 $Y:601
+position: $X:1445 $Y:601
 interactPosition: $X:0 $Y:0
 index: $11
 scale: $0.6
 hascollision: $false
 ############
 *id: $oars
-position: $X:1200 $Y:651
+position: $X:1100 $Y:651
 interactPosition: $X:0 $Y:0
 index: $99
 scale: $1
 hascollision: $false
 ############
 *id: $box1
-position: $X:685 $Y:681
+position: $X:635 $Y:685
 interactPosition: $X:0 $Y:0
 index: $99
 scale: $1
 hascollision: $false
 ############
 *id: $box2
-position: $X:1700 $Y:733
+position: $X:1700 $Y:753
 interactPosition: $X:0 $Y:0
 index: $99
 scale: $1
 hascollision: $false
 ############
 *id: $box3
-position: $X:1485 $Y:657
+position: $X:1433 $Y:660
 interactPosition: $X:0 $Y:0
 index: $99
 scale: $1

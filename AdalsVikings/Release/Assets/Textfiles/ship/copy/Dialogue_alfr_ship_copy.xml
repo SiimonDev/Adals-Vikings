@@ -24,7 +24,7 @@
 			<text character="Alfr" say="No I am not." timer="2.0" disablePrevious="false" turned="true" />
 			<gotoContainer />
 		</option>
-		<option choice_text="Have you seen Adal's map around here?" disabled="true">
+		<option choice_text="Have you seen Adal's map around here?" disabled="false">
 			<text character="Ulfr" say="Have you seen Adal's map around here?" timer="2.5" turned="false" />
 			<text character="Alfr" say="Why would Adal need a map?" timer="2.4" turned="true" />
 			<text character="Alfr" say="I've sang songs of his deeds." timer="2.4" />

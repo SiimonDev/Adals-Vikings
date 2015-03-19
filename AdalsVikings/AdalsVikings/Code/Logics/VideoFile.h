@@ -2,7 +2,7 @@
 #include <SFML/OpenGL.hpp>
 #include <SFML/Graphics.hpp>
 #include <string>
-#include <vfw.h>
+
 
 namespace sf
 {

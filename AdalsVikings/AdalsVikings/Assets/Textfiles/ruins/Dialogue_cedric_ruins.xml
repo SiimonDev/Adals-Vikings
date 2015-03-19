@@ -2,8 +2,8 @@
 <conversation>
 	<useText useText="Yeah. Let's not." />
 	<lookText lookText="Thats the strongman Cerdic, i think?" />
-	<text character="Cerdic" disabled="false" default="false" say="YE BE TALKIN TO THE MIGHTIEST OF ALL WARRIORS!" timer="2.0"  turned="false"/>
-	<text character="Ulfr" disabled="false" default="false" say="You sure? " timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="You don't look like a &quot;powerhouse&quot; type" timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="THAT BE NOTHIN' BUT ILLUSIONS OF THE EYE SPEAKIN' TO YA BOYO." timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="I AM A MAN OF STEEL AND BLOOD!" timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="RAISED IN IT." timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="MOLDED BY IT." timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="I AM CERDIC, SLAYER OF THE SOUTH!" timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="as in, I slay the south." timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="I don't slay for them." timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="Don't want no one to get confused." timer="3.3"  turned="false"/>
+	<text character="Cerdic" disabled="false" default="false" say="YE BE TALKIN TO THE MIGHTIEST OF ALL WARRIORS!" timer="2.5"  turned="false"/>
+	<text character="Ulfr" disabled="false" default="false" say="You sure? " timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="You don't look like a &quot;powerhouse&quot; type" timer="2.4"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="THAT BE NOTHIN' BUT ILLUSIONS OF THE EYE SPEAKIN' TO YA BOYO." timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="I AM A MAN OF STEEL AND BLOOD!" timer="2.5"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="RAISED IN IT." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="MOLDED BY IT." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="I AM CERDIC, SLAYER OF THE SOUTH!" timer="2.4"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="as in, I slay the south." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="I don't slay for them." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="Don't want no one to get confused." timer="2.4"  turned="false"/>
 	
 	
 	
@@ -11,11 +11,11 @@
 	<option_container disabled="false">
 		<option choice_text="You sure seem fierce." disabled="true">
 			<text character="Ulfr" disabled="false" default="false" say="You sure seem fierce." timer="2.0"  turned="false"/>
-			<text character="Cerdic" disabled="false" default="false" say="Fierce?" timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="FIERCE!?" timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="THAT'S THE LEAST YOU CAN SAY ABOUT ME!" timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="There are some who are so scared of me, they call me a calamity of nature." timer="3.3"  turned="false"/>
+			<text character="Cerdic" disabled="false" default="false" say="Fierce?" timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="FIERCE!?" timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="THAT'S THE LEAST YOU CAN SAY ABOUT ME!" timer="2.7"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="There are some who are so scared of me, they call me a calamity of nature." timer="3.3"  turned="false"/>
 			<text character="Ulfr" disabled="false" default="false" say="Sounds horrifying." timer="2.0"  turned="false"/>
-			<text character="Cerdic" disabled="false" default="false" say="Indeed." timer="3.3"  turned="false"/>
-			<text character="Cerdic" disabled="false" default="false" say="So you best not screw with me boy!" timer="3.3"  turned="false"/>
-			<text character="Cerdic" disabled="false" default="false" say="...like really, just don't" timer="3.3"  turned="false"/>
+			<text character="Cerdic" disabled="false" default="false" say="Indeed." timer="2.0"  turned="false"/>
+			<text character="Cerdic" disabled="false" default="false" say="So you best not screw with me boy!" timer="2.4"  turned="false"/>
+			<text character="Cerdic" disabled="false" default="false" say="...like really, just don't" timer="2.0"  turned="false"/>
 			
 			
 			
@@ -23,7 +23,7 @@
 		</option>
 		<option choice_text="So... you fight for the north?">
 			<text character="Ulfr" disabled="false" default="false" say="So... you fight for the north?" timer="2.0"  turned="false"/>
-			<text character="Cerdic" disabled="false" default="false" say="We all do." timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="Northumbria is our home." timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="AND WE WILL DESTROY ALL WHO OPPOSE US!" timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="But recent days sees us fightinging the ones with gold..." timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="A man's gotta eat, after all." timer="3.3"  turned="false"/>
+			<text character="Cerdic" disabled="false" default="false" say="We all do." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="Northumbria is our home." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="AND WE WILL DESTROY ALL WHO OPPOSE US!" timer="2.5"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="But recent days sees us fighting the ones with gold..." timer="3.3"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="A man's gotta eat, after all." timer="2.3"  turned="false"/>
 			
 			
 			
@@ -40,13 +40,14 @@
 			<gotoBaseContainer />
 		</option>
 		<option choice_text="I heard something about you and theatre?" disabled="false">
-			<text character="Ulfr" disabled="false" default="false" say="I heard something about you and theatre?" timer="2.0"  turned="false"/>
-			<text character="Cerdic" disabled="false" default="false" say="Yes." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="I was the greatest back in my hometown." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="Even reached the capital once." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="But then IT happened." timer="2.0"  turned="false"/>
+			<text character="Ulfr" disabled="false" default="false" say="I heard something about you and theatre?" timer="2.5"  turned="false"/>
+			<text character="Cerdic" disabled="false" default="false" say="Yes." timer="1.8"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="I was the greatest back in my hometown." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="Even reached the capital once." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="But then IT happened." timer="2.0"  turned="false"/>
 			<text character="Ulfr" disabled="false" default="false" say="What's IT?" timer="2.0"  turned="false"/>
-			<text character="Cerdic" disabled="false" default="false" say="I got heckled." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="So i killed the heckler." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Oh..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Well, I'm sure he had it ocming." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="Oh he did." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="I mean, who coughs during someones show?" timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="Like seriously. So rude." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="What kind of a self-respecting human does that?" timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="...d-definitely." timer="2.0"  turned="false"/>
+			<text character="Cerdic" disabled="false" default="false" say="I got heckled." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="So i killed the heckler." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Oh..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Well, I'm sure he had it coming." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="Oh he did." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="I mean, who coughs during someones show?" timer="2.5"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="Like seriously. So rude." timer="2.0"  turned="false"/><text character="Cerdic" disabled="false" default="false" say="What kind of a self-respecting human does that?" timer="2.5"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="...d-definitely." timer="2.0"  turned="false"/>
 			<gotoContainer />
 		</option>
 		<option choice_text="It was nice talking to you." disabled="false">
+			<text say="It was nice talking to you." character="Ulfr" timer="2.0"></text><text say="Hfm." character="Cerdic" timer="2.0"></text>
 			<stopConversation />
 		</option>
 		<stopOption />

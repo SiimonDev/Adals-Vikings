@@ -18,17 +18,17 @@ void PlayPanel::load()
 	mBackground.setTexture(RMI.getResource(Texture::PlayMenuBackground));
 	mBackground.setPosition(0, 0);
 
-	newGameButton = Button(Texture::PlayMenuNewGameButton, Font::Font1, sf::Vector2f()/*, "Resume the game"*/);
+	newGameButton = Button(Texture::PlayMenuNewGameButton, sf::Vector2f());
 	newGameButton.setPosition(sf::Vector2f(275, 710));
 	newGameButton.setOrigin(ButtonOrigin::Center);
 	newGameButton.setIndex(mIndex + 1);
 
-	loadButton = Button(Texture::PlayMenuLoadGameButton, Font::Font1, sf::Vector2f()/*, "Resume the game"*/);
+	loadButton = Button(Texture::PlayMenuLoadGameButton, sf::Vector2f());
 	loadButton.setPosition(sf::Vector2f(905, 715));
 	loadButton.setOrigin(ButtonOrigin::Center);
 	loadButton.setIndex(mIndex + 1);
 
-	menuButton = Button(Texture::PlayMenuMenuButton, Font::Font1, sf::Vector2f()/*, "Go to options menu"*/);
+	menuButton = Button(Texture::PlayMenuMenuButton, sf::Vector2f());
 	menuButton.setPosition(sf::Vector2f(1540, 720));
 	menuButton.setOrigin(ButtonOrigin::Center);
 	menuButton.setIndex(mIndex + 1);

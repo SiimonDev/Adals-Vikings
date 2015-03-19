@@ -3,8 +3,8 @@
 	<useText useText="Yeah... or not?" />
 	<lookText lookText="That's Brynja. She's the strongest shieldmaiden in the north. I do NOT want to get on her bad side." />
 	<text character="Ulfr" disabled="false" default="false" say="Where are Brandr and the others?" timer="2.2" turned="true" />
-	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="You tihnk I'd be the one to ask?" timer="2.0" turned="false" />
-	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="They still havn't returned from scouting out that small house to the east." timer="3.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="You think I'd be the one to ask?" timer="2.0" turned="false" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="They still haven't returned from scouting out that small house to the east." timer="3.0" />
 	<text character="Ulfr" disabled="false" default="false" say="Scary." timer="1.6" turned="true" />
 	<text character="Ulfr" disabled="false" default="false" say="Maybe the Anglians found them?" timer="2.0" />
 	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="Doubt it." timer="1.8" turned="false" />

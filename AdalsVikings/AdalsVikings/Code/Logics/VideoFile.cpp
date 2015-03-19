@@ -1,5 +1,6 @@
 #include "VideoFile.h"
 #include <iostream>
+#include <vfw.h>
 
 using namespace sf;
 
@@ -156,6 +157,7 @@ void VideoFile::restart()
 void VideoFile::close()
 {
 	CloseAVI();
+	glDeleteTextures(1, &textureID);
 }
 
 VideoFile::Status VideoFile::getStatus()
