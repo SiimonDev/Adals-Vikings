@@ -1,6 +1,6 @@
 *Type: invisible
 *ID: $box2$
-*Name: Box
+*Name: Boxes
 *ispickupable: False
 *pickup: "Nope. Nothing here for me." ~2,0
 *lookat: "It's filled with a bunch of smaller boxes." ~2,5
@@ -8,4 +8,4 @@
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:170    Y:80
+*invisible: X:210  Y:100
