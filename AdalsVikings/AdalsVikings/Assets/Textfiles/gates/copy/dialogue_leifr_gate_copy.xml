@@ -2,11 +2,11 @@
 <conversation>
 	<useText useText="I don't think im strong enough to do that. " />
 	<lookText lookText="My buddy Leifr. He’s the most peaceful dude I know, and he’s always there to help. " />
-	<text character="Ulfr" disabled="false" default="false" say="Hey, What's goin' on-" timer="1.4" turned="false" />
-	<text character="Leifr" disabled="false" default="false" disablePrevious="" say="*Ssh*" timer="1.4" turned="false" />
-	<text character="Leifr" disabled="false" default="false" disablePrevious="" say="*I don't think he's noticed us.*" timer="1.8" turned="false" />
-	<text character="Leifr" disabled="false" default="false" disablePrevious="" say="*Yet.*" timer="1.4" turned="false" />
-	<text character="Ulfr" disabled="true" default="true" say="*Hey...*" timer="1.4" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Hey, What's goin' on-" timer="1.4" turned="false" />
+	<text character="Leifr" disabled="true" default="false" disablePrevious="" say="*Ssh*" timer="1.4" turned="false" />
+	<text character="Leifr" disabled="true" default="false" disablePrevious="" say="*I don't think he's noticed us.*" timer="1.8" turned="false" />
+	<text character="Leifr" disabled="true" default="false" disablePrevious="" say="*Yet.*" timer="1.4" turned="false" />
+	<text character="Ulfr" disabled="false" default="true" say="*Hey...*" timer="1.4" turned="false" />
 	<option_container disabled="false">
 		<option choice_text="Have you found a way in?" disabled="true">
 			<text character="Ulfr" disablePrevious="false" say="Have you found a way in?" timer="2.0" disabled="false" turned="false" />

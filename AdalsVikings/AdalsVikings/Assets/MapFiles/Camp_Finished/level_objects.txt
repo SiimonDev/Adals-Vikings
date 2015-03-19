@@ -3,48 +3,48 @@
 position: $X:1600 $Y:855
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $tent2
 position: $X:1700 $Y:620
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $tent3
 position: $X:1275 $Y:520
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $tent4
 position: $X:815 $Y:520
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $tent5
 position: $X:580 $Y:555
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $firePlaceCamp2
 position: $X:950 $Y:810
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $boxInCamp
 position: $X:720 $Y:800
 interactPosition: $X:0 $Y:0
 index: $99
-scale: $1.0
+scale: $1
 hascollision: $false
 ############

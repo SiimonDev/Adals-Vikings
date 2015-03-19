@@ -36,8 +36,8 @@ Game::Game()
 	KeyboardState::initialize();
 	MouseState::initialize();
 
-	videFile.openFromFile("assets/video/newgame_ut1_5.avi");
-	
+	videFile.openFromFile("assets/video/AdalsVikings2.avi");
+
 	videFile.setSize(960, 540);
 	videFile.setPosition((1920 / 2) - (960 / 2), (1080 / 2) - (540 / 2));
 

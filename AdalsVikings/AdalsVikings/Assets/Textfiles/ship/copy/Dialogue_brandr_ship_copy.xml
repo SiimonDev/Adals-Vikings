@@ -78,7 +78,7 @@
 			<text character="Brandr" default="false" disabled="false" say="Is that?" timer="1.4" />
 			<stopConversation />
 		</option>
-		<option choice_text="Not yet..." disabled="false">
+		<option choice_text="Not yet..." disabled="true">
 			<text character="Ulfr" say="Not yet..." timer="2.1" turned="false" />
 			<text character="Brandr" say="Well hurry up then!" timer="2.1" turned="true" />
 			<stopConversation />

@@ -2,9 +2,9 @@
 <conversation>
 	<useText useText="I don't think im strong enough to do that. " />
 	<lookText lookText="My buddy Leifr. He's the most peaceful dude I know, and he's always there to help. " />
-	<text character="Ulfr" default="false" disabled="false" say="I got a bear deer costume!" timer="2.3" turned="false" />
-	<text character="Ulfr" default="false" disabled="false" say="Or you know, something like that..." timer="2.3" turned="false" />
-	<text character="Leifr" default="false" disabled="false" say="Great! I'll meet you in the forest" timer="2.3" turned="true" />
+	<text character="Ulfr" default="false" disabled="true" say="I got a bear deer costume!" timer="2.3" turned="false" />
+	<text character="Ulfr" default="false" disabled="true" say="Or you know, something like that..." timer="2.3" turned="false" />
+	<text character="Leifr" default="false" disabled="true" say="Great! I'll meet you in the forest" timer="2.3" turned="true" />
 	<text character="Leifr" default="true" disabled="false" say="Let's just hope Brynja dosen't see me sneaking off." timer="2.3" turned="true" />
 	<stopConversation />
 </conversation>

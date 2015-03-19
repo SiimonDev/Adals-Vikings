@@ -10,7 +10,7 @@
 	<text character="Yngvarr" disabled="false" default="false" say="I've checked the supplies and everything." timer="2.3"></text><text character="Yngvarr" default="false" disabled="false" say="I just can't seem to find it." timer="2.0"></text><text character="Yngvarr" default="false" disabled="false" say="It's like Adal's map has just vanished." timer="2.4"></text>
 	<text character="Brandr" disabled="false" default="false" say="Idiot." timer="1.3" turned="false"></text>
 	<text character="Brandr" disabled="false" default="false" say="..." timer="0.8" turned="false"></text>
-	<text character="Ulfr" disabled="false" default="false" say="Lost, brandr?" timer="1.7" turned="false"></text><text character="Brandr" default="false" disabled="false" say="Shut." timer="0.8" turned="true"></text>
+	<text character="Ulfr" disabled="false" default="false" say="Lost, Brandr?" timer="1.7" turned="false"></text><text character="Brandr" default="false" disabled="false" say="Shut." timer="0.8" turned="true"></text>
 	
 	<text character="Brandr" say="Your." timer="0.8" turned="true" default="false" disabled="false"></text>
 	<text character="Brandr" default="false" disabled="false" say="Face." timer="0.8" turned="true"></text>

@@ -2,9 +2,9 @@
 <conversation>
 	<useText useText="Why would I use Valdis?" />
 	<lookText lookText="She seems to be stuck in a staring contest with the ocean." />
-	<text character="Ulfr" disabled="false" default="false" say="There, that should hopefully be all you need." timer="2.4" turned="true" />
-	<text character="Valdis" disabled="false" default="false" say="Yea, this will probably work." turned="false" timer="2.3" />
-	<text character="Valdis" disabled="false" default="false" say="I whish that I had brought my boiling-kit from home." turned="false" timer="2.3" />
-	<text character="Valdis" disabled="false" default="false" say="But I will have to make due." turned="false" timer="2.3" />
+	<text character="Ulfr" disabled="true" default="false" say="There, that should hopefully be all you need." timer="2.4" turned="true" />
+	<text character="Valdis" disabled="true" default="false" say="Yea, this will probably work." turned="false" timer="2.3" />
+	<text character="Valdis" disabled="true" default="false" say="I whish that I had brought my boiling-kit from home." turned="false" timer="2.3" />
+	<text character="Valdis" disabled="true" default="false" say="But I will have to make due." turned="false" timer="2.3" />
 	<stopConversation />
 </conversation>
