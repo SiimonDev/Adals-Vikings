@@ -21,7 +21,7 @@
 			<text character="Valdis" say="Give me a break." timer="2.0" disablePrevious="true" />
 			<gotoContainer />
 		</option>
-		<option disabled="true" disablePrevious="false" choice_text="Have you seen Adal's map?">
+		<option disabled="false" disablePrevious="false" choice_text="Have you seen Adal's map?">
 			<text character="Ulfr" disablePrevious="false" timer="1.5" say="Hey Valdis." turned="true" />
 			<text character="Ulfr" say="Have you seen Adal's map?" timer="2.2" />
 			<text character="Valdis" say="A map?" timer="1.8" turned="false" />

@@ -7,7 +7,7 @@
 	<text character="Ulfr" disabled="true" default="true" say="Hey Dagny!" timer="1.6" turned="false" />
 	<text character="Dagny" disabled="true" default="true" say="Hey wimp!" timer="1.6" turned="true" />
 	<option_container disabled="false">
-		<option choice_text="...you wouldn't have happened to see a map around here, have you?" disabled="true">
+		<option choice_text="...you wouldn't have happened to see a map around here, have you?" disabled="false">
 			<text say="...you wouldn't have happened to see a map around here, have you?" timer="3.3" character="Ulfr" turned="false" />
 			<text character="Dagny" say="Yes, of course!" timer="2.0" turned="true" />
 			<text character="Dagny" say="It's right here in my pocket, next to my steel sword," timer="2.5" />
