@@ -5,7 +5,7 @@
 *pickup: "Anybody using this? No? Alright then." ~2,0
 *lookat: "It has to be used for something, right?" ~1,5
 *deny: "Can't be used for that." ~1,5
-*denywith: 
+*denywith: $Totem$ "It would burn too fast. I need something to keep the flame going for a bit longer..." ~1,5;
 *combine: 
 *interact: 
 *texture: "img_stickCloth_id.png"
