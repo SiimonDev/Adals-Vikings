@@ -2,18 +2,18 @@
 <conversation>
 	<useText useText="That's not how it works..." />
 	<lookText lookText="That's the &quot;so cool&quot; hipst- err, i mean druids." />
-	<text character="Druid Leader" disabled="true" default="false" say="...!" timer="2.0" turned="false" />
-	<text character="Druid Leader" disabled="true" default="false" say="URSA VERCUS.. er i mean URSA CERVUS!" timer="2.0" turned="false" />
-	<text character="Druids" disabled="true" default="false" say="URSA CERVUS!" timer="2.0" turned="false" />
-	<text character="Hipster Druid" disabled="true" default="false" say="...bear deer!" timer="2.0" turned="false" />
-	<text character="Druid Leader" disabled="true" default="false" say="No, you idiots!" timer="2.0" turned="false" />
-	<text character="Druid Leader" disabled="true" default="false" say="HE HAS COME!" timer="2.0" turned="false" />
-	<text character="Druid Leader" disabled="true" default="false" say="Oh, great god of the forest." timer="2.0" turned="false" />
-	<text character="Druid Leader" disabled="true" default="false" say="We have taken this wood from your enemy's hand" timer="2.0" turned="false" />
-	<text character="Druid Leader" disabled="true" default="false" timer="2.0" turned="false" say="And burned it in your righteous fire." />
-	<text character="Druid Leader" disabled="true" default="false" say="What we wish for in return, is naught but your blessing." timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="...!" timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="URSA VERCUS.. er i mean URSA CERVUS!" timer="2.0" turned="false" />
+	<text character="Druids" disabled="false" default="false" say="URSA CERVUS!" timer="2.0" turned="false" />
+	<text character="Hipster Druid" disabled="false" default="false" say="...bear deer!" timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="No, you idiots!" timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="HE HAS COME!" timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="Oh, great god of the forest." timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="We have taken this wood from your enemy's hand" timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" timer="2.0" turned="false" say="And burned it in your righteous fire." />
+	<text character="Druid Leader" disabled="false" default="false" say="What we wish for in return, is naught but your blessing." timer="2.0" turned="false" />
 	<option_container disabled="false">
-		<option choice_text="So... NOW THAT I'VE BLESSED YOU GUYS..." disabled="false">
+		<option choice_text="So... NOW THAT I'VE BLESSED YOU GUYS..." disabled="true">
 			<text character="Ulfr" disablePrevious="false" say="So... NOW THAT I'VE BLESSED YOU GUYS..." timer="1.2" />
 			<text character="Ulfr" disablePrevious="false" say="WHAT ARE YOU GOING TO DO NOW?" timer="1.2" />
 			<text character="Hipster Druid" disabled="false" default="false" timer="2.0" turned="false" say="Barbeque!" />
@@ -76,7 +76,7 @@
 			<text character="Druid Leader" enable="So... NOW THAT I'VE BLESSED YOU GUYS..." disabled="false" default="false" timer="2.0" turned="false" say="Oh thank you, dear bear-deer god of the forest, watcher of the night..." disablePrevious="true" />
 			<gotoBaseContainer />
 		</option>
-		<option choice_text="I WILL NOW GRANT YOU MY BLESSING" disabled="true">
+		<option choice_text="I WILL NOW GRANT YOU MY BLESSING" disabled="false">
 			<text character="Ulfr" disablePrevious="false" say="I WILL NOW GRANT YOU MY BLESSING" timer="1.2" />
 			<text character="Ulfr" disablePrevious="false" say=". . . " timer="1.2" />
 			<text character="Leifr" disabled="false" default="false" say="*did he buy it?*" timer="2.0" turned="false" />
@@ -119,7 +119,7 @@
 			<text character="Druid Leader" disabled="false" enable="Holy words?" default="false" say="Just speak the holy words... whenever you're ready..." timer="2.0" turned="false" disablePrevious="true" />
 			<gotoContainer />
 		</option>
-		<option choice_text="Can i have some fire?" disabled="true">
+		<option choice_text="Can i have some fire?" disabled="false">
 			<text character="Ulfr" disablePrevious="false" say="THATS A NICE FIRE YOU HAVE THERE" timer="1.2" />
 			<text character="Druid Leader" disabled="false" default="false" say="All for you, of course, Ursa Cervus" timer="2.0" turned="false" />
 			<text character="Druids" disabled="false" default="false" say="URSA CERVUS!" timer="2.0" turned="false" />

@@ -2,21 +2,21 @@
 <conversation>
 	<useText useText="Yeah. No. I wanna try and survive this?" />
 	<lookText lookText="That's the mercs leader, Aethelberthberth" />
-	<text character="Ulfr" disabled="true" default="false" say="What was that?" timer="2.0" turned="false" />
-	<text character="Aethelberth" disabled="true" default="false" say="That? just a rockslide." timer="2.0" turned="false" />
-	<text character="Aethelberth" disabled="true" default="false" say="One of many i'm afraid." timer="2.0" turned="false" />
-	<text character="Aethelberth" disabled="true" default="false" say="Must be the old mine beneath us." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Sounds dangerous?" timer="2.0" turned="false" />
-	<text character="Aethelberth" disabled="true" default="false" say="HAH!" timer="2.0" turned="false" />
-	<text character="Aethelberth" disabled="true" default="false" say="Out here, WE are the danger!" timer="2.0" turned="false" />
-	<text character="Aethelberth" disabled="true" default="false" say="A hole in the ground won't scare us!" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Good luck then, i guess?" timer="2.0" turned="false" />
-	<text character="Aethelberth" disabled="true" default="false" say="We don't need it!" timer="2.0" turned="false" />
-	<text character="Aethelberth" disabled="true" default="false" say="Or what say you, Cerdic?" timer="2.0" turned="true" />
-	<text character="Cerdic" disabled="true" default="false" say="WE DON'T NEED IT" timer="2.0" turned="false" />
-	<text disabled="true" default="false" say="Brutha." timer="2.0" turned="false" character="Leofstan" />
-	<text character="Aethelberth" disabled="true" default="false" say="That's right baby." timer="2.0" turned="true" />
-	<text character="Aethelberth" disabled="true" default="false" say="Damn straight." timer="2.0" turned="true" />
+	<text character="Ulfr" disabled="false" default="false" say="What was that?" timer="2.0" turned="false" />
+	<text character="Aethelberth" disabled="false" default="false" say="That? just a rockslide." timer="2.0" turned="false" />
+	<text character="Aethelberth" disabled="false" default="false" say="One of many i'm afraid." timer="2.0" turned="false" />
+	<text character="Aethelberth" disabled="false" default="false" say="Must be the old mine beneath us." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Sounds dangerous?" timer="2.0" turned="false" />
+	<text character="Aethelberth" disabled="false" default="false" say="HAH!" timer="2.0" turned="false" />
+	<text character="Aethelberth" disabled="false" default="false" say="Out here, WE are the danger!" timer="2.0" turned="false" />
+	<text character="Aethelberth" disabled="false" default="false" say="A hole in the ground won't scare us!" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Good luck then, i guess?" timer="2.0" turned="false" />
+	<text character="Aethelberth" disabled="false" default="false" say="We don't need it!" timer="2.0" turned="false" />
+	<text character="Aethelberth" disabled="false" default="false" say="Or what say you, Cerdic?" timer="2.0" turned="true" />
+	<text character="Cerdic" disabled="false" default="false" say="WE DON'T NEED IT" timer="2.0" turned="false" />
+	<text disabled="false" default="false" say="Brutha." timer="2.0" turned="false" character="Leofstan" />
+	<text character="Aethelberth" disabled="false" default="false" say="That's right baby." timer="2.0" turned="true" />
+	<text character="Aethelberth" disabled="false" default="false" say="Damn straight." timer="2.0" turned="true" />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />

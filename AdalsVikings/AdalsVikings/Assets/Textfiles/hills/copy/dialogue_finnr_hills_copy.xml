@@ -4,18 +4,18 @@
 	<lookText lookText="My friend Finnr. We've known each other for a long time, and we're great friends, even if he's a bit strange at times." />
 	<text character="Finnr" say="Hey Ulfr." timer="1.6" turned="false" default="true" disabled="false" />
 	<text character="Ulfr" say="Hey Buddy." timer="1.6" turned="true" default="true" disabled="false" />
-	<text character="Ulfr" say="What are you doing here?" timer="1.6" turned="true" default="false" disabled="true" />
-	<text character="Finnr" say="I wanted to see if there was some other way into the city." timer="2.8" turned="false" default="false" disabled="true" />
-	<text character="Finnr" say="But it seems like the wall reaches all the way around." timer="2.6" turned="false" default="false" disabled="true" />
-	<text character="Finnr" say="It's beautiful." timer="2.0" turned="false" default="false" disabled="true" />
-	<text character="Finnr" say="The hills remind me of my home in the north." timer="2.6" turned="false" default="false" disabled="true" />
-	<text character="Finnr" say="It's as if the northern giants have tossed rocks across the ocean for a thousand years." timer="3.3" turned="false" default="false" disabled="true" />
-	<text character="Finnr" say="And the rocks have piled up here, in this grand place." timer="2.6" turned="false" default="false" disabled="true" />
-	<text character="Ulfr" say="..." timer="1.8" turned="false" default="false" disabled="true" />
-	<text character="Ulfr" say="A bit poetic for my taste." timer="2.2" turned="false" default="false" disabled="true" />
-	<text character="Ulfr" say="But yeah, sure." timer="2.0" turned="false" default="false" disabled="true" />
+	<text character="Ulfr" say="What are you doing here?" timer="1.6" turned="true" default="false" disabled="false" />
+	<text character="Finnr" say="I wanted to see if there was some other way into the city." timer="2.8" turned="false" default="false" disabled="false" />
+	<text character="Finnr" say="But it seems like the wall reaches all the way around." timer="2.6" turned="false" default="false" disabled="false" />
+	<text character="Finnr" say="It's beautiful." timer="2.0" turned="false" default="false" disabled="false" />
+	<text character="Finnr" say="The hills remind me of my home in the north." timer="2.6" turned="false" default="false" disabled="false" />
+	<text character="Finnr" say="It's as if the northern giants have tossed rocks across the ocean for a thousand years." timer="3.3" turned="false" default="false" disabled="false" />
+	<text character="Finnr" say="And the rocks have piled up here, in this grand place." timer="2.6" turned="false" default="false" disabled="false" />
+	<text character="Ulfr" say="..." timer="1.8" turned="false" default="false" disabled="false" />
+	<text character="Ulfr" say="A bit poetic for my taste." timer="2.2" turned="false" default="false" disabled="false" />
+	<text character="Ulfr" say="But yeah, sure." timer="2.0" turned="false" default="false" disabled="false" />
 	<option_container disabled="false">
-		<option choice_text="Are you heading back soon?" disabled="true">
+		<option choice_text="Are you heading back soon?" disabled="false">
 			<text character="Ulfr" say="Are you heading back soon?" timer="2.4" turned="true" default="false" disabled="false" />
 			<text character="Finnr" say="Yeah." timer="1.8" turned="false" default="false" disabled="false" />
 			<text character="Finnr" say="I'm just going to take a little stroll first." timer="2.4" turned="false" default="false" disabled="false" />
@@ -27,7 +27,7 @@
 			<text character="Ulfr" say="Alright." timer="1.8" turned="true" default="false" disabled="false" disablePrevious="true" />
 			<gotoBaseContainer />
 		</option>
-		<option choice_text="What's that hole in the hill over there?" disabled="true">
+		<option choice_text="What's that hole in the hill over there?" disabled="false">
 			<text character="Ulfr" say="What's that hole in the hill over there?" timer="2.3" turned="true" default="false" disabled="false" />
 			<text character="Finnr" say="I don't know." timer="2.3" turned="false" default="false" disabled="false" />
 			<text character="Finnr" say="But when I went closer before..." timer="2.4" turned="false" default="false" disabled="false" />
