@@ -1,4 +1,5 @@
 #include "Level_Farm_2.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Farm_2::Level_Farm_2(Player &player, HUD &hud, ActionWheel &actionWheel)
@@ -9,7 +10,8 @@ Level_Farm_2::Level_Farm_2(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Farm_2::restartSounds()
 {
-
+	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
 }
 
 void Level_Farm_2::update(sf::Time &frametime)

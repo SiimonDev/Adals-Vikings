@@ -1,4 +1,5 @@
 #include "Level_Cavern_Right.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_Cavern_Right::Level_Cavern_Right(Player &player, HUD &hud, ActionWheel &actionWheel)
@@ -12,7 +13,8 @@ Level_Cavern_Right::Level_Cavern_Right(Player &player, HUD &hud, ActionWheel &ac
 
 void Level_Cavern_Right::restartSounds()
 {
-
+	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Cavern_Ambient, true, 20);
 }
 
 void Level_Cavern_Right::update(sf::Time &frametime)
@@ -41,9 +43,18 @@ void Level_Cavern_Right::update(sf::Time &frametime)
 				
 				if (FadeI.getFaded())
 				{
-					LVLMI.changeLevel(LevelFolder::Cavern_Ruins_Right);
-					mPlayer->setPosition(sf::Vector2f(1390, 645));
-					mFade1 = true;
+					if (!FadeI.getWait())
+					{
+						AudioPlayer::playHDDSound(HDDSound::Cavern_Collapse, false);
+						FadeI.setWaitDuration(sf::seconds(10));
+					}
+					FadeI.wait(frametime);
+					if (FadeI.getFinishedWaiting())
+					{
+						LVLMI.changeLevel(LevelFolder::Cavern_Ruins_Right);
+						mPlayer->setPosition(sf::Vector2f(1390, 645));
+						mFade1 = true;
+					}
 				}
 			}
 		}
@@ -121,6 +132,9 @@ void Level_Cavern_Right::changeLevel()
 	if (mPortals[CavernsToCliffs]->getActivated() && mPortals[CavernsToCliffs]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Cliffs_Down);
+		AudioPlayer::stopHDDSound(HDDSound::Forest_Music);
+		AudioPlayer::stopHDDSound(HDDSound::Cavern_Ambient);
+		mRestartSounds = true;
 	}
 	if (mPortals[CavernsRightToLeft]->getActivated() && mPortals[CavernsRightToLeft]->getWorking())
 	{

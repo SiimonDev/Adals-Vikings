@@ -17,6 +17,10 @@ LoadingScreen::LoadingScreen()
 {
 	
 }
+LoadingScreen::~LoadingScreen()
+{
+	terminate();
+}
 
 LoadingScreen & LoadingScreen::getInstance()
 {
@@ -27,7 +31,6 @@ LoadingScreen & LoadingScreen::getInstance()
 
 	return *instance;
 }
-
 void LoadingScreen::initialize()
 {
 	mThread = ThreadPtr(new std::thread(&LoadingScreen::runTask, this));
@@ -38,19 +41,19 @@ void LoadingScreen::initialize()
 	RMI.loadResource(Texture::LoadingThingyAnimation);
 	RMI.loadResource(Font::Font1);
 
+	mLoadingText.setFont(RMI.getResource(Font::Font1));
+	mLoadingText.setPosition(sf::Vector2f(200, 1000));
+	mLoadingText.setString("Press [Space] To Skip");
+	mLoadingText.setOrigin(mLoadingText.getGlobalBounds().width / 2, mLoadingText.getGlobalBounds().height / 2);
+
 	mBackground.setTexture(RMI.getResource(Texture::LoadingScreenBackground));
 	mBackground.setPosition(0, 0);
+
 	mLoadAnimation.load(RMI.getResource(Texture::LoadingThingyAnimation), sf::Vector2i(3, 4), sf::milliseconds(1000), sf::seconds(0), true);
 	mLoadAnimation.getSprite().setOrigin(mLoadAnimation.getSpriteSize().x / 2, mLoadAnimation.getSpriteSize().y / 2);
 	mLoadAnimation.setPosition(sf::Vector2f(1920 / 2, 1080 / 2));
 	mLoadAnimation.setProportions(sf::Vector2f(954, 259));
 	mLoadAnimation.setIndex(22);
-}
-
-LoadingScreen::~LoadingScreen()
-{
-	terminate();
-	//mThread->join();
 }
 
 void LoadingScreen::update(sf::Time frameTime)
@@ -62,10 +65,11 @@ void LoadingScreen::update(sf::Time frameTime)
 	{
 		if (mCurrentVideo != NULL)
 		{
-			if (mCurrentVideo->getStatus() == sf::VideoFile::Paused /*|| Skipp stuff here */)
+			if (mCurrentVideo->getStatus() == sf::VideoFile::Paused || KeyboardState::isPressed(sf::Keyboard::Space))
 			{
 				mIsDone = true;
 				mStart = false;
+				mCurrentVideo->close();
 			}
 		}
 		else
@@ -76,16 +80,19 @@ void LoadingScreen::update(sf::Time frameTime)
 	}
 	else
 	{
-		if (mCurrentVideo == NULL)
+		if (!mFinished)
 			mLoadAnimation.animate(frameTime);
 		mIsDone = false;
 	}
 }
-
 void LoadingScreen::render(IndexRenderer &iRenderer)
 {
 	if (mCurrentVideo != NULL)
 	{
+		if (!mFinished)
+			mLoadAnimation.render(iRenderer);
+		else
+			iRenderer.addText(mLoadingText, 22);
 		mCurrentVideo->render(CurrentWindow);
 	}
 	else
@@ -102,12 +109,20 @@ void LoadingScreen::startLoading(LoadTask task, sf::VideoFile* videoFile)
 	{
 		mCurrentVideo->restart();
 		mCurrentVideo->play();
+
+		mLoadAnimation.setPosition(sf::Vector2f(200, 1000));
+		mLoadAnimation.setScale(sf::Vector2f(0.3f, 0.3f));
+	}
+	else
+	{
+		mLoadAnimation.setPosition(sf::Vector2f(1920 / 2, 1080 / 2));
+		mLoadAnimation.setScale(sf::Vector2f(1.0f, 1.0f));
 	}
 	mTask = task;
 	if (mTask != LoadTask::LoadNearbyLevels)
 	{
 		srand(time(NULL));
-		int stuff = (rand() % 10) + 1;
+		int stuff = (rand() % 100) + 1;
 		if (stuff == 1)
 			mBackground.setTexture(RMI.getResource(Texture::LoadingScreenBackgroundX));
 		else
@@ -115,6 +130,7 @@ void LoadingScreen::startLoading(LoadTask task, sf::VideoFile* videoFile)
 
 		mStart = true;
 		mFinished = false;
+		mIsDone = false;
 	}
 	else
 	{
@@ -126,12 +142,10 @@ void LoadingScreen::terminate()
 {
 	mTask = LoadTask::Finished;
 }
-
 bool &LoadingScreen::getIsDone()
 {
-	return mFinished;
+	return mIsDone;
 }
-
 bool &LoadingScreen::getIsStarted()
 {
 	return mStart;
@@ -181,8 +195,8 @@ void LoadingScreen::runTask()
 			{
 				LVLMI.unloadCurrentAct();
 				LVLMI.loadAct1(true);
-				mStart = false;
-				mFinished = true;
+				//mStart = false;
+				//mFinished = true;
 			}
 			mTask = LoadTask::None;
 

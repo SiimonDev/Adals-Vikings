@@ -1,3 +1,3 @@
-*mapID: 2
+*mapID: 1
 *currentActID: 1
-*playerPos: 1860, 730
+*playerPos: 0, 750

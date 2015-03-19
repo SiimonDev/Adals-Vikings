@@ -23,7 +23,7 @@ void DialogHandler::reloadConversations()
 		it->second->reloadConverstaion();
 }
 
-void DialogHandler::load(bool reset)
+void DialogHandler::load(bool reset, Player &player)
 {
 	RMI.loadResource(Font::Skranji_regular);
 	instream.open("assets/textfiles/Dialogues.txt");
@@ -37,7 +37,7 @@ void DialogHandler::load(bool reset)
 		if (id != "" && id.find("---") == std::string::npos && filepath != "" && filepath.find("---") == std::string::npos)
 		{
 
-			DialogueTreePtr dialouge(new DialogueTree(Font::Skranji_regular));
+			DialogueTreePtr dialouge(new DialogueTree(Font::Skranji_regular, player));
 			dialouge->setDialogue(filepath);
 
 			mDialogueMap.insert(std::make_pair(id, std::move(dialouge)));

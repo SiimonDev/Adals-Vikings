@@ -2,7 +2,7 @@
 *ID: $scroll$
 *Name: Scroll
 *ispickupable: True
-*pickup: "Oh yeah, this must be his letter." ~2,0
+*pickup: "Oh yeah, this must be the mailmans letter." ~2,0
 *lookat: "Better give it to the courier." ~1,5
 *deny: "Nah." ~1,5
 *denywith: 

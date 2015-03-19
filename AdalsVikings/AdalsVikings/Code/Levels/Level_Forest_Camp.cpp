@@ -16,10 +16,8 @@ void Level_Forest_Camp::restartSounds()
 
 void Level_Forest_Camp::update(sf::Time &frametime)
 {
-	if (KeyboardState::isPressed(sf::Keyboard::Num1))
-		mPlayer->addItemToInventory("bearDeer");
-	if (KeyboardState::isPressed(sf::Keyboard::Num2))
-		mPlayer->addItemToInventory("stickWetCloth");
+	if (KeyboardState::isPressed(sf::Keyboard::Num8))
+		mPlayer->addItemToInventory("torch");
 	mFireAnimation.animate(frametime);
 
 	if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
@@ -37,7 +35,7 @@ void Level_Forest_Camp::update(sf::Time &frametime)
 				mPlayer->UpdateAnimationStyle();
 				mNpcs.erase("Leifr");
 				mNpcs["HiddenLeifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("HiddenLeifr")));
-				mNpcs["HiddenLeifr"]->setPosition(sf::Vector2f(1570, 508));
+				mNpcs["HiddenLeifr"]->setPosition(sf::Vector2f(1570, 408));
 				mFade1 = true;
 			}
 		}
@@ -60,7 +58,7 @@ void Level_Forest_Camp::update(sf::Time &frametime)
 			}
 			if (mPlayer->isDestinationReached())
 			{
-				mNpcs["HiddenLeifr"]->setPosition(sf::Vector2f(800, 900));
+				mNpcs["HiddenLeifr"]->setPosition(sf::Vector2f(800, 600));
 				mDestinationReached = true;
 			}
 		}

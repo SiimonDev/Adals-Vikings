@@ -2,10 +2,10 @@
 *ID: $barrel$
 *Name: Barrel
 *ispickupable: False
-*pickup: "Too heavy. WAAAY too heavy." ~2,0
-*lookat: "I hope it's filled with some type of edible. " ~1,5
+*pickup: "Too heavy. WAAAY too heavy." ~2,5
+*lookat: "I hope it's filled with some type of edible. " ~3,0
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:100     Y:130
+*invisible: X:100      Y:130

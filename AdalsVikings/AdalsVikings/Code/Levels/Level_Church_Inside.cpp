@@ -31,6 +31,7 @@ void Level_Church_Inside::render(IndexRenderer &iRenderer)
 void Level_Church_Inside::load()
 {
 	RMI.loadResource(Footsteps::Church);
+	RMI.loadResource(Sound::Church_Door);
 	mPortals[ChurchToOutside_Church] = &PortalLoader::getPortal(ChurchToOutside_Church);
 	mPortals[ChurchToOutside_Church]->setWorking(true);
 
@@ -54,12 +55,14 @@ void Level_Church_Inside::changeLevel()
 	{
 		Act1Events::triggerEvent(Act1Event::ChurchInside_GoBackDialogue);
 		LVLMI.changeLevel(LevelFolder::Church_Outside);
+		AudioPlayer::playSound(Sound::Church_Door, "church", false);
 		AudioPlayer::stopHDDSound(HDDSound::Church_Inside_Ambient);
 		mRestartSounds = true;
 	}
 	else if (mPortals[ChurchToOutside_Church]->getActivated() && mPortals[ChurchToOutside_Church]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Church_Outside);
+		AudioPlayer::playSound(Sound::Church_Door, "church", false);
 		AudioPlayer::stopHDDSound(HDDSound::Church_Inside_Ambient);
 		mRestartSounds = true;
 	}

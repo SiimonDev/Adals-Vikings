@@ -1,5 +1,6 @@
 #include "VideoFile.h"
 #include <iostream>
+#include <vfw.h>
 
 using namespace sf;
 
@@ -20,6 +21,8 @@ HDRAWDIB hdd;													// Handle For Our Dib
 HBITMAP hBitmap;												// Handle To A Device Dependant Bitmap
 HDC hdc = CreateCompatibleDC(0);								// Creates A Compatible Device Context
 unsigned char* data = 0;										// Pointer To Our Resized Image
+
+GLuint textureID;
 
 VideoFile::VideoFile():
 mFrame(0),
@@ -49,21 +52,15 @@ bool VideoFile::openFromFile(std::string file, bool loop)
 	mStatus = Status::Stopped;
 
 	hdd = DrawDibOpen();
-	//glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
-	//glClearDepth(1.0f);
-	//glDepthFunc(GL_LEQUAL);
-	//glEnable(GL_DEPTH_TEST);
-	//glShadeModel(GL_SMOOTH);
-	//glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-
-	glEnable(GL_TEXTURE_2D);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
 
 	OpenAVI(file.c_str());
 
-	// Create The Texture
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, RENDER_WIDTH, RENDER_HEIGHT, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 	return true;
 }
@@ -123,11 +120,13 @@ void VideoFile::render(sf::RenderWindow &window)
 	}
 }
 
-
-
 void VideoFile::setPosition(const sf::Vector2f &position)
 {
 	mPosition = position;
+}
+void VideoFile::setPosition(const float x, const float y)
+{
+	mPosition = sf::Vector2f(x, y);
 }
 void VideoFile::setSize(const sf::Vector2f &size)
 {
@@ -158,6 +157,7 @@ void VideoFile::restart()
 void VideoFile::close()
 {
 	CloseAVI();
+	glDeleteTextures(1, &textureID);
 }
 
 VideoFile::Status VideoFile::getStatus()
@@ -225,6 +225,7 @@ void VideoFile::GrabAVIFrame(int frame)
 	
 	flipIt(data);
 
+	glBindTexture(GL_TEXTURE_2D, textureID);
 	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, RENDER_WIDTH, RENDER_HEIGHT, GL_RGB, GL_UNSIGNED_BYTE, data);
 }
 void VideoFile::CloseAVI()

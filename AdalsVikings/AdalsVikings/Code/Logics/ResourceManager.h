@@ -66,6 +66,7 @@ namespace Texture
 		WaveAnimationCliffs,
 		WaveAnimationCliffsIdle,
 		WaveAnimationBeach,
+		SeagullRock,
 		AxeAnimation,
 		FireForestCampAnimation,
 		FireCampAnimation,
@@ -131,7 +132,6 @@ namespace Texture
 		MinerTalk,
 		OsgarIdle,
 		OsgarTalk,
-
 		SIZE
 	};
 }
@@ -161,6 +161,13 @@ namespace Sound
 		InventoryOpen,
 		InventoryClose,
 		PickUpItem,
+		BucketBreak,
+		ValdisHitBrynja,
+		Wolf,
+		Bushes,
+		Church_Door,
+		MainMenuAxeSound,
+
 		SIZE
 	};
 }
@@ -175,17 +182,28 @@ namespace HDDSound
 		Forest_Music,
 		Hils_Gate_Music,
 		Tavern_Inside_Music,
+		Anlgian_Music,
 
 		Boat_Ambient,
 		Beach_Ambient,
+		BeachHill_Ambient,
+		Camp_Ambient,
+		Cavern_Ambient,
+		City_Gates_Ambient,
+		Fire_Ambient,
+		Hills_Ambient,
+		Ruins_Ambient,
 		Road_Ambient,
 		Tavern_Outside_Ambient,
 		Church_Inside_Ambient,
 		Church_Outside_Ambient,
 		Forest_Road_Ambient,
 		Forest_Camp_Ambient,
+		Cavern_Collapse,
+		Cliffs_Ambient,
 
 		Beach_Wave,
+		Cliffs_Wave,
 		SIZE
 	};
 }

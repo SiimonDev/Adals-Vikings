@@ -63,6 +63,8 @@ void Level_Church_Outside::render(IndexRenderer &iRenderer)
 void Level_Church_Outside::load()
 {
 	RMI.loadResource(Footsteps::Dirt);
+	RMI.loadResource(Sound::Church_Door);
+
 	mNpcs["Princess"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Princess")));
 	mNpcs["Princess"]->setDialogue("Princess_ChurchOutside");
 	mPortals[Outside_ChurchToRoad] = &PortalLoader::getPortal(Outside_ChurchToRoad);
@@ -77,6 +79,7 @@ void Level_Church_Outside::load()
 void Level_Church_Outside::unload()
 {
 	RMI.unloadResource(Footsteps::Dirt);
+	RMI.unloadResource(Sound::Church_Door);
 	Level::unload();
 }
 
@@ -92,6 +95,7 @@ void Level_Church_Outside::changeLevel()
 	else if (mPortals[Outside_ChurchToChurch]->getActivated() && mPortals[Outside_ChurchToChurch]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Church_Inside);
+		AudioPlayer::playSound(Sound::Church_Door, "church", false);
 		AudioPlayer::stopHDDSound(HDDSound::Church_Outside_Ambient);
 		mRestartSounds = true;
 	}

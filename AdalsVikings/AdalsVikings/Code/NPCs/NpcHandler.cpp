@@ -100,8 +100,8 @@ void NpcHandler::load()
 	Dagny->setName("Dagny");
 	Dagny->setIdleAnimation(Texture::DagnyIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(4));
 	Dagny->SetTalkAnimation(Texture::DagnyTalk, sf::Vector2i(4, 1), sf::milliseconds(450), sf::Time::Zero);
-	Dagny->setPosition(sf::Vector2f(1565, 705));
-	Dagny->setInteractionPosition(sf::Vector2f(1680, 690));
+	Dagny->setPosition(sf::Vector2f(1530, 705));
+	Dagny->setInteractionPosition(sf::Vector2f(1650, 690));
 	Dagny->setColor(sf::Color(223, 42, 193));
 	Dagny->setIndex(15);
 	Dagny->setScale(sf::Vector2f(0.59f, 0.59f));
@@ -110,8 +110,8 @@ void NpcHandler::load()
 	Brandr->setName("Brandr");
 	Brandr->setIdleAnimation(Texture::BrandrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(3.7));
 	Brandr->SetTalkAnimation(Texture::BrandrTalk, sf::Vector2i(6, 1), sf::milliseconds(750), sf::Time::Zero);
-	Brandr->setPosition(sf::Vector2f(800, 800));
-	Brandr->setInteractionPosition(sf::Vector2f(890, 840));
+	Brandr->setPosition(sf::Vector2f(780, 780));
+	Brandr->setInteractionPosition(sf::Vector2f(850, 820));
 	Brandr->setColor(sf::Color(255, 215, 0));
 	Brandr->setIndex(15);
 	Brandr->setScale(sf::Vector2f(0.45f, 0.45f));
@@ -120,8 +120,8 @@ void NpcHandler::load()
 	Yngvarr->setName("Yngvarr");
 	Yngvarr->setIdleAnimation(Texture::YngvarrIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5.2));
 	Yngvarr->SetTalkAnimation(Texture::YngvarrTalk, sf::Vector2i(4, 1), sf::milliseconds(650), sf::Time::Zero);
-	Yngvarr->setPosition(sf::Vector2f(900, 820));
-	Yngvarr->setInteractionPosition(sf::Vector2f(1015, 832));
+	Yngvarr->setPosition(sf::Vector2f(880, 800));
+	Yngvarr->setInteractionPosition(sf::Vector2f(950, 812));
 	Yngvarr->setColor(sf::Color(176, 196, 222));
 	Yngvarr->setIndex(15);
 	Yngvarr->setScale(sf::Vector2f(0.55f, 0.55f));

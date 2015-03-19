@@ -88,6 +88,7 @@ ResourceManager::ResourceManager()
 	mTexturePathMap[Texture::DruidLeaderIdle] = "assets/Images/Druid/druid_lord_swag.png";
 	mTexturePathMap[Texture::DruidLeaderTalk] = "assets/Images/Druid/druid_lord_swag_talk.png";
 	mTexturePathMap[Texture::SittingDruidLeader] = "assets/Images/Druid/druid_lord_swag_2.png";
+	mTexturePathMap[Texture::SeagullRock] = "assets/Images/Seagull/bosse_rock.png";
 
 	mTexturePathMap[Texture::InventoryBackground] = "assets/images/Interface/inventory.png";
 	mTexturePathMap[Texture::InventoryTile] = "assets/images/InventoryTile.png";
@@ -164,6 +165,13 @@ ResourceManager::ResourceManager()
 	mSoundPathMap[Sound::InventoryOpen] = "assets/sounds/interface/Inventory (open).ogg";
 	mSoundPathMap[Sound::InventoryClose] = "assets/sounds/interface/Inventory (close).ogg";
 	mSoundPathMap[Sound::PickUpItem] = "assets/sounds/interface/Pick_up_item.ogg";
+	mSoundPathMap[Sound::BucketBreak] = "assets/sounds/Ship/Leifr_Breaking_Bucket.wav";
+	mSoundPathMap[Sound::ValdisHitBrynja] = "assets/sounds/Ship/Helmet_boink_1.wav";
+	mSoundPathMap[Sound::Wolf] = "assets/sounds/Wolf/Wolf.wav";
+	mSoundPathMap[Sound::Bushes] = "assets/sounds/Road/Bushes.ogg";
+	mSoundPathMap[Sound::Church_Door] = "assets/sounds/Church/Church_door.wav";
+	mSoundPathMap[Sound::MainMenuAxeSound] = "assets/sounds/interface/Main_menu_impact.wav";
+
 	/* ============================================ */
 
 
@@ -175,17 +183,28 @@ ResourceManager::ResourceManager()
 	mHDDSoundPathMap[HDDSound::Forest_Music] = "assets/sounds/music/forest_music_3spoopy5me.ogg";
 	mHDDSoundPathMap[HDDSound::Hils_Gate_Music] = "assets/sounds/music/hils_gate_music.ogg";
 	mHDDSoundPathMap[HDDSound::Tavern_Inside_Music] = "assets/sounds/music/tavern_inside_music.ogg";
+	mHDDSoundPathMap[HDDSound::Anlgian_Music] = "assets/sounds/music/anglian_theme.ogg";
 
 	mHDDSoundPathMap[HDDSound::Boat_Ambient] = "assets/sounds/ambient/boat_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Beach_Ambient] = "assets/sounds/ambient/beach_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Road_Ambient] = "assets/sounds/ambient/road_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::BeachHill_Ambient] = "assets/sounds/ambient/beach_hill_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::Cavern_Ambient] = "assets/sounds/ambient/cavern_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::Camp_Ambient] = "assets/sounds/ambient/camp_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::City_Gates_Ambient] = "assets/sounds/ambient/city_gates_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::Ruins_Ambient] = "assets/sounds/ambient/ruins_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::Hills_Ambient] = "assets/sounds/ambient/hills_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::Fire_Ambient] = "assets/sounds/ambient/fire_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Tavern_Outside_Ambient] = "assets/sounds/ambient/tavern_outside_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Church_Inside_Ambient] = "assets/sounds/ambient/church_inside_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Church_Outside_Ambient] = "assets/sounds/ambient/church_outside_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Forest_Road_Ambient] = "assets/sounds/ambient/forest_road_ambient.ogg";
 	mHDDSoundPathMap[HDDSound::Forest_Camp_Ambient] = "assets/sounds/ambient/forest_camp_ambient.ogg";
+	mHDDSoundPathMap[HDDSound::Cliffs_Ambient] = "assets/sounds/ambient/Cliffs_ambient.ogg";
 
 	mHDDSoundPathMap[HDDSound::Beach_Wave] = "assets/sounds/beach/wave.ogg";
+	mHDDSoundPathMap[HDDSound::Cliffs_Wave] = "assets/sounds/Cliffs/Cliffs_Wave.ogg";
+	mHDDSoundPathMap[HDDSound::Cavern_Collapse] = "assets/sounds/Cavern/cavern collapse.ogg";
 	/* =============================================== */
 
 

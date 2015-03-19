@@ -4,6 +4,7 @@
 #include "..\Logics\IndexRenderer.h"
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\RoundedRectangleShape.h"
+#include "..\Objects\Player.h"
 #include <string>
 #include <vector>
 
@@ -11,7 +12,7 @@ using namespace pugi;
 class DialogueTree
 {
 public:
-	DialogueTree(Font::ID fontID);
+	DialogueTree(Font::ID fontID, Player &player);
 
 	void load(bool reset);
 	void unload();
@@ -61,13 +62,14 @@ private:
 	void disablePrevious();
 	void enable();
 
+	Player *mPlayer;
 	std::string mFilePath;
 	sf::Text mPrintText;
 	sf::Sprite mTextBackground;
 	sf::RoundedRectangleShape mDialogueRectangle;
 	sf::RoundedRectangleShape mOptionsRectangle;
 	std::vector<sf::RectangleShape> mRectangleVector;
-	sf::Vector2f mSize;
+	sf::Vector2f mSize, mPosition;
 	std::vector<sf::Text> mOptionsVector;
 	std::string mName, mText, mUseText, mLookText, mEnable;
 	float mTimer, mLookTimer, mUseTimer;

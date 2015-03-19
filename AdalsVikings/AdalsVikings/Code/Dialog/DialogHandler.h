@@ -1,5 +1,6 @@
 #pragma once
 #include "DialogueTree.h"
+#include "..\Objects\Player.h"
 #include <string>
 #include <map>
 #include <memory>
@@ -12,7 +13,7 @@ public:
 	static void startDialogue(std::string id);
 	static void reloadConversations();
 
-	static void load(bool reset);
+	static void load(bool reset, Player &player);
 	static void unload();
 
 	static DialogueTree &getDialogue(std::string id);

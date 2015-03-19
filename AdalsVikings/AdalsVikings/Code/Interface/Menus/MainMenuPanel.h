@@ -31,4 +31,5 @@ private:
 	bool mAnimateAxe;
 	bool mPlay;
 	bool mQuit;
+	bool mPlaySound;
 };

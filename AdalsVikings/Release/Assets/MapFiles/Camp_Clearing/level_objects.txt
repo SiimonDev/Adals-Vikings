@@ -23,7 +23,7 @@ hascollision: $false
 *id: $oilBarrel
 position: $X:1410 $Y:530
 interactPosition: $X:-60 $Y:0
-index: $10
+index: $8
 scale: $0.4
 hascollision: $false
 ############

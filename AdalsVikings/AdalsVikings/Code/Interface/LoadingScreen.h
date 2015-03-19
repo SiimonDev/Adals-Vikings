@@ -56,6 +56,6 @@ private:
 
 	ThreadPtr mThread;
 	LoadTask mTask;
-	bool mFinished, mStarted;
+	bool mFinished;
 	bool mIsDone, mStart;
 };

@@ -17,7 +17,5 @@ public:
 	void restartSounds();
 
 private:
-	Animation mWaveAnimation;
-	Animation mWaveAnimationIdle;
 	bool mCannotGo;
 };

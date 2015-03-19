@@ -1,11 +1,11 @@
 *Type: standard
 *ID: $stickCloth$
-*Name: stickCloth
+*Name: Stick with cloth
 *ispickupable: True
 *pickup: "Anybody using this? No? Alright then." ~2,0
 *lookat: "It has to be used for something, right?" ~1,5
 *deny: "Can't be used for that." ~1,5
-*denywith: $Totem$ "It would burn too fast. I need something to keep the flame going for a bit longer..." ~1,5;
+*denywith: $oilBarrel$ "There now it's covered with oil!" ~0; $ForestCampFire$ "If I do this now, It'll only burn out, I need something to make it last longer!" ~3,0;  $Totem$ "It would burn too fast. I need something to keep the flame going for a bit longer..." ~1,5;
 *combine: 
-*interact: 
+*interact: $oilBarrel$ "There now it's covered with oil!" ~3,0; 
 *texture: "img_stickCloth_id.png"

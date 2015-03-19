@@ -1,11 +1,11 @@
-*Type: invisible
+*Type: standard
 *ID: $minecart$
 *Name: Minecart
 *ispickupable: False
-*pickup: "It's not mine, nor can I move it." ~2,5
-*lookat: "There are miners here?" ~2,0
-*deny: "I can't do that." ~1,5
+*pickup: "This might come in handy" ~2,0
+*lookat: "That's nice..." ~1,5
+*deny: "I can't do that" ~1,5
 *denywith: 
 *combine: 
 *interact: 
-*invisible: X:   Y:
+*texture: "img_minecart_id.png"

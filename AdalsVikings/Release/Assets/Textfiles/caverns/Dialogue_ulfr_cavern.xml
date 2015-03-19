@@ -9,6 +9,7 @@
 	<text character="Ulfr" disabled="false" default="false" say="I have to get some light." timer="2.3"  turned="false"/>
 	<text character="Ulfr" disabled="false" default="false" say="Oh gods." timer="1.8"  turned="false"/>
 	<text character="Ulfr" disabled="false" default="false" say="Brandr won't let me back into camp either." timer="2.8"  turned="false"/>
+	<text character="Ulfr" disabled="false" default="false" say="So I can't go get another torch." timer="2.8"  turned="false"/>
 	<text character="Ulfr" disabled="false" default="false" say="I have to find some other way." timer="2.3"  turned="false"/>
 	<text character="Ulfr" disabled="false" default="false" say="As per usual." timer="2.0"  turned="false"/>
 	<text character="Ulfr" disabled="false" default="false" say="*Sigh*" timer="1.8"  turned="false"/>

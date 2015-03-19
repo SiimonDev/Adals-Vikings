@@ -11,8 +11,9 @@
 #include "..\Logics\WindowState.h"
 
 
-DialogueTree::DialogueTree(Font::ID fontID)
+DialogueTree::DialogueTree(Font::ID fontID, Player &player)
 	: mActiveConversation(false)
+	, mPlayer(&player)
 	, mStart(false)
 	, mWait(false)
 	, mOptionSelected(false)
@@ -38,6 +39,7 @@ DialogueTree::DialogueTree(Font::ID fontID)
 	mOptionsRectangle.setOutlineColor(sf::Color::White);
 	mOptionsRectangle.setFillColor(sf::Color(0, 0, 0, 100));
 	mOptionsRectangle.setPosition(100.f - 2, 705.f + 30);
+	mPosition.x = 1920;
 }
 void DialogueTree::load(bool reset)
 {
@@ -143,14 +145,61 @@ void DialogueTree::update(sf::Time &frameTime)
 				{
 					sizeX = mOptionsVector[i].getGlobalBounds().width;
 				}
+				if (mPosition.x > mOptionsVector[i].getPosition().x)
+					mPosition.x = mOptionsVector[i].getPosition().x;
 
+				mPosition.y = mOptionsVector[i].getPosition().y;
 				sizeY += mOptionsVector[i].getGlobalBounds().height;
+				mSize.x = sizeX + 50;
+				mSize.y = sizeY + 20;
 			}
-			mSize.x = sizeX + 50;
-			mSize.y = sizeY;
 		}
-		mOptionsRectangle.setPosition(100.f - 2 , 735.f + mSize.y);
-		mOptionsRectangle.setSize(mSize);
+
+		if (!mOptionsVector.empty())
+		{
+
+			mOptionsRectangle.setPosition(mPosition.x - 25, mPosition.y + mOptionsVector[mOptionsVector.size() - 1].getGlobalBounds().height + 15);
+			mOptionsRectangle.setSize(mSize);
+
+			if (mOptionsRectangle.getPosition().x <= 5)
+			{
+				mOptionsRectangle.setPosition(5, mOptionsRectangle.getPosition().y);
+				for (int i = 0; i < mOptionsVector.size(); i++)
+				{
+					mOptionsVector[i].setPosition(mOptionsRectangle.getPosition().x + 25, mOptionsVector[i].getPosition().y);
+					mRectangleVector[i].setPosition(mOptionsVector[i].getPosition().x, mRectangleVector[i].getPosition().y);
+				}
+			}
+			else if (mOptionsRectangle.getPosition().x + (mOptionsRectangle.getGlobalBounds().width) >= 1915)
+			{
+				mOptionsRectangle.setPosition(1915 - (mOptionsRectangle.getGlobalBounds().width), mOptionsRectangle.getPosition().y);
+				for (int i = 0; i < mOptionsVector.size(); i++)
+				{
+					mOptionsVector[i].setPosition(mOptionsRectangle.getPosition().x + 25, mOptionsVector[i].getPosition().y);
+					mRectangleVector[i].setPosition(mOptionsVector[i].getPosition().x, mRectangleVector[i].getPosition().y);
+				}
+			}
+
+			if (mOptionsRectangle.getPosition().y <= 5)
+			{
+				mOptionsRectangle.setPosition(mOptionsRectangle.getPosition().x, mOptionsRectangle.getPosition().y + 20);
+				for (int i = 0; i < mOptionsVector.size(); i++)
+				{
+					mOptionsVector[i].setPosition(mOptionsVector[i].getPosition().x, mOptionsVector[i].getPosition().y + 20);
+					mRectangleVector[i].setPosition(mRectangleVector[i].getPosition().x, mRectangleVector[i].getPosition().y + 20);
+				}
+			}
+			else if (mOptionsRectangle.getPosition().y + (mOptionsRectangle.getGlobalBounds().height) >= 1075)
+			{
+				float difference = mOptionsRectangle.getPosition().y - 1065;
+				mOptionsRectangle.setPosition(mOptionsRectangle.getPosition().x, mOptionsRectangle.getPosition().y - difference);
+				for (int i = 0; i < mOptionsVector.size(); i++)
+				{
+					mOptionsVector[i].setPosition(mOptionsVector[i].getPosition().x, mOptionsVector[i].getPosition().y - difference);
+					mRectangleVector[i].setPosition(mRectangleVector[i].getPosition().x, mRectangleVector[i].getPosition().y - difference);
+				}
+			}
+		}
 	}
 }
 void DialogueTree::setTextColor(sf::Color color)
@@ -314,9 +363,10 @@ void DialogueTree::find_AllOptions()
 			text.setString(mNode.attribute("choice_text").as_string());
 			text.setFont(RMI.getResource(mFontID));
 			text.setCharacterSize(30);
-			text.setPosition(100.f, 700.f + 30 * cnt);
+
+			text.setPosition(mPlayer->getPosition().x - 100, mPlayer->getPosition().y + 30 * cnt - 50);
 			rectangle.setFillColor(sf::Color(0, 0, 0, 100));
-			rectangle.setPosition(100.f - 2, 705.f + 30 * cnt);
+			rectangle.setPosition(mPlayer->getPosition().x - 100, mPlayer->getPosition().y + 30 * cnt - 50);
 			rectangle.setSize(sf::Vector2f(text.getGlobalBounds().width + 4, 30));
 
 			mOptionsVector.push_back(text);

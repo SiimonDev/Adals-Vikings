@@ -109,7 +109,6 @@ bool &Fade::getWait()
 }
 bool & Fade::getFinishedWaiting()
 {
-
 	return mFinishedWaiting;
 }
 void Fade::setAlpha(float alpha)

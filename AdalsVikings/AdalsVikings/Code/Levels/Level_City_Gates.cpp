@@ -1,4 +1,5 @@
 #include "Level_City_Gates.h"
+#include "..\Logics\AudioPlayer.h"
 #include <iostream>
 
 Level_City_Gates::Level_City_Gates(Player &player, HUD &hud, ActionWheel &actionWheel)
@@ -9,7 +10,8 @@ Level_City_Gates::Level_City_Gates(Player &player, HUD &hud, ActionWheel &action
 
 void Level_City_Gates::restartSounds()
 {
-
+	AudioPlayer::playHDDSound(HDDSound::City_Gates_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
 }
 
 void Level_City_Gates::update(sf::Time &frametime)
@@ -88,12 +90,18 @@ void Level_City_Gates::changeLevel()
 	if (mPortals[GatesToRoad]->getActivated() && mPortals[GatesToRoad]->getWorking())
 	{
 		LVLMI.changeLevel(LevelFolder::Road);
+		AudioPlayer::stopHDDSound(HDDSound::City_Gates_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
+		mRestartSounds = true;
 	}
 	if (mPortals[GatesToCliffs]->getActivated() && mPortals[GatesToCliffs]->getWorking())
 	{
 		if (!Act1Events::hasBeenTriggered(Act1Event::CliffsMonologue))
 			Act1Events::triggerEvent(Act1Event::CliffsMonologue);
 		LVLMI.changeLevel(LevelFolder::Cliffs_Up);
+		AudioPlayer::stopHDDSound(HDDSound::City_Gates_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
+		mRestartSounds = true;
 	}
 }
 
