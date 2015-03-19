@@ -2,13 +2,13 @@
 <conversation>
 	<useText useText="I don't want to get my clothes wet..." />
 	<lookText lookText="That is one AWESOME bird!" />
-	<text character="Leifr" disabled="false" default="false" say="Woah, this thing is heavy!" timer="2.0" turned="false" />
-	<text character="Leifr" disabled="false" default="false" say="How did you carry this around?" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="I have my secrets" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="true" default="true" say="Now let's go!" timer="1.6" />
-	<text character="Leifr" disabled="false" default="false" say="*Ulfr, keep steady!*" timer="2.0" turned="false" />
-	<text character="Leifr" disabled="false" default="false" say="*I'm starting to lose my balance down here!*" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="*Sorry!*" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="*But these bear claws are really heavy!*" timer="2.0" turned="false" />
+	<text character="Leifr" disabled="true" default="false" say="Woah, this thing is heavy!" timer="2.0" turned="false" />
+	<text character="Leifr" disabled="true" default="false" say="How did you carry this around?" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="I have my secrets" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="true" say="Now let's go!" timer="1.6" />
+	<text character="Leifr" disabled="true" default="false" say="*Ulfr, keep steady!*" timer="2.0" turned="false" />
+	<text character="Leifr" disabled="true" default="false" say="*I'm starting to lose my balance down here!*" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="*Sorry!*" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="*But these bear claws are really heavy!*" timer="2.0" turned="false" />
 	<stopConversation />
 </conversation>

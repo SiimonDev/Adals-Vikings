@@ -2,15 +2,15 @@
 <conversation>
 	<useText useText="I'd rather not, they might be contagious..." />
 	<lookText lookText="They look a bit... before their time." />
-	<text character="Druid Leader" disabled="false" default="false" say="Who DARES disturb our sacred ritual!?" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="Oh hey, sorry" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="I got a little lost." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="Hope you're not mad, are you?" timer="2.0" turned="false" />
-	<text character="Druid Leader" disabled="false" default="false" say="Well, this is a dark dark forest after all." timer="2.0" turned="false" />
-	<text character="Druid Leader" disabled="false" default="false" say="Don't sweat it." timer="2.0" turned="false" />
-	<text character="Druid Leader" disabled="false" default="false" say="We are the Druid Leaders of the forest." timer="2.0" turned="false" />
-	<text character="Druid Leader" disabled="false" default="false" say="But don't associate us with the Druid Leaders of the mountain." timer="2.0" turned="false" />
-	<text character="Druid Leader" disabled="false" default="false" say="Totally different cult, they are so mainstream." timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="true" default="false" say="Who DARES disturb our sacred ritual!?" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Oh hey, sorry" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="I got a little lost." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Hope you're not mad, are you?" timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="true" default="false" say="Well, this is a dark dark forest after all." timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="true" default="false" say="Don't sweat it." timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="true" default="false" say="We are the Druid Leaders of the forest." timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="true" default="false" say="But don't associate us with the Druid Leaders of the mountain." timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="true" default="false" say="Totally different cult, they are so mainstream." timer="2.0" turned="false" />
 	<option_container disabled="false">
 		<option choice_text="Ursa Vercus, where have I heard that before?" disabled="true">
 			<text character="Ulfr" disablePrevious="false" say="Ursa Vercus, where have I heard that before?" timer="1.2" />
@@ -61,7 +61,7 @@
 			<text character="Druids" disabled="false" default="false" say="A DICK!" timer="2.0" turned="false" enable="Ursa Vercus, where have I heard that before?" disablePrevious="true" />
 			<gotoContainer />
 		</option>
-		<option choice_text="Can i borrow some of your fire?" disabled="false">
+		<option choice_text="Can i borrow some of your fire?" disabled="true">
 			<text character="Ulfr" say="Can I borrow some of your fire?" timer="1.4" />
 			<text character="Druid Leader" disabled="false" default="false" say="How does one &quot;borrow&quot; fire?" timer="2.0" turned="false" />
 			<text character="Druid Leader" disabled="false" default="false" say="You &quot;Take&quot; fire" timer="2.0" turned="false" />
@@ -86,7 +86,7 @@
 			<text character="Druid Leader" disabled="false" default="false" say="But I don't expect you to ever have heard of them." timer="2.0" turned="false" disablePrevious="true" />
 			<gotoContainer />
 		</option>
-		<option choice_text="Just a little fire, please?" disabled="true">
+		<option choice_text="Just a little fire, please?" disabled="false">
 			<text character="Ulfr" say="Just a little fire, please?" timer="1.4" />
 			<text character="Druid Leader" disabled="false" default="false" say="no." timer="2.0" turned="false" />
 			<text character="Ulfr" say="Pretty please?" timer="1.4" />
