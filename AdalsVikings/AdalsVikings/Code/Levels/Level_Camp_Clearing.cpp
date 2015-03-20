@@ -18,6 +18,7 @@ void Level_Camp_Clearing::restartSounds()
 
 void Level_Camp_Clearing::update(sf::Time &frametime)
 {
+
 	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_Leifr) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
 	{
 		if (DialogHandler::getDialogue("LeifrBear_ClearingCamp").getHasStopped() && !mFade1)
@@ -79,6 +80,12 @@ void Level_Camp_Clearing::render(IndexRenderer &iRenderer)
 
 void Level_Camp_Clearing::load()
 {
+	if (!Act1Events::hasBeenTriggered(Act1Event::GotBeerDeerPelt))
+		Act1Events::triggerEvent(Act1Event::GotBeerDeerPelt);
+	if (!Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest))
+		Act1Events::triggerEvent(Act1Event::ForestCamp_NeedFireQuest);
+	if (!mPlayer->hasItemInInventory("bearDeer"))
+		mPlayer->addItemToInventory("bearDeer");
 	if (mPlayer->hasItemInInventory("torch"))
 	{
 		RMI.loadResource(Texture::FireCampAnimation);
