@@ -11,6 +11,6 @@
 	<text character="Brynja" say="and their aggressive nature!" timer="2.8" turned="false"></text>
 	<text character="Ulfr" say="That seems like fair assessment." timer="3.3" turned="true"></text>
 	<text character="Brandr" say="Brynja." timer="1.8" turned="true"></text>
-	<text character="Brandr" say="Come With me." timer="2.8" turned="true"></text>
+	<text character="Brandr" say="Come with me." timer="2.8" turned="true"></text>
 	<stopConversation />
 </conversation>

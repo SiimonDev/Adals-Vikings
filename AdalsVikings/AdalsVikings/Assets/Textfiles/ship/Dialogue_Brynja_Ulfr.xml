@@ -42,6 +42,6 @@
 	<text character="Ulfr" say="But..." timer="2.2" turned="true"></text>
 	<text character="Ulfr" say="It's just two lines with an arrow in between!" timer="3" turned="true"></text>
 	<text character="Brynja" say="What can I say?" timer="2.2" turned="false"></text>
-	<text character="Brynja" say="Painting runs in the family." timer="3.3" turned="false"></text>
+	<text character="Brynja" say="Artistry runs in the family." timer="3.3" turned="false"></text>
 	<stopConversation />
 </conversation>
