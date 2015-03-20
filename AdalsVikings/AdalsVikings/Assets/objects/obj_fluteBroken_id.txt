@@ -5,7 +5,7 @@
 *pickup: "" ~2,0
 *lookat: "...this doesn't seem playable." ~1,5
 *deny: "What can I even use this for?" ~1,5
-*denywith: 
+*denywith: $boatWater$ "Dont think Jormungandr will like the sound of this broken flute..." ~4,0; 
 *combine: 
 *interact: 
 *texture: "img_fluteBroken_id.png"

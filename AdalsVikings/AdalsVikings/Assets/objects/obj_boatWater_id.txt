@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $boatWater$
+*Name: Water
+*ispickupable: False
+*pickup: "I... just no." ~2,5
+*lookat: "We sure are going fast!" ~3,0
+*deny: "I can't reach that far." ~2,0
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:1500     Y:120

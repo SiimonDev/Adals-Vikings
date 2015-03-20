@@ -20,7 +20,6 @@ int mHeight = 720;
 IndexRenderer iRenderer;
 
 sf::VideoFile splashScreen;
-sf::VideoFile newGameScene;
 
 bool runGame = false;
 

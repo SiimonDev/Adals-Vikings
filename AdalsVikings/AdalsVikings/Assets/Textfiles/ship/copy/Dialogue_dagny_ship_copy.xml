@@ -19,7 +19,7 @@
 			<text character="Ulfr" say="That would be a no." timer="2.0" disablePrevious="true" turned="false" />
 			<gotoContainer />
 		</option>
-		<option choice_text="Um, that bucket behind you... can I borrow it for a while?" disabled="false">
+		<option choice_text="Um, that bucket behind you... can I borrow it for a while?" disabled="true">
 			<text character="Ulfr" say="Um, that bucket behind you... can I borrow it for a while?" timer="2.7" turned="false" />
 			<text character="Dagny" say="A bucket?" timer="1.8" turned="true" />
 			<text character="Dagny" say="You think I'm standing here to watch over a bucket?" timer="2.5" />
