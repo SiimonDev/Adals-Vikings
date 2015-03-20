@@ -36,10 +36,11 @@ namespace sf
 		void close();
 
 		Status getStatus();
+		bool isLoaded();
 
 	private:
 		void flipIt(void* buffer);
-		void OpenAVI(LPCSTR szFile);
+		bool OpenAVI(LPCSTR szFile);
 		void GrabAVIFrame(int frame);
 		void CloseAVI();
 
@@ -59,5 +60,6 @@ namespace sf
 		char* pdata;
 
 		bool mLoop;
+		bool mLoaded;
 	};
 }

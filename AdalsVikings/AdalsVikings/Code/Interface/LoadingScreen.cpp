@@ -107,11 +107,20 @@ void LoadingScreen::startLoading(LoadTask task, sf::VideoFile* videoFile)
 	mCurrentVideo = videoFile;
 	if (mCurrentVideo != NULL)
 	{
-		mCurrentVideo->restart();
-		mCurrentVideo->play();
+		if (mCurrentVideo->isLoaded())
+		{
+			mCurrentVideo->restart();
+			mCurrentVideo->play();
 
-		mLoadAnimation.setPosition(sf::Vector2f(200, 1000));
-		mLoadAnimation.setScale(sf::Vector2f(0.3f, 0.3f));
+			mLoadAnimation.setPosition(sf::Vector2f(200, 1000));
+			mLoadAnimation.setScale(sf::Vector2f(0.3f, 0.3f));
+		}
+		else
+		{
+			mCurrentVideo = NULL;
+			mLoadAnimation.setPosition(sf::Vector2f(1920 / 2, 1080 / 2));
+			mLoadAnimation.setScale(sf::Vector2f(1.0f, 1.0f));
+		}
 	}
 	else
 	{

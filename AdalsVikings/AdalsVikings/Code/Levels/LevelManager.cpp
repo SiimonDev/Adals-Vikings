@@ -67,7 +67,7 @@ void LevelManager::load(bool reset)
 		Act1Events::initialize();
 		mPlayer.clearInventory();
 
-		loadAct1(reset); //<--- Change this if you want to spawn on a different act
+		loadBoatScene(reset); //<--- Change this if you want to spawn on a different act
 	}
 	else
 	{

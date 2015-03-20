@@ -10,20 +10,20 @@ hascollision: $false
 position: $X:1450 $Y:470
 interactPosition: $X:0 $Y:0
 index: $20
-scale: $1
+scale: $1.0
 hascollision: $false
 ############
 *id: $fortHills
 position: $X:1480 $Y:400
 interactPosition: $X:0 $Y:0
 index: $20
-scale: $1
+scale: $1.0
 hascollision: $false
 ############
 *id: $boatsHills
 position: $X:1800 $Y:420
 interactPosition: $X:0 $Y:0
 index: $20
-scale: $1
+scale: $1.0
 hascollision: $false
 ############

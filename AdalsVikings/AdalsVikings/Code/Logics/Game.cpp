@@ -37,9 +37,9 @@ Game::Game()
 	KeyboardState::initialize();
 	MouseState::initialize();
 
-	splashScreen.openFromFile("assets/video/AdalsVikings_CRAM.avi");
-	splashScreen.setSize(960, 540);
-	splashScreen.setPosition((1920 / 2) - (960 / 2), (1080 / 2) - (540 / 2));
+	splashScreen.openFromFile("assets/video/SplashScreen_wide.avi");
+	splashScreen.setSize(1920, 1080);
+	//splashScreen.setPosition((1920 / 2) - (960 / 2), (1080 / 2) - (540 / 2));
 
 	LSI.initialize();
 	LSI.startLoading(LoadTask::BootGame, &splashScreen);
@@ -80,9 +80,7 @@ void Game::update(sf::Time frameTime)
 			// Check for main menu events
 			if (MHI.getEvent() == MenuEvent::NewGamePressed)
 			{
-				//newGameScene.openFromFile("assets/video/newgame_ut1.avi");
-				//newGameScene.setSize(1920, 1080);
-				LSI.startLoading(LoadTask::StartGame/*, &newGameScene*/);
+				LSI.startLoading(LoadTask::StartGame);
 				runGame = true;
 			}
 			else if (MHI.getEvent() == MenuEvent::LoadGamePressed)
