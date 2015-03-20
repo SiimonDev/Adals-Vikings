@@ -1,1 +1,15 @@
 ############
+*id: $skull
+position: $X:280 $Y:600
+interactPosition: $X:0 $Y:0
+index: $4
+scale: $1.0
+hascollision: $false
+############
+*id: $pickaxe
+position: $X:735 $Y:910
+interactPosition: $X:0 $Y:0
+index: $4
+scale: $1.0
+hascollision: $false
+############

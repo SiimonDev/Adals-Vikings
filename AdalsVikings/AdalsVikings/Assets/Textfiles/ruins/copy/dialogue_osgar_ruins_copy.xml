@@ -4,38 +4,37 @@
 	<lookText lookText="That's one of the mercs,but he actually looks nice." />
 	<text character="Osgar" disabled="false" default="false" say="HELLO HOW ARE YOU!?" timer="2.0" turned="false" />
 	<text character="Ulfr" disabled="false" default="false" say="Ouch." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="Why are you shouting?" timer="3.3" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Why are you shouting?" timer="2.0" turned="false" />
 	<text character="Osgar" disabled="false" default="false" say="Oh, I'm sorry." timer="2.0" turned="false" />
-	<text character="Osgar" disabled="false" default="false" say="Ever since that Welsh fellow hit me over the head with a chair..." timer="2.0" turned="false" />
-	<text character="Osgar" disabled="false" default="false" say="I've had some trouble hearing y'all correctly." timer="2.0" turned="false" />
-	<text character="Osgar" disabled="false" default="false" say="HELLO HOW ARE YOU!?" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="That's awful!" timer="3.3" turned="false" />
+	<text character="Osgar" disabled="false" default="false" say="Ever since that Welsh fellow hit me over the head with a chair..." timer="3.3" turned="false" />
+	<text character="Osgar" disabled="false" default="false" say="I've had some trouble hearing y'all correctly." timer="2.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="That's awful!" timer="2.0" turned="false" />
 	<text character="Osgar" disabled="false" default="false" say="I know, RIGHT!?" timer="2.0" turned="false" />
 	<text character="Osgar" disabled="false" default="false" say="IT SURE WAS A FUN NIGHT." timer="2.0" turned="false" />
 	<option_container disabled="false">
 		<option choice_text="I SAID, THAT IS AWFUL!" disabled="true">
-			<text character="Ulfr" disabled="false" default="false" say="I SAID, THAT IS AWFUL!" timer="3.3" turned="false" />
-			<text character="Osgar" disabled="false" default="false" say="Thanks, i had it done Yesterday.." timer="2.0" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="I SAID, THAT IS AWFUL!" timer="2.0" turned="false" />
+			<text character="Osgar" disabled="false" default="false" say="Thanks, i had it done Yesterday.." timer="2.3" turned="false" />
 			<text character="Osgar" disabled="false" default="false" say="It really does shine nice and bright." timer="2.0" turned="false" />
 			<text character="Osgar" disabled="false" default="false" say="Best scrubbing i ever got." timer="2.0" turned="false" />
 			<gotoContainer />
 		</option>
 		<option choice_text="are *you* aware that the king has a bounty out for you?">
-			<text character="Ulfr" disabled="false" default="false" say="are *you* aware that the king has a bounty out for you?" timer="2.0" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="are *you* aware that the king has a bounty out for you?" timer="3.0" turned="false" />
 			<text character="Osgar" disabled="false" default="false" say="Uh, yes?" timer="2.0" turned="false" />
 			<text character="Osgar" disabled="false" default="false" say="Why wouldn't i be?" timer="2.0" turned="false" />
 			<text character="Osgar" disabled="false" default="false" say="I mean, it's here every year." timer="2.0" turned="false" />
 			<text character="Osgar" disabled="false" default="false" say="Sure, I'm a bit sad to miss it this year." timer="2.0" turned="false" />
 			<text character="Osgar" disabled="false" default="false" say="But hey, it could be worse." timer="2.0" turned="false" />
-			<text character="Osgar" disabled="false" default="false" say="Got all my friends here, and that's enough for me." timer="2.0" turned="false" />
-			<text character="Osgar" disabled="false" default="false" say="Just hope the king doesn't take out a bounty or send his army or sometihg..." timer="2.0" turned="false" />
+			<text character="Osgar" disabled="false" default="false" say="Got all my friends here, and that's enough for me." timer="2.5" turned="false" />
+			<text character="Osgar" disabled="false" default="false" say="Just hope the king doesn't take out a bounty or send his army or sometihg..." timer="3.3" turned="false" />
 			<text character="Osgar" disabled="false" default="false" say="Would be quite the bummer." timer="2.0" turned="false" />
-			<text character="Osgar" disabled="false" default="false" say="But I'll just have to go to the festival next year instead." timer="2.0" turned="false" />
+			<text character="Osgar" disabled="false" default="false" say="But I'll just have to go to the festival next year instead." timer="3.0" turned="false" />
 			<gotoBaseContainer />
 		</option>
 		<option choice_text="It was nice talking to you." disabled="false">
-			<text character="Ulfr" disabled="false" default="false" say="It was nice talking to you." timer="3.3" turned="false" />
-			<text character="Osgar" disabled="false" default="false" say="Hey, You kiss your mother with that mouth?" timer="2.0" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="It was nice talking to you." timer="2.0" turned="false" />
+			<text character="Osgar" disabled="false" default="false" say="Hey, You kiss your mother with that mouth?" timer="2.5" turned="false" />
 			<stopConversation />
 		</option>
 		<stopOption />
