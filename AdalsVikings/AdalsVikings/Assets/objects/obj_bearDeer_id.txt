@@ -5,7 +5,7 @@
 *pickup: "It is a Bear Deer costume." ~2,0
 *lookat: "It is a Bear Deer costume." ~1,5
 *deny: "I can't do that" ~1,5
-*denywith: $Leifr$ "" ~0; $DruidLeader$ "I not nearly tall enough to wear this thing." ~2,5; $Druids$ "I not nearly tall enough to wear this thing." ~2,5; 
+*denywith: $Leifr$ "I should talk to him first." ~0; $DruidLeader$ "I'm not tall enough to dress in this thing. I need to stand on someones shoulders." ~2,5; $Druids$ "I'm not tall enough to dress in this thing. I need to stand on someones shoulders." ~3,9;
 *combine: 
 *interact: 
 *texture: "img_bearDeer_id.png"
