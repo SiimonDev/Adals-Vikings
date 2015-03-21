@@ -1,6 +1,7 @@
 #include "VideoFile.h"
 #include <iostream>
 #include <vfw.h>
+#include "WindowState.h"
 
 using namespace sf;
 
@@ -218,7 +219,7 @@ bool VideoFile::OpenAVI(LPCSTR szFile)
 
 	if (AVIStreamOpenFromFile(&pavi, szFile, streamtypeVIDEO, 0, OF_READ, NULL) != 0)
 	{
-		MessageBox(HWND_DESKTOP, "Failed To Open The AVI Stream", "Error", MB_OK | MB_ICONEXCLAMATION);
+		MessageBox(HWND_DESKTOP, "Failed To Open The AVI Stream.\n 1. Make sure you are not missing any video files\n 2. Try reinstalling x264vfw", "Error", MB_OK | MB_ICONEXCLAMATION);
 		success = false;
 	}
 

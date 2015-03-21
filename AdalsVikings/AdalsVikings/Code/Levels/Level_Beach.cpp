@@ -24,7 +24,7 @@ void Level_Beach::restartSounds()
 
 void Level_Beach::update(sf::Time &frametime)
 {
-	if (mLandingVideo.getStatus() != sf::VideoFile::Playing)
+	if (mLandingVideo.getStatus() != sf::VideoFile::Playing || !mLandingVideo.isLoaded())
 	{
 		introCutscene(frametime);
 		talkToNpcs();
@@ -47,7 +47,7 @@ void Level_Beach::update(sf::Time &frametime)
 
 void Level_Beach::render(IndexRenderer &iRenderer)
 {
-	if (mLandingVideo.getStatus() != sf::VideoFile::Playing)
+	if (mLandingVideo.getStatus() != sf::VideoFile::Playing || !mLandingVideo.isLoaded())
 	{
 		if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
 			CurrentWindow.setView(mCutSceneView);
