@@ -40,7 +40,11 @@ void Level_Church_Inside::load()
 
 	Level::load();
 
+	mTileMap.addCollision(mNpcs["Beor"]->getCollisionRect());
+	mTileMap.setIndexOnMap(mNpcs["Beor"]->getIndexRect(), mNpcs["Beor"]->getIndex() - 1);
+
 	mCurrentFootsteps = Footsteps::Church;
+
 }
 
 void Level_Church_Inside::unload()

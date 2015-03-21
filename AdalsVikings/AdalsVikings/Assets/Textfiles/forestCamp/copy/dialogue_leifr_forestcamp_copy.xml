@@ -3,8 +3,20 @@
 	<useText useText="I don't think im strong enough to do that. " />
 	<lookText lookText="My buddy Leifr. He’s the most peaceful dude I know, and he’s always there to help." />
 	<text character="Leifr" default="false" disabled="false" say="Alright, I don't think those brown guys noticed me." timer="2.3" turned="true" />
-	<text character="Leifr" default="true" disabled="false" say="Let's try that bear costume out." timer="2.3" turned="true" />
-	<text character="Ulfr" default="false" disabled="false" say="It's a bear-deer." timer="2.3" turned="false" />
-	<text character="Ulfr" default="false" disabled="false" say="The deer part is very important." timer="2.3" turned="false" />
+	<text character="Leifr" default="true" disabled="false" say="Should we try that bear costume out?" timer="2.3" turned="true" />
+	<text character="Ulfr" default="false" disabled="false" say="It's a bear-DEER costume." timer="2.3" turned="false" />
+	<text character="Ulfr" default="false" disabled="false" say="Big difference." timer="2.3" turned="false" />
+	<text character="Leifr" default="true" disabled="false" say="Sure." timer="1.3" turned="true" />
+	<text character="Leifr" default="true" disabled="false" say="Now let's make a game plan here." timer="2.3" turned="true" />
+	<text character="Leifr" default="true" disabled="false" say="What exactly do you need me to do?" timer="2.3" turned="true" />
+	<text character="Ulfr" default="false" disabled="false" say="Well..." timer="1.3" turned="false" />
+	<text character="Ulfr" default="false" disabled="false" say="I get on your shoulders." timer="2.3" turned="false" />
+	<text character="Ulfr" default="false" disabled="false" say="You walk up to the druids." timer="2.3" turned="false" />
+	<text character="Ulfr" default="false" disabled="false" say="And I do all the talking." timer="2.3" turned="false" />
+	<text character="Ulfr" default="false" disabled="false" say="That's it." timer="2.3" turned="false" />
+	<text character="Leifr" default="true" disabled="false" say="..." timer="1.2" turned="true" />
+	<text character="Leifr" default="true" disabled="false" say="Right." timer="2.3" turned="true" />
+	<text character="Leifr" default="true" disabled="false" say="I should be able to handle that." timer="2.8" turned="true" />
+	<text character="Leifr" default="true" disabled="false" say="I hope." timer="2.3" turned="true" />
 	<stopConversation />
 </conversation>

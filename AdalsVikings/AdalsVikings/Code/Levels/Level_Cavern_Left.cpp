@@ -19,7 +19,7 @@ void Level_Cavern_Left::update(sf::Time &frametime)
 	if (Act1Events::hasBeenTriggered(Act1Event::GivenSkullToMiner) && !Act1Events::hasBeenHandled(Act1Event::GivenSkullToMiner))
 	{
 		if (!DialogHandler::getDialogue("Skull_Cavern").getActiveConversation() && !DialogHandler::getDialogue("Skull_Cavern").getHasStopped())
-			DialogHandler::getDialogue("Skull_Cavern").startDialogue();
+			DialogHandler::startDialogue("Skull_Cavern");
 
 		if (DialogHandler::getDialogue("Skull_Cavern").getHasStopped())
 		{
@@ -39,7 +39,7 @@ void Level_Cavern_Left::update(sf::Time &frametime)
 
 				if (FadeI.getFaded())
 				{
-					DialogHandler::getDialogue("UlfrAngry_Cavern").startDialogue();
+					DialogHandler::startDialogue("UlfrAngry_Cavern");
 					mFade2 = true;
 				}
 			}
@@ -63,11 +63,19 @@ void Level_Cavern_Left::load()
 	mPortals[CavernsLeftToRight] = &PortalLoader::getPortal(CavernsLeftToRight);
 	mPortals[CavernsLeftToRight]->setWorking(true);
 
-	mNpcs["Miner"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Miner")));
+	if (!Act1Events::hasBeenHandled(Act1Event::GivenSkullToMiner))
+	{
+		mNpcs["Miner"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Miner")));
+		mNpcs["Miner"]->setDialogue("Miner_Cavern");
 
-	mNpcs["Miner"]->setDialogue("Miner_Cavern");
+		Level::load();
 
-	Level::load();
+		mTileMap.addCollision(mNpcs["Miner"]->getCollisionRect());
+		mTileMap.setIndexOnMap(mNpcs["Miner"]->getIndexRect(), mNpcs["Miner"]->getIndex() - 1);
+	}
+	else
+		Level::load();
+
 }
 
 void Level_Cavern_Left::unload()

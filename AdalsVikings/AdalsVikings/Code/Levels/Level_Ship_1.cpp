@@ -37,7 +37,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 			if (FadeI.getFaded())
 			{
 				if (!DialogHandler::getDialogue("IntroUlfr_Ship1").getActiveConversation() && !DialogHandler::getDialogue("IntroUlfr_Ship1").getHasStopped())
-				DialogHandler::getDialogue("IntroUlfr_Ship1").startDialogue();
+					DialogHandler::startDialogue("IntroUlfr_Ship1");
 				mGameStart = true;
 			}
 		}

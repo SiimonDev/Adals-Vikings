@@ -25,6 +25,7 @@ void Level_Forest_Camp::update(sf::Time &frametime)
 
 		if (!mFade1)
 		{
+			mUIUpdate = false;
 
 			FadeI.fadeOut(frametime);
 			if (FadeI.getFaded())
@@ -42,7 +43,7 @@ void Level_Forest_Camp::update(sf::Time &frametime)
 			FadeI.fadeIn(frametime);
 			if (FadeI.getFaded())
 			{
-				DialogHandler::getDialogue("Leifr_BeforeDruids").startDialogue();
+				DialogHandler::startDialogue("Leifr_BeforeDruids");
 				mFade2 = true;
 			}
 		}
@@ -62,7 +63,7 @@ void Level_Forest_Camp::update(sf::Time &frametime)
 		}
 
 		if (mDestinationReached && !DialogHandler::getDialogue("Druids2_ForestCamp").getActiveConversation() && !DialogHandler::getDialogue("Druids2_ForestCamp").getHasStopped())
-			DialogHandler::getDialogue("Druids2_ForestCamp").startDialogue();
+			DialogHandler::startDialogue("Druids2_ForestCamp");
 
 		if (DialogHandler::getDialogue("Druids2_ForestCamp").getHasStopped())
 		{
@@ -88,7 +89,7 @@ void Level_Forest_Camp::update(sf::Time &frametime)
 				if (FadeI.getFaded())
 				{
 					mFade4 = true;
-					DialogHandler::getDialogue("Leifr_AfterDruids").startDialogue();
+					DialogHandler::startDialogue("Leifr_AfterDruids");
 				}
 			}
 			if (DialogHandler::getDialogue("Leifr_AfterDruids").getHasStopped())
@@ -113,6 +114,7 @@ void Level_Forest_Camp::update(sf::Time &frametime)
 					if (FadeI.getFaded())
 					{
 						mFade6 = true;
+						mUIUpdate = true;
 						Act1Events::handleEvent(Act1Event::ForestCamp_BeerDeer);
 					}
 				}
@@ -184,18 +186,27 @@ void Level_Forest_Camp::load()
 			mNpcs["Leifr"]->setScale(sf::Vector2f(0.45f, 0.45f));
 			mNpcs["Leifr"]->setIndex(1);
 			mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1560, 565));
+			Level::load();
+
+			mTileMap.addCollision(mNpcs["Leifr"]->getCollisionRect());
+			mTileMap.setIndexOnMap(mNpcs["Leifr"]->getIndexRect(), mNpcs["Leifr"]->getIndex() - 1);
 		}
+		else
+			Level::load();
+
+		mTileMap.addCollision(mNpcs["DruidLeader"]->getCollisionRect());
+		mTileMap.setIndexOnMap(mNpcs["DruidLeader"]->getIndexRect(), mNpcs["DruidLeader"]->getIndex() - 1);
 
 		mDruids.setTexture(RMI.getResource(Texture::DruidsForest1));
 	}
+	else
+		Level::load();
 
 	RMI.loadResource(Texture::FireForestCampAnimation);
 	mFireAnimation.load(RMI.getResource(Texture::FireForestCampAnimation), sf::Vector2i(2, 4), sf::milliseconds(2000), sf::Time::Zero, true);
 	mFireAnimation.setIndex(9999);
 	mFireAnimation.setProportions(sf::Vector2f(961, 541));
 	mFireAnimation.setScaleFromHeight(541 * 2);
-
-	Level::load();
 
 	mCurrentFootsteps = Footsteps::Dirt;
 }
@@ -229,7 +240,7 @@ void Level_Forest_Camp::checkInteractEvents()
 	{
 		if (!Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
 		{
-			DialogHandler::getDialogue("FireDeny_ForestCamp").startDialogue();
+			DialogHandler::startDialogue("FireDeny_ForestCamp");
 
 		}
 		else if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
@@ -243,7 +254,7 @@ void Level_Forest_Camp::checkInteractEvents()
 void Level_Forest_Camp::checkEvents()
 {
 	if (DialogHandler::getDialogue("Druids_ForestCamp1").getIsOptionDisabled(3) &&
-		DialogHandler::getDialogue("Druids_ForestCamp1").getIsOptionDisabled(5) &&
+		DialogHandler::getDialogue("Druids_ForestCamp1").getIsOptionDisabled(4) &&
 		!Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest))
 		Act1Events::triggerEvent(Act1Event::ForestCamp_NeedFireQuest);
 }

@@ -28,7 +28,7 @@ void Level_City_Gates::update(sf::Time &frametime)
 	{
 		if (!DialogHandler::getDialogue("Guard2_Gates").getActiveConversation() && !DialogHandler::getDialogue("Guard2_Gates").getHasStopped())
 		{
-			DialogHandler::getDialogue("Guard2_Gates").startDialogue();
+			DialogHandler::startDialogue("Guard2_Gates");
 		}
 		if (DialogHandler::getDialogue("Guard2_Gates").getHasStopped())
 		{
@@ -76,6 +76,9 @@ void Level_City_Gates::load()
 		mPortals[GatesToCliffs]->setWorking(true);
 
 	Level::load();
+
+	mTileMap.addCollision(mNpcs["Guard"]->getCollisionRect());
+	mTileMap.setIndexOnMap(mNpcs["Guard"]->getIndexRect(), mNpcs["Guard"]->getIndex() - 1);
 }
 
 void Level_City_Gates::unload()
@@ -112,7 +115,7 @@ void Level_City_Gates::checkEvents()
 {
 	if (!Act1Events::hasBeenTriggered(Act1Event::TalkedToGuard) && DialogHandler::getDialogue("Guard1_Gates").getIsOptionDisabled(3) && DialogHandler::getDialogue("Guard1_Gates").getHasStopped())
 	{
-		DialogHandler::getDialogue("Ulfr_Gates").startDialogue();
+		DialogHandler::startDialogue("Ulfr_Gates");
 		Act1Events::triggerEvent(Act1Event::TalkedToGuard);
 	}
 
