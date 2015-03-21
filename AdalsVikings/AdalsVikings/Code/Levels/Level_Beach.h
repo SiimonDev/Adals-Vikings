@@ -1,6 +1,7 @@
 #pragma once
 #include "Level.h"
 #include "..\Logics\Animation.h"
+#include "..\Logics\VideoFile.h"
 
 class Level_Beach : public Level
 {
@@ -26,4 +27,6 @@ private:
 	bool mEndingFade1, mEndingFade2, mEndingFade3, mEndingFade4;
 	sf::View mCutSceneView;
 	std::string mRoadFalse;
+
+	sf::VideoFile mLandingVideo;
 };

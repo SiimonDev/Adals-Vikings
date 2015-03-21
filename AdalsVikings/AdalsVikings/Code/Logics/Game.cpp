@@ -36,9 +36,9 @@ Game::Game()
 	KeyboardState::initialize();
 	MouseState::initialize();
 
-	splashScreen.openFromFile("assets/video/SplashScreen_wide.avi");
-	splashScreen.setSize(1920, 1080);
-	//splashScreen.setPosition((1920 / 2) - (960 / 2), (1080 / 2) - (540 / 2));
+	splashScreen.openFromFile("assets/video/SplashScreen_x264_720p_test.avi");
+	splashScreen.setSize(1280, 720);
+	splashScreen.setPosition((1920 / 2) - splashScreen.getSize().x / 2, (1080 / 2) - splashScreen.getSize().y / 2);
 
 	LSI.initialize();
 	LSI.startLoading(LoadTask::BootGame, &splashScreen);

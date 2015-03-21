@@ -35,6 +35,9 @@ namespace sf
 		void restart();
 		void close();
 
+		sf::Vector2f getPosition();
+		sf::Vector2f getSize();
+		sf::Vector2i getRenderSize();
 		Status getStatus();
 		bool isLoaded();
 

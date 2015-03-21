@@ -1,6 +1,7 @@
 #include "VideoFile.h"
 #include <iostream>
 #include <vfw.h>
+#include "WindowState.h"
 
 using namespace sf;
 
@@ -9,8 +10,8 @@ using namespace sf;
 #pragma comment( lib, "vfw32.lib" )
 
 // Internal render resolution
-#define RENDER_WIDTH 1920
-#define RENDER_HEIGHT 1080
+//#define RENDER_WIDTH 1920
+//#define RENDER_HEIGHT 1080
 
 AVISTREAMINFO		psi;										// Pointer To A Structure Containing Stream Info
 PAVISTREAM			pavi;										// Handle To An Open Stream
@@ -32,7 +33,8 @@ mPosition(0, 0),
 mSize(0, 0),
 mLoop(false),
 mLoaded(false),
-mStatus(Status::Stopped)
+mStatus(Status::Stopped),
+mNext(sf::seconds(0))
 {
 }
 VideoFile::VideoFile(std::string file, bool loop) :
@@ -43,7 +45,8 @@ mPosition(0, 0),
 mSize(0, 0),
 mLoop(loop),
 mLoaded(false),
-mStatus(Status::Stopped)
+mStatus(Status::Stopped),
+mNext(sf::seconds(0))
 {
 	openFromFile(file, loop);
 }
@@ -63,7 +66,7 @@ bool VideoFile::openFromFile(std::string file, bool loop)
 
 	if (success)
 	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, RENDER_WIDTH, RENDER_HEIGHT, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, mWidth, mHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -75,7 +78,7 @@ bool VideoFile::openFromFile(std::string file, bool loop)
 
 void VideoFile::update(sf::Time frameTime)
 {
-	if (mStatus == Status::Playing)
+	if (mStatus == Status::Playing && mLoaded)
 	{
 		mNext += frameTime;
 		mFrame = int(mNext.asMilliseconds() / mMillisecondsPerFrame.asMilliseconds());
@@ -85,7 +88,7 @@ void VideoFile::update(sf::Time frameTime)
 			if (mLoop)
 			{
 				mFrame = 0;
-				mNext = sf::seconds(2);
+				mNext = sf::seconds(0);
 			}
 			else
 			{
@@ -97,7 +100,7 @@ void VideoFile::update(sf::Time frameTime)
 }
 void VideoFile::render(sf::RenderWindow &window)
 {
-	if (mStatus != Status::Stopped)
+	if (mStatus != Status::Stopped && mLoaded)
 	{
 		sf::Vector2u physicalSize = window.getSize();
 		sf::Vector2f virtualSize = window.getView().getSize();
@@ -160,7 +163,7 @@ void VideoFile::stop()
 void VideoFile::restart()
 {
 	mFrame = 0;
-	mNext = sf::seconds(2);
+	mNext = sf::seconds(0);
 }
 void VideoFile::close()
 {
@@ -169,11 +172,22 @@ void VideoFile::close()
 	glDeleteTextures(1, &textureID);
 }
 
+sf::Vector2f VideoFile::getPosition()
+{
+	return mPosition;
+}
+sf::Vector2f VideoFile::getSize()
+{
+	return mSize;
+}
+sf::Vector2i VideoFile::getRenderSize()
+{
+	return sf::Vector2i(mWidth, mHeight);
+}
 VideoFile::Status VideoFile::getStatus()
 {
 	return mStatus;
 }
-
 bool VideoFile::isLoaded()
 {
 	return mLoaded;
@@ -181,11 +195,12 @@ bool VideoFile::isLoaded()
 
 void VideoFile::flipIt(void* buffer)							// Flips The Red And Blue Bytes (256x256)
 {
+	const int pixels = mWidth * mHeight;
 	void* b = buffer;											// Pointer To The Buffer
 	__asm														// Assembler Code To Follow
 	{
-		mov ecx, RENDER_WIDTH * RENDER_HEIGHT										// Counter Set To Dimensions Of Our Memory Block
-			mov ebx, b												// Points ebx To Our Data (b)
+		mov ecx, pixels											// Counter Set To Dimensions Of Our Memory Block
+			mov ebx, b											// Points ebx To Our Data (b)
 		label :													// Label Used For Looping
 		mov al, [ebx + 0]										// Loads Value At ebx Into al
 			mov ah, [ebx + 2]									// Loads Value At ebx+2 Into ah
@@ -204,7 +219,7 @@ bool VideoFile::OpenAVI(LPCSTR szFile)
 
 	if (AVIStreamOpenFromFile(&pavi, szFile, streamtypeVIDEO, 0, OF_READ, NULL) != 0)
 	{
-		MessageBox(HWND_DESKTOP, "Failed To Open The AVI Stream", "Error", MB_OK | MB_ICONEXCLAMATION);
+		MessageBox(HWND_DESKTOP, "Failed To Open The AVI Stream.\n 1. Make sure you are not missing any video files\n 2. Try reinstalling x264vfw", "Error", MB_OK | MB_ICONEXCLAMATION);
 		success = false;
 	}
 
@@ -222,8 +237,8 @@ bool VideoFile::OpenAVI(LPCSTR szFile)
 		bmih.biSize = sizeof(BITMAPINFOHEADER);							// Size Of The BitmapInfoHeader
 		bmih.biPlanes = 1;												// Bitplanes	
 		bmih.biBitCount = 24;											// Bits Format We Want (24 Bit, 3 Bytes)
-		bmih.biWidth = RENDER_WIDTH;									// Width We Want
-		bmih.biHeight = RENDER_HEIGHT;									// Height We Want
+		bmih.biWidth = mWidth;											// Width We Want
+		bmih.biHeight = mHeight;										// Height We Want
 		bmih.biCompression = BI_RGB;									// Requested Mode = RGB
 
 		hBitmap = CreateDIBSection(hdc, (BITMAPINFO*)(&bmih), DIB_RGB_COLORS, (void**)(&data), NULL, NULL);
@@ -247,12 +262,12 @@ void VideoFile::GrabAVIFrame(int frame)
 	lpbi = (LPBITMAPINFOHEADER)AVIStreamGetFrame(pgf, frame);
 	pdata = (char *)lpbi + lpbi->biSize + lpbi->biClrUsed * sizeof(RGBQUAD);
 
-	DrawDibDraw(hdd, hdc, 0, 0, RENDER_WIDTH, RENDER_HEIGHT, lpbi, pdata, 0, 0, mWidth, mHeight, 0);
+	DrawDibDraw(hdd, hdc, 0, 0, mWidth, mHeight, lpbi, pdata, 0, 0, mWidth, mHeight, 0);
 	
 	flipIt(data);
 
 	glBindTexture(GL_TEXTURE_2D, textureID);
-	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, RENDER_WIDTH, RENDER_HEIGHT, GL_RGB, GL_UNSIGNED_BYTE, data);
+	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, mWidth, mHeight, GL_RGB, GL_UNSIGNED_BYTE, data);
 }
 void VideoFile::CloseAVI()
 {
