@@ -24,34 +24,51 @@ void Level_Beach::restartSounds()
 
 void Level_Beach::update(sf::Time &frametime)
 {
-	introCutscene(frametime);
-	talkToNpcs();
-	endingCutscene(frametime);
+	if (mLandingVideo.getStatus() != sf::VideoFile::Playing)
+	{
+		introCutscene(frametime);
+		talkToNpcs();
+		endingCutscene(frametime);
 
-	mWaveAnimation.animate(frametime);
-	mRockAnimation.animate(frametime);
-	if (mWaveAnimation.getCurrentFrame() == 1)
-		AudioPlayer::playHDDSound(HDDSound::Beach_Wave, false, 20);
+		mWaveAnimation.animate(frametime);
+		mRockAnimation.animate(frametime);
+		if (mWaveAnimation.getCurrentFrame() == 1)
+			AudioPlayer::playHDDSound(HDDSound::Beach_Wave, false, 20);
 
-	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro))
-		Act1Events::triggerEvent(Act1Event::Beach_Intro);
+		if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro))
+			Act1Events::triggerEvent(Act1Event::Beach_Intro);
 
-	Level::update(frametime);
-	changeLevel();
+		Level::update(frametime);
+		changeLevel();
+	}
+	else
+		mLandingVideo.update(frametime);
 }
 
 void Level_Beach::render(IndexRenderer &iRenderer)
 {
-	if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
-		CurrentWindow.setView(mCutSceneView);
+	if (mLandingVideo.getStatus() != sf::VideoFile::Playing)
+	{
+		if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
+			CurrentWindow.setView(mCutSceneView);
 
-	mRockAnimation.render(iRenderer);
-	mWaveAnimation.render(iRenderer);
-	Level::render(iRenderer);
+		mRockAnimation.render(iRenderer);
+		mWaveAnimation.render(iRenderer);
+		Level::render(iRenderer);
+	}
+	else
+		mLandingVideo.render(CurrentWindow);
 }
 
 void Level_Beach::load()
 {
+	if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
+	{
+		mLandingVideo.openFromFile("assets/video/landing_x264.avi");
+		mLandingVideo.setSize(1920, 1080);
+		mLandingVideo.play();
+	}
+
 	mRestartSounds = true;
 	mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
 	mPortals[BeachToTavernOutside] = &PortalLoader::getPortal(BeachToTavernOutside);
