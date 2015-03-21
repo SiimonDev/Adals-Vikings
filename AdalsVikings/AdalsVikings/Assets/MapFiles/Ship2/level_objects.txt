@@ -34,3 +34,10 @@ index: $99
 scale: $1
 hascollision: $false
 ############
+*id: $boatWater
+position: $X:1200 $Y:1015
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1
+hascollision: $false
+############

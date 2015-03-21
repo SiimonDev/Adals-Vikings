@@ -3,7 +3,7 @@
 *Name: Ship
 *ispickupable: False
 *pickup: "That's not humanly possible." ~2,0
-*lookat: "A fierce sea serpent. If only we were half as fierce." ~1,5
+*lookat: "A fierce sea serpent. If only we were half as fierce." ~3,0
 *deny: "I can't do that." ~1,5
 *denywith: 
 *combine: 

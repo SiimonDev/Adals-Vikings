@@ -90,11 +90,11 @@ void NpcHandler::load()
 	Alfr->setName("Alfr");
 	Alfr->setIdleAnimation(Texture::AlfrIdle, sf::Vector2i(1, 1), sf::milliseconds(10000), sf::seconds(9999));
 	Alfr->SetTalkAnimation(Texture::AlfrTalk, sf::Vector2i(2, 1), sf::milliseconds(350), sf::Time::Zero);
-	Alfr->setPosition(sf::Vector2f(290, 870));
+	Alfr->setPosition(sf::Vector2f(290, 880));
 	Alfr->setInteractionPosition(sf::Vector2f(380, 885));
 	Alfr->setColor(sf::Color(201, 114, 27));
 	Alfr->setIndex(15);
-	Alfr->setScale(sf::Vector2f(0.55f, 0.55f));
+	Alfr->setScale(sf::Vector2f(0.58f, 0.58f));
 	Alfr->setFlip(false);
 
 	Dagny->setName("Dagny");

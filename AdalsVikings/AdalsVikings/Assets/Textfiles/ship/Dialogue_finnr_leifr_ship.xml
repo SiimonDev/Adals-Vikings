@@ -4,7 +4,7 @@
 	<lookText lookText="Looks like Leifr and Finnr are just... standing there" />
 	<text character="Ulfr" disabled="false" default="false" say="Hey guys." timer="2.0"  turned="false"/>
 	<text character="Finnr" disabled="false" default="false" disablePrevious="true" say="Hi Ulfr." timer="1.4"  turned="true"/>
-	<text character="Leifr" disabled="false" default="false" disablePrevious="" say="Hey Kid." timer="2.2"  turned="false"/>
+	<text character="Leifr" disabled="false" default="false" disablePrevious="" say="Hey kid." timer="2.2"  turned="false"/>
 	<option_container disabled="false">
 		<option choice_text="Has either of you seen Adal's Map lately?" disabled="true">
 			<text character="Ulfr" disablePrevious="false" say="Has either of you seen Adal's Map lately?" timer="2.5"  turned="false"/>

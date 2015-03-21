@@ -24,13 +24,14 @@ unsigned char* data = 0;										// Pointer To Our Resized Image
 
 GLuint textureID;
 
-VideoFile::VideoFile():
+VideoFile::VideoFile() :
 mFrame(0),
 mWidth(0),
 mHeight(0),
 mPosition(0, 0),
 mSize(0, 0),
 mLoop(false),
+mLoaded(false),
 mStatus(Status::Stopped)
 {
 }
@@ -41,6 +42,7 @@ mHeight(0),
 mPosition(0, 0),
 mSize(0, 0),
 mLoop(loop),
+mLoaded(false),
 mStatus(Status::Stopped)
 {
 	openFromFile(file, loop);
@@ -48,6 +50,7 @@ mStatus(Status::Stopped)
 
 bool VideoFile::openFromFile(std::string file, bool loop)
 {
+	bool success = true;
 	mLoop = loop;
 	mStatus = Status::Stopped;
 
@@ -55,14 +58,19 @@ bool VideoFile::openFromFile(std::string file, bool loop)
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_2D, textureID);
 
-	OpenAVI(file.c_str());
+	if (!OpenAVI(file.c_str()))
+		success = false;
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, RENDER_WIDTH, RENDER_HEIGHT, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+	if (success)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, RENDER_WIDTH, RENDER_HEIGHT, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		mLoaded = true;
+	}
 
-	return true;
+	return success;
 }
 
 void VideoFile::update(sf::Time frameTime)
@@ -77,7 +85,7 @@ void VideoFile::update(sf::Time frameTime)
 			if (mLoop)
 			{
 				mFrame = 0;
-				mNext = sf::seconds(0);
+				mNext = sf::seconds(2);
 			}
 			else
 			{
@@ -152,10 +160,11 @@ void VideoFile::stop()
 void VideoFile::restart()
 {
 	mFrame = 0;
-	mNext = sf::seconds(0);
+	mNext = sf::seconds(2);
 }
 void VideoFile::close()
 {
+	mLoaded = false;
 	CloseAVI();
 	glDeleteTextures(1, &textureID);
 }
@@ -163,6 +172,11 @@ void VideoFile::close()
 VideoFile::Status VideoFile::getStatus()
 {
 	return mStatus;
+}
+
+bool VideoFile::isLoaded()
+{
+	return mLoaded;
 }
 
 void VideoFile::flipIt(void* buffer)							// Flips The Red And Blue Bytes (256x256)
@@ -183,37 +197,49 @@ void VideoFile::flipIt(void* buffer)							// Flips The Red And Blue Bytes (256x
 			jnz label											// If Not Zero Jump Back To Label
 	}
 }
-void VideoFile::OpenAVI(LPCSTR szFile)
+bool VideoFile::OpenAVI(LPCSTR szFile)
 {
+	bool success = true;
 	AVIFileInit();													// Opens The AVIFile Library
 
 	if (AVIStreamOpenFromFile(&pavi, szFile, streamtypeVIDEO, 0, OF_READ, NULL) != 0)
-		MessageBox(HWND_DESKTOP,"Failed To Open The AVI Stream", "Error", MB_OK | MB_ICONEXCLAMATION);
+	{
+		MessageBox(HWND_DESKTOP, "Failed To Open The AVI Stream", "Error", MB_OK | MB_ICONEXCLAMATION);
+		success = false;
+	}
 
-	AVIStreamInfo(pavi, &psi, sizeof(psi));							// Reads Information About The Stream Into psi
-	mWidth = psi.rcFrame.right - psi.rcFrame.left;					// Width Is Right Side Of Frame Minus Left
-	mHeight = psi.rcFrame.bottom - psi.rcFrame.top;					// Height Is Bottom Of Frame Minus Top
-	mSize = sf::Vector2f(mWidth, mHeight);
+	if (success)
+	{
+		AVIStreamInfo(pavi, &psi, sizeof(psi));							// Reads Information About The Stream Into psi
+		mWidth = psi.rcFrame.right - psi.rcFrame.left;					// Width Is Right Side Of Frame Minus Left
+		mHeight = psi.rcFrame.bottom - psi.rcFrame.top;					// Height Is Bottom Of Frame Minus Top
+		mSize = sf::Vector2f(mWidth, mHeight);
 
-	mLastframe = AVIStreamLength(pavi);								// The Last Frame Of The Stream
+		mLastframe = AVIStreamLength(pavi);								// The Last Frame Of The Stream
 
-	mMillisecondsPerFrame = sf::milliseconds(AVIStreamSampleToTime(pavi, mLastframe) / mLastframe);
+		mMillisecondsPerFrame = sf::milliseconds(AVIStreamSampleToTime(pavi, mLastframe) / mLastframe);
 
-	bmih.biSize = sizeof(BITMAPINFOHEADER);							// Size Of The BitmapInfoHeader
-	bmih.biPlanes = 1;												// Bitplanes	
-	bmih.biBitCount = 24;											// Bits Format We Want (24 Bit, 3 Bytes)
-	bmih.biWidth = RENDER_WIDTH;									// Width We Want
-	bmih.biHeight = RENDER_HEIGHT;									// Height We Want
-	bmih.biCompression = BI_RGB;									// Requested Mode = RGB
+		bmih.biSize = sizeof(BITMAPINFOHEADER);							// Size Of The BitmapInfoHeader
+		bmih.biPlanes = 1;												// Bitplanes	
+		bmih.biBitCount = 24;											// Bits Format We Want (24 Bit, 3 Bytes)
+		bmih.biWidth = RENDER_WIDTH;									// Width We Want
+		bmih.biHeight = RENDER_HEIGHT;									// Height We Want
+		bmih.biCompression = BI_RGB;									// Requested Mode = RGB
 
-	hBitmap = CreateDIBSection(hdc, (BITMAPINFO*)(&bmih), DIB_RGB_COLORS, (void**)(&data), NULL, NULL);
-	SelectObject(hdc, hBitmap);										// Select hBitmap Into Our Device Context (hdc)
+		hBitmap = CreateDIBSection(hdc, (BITMAPINFO*)(&bmih), DIB_RGB_COLORS, (void**)(&data), NULL, NULL);
+		SelectObject(hdc, hBitmap);										// Select hBitmap Into Our Device Context (hdc)
 
-	pgf = AVIStreamGetFrameOpen(pavi, NULL);						// Create The PGETFRAME	Using Our Request Mode
-	if (pgf == NULL)
-		MessageBox(HWND_DESKTOP, "Failed To Open The AVI Frame", "Error", MB_OK | MB_ICONEXCLAMATION);
+		pgf = AVIStreamGetFrameOpen(pavi, NULL);						// Create The PGETFRAME	Using Our Request Mode
+		if (pgf == NULL)
+			MessageBox(HWND_DESKTOP, "Failed To Open The AVI Frame", "Error", MB_OK | MB_ICONEXCLAMATION);
 
-	std::cout << "Loaded AVI File: Width : " << mWidth << " Height : " << mHeight << " Frames : " << mLastframe << std::endl;
+		std::cout << "Loaded AVI File: Width : " << mWidth << " Height : " << mHeight << " Frames : " << mLastframe << std::endl;
+
+	}
+	else
+		std::cout << "Failde to load AVI file" << std::endl;
+	
+	return success;
 }
 void VideoFile::GrabAVIFrame(int frame)
 {

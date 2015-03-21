@@ -1,10 +1,10 @@
 *Type: invisible
 *ID: $ShackEntrance$
-*Name: Entrance To Shack
+*Name: Entrance To Mine Shaft
 *ispickupable: False
-*pickup: "This might come in handy" ~2,0
-*lookat: "That's nice..." ~1,5
-*deny: "I can't do that" ~1,5
+*pickup: "Nah." ~2,0
+*lookat: "Sure is dark in there." ~1,5
+*deny: "Nah." ~1,5
 *denywith: 
 *combine: 
 *interact: 

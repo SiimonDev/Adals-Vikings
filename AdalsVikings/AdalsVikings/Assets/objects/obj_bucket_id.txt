@@ -5,7 +5,7 @@
 *pickup: "I hope it's okay for me to borrow this." ~3,0
 *lookat: "I'll need some help to fill it up." ~1,5
 *deny: "I just... no. " ~1,5
-*denywith: $Dagny$ "I'm not suicidal." ~1,5; $Alfr$ "Like he'd help." ~1,5; $Valdis$ "I don't want to disturb her." ~1,5; $Leifr$ "" ~0; $Brynja$ "I need to fill it up first." ~2,5; 
+*denywith: $Dagny$ "I'm not suicidal." ~1,5; $Alfr$ "Like he'd help." ~1,5; $Valdis$ "I don't want to disturb her." ~1,5; $Leifr$ "" ~0; $Brynja$ "I need to fill it up first." ~2,5; $boatWater$ "I can't reach it, I will need to get someone to help me." ~4,0; 
 *combine: 
 *interact: $Leifr$ "" ~0; 
 *texture: "img_bucket_id.png"

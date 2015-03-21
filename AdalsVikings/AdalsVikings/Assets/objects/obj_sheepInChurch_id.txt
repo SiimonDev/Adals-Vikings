@@ -4,7 +4,7 @@
 *ispickupable: False
 *pickup: "I don't think the priest will like that." ~2,0
 *lookat: "Oh. Wooly." ~1,5
-*deny: "It doesn't eat that." ~1,5
+*deny: "I don't think a sheep would make for a great conversationalist. Sorry." ~3,5
 *denywith: 
 *combine: 
 *interact: 

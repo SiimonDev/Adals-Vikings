@@ -3,7 +3,7 @@
 *Name: Unfinished Axe
 *ispickupable: True
 *pickup: "It's good... but not finished. I'll need to fasten it with something." ~2,0
-*lookat: "This is going to fall apart any minute now... I have to fasten it with something." ~1,5
+*lookat: "This thing is going to fall apart any minute now... I have to fasten it with something." ~3,5
 *deny: "It might be sharp, but it'll fall apart if I were to swing it." ~2,0
 *denywith: 
 *combine: $rope$ $axe$ "" ~0; 
