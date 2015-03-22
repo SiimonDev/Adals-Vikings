@@ -20,7 +20,7 @@ void Level_Cliffs_Up::update(sf::Time &frametime)
 	if (Act1Events::hasBeenTriggered(Act1Event::CliffsMonologue) && !Act1Events::hasBeenHandled(Act1Event::CliffsMonologue))
 	{
 		if (!DialogHandler::getDialogue("Ulfr_Cliffs").getActiveConversation() && !DialogHandler::getDialogue("Ulfr_Cliffs").getHasStopped())
-			DialogHandler::getDialogue("Ulfr_Cliffs").startDialogue();
+			DialogHandler::startDialogue("Ulfr_Cliffs");
 
 		if (DialogHandler::getDialogue("Ulfr_Cliffs").getHasStopped())
 			Act1Events::handleEvent(Act1Event::CliffsMonologue);

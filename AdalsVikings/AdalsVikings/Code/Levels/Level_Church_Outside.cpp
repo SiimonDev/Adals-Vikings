@@ -43,7 +43,7 @@ void Level_Church_Outside::update(sf::Time &frametime)
 		if (!DialogHandler::getDialogue("GoBack_ChurchInside").getActiveConversation() && !DialogHandler::getDialogue("GoBack_ChurchInside").getHasStopped())
 		{
 			mPlayer->setAnimationStyle(AnimationType::TalkToNpc);
-			DialogHandler::getDialogue("GoBack_ChurchInside").startDialogue();
+			DialogHandler::startDialogue("GoBack_ChurchInside");
 		}
 		else if (DialogHandler::getDialogue("GoBack_ChurchInside").getHasStopped())
 		{

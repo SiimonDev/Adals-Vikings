@@ -80,12 +80,6 @@ void Level_Camp_Clearing::render(IndexRenderer &iRenderer)
 
 void Level_Camp_Clearing::load()
 {
-	if (!Act1Events::hasBeenTriggered(Act1Event::GotBeerDeerPelt))
-		Act1Events::triggerEvent(Act1Event::GotBeerDeerPelt);
-	if (!Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest))
-		Act1Events::triggerEvent(Act1Event::ForestCamp_NeedFireQuest);
-	if (!mPlayer->hasItemInInventory("bearDeer"))
-		mPlayer->addItemToInventory("bearDeer");
 	if (mPlayer->hasItemInInventory("torch"))
 	{
 		RMI.loadResource(Texture::FireCampAnimation);
@@ -145,7 +139,7 @@ void Level_Camp_Clearing::load()
 		mNpcs["Brandr"]->setScale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Brandr"]->setPosition(sf::Vector2f(1370, 850));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(1605, 850));
-		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(1605, 850));
+		mNpcs["Brandr"]->setInteractionPosition(sf::Vector2f(1605, 850));
 		mNpcs["Brandr"]->setDialogue("BrandrBrynja_ClearingCamp");
 		mNpcs["Brynja"]->setDialogue("BrandrBrynja_ClearingCamp");
 

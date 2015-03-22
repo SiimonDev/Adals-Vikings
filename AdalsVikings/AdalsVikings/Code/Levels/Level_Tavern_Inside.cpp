@@ -26,7 +26,10 @@ void Level_Tavern_Inside::update(sf::Time &frametime)
 
 	if (Act1Events::hasBeenTriggered(Act1Event::TavernInside_GiveAxeToBrandr) && !Act1Events::hasBeenHandled(Act1Event::TavernInside_GiveAxeToBrandr))
 	{
-		if (true && !mFade1)
+		if (!DialogHandler::getDialogue("GivenBrandrAxe_Tavern").getActiveConversation() && !DialogHandler::getDialogue("GivenBrandrAxe_Tavern").getHasStopped())
+			DialogHandler::startDialogue("GivenBrandrAxe_Tavern");
+
+		if (DialogHandler::getDialogue("GivenBrandrAxe_Tavern").getHasStopped() && !mFade1)
 		{
 			FadeI.fadeOut(frametime);
 			if (FadeI.getFaded())
@@ -122,22 +125,25 @@ void Level_Tavern_Inside::load()
 		mNpcs["Yngvarr"]->setInteractionPosition(sf::Vector2f(1455, 739));
 		mNpcs["Yngvarr"]->setIndex(9);
 		mNpcs["Yngvarr"]->setDialogue("Yngvarr_Tavern");
+
+		Level::load();
+
+		// Add collision from every NPC to the map
+		mTileMap.addCollision(mNpcs["Brandr"]->getCollisionRect());
+		mTileMap.addCollision(mNpcs["Alfr"]->getCollisionRect());
+		mTileMap.addCollision(mNpcs["Dagny"]->getCollisionRect());
+		mTileMap.addCollision(mNpcs["Finnr"]->getCollisionRect());
+		mTileMap.addCollision(mNpcs["Yngvarr"]->getCollisionRect());
+
+		// Add Index from every NPC to the map
+		mTileMap.setIndexOnMap(mNpcs["Brandr"]->getIndexRect(), mNpcs["Brandr"]->getIndex() - 2);
+		mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 2);
+		//mTileMap.setIndexOnMap(mNpcs["Dagny"]->getIndexRect(), mNpcs["Dagny"]->getIndex() - 2); // NOT NEEDED ON THIS LEVEL
+		mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 2);
+		mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 2);
 	}
-	Level::load();
-
-	// Add collision from every NPC to the map
-	mTileMap.addCollision(mNpcs["Brandr"]->getCollisionRect());
-	mTileMap.addCollision(mNpcs["Alfr"]->getCollisionRect());
-	mTileMap.addCollision(mNpcs["Dagny"]->getCollisionRect());
-	mTileMap.addCollision(mNpcs["Finnr"]->getCollisionRect());
-	mTileMap.addCollision(mNpcs["Yngvarr"]->getCollisionRect());
-
-	// Add Index from every NPC to the map
-	mTileMap.setIndexOnMap(mNpcs["Brandr"]->getIndexRect(), mNpcs["Brandr"]->getIndex() - 2);
-	mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 2);
-	//mTileMap.setIndexOnMap(mNpcs["Dagny"]->getIndexRect(), mNpcs["Dagny"]->getIndex() - 2); // NOT NEEDED ON THIS LEVEL
-	mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 2);
-	mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 2);
+	else
+		Level::load();
 
 	mCurrentFootsteps = Footsteps::Hardwood;
 }

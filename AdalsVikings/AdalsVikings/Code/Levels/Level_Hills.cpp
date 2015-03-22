@@ -33,7 +33,7 @@ void Level_Hills::update(sf::Time &frametime)
 			if (FadeI.getFaded())
 			{
 				mFade2 = true;
-				DialogHandler::getDialogue("Ulfr_Hills").startDialogue();
+				DialogHandler::startDialogue("Ulfr_Hills");
 			}
 		}
 		if (DialogHandler::getDialogue("Ulfr_Hills").getHasStopped())
@@ -63,6 +63,9 @@ void Level_Hills::load()
 	mNpcs["Finnr"]->setDialogue("Finnr_Hills");
 
 	Level::load();
+
+	mTileMap.addCollision(mNpcs["Finnr"]->getCollisionRect());
+	mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 1);
 }
 
 void Level_Hills::unload()

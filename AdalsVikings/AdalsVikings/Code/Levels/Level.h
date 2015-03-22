@@ -87,5 +87,6 @@ protected:
 	bool mConversationStopped;
 	bool mIsNearbyLevel, mIsLoaded, mHasBeenReset;
 	bool mRestartSounds;
+	bool mUIUpdate;
 };
 

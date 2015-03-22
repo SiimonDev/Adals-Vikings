@@ -31,7 +31,7 @@ void Level_Camp_Finished::update(sf::Time &frametime)
 			FadeI.fadeIn(frametime);
 			if (FadeI.getFaded())
 			{
-				DialogHandler::getDialogue("All_FinishedCamp").startDialogue();
+				DialogHandler::startDialogue("All_FinishedCamp");
 				mFade1 = true;
 			}
 		}

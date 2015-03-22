@@ -94,7 +94,7 @@
 			<text character="Druid Leader" disabled="false" default="false" say="Oh great, Ursa Cervus" timer="2.8" turned="false" />
 			<text character="Druids" disabled="false" default="false" say="URSA CERVUS!" timer="2.0" turned="false" />
 			<text character="Druid Leader" disabled="false" default="false" say="You need only step into this sacred flame of yours, and join in with its heat." timer="3.4" turned="false" />
-			<text character="Druid Leader" disabled="false" default="false" say="We will then feast on your vessel’s flesh, and gain your holy strength." timer="3.6" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="We will then feast on your vessel's flesh, and gain your holy strength." timer="3.6" turned="false" />
 			<text character="Ulfr" disabled="false" default="false" say="*I can't do that!*" timer="1.6" turned="false" />
 			<text character="Leifr" disabled="false" default="false" say="*You can't do that!*" timer="1.6" turned="false" />
 			<text character="Ulfr" disabled="false" default="false" say="*That's what I said!*" timer="1.6" turned="false" />

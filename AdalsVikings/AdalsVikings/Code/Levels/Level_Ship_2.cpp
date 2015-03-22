@@ -28,6 +28,7 @@ void Level_Ship_2::update(sf::Time &frameTime)
 
 	if (!BoatEvents::hasBeenHandled(BoatEvent::StartDialogue) && BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue))
 	{
+		MouseState::setIsWorking(false);
 		if (!DialogHandler::getDialogue("Intro_Ship2").getActiveConversation() && !DialogHandler::getDialogue("Intro_Ship2").getHasStopped())
 			DialogHandler::startDialogue("Intro_Ship2");
 
@@ -36,6 +37,7 @@ void Level_Ship_2::update(sf::Time &frameTime)
 			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())
 			{
+				MouseState::setIsWorking(true);
 				LVLMI.changeLevel(LevelFolder::Ship_1);
 				BoatEvents::handleEvent(BoatEvent::StartDialogue);
 			}
@@ -61,7 +63,7 @@ void Level_Ship_2::update(sf::Time &frameTime)
 			mPlayer->removeItemFromInventory("map");
 
 		if (!DialogHandler::getDialogue("GivenMapToBrandr_Ship").getActiveConversation() && !DialogHandler::getDialogue("GivenMapToBrandr_Ship").getHasStopped())
-			DialogHandler::getDialogue("GivenMapToBrandr_Ship").startDialogue();
+			DialogHandler::startDialogue("GivenMapToBrandr_Ship");
 
 		if (DialogHandler::getDialogue("GivenMapToBrandr_Ship").getHasStopped())
 		{

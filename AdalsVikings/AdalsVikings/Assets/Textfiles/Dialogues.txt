@@ -59,6 +59,7 @@ Alfr_Tavern assets/textfiles/tavern/dialogue_alfr_tavern.xml
 Dagny_Tavern assets/textfiles/tavern/Dialogue_dagny_tavern.xml
 Finnr_Tavern assets/textfiles/tavern/dialogue_finnr_tavern.xml
 Yngvarr_Tavern assets/textfiles/tavern/dialogue_yngvarr_tavern.xml
+GivenBrandrAxe_Tavern assets/textfiles/tavern/Dialogue_givenBrandrAxe_tavern.xml
 -----------------------CITY GATES----------------------------
 Guard1_Gates assets/textfiles/gates/Dialogue_guard_gate.xml
 Guard2_Gates assets/textfiles/gates/dialoge_guard_gate2.xml

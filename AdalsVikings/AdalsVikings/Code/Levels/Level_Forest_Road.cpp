@@ -19,7 +19,7 @@ void Level_Forest_Road::update(sf::Time &frametime)
 	if (Act1Events::hasBeenTriggered(Act1Event::ForestRoadConver) && !Act1Events::hasBeenHandled(Act1Event::ForestRoadConver))
 	{
 		if (!DialogHandler::getDialogue("Ulfr_ForestRoad").getActiveConversation() && !DialogHandler::getDialogue("Ulfr_ForestRoad").getHasStopped())
-			DialogHandler::getDialogue("Ulfr_ForestRoad").startDialogue();
+			DialogHandler::startDialogue("Ulfr_ForestRoad");
 
 		if (DialogHandler::getDialogue("Ulfr_ForestRoad").getHasStopped())
 			Act1Events::handleEvent(Act1Event::ForestRoadConver);

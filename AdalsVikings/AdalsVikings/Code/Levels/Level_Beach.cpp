@@ -251,11 +251,12 @@ void Level_Beach::introCutscene(sf::Time &frameTime)
 	{
 		if (!mIntroFade1)
 		{
+			MouseState::setIsWorking(false);
 			FadeI.fadeIn(frameTime);
 			if (FadeI.getFaded())
 			{
 				//FadeI.setAlpha(0);
-				DialogHandler::getDialogue("Intro_Beach").startDialogue();
+				DialogHandler::startDialogue("Intro_Beach");
 				mIntroFade1 = true;
 			}
 		}
@@ -266,6 +267,7 @@ void Level_Beach::introCutscene(sf::Time &frameTime)
 			{
 				mCutSceneView.zoom(2);
 				mCutSceneView.setCenter(1920 / 2, 1080 / 2);
+				MouseState::setIsWorking(true);
 				//mCutSceneView.setViewport(sf::FloatRect(0, 0, 1920, 1080));
 
 				//FadeI.setAlpha(255);
@@ -361,7 +363,7 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 			FadeI.fadeIn(frameTime);
 			if (FadeI.getFaded())
 			{
-				DialogHandler::getDialogue("Ending_Beach").startDialogue();
+				DialogHandler::startDialogue("Ending_Beach");
 
 				mEndingFade2 = true;
 			}

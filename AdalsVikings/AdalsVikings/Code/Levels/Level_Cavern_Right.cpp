@@ -74,7 +74,7 @@ void Level_Cavern_Right::update(sf::Time &frametime)
 	if (Act1Events::hasBeenTriggered(Act1Event::TooDarkToGo) && !Act1Events::hasBeenHandled(Act1Event::TooDarkToGo))
 	{
 		if (!DialogHandler::getDialogue("Ulfr_Cavern").getActiveConversation() && !DialogHandler::getDialogue("Ulfr_Cavern").getHasStopped())
-			DialogHandler::getDialogue("Ulfr_Cavern").startDialogue();
+			DialogHandler::startDialogue("Ulfr_Cavern");
 		if (DialogHandler::getDialogue("Ulfr_Cavern").getHasStopped())
 		{
 			Act1Events::handleEvent(Act1Event::TooDarkToGo);
