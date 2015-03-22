@@ -1,72 +1,65 @@
 ############
-*id: $scroll
-position: $X:680 $Y:900
-interactPosition: $X:0 $Y:0
-index: $9
-scale: $0.6
-hascollision: $false
-############
 *id: $yellowFieldBackground
 position: $X:600 $Y:455
 interactPosition: $X:0 $Y:0
 index: $21
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $bushes
 position: $X:1616 $Y:470
 interactPosition: $X:0 $Y:0
 index: $21
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $roadWagon
 position: $X:220 $Y:729
 interactPosition: $X:0 $Y:0
 index: $21
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $roadSign
 position: $X:918 $Y:403
 interactPosition: $X:0 $Y:0
 index: $21
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $roadSign2
 position: $X:964 $Y:417
 interactPosition: $X:0 $Y:0
 index: $21
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $roadSign3
 position: $X:894 $Y:441
 interactPosition: $X:0 $Y:0
 index: $21
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $roadSign4
 position: $X:894 $Y:484
 interactPosition: $X:0 $Y:0
 index: $21
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $roadSign5
 position: $X:958 $Y:469
 interactPosition: $X:0 $Y:0
 index: $21
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $roadScarecrow
 position: $X:691 $Y:508
 interactPosition: $X:0 $Y:0
 index: $21
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sheepAtRoad
@@ -76,5 +69,3 @@ index: $21
 scale: $1.4
 hascollision: $false
 ############
-
-
