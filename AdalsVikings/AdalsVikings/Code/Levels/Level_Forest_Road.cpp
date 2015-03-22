@@ -10,8 +10,8 @@ Level_Forest_Road::Level_Forest_Road(Player &player, HUD &hud, ActionWheel &acti
 
 void Level_Forest_Road::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Forest_Road_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Forest_Road_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, mMusicSoundLevel);
 }
 
 void Level_Forest_Road::update(sf::Time &frametime)

@@ -12,8 +12,8 @@ Level_Camp_Clearing::Level_Camp_Clearing(Player &player, HUD &hud, ActionWheel &
 
 void Level_Camp_Clearing::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Camp_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Camp_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, mMusicSoundLevel);
 }
 
 void Level_Camp_Clearing::update(sf::Time &frametime)

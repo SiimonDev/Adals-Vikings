@@ -10,8 +10,8 @@ Level_Hills::Level_Hills(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Hills::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Hills_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Hills_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, mMusicSoundLevel);
 }
 
 void Level_Hills::update(sf::Time &frametime)

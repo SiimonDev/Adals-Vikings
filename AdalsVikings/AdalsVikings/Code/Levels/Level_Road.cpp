@@ -11,8 +11,8 @@ Level_Road::Level_Road(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Road::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, mMusicSoundLevel);
 }
 
 void Level_Road::update(sf::Time &frametime)

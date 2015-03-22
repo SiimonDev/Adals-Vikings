@@ -13,6 +13,8 @@ Level::Level(Player &player, HUD &hud, ActionWheel &actionWheel)
 , mIsLoaded(false)
 , mHasBeenReset(false)
 , mUIUpdate(true)
+, mAmbientSoundLevel(50)
+, mMusicSoundLevel(30)
 {
 }
 

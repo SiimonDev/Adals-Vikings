@@ -438,9 +438,6 @@
     <Filter Include="Source Files\Levels">
       <UniqueIdentifier>{70f62f8b-0653-4243-b3bf-70a40bf32b7b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Logics">
-      <UniqueIdentifier>{539a88f0-9e07-4eee-8787-992607540229}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Objects">
       <UniqueIdentifier>{756e01f3-fe18-4d1a-ad10-ec431f75ad1e}</UniqueIdentifier>
     </Filter>
@@ -461,6 +458,9 @@
     </Filter>
     <Filter Include="Header Files\Object">
       <UniqueIdentifier>{92d8013d-f9d5-4741-9d0e-fc1f025e81dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Logics">
+      <UniqueIdentifier>{539a88f0-9e07-4eee-8787-992607540229}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

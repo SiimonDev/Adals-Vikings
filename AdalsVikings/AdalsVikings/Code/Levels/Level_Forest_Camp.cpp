@@ -10,8 +10,8 @@ Level_Forest_Camp::Level_Forest_Camp(Player &player, HUD &hud, ActionWheel &acti
 
 void Level_Forest_Camp::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Forest_Camp_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Forest_Camp_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, mMusicSoundLevel);
 }
 
 void Level_Forest_Camp::update(sf::Time &frametime)

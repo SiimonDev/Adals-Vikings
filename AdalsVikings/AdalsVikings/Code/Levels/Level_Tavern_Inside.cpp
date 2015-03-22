@@ -10,7 +10,7 @@ Level_Tavern_Inside::Level_Tavern_Inside(Player &player, HUD &hud, ActionWheel &
 
 void Level_Tavern_Inside::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Tavern_Inside_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Tavern_Inside_Music, true, mMusicSoundLevel);
 }
 
 void Level_Tavern_Inside::update(sf::Time &frametime)

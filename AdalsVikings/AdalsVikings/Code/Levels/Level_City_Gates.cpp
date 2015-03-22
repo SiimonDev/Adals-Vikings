@@ -10,8 +10,8 @@ Level_City_Gates::Level_City_Gates(Player &player, HUD &hud, ActionWheel &action
 
 void Level_City_Gates::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::City_Gates_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::City_Gates_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, mMusicSoundLevel);
 }
 
 void Level_City_Gates::update(sf::Time &frametime)

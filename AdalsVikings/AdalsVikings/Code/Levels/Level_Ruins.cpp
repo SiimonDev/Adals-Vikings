@@ -10,8 +10,8 @@ Level_Ruins::Level_Ruins(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Ruins::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Ruins_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Ruins_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, mMusicSoundLevel);
 }
 
 void Level_Ruins::update(sf::Time &frametime)
