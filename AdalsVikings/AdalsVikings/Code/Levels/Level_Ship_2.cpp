@@ -2,6 +2,7 @@
 #include "..\Interface\LoadingScreen.h"
 #include "..\Logics\KeyboardState.h"
 #include "..\Logics\WindowState.h"
+#include "..\Logics\AudioPlayer.h"
 #include "..\Logics\BoatEvents.h"
 #include <iostream>
 
@@ -70,6 +71,9 @@ void Level_Ship_2::update(sf::Time &frameTime)
 			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())
 			{
+				AudioPlayer::stopHDDSound(HDDSound::Boat_Ambient);
+				AudioPlayer::stopHDDSound(HDDSound::Boat_Music);
+				mRestartSounds = true;
 				LSI.startLoading(LoadTask::LoadAct1);
 				BoatEvents::handleEvent(BoatEvent::GivenMapToBrandr);
 			}
@@ -94,6 +98,9 @@ void Level_Ship_2::render(IndexRenderer &iRenderer)
 
 void Level_Ship_2::load()
 {
+	AudioPlayer::playHDDSound(HDDSound::Boat_Ambient, true, 50);
+	AudioPlayer::playHDDSound(HDDSound::Boat_Music, true, 50);
+
 	RMI.loadResource(Texture::BrandrAngryTalk);
 	RMI.loadResource(Texture::BrandrAngryIdle);
 	RMI.loadResource(Texture::FrontBoatWaveAnimation);
