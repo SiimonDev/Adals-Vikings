@@ -140,10 +140,10 @@ void PortalLoader::load()
 		mPortalMap[HillsToFarm]->setCursorRotation(-90);
 
 		mPortalMap[BeachToBeachHill] = PortalPtr(new Portal(LevelFolder::Beach, sf::Vector2f(210, 240), sf::Vector2f(540, 0), sf::Vector2f(690, 225), sf::Vector2f(690, 225)));
-		mPortalMap[BeachToBeachHill]->setCursorRotation(180);
+		mPortalMap[BeachToBeachHill]->setCursorRotation(0);
 
 		mPortalMap[HillBeachToBeach] = PortalPtr(new Portal(LevelFolder::Beach_Hills, sf::Vector2f(555, 55), sf::Vector2f(915, 1025), sf::Vector2f(1280, 725), sf::Vector2f(1285, 1045)));
-		mPortalMap[HillBeachToBeach]->setCursorRotation(-90);
+		mPortalMap[HillBeachToBeach]->setCursorRotation(-180);
 
 		mPortalMap[CliffsToCRuins] = PortalPtr(new Portal(LevelFolder::Cliffs_Down, sf::Vector2f(320, 285), sf::Vector2f(30, 115), sf::Vector2f(165, 410), sf::Vector2f(165, 410)));
 		mPortalMap[CliffsToCRuins]->setCursorRotation(180);

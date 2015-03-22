@@ -204,8 +204,6 @@ void LoadingScreen::runTask()
 			{
 				LVLMI.unloadCurrentAct();
 				LVLMI.loadAct1(true);
-				//mStart = false;
-				//mFinished = true;
 			}
 			mTask = LoadTask::None;
 

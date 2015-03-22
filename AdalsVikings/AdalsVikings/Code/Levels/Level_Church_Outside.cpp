@@ -10,8 +10,8 @@ Level_Church_Outside::Level_Church_Outside(Player &player, HUD &hud, ActionWheel
 
 void Level_Church_Outside::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Church_Outside_Ambient, true, 100);
-	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Church_Outside_Ambient, true, mAmbientSoundLevel * 2);
+	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, mMusicSoundLevel / 2);
 }
 
 void Level_Church_Outside::update(sf::Time &frametime)

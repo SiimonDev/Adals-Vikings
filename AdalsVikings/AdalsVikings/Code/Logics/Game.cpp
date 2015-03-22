@@ -55,49 +55,46 @@ void Game::update(sf::Time frameTime)
 	{
 		LSI.update(frameTime);
 	}
-	else
+	else if (!LSI.getIsStarted())
 	{
-		if (!LSI.getIsStarted())
+		MHI.update(frameTime);
+		if (runGame)
 		{
-			MHI.update(frameTime);
-			if (runGame)
-			{
-				LVLMI.update(frameTime);
+			LVLMI.update(frameTime);
 
-				// Check for pause menu events
-				if (MHI.getEvent() == MenuEvent::MainMenuPressed)
-				{
-					LSI.startLoading(LoadTask::LoadMainMenu);
-					runGame = false;
-				}
-				else if (MHI.getEvent() == MenuEvent::ResumePressed)
-				{
-					MHI.popMenu();
-				}
-			}
-
-			// Check for main menu events
-			if (MHI.getEvent() == MenuEvent::NewGamePressed)
+			// Check for pause menu events
+			if (MHI.getEvent() == MenuEvent::MainMenuPressed)
 			{
-				LSI.startLoading(LoadTask::StartGame);
-				runGame = true;
+				LSI.startLoading(LoadTask::LoadMainMenu);
+				runGame = false;
 			}
-			else if (MHI.getEvent() == MenuEvent::LoadGamePressed)
+			else if (MHI.getEvent() == MenuEvent::ResumePressed)
 			{
-				LSI.startLoading(LoadTask::LoadGame);
-				runGame = true;
+				MHI.popMenu();
 			}
-			else if (MHI.getEvent() == MenuEvent::ExitGamePressed)
-			{
-				LVLMI.save("assets/saves/");
-				mWindow.close();
-			}
-			else if (MHI.getEvent() == MenuEvent::ExitMainMenuPressed)
-			{
-				mWindow.close();
-			}
-			AudioPlayer::update(frameTime);
 		}
+
+		// Check for main menu events
+		if (MHI.getEvent() == MenuEvent::NewGamePressed)
+		{
+			LSI.startLoading(LoadTask::StartGame);
+			runGame = true;
+		}
+		else if (MHI.getEvent() == MenuEvent::LoadGamePressed)
+		{
+			LSI.startLoading(LoadTask::LoadGame);
+			runGame = true;
+		}
+		else if (MHI.getEvent() == MenuEvent::ExitGamePressed)
+		{
+			LVLMI.save("assets/saves/");
+			mWindow.close();
+		}
+		else if (MHI.getEvent() == MenuEvent::ExitMainMenuPressed)
+		{
+			mWindow.close();
+		}
+		AudioPlayer::update(frameTime);
 	}
 
 	// Always Last
@@ -116,18 +113,15 @@ void Game::render()
 		LSI.render(iRenderer);
 		iRenderer.display();
 	}
-	else
+	else if (!LSI.getIsStarted())
 	{
-		if (!LSI.getIsStarted())
-		{
-			MHI.render(iRenderer);
-			if (runGame){
-				LVLMI.render(iRenderer);
-			}
-			iRenderer.display();
-			if (DebugMode){
-				PathFinder::getCurrentTileMap().render(iRenderer);
-			}
+		MHI.render(iRenderer);
+		if (runGame){
+			LVLMI.render(iRenderer);
+		}
+		iRenderer.display();
+		if (DebugMode){
+			PathFinder::getCurrentTileMap().render(iRenderer);
 		}
 	}
 	
