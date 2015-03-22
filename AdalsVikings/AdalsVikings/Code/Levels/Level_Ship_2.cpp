@@ -98,8 +98,8 @@ void Level_Ship_2::render(IndexRenderer &iRenderer)
 
 void Level_Ship_2::load()
 {
-	AudioPlayer::playHDDSound(HDDSound::Boat_Ambient, true, 50);
-	AudioPlayer::playHDDSound(HDDSound::Boat_Music, true, 50);
+	AudioPlayer::playHDDSound(HDDSound::Boat_Ambient, true);
+	AudioPlayer::playHDDSound(HDDSound::Boat_Music, true);
 
 	RMI.loadResource(Texture::BrandrAngryTalk);
 	RMI.loadResource(Texture::BrandrAngryIdle);

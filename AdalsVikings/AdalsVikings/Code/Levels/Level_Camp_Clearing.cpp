@@ -106,16 +106,16 @@ void Level_Camp_Clearing::load()
 	mNpcs["Leifr"]->setIndex(10);
 	mNpcs["Leifr"]->setPosition(sf::Vector2f(1035, 729));
 	mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1160, 724));
-	if (!Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest))
+	if (!Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && !Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
 		mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
 	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && !mPlayer->hasItemInInventory("bearDeer") && !Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
 		mNpcs["Leifr"]->setDialogue("LeifrFire_ClearingCamp");
-	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && mPlayer->hasItemInInventory("bearDeer"))
+	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && mPlayer->hasItemInInventory("bearDeer") && !Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
 	{
 		mNpcs["Leifr"]->setDialogue("LeifrBear_ClearingCamp");
 		mSetLeifrDialogue = true;
 	}
-	else if (!Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::CampFinished_Conversation))
+	else if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::CampFinished_Conversation))
 		mNpcs["Leifr"]->setDialogue("LeifrAFterDruids_ClearingCamp");
 
 	/*------------------- Brynja ----------------*/

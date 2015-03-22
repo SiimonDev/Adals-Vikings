@@ -3,7 +3,7 @@
 #include <memory>
 
 Fade::Fade()
-: mDuration(sf::seconds(2))
+: mDuration(sf::seconds(1))
 , mWaitDuration(sf::seconds(2))
 , mElapsedTime(sf::Time::Zero)
 , mFaded(false)

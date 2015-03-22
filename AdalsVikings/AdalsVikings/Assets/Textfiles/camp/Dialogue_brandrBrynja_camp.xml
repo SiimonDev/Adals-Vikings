@@ -9,12 +9,12 @@
 	<text character="Brynja" default="false" disabled="false" say="What?" timer="2.0" turned="false"></text>
 	<text character="Brynja" default="false" disabled="false" say="What could you possibly say right now to explain this?" timer="3.3" turned="false"></text>
 	<text character="Brandr" default="false" disabled="false" say="We found a keg of mead." timer="2.5" turned="true"></text>
-	<text say="..." timer="1.2" default="false" disabled="false"></text>
+	<text say="..." timer="1.2" default="false" disabled="false" character="Brandr"></text>
 	<text character="Brynja" default="false" disabled="false" say="...Alright." timer="2.3" turned="false"></text>
 	<text character="Brynja" default="false" disabled="false" say="I get it." timer="2.3" turned="false"></text>
 	<text character="Brynja" default="false" disabled="false" say="You wanted to relax." timer="2.6" turned="false"></text>
 	<text character="Brynja" default="false" disabled="false" say="Take it easy." timer="2.3" turned="false"></text>
-	<text say="..." default="false" disabled="false" timer="2.3" turned="false"></text>
+	<text say="..." default="false" disabled="false" timer="2.3" turned="false" character="Brynja"></text>
 	<text character="Brynja" default="false" disabled="false" say="Brandr." timer="1.8" turned="false"></text>
 	<text character="Brynja" default="false" disabled="false" say="That's okay." timer="2.3" turned="false"></text>
 	<text character="Brynja" default="false" disabled="false" say="BUT NOT DURING A RAID!" timer="2.8" turned="false"></text>

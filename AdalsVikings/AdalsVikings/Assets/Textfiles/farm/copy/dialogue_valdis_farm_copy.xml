@@ -2,15 +2,15 @@
 <conversation>
 	<useText useText="That sounds illegal..." />
 	<lookText lookText="Valdis seems distracted by something" />
-	<text character="Ulfr" disabled="false" default="false" say="Hey valdis, what's going on?" timer="2.0" turned="true" />
-	<text character="Valdis" disabled="false" default="false" disablePrevious="" say="Can you see that flower over there? " timer="2.4" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="Yeah, what about it?" timer="2.0" turned="true" />
-	<text character="Valdis" disabled="false" default="false" say="It's a special one, to say the least." timer="2.2" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="...How come?" timer="2.0" turned="true" />
-	<text character="Valdis" disabled="false" default="false" say="I could make a really powerful sleeping powder by boiling it in alcohol." timer="2.4" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="..." timer="1.2" turned="true" />
-	<text character="Ulfr" disabled="false" default="false" say="And how exactly do you know that?" timer="2.4" />
-	<text character="Valdis" disabled="false" default="false" say="I'm a herbalist, Ulfr. Don't make strange assumptions." timer="3.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Hey valdis, what's going on?" timer="2.0" turned="true" />
+	<text character="Valdis" disabled="true" default="false" disablePrevious="" say="Can you see that flower over there? " timer="2.4" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Yeah, what about it?" timer="2.0" turned="true" />
+	<text character="Valdis" disabled="true" default="false" say="It's a special one, to say the least." timer="2.2" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="...How come?" timer="2.0" turned="true" />
+	<text character="Valdis" disabled="true" default="false" say="I could make a really powerful sleeping powder by boiling it in alcohol." timer="2.4" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="..." timer="1.2" turned="true" />
+	<text character="Ulfr" disabled="true" default="false" say="And how exactly do you know that?" timer="2.4" />
+	<text character="Valdis" disabled="true" default="false" say="I'm a herbalist, Ulfr. Don't make strange assumptions." timer="3.0" turned="false" />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />

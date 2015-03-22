@@ -359,7 +359,14 @@ void Level::updateDialog(sf::Time frameTime)
 						iz->second->updateAnimationStyle();
 					else if ( it->second->getCharacter() != mPlayer->getName())
 						mPlayer->UpdateAnimationStyle();
+
+					if (!it->second->getOptions().empty())
+					{
+						iz->second->setAnimationStyle("Player");
+						mPlayer->setAnimationStyle(AnimationType::Idle);
+					}
 				}
+
 			}
 			else
 			{
