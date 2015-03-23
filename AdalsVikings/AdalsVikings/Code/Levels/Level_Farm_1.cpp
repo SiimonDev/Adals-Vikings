@@ -16,6 +16,28 @@ void Level_Farm_1::restartSounds()
 
 void Level_Farm_1::update(sf::Time &frametime)
 {
+	if (Act1Events::hasBeenHandled(Act1Event::SolvedConflict) && !Act1Events::hasBeenTriggered(Act1Event::FlowerActive))
+	{
+		for (int i = 0; i < mObjects.size(); i++)
+		{
+			if (mObjects[i]->getObjID() == "flowers")
+			{
+				mObjects[i]->enableObject(true);
+				Act1Events::triggerEvent(Act1Event::FlowerActive);
+				Act1Events::handleEvent(Act1Event::FlowerActive);
+			}
+		}
+	}
+	if (!Act1Events::hasBeenHandled(Act1Event::SolvedConflict))
+	{
+		for (int i = 0; i < mObjects.size(); i++)
+		{
+			if (mObjects[i]->getObjID() == "flowers")
+			{
+				mObjects[i]->enableObject(false);
+			}
+		}
+	}
 	if (KeyboardState::isPressed(sf::Keyboard::Num1))
 	{
 		mPlayer->addItemToInventory("mead");
