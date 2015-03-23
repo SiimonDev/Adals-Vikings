@@ -219,7 +219,7 @@ bool VideoFile::OpenAVI(LPCSTR szFile)
 
 	if (AVIStreamOpenFromFile(&pavi, szFile, streamtypeVIDEO, 0, OF_READ, NULL) != 0)
 	{
-		MessageBox(HWND_DESKTOP, "Failed To Open The AVI Stream.\n 1. Make sure you are not missing any video files\n 2. Try reinstalling x264vfw", "Error", MB_OK | MB_ICONEXCLAMATION);
+		MessageBox(HWND_DESKTOP, "Failed To Open The AVI Stream.\nMake sure you are not missing any video files", "Error", MB_OK | MB_ICONEXCLAMATION);
 		success = false;
 	}
 
@@ -246,7 +246,10 @@ bool VideoFile::OpenAVI(LPCSTR szFile)
 
 		pgf = AVIStreamGetFrameOpen(pavi, NULL);						// Create The PGETFRAME	Using Our Request Mode
 		if (pgf == NULL)
-			MessageBox(HWND_DESKTOP, "Failed To Open The AVI Frame", "Error", MB_OK | MB_ICONEXCLAMATION);
+		{
+			MessageBox(HWND_DESKTOP, "Failed To Open The AVI Frame\nTry reinstalling x264vfw", "Error", MB_OK | MB_ICONEXCLAMATION);
+			success = false;
+		}
 
 		std::cout << "Loaded AVI File: Width : " << mWidth << " Height : " << mHeight << " Frames : " << mLastframe << std::endl;
 

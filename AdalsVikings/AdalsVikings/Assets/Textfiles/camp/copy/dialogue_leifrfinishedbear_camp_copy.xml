@@ -2,10 +2,10 @@
 <conversation>
 	<useText useText="I don't think im strong enough to do that. " />
 	<lookText lookText="My buddy Leifr. He's the most peaceful dude I know, and he's always there to help. " />
-	<text character="Ulfr" default="false" disabled="true" say="Hey buddy..." timer="2.0" turned="false" />
-	<text character="Leifr" default="false" disabled="true" say="Yes, Ulfr?" timer="2.0" turned="false" />
-	<text character="Ulfr" default="false" disabled="true" say="I need some help." timer="2.0" turned="true" />
-	<text character="Leifr" default="false" disabled="true" say="You don't say?" timer="2.0" turned="true" />
+	<text character="Ulfr" default="false" disabled="false" say="Hey buddy..." timer="2.0" turned="false" />
+	<text character="Leifr" default="false" disabled="false" say="Yes, Ulfr?" timer="2.0" turned="false" />
+	<text character="Ulfr" default="false" disabled="false" say="I need some help." timer="2.0" turned="true" />
+	<text character="Leifr" default="false" disabled="false" say="You don't say?" timer="2.0" turned="true" />
 	<text character="Leifr" default="true" disabled="false" say="Go ahead. Tell me." timer="2.3" turned="true" />
 	<text character="Ulfr" default="true" disabled="false" timer="3.3" turned="true" say="To light the fire I need to take some from the druids in the forest, " />
 	<text character="Ulfr" default="true" disabled="false" say="but in order to do that I need to  convince them to let me have some," timer="3.3" turned="true" />

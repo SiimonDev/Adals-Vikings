@@ -2,12 +2,12 @@
 <conversation>
 	<useText useText="Why would I use Dagny?" />
 	<lookText lookText="She looks disappointed." />
-	<text character="Leifr" disabled="true" default="false" say="By Thor, you did it!" timer="2.0" turned="false" />
-	<text character="Leifr" disabled="true" default="false" say="Long time since I've seen anyone run that fast!" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="They must really enjoy their chicken" timer="2.0" turned="false" />
-	<text character="Leifr" disabled="true" default="false" say="Now let's get out of this outfit, kid" timer="2.0" turned="false" />
-	<text character="Leifr" disabled="true" default="false" say="I'll head back to camp. Hopefully Brynja hasn't noticed me missing yet." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="How irresponsible of them." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="To leave an open fire in the woods like this." timer="2.0" turned="false" />
+	<text character="Leifr" disabled="false" default="false" say="By Thor, you did it!" timer="2.0" turned="false" />
+	<text character="Leifr" disabled="false" default="false" say="Long time since I've seen anyone run that fast!" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="They must really enjoy their chicken" timer="2.0" turned="false" />
+	<text character="Leifr" disabled="false" default="false" say="Now let's get out of this outfit, kid" timer="2.0" turned="false" />
+	<text character="Leifr" disabled="false" default="false" say="I'll head back to camp. Hopefully Brynja hasn't noticed me missing yet." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="How irresponsible of them." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="To leave an open fire in the woods like this." timer="2.0" turned="false" />
 	<stopConversation />
 </conversation>
