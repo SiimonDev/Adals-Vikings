@@ -64,7 +64,7 @@ void Level_Beach::load()
 {
 	if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
 	{
-		mLandingVideo.openFromFile("assets/video/landing_x264_720p.avi");
+		mLandingVideo.openFromFile("assets/video/landing_x264_720p.avi", false);
 		mLandingVideo.setSize(1920, 1080);
 		mLandingVideo.play();
 	}

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vfw.h>
 #include "WindowState.h"
+#include "KeyboardState.h"
+#include "Debug.h"
 
 using namespace sf;
 
@@ -25,6 +27,7 @@ unsigned char* data = 0;										// Pointer To Our Resized Image
 
 GLuint textureID;
 
+
 VideoFile::VideoFile() :
 mFrame(0),
 mWidth(0),
@@ -34,10 +37,11 @@ mSize(0, 0),
 mLoop(false),
 mLoaded(false),
 mStatus(Status::Stopped),
-mNext(sf::seconds(0))
+mNext(sf::seconds(0)),
+mVolume(50)
 {
 }
-VideoFile::VideoFile(std::string file, bool loop) :
+VideoFile::VideoFile(const char* file, bool loop) :
 mFrame(0),
 mWidth(0),
 mHeight(0),
@@ -46,13 +50,34 @@ mSize(0, 0),
 mLoop(loop),
 mLoaded(false),
 mStatus(Status::Stopped),
-mNext(sf::seconds(0))
+mNext(sf::seconds(0)),
+mVolume(50)
 {
 	openFromFile(file, loop);
 }
-
-bool VideoFile::openFromFile(std::string file, bool loop)
+VideoFile::VideoFile(const char* file, const char* soundPath, bool loop) :
+mFrame(0),
+mWidth(0),
+mHeight(0),
+mPosition(0, 0),
+mSize(0, 0),
+mLoop(loop),
+mLoaded(false),
+mStatus(Status::Stopped),
+mNext(sf::seconds(0)),
+mVolume(50)
 {
+	openFromFile(file, soundPath, loop);
+}
+
+bool VideoFile::openFromFile(const char* file, bool loop)
+{
+	return openFromFile(file, "", loop);
+}
+bool VideoFile::openFromFile(const char* file, const char* soundPath, bool loop)
+{
+	if (mSound != NULL)
+		delete mSound;
 	bool success = true;
 	mLoop = loop;
 	mStatus = Status::Stopped;
@@ -61,8 +86,20 @@ bool VideoFile::openFromFile(std::string file, bool loop)
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_2D, textureID);
 
-	if (!OpenAVI(file.c_str()))
-		success = false;
+	success = OpenAVI(file);
+
+	if (success && soundPath != "")
+	{
+		mSound = new sf::Music();
+		if (!mSound->openFromFile(soundPath)){
+			std::string error = "Failed To Open The AVI Stream.\nCould not open Sound File: " + std::string(soundPath);
+			MessageBox(HWND_DESKTOP, error.c_str(), "Error", MB_OK | MB_ICONEXCLAMATION);
+
+			std::cout << "Failed to load music: " << soundPath;
+			success = false;
+		}
+		mSound->setVolume(mVolume);
+	}
 
 	if (success)
 	{
@@ -86,15 +123,23 @@ void VideoFile::update(sf::Time frameTime)
 		if (mFrame >= mLastframe)
 		{
 			if (mLoop)
-			{
-				mFrame = 0;
-				mNext = sf::seconds(0);
-			}
+				restart();
 			else
 			{
 				mFrame = mLastframe - 1;
 				mStatus = Status::Paused;
 			}
+		}
+	}
+
+	if (DebugMode)
+	{
+		if (KeyboardState::isPressed(sf::Keyboard::P))
+		{
+			if (mStatus == Status::Paused)
+				play();
+			else if (mStatus == Status::Playing)
+				pause();
 		}
 	}
 }
@@ -147,27 +192,45 @@ void VideoFile::setSize(const float x, const float y)
 {
 	mSize = sf::Vector2f(x, y);
 }
+void VideoFile::setVolume(float volume)
+{
+	mVolume = volume;
+	if (mSound != NULL)
+		mSound->setVolume(volume);
+}
 
 void VideoFile::play()
 {
 	mStatus = Status::Playing;
+
+	if (mSound != NULL)
+		mSound->play();
 }
 void VideoFile::pause()
 {
 	mStatus = Status::Paused;
+	if (mSound != NULL)
+		mSound->pause();
 }
 void VideoFile::stop()
 {
 	mStatus = Status::Stopped;
+	if (mSound != NULL)
+		mSound->stop();
 }
 void VideoFile::restart()
 {
 	mFrame = 0;
 	mNext = sf::seconds(0);
+	if (mSound != NULL)
+		mSound->stop();
+	play();
 }
 void VideoFile::close()
 {
 	mLoaded = false;
+	if (mSound != NULL)
+		delete mSound;
 	CloseAVI();
 	glDeleteTextures(1, &textureID);
 }
@@ -220,7 +283,7 @@ bool VideoFile::OpenAVI(LPCSTR szFile)
 
 	if (AVIStreamOpenFromFile(&pavi, szFile, streamtypeVIDEO, 0, OF_READ, NULL) != 0)
 	{
-		std::string error = "Failed To Open The AVI Stream.\nMissing video File: " + file;
+		std::string error = "Failed To Open The AVI Stream.\nCould not Open Video File: " + file;
 		MessageBox(HWND_DESKTOP, error.c_str(), "Error", MB_OK | MB_ICONEXCLAMATION);
 		success = false;
 	}

@@ -36,7 +36,7 @@ Game::Game()
 	KeyboardState::initialize();
 	MouseState::initialize();
 
-	splashScreen.openFromFile("assets/video/SplashScreen_x264_720p.avi");
+	splashScreen.openFromFile("assets/video/SplashScreen_x264_720p.avi"/*, "assets/video/upp_hill_sound.wav"*/);
 	splashScreen.setSize(1280, 720);
 	splashScreen.setPosition((1920 / 2) - splashScreen.getSize().x / 2, (1080 / 2) - splashScreen.getSize().y / 2);
 

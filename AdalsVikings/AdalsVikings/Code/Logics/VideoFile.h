@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/OpenGL.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <string>
-
 
 namespace sf
 {
@@ -17,10 +17,11 @@ namespace sf
 		};
 
 		VideoFile();
-		VideoFile(std::string file, bool loop = false);
-		//~VideoFile();
+		VideoFile(const char* file, bool loop = false);
+		VideoFile(const char* file, const char* soundPath, bool loop = false);
 
-		bool openFromFile(std::string file, bool loop = false);
+		bool openFromFile(const char* file, bool loop = false);
+		bool openFromFile(const char* file, const char* soundPath, bool loop = false);
 		void update(sf::Time frameTime);
 		void render(sf::RenderWindow &window);
 		
@@ -28,6 +29,7 @@ namespace sf
 		void setPosition(const float x, const float y);
 		void setSize(const sf::Vector2f &size);
 		void setSize(const float x, const float y);
+		void setVolume(float volume);
 
 		void play();
 		void pause();
@@ -54,6 +56,9 @@ namespace sf
 
 		sf::Vector2f mPosition;
 		sf::Vector2f mSize;
+		sf::Music* mSound;
+
+		float mVolume;
 
 		int	mFrame = 0;
 		long mLastframe;
