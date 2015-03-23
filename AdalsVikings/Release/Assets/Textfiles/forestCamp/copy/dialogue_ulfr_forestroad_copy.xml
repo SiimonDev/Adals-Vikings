@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<conversation>
-	<useText useText="I don't think im strong enough to do that. " />
-	<lookText lookText="That's Leifr" />
-	<text character="Ulfr" disabled="false" default="false" say="I have to get that fire to camp somehow..." timer="2.8" turnedPlayer="true" />
-	<text character="Ulfr" disabled="false" default="false" say="Maybe if I trick those druids." timer="2.4" turnedPlayer="true" />
-	<text character="Ulfr" disabled="false" default="false" say="Somehow..." timer="2.0" turned="true" />
-	<stopConversation />
-</conversation>

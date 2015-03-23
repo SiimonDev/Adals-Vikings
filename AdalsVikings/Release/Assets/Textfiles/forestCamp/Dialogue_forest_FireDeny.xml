@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<conversation>
-	<useText useText="That's not how it works..." />
-	<lookText lookText="That's the &quot;so cool&quot; hipst- err, i mean druids." />
-	<text character="Druid Leader" turned="false" say="Hey! What are you doing?" timer="2.3"></text>
-	<text character="Ulfr" say="Uh... I'm just-" timer="1.8" turned="false"></text>
-	<text character="Druid Leader" turned="false" say="This is a holy flame! Step away from the fire." timer="2.3"></text>
-	<stopConversation />
-</conversation>

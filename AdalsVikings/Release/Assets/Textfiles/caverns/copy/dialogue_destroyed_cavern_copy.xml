@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<conversation>
-	<useText useText="Why would I use Valdis?" />
-	<lookText lookText="She seems to be stuck in a staring contest with the ocean." />
-	<text character="Ulfr" disabled="false" default="false" say="Holy hammer, that was close!" timer="2.0" turned="true" />
-	<text character="Ulfr" disabled="false" default="false" say="I can't believe the entire cliff collapsed." timer="2.0" turned="false" disablePrevious="true" />
-	<text character="Ulfr" disabled="false" default="false" say="Along with the ruins, and the Heel Peels." timer="2.0" turned="false" disablePrevious="true" />
-	<stopConversation />
-</conversation>

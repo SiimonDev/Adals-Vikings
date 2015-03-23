@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<conversation>
-	<useText useText="Why would I use Valdis?" />
-	<lookText lookText="She seems to be stuck in a staring contest with the ocean." />
-	<text character="Ulfr" disabled="false" default="false" say="Well that takes care of the wolf..." turnedPlayer="true" timer="2.3" />
-	<text character="Ulfr" disabled="false" default="false" say="..." turnedPlayer="true" timer="1.3" />
-	<text character="Ulfr" disabled="false" default="false" say="... I hope." turnedPlayer="true" timer="2.4" />
-	<stopConversation />
-</conversation>
