@@ -17,7 +17,6 @@
 #include "LevelManager.h"
 #include "TileMap.h"
 #include "PortalLoader.h"
-//#include <External\dirent.h>
 #include <SFML\Graphics.hpp>
 #include <fstream>
 #include <vector>
