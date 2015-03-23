@@ -2,9 +2,9 @@
 <conversation>
 	<useText useText="How would i even use them?" />
 	<lookText lookText="Looks like Leifr and Finnr are just... standing there" />
-	<text character="Ulfr" disabled="false" default="false" say="Hey guys." timer="2.0" turned="false" />
-	<text character="Finnr" disabled="false" default="false" disablePrevious="true" say="Hi Ulfr." timer="1.4" turned="true" />
-	<text character="Leifr" disabled="false" default="false" disablePrevious="" say="Hey Kid." timer="2.2" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Hey guys." timer="2.0" turned="false" />
+	<text character="Finnr" disabled="true" default="false" disablePrevious="true" say="Hi Ulfr." timer="1.4" turned="true" />
+	<text character="Leifr" disabled="true" default="false" disablePrevious="" say="Hey Kid." timer="2.2" turned="false" />
 	<option_container disabled="false">
 		<option choice_text="Has either of you seen Adal's Map lately?" disabled="true">
 			<text character="Ulfr" disablePrevious="false" say="Has either of you seen Adal's Map lately?" timer="2.5" turned="false" />
@@ -28,7 +28,7 @@
 			<text character="Ulfr" say="At least i tried. " timer="2.0" />
 			<gotoBaseContainer />
 		</option>
-		<option choice_text="I'm surprised you're both awake." disabled="false">
+		<option choice_text="I'm surprised you're both awake." disabled="true">
 			<text character="Ulfr" say="I'm suprised you're both awake." timer="2.0" turned="false" />
 			<text character="Leifr" say="Hard to sleep when Brandr's screaming Bloody Murder at the front." timer="4" turned="false" />
 			<text character="Ulfr" say="I heard it too... Do you know what it's about?" timer="3.0" turned="false" />
