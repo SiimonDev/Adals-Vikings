@@ -276,7 +276,7 @@ void LevelManager::loadAct1(bool reset)
 
 	if (reset)
 	{
-		mCurrentLevelID = LevelFolder::Beach;  //<--- Change this if you want to spawn on a different level
+		mCurrentLevelID = LevelFolder::Road;  //<--- Change this if you want to spawn on a different level
 		baseLoad(true);
 	}
 	else

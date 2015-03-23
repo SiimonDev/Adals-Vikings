@@ -257,7 +257,7 @@ bool VideoFile::OpenAVI(LPCSTR szFile)
 			std::cout << "Failde to load AVI file, missing x264vfw codec" << std::endl;
 	}
 	else
-		std::cout << "Failde to load AVI file" << std::endl;
+		std::cout << "Failed to load AVI file" << std::endl;
 	
 	return success;
 }

@@ -130,6 +130,63 @@ void Level_Road::render(IndexRenderer &iRenderer)
 void Level_Road::load()
 {
 
+	if (!Act1Events::hasBeenTriggered(Act1Event::Road_GiveMailmanPaper))
+	{
+		Act1Events::triggerEvent(Act1Event::Enter_Road);
+		Act1Events::handleEvent(Act1Event::Enter_Road);
+
+		Act1Events::triggerEvent(Act1Event::CampClearing_Brynja);
+		Act1Events::handleEvent(Act1Event::CampClearing_Brynja);
+
+		Act1Events::triggerEvent(Act1Event::CampClearing_Leifr);
+		Act1Events::handleEvent(Act1Event::CampClearing_Leifr);
+
+		Act1Events::triggerEvent(Act1Event::GotBeerDeerPelt);
+		Act1Events::handleEvent(Act1Event::GotBeerDeerPelt);
+
+		Act1Events::triggerEvent(Act1Event::ForestCamp_BeerDeer);
+		Act1Events::handleEvent(Act1Event::ForestCamp_BeerDeer);
+
+		Act1Events::triggerEvent(Act1Event::ForestCampFire);
+		Act1Events::handleEvent(Act1Event::ForestCampFire);
+
+		Act1Events::triggerEvent(Act1Event::CampFinished_Conversation);
+		Act1Events::handleEvent(Act1Event::CampFinished_Conversation);
+
+		Act1Events::triggerEvent(Act1Event::CampClearing_TalkedToAll);
+		Act1Events::handleEvent(Act1Event::CampClearing_TalkedToAll);
+
+		Act1Events::triggerEvent(Act1Event::Beach_Intro);
+		Act1Events::handleEvent(Act1Event::Beach_Intro);
+
+		Act1Events::triggerEvent(Act1Event::Beach_Ending);
+		Act1Events::handleEvent(Act1Event::Beach_Ending);
+
+		Act1Events::triggerEvent(Act1Event::TavernInside_GiveAxeToBrandr);
+		Act1Events::handleEvent(Act1Event::TavernInside_GiveAxeToBrandr);
+
+		Act1Events::triggerEvent(Act1Event::ChurchInside_GoBackDialogue);
+		Act1Events::handleEvent(Act1Event::ChurchInside_GoBackDialogue);
+
+		Act1Events::triggerEvent(Act1Event::ChurchOutside_TalkToPrincess);
+		Act1Events::handleEvent(Act1Event::ChurchOutside_TalkToPrincess);
+
+		Act1Events::triggerEvent(Act1Event::CampClearing_Valdis);
+		Act1Events::handleEvent(Act1Event::CampClearing_Valdis);
+
+		Act1Events::triggerEvent(Act1Event::ForestCamp_NeedFireQuest);
+		Act1Events::handleEvent(Act1Event::ForestCamp_NeedFireQuest);
+
+		Act1Events::triggerEvent(Act1Event::Road_StartMailmanConv);
+		Act1Events::handleEvent(Act1Event::Road_StartMailmanConv);
+
+		Act1Events::triggerEvent(Act1Event::TavernInside_GetAxeHead);
+		Act1Events::handleEvent(Act1Event::TavernInside_GetAxeHead);
+
+		Act1Events::triggerEvent(Act1Event::Road_GiveMailmanPaper);
+		Act1Events::handleEvent(Act1Event::Road_GiveMailmanPaper);
+	}
+
 	RMI.loadResource(Footsteps::Dirt);
 	RMI.loadResource(Sound::Bushes);
 	if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::AfterCampRoad_Conversation))
