@@ -58,7 +58,7 @@ hascollision: $false
 *id: $antlers
 position: $X:834 $Y:672
 interactPosition: $X:0 $Y:0
-index: $11
+index: $1
 scale: $1.0
 hascollision: $false
 ############

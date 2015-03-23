@@ -10,8 +10,8 @@ Level_Hills::Level_Hills(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Hills::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Hills_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Hills_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, mMusicSoundLevel);
 }
 
 void Level_Hills::update(sf::Time &frametime)
@@ -33,7 +33,7 @@ void Level_Hills::update(sf::Time &frametime)
 			if (FadeI.getFaded())
 			{
 				mFade2 = true;
-				DialogHandler::getDialogue("Ulfr_Hills").startDialogue();
+				DialogHandler::startDialogue("Ulfr_Hills");
 			}
 		}
 		if (DialogHandler::getDialogue("Ulfr_Hills").getHasStopped())
@@ -63,6 +63,9 @@ void Level_Hills::load()
 	mNpcs["Finnr"]->setDialogue("Finnr_Hills");
 
 	Level::load();
+
+	mTileMap.addCollision(mNpcs["Finnr"]->getCollisionRect());
+	mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 1);
 }
 
 void Level_Hills::unload()

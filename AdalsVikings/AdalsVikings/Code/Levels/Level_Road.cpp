@@ -11,8 +11,8 @@ Level_Road::Level_Road(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Road::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, mMusicSoundLevel);
 }
 
 void Level_Road::update(sf::Time &frametime)
@@ -22,6 +22,7 @@ void Level_Road::update(sf::Time &frametime)
 		if (!DialogHandler::getDialogue("Mailman_Road").getActiveConversation() && !DialogHandler::getDialogue("Mailman_Road").getHasStopped())
 		{
 			mNpcs["Mailman"]->setIndex(21);
+			AudioPlayer::playSound(Sound::Bushes, "bush", false);
 			DialogHandler::startDialogue("Mailman_Road");
 		}
 		else if (DialogHandler::getDialogue("Mailman_Road").getHasStopped())
@@ -87,7 +88,7 @@ void Level_Road::update(sf::Time &frametime)
 			FadeI.fadeIn(frametime);
 			if (FadeI.getFaded())
 			{
-				DialogHandler::getDialogue("All_Road").startDialogue();
+				DialogHandler::startDialogue("All_Road");
 				mFade3 = true;
 			}
 		}
@@ -130,6 +131,7 @@ void Level_Road::load()
 {
 
 	RMI.loadResource(Footsteps::Dirt);
+	RMI.loadResource(Sound::Bushes);
 	if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::AfterCampRoad_Conversation))
 	{
 		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
@@ -211,6 +213,7 @@ void Level_Road::load()
 void Level_Road::unload()
 {
 	RMI.unloadResource(Footsteps::Dirt);
+	RMI.unloadResource(Sound::Bushes);
 	Level::unload();
 }
 

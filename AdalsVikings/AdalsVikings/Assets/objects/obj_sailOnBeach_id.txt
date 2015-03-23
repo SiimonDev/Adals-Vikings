@@ -2,7 +2,7 @@
 *ID: $sailOnBeach$
 *Name: Sail
 *ispickupable: False
-*pickup: "I should touch it." ~2,0
+*pickup: "I shouldn't touch it." ~2,0
 *lookat: "I can't believe this old thing still works." ~1,5
 *deny: "I can't do that." ~1,5
 *denywith: 

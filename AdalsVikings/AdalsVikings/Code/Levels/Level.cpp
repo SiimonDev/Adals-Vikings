@@ -12,6 +12,9 @@ Level::Level(Player &player, HUD &hud, ActionWheel &actionWheel)
 , mIsNearbyLevel(false)
 , mIsLoaded(false)
 , mHasBeenReset(false)
+, mUIUpdate(true)
+, mAmbientSoundLevel(50)
+, mMusicSoundLevel(30)
 {
 }
 
@@ -64,7 +67,7 @@ void Level::updateObjects(sf::Time frameTime)
 			}
 			else
 			{
-				if (mObjects[i]->isInside(MouseState::getMousePosition()) && !mIsInConversation)
+				if (mObjects[i]->isInside(MouseState::getMousePosition()) && !mIsInConversation  && FadeI.getFaded())
 				{
 					mObjects[i]->enableDescription(true);
 					if (mPlayer->getSnappedObjectID() != "")
@@ -205,7 +208,7 @@ void Level::updateNPCs(sf::Time frameTime)
 		}
 		else
 		{
-			if (it->second->isInside(MouseState::getMousePosition()) && !mIsInConversation)
+			if (it->second->isInside(MouseState::getMousePosition()) && !mIsInConversation && FadeI.getFaded())
 			{
 				it->second->enableDescription(true);
 				if (mPlayer->getSnappedObjectID() != "")
@@ -356,7 +359,14 @@ void Level::updateDialog(sf::Time frameTime)
 						iz->second->updateAnimationStyle();
 					else if ( it->second->getCharacter() != mPlayer->getName())
 						mPlayer->UpdateAnimationStyle();
+
+					if (!it->second->getOptions().empty())
+					{
+						iz->second->setAnimationStyle("Player");
+						mPlayer->setAnimationStyle(AnimationType::Idle);
+					}
 				}
+
 			}
 			else
 			{
@@ -403,11 +413,13 @@ void Level::updateDialog(sf::Time frameTime)
 
 void Level::update(sf::Time &frameTime)
 {
-	
 	MouseState::setCursorType(CursorType::Default);
 	updateDialog(frameTime);
-	updateNPCs(frameTime);
-	updateObjects(frameTime);
+	if (mUIUpdate)
+	{
+		updateNPCs(frameTime);
+		updateObjects(frameTime);
+	}
 	mPlayer->update(frameTime);
 	mPlayer->setFootsteps(mCurrentFootsteps);
 	checkEvents();
@@ -478,8 +490,6 @@ void Level::update(sf::Time &frameTime)
 			}
 		}
 	}
-
-	
 }
 
 void Level::render(IndexRenderer &iRenderer)

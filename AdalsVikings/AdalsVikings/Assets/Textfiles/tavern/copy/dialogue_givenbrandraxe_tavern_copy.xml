@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Yeah, probably shouldn't, don't you think?" />
+	<lookText lookText="Our *great* leader, Brandr. I wonder what trouble he'll get us into next, the idiot." />
+	<text character="Ulfr" say="Here's your... axe, Brandr." timer="2.4" turned="false" />
+	<text character="Brandr" say="...what is this?" turned="true" timer="2.4" />
+	<text character="Ulfr" say="Uh..." timer="1.8" turned="false" />
+	<text character="Ulfr" say="An axe?" timer="1.8" />
+	<text character="Brandr" say="..." turned="true" timer="1.8" />
+	<text character="Brandr" say="*sigh*" timer="1.8" />
+	<text character="Brandr" say="I suppose it will have to do." timer="2.8" />
+	<text character="Brandr" say="But if Brynja gives me hell for this," timer="2.8" />
+	<text character="Brandr" say="then I'll give you thrice the hell back." timer="2.8" />
+	<text character="Brandr" say="Let's go back to camp!" timer="2.4" />
+	<text character="Brandr" say="Alfr, Finnr, Yngvarr and Dagny" timer="2.4" />
+	<text character="Brandr" say="Go to the ship and gather something to eat." timer="2.4" />
+	<text character="Brandr" say="And you Ulfr go back to camp" timer="2.5" />
+	<text character="Brandr" timer="2.8" say="I'm going to make some more plans with Brynja." />
+	<stopConversation />
+</conversation>

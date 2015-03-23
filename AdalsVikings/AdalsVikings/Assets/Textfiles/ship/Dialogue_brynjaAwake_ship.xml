@@ -5,7 +5,7 @@
 	
 	<text character="Ulfr" turned="true" disabled="false" default="true" say="Hey Brynja." timer="2.8" />
 	<text character="Brynja" disabled="false" default="true" say="Hello Ulfr." timer="2.3" turned="false"></text>
-	<text character="Brynja" disabled="false" default="true" say="You should probably get that painting to Brandr before he throws yngvarr into the sea." timer="3.4" turned="false"></text>
+	<text character="Brynja" disabled="false" default="true" say="You should probably get that painting to Brandr before he throws Yngvarr into the sea." timer="3.4" turned="false"></text>
 	<text character="Ulfr" disabled="false" default="true" say="You're probably right..." timer="2.3" turned="true"></text>
 	<stopConversation />
 </conversation>

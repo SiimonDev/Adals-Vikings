@@ -2,6 +2,7 @@
 #include "..\Interface\LoadingScreen.h"
 #include "..\Logics\KeyboardState.h"
 #include "..\Logics\WindowState.h"
+#include "..\Logics\AudioPlayer.h"
 #include "..\Logics\BoatEvents.h"
 #include <iostream>
 
@@ -28,6 +29,7 @@ void Level_Ship_2::update(sf::Time &frameTime)
 
 	if (!BoatEvents::hasBeenHandled(BoatEvent::StartDialogue) && BoatEvents::hasBeenTriggered(BoatEvent::StartDialogue))
 	{
+		MouseState::setIsWorking(false);
 		if (!DialogHandler::getDialogue("Intro_Ship2").getActiveConversation() && !DialogHandler::getDialogue("Intro_Ship2").getHasStopped())
 			DialogHandler::startDialogue("Intro_Ship2");
 
@@ -36,6 +38,7 @@ void Level_Ship_2::update(sf::Time &frameTime)
 			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())
 			{
+				MouseState::setIsWorking(true);
 				LVLMI.changeLevel(LevelFolder::Ship_1);
 				BoatEvents::handleEvent(BoatEvent::StartDialogue);
 			}
@@ -61,13 +64,16 @@ void Level_Ship_2::update(sf::Time &frameTime)
 			mPlayer->removeItemFromInventory("map");
 
 		if (!DialogHandler::getDialogue("GivenMapToBrandr_Ship").getActiveConversation() && !DialogHandler::getDialogue("GivenMapToBrandr_Ship").getHasStopped())
-			DialogHandler::getDialogue("GivenMapToBrandr_Ship").startDialogue();
+			DialogHandler::startDialogue("GivenMapToBrandr_Ship");
 
 		if (DialogHandler::getDialogue("GivenMapToBrandr_Ship").getHasStopped())
 		{
 			FadeI.fadeOut(frameTime);
 			if (FadeI.getFaded())
 			{
+				AudioPlayer::stopHDDSound(HDDSound::Boat_Ambient);
+				AudioPlayer::stopHDDSound(HDDSound::Boat_Music);
+				mRestartSounds = true;
 				LSI.startLoading(LoadTask::LoadAct1);
 				BoatEvents::handleEvent(BoatEvent::GivenMapToBrandr);
 			}
@@ -92,6 +98,9 @@ void Level_Ship_2::render(IndexRenderer &iRenderer)
 
 void Level_Ship_2::load()
 {
+	AudioPlayer::playHDDSound(HDDSound::Boat_Ambient, true);
+	AudioPlayer::playHDDSound(HDDSound::Boat_Music, true);
+
 	RMI.loadResource(Texture::BrandrAngryTalk);
 	RMI.loadResource(Texture::BrandrAngryIdle);
 	RMI.loadResource(Texture::FrontBoatWaveAnimation);

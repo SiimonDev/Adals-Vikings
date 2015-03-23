@@ -10,8 +10,8 @@ Level_Ruins::Level_Ruins(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Ruins::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Ruins_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Ruins_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, mMusicSoundLevel);
 }
 
 void Level_Ruins::update(sf::Time &frametime)
@@ -19,7 +19,7 @@ void Level_Ruins::update(sf::Time &frametime)
 	if (Act1Events::hasBeenTriggered(Act1Event::Ruins_Introduction) && !Act1Events::hasBeenHandled(Act1Event::Ruins_Introduction))
 	{
 		if (!DialogHandler::getDialogue("AethelBerth_Ruins").getActiveConversation() && !DialogHandler::getDialogue("AethelBerth_Ruins").getHasStopped())
-			DialogHandler::getDialogue("AethelBerth_Ruins").startDialogue();
+			DialogHandler::startDialogue("AethelBerth_Ruins");
 
 		if (DialogHandler::getDialogue("AethelBerth_Ruins").getHasStopped())
 			Act1Events::handleEvent(Act1Event::Ruins_Introduction);
@@ -46,7 +46,7 @@ void Level_Ruins::update(sf::Time &frametime)
 		}
 		if (mfade2 && !DialogHandler::getDialogue("Biker_Ruins").getActiveConversation() && !DialogHandler::getDialogue("Biker_Ruins").getHasStopped())
 		{
-			DialogHandler::getDialogue("Biker_Ruins").startDialogue();
+			DialogHandler::startDialogue("Biker_Ruins");
 		}
 		if (DialogHandler::getDialogue("Biker_Ruins").getHasStopped())
 		{

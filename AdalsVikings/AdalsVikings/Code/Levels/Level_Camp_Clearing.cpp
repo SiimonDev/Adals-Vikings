@@ -12,12 +12,13 @@ Level_Camp_Clearing::Level_Camp_Clearing(Player &player, HUD &hud, ActionWheel &
 
 void Level_Camp_Clearing::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Camp_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Camp_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, mMusicSoundLevel);
 }
 
 void Level_Camp_Clearing::update(sf::Time &frametime)
 {
+
 	if (Act1Events::hasBeenTriggered(Act1Event::CampClearing_Leifr) && !Act1Events::hasBeenHandled(Act1Event::CampClearing_Leifr))
 	{
 		if (DialogHandler::getDialogue("LeifrBear_ClearingCamp").getHasStopped() && !mFade1)
@@ -105,16 +106,16 @@ void Level_Camp_Clearing::load()
 	mNpcs["Leifr"]->setIndex(10);
 	mNpcs["Leifr"]->setPosition(sf::Vector2f(1035, 729));
 	mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(1160, 724));
-	if (!Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest))
+	if (!Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && !Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
 		mNpcs["Leifr"]->setDialogue("Leifr_ClearingCamp");
 	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && !mPlayer->hasItemInInventory("bearDeer") && !Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
 		mNpcs["Leifr"]->setDialogue("LeifrFire_ClearingCamp");
-	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && mPlayer->hasItemInInventory("bearDeer"))
+	else if (Act1Events::hasBeenTriggered(Act1Event::ForestCamp_NeedFireQuest) && mPlayer->hasItemInInventory("bearDeer") && !Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer))
 	{
 		mNpcs["Leifr"]->setDialogue("LeifrBear_ClearingCamp");
 		mSetLeifrDialogue = true;
 	}
-	else if (!Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::CampFinished_Conversation))
+	else if (Act1Events::hasBeenHandled(Act1Event::ForestCamp_BeerDeer) && !Act1Events::hasBeenHandled(Act1Event::CampFinished_Conversation))
 		mNpcs["Leifr"]->setDialogue("LeifrAFterDruids_ClearingCamp");
 
 	/*------------------- Brynja ----------------*/
@@ -138,7 +139,7 @@ void Level_Camp_Clearing::load()
 		mNpcs["Brandr"]->setScale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Brandr"]->setPosition(sf::Vector2f(1370, 850));
 		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(1605, 850));
-		mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(1605, 850));
+		mNpcs["Brandr"]->setInteractionPosition(sf::Vector2f(1605, 850));
 		mNpcs["Brandr"]->setDialogue("BrandrBrynja_ClearingCamp");
 		mNpcs["Brynja"]->setDialogue("BrandrBrynja_ClearingCamp");
 

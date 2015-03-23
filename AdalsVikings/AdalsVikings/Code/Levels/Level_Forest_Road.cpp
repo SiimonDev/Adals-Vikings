@@ -10,8 +10,8 @@ Level_Forest_Road::Level_Forest_Road(Player &player, HUD &hud, ActionWheel &acti
 
 void Level_Forest_Road::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Forest_Road_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Forest_Road_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, mMusicSoundLevel);
 }
 
 void Level_Forest_Road::update(sf::Time &frametime)
@@ -19,7 +19,7 @@ void Level_Forest_Road::update(sf::Time &frametime)
 	if (Act1Events::hasBeenTriggered(Act1Event::ForestRoadConver) && !Act1Events::hasBeenHandled(Act1Event::ForestRoadConver))
 	{
 		if (!DialogHandler::getDialogue("Ulfr_ForestRoad").getActiveConversation() && !DialogHandler::getDialogue("Ulfr_ForestRoad").getHasStopped())
-			DialogHandler::getDialogue("Ulfr_ForestRoad").startDialogue();
+			DialogHandler::startDialogue("Ulfr_ForestRoad");
 
 		if (DialogHandler::getDialogue("Ulfr_ForestRoad").getHasStopped())
 			Act1Events::handleEvent(Act1Event::ForestRoadConver);

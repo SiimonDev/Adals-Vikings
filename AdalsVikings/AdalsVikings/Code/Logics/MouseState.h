@@ -18,6 +18,7 @@ public:
 	static void update(sf::Time frameTime);
 	static void render();
 	static void checkEvents(sf::Event::EventType event);
+	static void setIsWorking(bool value);
 
 	static void setCursorType(CursorType::ID id, float rotation = 0);
 

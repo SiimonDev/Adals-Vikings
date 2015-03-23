@@ -76,9 +76,12 @@ protected:
 	LevelFolder::ID mBackgroundID;
 	Footsteps::ID mCurrentFootsteps;
 
+	sf::Time mConversationCooldownTime;
+
 	int mObjIndex;
 
-	sf::Time mConversationCooldownTime;
+	float mAmbientSoundLevel;
+	float mMusicSoundLevel;
 
 	bool mWalkToObject;
 	bool mWalkToNPC;
@@ -87,5 +90,6 @@ protected:
 	bool mConversationStopped;
 	bool mIsNearbyLevel, mIsLoaded, mHasBeenReset;
 	bool mRestartSounds;
+	bool mUIUpdate;
 };
 

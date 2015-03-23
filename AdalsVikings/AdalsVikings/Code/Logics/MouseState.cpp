@@ -7,6 +7,7 @@
 #define MouseSize int(5)
 
 static bool hasFocus;
+static bool mIsWorking = true;
 
 static std::map<int, bool> buttonStates;
 static std::map<int, bool> oldButtonStates;
@@ -43,6 +44,7 @@ void MouseState::update(sf::Time frameTime)
 		else
 			timeDown[i] = 0;
 	}
+
 	for (int i = 0; i <= MouseSize; i++)
 		buttonStates[i] = sf::Mouse::isButtonPressed(static_cast<sf::Mouse::Button>(i));
 
@@ -50,11 +52,13 @@ void MouseState::update(sf::Time frameTime)
 		std::cout << "MousePosition: X:" << getMousePosition().x << "	Y:" << getMousePosition().y << std::endl;
 
 	mSprite->setPosition(sf::Vector2f(getMousePosition()));
+
 }
 
 void MouseState::render()
 {
-	CurrentWindow.draw(*mSprite);
+	if (mIsWorking)
+		CurrentWindow.draw(*mSprite);
 }
 
 void MouseState::setCursorType(CursorType::ID id, float rotation)
@@ -164,4 +168,9 @@ bool MouseState::isPressed(sf::Mouse::Button button, double seconds)
 			return (timeDown.at(button) >= seconds);
 	}
 	return false;
+}
+
+void MouseState::setIsWorking(bool value)
+{
+	mIsWorking = value;
 }

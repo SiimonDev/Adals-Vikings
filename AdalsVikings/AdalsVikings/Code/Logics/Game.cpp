@@ -20,7 +20,6 @@ int mHeight = 720;
 IndexRenderer iRenderer;
 
 sf::VideoFile splashScreen;
-sf::VideoFile newGameScene;
 
 bool runGame = false;
 
@@ -37,9 +36,9 @@ Game::Game()
 	KeyboardState::initialize();
 	MouseState::initialize();
 
-	splashScreen.openFromFile("assets/video/AdalsVikings_CRAM.avi");
-	splashScreen.setSize(960, 540);
-	splashScreen.setPosition((1920 / 2) - (960 / 2), (1080 / 2) - (540 / 2));
+	splashScreen.openFromFile("assets/video/SplashScreen_x264_720p.avi");
+	splashScreen.setSize(1280, 720);
+	splashScreen.setPosition((1920 / 2) - splashScreen.getSize().x / 2, (1080 / 2) - splashScreen.getSize().y / 2);
 
 	LSI.initialize();
 	LSI.startLoading(LoadTask::BootGame, &splashScreen);
@@ -56,52 +55,46 @@ void Game::update(sf::Time frameTime)
 	{
 		LSI.update(frameTime);
 	}
-	else
+	else if (!LSI.getIsStarted())
 	{
-		if (!LSI.getIsStarted())
+		MHI.update(frameTime);
+		if (runGame)
 		{
-			MHI.update(frameTime);
-			if (runGame)
-			{
-				LVLMI.update(frameTime);
+			LVLMI.update(frameTime);
 
-				// Check for pause menu events
-				if (MHI.getEvent() == MenuEvent::MainMenuPressed)
-				{
-					LSI.startLoading(LoadTask::LoadMainMenu);
-					runGame = false;
-				}
-				else if (MHI.getEvent() == MenuEvent::ResumePressed)
-				{
-					MHI.popMenu();
-				}
-			}
-
-			// Check for main menu events
-			if (MHI.getEvent() == MenuEvent::NewGamePressed)
+			// Check for pause menu events
+			if (MHI.getEvent() == MenuEvent::MainMenuPressed)
 			{
-				//newGameScene.openFromFile("assets/video/newgame_ut1.avi");
-				//newGameScene.setSize(1920, 1080);
-				LSI.startLoading(LoadTask::StartGame/*, &newGameScene*/);
-				runGame = true;
+				LSI.startLoading(LoadTask::LoadMainMenu);
+				runGame = false;
 			}
-			else if (MHI.getEvent() == MenuEvent::LoadGamePressed)
+			else if (MHI.getEvent() == MenuEvent::ResumePressed)
 			{
-				LSI.startLoading(LoadTask::LoadGame);
-				runGame = true;
+				MHI.popMenu();
 			}
-			else if (MHI.getEvent() == MenuEvent::ExitGamePressed)
-			{
-				LVLMI.save("assets/saves/");
-				mWindow.close();
-			}
-			else if (MHI.getEvent() == MenuEvent::ExitMainMenuPressed)
-			{
-				mWindow.close();
-			}
-			AudioPlayer::update(frameTime);
 		}
-		
+
+		// Check for main menu events
+		if (MHI.getEvent() == MenuEvent::NewGamePressed)
+		{
+			LSI.startLoading(LoadTask::StartGame);
+			runGame = true;
+		}
+		else if (MHI.getEvent() == MenuEvent::LoadGamePressed)
+		{
+			LSI.startLoading(LoadTask::LoadGame);
+			runGame = true;
+		}
+		else if (MHI.getEvent() == MenuEvent::ExitGamePressed)
+		{
+			LVLMI.save("assets/saves/");
+			mWindow.close();
+		}
+		else if (MHI.getEvent() == MenuEvent::ExitMainMenuPressed)
+		{
+			mWindow.close();
+		}
+		AudioPlayer::update(frameTime);
 	}
 
 	// Always Last
@@ -120,18 +113,15 @@ void Game::render()
 		LSI.render(iRenderer);
 		iRenderer.display();
 	}
-	else
+	else if (!LSI.getIsStarted())
 	{
-		if (!LSI.getIsStarted())
-		{
-			MHI.render(iRenderer);
-			if (runGame){
-				LVLMI.render(iRenderer);
-			}
-			iRenderer.display();
-			if (DebugMode){
-				PathFinder::getCurrentTileMap().render(iRenderer);
-			}
+		MHI.render(iRenderer);
+		if (runGame){
+			LVLMI.render(iRenderer);
+		}
+		iRenderer.display();
+		if (DebugMode){
+			PathFinder::getCurrentTileMap().render(iRenderer);
 		}
 	}
 	

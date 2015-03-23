@@ -37,7 +37,7 @@ void Level_Ship_1::update(sf::Time &frametime)
 			if (FadeI.getFaded())
 			{
 				if (!DialogHandler::getDialogue("IntroUlfr_Ship1").getActiveConversation() && !DialogHandler::getDialogue("IntroUlfr_Ship1").getHasStopped())
-				DialogHandler::getDialogue("IntroUlfr_Ship1").startDialogue();
+					DialogHandler::startDialogue("IntroUlfr_Ship1");
 				mGameStart = true;
 			}
 		}
@@ -252,9 +252,6 @@ void Level_Ship_1::load()
 	}
 
 	Level::load();
-
-	AudioPlayer::playHDDSound(HDDSound::Boat_Ambient, true, 50);
-	AudioPlayer::playHDDSound(HDDSound::Boat_Music, true, 50);
 
 	// Add Collision from every NPC to the map
 	mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());

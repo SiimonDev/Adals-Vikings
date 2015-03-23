@@ -35,11 +35,15 @@ namespace sf
 		void restart();
 		void close();
 
+		sf::Vector2f getPosition();
+		sf::Vector2f getSize();
+		sf::Vector2i getRenderSize();
 		Status getStatus();
+		bool isLoaded();
 
 	private:
 		void flipIt(void* buffer);
-		void OpenAVI(LPCSTR szFile);
+		bool OpenAVI(LPCSTR szFile);
 		void GrabAVIFrame(int frame);
 		void CloseAVI();
 
@@ -59,5 +63,6 @@ namespace sf
 		char* pdata;
 
 		bool mLoop;
+		bool mLoaded;
 	};
 }

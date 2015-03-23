@@ -1,9 +1,9 @@
 #include "Level_Beach.h"
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\AudioPlayer.h"
-#include "..\Interface\LoadingScreen.h"
 #include "..\Logics\KeyboardState.h"
 #include "..\Logics\WindowState.h"
+#include "..\Interface\LoadingScreen.h"
 #include <iostream>
 
 static Animation mWaveAnimation;
@@ -18,40 +18,57 @@ Level_Beach::Level_Beach(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Beach::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Beach_Ambient, true, 50);
-	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 50);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, mMusicSoundLevel);
 }
 
-void Level_Beach::update(sf::Time &frametime)
+void Level_Beach::update(sf::Time &frameTime)
 {
-	introCutscene(frametime);
-	talkToNpcs();
-	endingCutscene(frametime);
+	if (mLandingVideo.getStatus() != sf::VideoFile::Playing || !mLandingVideo.isLoaded())
+	{
+		introCutscene(frameTime);
+		talkToNpcs();
+		endingCutscene(frameTime);
 
-	mWaveAnimation.animate(frametime);
-	mRockAnimation.animate(frametime);
-	if (mWaveAnimation.getCurrentFrame() == 1)
-		AudioPlayer::playHDDSound(HDDSound::Beach_Wave, false, 20);
+		mWaveAnimation.animate(frameTime);
+		mRockAnimation.animate(frameTime);
+		if (mWaveAnimation.getCurrentFrame() == 1)
+			AudioPlayer::playHDDSound(HDDSound::Beach_Wave, false, 20);
 
-	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro))
-		Act1Events::triggerEvent(Act1Event::Beach_Intro);
+		if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro))
+			Act1Events::triggerEvent(Act1Event::Beach_Intro);
+	}
+	else
+		mLandingVideo.update(frameTime);
 
-	Level::update(frametime);
+	Level::update(frameTime);
 	changeLevel();
 }
 
 void Level_Beach::render(IndexRenderer &iRenderer)
 {
-	if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
-		CurrentWindow.setView(mCutSceneView);
+	if (mLandingVideo.getStatus() != sf::VideoFile::Playing || !mLandingVideo.isLoaded())
+	{
+		if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
+			CurrentWindow.setView(mCutSceneView);
 
-	mRockAnimation.render(iRenderer);
-	mWaveAnimation.render(iRenderer);
-	Level::render(iRenderer);
+		mRockAnimation.render(iRenderer);
+		mWaveAnimation.render(iRenderer);
+		Level::render(iRenderer);
+	}
+	else
+		mLandingVideo.render(CurrentWindow);
 }
 
 void Level_Beach::load()
 {
+	if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
+	{
+		mLandingVideo.openFromFile("assets/video/landing_x264_720p.avi");
+		mLandingVideo.setSize(1920, 1080);
+		mLandingVideo.play();
+	}
+
 	mRestartSounds = true;
 	mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
 	mPortals[BeachToTavernOutside] = &PortalLoader::getPortal(BeachToTavernOutside);
@@ -104,13 +121,13 @@ void Level_Beach::load()
 		mPlayer->UpdateAnimationStyle();
 
 		mNpcs["Brandr"]->setFlip(true);
-		mNpcs["Brandr"]->setScale(sf::Vector2f(0.4, 0.4));
+		mNpcs["Brandr"]->setScale(sf::Vector2f(0.4f, 0.4f));
 		mNpcs["Brandr"]->setPosition(sf::Vector2f(400, 1120));
 		mNpcs["Brandr"]->setDialogue("Intro_Beach");
 		mNpcs["Brandr"]->setIndex(14);
 
 		mNpcs["Brynja"]->setFlip(false);
-		mNpcs["Brynja"]->setScale(sf::Vector2f(0.4, 0.4));
+		mNpcs["Brynja"]->setScale(sf::Vector2f(0.4f, 0.4f));
 		mNpcs["Brynja"]->setPosition(sf::Vector2f(600, 1070));
 		mNpcs["Brynja"]->setDialogue("Intro_Beach");
 		mNpcs["Brynja"]->setIndex(14);
@@ -128,7 +145,7 @@ void Level_Beach::load()
 		mNpcs["Yngvarr"]->setIdleAnimation(Texture::YngvarrSadIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(7));
 		mNpcs["Yngvarr"]->SetTalkAnimation(Texture::YngvarrSadTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
 		mNpcs["Yngvarr"]->setFlip(false);
-		mNpcs["Yngvarr"]->setScale(sf::Vector2f(0.4, 0.4));
+		mNpcs["Yngvarr"]->setScale(sf::Vector2f(0.4f, 0.4f));
 		mNpcs["Yngvarr"]->setPosition(sf::Vector2f(350, 760));
 		mNpcs["Yngvarr"]->setInteractionPosition(sf::Vector2f(420, 760));
 		mNpcs["Yngvarr"]->setDialogue("Yngvarr_Beach");
@@ -136,7 +153,7 @@ void Level_Beach::load()
 
 		/* ==== Dagny ===== */
 		mNpcs["Dagny"]->setFlip(true);
-		mNpcs["Dagny"]->setScale(sf::Vector2f(0.5, 0.5));
+		mNpcs["Dagny"]->setScale(sf::Vector2f(0.5f, 0.5f));
 		mNpcs["Dagny"]->setPosition(sf::Vector2f(250, 760));
 		mNpcs["Dagny"]->setInteractionPosition(sf::Vector2f(300, 760));
 		mNpcs["Dagny"]->setDialogue("Dagny_Beach");
@@ -144,7 +161,7 @@ void Level_Beach::load()
 
 		/* ==== Alfr ===== */
 		mNpcs["Alfr"]->setFlip(false);
-		mNpcs["Alfr"]->setScale(sf::Vector2f(0.35, 0.35));
+		mNpcs["Alfr"]->setScale(sf::Vector2f(0.35f, 0.35f));
 		mNpcs["Alfr"]->setPosition(sf::Vector2f(1250, 580));
 		mNpcs["Alfr"]->setInteractionPosition(sf::Vector2f(1170, 560));
 		mNpcs["Alfr"]->setDialogue("Alfr_Beach");
@@ -160,7 +177,7 @@ void Level_Beach::load()
 
 		/* ==== Finnr ===== */
 		mNpcs["Finnr"]->setFlip(false);
-		mNpcs["Finnr"]->setScale(sf::Vector2f(0.4, 0.4));
+		mNpcs["Finnr"]->setScale(sf::Vector2f(0.4f, 0.4f));
 		mNpcs["Finnr"]->setPosition(sf::Vector2f(1615, 520));
 		mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(1530, 515));
 		mNpcs["Finnr"]->setDialogue("Finnr_Beach");
@@ -234,11 +251,12 @@ void Level_Beach::introCutscene(sf::Time &frameTime)
 	{
 		if (!mIntroFade1)
 		{
+			MouseState::setIsWorking(false);
 			FadeI.fadeIn(frameTime);
 			if (FadeI.getFaded())
 			{
 				//FadeI.setAlpha(0);
-				DialogHandler::getDialogue("Intro_Beach").startDialogue();
+				DialogHandler::startDialogue("Intro_Beach");
 				mIntroFade1 = true;
 			}
 		}
@@ -249,6 +267,7 @@ void Level_Beach::introCutscene(sf::Time &frameTime)
 			{
 				mCutSceneView.zoom(2);
 				mCutSceneView.setCenter(1920 / 2, 1080 / 2);
+				MouseState::setIsWorking(true);
 				//mCutSceneView.setViewport(sf::FloatRect(0, 0, 1920, 1080));
 
 				//FadeI.setAlpha(255);
@@ -344,7 +363,7 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 			FadeI.fadeIn(frameTime);
 			if (FadeI.getFaded())
 			{
-				DialogHandler::getDialogue("Ending_Beach").startDialogue();
+				DialogHandler::startDialogue("Ending_Beach");
 
 				mEndingFade2 = true;
 			}
@@ -378,7 +397,6 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 				Act1Events::handleEvent(Act1Event::Beach_Ending);
 				mEndingFade4 = true;
 			}
-
 		}
 	}
 }

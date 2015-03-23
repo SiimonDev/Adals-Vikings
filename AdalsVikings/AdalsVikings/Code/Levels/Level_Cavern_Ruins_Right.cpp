@@ -10,8 +10,8 @@ Level_Cavern_Ruins_Right::Level_Cavern_Ruins_Right(Player &player, HUD &hud, Act
 
 void Level_Cavern_Ruins_Right::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Cavern_Ambient, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Forest_Music, true, mMusicSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Cavern_Ambient, true, mAmbientSoundLevel);
 }
 
 void Level_Cavern_Ruins_Right::update(sf::Time &frametime)

@@ -10,9 +10,9 @@ Level_Camp_Finished::Level_Camp_Finished(Player &player, HUD &hud, ActionWheel &
 
 void Level_Camp_Finished::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Camp_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Fire_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Camp_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Fire_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Church_Music, true, mMusicSoundLevel);
 }
 void Level_Camp_Finished::update(sf::Time &frametime)
 {
@@ -31,7 +31,7 @@ void Level_Camp_Finished::update(sf::Time &frametime)
 			FadeI.fadeIn(frametime);
 			if (FadeI.getFaded())
 			{
-				DialogHandler::getDialogue("All_FinishedCamp").startDialogue();
+				DialogHandler::startDialogue("All_FinishedCamp");
 				mFade1 = true;
 			}
 		}

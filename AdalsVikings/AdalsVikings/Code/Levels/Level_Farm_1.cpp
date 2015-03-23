@@ -10,8 +10,8 @@ Level_Farm_1::Level_Farm_1(Player &player, HUD &hud, ActionWheel &actionWheel)
 
 void Level_Farm_1::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, 20);
-	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, 20);
+	AudioPlayer::playHDDSound(HDDSound::Road_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, mMusicSoundLevel);
 }
 
 void Level_Farm_1::update(sf::Time &frametime)
@@ -29,7 +29,7 @@ void Level_Farm_1::update(sf::Time &frametime)
 		if (!Act1Events::hasBeenHandled(Act1Event::GivenFlowerToValdis))
 		{
 			if (!DialogHandler::getDialogue("Mead_Farm").getActiveConversation() && !DialogHandler::getDialogue("Mead_Farm").getHasStopped())
-				DialogHandler::getDialogue("Mead_Farm").startDialogue();
+				DialogHandler::startDialogue("Mead_Farm");
 
 			if (DialogHandler::getDialogue("Mead_Farm").getHasStopped())
 				Act1Events::handleEvent(Act1Event::GivenMeadToValdis);
@@ -37,7 +37,7 @@ void Level_Farm_1::update(sf::Time &frametime)
 		else if (Act1Events::hasBeenHandled(Act1Event::GivenFlowerToValdis))
 		{
 			if (!DialogHandler::getDialogue("GotAll_Farm").getActiveConversation() && !DialogHandler::getDialogue("GotAll_Farm").getHasStopped())
-				DialogHandler::getDialogue("GotAll_Farm").startDialogue();
+				DialogHandler::startDialogue("GotAll_Farm");
 
 			if (DialogHandler::getDialogue("GotAll_Farm").getHasStopped())
 			{
@@ -56,7 +56,7 @@ void Level_Farm_1::update(sf::Time &frametime)
 
 					if (FadeI.getFaded())
 					{
-						DialogHandler::getDialogue("MadePill_Farm").startDialogue();
+						DialogHandler::startDialogue("MadePill_Farm");
 						mFade2 = true;
 					}
 				}
@@ -76,7 +76,7 @@ void Level_Farm_1::update(sf::Time &frametime)
 		if (!Act1Events::hasBeenHandled(Act1Event::GivenMeadToValdis))
 		{
 			if (!DialogHandler::getDialogue("Flower_Farm").getActiveConversation() && !DialogHandler::getDialogue("Flower_Farm").getHasStopped())
-				DialogHandler::getDialogue("Flower_Farm").startDialogue();
+				DialogHandler::startDialogue("Flower_Farm");
 
 			if (DialogHandler::getDialogue("Flower_Farm").getHasStopped())
 				Act1Events::handleEvent(Act1Event::GivenFlowerToValdis);
@@ -84,7 +84,7 @@ void Level_Farm_1::update(sf::Time &frametime)
 		else if (Act1Events::hasBeenHandled(Act1Event::GivenMeadToValdis))
 		{
 			if (!DialogHandler::getDialogue("GotAll_Farm").getActiveConversation() && !DialogHandler::getDialogue("GotAll_Farm").getHasStopped())
-				DialogHandler::getDialogue("GotAll_Farm").startDialogue();
+				DialogHandler::startDialogue("GotAll_Farm");
 
 			if (DialogHandler::getDialogue("GotAll_Farm").getHasStopped())
 			{
@@ -103,7 +103,7 @@ void Level_Farm_1::update(sf::Time &frametime)
 
 					if (FadeI.getFaded())
 					{
-						DialogHandler::getDialogue("MadePill_Farm").startDialogue();
+						DialogHandler::startDialogue("MadePill_Farm");
 						mFade2 = true;
 					}
 				}
@@ -140,6 +140,9 @@ void Level_Farm_1::load()
 	mNpcs["Valdis"]->setScale(sf::Vector2f(0.8, 0.8));
 
 	Level::load();
+
+	mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
+	mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
 }
 
 void Level_Farm_1::unload()

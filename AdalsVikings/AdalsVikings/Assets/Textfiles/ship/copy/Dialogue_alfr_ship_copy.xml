@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <conversation>
 	<useText useText="Why would I use Alfr?" />
-	<lookText lookText="That's Alfr, the village Skald. He's great at any instrument. Though I've heard his singing voice is awful." />
-	<text character="Ulfr" disabled="false" default="false" say="Nice to see you in a good mood, Skald." timer="2.5" turned="false" />
+	<lookText lookText="That's Alfr, the village skald. He's great at any instrument. Though I've heard his singing voice is awful." />
+	<text character="Ulfr" disabled="false" default="false" say="Nice to see you in a good mood, skald." timer="2.5" turned="false" />
 	<text character="Alfr" disabled="false" default="false" disablePrevious="" say="What can i say?" timer="2.4" turned="true" />
 	<text character="Alfr" disabled="false" default="false" disablePrevious="" say="It's a lovely day." timer="2.5" />
 	<text character="Ulfr" disabled="false" default="false" say="Er..." timer="1.0" turned="false" />

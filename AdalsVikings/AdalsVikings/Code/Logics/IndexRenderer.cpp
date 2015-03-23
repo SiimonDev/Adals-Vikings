@@ -33,6 +33,7 @@ void IndexRenderer::display()
 {
 	CurrentWindow.setView(getLetterboxView(CurrentWindow.getView()));
 	std::sort(mIndexObjects.begin(), mIndexObjects.end(), myCompFunction);
+	CurrentWindow.resetGLStates();
 	for each (IndexObject iObj in mIndexObjects)
 	{
 		if (iObj.mObjType == IndObjType::Sprite)

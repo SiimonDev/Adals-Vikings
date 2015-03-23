@@ -2,7 +2,7 @@
 *ID: $box1$
 *Name: Box
 *ispickupable: False
-*pickup: "There nothing in here for me." ~2,0
+*pickup: "There is nothing in here for me." ~2,0
 *lookat: "It's filled with cloths. Did Brandr bring ANY food?" ~3,0
 *deny: "I can't do that." ~1,5
 *denywith: 

@@ -138,8 +138,11 @@ void Player::render(IndexRenderer &iRenderer)
 
 void Player::move(sf::Time &frameTime)
 {
-	if (MouseState::isReleased(sf::Mouse::Left, 0.3) && !mInventory.isActive())
-		walkPath(PathFinder::getPath(getPosition(), sf::Vector2f(MouseState::getMousePosition())));
+	if (!mIsBear)
+	{
+		if (MouseState::isReleased(sf::Mouse::Left, 0.3) && !mInventory.isActive())
+			walkPath(PathFinder::getPath(getPosition(), sf::Vector2f(MouseState::getMousePosition())));
+	}
 
 	if (!mTargetReached && !mDestinationReached)
 	{
