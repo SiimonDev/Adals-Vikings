@@ -428,7 +428,7 @@ void Level::update(sf::Time &frameTime)
 	{
 		OBHI.initialize();
 		resetLevel();
-		refreshLevel();
+		refreshLevel(true);
 	}
 
 	if (mRestartSounds)
@@ -491,7 +491,6 @@ void Level::update(sf::Time &frameTime)
 		}
 	}
 }
-
 void Level::render(IndexRenderer &iRenderer)
 {
 	mActionWheel->render(iRenderer);
@@ -635,21 +634,24 @@ void Level::resetLevel()
 	mInstream.close();
 	mOfstream.close();
 }
-void Level::refreshLevel()
+void Level::refreshLevel(bool resetObjects)
 {
 	// Reset Portals
 	for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
 		it->second->setActivate(false);
 
 	 //Reset objects
-	 for each (Object* obj in mObjects){
-		 mTileMap.removeCollision(obj->getCollisionRect());
-		 obj->unload();
-		 delete obj;
-	 }
-	 mObjects.clear();
+	if (resetObjects)
+	{
+		for each (Object* obj in mObjects){
+			mTileMap.removeCollision(obj->getCollisionRect());
+			obj->unload();
+			delete obj;
+		}
+		mObjects.clear();
 
-	 loadObjects();
+		loadObjects();
+	}
 }
 
 void Level::load()
@@ -697,47 +699,40 @@ void Level::checkInteractEvents()
 {
 
 }
-
 void Level::checkEvents()
 {
 
 }
-
 void Level::restartSounds()
 {
 
-}
-
-TileMap &Level::getTileMap()
-{
-	return mTileMap;
 }
 
 void Level::setLoaded(bool value)
 {
 	mIsLoaded = value;
 }
-
 void Level::setIsNearbyLevel(bool value)
 {
 	mIsNearbyLevel = value;
 }
 
+TileMap &Level::getTileMap()
+{
+	return mTileMap;
+}
 bool & Level::getIsNearbyLevel()
 {
 	return mIsNearbyLevel;
 }
-
 bool & Level::getIsLoaded()
 {
 	return mIsLoaded;
 }
-
 void Level::setBackgroundID()
 {
 	mFolderPath = RMI.getFilePath(mBackgroundID);
 }
-
 std::vector<LevelFolder::ID> Level::getConnectedLevels()
 {
 	for (std::map<PortalId, Portal*>::const_iterator it = mPortals.begin(); it != mPortals.end(); it++)
