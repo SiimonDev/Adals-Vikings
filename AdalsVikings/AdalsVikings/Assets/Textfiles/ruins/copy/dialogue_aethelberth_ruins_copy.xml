@@ -3,7 +3,7 @@
 	<useText useText="Yeah. No. I wanna try and survive this?" />
 	<lookText lookText="That's the mercs leader, Aethelberthberth" />
 	<text character="Aethelberth" disabled="false" default="false" say="Oh, ho!" timer="2.0" turned="true" />
-	<text character="Aethelberth" disabled="false" default="false" say="And who might this little fellow be?" timer="2.0" />
+	<text character="Aethelberth" disabled="false" default="false" say="And who might this little fellow be?" timer="2.5" />
 	<text character="Aethelberth" disabled="false" default="false" say="Another recruit for our merry band of men, perhaps?" timer="2.5" />
 	<text character="Ulfr" disabled="false" default="false" say="You joking?" timer="2.0" turned="false" />
 	<text character="Ulfr" disabled="false" default="false" say="Do i really strike you as a... &quot;Fighter&quot;?" timer="2.5" />

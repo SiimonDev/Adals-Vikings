@@ -92,9 +92,9 @@
 			<text character="Mailman" timer="0.8" say="I lose again!" disablePrevious="true" />
 			<text character="Mailman" timer="0.8" say="&quot;HA HA&quot;!" disablePrevious="true" />
 			<text character="Mailman" timer="0.8" say="Let's laugh at the stupid postman!" disablePrevious="true" />
-			<text character="Mailman" timer="1.5" say="Isn't is SO MUCH FUN!?" disablePrevious="true" />
+			<text character="Mailman" timer="1.5" say="Isn't it SO MUCH FUN!?" disablePrevious="true" />
 			<text character="Mailman" timer="2.0" say="..." disablePrevious="true" />
-			<text character="Ulfr" timer="1.5" say="I'm not really sure what to say here." disablePrevious="true" turned="true" />
+			<text character="Ulfr" timer="2.3" say="I'm not really sure what to say here." disablePrevious="true" turned="true" />
 			<text character="Mailman" timer="2.0" say="Don't say anything!" disablePrevious="true" turned="false" />
 			<text character="Ulfr" timer="2.0" say="Look. How about this:" disablePrevious="true" turned="true" />
 			<text character="Ulfr" timer="2.5" say="I'll help you find that letter of yours." disablePrevious="true" />
