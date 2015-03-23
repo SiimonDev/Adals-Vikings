@@ -219,7 +219,7 @@ bool VideoFile::OpenAVI(LPCSTR szFile)
 
 	if (AVIStreamOpenFromFile(&pavi, szFile, streamtypeVIDEO, 0, OF_READ, NULL) != 0)
 	{
-		MessageBox(HWND_DESKTOP, "Failed To Open The AVI Stream.\nMake sure you are not missing any video files", "Error", MB_OK | MB_ICONEXCLAMATION);
+		MessageBox(HWND_DESKTOP, "Failed To Open The AVI Stream.\nMissing video File", "Error", MB_OK | MB_ICONEXCLAMATION);
 		success = false;
 	}
 
