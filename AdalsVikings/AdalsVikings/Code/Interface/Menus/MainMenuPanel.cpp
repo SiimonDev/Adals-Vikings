@@ -17,7 +17,7 @@ void MainMenuPanel::load()
 	RMI.loadResource(Texture::AxeAnimation);
 	RMI.loadResource(Sound::MainMenuAxeSound);
 
-	AudioPlayer::playHDDSound(HDDSound::Anlgian_Music, true);
+	mRestartSounds = true;
 
 	mBackground.setTexture(RMI.getResource(Texture::MainMenuBackground));
 
@@ -72,6 +72,9 @@ void MainMenuPanel::unload()
 
 void MainMenuPanel::update(sf::Time frameTime)
 {
+	if (mRestartSounds)
+		AudioPlayer::playHDDSound(HDDSound::Anlgian_Music, true);
+
 	mCurrentEvent = MenuEvent::NONE;
 	if (!mAnimateAxe)
 	{

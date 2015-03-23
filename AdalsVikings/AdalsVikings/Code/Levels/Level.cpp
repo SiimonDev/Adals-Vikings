@@ -651,6 +651,9 @@ void Level::refreshLevel(bool resetObjects)
 		mObjects.clear();
 
 		loadObjects();
+
+		mPlayer->saveInventory();
+		mPlayer->refreshInventory();
 	}
 }
 

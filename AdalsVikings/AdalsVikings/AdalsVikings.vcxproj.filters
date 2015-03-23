@@ -409,6 +409,9 @@
     <ClInclude Include="Code\Logics\VideoFile.h">
       <Filter>Header Files\Logics</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Interface\VideoHandler.h">
+      <Filter>Header Files\Interface</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

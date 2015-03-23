@@ -32,4 +32,5 @@ private:
 	bool mPlay;
 	bool mQuit;
 	bool mPlaySound;
+	bool mRestartSounds;
 };

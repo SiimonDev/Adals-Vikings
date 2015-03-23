@@ -2,6 +2,7 @@
 #include "..\Objects\ObjectHandler.h"
 #include "..\Levels\LevelManager.h"
 #include "..\Interface\Menus\MenuHandler.h"
+#include "..\Interface\VideoHandler.h"
 #include "BoatEvents.h"
 #include "MouseState.h"
 #include "KeyboardState.h"
@@ -19,8 +20,6 @@ int mHeight = 720;
 
 IndexRenderer iRenderer;
 
-sf::VideoFile splashScreen;
-
 bool runGame = false;
 
 Game::Game()
@@ -36,12 +35,8 @@ Game::Game()
 	KeyboardState::initialize();
 	MouseState::initialize();
 
-	splashScreen.openFromFile("assets/video/SplashScreen_x264_720p.avi"/*, "assets/video/upp_hill_sound.wav"*/);
-	splashScreen.setSize(1280, 720);
-	splashScreen.setPosition((1920 / 2) - splashScreen.getSize().x / 2, (1080 / 2) - splashScreen.getSize().y / 2);
-
 	LSI.initialize();
-	LSI.startLoading(LoadTask::BootGame, &splashScreen);
+	LSI.startLoading(LoadTask::BootGame, &VideoHandlerI.getSplashScreen());
 }
 
 Game::~Game()
@@ -71,6 +66,10 @@ void Game::update(sf::Time frameTime)
 			else if (MHI.getEvent() == MenuEvent::ResumePressed)
 			{
 				MHI.popMenu();
+			}
+			else if (VideoHandlerI.endCreditsPlaying())
+			{
+				runGame = false;
 			}
 		}
 

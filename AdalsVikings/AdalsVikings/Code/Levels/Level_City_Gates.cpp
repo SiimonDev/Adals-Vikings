@@ -1,5 +1,7 @@
 #include "Level_City_Gates.h"
 #include "..\Logics\AudioPlayer.h"
+#include "..\Interface\LoadingScreen.h"
+#include "..\Interface\VideoHandler.h"
 #include <iostream>
 
 Level_City_Gates::Level_City_Gates(Player &player, HUD &hud, ActionWheel &actionWheel)
@@ -40,6 +42,7 @@ void Level_City_Gates::update(sf::Time &frametime)
 				{
 					mFade1 = true;
 					Act1Events::handleEvent(Act1Event::GivenSkullHelmetToGuard);
+					LSI.startLoading(LoadTask::LoadMainMenu, &VideoHandlerI.getCredits());
 				}
 			}
 		}
@@ -71,7 +74,7 @@ void Level_City_Gates::load()
 	mNpcs["Guard"]->setDialogue("Guard1_Gates");
 
 	if (!Act1Events::hasBeenHandled(Act1Event::TalkedToGuard))
-		mPortals[GatesToCliffs]->setCannotDialogue("I should talk to that guard first. Should be pretty easy to smmoth talk my way into the city.");
+		mPortals[GatesToCliffs]->setCannotDialogue("I should talk to that guard first. Should be pretty easy to smooth talk my way into the city.");
 	else
 		mPortals[GatesToCliffs]->setWorking(true);
 

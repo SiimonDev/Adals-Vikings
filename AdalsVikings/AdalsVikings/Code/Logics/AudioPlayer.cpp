@@ -122,6 +122,7 @@ void AudioPlayer::unload()
 {
 	// Delete all NonLoop sounds
 	for each (sf::Sound* sound in mNonLoopSounds){
+		sound->stop();
 		delete sound;
 	}
 	mNonLoopSounds.clear();
@@ -138,6 +139,7 @@ void AudioPlayer::unload()
 
 	// Delete all the Music
 	for (std::map<HDDSound::ID, sf::Music*>::iterator it = mHDDSound.begin(); it != mHDDSound.end(); ++it){
+		it->second->stop();
 		delete it->second;
 	}
 	mHDDSound.clear();

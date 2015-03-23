@@ -95,6 +95,7 @@
     <ClInclude Include="Code\Dialog\pugixml.hpp" />
     <ClInclude Include="code\Interface\ActionWheel.h" />
     <ClInclude Include="code\Interface\Button.h" />
+    <ClInclude Include="Code\Interface\VideoHandler.h" />
     <ClInclude Include="Code\Interface\HUD.h" />
     <ClInclude Include="Code\Interface\Inventory.h" />
     <ClInclude Include="Code\Interface\InvTile.h" />

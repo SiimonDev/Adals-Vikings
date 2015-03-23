@@ -17,6 +17,5 @@ public:
 	void restartSounds();
 
 private:
-
 	bool mFade1;
 };
