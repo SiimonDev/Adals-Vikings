@@ -49,6 +49,7 @@ namespace Act1Event
 		SweetGold,
 		PickupMeat,
 		ForestRoadConver,
+		FlowerActive,
 		EVENT_SIZE
 	};
 }

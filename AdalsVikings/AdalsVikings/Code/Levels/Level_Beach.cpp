@@ -205,8 +205,12 @@ void Level_Beach::load()
 	else
 		Level::load();
 
-		if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))
-			mPortals[BeachToTavernOutside]->setWorking(true);
+	if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))
+	{
+		mPortals[BeachToBeachHill]->setWorking(true);
+		mPortals[BeachToRoad]->setWorking(true);
+		mPortals[BeachToTavernOutside]->setWorking(true);
+	}
 }
 
 void Level_Beach::unload()

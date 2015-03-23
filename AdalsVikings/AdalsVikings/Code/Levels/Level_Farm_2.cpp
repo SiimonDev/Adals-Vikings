@@ -88,5 +88,4 @@ void Level_Farm_2::checkEvents()
 
 	if (!Act1Events::hasBeenTriggered(Act1Event::SolvedConflict) && Act1Events::hasBeenHandled(Act1Event::TalkedToParrik) && DialogHandler::getDialogue("Jacob_Farm").getIsOptionDisabled(3) && DialogHandler::getDialogue("Jacob_Farm").getHasStopped())
 		Act1Events::triggerEvent(Act1Event::SolvedConflict);
-
 }

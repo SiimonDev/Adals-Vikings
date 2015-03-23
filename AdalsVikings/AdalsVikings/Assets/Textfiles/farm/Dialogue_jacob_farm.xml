@@ -122,10 +122,10 @@
 			<text character="Jacob" say="B-But!" disabled="false" default="false" timer="2.2"></text>
 			<text character="Jacob" say="..." disabled="false" default="false" timer="1.7"></text>
 			<text character="Jacob" say="Okay..." disabled="false" default="false" timer="1.7"></text>
-			<text character="Ulfr" say="Huh." timer="2.3" turned="true" default="false" turnedplayer="true" disabled="false"></text>
-			<text character="Ulfr" say="Poor guy." timer="2.3" turned="true" default="false" turnedplayer="true" disabled="false"></text>
-			<text character="Ulfr" say="I almost feel bad for him." timer="2.4" turned="true" default="false" turnedplayer="true" disabled="false"></text>
-			<text character="Ulfr" say="Oh well, time to pluck some flowers." timer="2.5" turned="true" default="false" turnedplayer="true" disabled="false"></text>
+			<text character="Ulfr" say="Huh." timer="2.3" default="false" turnedPlayer="true" disabled="false"></text>
+			<text character="Ulfr" say="Poor guy." timer="2.3" default="false" turnedPlayer="true" disabled="false"></text>
+			<text character="Ulfr" say="I almost feel bad for him." timer="2.4" default="false" turnedPlayer="true" disabled="false"></text>
+			<text character="Ulfr" say="Oh well, time to pluck some flowers." timer="2.5" default="false" disablePrevious="true" turnedPlayer="true" disabled="false"></text>
 			<stopConversation></stopConversation>
 		</option>
 		<option choice_text="I'll be back later. Promise.">
