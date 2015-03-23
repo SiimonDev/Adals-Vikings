@@ -34,7 +34,7 @@ public:
 	virtual void loadAllBackgrounds();
 	virtual void loadObjects();
 	virtual void saveObjects();
-	virtual void refreshLevel();
+	virtual void refreshLevel(bool resetObjects = false);
 	virtual void resetLevel();
 	virtual void load();
 	virtual void unload();

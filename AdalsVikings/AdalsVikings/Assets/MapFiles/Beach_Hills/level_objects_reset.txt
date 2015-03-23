@@ -27,3 +27,31 @@ index: $20
 scale: $1.0
 hascollision: $false
 ############
+*id: $farmHills
+position: $X:755 $Y:505
+interactPosition: $X:0 $Y:0
+index: $20
+scale: $1.0
+hascollision: $false
+############
+*id: $churchHills
+position: $X:1168 $Y:610
+interactPosition: $X:0 $Y:0
+index: $20
+scale: $1.0
+hascollision: $false
+############
+*id: $ruinsHills
+position: $X:1621 $Y:553
+interactPosition: $X:0 $Y:0
+index: $20
+scale: $1.0
+hascollision: $false
+############
+*id: $tavernHills
+position: $X:1549 $Y:624
+interactPosition: $X:0 $Y:0
+index: $20
+scale: $1.0
+hascollision: $false
+############

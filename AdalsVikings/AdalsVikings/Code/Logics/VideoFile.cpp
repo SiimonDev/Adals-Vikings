@@ -214,12 +214,14 @@ void VideoFile::flipIt(void* buffer)							// Flips The Red And Blue Bytes (256x
 }
 bool VideoFile::OpenAVI(LPCSTR szFile)
 {
+	std::string file(szFile);
 	bool success = true;
 	AVIFileInit();													// Opens The AVIFile Library
 
 	if (AVIStreamOpenFromFile(&pavi, szFile, streamtypeVIDEO, 0, OF_READ, NULL) != 0)
 	{
-		MessageBox(HWND_DESKTOP, "Failed To Open The AVI Stream.\nMissing video File", "Error", MB_OK | MB_ICONEXCLAMATION);
+		std::string error = "Failed To Open The AVI Stream.\nMissing video File: " + file;
+		MessageBox(HWND_DESKTOP, error.c_str(), "Error", MB_OK | MB_ICONEXCLAMATION);
 		success = false;
 	}
 
@@ -254,10 +256,10 @@ bool VideoFile::OpenAVI(LPCSTR szFile)
 		if (success)
 			std::cout << "Loaded AVI File: Width : " << mWidth << " Height : " << mHeight << " Frames : " << mLastframe << std::endl;
 		else
-			std::cout << "Failde to load AVI file, missing x264vfw codec" << std::endl;
+			std::cout << "Failde to load AVI file: " + file + ", missing x264vfw codec" << std::endl;
 	}
 	else
-		std::cout << "Failed to load AVI file" << std::endl;
+		std::cout << "Failed To Open The AVI Stream, Missing video File: " + file << std::endl;
 	
 	return success;
 }
