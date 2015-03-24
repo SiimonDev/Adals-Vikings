@@ -129,8 +129,7 @@ void Level_Road::render(IndexRenderer &iRenderer)
 
 void Level_Road::load()
 {
-
-	if (!Act1Events::hasBeenTriggered(Act1Event::Road_GiveMailmanPaper))
+	/*if (!Act1Events::hasBeenTriggered(Act1Event::Road_GiveMailmanPaper))
 	{
 		Act1Events::triggerEvent(Act1Event::Enter_Road);
 		Act1Events::handleEvent(Act1Event::Enter_Road);
@@ -185,7 +184,7 @@ void Level_Road::load()
 
 		Act1Events::triggerEvent(Act1Event::Road_GiveMailmanPaper);
 		Act1Events::handleEvent(Act1Event::Road_GiveMailmanPaper);
-	}
+	}*/
 
 	RMI.loadResource(Footsteps::Dirt);
 	RMI.loadResource(Sound::Bushes);
