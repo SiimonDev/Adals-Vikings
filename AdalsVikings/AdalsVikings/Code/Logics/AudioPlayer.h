@@ -9,6 +9,7 @@ public:
 	static void stopSound(std::string audioID);
 
 	static void playHDDSound(HDDSound::ID id, bool loop, float volume = 50);
+	static void pauseHDDSound(HDDSound::ID id);
 	static void stopHDDSound(HDDSound::ID id);
 
 	static void update(sf::Time frameTime);

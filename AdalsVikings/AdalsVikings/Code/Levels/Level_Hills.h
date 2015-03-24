@@ -17,6 +17,6 @@ public:
 	void restartSounds();
 
 private:
-
+	bool mVideoPlayed;
 	bool mFade1, mFade2;
 };

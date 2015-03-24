@@ -50,6 +50,7 @@ namespace Act1Event
 		PickupMeat,
 		ForestRoadConver,
 		FlowerActive,
+		BeachHillVideo,
 		EVENT_SIZE
 	};
 }

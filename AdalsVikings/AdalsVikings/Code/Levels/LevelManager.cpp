@@ -334,7 +334,7 @@ void LevelManager::unloadCacheLevels()
 		}
 	}
 }
-std::map<LevelFolder::ID, LevelPtr> & LevelManager::getCurrentLevels()
+std::map<LevelFolder::ID, LevelPtr> &LevelManager::getCurrentLevels()
 {
 	return mLevelMap;
 }

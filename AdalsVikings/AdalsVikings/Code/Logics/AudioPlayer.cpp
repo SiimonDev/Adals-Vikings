@@ -70,6 +70,15 @@ void AudioPlayer::playHDDSound(HDDSound::ID id, bool loop, float volume)
 	else {
 		mHDDSound[id]->setVolume(volume * masterSoundScale * musicScale);
 		mHDDSound[id]->setLoop(loop);
+
+		if (mHDDSound[id]->getStatus() == sf::Music::Paused)
+			mHDDSound[id]->play();
+	}
+}
+void AudioPlayer::pauseHDDSound(HDDSound::ID id)
+{
+	if (mHDDSound.find(id) != mHDDSound.end()) {
+		mHDDSound[id]->pause();
 	}
 }
 void AudioPlayer::stopHDDSound(HDDSound::ID id)

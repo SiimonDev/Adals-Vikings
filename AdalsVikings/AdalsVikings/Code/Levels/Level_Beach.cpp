@@ -42,12 +42,12 @@ void Level_Beach::update(sf::Time &frameTime)
 
 		if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro))
 			Act1Events::triggerEvent(Act1Event::Beach_Intro);
+
+		Level::update(frameTime);
+		changeLevel();
 	}
 	else
 		mLandingVideo.update(frameTime);
-
-	Level::update(frameTime);
-	changeLevel();
 }
 void Level_Beach::render(IndexRenderer &iRenderer)
 {
@@ -234,6 +234,7 @@ void Level_Beach::changeLevel()
 		LVLMI.changeLevel(LevelFolder::Road);
 		AudioPlayer::stopHDDSound(HDDSound::Beach_Ambient);
 		AudioPlayer::stopHDDSound(HDDSound::Beach_Wave);
+		AudioPlayer::pauseHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
 		mRestartSounds = true;
 	}
 	else if (mPortals[BeachToTavernOutside]->getActivated() && mPortals[BeachToTavernOutside]->getWorking())
@@ -241,6 +242,7 @@ void Level_Beach::changeLevel()
 		LVLMI.changeLevel(LevelFolder::Tavern_Outside);
 		AudioPlayer::stopHDDSound(HDDSound::Beach_Ambient);
 		AudioPlayer::stopHDDSound(HDDSound::Beach_Wave);
+		AudioPlayer::pauseHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
 		mRestartSounds = true;
 	}
 	else if (mPortals[BeachToBeachHill]->getActivated() && mPortals[BeachToBeachHill]->getWorking())
@@ -248,6 +250,7 @@ void Level_Beach::changeLevel()
 		LVLMI.changeLevel(LevelFolder::Beach_Hills);
 		AudioPlayer::stopHDDSound(HDDSound::Beach_Ambient);
 		AudioPlayer::stopHDDSound(HDDSound::Beach_Wave);
+		AudioPlayer::pauseHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
 		mRestartSounds = true;
 	}
 }
