@@ -2,32 +2,32 @@
 <conversation>
 	<useText useText="I'm not going to jump into that..." />
 	<lookText lookText="It's a hole, smartass." />
-	<text character="Ulfr" disabled="false" default="false" say="What the-" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="YO-HO, MY BOY!" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Long time since I've had a visitor!" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="What be ye name?" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="Uh... Ulfr?" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Lovely name, astounding!" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="I'm Labina the miner." timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Best miner of the eastern coast!" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="Gold you say?" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="INDEED!" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Been digging this hole of mine for many a years now." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="And you've found gold?!" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="OF COURSE!" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Just... not lately..." timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Under a bit of a dry spell." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="Really, for how long?" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="27 years." timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="..." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="You've been digging here for 27 years?" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Oh no, way longer than that." timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Started out as a teenager." timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Brother of mine always called me a fool." timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="BUT I SURE SHOWED HIM!" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Got me some gold!" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="...27 years ago?" timer="2.0" turned="false" />
-	<text character="Miner" disabled="false" default="false" say="Still counts." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="What the-" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="YO-HO, MY BOY!" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Long time since I've had a visitor!" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="What be ye name?" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Uh... Ulfr?" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Lovely name, astounding!" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="I'm Labina the miner." timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Best miner of the eastern coast!" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Gold you say?" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="INDEED!" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Been digging this hole of mine for many a years now." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="And you've found gold?!" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="OF COURSE!" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Just... not lately..." timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Under a bit of a dry spell." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Really, for how long?" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="27 years." timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="..." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="You've been digging here for 27 years?" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Oh no, way longer than that." timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Started out as a teenager." timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Brother of mine always called me a fool." timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="BUT I SURE SHOWED HIM!" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Got me some gold!" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="...27 years ago?" timer="2.0" turned="false" />
+	<text character="Miner" disabled="true" default="false" say="Still counts." timer="2.0" turned="false" />
 	<option_container disabled="false">
 		<option choice_text="How stable is this cave of yours?" disabled="false">
 			<text character="Ulfr" disabled="false" default="false" say="How stable is this cave?" timer="2.0" turned="false" />

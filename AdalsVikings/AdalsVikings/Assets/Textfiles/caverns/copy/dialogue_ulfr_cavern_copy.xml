@@ -2,17 +2,17 @@
 <conversation>
 	<useText useText="I don't think im strong enough to do that. " />
 	<lookText lookText="That's Leifr" />
-	<text character="Ulfr" disabled="false" default="false" say="Well..." timer="1.4" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="It's pretty damn dark in here." timer="2.6" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="I can’t see anything." timer="2.3" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="…yeah." timer="1.9" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="I have to get some light." timer="2.3" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="Oh gods." timer="1.8" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="Brandr won't let me back into camp either." timer="2.8" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="So I can't go get another torch." timer="2.8" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="I have to find some other way." timer="2.3" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="As per usual." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="*Sigh*" timer="1.8" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Well..." timer="1.4" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="It's pretty damn dark in here." timer="2.6" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="I can’t see anything." timer="2.3" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="…yeah." timer="1.9" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="I have to get some light." timer="2.3" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Oh gods." timer="1.8" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Brandr won't let me back into camp either." timer="2.8" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="So I can't go get another torch." timer="2.8" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="I have to find some other way." timer="2.3" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="As per usual." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="*Sigh*" timer="1.8" turned="false" />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />

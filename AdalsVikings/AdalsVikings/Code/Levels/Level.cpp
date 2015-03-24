@@ -437,7 +437,7 @@ void Level::update(sf::Time &frameTime)
 		mRestartSounds = false;
 	}
 
-	if (!mActionWheel->isPressed() && mActionWheel->isActive())
+	if (!mActionWheel->isPressed() && mActionWheel->isActive() || mIsInConversation)
 		mActionWheel->setActive(false);
 
 	if (!mIsInConversation && !mOldIsInConversation && FadeI.getFaded())

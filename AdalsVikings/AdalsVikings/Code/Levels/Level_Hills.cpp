@@ -60,6 +60,7 @@ void Level_Hills::load()
 	mNpcs["Finnr"]->setPosition(sf::Vector2f(800, 830));
 	mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(720, 825));
 	mNpcs["Finnr"]->setScale(sf::Vector2f(0.45, 0.45));
+	mNpcs["Finnr"]->setIndex(5);
 	mNpcs["Finnr"]->setDialogue("Finnr_Hills");
 
 	Level::load();

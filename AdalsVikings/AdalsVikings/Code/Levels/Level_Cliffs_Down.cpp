@@ -38,7 +38,6 @@ void Level_Cliffs_Down::update(sf::Time &frametime)
 	Level::update(frametime);
 	changeLevel(frametime);
 }
-
 void Level_Cliffs_Down::render(IndexRenderer &iRenderer)
 {
 	if (mWaveAnimation.getCurrentFrame() == 0)
@@ -91,7 +90,6 @@ void Level_Cliffs_Down::load()
 		mPortals[CliffsToCaverns]->setWorking(true);
 	}
 }
-
 void Level_Cliffs_Down::unload()
 {
 	RMI.unloadResource(Texture::WaveAnimationCliffs);

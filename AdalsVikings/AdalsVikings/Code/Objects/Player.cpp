@@ -40,7 +40,6 @@ void Player::load()
 	mWidth = mPlayerAnimation.getSprite().getTextureRect().width;
 	mHeight = mPlayerAnimation.getSprite().getTextureRect().height;
 }
-
 void Player::unload()
 {
 	mInventory.unload();
@@ -66,12 +65,10 @@ bool Player::hasItemInInventory(std::string objID)
 {
 	return mInventory.hasItemInInventory(objID);
 }
-
 bool Player::removeItemFromInventory(std::string objID)
 {
 	return mInventory.removeItemFromInventory(objID);
 }
-
 void Player::saveInventory()
 {
 	mInventory.saveInventoryToFile();
@@ -116,13 +113,13 @@ void Player::update(sf::Time &frameTime)
 	// Update the player scale
 	if (!mIsBear)
 	{
-		mScale.x = ((0.35 / 120.f) * mCurrentAlpha);
-		mScale.y = (0.35 / 120.f) * mCurrentAlpha;
+		mScale.x = ((0.35f / 120.f) * mCurrentAlpha);
+		mScale.y = (0.35f / 120.f) * mCurrentAlpha;
 	}
 	else
 	{
-		mScale.x = ((0.6 / 120.f) * mCurrentAlpha);
-		mScale.y = (0.6 / 120.f) * mCurrentAlpha;
+		mScale.x = ((0.6f / 120.f) * mCurrentAlpha);
+		mScale.y = (0.6f / 120.f) * mCurrentAlpha;
 	}
 
 	playFootstepSound();
@@ -257,17 +254,14 @@ void Player::setIndex(int index)
 {
 	mPlayerAnimation.setIndex(index);
 }
-
 void Player::setPosition(sf::Vector2f &position)
 {
 	mPosition = position;
 }
-
 void Player::setIntention(Intention::ID intention)
 {
 	mIntention = intention;
 }
-
 void Player::setAnimationStyle(AnimationType::ID type)
 {
 	if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x > 0.4/* && mVelocity.y >= 0*/ && mAnimationStyle != AnimationStyle::Right)
@@ -379,30 +373,25 @@ std::string & Player::getName()
 {
 	return mName;
 }
-
 float & Player::getCurrentAlpha()
 {
 	return mCurrentAlpha;
 }
-
 void Player::setFlip(bool value)
 {
 	mFlip = value;
 	mPlayerAnimation.flip(mFlip);
 }
-
 void Player::setFootsteps(Footsteps::ID footsteps)
 {
 	mFootsteps = footsteps;
 }
-
+void Player::setBearCostume(bool value)
+{
+	mIsBear = value;
+}
 void Player::UpdateAnimationStyle()
 {
 	mAnimationStyle = AnimationStyle::Update;
 	setAnimationStyle(AnimationType::Idle);
-}
-
-void Player::setBearCostume(bool value)
-{
-	mIsBear = value;
 }

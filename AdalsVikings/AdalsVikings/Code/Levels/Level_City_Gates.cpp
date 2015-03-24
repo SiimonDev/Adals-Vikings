@@ -12,7 +12,7 @@ Level_City_Gates::Level_City_Gates(Player &player, HUD &hud, ActionWheel &action
 
 void Level_City_Gates::restartSounds()
 {
-	AudioPlayer::playHDDSound(HDDSound::City_Gates_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::City_Gates_Ambient, true, mAmbientSoundLevel / 2);
 	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, mMusicSoundLevel);
 }
 
@@ -50,7 +50,6 @@ void Level_City_Gates::update(sf::Time &frametime)
 	Level::update(frametime);
 	changeLevel();
 }
-
 void Level_City_Gates::render(IndexRenderer &iRenderer)
 {
 	Level::render(iRenderer);
@@ -83,7 +82,6 @@ void Level_City_Gates::load()
 	mTileMap.addCollision(mNpcs["Guard"]->getCollisionRect());
 	mTileMap.setIndexOnMap(mNpcs["Guard"]->getIndexRect(), mNpcs["Guard"]->getIndex() - 1);
 }
-
 void Level_City_Gates::unload()
 {
 	Level::unload();
