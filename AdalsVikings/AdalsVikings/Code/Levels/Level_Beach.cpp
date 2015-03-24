@@ -11,7 +11,7 @@ static Animation mRockAnimation;
 
 Level_Beach::Level_Beach(Player &player, HUD &hud, ActionWheel &actionWheel)
 	: Level(player, hud, actionWheel)
-	, mIntroFade1(false)
+	, mIntroFade1(false), mVideoPlayed(false)
 {
 	mBackgroundID = LevelFolder::Beach;
 }
@@ -24,7 +24,12 @@ void Level_Beach::restartSounds()
 
 void Level_Beach::update(sf::Time &frameTime)
 {
-	if (mLandingVideo.getStatus() != sf::VideoFile::Playing || !mLandingVideo.isLoaded())
+	if (mVideoPlayed)
+	{
+		mLandingVideo.play();
+		mVideoPlayed = false;
+	}
+	else if (mLandingVideo.getStatus() != sf::VideoFile::Playing || !mLandingVideo.isLoaded())
 	{
 		introCutscene(frameTime);
 		talkToNpcs();
@@ -44,10 +49,9 @@ void Level_Beach::update(sf::Time &frameTime)
 	Level::update(frameTime);
 	changeLevel();
 }
-
 void Level_Beach::render(IndexRenderer &iRenderer)
 {
-	if (mLandingVideo.getStatus() != sf::VideoFile::Playing || !mLandingVideo.isLoaded())
+	if ((mLandingVideo.getStatus() != sf::VideoFile::Playing || !mLandingVideo.isLoaded()) && !mVideoPlayed)
 	{
 		if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
 			CurrentWindow.setView(mCutSceneView);
@@ -64,9 +68,9 @@ void Level_Beach::load()
 {
 	if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
 	{
-		mLandingVideo.openFromFile("assets/video/landing_x264_720p.avi", false);
+		mLandingVideo.openFromFile("assets/video/landing_x264_720p.avi", "assets/video/landing_sound.ogg", false);
 		mLandingVideo.setSize(1920, 1080);
-		mLandingVideo.play();
+		mVideoPlayed = true;
 	}
 
 	mRestartSounds = true;
@@ -212,7 +216,6 @@ void Level_Beach::load()
 		mPortals[BeachToTavernOutside]->setWorking(true);
 	}
 }
-
 void Level_Beach::unload()
 {
 	RMI.unloadResource(Texture::WaveAnimationBeach);

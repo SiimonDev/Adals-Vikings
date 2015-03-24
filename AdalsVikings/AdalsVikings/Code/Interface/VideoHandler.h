@@ -13,7 +13,7 @@ public:
 
 	sf::VideoFile &getSplashScreen()
 	{
-		mSplashScreen.openFromFile("assets/video/SplashScreen_x264_720p.avi"/*, "assets/video/upp_hill_sound.wav"*/);
+		mSplashScreen.openFromFile("assets/video/SplashScreen_x264_720p.avi", "assets/video/SplashScreen_sound.ogg");
 		mSplashScreen.setSize(1280, 720);
 		mSplashScreen.setPosition((1920 / 2) - mSplashScreen.getSize().x / 2, (1080 / 2) - mSplashScreen.getSize().y / 2);
 		return mSplashScreen;
