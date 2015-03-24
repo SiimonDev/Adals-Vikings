@@ -4,7 +4,7 @@
 *ispickupable: False
 *pickup: "...Those claws look pretty sharp." ~3,0
 *lookat: "Looks like she is enjoying the sun." ~3,5
-*deny: "Uhmm... no thanks." ~2,0
+*deny: "Hello? No? Okay." ~2,0
 *denywith: 
 *combine: 
 *interact: 

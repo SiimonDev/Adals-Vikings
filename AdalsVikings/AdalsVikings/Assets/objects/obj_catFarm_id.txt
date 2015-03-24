@@ -2,9 +2,9 @@
 *ID: $catFarm$
 *Name: Cat
 *ispickupable: False
-*pickup: "This might come in handy" ~2,0
-*lookat: "That's nice..." ~1,5
-*deny: "I can't do that" ~1,5
+*pickup: "I cat do that." ~2,0
+*lookat: "What a nice kitty." ~2,0
+*deny: "Meow?" ~1,5
 *denywith: 
 *combine: 
 *interact: 
