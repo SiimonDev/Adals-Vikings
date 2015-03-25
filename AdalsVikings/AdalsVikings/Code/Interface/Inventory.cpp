@@ -279,9 +279,9 @@ void Inventory::clearInventory()
 void Inventory::toggleInventory()
 {
 	if (mDisplay)
-		AudioPlayer::playSound(Sound::InventoryClose, "closeInv", false);
+		AudioPlayer::playSound(Sound::InventoryClose, "closeInv", false, 20);
 	else
-		AudioPlayer::playSound(Sound::InventoryOpen, "openInv", false);
+		AudioPlayer::playSound(Sound::InventoryOpen, "openInv", false, 20);
 	
 	mDisplay = !mDisplay;
 }

@@ -26,6 +26,13 @@ public:
 		return mEndCredits;
 	}
 
+	sf::VideoFile &getIntroVideo()
+	{
+		mIntroVideo.openFromFile("assets/video/intro_x264_720p.avi", "assets/video/intro_sound.ogg");
+		mIntroVideo.setSize(1920, 1080);
+		return mIntroVideo;
+	}
+
 	bool endCreditsPlaying()
 	{
 		return mEndCredits.getStatus() == sf::VideoFile::Playing;
@@ -34,6 +41,7 @@ public:
 private:
 	VideoHandler(){}
 	
+	sf::VideoFile mIntroVideo;
 	sf::VideoFile mSplashScreen;
 	sf::VideoFile mEndCredits;
 };

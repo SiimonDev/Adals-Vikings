@@ -76,7 +76,7 @@ void Game::update(sf::Time frameTime)
 		// Check for main menu events
 		if (MHI.getEvent() == MenuEvent::NewGamePressed)
 		{
-			LSI.startLoading(LoadTask::StartGame);
+			LSI.startLoading(LoadTask::StartGame, &VideoHandlerI.getIntroVideo());
 			runGame = true;
 		}
 		else if (MHI.getEvent() == MenuEvent::LoadGamePressed)
