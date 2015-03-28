@@ -352,12 +352,17 @@ void Player::setAnimationStyle(AnimationType::ID type)
 	}
 	else if (type == AnimationType::TalkToPlayer && mAnimationStyle != AnimationStyle::PlayerMonolog)
 	{
-		setFlip(false);
+		/*setFlip(false);
 		mPlayerAnimation.flip(mFlip);
 		mPlayerAnimation.load(RMI.getResource(Texture::UlfrTalkToPlayer), Frames(4, 1), sf::milliseconds(600), sf::seconds(0), true);
 
 		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
-		mAnimationStyle = AnimationStyle::PlayerMonolog;
+		mAnimationStyle = AnimationStyle::PlayerMonolog;*/
+		mPlayerAnimation.flip(mFlip);
+		mPlayerAnimation.load(RMI.getResource(Texture::UlfrTalkToNpc), Frames(5, 2), sf::milliseconds(800), sf::Time::Zero, true);
+
+		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
+		mAnimationStyle = AnimationStyle::PlayerTalk;
 	}
 	else if (type == AnimationType::Pickup && mAnimationStyle != AnimationStyle::PlayerPickup)
 	{

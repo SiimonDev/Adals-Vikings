@@ -17,6 +17,10 @@ void Level_Camp_Finished::restartSounds()
 void Level_Camp_Finished::update(sf::Time &frametime)
 {
 	mCampFire.animate(frametime);
+
+	Level::update(frametime);
+	changeLevel();
+
 	if (Act1Events::hasBeenTriggered(Act1Event::CampFinished_Conversation) && !Act1Events::hasBeenHandled(Act1Event::CampFinished_Conversation))
 	{
 		if (!mFade1)
@@ -44,18 +48,16 @@ void Level_Camp_Finished::update(sf::Time &frametime)
 				mFade2 = true;
 				mNpcs.clear();
 				Act1Events::handleEvent(Act1Event::CampFinished_Conversation);
-				LVLMI.changeLevel(LevelFolder::Road);
 				AudioPlayer::stopHDDSound(HDDSound::Camp_Ambient);
 				AudioPlayer::stopHDDSound(HDDSound::Fire_Ambient);
 				AudioPlayer::stopHDDSound(HDDSound::Church_Music);
 				mRestartSounds = true;
+
+				LVLMI.changeLevel(LevelFolder::Road);
 			}
 		}
 	}
-
-	changeLevel();
-	Level::update(frametime);
-}
+} 
 
 void Level_Camp_Finished::render(IndexRenderer &iRenderer)
 {
@@ -92,7 +94,7 @@ void Level_Camp_Finished::load()
 		mNpcs["Brynja"]->setScale(sf::Vector2f(0.42, 0.42));
 		mNpcs["Valdis"]->setScale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Yngvarr"]->setScale(sf::Vector2f(0.42, 0.42));
-		mNpcs["Dagny"]->setScale(sf::Vector2f(0.42, 0.42));
+		mNpcs["Dagny"]->setScale(sf::Vector2f(0.46, 0.46));
 		mNpcs["Alfr"]->setScale(sf::Vector2f(0.4, 0.4));
 		mNpcs["Finnr"]->setScale(sf::Vector2f(0.42, 0.42));
 		mNpcs["Brandr"]->setScale(sf::Vector2f(0.4, 0.4));

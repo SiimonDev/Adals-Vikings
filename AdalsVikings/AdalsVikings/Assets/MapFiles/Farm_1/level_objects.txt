@@ -3,90 +3,83 @@
 position: $X:1294 $Y:735
 interactPosition: $X:0 $Y:0
 index: $3
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sign2
 position: $X:370 $Y:472
 interactPosition: $X:0 $Y:0
 index: $3
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sign3
 position: $X:691 $Y:417
 interactPosition: $X:0 $Y:0
 index: $3
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sign4
 position: $X:913 $Y:460
 interactPosition: $X:0 $Y:0
 index: $3
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sign5
 position: $X:795 $Y:444
 interactPosition: $X:0 $Y:0
 index: $3
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sign6
 position: $X:646 $Y:463
 interactPosition: $X:0 $Y:0
 index: $3
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sign7
 position: $X:840 $Y:537
 interactPosition: $X:0 $Y:0
 index: $3
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sign8
 position: $X:1173 $Y:481
 interactPosition: $X:0 $Y:0
 index: $3
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sign9
 position: $X:720 $Y:447
 interactPosition: $X:0 $Y:0
 index: $3
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sign10
 position: $X:841 $Y:477
 interactPosition: $X:0 $Y:0
 index: $3
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sign11
 position: $X:860 $Y:254
 interactPosition: $X:0 $Y:0
 index: $3
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $sign12
 position: $X:864 $Y:510
 interactPosition: $X:0 $Y:0
 index: $3
-scale: $1.0
-hascollision: $false
-############
-*id: $flowers
-position: $X:200 $Y:500
-interactPosition: $X:0 $Y:0
-index: $3
-scale: $1.5
+scale: $1
 hascollision: $false
 ############

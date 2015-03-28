@@ -41,7 +41,7 @@ index: $3
 scale: $1.0
 hascollision: $false
 ############
-*id: $pitchfork
+#*id: $pitchfork
 position: $X:959 $Y:505
 interactPosition: $X:0 $Y:0
 index: $3
