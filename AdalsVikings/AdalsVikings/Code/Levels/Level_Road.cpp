@@ -76,6 +76,11 @@ void Level_Road::update(sf::Time &frametime)
 			mNpcs["Alfr"]->setFlip(false);
 			mNpcs["Finnr"]->setFlip(false);
 
+			mNpcs["Leifr"]->setAnimationStyle("Npc");
+			mNpcs["Valdis"]->setAnimationStyle("Npc");
+			mNpcs["Alfr"]->setAnimationStyle("Npc");
+			mNpcs["Finnr"]->setAnimationStyle("Npc");
+
 			mNpcs["Leifr"]->updateAnimationStyle();
 			mNpcs["Valdis"]->updateAnimationStyle();
 			mNpcs["Alfr"]->updateAnimationStyle();

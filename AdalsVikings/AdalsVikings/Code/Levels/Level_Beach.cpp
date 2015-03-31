@@ -288,6 +288,7 @@ void Level_Beach::introCutscene(sf::Time &frameTime)
 				mNpcs["Valdis"]->setFlip(true);
 				mNpcs["Valdis"]->setScale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Valdis"]->setPosition(sf::Vector2f(1600, 720));
+				mNpcs["Valdis"]->setAnimationStyle("Npc");
 				mNpcs["Valdis"]->updateAnimationStyle();
 
 				mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
@@ -323,42 +324,50 @@ void Level_Beach::endingCutscene(sf::Time &frameTime)
 				mNpcs["Brynja"]->setScale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Brynja"]->setPosition(sf::Vector2f(580, 760));
 				mNpcs["Brynja"]->setIndex(14);
+				mNpcs["Brynja"]->setAnimationStyle("Npc");
 				mNpcs["Brynja"]->updateAnimationStyle();
 
 				mNpcs["Brandr"]->setFlip(true);
 				mNpcs["Brandr"]->setScale(sf::Vector2f(0.4, 0.4));
 				mNpcs["Brandr"]->setPosition(sf::Vector2f(600, 800));
 				mNpcs["Brandr"]->setIndex(15);
+				mNpcs["Brandr"]->setAnimationStyle("Npc");
 				mNpcs["Brandr"]->updateAnimationStyle();
 
 				mNpcs["Valdis"]->setFlip(false);
 				mNpcs["Valdis"]->setPosition(sf::Vector2f(700, 680));
 				mNpcs["Valdis"]->setIndex(13);
+				mNpcs["Valdis"]->setAnimationStyle("Npc");
 				mNpcs["Valdis"]->updateAnimationStyle();
 
 				mNpcs["Finnr"]->setFlip(false);
 				mNpcs["Finnr"]->setPosition(sf::Vector2f(720, 720));
 				mNpcs["Finnr"]->setIndex(14);
+				mNpcs["Finnr"]->setAnimationStyle("Npc");
 				mNpcs["Finnr"]->updateAnimationStyle();
 
 				mNpcs["Leifr"]->setFlip(false);
 				mNpcs["Leifr"]->setPosition(sf::Vector2f(740, 760));
 				mNpcs["Leifr"]->setIndex(15);
+				mNpcs["Leifr"]->setAnimationStyle("Npc");
 				mNpcs["Leifr"]->updateAnimationStyle();
 
 				mNpcs["Alfr"]->setFlip(false);
 				mNpcs["Alfr"]->setPosition(sf::Vector2f(740, 840));
 				mNpcs["Alfr"]->setIndex(17);
+				mNpcs["Alfr"]->setAnimationStyle("Npc");
 				mNpcs["Alfr"]->updateAnimationStyle();
 
 				mNpcs["Yngvarr"]->setFlip(false);
 				mNpcs["Yngvarr"]->setPosition(sf::Vector2f(720, 880));
 				mNpcs["Yngvarr"]->setIndex(18);
+				mNpcs["Yngvarr"]->setAnimationStyle("Npc");
 				mNpcs["Yngvarr"]->updateAnimationStyle();
 
 				mNpcs["Dagny"]->setFlip(false);
 				mNpcs["Dagny"]->setPosition(sf::Vector2f(700, 920));
 				mNpcs["Dagny"]->setIndex(19);
+				mNpcs["Dagny"]->setAnimationStyle("Npc");
 				mNpcs["Dagny"]->updateAnimationStyle();
 
 				mPlayer->setPosition(sf::Vector2f(760, 800));
