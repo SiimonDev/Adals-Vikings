@@ -41,4 +41,7 @@ index: $99
 scale: $1
 hascollision: $false
 ############
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/Zero-Memory-leaks-1.0

@@ -42,9 +42,6 @@
 			<text character="Jacob" say="But I can't leave my place in here, else he might come back and steal some more!" disabled="false" default="false" timer="3.2"></text>
 			<text character="Ulfr" say="What a... dilemma." timer="2.2" turned="true" default="false" disabled="false"></text>
 			<text character="Jacob" say="That's the least you could say." disabled="false" default="false" timer="2.4" disablePrevious="true"></text>
-			
-			
-			
 			<gotoBaseContainer></gotoBaseContainer>
 			
 		</option>

@@ -2,7 +2,7 @@
 *ID: $rope$
 *Name: Rope
 *ispickupable: True
-*pickup: "You never now, when you're gonna need a strong sturdy rope!" ~3,5
+*pickup: "You never know when you're gonna need a strong sturdy rope!" ~3,5
 *lookat: "It's a strong Viking rope." ~2,0
 *deny: "I can't do that." ~1,5
 *denywith: 

@@ -10,27 +10,43 @@ hascollision: $false
 position: $X:740 $Y:470
 interactPosition: $X:0 $Y:0
 index: $3
+<<<<<<< HEAD
 scale: $1
+=======
+scale: $1.0
+>>>>>>> origin/Zero-Memory-leaks-1.0
 hascollision: $false
 ############
 *id: $barrelAtGates
 position: $X:370 $Y:538
 interactPosition: $X:0 $Y:0
 index: $3
+<<<<<<< HEAD
 scale: $1
+=======
+scale: $1.0
+>>>>>>> origin/Zero-Memory-leaks-1.0
 hascollision: $false
 ############
 *id: $twig
 position: $X:948 $Y:1006
 interactPosition: $X:0 $Y:0
 index: $3
+<<<<<<< HEAD
 scale: $1
+=======
+scale: $1.0
+>>>>>>> origin/Zero-Memory-leaks-1.0
 hascollision: $false
 ############
 *id: $gates
 position: $X:1206 $Y:504
 interactPosition: $X:0 $Y:0
 index: $3
+<<<<<<< HEAD
 scale: $1
+=======
+scale: $1.0
+>>>>>>> origin/Zero-Memory-leaks-1.0
 hascollision: $false
 ############

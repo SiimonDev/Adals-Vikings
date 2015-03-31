@@ -21,9 +21,15 @@ Level_Ship_2::Level_Ship_2(Player &player, HUD &hud, ActionWheel &actionWheel)
 	mBackgroundID = LevelFolder::Ship_2;
 }
 
+void Level_Ship_2::restartSounds()
+{
+	AudioPlayer::playHDDSound(HDDSound::Boat_Ambient, true);
+	AudioPlayer::playHDDSound(HDDSound::Boat_Music, true);
+}
+
+
 void Level_Ship_2::update(sf::Time &frameTime)
 {
-
 	mSeaAnimation.animate(frameTime);
 	mWaveAnimation.animate(frameTime);
 
@@ -58,6 +64,10 @@ void Level_Ship_2::update(sf::Time &frameTime)
 		DialogHandler::getDialogue("Valdis_Ship1").enableOption(2);
 		BoatEvents::handleEvent(BoatEvent::TalkedToBrandr);
 	}
+
+	Level::update(frameTime);
+	changeLevel(frameTime);
+
 	if (!BoatEvents::hasBeenHandled(BoatEvent::GivenMapToBrandr) && BoatEvents::hasBeenTriggered(BoatEvent::GivenMapToBrandr))
 	{
 		if (mPlayer->hasItemInInventory("map"))
@@ -79,12 +89,7 @@ void Level_Ship_2::update(sf::Time &frameTime)
 			}
 		}
 	}
-
-	//runCutscene(frameTime);
-	changeLevel(frameTime);
-	Level::update(frameTime);
 }
-
 void Level_Ship_2::render(IndexRenderer &iRenderer)
 {
 	if (!BoatEvents::hasBeenHandled(BoatEvent::StartDialogue))
@@ -98,9 +103,7 @@ void Level_Ship_2::render(IndexRenderer &iRenderer)
 
 void Level_Ship_2::load()
 {
-	AudioPlayer::playHDDSound(HDDSound::Boat_Ambient, true);
-	AudioPlayer::playHDDSound(HDDSound::Boat_Music, true);
-
+	mRestartSounds = true;
 	RMI.loadResource(Texture::BrandrAngryTalk);
 	RMI.loadResource(Texture::BrandrAngryIdle);
 	RMI.loadResource(Texture::FrontBoatWaveAnimation);

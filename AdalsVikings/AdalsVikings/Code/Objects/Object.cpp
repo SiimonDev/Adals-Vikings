@@ -32,7 +32,6 @@ mFilePath(filePath), mCollision(true), mDisplayDescription(false), mScale(1, 1)
 
 void Object::load()
 {
-
 	mIsWorking = true;
 	if (mType == ObjectType::Standard){
 		RMI.loadTexture(mImagePath);

@@ -72,7 +72,11 @@ hascollision: $false
 *id: $mead
 position: $X:1506 $Y:646
 interactPosition: $X:0 $Y:0
+<<<<<<< HEAD
 index: $10
+=======
+index: $30
+>>>>>>> origin/Zero-Memory-leaks-1.0
 scale: $0.8
 hascollision: $false
 ############
