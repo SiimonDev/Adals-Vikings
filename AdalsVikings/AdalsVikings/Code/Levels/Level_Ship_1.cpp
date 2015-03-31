@@ -128,12 +128,14 @@ void Level_Ship_1::update(sf::Time &frametime)
 						mNpcs["Brynja"]->setInteractionPosition(sf::Vector2f(940, 710));
 						mNpcs["Brynja"]->setDialogue("BrynjaAwake_ship");
 						mNpcs["Brynja"]->setFlip(true);
+						mNpcs["Brynja"]->setAnimationStyle("Npc");
 						mNpcs["Brynja"]->updateAnimationStyle();
 
 						mNpcs["Valdis"]->setIdleAnimation(Texture::ValdisIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(5));
 						mNpcs["Valdis"]->SetTalkAnimation(Texture::ValdisTalk, sf::Vector2i(2, 1), sf::milliseconds(650), sf::Time::Zero);
 						mNpcs["Valdis"]->setPosition(sf::Vector2f(1230, 723));
 						mNpcs["Valdis"]->setScale(sf::Vector2f(0.5f, 0.5f));
+						mNpcs["Valdis"]->setAnimationStyle("Npc");
 						mNpcs["Valdis"]->updateAnimationStyle();
 
 						mBrynjaFade1 = true;
