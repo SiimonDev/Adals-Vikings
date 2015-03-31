@@ -45,8 +45,8 @@ void Level_Beach::update(sf::Time &frameTime)
 
 		Level::update(frameTime);
 		changeLevel();
-	}
-	else
+		}
+		else
 		mLandingVideo.update(frameTime);
 }
 void Level_Beach::render(IndexRenderer &iRenderer)

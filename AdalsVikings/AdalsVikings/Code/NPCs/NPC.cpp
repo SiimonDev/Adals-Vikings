@@ -325,6 +325,9 @@ sf::RectangleShape &Npc::getInvisRect()
 }
 void Npc::updateAnimationStyle()
 {
-	mAnimationState = AnimationState::Update;
-	setAnimationStyle("Idle");
+	if (mAnimationState != AnimationState::Idle)
+	{
+		mAnimationState = AnimationState::Update;
+		setAnimationStyle("Idle");
+	}
 }

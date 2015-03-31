@@ -101,13 +101,13 @@ void PortalLoader::load()
 		mPortalMap[GatesToCliffs]->setCursorRotation(180);
 
 		mPortalMap[CliffsToGates] = PortalPtr(new Portal(LevelFolder::Cliffs_Up, sf::Vector2f(465, 280), sf::Vector2f(815, 245), sf::Vector2f(1200, 440), sf::Vector2f(1200, 440)));
-		mPortalMap[CliffsToGates]->setCursorRotation(-90);
+		mPortalMap[CliffsToGates]->setCursorRotation(0);
 
 		mPortalMap[CliffsToRuins] = PortalPtr(new Portal(LevelFolder::Cliffs_Up, sf::Vector2f(80, 430), sf::Vector2f(0, 250), sf::Vector2f(120, 525), sf::Vector2f(5, 525)));
 		mPortalMap[CliffsToRuins]->setCursorRotation(-90);
 
 		mPortalMap[RuinsToCliffs] = PortalPtr(new Portal(LevelFolder::Ruins, sf::Vector2f(200, 545), sf::Vector2f(1540, 50), sf::Vector2f(1570, 570), sf::Vector2f(1570, 570)));
-		mPortalMap[RuinsToCliffs]->setCursorRotation(-90);
+		mPortalMap[RuinsToCliffs]->setCursorRotation(90);
 
 		mPortalMap[CliffsTopToCliffsBottom] = PortalPtr(new Portal(LevelFolder::Cliffs_Up, sf::Vector2f(600, 220), sf::Vector2f(740, 860), sf::Vector2f(1200, 900), sf::Vector2f(1200, 900)));
 		mPortalMap[CliffsTopToCliffsBottom]->setCursorRotation(180);
@@ -156,10 +156,10 @@ void PortalLoader::load()
 		mPortalMap[CavernToCavernRuinsRight]->setCursorRotation(180);
 
 		mPortalMap[CRuinsRightToCRuinsLeft] = PortalPtr(new Portal(LevelFolder::Cavern_Ruins_Right, sf::Vector2f(70, 690), sf::Vector2f(0, 390), sf::Vector2f(90, 840), sf::Vector2f(90, 840)));
-		mPortalMap[CRuinsRightToCRuinsLeft]->setCursorRotation(180);
+		mPortalMap[CavernsRightToLeft]->setCursorRotation(-90);
 
 		mPortalMap[CRuinsLeftToCRuinsRight] = PortalPtr(new Portal(LevelFolder::Cavern_Ruins_Left, sf::Vector2f(70, 690), sf::Vector2f(1850, 390), sf::Vector2f(1860, 770), sf::Vector2f(1860, 770)));
-		mPortalMap[CRuinsLeftToCRuinsRight]->setCursorRotation(-90);
+		mPortalMap[CRuinsLeftToCRuinsRight]->setCursorRotation(90);
 
 		//connect the portals
 		mPortalMap[BeachToRoad]->setGateway(&*mPortalMap[RoadToBeach]);

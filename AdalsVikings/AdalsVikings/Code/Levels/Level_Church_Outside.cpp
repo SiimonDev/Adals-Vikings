@@ -65,8 +65,11 @@ void Level_Church_Outside::load()
 	RMI.loadResource(Footsteps::Dirt);
 	RMI.loadResource(Sound::Church_Door);
 
-	mNpcs["Princess"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Princess")));
-	mNpcs["Princess"]->setDialogue("Princess_ChurchOutside");
+	if (!Act1Events::hasBeenHandled(Act1Event::ChurchOutside_TalkToPrincess) && !Act1Events::hasBeenHandled((Act1Event::CampFinished_Conversation)))
+	{
+		mNpcs["Princess"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Princess")));
+		mNpcs["Princess"]->setDialogue("Princess_ChurchOutside");
+	}
 	mPortals[Outside_ChurchToRoad] = &PortalLoader::getPortal(Outside_ChurchToRoad);
 	mPortals[Outside_ChurchToChurch] = &PortalLoader::getPortal(Outside_ChurchToChurch);
 

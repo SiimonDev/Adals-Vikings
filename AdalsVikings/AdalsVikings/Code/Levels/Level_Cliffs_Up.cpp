@@ -44,6 +44,12 @@ void Level_Cliffs_Up::load()
 	mPortals[CliffsToGates]->setWorking(true);
 	mPortals[CliffsTopToCliffsBottom]->setWorking(true);
 
+	if (Act1Events::hasBeenHandled(Act1Event::MinedSomeGold))
+	{
+		mPortals[CliffsToRuins]->setCannotDialogue("Uhh... it looks rather... collapsed");
+		mPortals[CliffsToRuins]->setWorking(false);
+	}
+
 	Level::load();
 }
 

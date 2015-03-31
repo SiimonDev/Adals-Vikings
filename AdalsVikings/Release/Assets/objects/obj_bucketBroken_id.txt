@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $bucketBroken$
+*Name: Broken bucket
+*ispickupable: True
+*pickup: "" ~2,0
+*lookat: "What can you do with a broken bucket?" ~1,5
+*deny: "Yeah, no." ~1,5
+*denywith: $rope$ "There are no wells around here." ~3,0; $ropePiece$ "There are no wells around here." ~3,0; $flute$ "A flute in a bucket? That's absurd!" ~3,0; $stick$ "A bucket stick or a stick bucket? They both sound equally useless." ~3,0; $skull$ "The bucket doesn't look like a helmet." ~3,0; $axeHead$ "I should find something better to attach to the axe head." ~3,0; $scroll$ "The bucket isn't a mail bag." ~3,0; $stickCloth$ "This bucket is empty, dipping the stick in it would do no good." ~3,0; $bearDeer$ "The costume would be wrinkled if I put it in the bucket." ~3,0; $map$ "The map won't make more sense in a bucket." ~3,0; $fluteBroken$ "The bucket is not a trashcan." ~3,0; $antlers$ "Antlers on a bucket? I don't think so." ~3,0; $axeUnfinished$ "I need some sort of cord to finish the axe, not a bucket." ~3,0; $axe$ "Chopping up the bucket won't help." ~3,0; $meat$ "The bucket doesn't look clean enough for storing meat." ~3,0; $boatWater$ "Yeah, right..." ~2,0; 
+*combine: 
+*interact: 
+*texture: "img_bucketBroken_id.png"

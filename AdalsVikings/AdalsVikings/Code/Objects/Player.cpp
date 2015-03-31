@@ -397,6 +397,9 @@ void Player::setBearCostume(bool value)
 }
 void Player::UpdateAnimationStyle()
 {
-	mAnimationStyle = AnimationStyle::Update;
-	setAnimationStyle(AnimationType::Idle);
+	if (!mAnimationStyle != AnimationStyle::PlayerIdle)
+	{
+		mAnimationStyle = AnimationStyle::Update;
+		setAnimationStyle(AnimationType::Idle);
+	}
 }

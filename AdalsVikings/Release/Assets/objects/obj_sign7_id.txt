@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $sign7$
+*Name: Sign
+*ispickupable: False
+*pickup: "Uh... no." ~2,0
+*lookat: "Do not steal the signs!" ~2,0
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:32  Y:30

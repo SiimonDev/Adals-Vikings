@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $tavernPoster2$
+*Name: Other Poster
+*ispickupable: False
+*pickup: "Nah." ~2,0
+*lookat: "Band of Thugs, playing tonight!" ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:82  Y:130

@@ -2,28 +2,28 @@
 <conversation>
 	<useText useText="He is still very scary." />
 	<lookText lookText="That's the &quot;so scary&quot; guard." />
-	<text character="Ulfr" disabled="false" default="false" say="I did it." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="Excuse me?" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="I killed Aethelberth." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="Here's the head and the helmet." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="...what..." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="You what?" timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="You...hah..." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="HA-HA-HA!" timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="I'M RICH!" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="Will you let me in now?" timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="Yeah, sure!" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="And my friends too?" timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="Yeah, sur- what?" timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="Don't think I can do that..." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="Would look very suspicious..." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="I'll just go give this head to someone else then." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="Fine..." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="You win, just give it here." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="No dice." timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="You open first, I'll hand it over second..." timer="2.0" turned="false" />
-	<text character="Guard" disabled="false" default="false" say="...Same time?" timer="2.0" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="...deal..." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="I did it." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="Excuse me?" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="I killed Aethelberth." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Here's the head and the helmet." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="...what..." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="You what?" timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="You...hah..." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="HA-HA-HA!" timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="I'M RICH!" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="Will you let me in now?" timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="Yeah, sure!" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="And my friends too?" timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="Yeah, sur- what?" timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="Don't think I can do that..." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="Would look very suspicious..." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="I'll just go give this head to someone else then." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="Fine..." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="You win, just give it here." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="No dice." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="You open first, I'll hand it over second..." timer="2.0" turned="false" />
+	<text character="Guard" disabled="true" default="false" say="...Same time?" timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="true" default="false" say="...deal..." timer="2.0" turned="false" />
 	<stopConversation />
 	<mall info="Endast Mall Efter Detta!" disabled="true">
 		<useText useText="Why would I use Brandr?" />

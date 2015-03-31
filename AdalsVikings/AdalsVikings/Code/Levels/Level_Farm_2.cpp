@@ -53,9 +53,13 @@ void Level_Farm_2::load()
 
 	mNpcs["Jacob"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Jacob")));
 	mNpcs["Parrik"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Parrik")));
+	mNpcs["Princess"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Princess")));
+	mNpcs["Princess"]->setPosition(sf::Vector2f(210, 920));
 
 	mNpcs["Jacob"]->setDialogue("Jacob_Farm");
 	mNpcs["Parrik"]->setDialogue("Parrik_Farm");
+	mNpcs["Princess"]->setDialogue("Princess_Farm");
+
 
 	Level::load();
 }

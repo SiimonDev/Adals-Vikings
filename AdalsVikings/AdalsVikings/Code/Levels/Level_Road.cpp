@@ -108,7 +108,7 @@ void Level_Road::update(sf::Time &frametime)
 			{
 				mFade5 = true;
 				mPortals[RoadToBeach]->setWorking(true);
-				mPortals[RoadToFarm]->setWorking(true);
+				mPortals[RoadToFarm]->setCannotDialogue("Both Valdis and Finnr went up there, I think they can handle it... For now.");
 				mPortals[RoadToOutside_Chuch]->setWorking(true);
 				mPortals[RoadToCamp]->setWorking(false);
 				mPortals[RoadToCamp]->setCannotDialogue("If I go back there Brandr will kill me...");
@@ -117,7 +117,6 @@ void Level_Road::update(sf::Time &frametime)
 			}
 		}
 	}
-
 	Level::update(frametime);
 	changeLevel();
 }
@@ -132,7 +131,7 @@ void Level_Road::load()
 	/*if (!Act1Events::hasBeenTriggered(Act1Event::Road_GiveMailmanPaper))
 	{
 		Act1Events::triggerEvent(Act1Event::Enter_Road);
-		Act1Events::handleEvent(Act1Event::Enter_Road);
+		Act1Events::handleEvent(Act1Event::Enter_Road); 
 
 		Act1Events::triggerEvent(Act1Event::CampClearing_Brynja);
 		Act1Events::handleEvent(Act1Event::CampClearing_Brynja);
@@ -261,6 +260,8 @@ void Level_Road::load()
 			mPortals[RoadToCamp]->setCannotDialogue("If I go back there Brandr will kill me...");
 			mPortals[RoadToGates]->setWorking(true);
 		}
+		if (DialogHandler::getDialogue("Miner_Cavern").getIsOptionDisabled(2))
+			mPortals[RoadToFarm]->setWorking(true);
 
 	Level::load();
 	mCurrentFootsteps = Footsteps::Dirt;

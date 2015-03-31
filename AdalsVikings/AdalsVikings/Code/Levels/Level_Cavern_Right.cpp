@@ -45,7 +45,7 @@ void Level_Cavern_Right::update(sf::Time &frametime)
 				{
 					if (!FadeI.getWait())
 					{
-						AudioPlayer::playHDDSound(HDDSound::Cavern_Collapse, false);
+						AudioPlayer::playHDDSound(HDDSound::Cavern_Collapse, false, 80);
 						FadeI.setWaitDuration(sf::seconds(10));
 					}
 					FadeI.wait(frametime);
@@ -86,17 +86,23 @@ void Level_Cavern_Right::update(sf::Time &frametime)
 
 	if (!Act1Events::hasBeenHandled(Act1Event::GivenSkullToMiner))
 	{
-		if (mObjects[mObjIndex]->getObjID() == "gold" && mObjects[mObjIndex]->getIsWorking())
+		for (int i = 0; i < mObjects.size(); i++)
 		{
-			mObjects[mObjIndex]->enableObject(false);
+			if (mObjects[i]->getObjID() == "gold" && mObjects[i]->getIsWorking())
+			{
+				mObjects[i]->enableObject(false);
+			}
 		}
 
 	}
 	else if (Act1Events::hasBeenHandled(Act1Event::GivenSkullToMiner))
 	{
-		if (mObjects[mObjIndex]->getObjID() == "gold" && !mObjects[mObjIndex]->getIsWorking())
+		for (int i = 0; i < mObjects.size(); i++)
 		{
-			mObjects[mObjIndex]->enableObject(true);
+			if (mObjects[i]->getObjID() == "gold" && !mObjects[i]->getIsWorking())
+			{
+				mObjects[i]->enableObject(true);
+			}
 		}
 	}
 
@@ -154,6 +160,6 @@ void Level_Cavern_Right::checkEvents()
 		Act1Events::triggerEvent(Act1Event::TooDarkToGo);
 	}
 
-	if (!Act1Events::hasBeenTriggered(Act1Event::SweetGold) && mObjects[mObjIndex]->getObjID() == "gold" && mObjects[mObjIndex]->getIsWorking())
+	if (!Act1Events::hasBeenTriggered(Act1Event::SweetGold) && Act1Events::hasBeenHandled(Act1Event::GivenSkullToMiner) && mObjects[mObjIndex]->getObjID() == "gold" && mObjects[mObjIndex]->getIsWorking())
 		Act1Events::triggerEvent(Act1Event::SweetGold);
 }

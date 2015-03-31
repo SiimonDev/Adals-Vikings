@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Yeah... or not?" />
+	<lookText lookText="That's Brynja. She's the strongest shieldmaiden in the north. I do NOT want to get on her bad side." />
+	<text character="Ulfr" disabled="false" default="false" say="Where are Brandr and the others?" timer="2.2"  turned="true"/>
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="You think I'd be the one to ask?" timer="2.0"  turned="false"/>
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="They still haven't returned from scouting out that small house to the east." timer="3.0" />
+	<text character="Ulfr" disabled="false" default="false" say="Scary." timer="1.6"  turned="true"/>
+	<text character="Ulfr" disabled="false" default="false" say="Maybe the Anglians found them?" timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="Doubt it." timer="1.8"  turned="false"/><text character="Brynja" disabled="false" default="false" disablePrevious="" say="If Brandr was even remotely close to danger he would start running in the opposite direction." timer="3.3" /><text character="Brynja" disabled="false" default="false" disablePrevious="" say="So at least one of them would make it back here." timer="2.5" />
+	<text character="Ulfr" disabled="false" default="false" say="That's... not very reassuring." timer="2.0"  turned="true"/>
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="Don't worry about it, shorty" timer="2.0"  turned="false"/>
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="But do me a favor, willya?" timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="Go find Brandr and tell him to come back already." timer="2.5" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="We need to talk about our..." timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="...situation..." timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="...as soon as possible." timer="2.0" />
+	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="Yeah sure." timer="2.0"  turned="true"/>
+	<text character="Ulfr" disabled="false" default="false" disablePrevious="" say="I'll do that." timer="2.0" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="Good" timer="2.0"  turned="false"/>
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="They are just past the beach, then north." timer="2.3" />
+	<text character="Brynja" disabled="false" default="false" disablePrevious="" say="You should proably find them there." timer="2.3" />
+	<text character="Brynja" say="Go find Brandr and tell him to come back already." default="true" disabled="true" timer="2.3"></text>
+	<text character="Brynja" say="They are just past the beach, then north." default="true" disabled="true" timer="2.3"></text>
+	<stopConversation />
+</conversation>

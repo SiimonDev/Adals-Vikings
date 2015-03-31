@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why would I use Yngvarr?" />
+	<lookText lookText="That's Yngvarr, Brandr's right hand man. He's extremely loyal, even if it is to that blonde  bastard." />
+	<text character="Ulfr" disabled="false" default="true" say="Hey Yngvarr, what's going on?" timer="2.2" />
+	<text character="Yngvarr" disabled="false" default="true" disablePrevious="" say="Stay away, weakling." timer="2.0" />
+	<text character="Yngvarr" disabled="false" default="true" disablePrevious="" say="This has nothing to do with you." timer="2.2" />
+	<text character="Ulfr" disabled="false" default="true" say="We'll see about that." timer="2.0" />
+	<stopConversation />
+</conversation>

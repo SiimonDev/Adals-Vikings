@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Yeah. Let's not." />
+	<lookText lookText="Thats the strongman Cerdic, i think?" />
+	<text character="Cerdic" disabled="false" default="false" say="YE BE TALKIN TO THE MIGHTIEST OF ALL WARRIORS!" timer="2.5" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="You sure? " timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="You don't look like a &quot;powerhouse&quot; type" timer="2.4" turned="false" />
+	<text character="Cerdic" disabled="false" default="false" say="THAT BE NOTHIN' BUT ILLUSIONS OF THE EYE SPEAKIN' TO YA BOYO." timer="3.3" turned="false" />
+	<text character="Cerdic" disabled="false" default="false" say="I AM A MAN OF STEEL AND BLOOD!" timer="2.5" turned="false" />
+	<text character="Cerdic" disabled="false" default="false" say="RAISED IN IT." timer="2.0" turned="false" />
+	<text character="Cerdic" disabled="false" default="false" say="MOLDED BY IT." timer="2.0" turned="false" />
+	<text character="Cerdic" disabled="false" default="false" say="I AM CERDIC, SLAYER OF THE SOUTH!" timer="2.4" turned="false" />
+	<text character="Cerdic" disabled="false" default="false" say="as in, I slay the south." timer="2.0" turned="false" />
+	<text character="Cerdic" disabled="false" default="false" say="I don't slay for them." timer="2.0" turned="false" />
+	<text character="Cerdic" disabled="false" default="false" say="Don't want no one to get confused." timer="2.4" turned="false" />
+	<option_container disabled="false">
+		<option choice_text="You sure seem fierce." disabled="true">
+			<text character="Ulfr" disabled="false" default="false" say="You sure seem fierce." timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="Fierce?" timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="FIERCE!?" timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="THAT'S THE LEAST YOU CAN SAY ABOUT ME!" timer="2.7" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="There are some who are so scared of me, they call me a calamity of nature." timer="3.3" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="Sounds horrifying." timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="Indeed." timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="So you best not screw with me boy!" timer="2.4" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="...like really, just don't" timer="2.0" turned="false" />
+			<gotoContainer />
+		</option>
+		<option choice_text="So... you fight for the north?">
+			<text character="Ulfr" disabled="false" default="false" say="So... you fight for the north?" timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="We all do." timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="Northumbria is our home." timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="AND WE WILL DESTROY ALL WHO OPPOSE US!" timer="2.5" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="But recent days sees us fighting the ones with gold..." timer="3.3" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="A man's gotta eat, after all." timer="2.3" turned="false" />
+			<gotoBaseContainer />
+		</option>
+		<option choice_text="I heard something about you and theatre?" disabled="false">
+			<text character="Ulfr" disabled="false" default="false" say="I heard something about you and theatre?" timer="2.5" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="Yes." timer="1.8" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="I was the greatest back in my hometown." timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="Even reached the capital once." timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="But then IT happened." timer="2.0" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="What's IT?" timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="I got heckled." timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="So i killed the heckler." timer="2.0" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="Oh..." timer="2.0" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="Well, I'm sure he had it coming." timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="Oh he did." timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="I mean, who coughs during someones show?" timer="2.5" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="Like seriously. So rude." timer="2.0" turned="false" />
+			<text character="Cerdic" disabled="false" default="false" say="What kind of a self-respecting human does that?" timer="2.5" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="...d-definitely." timer="2.0" turned="false" />
+			<gotoContainer />
+		</option>
+		<option choice_text="It was nice talking to you." disabled="false">
+			<text say="It was nice talking to you." character="Ulfr" timer="2.0" />
+			<text say="Hfm." character="Cerdic" timer="2.0" />
+			<stopConversation />
+		</option>
+		<stopOption />
+	</option_container>
+	<stopConversation />
+	<mall info="Endast Mall Efter Detta!" disabled="true">
+		<useText useText="Why would I use Brandr?" />
+		<lookText lookText="That's Brandr" />
+		<text character="Ulfr" default="false" disabled="false" disablePrevious="false" turned="true" timer="2.2" say="hej" />
+		<text character="Brandr" disablePrevious="false" timer="" say="DUrr" />
+		<text character="Valdis" />
+		<text character="Alfr" />
+		<text character="Brynja" />
+		<text character="Dagny" />
+		<text character="Finnr" />
+		<text character="Guard" />
+		<text character="Leifr" />
+		<text character="Mailman" />
+		<text character="Miner" />
+		<text character="Priest" />
+		<text character="Princess" />
+		<text character="Valdis" />
+		<text character="Yngvarr" />
+		<option_container disabled="false">
+			<option disabled="false" choice_text="do you even?">
+				<text character="Brandr" disablePrevious="false" timer="3.3" say="hej!" />
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="What do you want!?">
+						<text character="Ulfr" disablePrevious="false" timer="2.5" say="durr" />
+						<text character="Brandr" disablePrevious="false" timer="2.4" say="murh" />
+						<option_container disabled="false">
+							<option disabled="false" disablePrevious="true" choice_text="Disable Previous">
+								<text character="Ulfr" disablePrevious="false" timer="2.4" say="Disable Previous" />
+								<gotoBaseContainer />
+							</option>
+							<stopOption />
+						</option_container>
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="NOPE">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="NUHU">!</text>
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="durr">
+						<text character="Brandr" disablePrevious="false" timer="2.5" say="disable" />
+						<gotoContainer />
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="jimmie had a little farm that was brown and red and green, why was it brown and red and green?">
+				<text character="Brandr" disablePrevious="true" timer="3.3" say="Never Happened" />
+				<gotoContainer />
+			</option>
+			<option disabled="false" disablePrevious="true" choice_text="exit conversation">
+				<stopConversation />
+			</option>
+			<stopOption />
+		</option_container>
+		<option_container disabled="true">
+			<option disabled="false" disablePrevious="false" choice_text="hello">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="hello" />
+				<text character="Brandr" disablePrevious="true" timer="2.5" say="hi!" />
+				<gotoContainer />
+			</option>
+			<stopOption />
+		</option_container>
+	</mall>
+</conversation>

@@ -1,0 +1,22 @@
+############
+*id: $tavernOutsideSign
+position: $X:994 $Y:564
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
+*id: $tavernOutsideSunflowers
+position: $X:210 $Y:500
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
+*id: $tavernOutsideRoof
+position: $X:835 $Y:333
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############

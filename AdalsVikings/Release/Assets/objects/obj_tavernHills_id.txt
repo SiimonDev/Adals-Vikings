@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $tavernHills$
+*Name: Small House
+*ispickupable: False
+*pickup: "Can't really reach it from here." ~2,0
+*lookat: "It looks kind of run-down." ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: 40 Y:40

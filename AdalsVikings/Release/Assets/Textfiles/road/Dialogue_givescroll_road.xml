@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why? Just why?" />
+	<lookText lookText="The postman looks rather distressed. " />
+	<text character="Ulfr" say="I found your letter." timer="2.0"  turned="true"/>
+	<text character="Mailman" say="YES!" timer="1.7"  turned="false"/>
+	<text character="Mailman" say="Thank you, Thank YOU, THANK YOU!" timer="2.2" />
+	<text character="Mailman" say="I will get this to the king right away!" timer="2.2" /><text character="Ulfr" say="Hold on..." timer="1.3"  turned="true"/><text character="Ulfr" say="This is a letter to the king?" timer="2.0" /><text character="Ulfr" say="And you dropped it in the bushes?" timer="2.0" />
+	<text character="Mailman" say="...You trying to hit a nerve or something?" timer="2.2"  turned="false"/>
+	<text character="Mailman" say="Well, anyway." timer="1.7" />
+	<text character="Mailman" say="I'll be going now..." timer="2.0" />
+	<text character="Ulfr" say="But..." timer="1.5"  turned="true"/><text character="Ulfr" say="You were supposed to help me out here!" timer="2.4" />
+	<text character="Mailman" say="And I will!" timer="2.0"  turned="false"/><text character="Mailman" say="I promise!" timer="1.7" />
+	<text character="Mailman" say="Just..." timer="1.7" /><text character="Mailman" say="Uh..." timer="1.7" />
+	<text character="Mailman" say="Later?" timer="1.7" /><text character="Mailman" say="..." timer="1.4" />
+	<text character="Mailman" say="Come see me in the city, alright?" timer="2.2" />
+	<text character="Mailman" say="Just stop by the post office anytime." timer="2.2" />
+	<text character="Mailman" say="I'll help you out!" timer="2.0" />
+	<text character="Ulfr" say="I feel a bit ripped off..." timer="2.0"  turnedPlayer="true"/>
+	<stopConversation />
+</conversation>

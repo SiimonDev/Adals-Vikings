@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why would I use Brandr?" />
+	<lookText lookText="That's Brandr" />
+	<text character="Brandr" turned="true" timer="3.3" say="So this is the Anglian soil..." />
+	<text character="Brynja" say="Doesn't seem too special to me." timer="3.3" turned="false" />
+	<text character="Valdis" say="I would say it's a bit courser than the stuff at home." timer="3.3" />
+	<text character="Valdis" say="But otherwise the same." timer="2.5" />
+	<text character="Brynja" say="Of course!" timer="2.2" turned="false" />
+	<text character="Brynja" say="It's course because of the Anglian's rough ways," timer="4" />
+	<text character="Brynja" say="and their aggressive nature!" timer="2.8" turned="false" />
+	<text character="Ulfr" say="That seems like fair assessment." timer="3.3" turned="true" />
+	<text character="Brandr" say="Brynja." timer="1.8" turned="true" />
+	<text character="Brandr" say="Come with me." timer="2.8" turned="true" />
+	<stopConversation />
+</conversation>

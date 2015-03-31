@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $boxesOnBeach$
+*Name: Boxes
+*ispickupable: False
+*pickup: "I'm not a thief." ~2,0
+*lookat: "It's filled with... oh. Brandr's private runes. Awkward." ~3,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:175     Y:115

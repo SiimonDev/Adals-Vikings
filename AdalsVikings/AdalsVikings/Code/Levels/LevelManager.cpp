@@ -67,7 +67,7 @@ void LevelManager::load(bool reset)
 		Act1Events::initialize();
 		mPlayer.clearInventory();
 
-		loadBoatScene(reset); //<--- Change this if you want to spawn on a different act
+		loadAct1(reset); //<--- Change this if you want to spawn on a different act
 	}
 	else
 	{
@@ -76,7 +76,7 @@ void LevelManager::load(bool reset)
 		loadSettings(mSavePath);
 		
 		if (mLoadedActID == Act::Ship)
-			loadBoatScene(reset);
+			loadAct1(reset);
 		else if (mLoadedActID == Act::Act1)
 			loadAct1(reset);
 
@@ -276,7 +276,7 @@ void LevelManager::loadAct1(bool reset)
 
 
 	if (reset){
-		mCurrentLevelID = LevelFolder::Beach; //<--- Change this if you want to spawn on a different level
+		mCurrentLevelID = LevelFolder::City_Gates; //<--- Change this if you want to spawn on a different level
 		baseLoad(true);
 	}
 	else{

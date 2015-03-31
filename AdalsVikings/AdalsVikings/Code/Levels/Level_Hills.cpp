@@ -38,6 +38,7 @@ void Level_Hills::update(sf::Time &frametime)
 		}
 		if (DialogHandler::getDialogue("Ulfr_Hills").getHasStopped())
 		{
+			mPlayer->removeItemFromInventory("sleepingMeat");
 			DialogHandler::getDialogue("Miner_Cavern").enableOption(3);
 			Act1Events::handleEvent(Act1Event::GivenSleepingMeatToWolf);
 		}

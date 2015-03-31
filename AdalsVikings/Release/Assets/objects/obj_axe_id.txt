@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $axe$
+*Name: Axe
+*ispickupable: True
+*pickup: "This might come in handy" ~2,0
+*lookat: "That's nice..." ~1,5
+*deny: "Woah there. Let's not throw this around, shall we?" ~2,5
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_axe_id.png"

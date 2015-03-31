@@ -149,13 +149,13 @@ void NpcHandler::load()
 	Mailman->setFlip(false);
 
 	Princess->setName("Girl");
-	Princess->setIdleAnimation(Texture::PrincessIdle, sf::Vector2i(2, 1), sf::milliseconds(300), sf::seconds(5));
+	Princess->setIdleAnimation(Texture::PrincessIdle2, sf::Vector2i(5, 1), sf::milliseconds(600), sf::Time::Zero);
 	Princess->SetTalkAnimation(Texture::PrincessTalk, sf::Vector2i(2, 1), sf::milliseconds(450), sf::Time::Zero);
 	Princess->setPosition(sf::Vector2f(240, 920));
 	Princess->setInteractionPosition(sf::Vector2f(415, 990));
 	Princess->setColor(sf::Color(176, 196, 222));
 	Princess->setIndex(7);
-	Princess->setScale(sf::Vector2f(0.40f, 0.40f));
+	Princess->setScale(sf::Vector2f(0.50f, 0.50f));
 	Princess->setFlip(false);
 
 	Beor->setName("Beor");
@@ -165,7 +165,7 @@ void NpcHandler::load()
 	Beor->setInteractionPosition(sf::Vector2f(700, 780));
 	Beor->setColor(sf::Color(176, 196, 222));
 	Beor->setIndex(3);
-	Beor->setScale(sf::Vector2f(0.65f, 0.65f));
+	Beor->setScale(sf::Vector2f(0.75f, 0.75f));
 	Beor->setFlip(true);
 
 	Guard->setName("Guard");

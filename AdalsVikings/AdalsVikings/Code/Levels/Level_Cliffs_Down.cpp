@@ -49,6 +49,7 @@ void Level_Cliffs_Down::render(IndexRenderer &iRenderer)
 
 void Level_Cliffs_Down::load()
 {
+	
 	mPortals[CliffsBottomToCliffsTop] = &PortalLoader::getPortal(CliffsBottomToCliffsTop);
 	if (!Act1Events::hasBeenHandled(Act1Event::MinedSomeGold))
 	{

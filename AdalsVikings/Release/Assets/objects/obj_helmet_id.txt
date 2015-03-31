@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $helmet$
+*Name: Helmet
+*ispickupable: True
+*pickup: "Aethelberth's helmet. The gods really seems to like me today... I hope they made it out of the ruins." ~3,5
+*lookat: "It's Aethelberth's helmet!" ~0
+*deny: "I don't think it was Aethelberth's helmet who made the talking...." ~3,0
+*denywith: $bucketBroken$ "The bucket is not worth putting a helmet on." ~3,0; 
+*combine: $skull$ $skullHelmet$ "I hope the guard dosen't think I'm a murderer after this." ~2,5; 
+*interact: 
+*texture: "img_helmet_id.png"

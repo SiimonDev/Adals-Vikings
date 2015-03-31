@@ -51,7 +51,7 @@ void Level_Forest_Camp::update(sf::Time &frametime)
 		{
 			if (!mSuperPath)
 			{
-				Path path = PathFinder::getPath(mPlayer->getPosition(), sf::Vector2f(800, 900));
+				Path path = PathFinder::getPath(mPlayer->getPosition(), sf::Vector2f(840, 900));
 				mPlayer->walkPath(path);
 				mSuperPath = true;
 			}
