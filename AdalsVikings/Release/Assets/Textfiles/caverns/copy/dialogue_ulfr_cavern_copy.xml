@@ -4,13 +4,8 @@
 	<lookText lookText="That's Leifr" />
 	<text character="Ulfr" disabled="false" default="false" say="Well..." timer="1.4" turned="false" />
 	<text character="Ulfr" disabled="false" default="false" say="It's pretty damn dark in here." timer="2.6" turned="false" />
-<<<<<<< HEAD
 	<text character="Ulfr" disabled="false" default="false" say="I can't see anything." timer="2.3" turned="false" />
 	<text character="Ulfr" disabled="false" default="false" say="...yeah." timer="1.9" turned="false" />
-=======
-	<text character="Ulfr" disabled="false" default="false" say="I can’t see anything." timer="2.3" turned="false" />
-	<text character="Ulfr" disabled="false" default="false" say="…yeah." timer="1.9" turned="false" />
->>>>>>> origin/Zero-Memory-leaks-1.0
 	<text character="Ulfr" disabled="false" default="false" say="I have to get some light." timer="2.3" turned="false" />
 	<text character="Ulfr" disabled="false" default="false" say="Oh gods." timer="1.8" turned="false" />
 	<text character="Ulfr" disabled="false" default="false" say="Brandr won't let me back into camp either." timer="2.8" turned="false" />

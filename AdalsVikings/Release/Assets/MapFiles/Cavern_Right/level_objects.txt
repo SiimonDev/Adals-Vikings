@@ -3,21 +3,13 @@
 position: $X:535 $Y:470
 interactPosition: $X:0 $Y:0
 index: $4
-<<<<<<< HEAD
-scale: $1
-=======
 scale: $1.0
->>>>>>> origin/Zero-Memory-leaks-1.0
 hascollision: $false
 ############
 *id: $gold
 position: $X:500 $Y:400
 interactPosition: $X:0 $Y:0
 index: $1
-<<<<<<< HEAD
-scale: $1
-=======
 scale: $1.0
->>>>>>> origin/Zero-Memory-leaks-1.0
 hascollision: $false
 ############

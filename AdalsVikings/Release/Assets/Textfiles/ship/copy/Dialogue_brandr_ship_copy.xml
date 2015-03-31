@@ -2,7 +2,6 @@
 <conversation>
 	<useText useText="Why would anyone want to use Him?" />
 	<lookText lookText="Our &quot;great&quot; leader, Brandr. I just hope he won't steer us into a bunch of cliffs, or to the wrong continent." />
-<<<<<<< HEAD
 	<text character="Ulfr" disabled="false" default="false" say="What's going on here, Br-" timer="1.2" turned="false" />
 	<text character="Brandr" disabled="false" default="false" disablePrevious="true" say="YNGVARR!" timer="1.0" turned="true" />
 	<text character="Brandr" disabled="false" default="false" disablePrevious="" say="Where is my father's map?" timer="2.2" />
@@ -37,42 +36,6 @@
 	<text character="Ulfr" default="false" turnedPlayer="true" disabled="false" say="I'll find that map..." timer="1.7" />
 	<text character="Ulfr" default="false" turnedPlayer="true" disabled="false" say="So we can get out of this bloody mess." timer="2.0" />
 	<text character="Brandr" default="true" disabled="true" say="Have you found the map yet?!" timer="2.1" turned="true" />
-=======
-	<text character="Ulfr" disabled="true" default="false" say="What's going on here, Br-" timer="1.2" turned="false" />
-	<text character="Brandr" disabled="true" default="false" disablePrevious="true" say="YNGVARR!" timer="1.0" turned="true" />
-	<text character="Brandr" disabled="true" default="false" disablePrevious="" say="Where is my father's map?" timer="2.2" />
-	<text character="Brandr" disabled="true" default="false" say="Have you found it yet?" timer="2.0" />
-	<text character="Yngvarr" disabled="true" default="false" say="I'm sorry Brandr. " timer="2.0" turned="false" />
-	<text character="Yngvarr" disabled="true" default="false" say="I've checked the supplies and everything." timer="2.3" />
-	<text character="Yngvarr" default="false" disabled="true" say="I just can't seem to find it." timer="2.0" />
-	<text character="Yngvarr" default="false" disabled="true" say="It's like Adal's map has just vanished." timer="2.4" />
-	<text character="Brandr" disabled="true" default="false" say="Idiot." timer="1.3" turned="false" />
-	<text character="Brandr" disabled="true" default="false" say="..." timer="0.8" turned="false" />
-	<text character="Ulfr" disabled="true" default="false" say="Lost, Brandr?" timer="1.7" turned="false" />
-	<text character="Brandr" default="false" disabled="true" say="Shut." timer="0.8" turned="true" />
-	<text character="Brandr" say="Your." timer="0.8" turned="true" default="false" disabled="true" />
-	<text character="Brandr" default="false" disabled="true" say="Face." timer="0.8" turned="true" />
-	<text character="Brandr" default="false" disabled="true" say="You have no right to question me, worm." timer="2.5" turned="false" />
-	<text character="Ulfr" default="false" disabled="true" turnedPlayer="true" say="Rather be a worm than a nitwit. " timer="2.1" />
-	<text character="Ulfr" default="false" disabled="true" timer="1.3" turned="false" say="..." />
-	<text character="Brandr" default="false" disabled="true" say="What was that?!" timer="2.1" turned="true" />
-	<text character="Ulfr" default="false" disabled="true" say="uh..." timer="2.1" turned="false" />
-	<text character="Ulfr" default="false" disabled="true" say="..." timer="0.4" turned="false" />
-	<text character="Brandr" default="false" disabled="true" say="..." timer="0.4" turned="true" />
-	<text character="Brandr" default="false" disabled="true" say="*sigh*" timer="1.3" turned="false" />
-	<text character="Brandr" default="false" disabled="true" say="My father was a fool to let you join this Journey." timer="2.6" />
-	<text character="Brandr" default="false" disabled="true" say="How much did you owe him again?" timer="2.5" turned="true" />
-	<text character="Ulfr" default="false" disabled="true" say="My own weight in gold..." timer="2.5" turned="false" />
-	<text character="Brandr" default="false" disabled="true" say="Hah!" timer="1.2" turned="true" />
-	<text character="Brandr" default="false" disabled="true" say="Even with such a small amount, you wouldn't be able to get it!" timer="3.5" />
-	<text character="Brandr" default="false" disabled="true" say="Thus, i wonder what he'll do with you when you return empty handed." timer="4.5" />
-	<text character="Brandr" default="false" disabled="true" say="Perhaps sell you as a thrall?" timer="2.8" />
-	<text character="Brandr" default="false" disabled="true" say="That would be quite the experience, wouldn't it?" timer="3.0" />
-	<text character="Brandr" default="false" disabled="true" say="Ha-Ha!" timer="1.3" />
-	<text character="Ulfr" default="false" turnedPlayer="true" disabled="true" say="I'll find that map..." timer="1.7" />
-	<text character="Ulfr" default="false" turnedPlayer="true" disabled="true" say="So we can get out of this bloody mess." timer="2.0" />
-	<text character="Brandr" default="true" disabled="false" say="Have you found the map yet?!" timer="2.1" turned="true" />
->>>>>>> origin/Zero-Memory-leaks-1.0
 	<option_container>
 		<option choice_text="I found the map." disabled="true">
 			<text character="Ulfr" default="false" disabled="false" say="I found the map. " timer="2.0" />

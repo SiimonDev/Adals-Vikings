@@ -1,8 +1,4 @@
-﻿<<<<<<< HEAD
-*Type: standard
-=======
 ﻿*Type: standard
->>>>>>> origin/Zero-Memory-leaks-1.0
 *ID: $flowers$
 *Name: Flowers
 *ispickupable: True

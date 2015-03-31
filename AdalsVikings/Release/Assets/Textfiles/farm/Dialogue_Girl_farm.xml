@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <conversation>
-<<<<<<< HEAD
 	<useText useText="I don't think I have any real use for her." />
-=======
-	<useText useText="Isn't that illegal?" />
->>>>>>> origin/Zero-Memory-leaks-1.0
 	<lookText lookText="Oh goody, she is here..." />
 	<text character="Girl" say="OI!" disabled="false" default="false" timer="2.0" turned="false"></text>
 	<text character="Girl" say="What are you doing here?" disabled="false" default="false" timer="2.0" turned="false"></text>
@@ -19,9 +15,8 @@
 	<text character="Girl" say="..." disabled="false" default="false" timer="2.0" turned="false"></text>
 	<text character="Ulfr" say="..." disabled="false" default="false" timer="2.3"></text>
 	<text character="Girl" say="Are you going to stop talking now?" disabled="false" default="false" timer="2.0" turned="false"></text>
-	<text character="Ulfr" say="..." disabled="false" default="false" timer="2.3"></text>
-	<text character="Ulfr" say="...sure." disabled="false" default="false" timer="2.3"></text>
-	<text character="Ulfr" say="Hey again." disabled="true" default="true" timer="2.3"></text>
+	<text character="Ulfr" say="..." disabled="false" default="false" timer="2.3"></text><text character="Ulfr" say="...sure." disabled="false" default="false" timer="2.3">
+	</text><text character="Ulfr" say="Hey again." disabled="true" default="true" timer="2.3"></text>
 	
 	
 	

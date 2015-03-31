@@ -2,11 +2,7 @@
 <conversation>
 	<useText useText="Well I can't exactly huff and puff his house down.." />
 	<lookText lookText="Seems like someone likes to stay at home." />
-<<<<<<< HEAD
 	<text character="Ulfr" say="Hello?" disabled="false" default="true" timer="2.0" turned="true" />
-=======
-	<text character="Ulfr" say="Hello?" disabled="false" default="true" timer="2.0" turned="false" />
->>>>>>> origin/Zero-Memory-leaks-1.0
 	<text character="Ulfr" say="..." disabled="false" default="false" timer="1.4" />
 	<text character="Ulfr" say="... hello?" disabled="false" default="false" timer="2.3" />
 	<text character="Jacob" say="WHAT IS IT?" disabled="false" default="false" timer="2.3" />
@@ -34,29 +30,17 @@
 	<text character="Jacob" say="CLASSIC!" disabled="false" default="false" timer="2.4" />
 	<option_container disabled="false">
 		<option choice_text="Why do you have so many signs in your yard?" disabled="false">
-<<<<<<< HEAD
 			<text character="Ulfr" say="Why do you have so many signs in your yard?" timer="2.4" turned="true" default="false" disabled="false" />
-=======
-			<text character="Ulfr" say="Why do you have so many signs in your yard?" timer="2.4" turned="false" default="false" disabled="false" />
->>>>>>> origin/Zero-Memory-leaks-1.0
 			<text character="Jacob" say="My signs?" disabled="false" default="false" timer="1.8" />
 			<text character="Jacob" say="They're for protection!" disabled="false" default="false" timer="2.3" />
 			<text character="Jacob" say="Against that bastard Parrik, beyond the fence." disabled="false" default="false" timer="2.4" />
 			<text character="Jacob" say="He's a thief, that one!" disabled="false" default="false" timer="2.3" />
 			<text character="Jacob" say="Stole some of my hay, he did!" disabled="false" default="false" timer="2.3" />
-<<<<<<< HEAD
 			<text character="Ulfr" say="How awful." timer="2.2" turned="true" default="false" disabled="false" />
 			<text character="Jacob" say="You're telling me!" disabled="false" default="false" timer="2.2" />
 			<text character="Jacob" say="I've been meaning to get back at him for a while now." disabled="false" default="false" timer="2.8" />
 			<text character="Jacob" say="But I can't leave my place in here, else he might come back and steal some more!" disabled="false" default="false" timer="3.2" />
 			<text character="Ulfr" say="What a... dilemma." timer="2.2" turned="true" default="false" disabled="false" />
-=======
-			<text character="Ulfr" say="How awful." timer="2.2" turned="false" default="false" disabled="false" />
-			<text character="Jacob" say="You're telling me!" disabled="false" default="false" timer="2.2" />
-			<text character="Jacob" say="I've been meaning to get back at him for a while now." disabled="false" default="false" timer="2.8" />
-			<text character="Jacob" say="But I can't leave my place in here, else he might come back and steal some more!" disabled="false" default="false" timer="3.2" />
-			<text character="Ulfr" say="What a... dilemma." timer="2.2" turned="false" default="false" disabled="false" />
->>>>>>> origin/Zero-Memory-leaks-1.0
 			<text character="Jacob" say="That's the least you could say." disabled="false" default="false" timer="2.4" disablePrevious="true" />
 			<gotoBaseContainer />
 		</option>
