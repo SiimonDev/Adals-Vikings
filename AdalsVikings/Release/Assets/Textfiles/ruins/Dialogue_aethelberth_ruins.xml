@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Yeah. No. I wanna try and survive this?" />
+	<lookText lookText="That's the mercs leader, Aethelberthberth" />
+	<text character="Aethelberth" disabled="false" default="false" say="Oh, ho!" timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="And who might this little fellow be?" timer="2.5" /><text character="Aethelberth" disabled="false" default="false" say="Another recruit for our merry band of men, perhaps?" timer="2.5" />
+	<text character="Ulfr" disabled="false" default="false" say="You joking?" timer="2.0"  turned="false"/>
+	<text character="Ulfr" disabled="false" default="false" say="Do i really strike you as a... &quot;Fighter&quot;?" timer="2.5" />
+	<text character="Aethelberth" disabled="false" default="false" say="Hey, now." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="We don't discriminate." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="Just look at Cerdic over there." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="Built like an ant, yet he is a killer in mind and soul." timer="2.5"  turned="true"/><text character="Cerdic" disabled="false" default="false" say="I KILL FOR THE NORTH!" timer="2.0"  turned="false"/>
+	<text character="Aethelberth" disabled="false" default="false" say="He's also got a knack for theater." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="You should see him do those old Greek plays." timer="2.3"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="It's like watching a modern day Mnester." timer="2.0"  turned="true"/><text character="Ulfr" disabled="false" default="false" say="That's... actually pretty impressive." timer="2.0"  turned="false"/>
+	
+	<option_container disabled="false">
+		<option choice_text="Tell me about yourselves." disabled="true">
+			<text character="Ulfr" disabled="false" default="false" say="So, tell me about yourselves." timer="2.0"  turned="false"/>
+			<text character="Aethelberth" disabled="false" default="false" say="Surely!" timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="We are the band of brothers..." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="The great warriors of Northumbria." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="THE HEEL PEELS!" timer="2.0"  turned="true"/>
+			<text character="Ulfr" disabled="false" default="false" say="..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Isn't that a bit silly?" timer="2.0" />
+			<text character="Aethelberth" disabled="false" default="false" say="Hey man..." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="Took me like a week to come up with..." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="Don't be so rude." timer="2.0"  turned="true"/>
+			
+			
+			<gotoContainer />
+		</option>
+		<option choice_text="Sure is a cozy place you've got here.">
+			<text character="Ulfr" disabled="false" default="false" say="Sure is a cozy place you've got here." timer="2.0"  turned="false"/>
+			<text character="Aethelberth" disabled="false" default="false" say="Why, thank you strager." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="We moved in just a few days ago." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="Right after getting fired by that old bastard of a king." timer="2.5"  turned="true"/>
+		
+			<gotoBaseContainer />
+		</option>
+		<option choice_text="You guys aware that the king wants you dead?" disabled="false">
+			<text character="Ulfr" disabled="false" default="false" say="You guys know that the king wants you dead?" timer="2.4"  turned="false"/>
+			<text character="Aethelberth" disabled="false" default="false" say="DEAD?!" timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="oh. Yeah." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="We do actually..." timer="2.0"  turned="true"/><text character="Ulfr" disabled="false" default="false" say="And you aren't afraid?" timer="2.0"  turned="false"/><text character="Aethelberth" disabled="false" default="false" say="I am not." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="Nor are my men." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="They can send their entire army." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="I care not, for we shalt triumph!" timer="2.0"  turned="true"/><text character="Ulfr" disabled="false" default="false" say="But you are only..." timer="2.0"  turned="false"/><text character="Ulfr" disabled="false" default="false" say="Four men." timer="2.0" /><text character="Ulfr" disabled="false" default="false" say="Against thousands!" timer="2.0" />
+			<text character="Aethelberth" disabled="false" default="false" say="Thousands? HAH!" timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="The kings only got a few hundred!" timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="Most being untrained peasants." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="Ridiculous to think they could deafeat us." timer="2.3"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="Even insulting!" timer="2.0"  turned="true"/>
+			<text character="Ulfr" disabled="false" default="false" say="If you say so..." timer="2.0"  turned="false"/>
+			<gotoContainer />
+		</option><option choice_text="You guys look dangerous." disabled="false">
+			<text character="Ulfr" disabled="false" default="false" say="Wow, man you guys look... dangerous" timer="2.0"  turned="false"/>
+			<text character="Ulfr" disabled="false" default="false" say="And you're the biggest, aren'tcha?" timer="2.0" />
+			<text character="Aethelberth" disabled="false" default="false" say="I would hope so." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="I am the leader after all." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="And to lead, you have to be the biggest guy of all!" timer="2.5"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="Fearsome, yet just." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="Dangerous, but fair." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="Aggressive, yet still able to inspire loyalty and courage in his comrades." timer="2.5"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="I am all this... all..." timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="For my brothers!" timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="FOR YOU!" timer="2.0"  turned="true"/><text character="Aethelberth" disabled="false" default="false" say="ALL THE MERCENARIES" timer="2.0"  turned="true"/>
+			<text character="Aethelberth" disabled="false" default="false" say="FOR US!" timer="2.0"  turned="true"/><text character="Ulfr" disabled="false" default="false" say="Good for you." timer="2.0"  turned="false"/>
+			<gotoContainer />
+		</option>
+		<option choice_text="Right... i'll be leaving now" disabled="false">
+			<text character="Ulfr" disabled="false" default="false" say="Right... i'll be leaving now" timer="2.0"  turned="false"/>
+			<text character="Aethelberth" disabled="false" default="false" say="Feel free to return whenever you want!" timer="2.0"  turned="true"/>
+			<text character="Aethelberth" disabled="false" default="false" say="We could always use more killers!" timer="2.0"  turned="true"/><text character="Ulfr" disabled="false" default="false" say="Sounds... lovely." timer="2.0"  turned="false"/>
+			<stopConversation></stopConversation>
+			
+			
+			
+		</option>
+		
+		<stopOption />
+	</option_container>
+	<stopConversation />
+	<mall info="Endast Mall Efter Detta!" disabled="true">
+		<useText useText="Why would I use Brandr?" />
+		<lookText lookText="That's Brandr" />
+		<text character="Ulfr" default="false" disabled="false" disablePrevious="false" turned="true" timer="2.2" say="hej" />
+		<text character="Brandr" disablePrevious="false" timer="" say="DUrr" />
+		<text character="Valdis" />
+		<text character="Alfr" />
+		<text character="Brynja" />
+		<text character="Dagny" />
+		<text character="Finnr" />
+		<text character="Guard" />
+		<text character="Leifr" />
+		<text character="Mailman" />
+		<text character="Miner" />
+		<text character="Priest" />
+		<text character="Princess" />
+		<text character="Valdis" />
+		<text character="Yngvarr" />
+		
+		<option_container disabled="false">
+			<option disabled="false" choice_text="do you even?">
+				<text character="Brandr" disablePrevious="false" timer="3.3" say="hej!" />
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="What do you want!?">
+						<text character="Ulfr" disablePrevious="false" timer="2.5" say="durr" />
+						<text character="Brandr" disablePrevious="false" timer="2.4" say="murh" />
+						<option_container disabled="false">
+							<option disabled="false" disablePrevious="true" choice_text="Disable Previous">
+								<text character="Ulfr" disablePrevious="false" timer="2.4" say="Disable Previous" />
+								<gotoBaseContainer />
+							</option>
+							<stopOption />
+						</option_container>
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="NOPE">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="NUHU">!</text>
+				<option_container disabled="false">
+					<option disabled="false" disablePrevious="false" choice_text="durr">
+						<text character="Brandr" disablePrevious="false" timer="2.5" say="disable" />
+						<gotoContainer />
+					</option>
+					<option disabled="false" disablePrevious="false" choice_text="back">
+						<gotoBaseContainer />
+					</option>
+					<stopOption />
+				</option_container>
+			</option>
+			<option disabled="false" disablePrevious="false" choice_text="jimmie had a little farm that was brown and red and green, why was it brown and red and green?">
+				<text character="Brandr" disablePrevious="true" timer="3.3" say="Never Happened" />
+				<gotoContainer />
+			</option>
+			<option disabled="false" disablePrevious="true" choice_text="exit conversation">
+				<stopConversation />
+			</option>
+			<stopOption />
+		</option_container>
+		<option_container disabled="true">
+			<option disabled="false" disablePrevious="false" choice_text="hello">
+				<text character="Ulfr" disablePrevious="false" timer="2.5" say="hello" />
+				<text character="Brandr" disablePrevious="true" timer="2.5" say="hi!" />
+				<gotoContainer />
+			</option>
+			<stopOption />
+		</option_container>
+	</mall>
+</conversation>

@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $tavernPoster1$
+*Name: Poster
+*ispickupable: False
+*pickup: "Nah." ~1,5
+*lookat: "Tavern Rules: Don't piss on the floor." ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:  60    Y:135

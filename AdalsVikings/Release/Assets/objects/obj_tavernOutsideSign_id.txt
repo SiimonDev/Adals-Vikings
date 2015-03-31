@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $tavernOutsideSign$
+*Name: Sign
+*ispickupable: False
+*pickup: "I'm not... no." ~2,0
+*lookat: "Taven... Is that... a joke?" ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: 180 Y:100

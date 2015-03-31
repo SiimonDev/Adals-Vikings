@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why would I use Valdis?" />
+	<lookText lookText="She seems to be stuck in a staring contest with the ocean." />
+	<text character="Ulfr" disabled="false" default="false" say="What is this..." timer="2.3"  turned="true"/>
+	<text character="Ulfr" disabled="false" default="false" say="GOLD!" timer="2.3"  turned="true"/>
+	<text character="Ulfr" disabled="false" default="false" say="Shiny, golden gold!" timer="2.3"  turned="true"/>
+	<text character="Ulfr" disabled="false" default="false" say="Oh man, oh man." timer="2.3"  turned="true"/>
+	<text character="Ulfr" disabled="false" default="false" say="Luck shines on me today!" timer="2.3"  turned="true"/>
+	<text character="Ulfr" disabled="false" default="false" say="Just have to find a way to mine it!" timer="2.3"  turned="true"/>
+	<stopConversation></stopConversation>
+</conversation>

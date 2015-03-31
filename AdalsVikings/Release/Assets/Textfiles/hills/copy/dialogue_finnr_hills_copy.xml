@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why would I use Finnr?" />
+	<lookText lookText="My friend Finnr. We've known each other for a long time, and we're great friends, even if he's a bit strange at times." />
+	<text character="Finnr" say="Hey Ulfr." timer="1.6" turned="false" default="true" disabled="false" />
+	<text character="Ulfr" say="Hey Buddy." timer="1.6" turned="true" default="true" disabled="false" />
+	<text character="Ulfr" say="What are you doing here?" timer="1.6" turned="true" default="false" disabled="false" />
+	<text character="Finnr" say="I wanted to see if there was some other way into the city." timer="2.8" turned="false" default="false" disabled="false" />
+	<text character="Finnr" say="But it seems like the wall reaches all the way around." timer="2.6" turned="false" default="false" disabled="false" />
+	<text character="Finnr" say="It's beautiful." timer="2.0" turned="false" default="false" disabled="false" />
+	<text character="Finnr" say="The hills remind me of my home in the north." timer="2.6" turned="false" default="false" disabled="false" />
+	<text character="Finnr" say="It's as if the northern giants have tossed rocks across the ocean for a thousand years." timer="3.3" turned="false" default="false" disabled="false" />
+	<text character="Finnr" say="And the rocks have piled up here, in this grand place." timer="2.6" turned="false" default="false" disabled="false" />
+	<text character="Ulfr" say="..." timer="1.8" turned="false" default="false" disabled="false" />
+	<text character="Ulfr" say="A bit poetic for my taste." timer="2.2" turned="false" default="false" disabled="false" />
+	<text character="Ulfr" say="But yeah, sure." timer="2.0" turned="false" default="false" disabled="false" />
+	<option_container disabled="false">
+		<option choice_text="Are you heading back soon?" disabled="false">
+			<text character="Ulfr" say="Are you heading back soon?" timer="2.4" turned="true" default="false" disabled="false" />
+			<text character="Finnr" say="Yeah." timer="1.8" turned="false" default="false" disabled="false" />
+			<text character="Finnr" say="I'm just going to take a little stroll first." timer="2.4" turned="false" default="false" disabled="false" />
+			<text character="Finnr" say="See what else this place has to offer." timer="2.4" turned="false" default="false" disabled="false" />
+			<text character="Ulfr" say="...you do realize we're about to essentially lay siege to an entire city." timer="3.3" turned="true" default="false" disabled="false" />
+			<text character="Ulfr" say="And you're just going to take a &quot;stroll&quot;." timer="2.8" turned="true" default="false" disabled="false" />
+			<text character="Finnr" say="Yeah." timer="1.8" turned="false" default="false" disabled="false" />
+			<text character="Ulfr" say="..." timer="1.3" turned="true" default="false" disabled="false" />
+			<text character="Ulfr" say="Alright." timer="1.8" turned="true" default="false" disabled="false" disablePrevious="true" />
+			<gotoBaseContainer />
+		</option>
+		<option choice_text="What's that hole in the hill over there?" disabled="false">
+			<text character="Ulfr" say="What's that hole in the hill over there?" timer="2.3" turned="true" default="false" disabled="false" />
+			<text character="Finnr" say="I don't know." timer="2.3" turned="false" default="false" disabled="false" />
+			<text character="Finnr" say="But when I went closer before..." timer="2.4" turned="false" default="false" disabled="false" />
+			<text character="Finnr" say="...I heard some kind of noise from inside." timer="2.4" turned="false" default="false" disabled="false" />
+			<text character="Finnr" say="..." timer="1.3" turned="false" default="false" disabled="false" />
+			<text character="Finnr" say="So as you could imagine." timer="2.3" turned="false" default="false" disabled="false" />
+			<text character="Finnr" say="I'll stay away from it for now." timer="2.3" turned="false" default="false" disabled="false" />
+			<text character="Finnr" say="But you can go check it out if you want." timer="2.4" turned="false" default="false" disabled="false" />
+			<text character="Ulfr" say="..." timer="1.3" turned="true" default="false" disabled="false" />
+			<text character="Ulfr" say="... thanks." timer="2.3" turned="true" default="false" disabled="false" disablePrevious="true" />
+			<gotoBaseContainer />
+		</option>
+		<option choice_text="Talk to you later." disabled="false">
+			<text character="Ulfr" say="Talk to you later." timer="2.0" turned="true" default="false" disabled="false" />
+			<text character="Finnr" say="See you, Ulfr." timer="2.0" turned="true" default="false" disabled="false" />
+			<stopConversation />
+		</option>
+		<stopOption />
+	</option_container>
+	<stopConversation />
+</conversation>

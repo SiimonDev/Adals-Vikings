@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why would I use Valdis?" />
+	<lookText lookText="That's Valdis. She's probably the smartest one of us all. If only her ego wasn't so big." timer="3.0" />
+	<text character="Ulfr" disabled="true" default="false" say="How can she sleep through this ruckus?" timer="2.4" turned="true" />
+	<text character="Valdis" disabled="true" default="false" disablePrevious="" say="Who, Brynja?" timer="2.0" turned="false" />
+	<text character="Valdis" disabled="true" default="false" say="Oh, she could sleep through anything." timer="2.4" />
+	<text character="Valdis" say="Almost anything." timer="1.8" default="false" disabled="true" />
+	<text character="Ulfr" say="Hey Valdis!" timer="1.5" default="true" disabled="false" turned="true" />
+	<text character="Valdis" say="Hey Ulfr!" timer="1.5" default="true" disabled="false" turned="false" />
+	<option_container disabled="false">
+		<option disabled="false" choice_text="Just some water?">
+			<text character="Ulfr" disablePrevious="false" timer="2.0" say="Just some water?" turned="true" />
+			<text character="Valdis" say="It might have been a bit more." timer="2.4" default="" turned="false" />
+			<text character="Valdis" say="Like a bucket full." timer="1.8" />
+			<text say="..." timer="1.3" character="Valdis" />
+			<text character="Valdis" say="Still an accident, I swear." timer="2.0" turned="false" />
+			<text character="Ulfr" say="...sure." timer="1.5" turned="true" />
+			<text say="..." timer="1.4" turned="false" character="Valdis" />
+			<text character="Valdis" say="She was snoring, alright?" timer="2.0" />
+			<text character="Valdis" say="Give me a break." timer="2.0" disablePrevious="true" />
+			<gotoContainer />
+		</option>
+		<option disabled="true" disablePrevious="false" choice_text="Have you seen Adal's map?">
+			<text character="Ulfr" disablePrevious="false" timer="1.5" say="Hey Valdis." turned="true" />
+			<text character="Ulfr" say="Have you seen Adal's map?" timer="2.2" />
+			<text character="Valdis" say="A map?" timer="1.8" turned="false" />
+			<text character="Valdis" say="I'm not sure." timer="2.2" />
+			<text character="Valdis" say="But I did see Brynja playing with a piece of paper earlier..." timer="3.5" />
+			<text character="Valdis" say="Perhaps that was it?" timer="2.4" />
+			<text character="Ulfr" say="It must have been!" timer="2.2" turned="true" />
+			<text character="Ulfr" say="Thank you, Valdis." timer="2.0" />
+			<text say="..." timer="0.8" character="Ulfr" turned="true" />
+			<text character="Ulfr" say="Oh crap." timer="1.5" />
+			<text character="Ulfr" say="That means I have to wake her up." timer="2.5" />
+			<text character="Valdis" say="Yeah, right." timer="2.0" turned="false" />
+			<text character="Valdis" say="Like you could do that." timer="2.4" />
+			<text character="Ulfr" say="..." timer="0.8" turned="true" />
+			<text character="Ulfr" say="Well, I have to try." timer="2.0" disablePrevious="true" />
+			<gotoContainer />
+		</option>
+		<option disabled="true" disablePrevious="false" choice_text="Almost anything?">
+			<text character="Ulfr" timer="2.0" say="Almost anything?" turned="true" />
+			<text character="Valdis" say="Well I once spilled some water on her." default="" timer="2.4" turned="false" />
+			<text character="Valdis" say="Accidentally" timer="1.7" />
+			<text character="Valdis" enable="Just some water?" say="That sure woke her up." timer="2.0" disablePrevious="true" />
+			<gotoContainer />
+		</option>
+		<option disabled="false" disablePrevious="false" choice_text="Great I'll see you later.">
+			<text say="Great I'll see you later." timer="2.0" character="Ulfr" turned="true" />
+			<text say="Bye." character="Valdis" timer="1.5" turned="false" />
+			<stopConversation />
+		</option>
+		<stopOption />
+	</option_container>
+</conversation>

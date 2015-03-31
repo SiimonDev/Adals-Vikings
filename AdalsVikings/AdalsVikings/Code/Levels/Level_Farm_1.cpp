@@ -23,6 +23,7 @@ void Level_Farm_1::update(sf::Time &frametime)
 			if (mObjects[i]->getObjID() == "flowers")
 			{
 				mObjects[i]->enableObject(true);
+				refreshLevel(true);
 				Act1Events::triggerEvent(Act1Event::FlowerActive);
 				Act1Events::handleEvent(Act1Event::FlowerActive);
 			}

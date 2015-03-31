@@ -30,6 +30,7 @@ public:
 	{
 		mIntroVideo.openFromFile("assets/video/intro_x264_720p.avi", "assets/video/intro_sound.ogg");
 		mIntroVideo.setSize(1920, 1080);
+		mIntroVideo.setVolume(30);
 		return mIntroVideo;
 	}
 

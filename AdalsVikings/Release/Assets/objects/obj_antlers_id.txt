@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $antlers$
+*Name: Antlers
+*ispickupable: True
+*pickup: "I could totally use these for... something." ~2,0
+*lookat: "Woah. These I like the look of." ~1,5
+*deny: "I can't do that." ~1,5
+*denywith: $axeHead$ "Antlers will not be a good replacement of the former handle." ~3,0; $axeUnfinished$ "Antlers won't complete the axe." ~3,0; 
+*combine: $bearPelt$ $bearDeer$ "This will hopefully be a good enough costume..." ~2,5; 
+*interact: 
+*texture: "img_antlers_id.png"

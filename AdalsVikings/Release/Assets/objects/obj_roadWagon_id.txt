@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $roadWagon$
+*Name: Wagon
+*ispickupable: False
+*pickup: "...I don't want it." ~2,0
+*lookat: "Who would just leave this here? " ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:165  Y:60

@@ -2,12 +2,12 @@
 <conversation>
 	<useText useText="Why would I use Valdis?" />
 	<lookText lookText="That's Valdis. She's probably the smartest one of us all. If only her ego wasn't so big." timer="3.0" />
-	<text character="Ulfr" disabled="true" default="false" say="How can she sleep through this ruckus?" timer="2.4" turned="true" />
-	<text character="Valdis" disabled="true" default="false" disablePrevious="" say="Who, Brynja?" timer="2.0" turned="false" />
-	<text character="Valdis" disabled="true" default="false" say="Oh, she could sleep through anything." timer="2.4" />
-	<text character="Valdis" say="Almost anything." timer="1.8" default="false" disabled="true" />
-	<text character="Ulfr" say="Hey Valdis!" timer="1.5" default="true" disabled="false" turned="true" />
-	<text character="Valdis" say="Hey Ulfr!" timer="1.5" default="true" disabled="false" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="How can she sleep through this ruckus?" timer="2.4" turned="true" />
+	<text character="Valdis" disabled="false" default="false" disablePrevious="" say="Who, Brynja?" timer="2.0" turned="false" />
+	<text character="Valdis" disabled="false" default="false" say="Oh, she could sleep through anything." timer="2.4" />
+	<text character="Valdis" say="Almost anything." timer="1.8" default="false" disabled="false" />
+	<text character="Ulfr" say="Hey Valdis!" timer="1.5" default="true" disabled="true" turned="true" />
+	<text character="Valdis" say="Hey Ulfr!" timer="1.5" default="true" disabled="true" turned="false" />
 	<option_container disabled="false">
 		<option disabled="true" choice_text="Just some water?">
 			<text character="Ulfr" disablePrevious="false" timer="2.0" say="Just some water?" turned="true" />

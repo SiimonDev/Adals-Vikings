@@ -1,0 +1,12 @@
+*Type: animated
+*ID: $camp2Fire$
+*Name: Fire
+*ispickupable: False
+*pickup: "Nah." ~2,0
+*lookat: "Flaming." ~1,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_camp2Fire_id.png"
+*animation: X:3  Y:1  ~2,5 ~0

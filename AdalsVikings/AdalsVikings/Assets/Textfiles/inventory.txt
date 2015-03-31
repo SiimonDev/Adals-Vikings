@@ -1,9 +1,9 @@
-slot_0.0: $bucketBroken
-slot_0.1: $fluteBroken
-slot_0.2: $sleepingMeat
+slot_0.0: 
+slot_0.1: 
+slot_0.2: 
 slot_0.3: 
-slot_1.0: $skull
-slot_1.1: $candle
+slot_1.0: 
+slot_1.1: 
 slot_1.2: 
 slot_1.3: 
 slot_2.0: 

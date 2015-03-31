@@ -1,0 +1,12 @@
+*Type: animated
+*ID: $groupOfSheep$
+*Name: Group of Sheep
+*ispickupable: False
+*pickup: "I shouldn't disturb them." ~2,0
+*lookat: "Looks like they're chilling in the shadow." ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_groupOfSheep_id.png"
+*animation: X:5 Y:1 ~4,0 ~9,0
