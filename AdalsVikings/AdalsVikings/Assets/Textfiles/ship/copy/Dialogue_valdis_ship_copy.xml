@@ -39,7 +39,7 @@
 			<text character="Ulfr" say="Well, I have to try." timer="2.0" disablePrevious="true" />
 			<gotoContainer />
 		</option>
-		<option disabled="true" disablePrevious="false" choice_text="Almost anything?">
+		<option disabled="false" disablePrevious="false" choice_text="Almost anything?">
 			<text character="Ulfr" timer="2.0" say="Almost anything?" turned="true" />
 			<text character="Valdis" say="Well I once spilled some water on her." default="" timer="2.4" turned="false" />
 			<text character="Valdis" say="Accidentally" timer="1.7" />

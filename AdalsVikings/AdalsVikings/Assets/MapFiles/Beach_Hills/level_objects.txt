@@ -10,48 +10,48 @@ hascollision: $false
 position: $X:1450 $Y:470
 interactPosition: $X:0 $Y:0
 index: $20
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $fortHills
 position: $X:1480 $Y:400
 interactPosition: $X:0 $Y:0
 index: $20
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $boatsHills
 position: $X:1800 $Y:420
 interactPosition: $X:0 $Y:0
 index: $20
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $farmHills
 position: $X:755 $Y:505
 interactPosition: $X:0 $Y:0
 index: $20
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $churchHills
 position: $X:1168 $Y:610
 interactPosition: $X:0 $Y:0
 index: $20
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $ruinsHills
 position: $X:1621 $Y:553
 interactPosition: $X:0 $Y:0
 index: $20
-scale: $1.0
+scale: $1
 hascollision: $false
 ############
 *id: $tavernHills
 position: $X:1549 $Y:624
 interactPosition: $X:0 $Y:0
 index: $20
-scale: $1.0
+scale: $1
 hascollision: $false
 ############

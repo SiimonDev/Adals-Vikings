@@ -7,6 +7,7 @@ Level_Beach_Hills::Level_Beach_Hills(Player &player, HUD &hud, ActionWheel &acti
 	: Level(player, hud, actionWheel), mVideoPlayed(false)
 {
 	mBackgroundID = LevelFolder::Beach_Hills;
+	Act1Events::handleEvent(Act1Event::BeachHillVideo);
 }
 
 void Level_Beach_Hills::restartSounds()
