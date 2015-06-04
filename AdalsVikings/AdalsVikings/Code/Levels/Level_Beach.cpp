@@ -1,0 +1,489 @@
+#include "Level_Beach.h"
+#include "..\Logics\ResourceManager.h"
+#include "..\Logics\AudioPlayer.h"
+#include "..\Logics\KeyboardState.h"
+#include "..\Logics\WindowState.h"
+#include "..\Interface\LoadingScreen.h"
+#include "..\Interface\VideoHandler.h"
+#include <iostream>
+
+static Animation mWaveAnimation;
+static Animation mRockAnimation;
+
+Level_Beach::Level_Beach(Player &player, HUD &hud, ActionWheel &actionWheel)
+	: Level(player, hud, actionWheel)
+	, mIntroFade1(false), mVideoPlayed(false)
+{
+	mBackgroundID = LevelFolder::Beach;
+}
+
+void Level_Beach::restartSounds()
+{
+	AudioPlayer::playHDDSound(HDDSound::Beach_Ambient, true, mAmbientSoundLevel);
+	AudioPlayer::playHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music, true, mMusicSoundLevel);
+}
+
+void Level_Beach::update(sf::Time &frameTime)
+{
+
+	if (Act1Events::hasBeenTriggered(Act1Event::IntroScreen) && !Act1Events::hasBeenHandled(Act1Event::IntroScreen))
+	{
+		mHud->displayHelp(true);
+		Act1Events::handleEvent(Act1Event::IntroScreen);
+	}
+
+	/*if (VideoHandler::getInstance().getIntroVideo().getStatus() != sf::VideoFile::Playing && mVideoPlayed)
+	{
+		mLandingVideo.play();
+		mVideoPlayed = false;
+	}*/
+	//if (VideoHandler::getInstance().getIntroVideo().getStatus() != sf::VideoFile::Playing /*&& (mLandingVideo.getStatus() != sf::VideoFile::Playing || !mLandingVideo.isLoaded())*/)
+	//{
+		introCutscene(frameTime);
+		talkToNpcs();
+		endingCutscene(frameTime);
+
+		mWaveAnimation.animate(frameTime);
+		mRockAnimation.animate(frameTime);
+		if (mWaveAnimation.getCurrentFrame() == 1)
+			AudioPlayer::playHDDSound(HDDSound::Beach_Wave, false, 20);
+
+		if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Intro))
+			Act1Events::triggerEvent(Act1Event::Beach_Intro);
+
+		if (Act1Events::hasBeenHandled(Act1Event::Beach_Intro) && !Act1Events::hasBeenTriggered(Act1Event::IntroScreen))
+			Act1Events::triggerEvent(Act1Event::IntroScreen);
+
+		Level::update(frameTime);
+		changeLevel();
+		//}
+	/*else if (VideoHandler::getInstance().getIntroVideo().getStatus() != sf::VideoFile::Playing)
+		mLandingVideo.update(frameTime);*/
+}
+void Level_Beach::render(IndexRenderer &iRenderer)
+{
+	//if (VideoHandler::getInstance().getIntroVideo().getStatus() != sf::VideoFile::Playing/*(mLandingVideo.getStatus() != sf::VideoFile::Playing || !mLandingVideo.isLoaded()) && !mVideoPlayed*/)
+	//{
+		if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
+			CurrentWindow.setView(mCutSceneView);
+
+		mRockAnimation.render(iRenderer);
+		mWaveAnimation.render(iRenderer);
+		Level::render(iRenderer);
+	//}
+	/*else
+		mLandingVideo.render(CurrentWindow);*/
+}
+
+void Level_Beach::load()
+{
+	/*if (!Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
+	{
+		mLandingVideo.openFromFile("assets/video/landing_x264_720p.avi", "assets/video/landing_sound.ogg", false);
+		mLandingVideo.setSize(1920, 1080);
+		mVideoPlayed = true;
+	}*/
+
+	mRestartSounds = true;
+	mPortals[BeachToRoad] = &PortalLoader::getPortal(BeachToRoad);
+	mPortals[BeachToTavernOutside] = &PortalLoader::getPortal(BeachToTavernOutside);
+	mPortals[BeachToBeachHill] = &PortalLoader::getPortal(BeachToBeachHill);
+
+	mNpcs["Seagull"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Seagull")));
+
+	RMI.loadResource(Texture::SeagullRock);
+	mRockAnimation.load(RMI.getResource(Texture::SeagullRock), sf::Vector2i(4, 1), sf::seconds(1), sf::Time::Zero, true);
+	mRockAnimation.setProportions(sf::Vector2f(124, 76));
+	mRockAnimation.setScale(sf::Vector2f(0.55f, 0.55f));
+	mRockAnimation.getSprite().setOrigin(mRockAnimation.getSpriteSize().x / 2, mRockAnimation.getSpriteSize().y);
+	mRockAnimation.setPosition(sf::Vector2f(1800, 460));
+	mRockAnimation.setIndex(16);
+
+	RMI.loadResource(Texture::WaveAnimationBeach);
+	mWaveAnimation.load(RMI.getResource(Texture::WaveAnimationBeach), sf::Vector2i(10, 9), sf::seconds(10), sf::seconds(7), true);
+	mWaveAnimation.setIndex(4);
+	mWaveAnimation.setProportions(sf::Vector2f(1170, 640));
+	mWaveAnimation.getSprite().setOrigin(mWaveAnimation.getSprite().getTextureRect().width, mWaveAnimation.getSprite().getTextureRect().height);
+	mWaveAnimation.setPadding(1);
+	mWaveAnimation.setPosition(sf::Vector2f(1920 + 3, 1080 + 3));
+
+	if (!Act1Events::hasBeenHandled(Act1Event::Beach_Ending))
+	{
+		mPortals[BeachToRoad]->setCannotDialogue("I was told not to leave the beach!");
+		mPortals[BeachToTavernOutside]->setCannotDialogue("I was told not to leave the beach!");
+		mPortals[BeachToBeachHill]->setCannotDialogue("I was told not to leave the beach!");
+
+		mCutSceneView.setCenter(1920 / 2 - 450, 1080 / 2 + 270);
+		mCutSceneView.setSize(1920, 1080);
+		mCutSceneView.zoom(0.5);
+
+		/* ===== Load necessary resources ===== */
+		RMI.loadResource(Texture::LeifrIdle);
+		RMI.loadResource(Texture::LeifrTalk);
+
+		/* ==== Load Npcs and set right position, dialogue, scale and so on... ===== */
+		mNpcs["Yngvarr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Yngvarr")));
+		mNpcs["Dagny"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Dagny")));
+		mNpcs["Alfr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Alfr")));
+		mNpcs["Leifr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Leifr")));
+		mNpcs["Finnr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Finnr")));
+		mNpcs["Brandr"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brandr")));
+		mNpcs["Brynja"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Brynja")));
+		mNpcs["Valdis"] = NpcPtr(new Npc(NpcHandlerI.getNpc("Valdis")));
+
+		mPlayer->setPosition(sf::Vector2f(410, 1070));
+		mPlayer->setFlip(true);
+		mPlayer->UpdateAnimationStyle();
+
+		mNpcs["Brandr"]->setFlip(true);
+		mNpcs["Brandr"]->setScale(sf::Vector2f(0.4f, 0.4f));
+		mNpcs["Brandr"]->setPosition(sf::Vector2f(400, 1120));
+		mNpcs["Brandr"]->setDialogue("Intro_Beach");
+		mNpcs["Brandr"]->setIndex(14);
+
+		mNpcs["Brynja"]->setFlip(false);
+		mNpcs["Brynja"]->setScale(sf::Vector2f(0.4f, 0.4f));
+		mNpcs["Brynja"]->setPosition(sf::Vector2f(600, 1070));
+		mNpcs["Brynja"]->setDialogue("Intro_Beach");
+		mNpcs["Brynja"]->setIndex(14);
+
+		mNpcs["Valdis"]->setFlip(false);
+		mNpcs["Valdis"]->setScale(sf::Vector2f(0.45f, 0.45f));
+		mNpcs["Valdis"]->setPosition(sf::Vector2f(600, 1120));
+		mNpcs["Valdis"]->setInteractionPosition(sf::Vector2f(1515, 700));
+		mNpcs["Valdis"]->setDialogue("Valdis_Beach");
+		mNpcs["Valdis"]->setIndex(14);
+
+		/* ==== Yngvarr ===== */
+		RMI.loadResource(Texture::YngvarrSadIdle);
+		RMI.loadResource(Texture::YngvarrSadTalk);
+		mNpcs["Yngvarr"]->setIdleAnimation(Texture::YngvarrSadIdle, sf::Vector2i(2, 1), sf::milliseconds(400), sf::seconds(7));
+		mNpcs["Yngvarr"]->SetTalkAnimation(Texture::YngvarrSadTalk, sf::Vector2i(2, 1), sf::milliseconds(400), sf::Time::Zero);
+		mNpcs["Yngvarr"]->setFlip(false);
+		mNpcs["Yngvarr"]->setScale(sf::Vector2f(0.4f, 0.4f));
+		mNpcs["Yngvarr"]->setPosition(sf::Vector2f(350, 760));
+		mNpcs["Yngvarr"]->setInteractionPosition(sf::Vector2f(420, 760));
+		mNpcs["Yngvarr"]->setDialogue("Yngvarr_Beach");
+		mNpcs["Yngvarr"]->setIndex(14);
+
+		/* ==== Dagny ===== */
+		mNpcs["Dagny"]->setFlip(true);
+		mNpcs["Dagny"]->setScale(sf::Vector2f(0.5f, 0.5f));
+		mNpcs["Dagny"]->setPosition(sf::Vector2f(250, 760));
+		mNpcs["Dagny"]->setInteractionPosition(sf::Vector2f(300, 760));
+		mNpcs["Dagny"]->setDialogue("Dagny_Beach");
+		mNpcs["Dagny"]->setIndex(14);
+
+		/* ==== Alfr ===== */
+		mNpcs["Alfr"]->setFlip(false);
+		mNpcs["Alfr"]->setScale(sf::Vector2f(0.35f, 0.35f));
+		mNpcs["Alfr"]->setPosition(sf::Vector2f(1250, 580));
+		mNpcs["Alfr"]->setInteractionPosition(sf::Vector2f(1170, 560));
+		mNpcs["Alfr"]->setDialogue("Alfr_Beach");
+		mNpcs["Alfr"]->setIndex(14);
+
+		/* ==== Leifr ===== */
+		mNpcs["Leifr"]->setFlip(true);
+		mNpcs["Leifr"]->setScale(sf::Vector2f(0.3f, 0.3f));
+		mNpcs["Leifr"]->setPosition(sf::Vector2f(700, 540));
+		mNpcs["Leifr"]->setInteractionPosition(sf::Vector2f(800, 525));
+		mNpcs["Leifr"]->setDialogue("Leifr_Beach");
+		mNpcs["Leifr"]->setIndex(14);
+
+		/* ==== Finnr ===== */
+		mNpcs["Finnr"]->setFlip(false);
+		mNpcs["Finnr"]->setScale(sf::Vector2f(0.4f, 0.4f));
+		mNpcs["Finnr"]->setPosition(sf::Vector2f(1615, 520));
+		mNpcs["Finnr"]->setInteractionPosition(sf::Vector2f(1530, 515));
+		mNpcs["Finnr"]->setDialogue("Finnr_Beach");
+		mNpcs["Finnr"]->setIndex(12);
+		/* ================================================================ */
+
+		Level::load();
+
+		// Add collision from every NPC to the map
+		mTileMap.addCollision(mNpcs["Leifr"]->getCollisionRect());
+		mTileMap.addCollision(mNpcs["Finnr"]->getCollisionRect());
+		mTileMap.addCollision(mNpcs["Dagny"]->getCollisionRect());
+		mTileMap.addCollision(mNpcs["Alfr"]->getCollisionRect());
+		mTileMap.addCollision(mNpcs["Yngvarr"]->getCollisionRect());
+
+		// Add Index from every NPC to the map
+		mTileMap.setIndexOnMap(mNpcs["Brandr"]->getIndexRect(), mNpcs["Brandr"]->getIndex() - 1);
+		mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
+		//mTileMap.setIndexOnMap(mNpcs["Leifr"]->getIndexRect(), mNpcs["Leifr"]->getIndex() - 1);
+		mTileMap.setIndexOnMap(mNpcs["Finnr"]->getIndexRect(), mNpcs["Finnr"]->getIndex() - 1);
+		mTileMap.setIndexOnMap(mNpcs["Dagny"]->getIndexRect(), mNpcs["Dagny"]->getIndex() - 1);
+		mTileMap.setIndexOnMap(mNpcs["Alfr"]->getIndexRect(), mNpcs["Alfr"]->getIndex() - 1);
+		mTileMap.setIndexOnMap(mNpcs["Yngvarr"]->getIndexRect(), mNpcs["Yngvarr"]->getIndex() - 1);
+	}
+	else
+		Level::load();
+
+	if (Act1Events::hasBeenHandled(Act1Event::CampClearing_Brynja))
+	{
+		mPortals[BeachToBeachHill]->setWorking(true);
+		mPortals[BeachToRoad]->setWorking(true);
+		mPortals[BeachToTavernOutside]->setWorking(true);
+	}
+}
+void Level_Beach::unload()
+{
+	RMI.unloadResource(Texture::WaveAnimationBeach);
+	RMI.unloadResource(Texture::SeagullRock);
+	RMI.unloadResource(Texture::YngvarrSadIdle);
+	RMI.unloadResource(Texture::YngvarrSadTalk);
+
+	Level::unload();
+}
+
+void Level_Beach::changeLevel()
+{
+	if (mPortals[BeachToRoad]->getActivated() && mPortals[BeachToRoad]->getWorking())
+	{
+		Act1Events::triggerEvent(Act1Event::Enter_Road);
+		LVLMI.changeLevel(LevelFolder::Road);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Wave);
+		AudioPlayer::pauseHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
+		mRestartSounds = true;
+	}
+	else if (mPortals[BeachToTavernOutside]->getActivated() && mPortals[BeachToTavernOutside]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::Tavern_Outside);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Wave);
+		AudioPlayer::pauseHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
+		mRestartSounds = true;
+	}
+	else if (mPortals[BeachToBeachHill]->getActivated() && mPortals[BeachToBeachHill]->getWorking())
+	{
+		LVLMI.changeLevel(LevelFolder::Beach_Hills);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Ambient);
+		AudioPlayer::stopHDDSound(HDDSound::Beach_Wave);
+		AudioPlayer::pauseHDDSound(HDDSound::Beach_Road_Tavern_Outside_Music);
+		mRestartSounds = true;
+	}
+}
+
+void Level_Beach::introCutscene(sf::Time &frameTime)
+{
+	if (Act1Events::hasBeenTriggered(Act1Event::Beach_Intro) && !Act1Events::hasBeenHandled(Act1Event::Beach_Intro))
+	{
+		if (!mIntroFade1)
+		{
+			MouseState::setIsWorking(false);
+			FadeI.fadeIn(frameTime);
+			if (FadeI.getFaded())
+			{
+				//FadeI.setAlpha(0);
+				DialogHandler::startDialogue("Intro_Beach");
+				mIntroFade1 = true;
+			}
+		}
+		else if (DialogHandler::getDialogue("Intro_Beach").getHasStopped() && !mIntroFade2)
+		{
+			FadeI.fadeOut(frameTime);
+			if (FadeI.getFaded())
+			{
+				mCutSceneView.zoom(2);
+				mCutSceneView.setCenter(1920 / 2, 1080 / 2);
+				MouseState::setIsWorking(true);
+				//mCutSceneView.setViewport(sf::FloatRect(0, 0, 1920, 1080));
+
+				//FadeI.setAlpha(255);
+
+				mNpcs["Brandr"]->setPosition(sf::Vector2f(2000, 0));
+				mNpcs["Brynja"]->setPosition(sf::Vector2f(2000, 0));
+
+				mNpcs["Valdis"]->setFlip(true);
+				mNpcs["Valdis"]->setScale(sf::Vector2f(0.4, 0.4));
+				mNpcs["Valdis"]->setPosition(sf::Vector2f(1600, 720));
+				mNpcs["Valdis"]->setAnimationStyle("Npc");
+				mNpcs["Valdis"]->updateAnimationStyle();
+
+				mTileMap.addCollision(mNpcs["Valdis"]->getCollisionRect());
+				mTileMap.setIndexOnMap(mNpcs["Valdis"]->getIndexRect(), mNpcs["Valdis"]->getIndex() - 1);
+
+				mIntroFade2 = true;
+			}
+		}
+		else if (mIntroFade2 && !mIntroFade3)
+		{
+			FadeI.fadeIn(frameTime);
+			if (FadeI.getFaded())
+			{
+				//FadeI.setAlpha(0);
+				Act1Events::handleEvent(Act1Event::Beach_Intro);
+				mIntroFade3 = true;
+			}
+		}
+	}
+}
+void Level_Beach::endingCutscene(sf::Time &frameTime)
+{
+	if (Act1Events::hasBeenTriggered(Act1Event::Beach_Ending) && !Act1Events::hasBeenHandled(Act1Event::Beach_Ending))
+	{
+		if (!mEndingFade1)
+		{
+			FadeI.fadeOut(frameTime);
+			if (FadeI.getFaded())
+			{
+				//FadeI.setAlpha(255);
+
+				mNpcs["Brynja"]->setFlip(true);
+				mNpcs["Brynja"]->setScale(sf::Vector2f(0.4, 0.4));
+				mNpcs["Brynja"]->setPosition(sf::Vector2f(580, 760));
+				mNpcs["Brynja"]->setIndex(14);
+				mNpcs["Brynja"]->setAnimationStyle("Npc");
+				mNpcs["Brynja"]->updateAnimationStyle();
+
+				mNpcs["Brandr"]->setFlip(true);
+				mNpcs["Brandr"]->setScale(sf::Vector2f(0.4, 0.4));
+				mNpcs["Brandr"]->setPosition(sf::Vector2f(600, 800));
+				mNpcs["Brandr"]->setIndex(15);
+				mNpcs["Brandr"]->setAnimationStyle("Npc");
+				mNpcs["Brandr"]->updateAnimationStyle();
+
+				mNpcs["Valdis"]->setFlip(false);
+				mNpcs["Valdis"]->setPosition(sf::Vector2f(700, 680));
+				mNpcs["Valdis"]->setIndex(13);
+				mNpcs["Valdis"]->setAnimationStyle("Npc");
+				mNpcs["Valdis"]->updateAnimationStyle();
+
+				mNpcs["Finnr"]->setFlip(false);
+				mNpcs["Finnr"]->setPosition(sf::Vector2f(720, 720));
+				mNpcs["Finnr"]->setIndex(14);
+				mNpcs["Finnr"]->setAnimationStyle("Npc");
+				mNpcs["Finnr"]->updateAnimationStyle();
+
+				mNpcs["Leifr"]->setFlip(false);
+				mNpcs["Leifr"]->setPosition(sf::Vector2f(740, 760));
+				mNpcs["Leifr"]->setIndex(15);
+				mNpcs["Leifr"]->setAnimationStyle("Npc");
+				mNpcs["Leifr"]->updateAnimationStyle();
+
+				mNpcs["Alfr"]->setFlip(false);
+				mNpcs["Alfr"]->setPosition(sf::Vector2f(740, 840));
+				mNpcs["Alfr"]->setIndex(17);
+				mNpcs["Alfr"]->setAnimationStyle("Npc");
+				mNpcs["Alfr"]->updateAnimationStyle();
+
+				mNpcs["Yngvarr"]->setFlip(false);
+				mNpcs["Yngvarr"]->setPosition(sf::Vector2f(720, 880));
+				mNpcs["Yngvarr"]->setIndex(18);
+				mNpcs["Yngvarr"]->setAnimationStyle("Npc");
+				mNpcs["Yngvarr"]->updateAnimationStyle();
+
+				mNpcs["Dagny"]->setFlip(false);
+				mNpcs["Dagny"]->setPosition(sf::Vector2f(700, 920));
+				mNpcs["Dagny"]->setIndex(19);
+				mNpcs["Dagny"]->setAnimationStyle("Npc");
+				mNpcs["Dagny"]->updateAnimationStyle();
+
+				mPlayer->setPosition(sf::Vector2f(760, 800));
+				mPlayer->setFlip(false);
+				mPlayer->UpdateAnimationStyle();
+
+				mEndingFade1 = true;
+			}
+		}
+		else if (mEndingFade1 && !mEndingFade2)
+		{
+			FadeI.fadeIn(frameTime);
+			if (FadeI.getFaded())
+			{
+				DialogHandler::startDialogue("Ending_Beach");
+
+				mEndingFade2 = true;
+			}
+		}
+		else if (DialogHandler::getDialogue("Ending_Beach").getHasStopped() && !mEndingFade3)
+		{
+			FadeI.fadeOut(frameTime);
+			if (FadeI.getFaded())
+			{
+				//FadeI.setAlpha(255);
+				mNpcs.erase("Brandr");
+				mNpcs.erase("Brynja");
+				mNpcs.erase("Yngvarr");
+				mNpcs.erase("Valdis");
+				mNpcs.erase("Alfr");
+				mNpcs.erase("Dagny");
+				mNpcs.erase("Leifr");
+				mNpcs.erase("Finnr");
+
+				mEndingFade3 = true;
+			}
+		}
+		else if (mEndingFade3 && !mEndingFade4)
+		{
+			FadeI.fadeIn(frameTime);
+			if (FadeI.getFaded())
+			{
+				mPortals[BeachToTavernOutside]->setCannotDialogue("Brandr and the others went that way... I should go the other.");
+				mPortals[BeachToRoad]->setWorking(true);
+				mPortals[BeachToBeachHill]->setWorking(true);
+				Act1Events::handleEvent(Act1Event::Beach_Ending);
+				mEndingFade4 = true;
+			}
+		}
+	}
+}
+
+void Level_Beach::talkToNpcs()
+{
+
+	if (!Act1Events::hasBeenTriggered(Act1Event::Beach_Ending))
+	{
+		/* ==== Check if talked to Dagny ===== */
+		if (DialogHandler::getDialogue("Dagny_Beach").getActiveConversation())
+			Act1Events::triggerEvent(Act1Event::Beach_Dagny);
+		if (Act1Events::hasBeenTriggered(Act1Event::Beach_Dagny) && !Act1Events::hasBeenHandled(Act1Event::Beach_Dagny))
+			if (DialogHandler::getDialogue("Dagny_Beach").getHasStopped())
+				Act1Events::handleEvent(Act1Event::Beach_Dagny);
+
+		/* ==== Check if talked to Leifr ===== */
+		if (DialogHandler::getDialogue("Leifr_Beach").getActiveConversation())
+			Act1Events::triggerEvent(Act1Event::Beach_Leifr);
+		if (Act1Events::hasBeenTriggered(Act1Event::Beach_Leifr) && !Act1Events::hasBeenHandled(Act1Event::Beach_Leifr))
+			if (DialogHandler::getDialogue("Leifr_Beach").getHasStopped())
+				Act1Events::handleEvent(Act1Event::Beach_Leifr);
+
+		/* ==== Check if talked to Yngvarr ===== */
+		if (DialogHandler::getDialogue("Yngvarr_Beach").getActiveConversation())
+			Act1Events::triggerEvent(Act1Event::Beach_Yngvarr);
+		if (Act1Events::hasBeenTriggered(Act1Event::Beach_Yngvarr) && !Act1Events::hasBeenHandled(Act1Event::Beach_Yngvarr))
+			if (DialogHandler::getDialogue("Yngvarr_Beach").getHasStopped())
+				Act1Events::handleEvent(Act1Event::Beach_Yngvarr);
+
+		/* ==== Check if talked to Alfr ===== */
+		if (DialogHandler::getDialogue("Alfr_Beach").getActiveConversation())
+			Act1Events::triggerEvent(Act1Event::Beach_Alfr);
+		if (Act1Events::hasBeenTriggered(Act1Event::Beach_Alfr) && !Act1Events::hasBeenHandled(Act1Event::Beach_Alfr))
+			if (DialogHandler::getDialogue("Yngvarr_Beach").getHasStopped())
+				Act1Events::handleEvent(Act1Event::Beach_Alfr);
+
+		/* ==== Check if talked to Valdis ===== */
+		if (DialogHandler::getDialogue("Valdis_Beach").getActiveConversation())
+			Act1Events::triggerEvent(Act1Event::Beach_Valdis);
+		if (Act1Events::hasBeenTriggered(Act1Event::Beach_Valdis) && !Act1Events::hasBeenHandled(Act1Event::Beach_Valdis))
+			if (DialogHandler::getDialogue("Valdis_Beach").getHasStopped())
+				Act1Events::handleEvent(Act1Event::Beach_Valdis);
+
+		/* ==== Check if talked to Finnr ===== */
+		if (DialogHandler::getDialogue("Finnr_Beach").getActiveConversation())
+			Act1Events::triggerEvent(Act1Event::Beach_Finnr);
+		if (Act1Events::hasBeenTriggered(Act1Event::Beach_Finnr) && !Act1Events::hasBeenHandled(Act1Event::Beach_Finnr))
+			if (DialogHandler::getDialogue("Finnr_Beach").getHasStopped())
+				Act1Events::handleEvent(Act1Event::Beach_Finnr);
+
+		/* ==== Check if talked to All ===== */
+		if (Act1Events::hasBeenHandled(Act1Event::Beach_Finnr) && Act1Events::hasBeenHandled(Act1Event::Beach_Alfr) &&
+			Act1Events::hasBeenHandled(Act1Event::Beach_Dagny) && Act1Events::hasBeenHandled(Act1Event::Beach_Leifr) &&
+			Act1Events::hasBeenHandled(Act1Event::Beach_Yngvarr) && Act1Events::hasBeenHandled(Act1Event::Beach_Valdis))
+		{
+			Act1Events::triggerEvent(Act1Event::Beach_Ending);
+		}
+	}
+}

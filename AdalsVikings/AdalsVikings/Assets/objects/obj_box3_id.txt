@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $box3$
+*Name: Box
+*ispickupable: False
+*pickup: "I'm not a thief, I'm a Viking!" ~2,0
+*lookat: "This one's filled with weapons. Did Brandr bring NO food?" ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:85     Y:60

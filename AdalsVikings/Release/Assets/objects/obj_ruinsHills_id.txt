@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $ruinsHills$
+*Name: Ruins
+*ispickupable: False
+*pickup: "Nah." ~2,0
+*lookat: "Looks like ruins of some kind." ~1,5
+*deny: "I can't do that" ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:70 Y:60

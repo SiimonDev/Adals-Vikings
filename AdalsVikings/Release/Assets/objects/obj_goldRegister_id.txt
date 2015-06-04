@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $goldRegister$
+*Name: Gold Register
+*ispickupable: False
+*pickup: "No coins here... and why would I need a gold register?" ~2,0
+*lookat: "It's empty. Sadly." ~2,0
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:85   Y:70

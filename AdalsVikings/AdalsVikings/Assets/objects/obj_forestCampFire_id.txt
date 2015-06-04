@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $forestCampFire$
+*Name: Fire
+*ispickupable: False
+*pickup: "Hmm I could proably be able to use a torch to get that fire!" ~0,0
+*lookat: "What is that thing they're trying to burn?" ~2,5
+*deny: "No I'm not THAT spiritual." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:250    Y:250

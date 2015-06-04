@@ -1,33 +1,50 @@
 #pragma once
-#include "SFML\Graphics.hpp"
 #include "..\Objects\Player.h"
-#include <map>
-#include <memory>
+#include "..\Logics\PathFinder.h"
+#include "..\Logics\IndexRenderer.h"
+#include "..\Logics\ResourceManager.h"
+#include <SFML\Graphics.hpp>
 
 class Portal
 {
 public:
-	Portal();
-	Portal(Portal *portal);
-	Portal(sf::Vector2f area, sf::Vector2f position);
-	Portal(sf::Vector2f area, sf::Vector2f position, Portal *portal);
-	~Portal();
+	/* Level ID, Size, Position, Player Movement, Player Spawn */
+	Portal(LevelFolder::ID levelID, sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn);
 
-	void render(sf::RenderWindow &window);
+	void render(IndexRenderer &iRenderer);
 	void update(sf::Time &frametime, Player &player);
+	void load();
+	void unload();
 	void setGateway(Portal *portal);
-	void setArea(sf::Vector2f area);
-	void setPosition(sf::Vector2f position);
-	bool setRightWorld(bool value);
+	void setArea(sf::Vector2f &area);
+	void setPosition(sf::Vector2f &position);
+	void setWalkable(bool value);
+	void setActivate(bool value);
 	void setActive();
-	void playerCollision(Player &player);
+	void portalTravel(Player &player);
+	void walkPath(Player &player);
+	void setCannotDialogue(std::string string);
+	void setWorking(bool value);
+	void setCursorRotation(float rotation);
 
-	sf::Vector2f getPosition();
+	bool getActivated();
+	bool getWorking();
+	bool getWalkAble();
+	bool isInside();
+	sf::Vector2f &getSpawn();
+	float getCursorRotation();
+
+	LevelFolder::ID getCurrentLevel();
+	LevelFolder::ID getConnectedLevel();
 
 private:
-	sf::RectangleShape mArea;
-	TileMap mTileMap;
 	Portal* mConnectedPortal;
-	bool mIsActive, mSwitchPortal, mRightWorld;
-};
+	std::string mCannotDialogue;
+	sf::RectangleShape mArea;
+	sf::Vector2f mPortalMovement, mPlayerSpawn;
 
+	LevelFolder::ID mCurrentLevel;
+
+	bool mIsActive, mSwitchPortal, mWalkable, mWorking;
+	float mCursorRotation;
+};

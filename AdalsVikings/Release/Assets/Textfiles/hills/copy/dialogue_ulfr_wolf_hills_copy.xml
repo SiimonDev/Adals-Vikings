@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Maybe i will if he starts singing." />
+	<lookText lookText="That's Alfr, the village Skald. He's great at any instrument. Though I've heard his singing voice  is awful." />
+	<text character="Ulfr" disabled="false" default="false" say="Okay...." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="That's a wolf...." timer="2.0" turned="false" />
+	<text character="Ulfr" disabled="false" default="false" say="Let's not go in there again..." timer="2.0" turned="false" />
+	<stopConversation />
+</conversation>

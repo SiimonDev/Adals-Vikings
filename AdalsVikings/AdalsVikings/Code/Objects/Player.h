@@ -1,50 +1,134 @@
 #pragma once
-#include <SFML\Graphics.hpp>
 #include "..\Levels\TileMap.h"
 #include "..\Logics\IndexRenderer.h"
+#include "..\Logics\Animation.h"
+#include "..\Interface\Inventory.h"
+#include "..\Interface\HUD.h"
+#include <SFML\Graphics.hpp>
 
 typedef std::vector<sf::Vertex> Path;
+
+namespace Intention
+{
+	enum ID
+	{
+		None,
+		PickUp,
+		Talk,
+		Look,
+		Interact
+	};
+}
+
+namespace AnimationStyle
+{
+	enum ID
+	{
+		Right,
+		Left,
+		UpRight,
+		UpLeft,
+		Up,
+		Down,
+		PlayerStop,
+		PlayerTalk,
+		PlayerMonolog,
+		PlayerIdle,
+		PlayerPickup,
+		Update
+	};
+}
+
+namespace AnimationType
+{
+	enum ID
+	{
+		Movement,
+		Idle,
+		TalkToNpc,
+		TalkToPlayer,
+		Pickup
+	};
+}
 
 class Player
 {
 public:
 	Player();
-	~Player();
 
-	sf::Vector2f getPosition();
-	void load(TileMap &tileMap, sf::Vector2f &spawnPosition);
+	void load();
 	void unload();
-	void move(sf::Time &frameTime);
-	void walkPath(Path &path);
-	void setIndex(int index);
-	void setPosition(sf::Vector2f position);
-
 	void update(sf::Time &frameTime);
 	void render(IndexRenderer &iRenderer);
 
-private:
-	int mWidth;
-	int mHeight;
+	bool isInventoryActive();
+	bool addItemToInventory(std::string objID);
+	bool hasItemInInventory(std::string objID);
+	bool removeItemFromInventory(std::string objID);
+	void saveInventory();
+	void refreshInventory();
+	void clearInventory();
+	void toggleInventory();
+	void move(sf::Time &frameTime);
+	void walkPath(Path &path);
+	void playFootstepSound();
+	void UpdateAnimationStyle();
 
+	void setBearCostume(bool value);
+
+	sf::Sprite getSprite();
+	sf::Vector2f getPosition();
+	std::string getDroppedObjectID();
+	std::string getSnappedObjectID();
+	Animation &getAnimation();
+
+	Intention::ID getIntention();
+	bool isDestinationReached();
+
+	void setIndex(int index);
+	void setPosition(sf::Vector2f &position);
+	void setIntention(Intention::ID intention);
+	void setAnimationStyle(AnimationType::ID type);
+	void setFlip(bool value);
+	void setFootsteps(Footsteps::ID footsteps);
+
+	std::string &getName();
+	float &getCurrentAlpha();
+
+private:
+	Path mCurrentPath;
+
+	sf::Vector2f mProportions;
+	sf::Vector2f mVelocity;
 	sf::Vector2f mPosition;
 	sf::Vector2f mScale;
-	mv::ISprite mISprite;
-
-	float mSpeed;
-	float scaleSpeed;
-	float rotationSpeed;
 
 	sf::Vertex mLastTarget;
 	sf::Vertex mCurrentTarget;
-	sf::Vector2f mDistanceToTarget;
-	Path mCurrentPath;
+
+	int mWidth;
+	int mHeight;
+	int mPlayerPadding;
 
 	bool mDestinationReached;
 	bool mTargetReached;
-	sf::Vector2f mVelocity;
+	bool mFlip;
+	bool mIsBear;
 
-	int mStepsTaken;
-	int mTotalSteps;
-	float mAlphaPerStep;
+	std::string mName;
+
+	float mSpeed;
 	float mCurrentAlpha;
+	float mCurrentSpeed;
+	float mTargetSpeed;
+	float mAcceleration;
+	float mDistanceTraveled;
+	float mTotalDistance;
+
+	Inventory mInventory;
+	Animation mPlayerAnimation;
+	Intention::ID mIntention;
+	AnimationStyle::ID mAnimationStyle;
+
+	Footsteps::ID mFootsteps;
 };

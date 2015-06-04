@@ -1,113 +1,167 @@
 #include "Portal.h"
 #include "..\Logics\MouseState.h"
-#include "..\Logics\LevelManager.h"
-#include <iostream>
 #include "..\Logics\PathFinder.h"
-#include "TileMap.h"
+#include "..\Logics\ResourceManager.h"
+#include "..\Logics\Debug.h"
+#include "..\Logics\KeyboardState.h"
+#include "..\Dialog\PlayerMonologue.h"
+#include "..\Interface\LoadingScreen.h"
+#include <iostream>
 
-Portal::Portal()
-	: mIsActive(false)
-	, mSwitchPortal(false)
-	, mRightWorld(false)
-{
-	mArea.setFillColor(sf::Color::Red);
-}
-Portal::Portal(Portal *portal)
-	: mIsActive(false)
-	, mSwitchPortal(false)
-	, mRightWorld(false)
-	, mConnectedPortal(portal)
-{
-	mArea.setFillColor(sf::Color::Red);
-}
-Portal::Portal(sf::Vector2f area, sf::Vector2f position, Portal *portal)
-	: mIsActive(false)
-	, mSwitchPortal(false)
-	, mRightWorld(false)
-	, mArea(area)
-	, mConnectedPortal(portal)
-{
-	mArea.setPosition(position);
-	mArea.setFillColor(sf::Color::Red);
-}
-Portal::Portal(sf::Vector2f area, sf::Vector2f position)
+Portal::Portal(LevelFolder::ID levelID, sf::Vector2f area, sf::Vector2f position, sf::Vector2f portalMovement, sf::Vector2f mPlayerSpawn)
 	: mArea(area)
 	, mIsActive(false)
 	, mSwitchPortal(false)
-	, mRightWorld(false)
+	, mWalkable(false)
+	, mWorking(false)
+	, mPortalMovement(portalMovement)
+	, mPlayerSpawn(mPlayerSpawn)
+	, mCurrentLevel(levelID)
+	, mCursorRotation(0)
 {
 	mArea.setPosition(position);
-	mArea.setFillColor(sf::Color::Red);
+	mArea.setFillColor(sf::Color(255, 0, 0, 50));
 }
 
-
-Portal::~Portal()
+void Portal::render(IndexRenderer &iRenderer)
 {
+	if (DebugMode)
+		iRenderer.addShape(mArea, 99999);
 }
 
-void Portal::render(sf::RenderWindow &window)
-{
-	window.draw(mArea);
-}
 void Portal::update(sf::Time &frametime, Player &player)
 {
 	setActive();
-	playerCollision(player);
 }
+
+void Portal::load()
+{
+}
+
+void Portal::unload()
+{
+	mIsActive = false;
+	mSwitchPortal = false;
+}
+
 void Portal::setGateway(Portal *portal2)
 {
 	mConnectedPortal = portal2;
 }
-void Portal::setArea(sf::Vector2f area)
+
+void Portal::setArea(sf::Vector2f &area)
 {
 	mArea.setSize(area);
 }
-void Portal::setPosition(sf::Vector2f position)
+
+void Portal::setPosition(sf::Vector2f &position)
 {
 	mArea.setPosition(position);
 }
+
 void Portal::setActive()
 {
-	if (MouseState::getInstance().getMousePosition().x < mArea.getGlobalBounds().left + mArea.getGlobalBounds().width
-		&& MouseState::getInstance().getMousePosition().x > mArea.getGlobalBounds().left
-		&& MouseState::getInstance().getMousePosition().y > mArea.getGlobalBounds().top
-		&& MouseState::getInstance().getMousePosition().y < mArea.getGlobalBounds().top + mArea.getGlobalBounds().height
-		&& sf::Mouse::isButtonPressed(sf::Mouse::Left))
-	{
+	if (isInside())
+		MouseState::setCursorType(CursorType::Arrow, mCursorRotation);
+	if (isInside() && MouseState::isClicked(sf::Mouse::Left))
 		mIsActive = true;
-	}
-	else if ((MouseState::getInstance().getMousePosition().x > mArea.getGlobalBounds().left + mArea.getGlobalBounds().width
-		|| MouseState::getInstance().getMousePosition().x < mArea.getGlobalBounds().left
-		|| MouseState::getInstance().getMousePosition().y > mArea.getGlobalBounds().top
-		|| MouseState::getInstance().getMousePosition().y < mArea.getGlobalBounds().top + mArea.getGlobalBounds().height)
-		&& sf::Mouse::isButtonPressed(sf::Mouse::Left))
-	{
+	else if (MouseState::isClicked(sf::Mouse::Left))
 		mIsActive = false;
-	}
-
 }
-void Portal::playerCollision(Player &player)
+
+void Portal::setActivate(bool value)
 {
-	if (player.getPosition().x > mArea.getGlobalBounds().left
-		&& player.getPosition().x < mArea.getGlobalBounds().left + mArea.getGlobalBounds().width
-		&& player.getPosition().y > mArea.getGlobalBounds().top
-		&& player.getPosition().y < mArea.getGlobalBounds().top + mArea.getGlobalBounds().height
+	mSwitchPortal = value;
+	mIsActive = value;
+}
+void Portal::setWorking(bool value)
+{
+	mWorking = value;
+}
+void Portal::setCursorRotation(float rotation)
+{
+	mCursorRotation = rotation;
+}
+void Portal::portalTravel(Player &player)
+{
+	if (player.getSprite().getPosition().x > mArea.getGlobalBounds().left
+		&& player.getSprite().getPosition().x < mArea.getGlobalBounds().left + mArea.getGlobalBounds().width
+		&& player.getSprite().getPosition().y > mArea.getGlobalBounds().top
+		&& player.getSprite().getPosition().y < mArea.getGlobalBounds().top + mArea.getGlobalBounds().height
 		&& mIsActive == true)
 	{
-		mSwitchPortal = true;
-		std::cout << "It's Working!" << std::endl;
-		player.setPosition(mConnectedPortal->getPosition());
-		
-		std::cout << player.getPosition().x << " " << player.getPosition().y << std::endl;
+		if (mWorking && LSI.getIsDone())
+		{
+			mSwitchPortal = true;
+			player.setPosition(mConnectedPortal->getSpawn());
+			mConnectedPortal->setWalkable(true);
+		}
+		else if (mWorking && !LSI.getIsDone())
+		{
+			LSI.setIsWorking(true);
+		}
+		else if (!mWorking)
+		{
+			Dialog dialog = Dialog(mCannotDialogue, 2);
+			PlayerMonologueI.displayDialog(dialog);
+		}
 	}
 }
-bool Portal::setRightWorld(bool value)
+
+void Portal::walkPath(Player &player)
 {
-	mRightWorld = value;
-	return mRightWorld;
+	player.walkPath(PathFinder::getPath(player.getPosition(), mPortalMovement));
+	setWalkable(false);
 }
 
-sf::Vector2f Portal::getPosition()
+void Portal::setWalkable(bool value)
 {
-	return mArea.getPosition();
+	mWalkable = value;
+}
+void Portal::setCannotDialogue(std::string string)
+{
+	mCannotDialogue = string;
+}
+
+bool Portal::getWalkAble()
+{
+	return mWalkable;
+}
+
+bool Portal::isInside()
+{
+	return
+		(MouseState::getMousePosition().x < mArea.getGlobalBounds().left + mArea.getGlobalBounds().width
+		&& MouseState::getMousePosition().x > mArea.getGlobalBounds().left
+		&& MouseState::getMousePosition().y > mArea.getGlobalBounds().top
+		&& MouseState::getMousePosition().y < mArea.getGlobalBounds().top + mArea.getGlobalBounds().height);
+}
+
+bool Portal::getWorking()
+{
+	return mWorking;
+}
+
+bool Portal::getActivated()
+{
+	return mSwitchPortal;
+}
+
+sf::Vector2f &Portal::getSpawn()
+{
+	return mPlayerSpawn;
+}
+float Portal::getCursorRotation()
+{
+	return mCursorRotation;
+}
+
+LevelFolder::ID Portal::getCurrentLevel()
+{
+	return mCurrentLevel;
+}
+
+LevelFolder::ID Portal::getConnectedLevel()
+{
+	return mConnectedPortal->getCurrentLevel();
 }

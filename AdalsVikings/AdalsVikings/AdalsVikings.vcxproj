@@ -1,8 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug Static|Win32">
+      <Configuration>Debug Static</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release Static|Win32">
+      <Configuration>Release Static</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
@@ -11,43 +19,151 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Code\Interface\ActionWheel.cpp" />
-    <ClCompile Include="Code\Interface\Button.cpp" />
+    <ClCompile Include="Code\Dialog\DialogHandler.cpp" />
+    <ClCompile Include="Code\Dialog\DialogueTree.cpp" />
+    <ClCompile Include="Code\Dialog\PlayerMonologue.cpp" />
+    <ClCompile Include="Code\Dialog\pugixml.cpp" />
+    <ClCompile Include="code\Interface\ActionWheel.cpp" />
+    <ClCompile Include="code\Interface\Button.cpp" />
+    <ClCompile Include="Code\Interface\HUD.cpp" />
+    <ClCompile Include="Code\Interface\Inventory.cpp" />
+    <ClCompile Include="Code\Interface\InvTile.cpp" />
+    <ClCompile Include="Code\Interface\LoadingScreen.cpp" />
+    <ClCompile Include="Code\Interface\Menus\MainMenuPanel.cpp" />
+    <ClCompile Include="Code\Interface\Menus\MenuHandler.cpp" />
+    <ClCompile Include="Code\Interface\Menus\MenuPanel.cpp" />
+    <ClCompile Include="Code\Interface\Menus\PauseMenuPanel.cpp" />
+    <ClCompile Include="Code\Interface\Menus\PlayPanel.cpp" />
+    <ClCompile Include="Code\Levels\Level_Beach.cpp" />
+    <ClCompile Include="Code\Levels\Level_Beach_Hills.cpp" />
+    <ClCompile Include="Code\Levels\Level_Camp_Finished.cpp" />
+    <ClCompile Include="Code\Levels\Level_Camp_Clearing.cpp" />
+    <ClCompile Include="Code\Levels\Level_Cavern_Left.cpp" />
+    <ClCompile Include="Code\Levels\Level_Cavern_Right.cpp" />
+    <ClCompile Include="Code\Levels\Level_Cavern_Ruins_Left.cpp" />
+    <ClCompile Include="Code\Levels\Level_Cavern_Ruins_Right.cpp" />
+    <ClCompile Include="Code\Levels\Level_Church_Outside.cpp" />
     <ClCompile Include="Code\Levels\Level.cpp" />
+    <ClCompile Include="Code\Levels\Level_Church_Inside.cpp" />
+    <ClCompile Include="Code\Levels\Level_City_Gates.cpp" />
+    <ClCompile Include="Code\Levels\Level_Cliffs_Down.cpp" />
+    <ClCompile Include="Code\Levels\Level_Cliffs_Up.cpp" />
+    <ClCompile Include="Code\Levels\Level_Farm_1.cpp" />
+    <ClCompile Include="Code\Levels\Level_Farm_2.cpp" />
+    <ClCompile Include="Code\Levels\Level_Forest_Camp.cpp" />
+    <ClCompile Include="Code\Levels\Level_Forest_Road.cpp" />
+    <ClCompile Include="Code\Levels\Level_Hills.cpp" />
+    <ClCompile Include="Code\Levels\Level_Ruins.cpp" />
+    <ClCompile Include="Code\Levels\Level_Tavern_Inside.cpp" />
+    <ClCompile Include="Code\Levels\Level_Tavern_Outside.cpp" />
     <ClCompile Include="Code\Levels\Portal.cpp" />
     <ClCompile Include="Code\Levels\PortalLoader.cpp" />
-    <ClCompile Include="Code\Levels\TestLevel.cpp" />
+    <ClCompile Include="Code\Levels\Level_Road.cpp" />
+    <ClCompile Include="Code\Levels\Level_Ship_1.cpp" />
+    <ClCompile Include="Code\Levels\Level_Ship_2.cpp" />
+    <ClCompile Include="Code\Levels\Level_Template.cpp" />
     <ClCompile Include="Code\Levels\TileMap.cpp" />
+    <ClCompile Include="Code\Logics\Act1Events.cpp" />
+    <ClCompile Include="Code\Logics\BoatEvents.cpp" />
+    <ClCompile Include="Code\Logics\Animation.cpp" />
+    <ClCompile Include="Code\Logics\AudioPlayer.cpp" />
+    <ClCompile Include="Code\Logics\Debug.cpp" />
+    <ClCompile Include="Code\Logics\Fade.cpp" />
     <ClCompile Include="Code\Logics\Game.cpp" />
     <ClCompile Include="Code\Logics\IndexRenderer.cpp" />
-    <ClCompile Include="Code\Logics\LevelManager.cpp" />
+    <ClCompile Include="Code\Logics\KeyboardState.cpp" />
+    <ClCompile Include="Code\Levels\LevelManager.cpp" />
     <ClCompile Include="Code\Logics\MouseState.cpp" />
     <ClCompile Include="Code\Logics\PathFinder.cpp" />
     <ClCompile Include="Code\Logics\ResourceManager.cpp" />
+    <ClCompile Include="Code\Logics\RoundedRectangleShape.cpp" />
+    <ClCompile Include="Code\Logics\VideoFile.cpp" />
+    <ClCompile Include="Code\Logics\WindowState.cpp" />
     <ClCompile Include="Code\main.cpp" />
+    <ClCompile Include="Code\NPCs\NPC.cpp" />
+    <ClCompile Include="Code\NPCs\NpcHandler.cpp" />
     <ClCompile Include="Code\Objects\Object.cpp" />
     <ClCompile Include="Code\Objects\ObjectHandler.cpp" />
     <ClCompile Include="Code\Objects\Player.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\Interface\ActionWheel.h" />
-    <ClInclude Include="Code\Interface\Button.h" />
+    <ClInclude Include="Code\Dialog\Dialog.h" />
+    <ClInclude Include="Code\Dialog\DialogHandler.h" />
+    <ClInclude Include="Code\Dialog\DialogueTree.h" />
+    <ClInclude Include="Code\Dialog\PlayerMonologue.h" />
+    <ClInclude Include="Code\Dialog\pugiconfig.hpp" />
+    <ClInclude Include="Code\Dialog\pugixml.hpp" />
+    <ClInclude Include="code\Interface\ActionWheel.h" />
+    <ClInclude Include="code\Interface\Button.h" />
+    <ClInclude Include="Code\Interface\VideoHandler.h" />
+    <ClInclude Include="Code\Interface\HUD.h" />
+    <ClInclude Include="Code\Interface\Inventory.h" />
+    <ClInclude Include="Code\Interface\InvTile.h" />
+    <ClInclude Include="Code\Interface\LoadingScreen.h" />
+    <ClInclude Include="Code\Interface\Menus\MainMenuPanel.h" />
+    <ClInclude Include="Code\Interface\Menus\MenuHandler.h" />
+    <ClInclude Include="Code\Interface\Menus\MenuPanel.h" />
+    <ClInclude Include="Code\Interface\Menus\PauseMenuPanel.h" />
+    <ClInclude Include="Code\Interface\Menus\PlayPanel.h" />
+    <ClInclude Include="Code\Levels\Level_Beach.h" />
+    <ClInclude Include="Code\Levels\Level_Beach_Hills.h" />
+    <ClInclude Include="Code\Levels\Level_Camp_Clearing.h" />
+    <ClInclude Include="Code\Levels\Level_Camp_Finished.h" />
+    <ClInclude Include="Code\Levels\Level_Cavern_Left.h" />
+    <ClInclude Include="Code\Levels\Level_Cavern_Right.h" />
+    <ClInclude Include="Code\Levels\Level_Cavern_Ruins_Left.h" />
+    <ClInclude Include="Code\Levels\Level_Cavern_Ruins_Right.h" />
+    <ClInclude Include="Code\Levels\Level_Church_Outside.h" />
     <ClInclude Include="Code\Levels\Level.h" />
+    <ClInclude Include="Code\Levels\Level_Church_Inside.h" />
+    <ClInclude Include="Code\Levels\Level_City_Gates.h" />
+    <ClInclude Include="Code\Levels\Level_Cliffs_Down.h" />
+    <ClInclude Include="Code\Levels\Level_Cliffs_Up.h" />
+    <ClInclude Include="Code\Levels\Level_Farm_1.h" />
+    <ClInclude Include="Code\Levels\Level_Farm_2.h" />
+    <ClInclude Include="Code\Levels\Level_Forest_Camp.h" />
+    <ClInclude Include="Code\Levels\Level_Forest_Road.h" />
+    <ClInclude Include="Code\Levels\Level_Hills.h" />
+    <ClInclude Include="Code\Levels\Level_Ruins.h" />
+    <ClInclude Include="Code\Levels\Level_Tavern_Inside.h" />
+    <ClInclude Include="Code\Levels\Level_Tavern_Outside.h" />
     <ClInclude Include="Code\Levels\Portal.h" />
     <ClInclude Include="Code\Levels\PortalLoader.h" />
-    <ClInclude Include="Code\Levels\TestLevel.h" />
+    <ClInclude Include="Code\Levels\Level_Road.h" />
+    <ClInclude Include="Code\Levels\Level_Ship_1.h" />
+    <ClInclude Include="Code\Levels\Level_Ship_2.h" />
+    <ClInclude Include="Code\Levels\Level_Template.h" />
     <ClInclude Include="Code\Levels\TileMap.h" />
+    <ClInclude Include="Code\Logics\Act1Events.h" />
+    <ClInclude Include="Code\Logics\BoatEvents.h" />
+    <ClInclude Include="Code\Logics\Animation.h" />
+    <ClInclude Include="Code\Logics\AudioPlayer.h" />
+    <ClInclude Include="Code\Logics\Debug.h" />
+    <ClInclude Include="Code\Logics\Fade.h" />
+    <ClInclude Include="Code\Logics\FolderHelper.h" />
     <ClInclude Include="Code\Logics\Game.h" />
     <ClInclude Include="Code\Logics\IndexRenderer.h" />
-    <ClInclude Include="Code\Logics\ISprite.h" />
-    <ClInclude Include="Code\Logics\LevelManager.h" />
+    <ClInclude Include="Code\Logics\KeyboardState.h" />
+    <ClInclude Include="Code\Levels\LevelManager.h" />
     <ClInclude Include="Code\Logics\MouseState.h" />
     <ClInclude Include="Code\Logics\Node.h" />
     <ClInclude Include="Code\Logics\PathFinder.h" />
     <ClInclude Include="Code\Logics\ResourceManager.h" />
+    <ClInclude Include="Code\Logics\RoundedRectangleShape.h" />
+    <ClInclude Include="Code\Logics\VideoFile.h" />
+    <ClInclude Include="Code\Logics\WindowState.h" />
+    <ClInclude Include="Code\NPCs\NPC.h" />
+    <ClInclude Include="Code\NPCs\NpcHandler.h" />
     <ClInclude Include="Code\Objects\Object.h" />
     <ClInclude Include="Code\Objects\ObjectHandler.h" />
     <ClInclude Include="Code\Objects\Player.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AdalsVikings.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon_128.ico" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9E6078BF-5E94-40B5-8F88-6FBDC7F73B99}</ProjectGuid>
@@ -59,9 +175,22 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Static|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v120</PlatformToolset>
@@ -74,7 +203,13 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release Static|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -83,8 +218,20 @@
     <IncludePath>include;$(IncludePath)</IncludePath>
     <LibraryPath>lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>include;$(IncludePath)</IncludePath>
+    <LibraryPath>lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Static|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -103,6 +250,24 @@
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib;sfml-audio-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -113,12 +278,37 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Static|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-audio-s.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

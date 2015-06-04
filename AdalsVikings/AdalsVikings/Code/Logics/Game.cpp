@@ -1,30 +1,150 @@
 #include "Game.h"
-#include "..\Objects\Player.h"
-#include "..\Levels\TileMap.h"
-#include "Node.h"
-#include "PathFinder.h"
+#include "..\Objects\ObjectHandler.h"
+#include "..\Levels\LevelManager.h"
+#include "..\Interface\Menus\MenuHandler.h"
+#include "..\Interface\VideoHandler.h"
+#include "BoatEvents.h"
 #include "MouseState.h"
+#include "KeyboardState.h"
+#include "WindowState.h"
+#include "Debug.h"
 #include "IndexRenderer.h"
+#include "AudioPlayer.h"
+#include "Fade.h"
+#include "VideoFile.h"
 
 sf::Time frameTime = sf::seconds(1.f / 60.f);
 
 int mWidth = 1280;
 int mHeight = 720;
 
-IndexRenderer indexRenderer;
+IndexRenderer iRenderer;
+
+bool runGame = false;
 
 Game::Game()
-	:mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings")
-	, mLevelManager()
+	:mWindow(sf::VideoMode(mWidth, mHeight), "Adal’s Vikings"/*, sf::Style::Fullscreen*/)
 {
 	mWindow.setView(sf::View(sf::FloatRect(0, 0, 1920, 1080)));
-	MouseState::getInstance().initialize(mWindow);
-	indexRenderer.setWindow(mWindow);
+	mWindow.setMouseCursorVisible(false);
+
+	icon.loadFromFile("assets/images/interface/icon_32.png");
+	mWindow.setIcon(32, 32, icon.getPixelsPtr());
+
+	WinState.initialize(mWindow);
+	KeyboardState::initialize();
+	MouseState::initialize();
+
+	LSI.initialize();
+	LSI.startLoading(LoadTask::BootGame, &VideoHandlerI.getSplashScreen());
 }
 
 Game::~Game()
 {
 
+}
+
+void Game::update(sf::Time frameTime)
+{
+	if (!LSI.getIsDone())
+	{
+		LSI.update(frameTime);
+	}
+	else if (!LSI.getIsStarted())
+	{
+		MHI.update(frameTime);
+		if (runGame)
+		{
+			LVLMI.update(frameTime);
+
+			// Check for pause menu events
+			if (MHI.getEvent() == MenuEvent::MainMenuPressed)
+			{
+				LSI.startLoading(LoadTask::LoadMainMenu);
+				runGame = false;
+			}
+			else if (MHI.getEvent() == MenuEvent::ResumePressed)
+			{
+				MHI.popMenu();
+			}
+			else if (VideoHandlerI.endCreditsPlaying())
+			{
+				runGame = false;
+			}
+		}
+
+		// Check for main menu events
+		if (MHI.getEvent() == MenuEvent::NewGamePressed)
+		{
+			LSI.startLoading(LoadTask::StartGame, &VideoHandlerI.getIntroVideo());
+			runGame = true;
+		}
+		else if (MHI.getEvent() == MenuEvent::LoadGamePressed)
+		{
+			LSI.startLoading(LoadTask::LoadGame);
+			runGame = true;
+		}
+		else if (MHI.getEvent() == MenuEvent::ExitGamePressed)
+		{
+			LVLMI.save("assets/saves/");
+			mWindow.close();
+		}
+		else if (MHI.getEvent() == MenuEvent::ExitMainMenuPressed)
+		{
+			mWindow.close();
+		}
+		AudioPlayer::update(frameTime);
+	}
+
+	// Always Last
+	KeyboardState::update(frameTime);
+	MouseState::update(frameTime);
+	DebugI.update(frameTime);
+}
+
+void Game::render()
+{
+	mWindow.clear(sf::Color::Black);
+	iRenderer.clear();
+	
+	if (!LSI.getIsDone())
+	{
+		LSI.render(iRenderer);
+		iRenderer.display();
+	}
+	else if (!LSI.getIsStarted())
+	{
+		MHI.render(iRenderer);
+		if (runGame){
+			LVLMI.render(iRenderer);
+		}
+		iRenderer.display();
+		if (DebugMode){
+			PathFinder::getCurrentTileMap().render(iRenderer);
+		}
+	}
+	
+	MouseState::render();
+	mWindow.display();
+}
+
+void Game::processEvents()
+{
+	sf::Event event;
+	if (mWindow.pollEvent(event))
+	{
+		switch (event.type)
+		{
+		case sf::Event::Closed:
+			mWindow.close();
+			break;
+
+		default:
+			break;
+		}
+		MouseState::checkEvents(event.type);
+		KeyboardState::checkEvents(event.type);
+	}
 }
 
 void Game::run()
@@ -36,55 +156,15 @@ void Game::run()
 		timeSinceLastUpdate += clock.restart();
 		while (timeSinceLastUpdate >= frameTime)
 		{
+			/* ======== Prevents the game from freezing ======== */
+			if (timeSinceLastUpdate > sf::seconds(4))
+				timeSinceLastUpdate = sf::seconds(0);
+			/* ================================================= */
 			timeSinceLastUpdate -= frameTime;
-			processEvents();
 			update(frameTime);
+			processEvents();
 		}
 		render();
 	}
-}
-
-void Game::processEvents()
-{
-	sf::Event event;
-	while (mWindow.pollEvent(event))
-	{
-		switch (event.type)
-		{
-		case sf::Event::Closed:
-			mWindow.close();
-			break;
-
-		case sf::Event::Resized:
-			resize(event.size.width, event.size.height);
-			break;
-
-		default:
-			break;
-		}
-	}
-}
-
-void Game::resize(int width, int height)
-{
-	mWidth = width;
-	mHeight = height;
-
-	cout << "---- Window Resized! ----" << endl;
-	cout << "Width: " << mWidth << endl;
-	cout << "Height: " << mHeight << endl;
-}
-
-void Game::update(sf::Time frameTime)
-{
-	mLevelManager.update(frameTime);
-
-}
-
-void Game::render()
-{
-	mWindow.clear(sf::Color::Black);
-	mLevelManager.render(indexRenderer);
-	indexRenderer.display();
-	mWindow.display();
+	AudioPlayer::unload();
 }

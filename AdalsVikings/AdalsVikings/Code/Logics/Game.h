@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <SFML\Graphics.hpp>
-#include "LevelManager.h"
+#include "..\Interface\LoadingScreen.h"
 
 using namespace std;
 
@@ -14,12 +14,12 @@ public:
 	void run();
 
 private:
-	void processEvents();
-	void resize(int width, int height);
+	void loadGame();
+	void loadMenu();
 	void update(sf::Time gameTime);
 	void render();
-	
+	void processEvents();
 	sf::RenderWindow mWindow;
-	LevelManager mLevelManager;
+	sf::Image icon;
 };
 

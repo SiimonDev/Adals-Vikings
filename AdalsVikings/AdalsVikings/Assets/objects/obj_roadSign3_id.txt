@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $roadSign3$
+*Name: South: Forest. Be safe, don't light fires under trees.
+*ispickupable: False
+*pickup: "Nah." ~2,0
+*lookat: "South: Forest. Be safe, don't light fires under trees." ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X: 60  Y:25

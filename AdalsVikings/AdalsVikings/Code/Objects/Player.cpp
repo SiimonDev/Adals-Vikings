@@ -1,62 +1,196 @@
 #include "Player.h"
-#include <math.h>
-#include <iostream>
 #include "..\Logics\ResourceManager.h"
 #include "..\Logics\PathFinder.h"
+#include "..\Logics\MouseState.h"
+#include "..\Logics\KeyboardState.h"
+#include "..\Logics\AudioPlayer.h"
+#include <iostream>
+#include <math.h>
 
 Player::Player()
 	: mDestinationReached(true)
 	, mTargetReached(true)
 	, mVelocity()
-	, mStepsTaken(0)
-	, mTotalSteps(0)
-	, mAlphaPerStep(0)
 	, mCurrentAlpha(0)
+	, mPlayerAnimation()
+	, mName("Ulfr")
+	, mIntention(Intention::None)
 {
-	mScale = sf::Vector2f(1, 1);
-	mSpeed = 3.f;
-	/*mPosition = sf::Vector2f(750, 1000);*/
+	mSpeed = 6.f;
+	mPlayerPadding = 20;
+	mProportions = sf::Vector2f(285.7f, 512.f);
 }
 
-Player::~Player(){
-
-}
-
-sf::Vector2f Player::getPosition()
-{ 
-	return mPosition; 
-}
-
-void Player::load(TileMap &tileMap, sf::Vector2f &spawnPosition)
+void Player::load()
 {
-	mPosition.x = (PathFinder::getClosestFreeTile(spawnPosition).x * tileMap.getTileSize().x) + tileMap.getTileSize().x / 2;
-	mPosition.y = (PathFinder::getClosestFreeTile(spawnPosition).y * tileMap.getTileSize().y) + tileMap.getTileSize().y / 2;
-	sf::Color spawnColor = tileMap.getColorAt(sf::Vector2i(mPosition));
-	mScale.x = (1.f / 140.f) * float(spawnColor.a);
-	mScale.y = (1.f / 140.f) * float(spawnColor.a);
+	mInventory.load();
 
-	ResourceManager::GetInstance().load(Textures::Player, "Assets/Images/character_ulfr_back.png");
-	ResourceManager::GetInstance().getTexture(Textures::Player).setSmooth(true);
-	mISprite.getSprite().setTexture(ResourceManager::GetInstance().getTexture(Textures::Player));
-	mISprite.setIndex(3);
+	RMI.loadResource(Texture::UlfrIdle);
+	RMI.loadResource(Texture::UlfrWalk);
+	RMI.loadResource(Texture::UlfrTalkToNpc);
+	RMI.loadResource(Texture::UlfrTalkToPlayer);
+	RMI.loadResource(Texture::UlfrStop);
+	RMI.loadResource(Texture::UlfrPickup);
+	RMI.loadResource(Texture::UlfrWalkUp);
+	mPlayerAnimation.flip(false);
+	mPlayerAnimation.load(RMI.getResource(Texture::UlfrIdle), Frames(6, 3), sf::milliseconds(1300), sf::seconds(7), true);
+	mPlayerAnimation.setIndex(3);
+	mPlayerAnimation.setProportions(mProportions);
 
-	mWidth = ResourceManager::GetInstance().getTexture(Textures::Player).getSize().x;
-	mHeight = ResourceManager::GetInstance().getTexture(Textures::Player).getSize().y;
+	mWidth = mPlayerAnimation.getSprite().getTextureRect().width;
+	mHeight = mPlayerAnimation.getSprite().getTextureRect().height;
 }
-
 void Player::unload()
 {
-	ResourceManager::GetInstance().unload(Textures::Player);
+	mInventory.unload();
+	RMI.unloadResource(Texture::UlfrWalk);
+	RMI.unloadResource(Texture::UlfrIdle);
+	RMI.unloadResource(Texture::UlfrTalkToNpc);
+	RMI.unloadResource(Texture::UlfrTalkToPlayer);
+	RMI.unloadResource(Texture::UlfrStop);
+	RMI.unloadResource(Texture::UlfrPickup);
+	RMI.unloadResource(Texture::UlfrWalkUp);
+}
+
+bool Player::isInventoryActive()
+{
+	return mInventory.isActive();
+}
+bool Player::addItemToInventory(std::string objID)
+{
+	return mInventory.addItemToInventory(objID);
+}
+
+bool Player::hasItemInInventory(std::string objID)
+{
+	return mInventory.hasItemInInventory(objID);
+}
+bool Player::removeItemFromInventory(std::string objID)
+{
+	return mInventory.removeItemFromInventory(objID);
+}
+void Player::saveInventory()
+{
+	mInventory.saveInventoryToFile();
+}
+void Player::refreshInventory()
+{
+	mInventory.unloadObjects();
+	mInventory.loadObjects();
+}
+void Player::clearInventory()
+{
+	mInventory.clearInventory();
+}
+void Player::toggleInventory()
+{
+	mInventory.toggleInventory();
 }
 
 void Player::update(sf::Time &frameTime)
 {
-	move(frameTime);
+	if (KeyboardState::isPressed(sf::Keyboard::I))
+		mInventory.toggleInventory();
+
+	mInventory.update(frameTime);
+
+	if ((mAnimationStyle == AnimationStyle::PlayerPickup || mAnimationStyle == AnimationStyle::PlayerStop) && mPlayerAnimation.getStopped())
+		setAnimationStyle(AnimationType::Idle);
+
+	// Animate the player
+	mPlayerAnimation.animate(frameTime);
+
+	// Set player Index
+	float newIndex = PathFinder::getIndexAt(mPosition);
+	if (newIndex > 0)
+		mPlayerAnimation.setIndex(newIndex);
+
+	// Set player alpha
+	float newAlpha = PathFinder::getAlphaAt(mPosition);
+	if (newAlpha > 0)
+		mCurrentAlpha = newAlpha;
+
+	// Update the player scale
+	if (!mIsBear)
+	{
+		mScale.x = ((0.35f / 120.f) * mCurrentAlpha);
+		mScale.y = (0.35f / 120.f) * mCurrentAlpha;
+	}
+	else
+	{
+		mScale.x = ((0.6f / 120.f) * mCurrentAlpha);
+		mScale.y = (0.6f / 120.f) * mCurrentAlpha;
+	}
+
+	playFootstepSound();
+}
+
+void Player::render(IndexRenderer &iRenderer)
+{
+	mPlayerAnimation.setScaleFromHeight(mProportions.y * mScale.y);
+	mPlayerAnimation.setPosition(mPosition);
+	mPlayerAnimation.render(iRenderer);
+	mInventory.render(iRenderer);
+}
+
+void Player::move(sf::Time &frameTime)
+{
+	if (!mIsBear)
+	{
+		if (MouseState::isReleased(sf::Mouse::Left, 0.3) && !mInventory.isActive())
+			walkPath(PathFinder::getPath(getPosition(), sf::Vector2f(MouseState::getMousePosition())));
+	}
+
+	if (!mTargetReached && !mDestinationReached)
+	{
+		mVelocity = mVelocity - (mVelocity * mAcceleration);
+
+		mPosition += mVelocity;
+		mDistanceTraveled += sqrt((mVelocity.x * mVelocity.x) + (mVelocity.y * mVelocity.y));
+
+		if (mDistanceTraveled >= mTotalDistance)
+		{
+			mTargetReached = true;
+			mVelocity = sf::Vector2f(0, 0);
+		}
+	}
+
+	if (mTargetReached && !mDestinationReached)
+	{
+		if (!mCurrentPath.empty())
+		{
+			mCurrentTarget = mCurrentPath.at(mCurrentPath.size() - 1);
+			sf::Vector2f distanceToTarget;
+			distanceToTarget.x = mCurrentTarget.position.x - mPosition.x;
+			distanceToTarget.y = mCurrentTarget.position.y - mPosition.y + 10;
+			float targetAngle = (float)atan2(distanceToTarget.y, distanceToTarget.x);
+			mTotalDistance = sqrt((distanceToTarget.x * distanceToTarget.x) + (distanceToTarget.y * distanceToTarget.y));
+
+			mCurrentSpeed = ((mSpeed * mLastTarget.color.a) / 255);
+			mTargetSpeed = ((mSpeed * mCurrentTarget.color.a) / 255);
+			float deltaSpeed = mCurrentSpeed - mTargetSpeed;
+			mAcceleration = deltaSpeed / mTotalDistance;
+			mVelocity = sf::Vector2f(cos(targetAngle), sin(targetAngle)) * mCurrentSpeed;
+
+			mDistanceTraveled = 0;
+
+			mLastTarget = mCurrentTarget;
+			mTargetReached = false;
+			mCurrentPath.pop_back();
+		}
+		else
+		{
+			mDestinationReached = true;
+			mVelocity = sf::Vector2f(0, 0);
+		}
+	}
+	setAnimationStyle(AnimationType::Movement);
 }
 
 void Player::walkPath(Path &path)
 {
-	if (path.size() > 0)
+	mCurrentPath.clear();
+	if (path.size() > 2)
 	{
 		mCurrentPath = path;
 
@@ -69,85 +203,203 @@ void Player::walkPath(Path &path)
 	else
 	{
 		mDestinationReached = true;
+		mVelocity = sf::Vector2f(0, 0);
 	}
+}
+
+void Player::playFootstepSound()
+{
+	if (mAnimationStyle == AnimationStyle::Left || mAnimationStyle == AnimationStyle::Right || mAnimationStyle == AnimationStyle::Up || mAnimationStyle == AnimationStyle::Down)
+	{
+		if (mPlayerAnimation.getCurrentFrame() == 0 || mPlayerAnimation.getCurrentFrame() == 14)
+		{
+			if (RMI.getResource(mFootsteps).size() > 0)
+				AudioPlayer::playRandomSound(mFootsteps);
+			else
+				AudioPlayer::playRandomSound(Footsteps::Default);
+		}
+	}
+}
+
+sf::Sprite Player::getSprite()
+{
+	return mPlayerAnimation.getSprite();
+}
+sf::Vector2f Player::getPosition()
+{
+	return mPosition;
+}
+std::string Player::getSnappedObjectID()
+{
+	return mInventory.getSnappedObjectID();
+}
+std::string Player::getDroppedObjectID()
+{ 
+	return mInventory.getDroppedObjectID();
+}
+Animation &Player::getAnimation()
+{
+	return mPlayerAnimation;
+}
+Intention::ID Player::getIntention()
+{
+	return mIntention;
+}
+bool Player::isDestinationReached()
+{
+	return mDestinationReached;
 }
 
 void Player::setIndex(int index)
 {
-	mISprite.setIndex(index);
+	mPlayerAnimation.setIndex(index);
 }
-
-void Player::setPosition(sf::Vector2f position)
+void Player::setPosition(sf::Vector2f &position)
 {
 	mPosition = position;
 }
-
-void Player::move(sf::Time &frameTime){
-
-	if (mTargetReached && !mDestinationReached)
+void Player::setIntention(Intention::ID intention)
+{
+	mIntention = intention;
+}
+void Player::setAnimationStyle(AnimationType::ID type)
+{
+	if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x > 0.4/* && mVelocity.y >= 0*/ && mAnimationStyle != AnimationStyle::Right)
 	{
-		if (!mCurrentPath.empty())
-		{
-			mCurrentTarget = mCurrentPath.at(mCurrentPath.size() - 1);
-
-			// Calculate what speed the player should be moving at.
-			// First we see what baspeed the player has (based on tha alpha of the current position).
-			// After this we calculate the difference in alpha between the current position and the target position.
-			// Last we determine the speed based on how long the player have to trawel (how big the alpha-difference is)
-			float bSpeed = ((mSpeed * mCurrentTarget.color.a) / 255);
-			float alphaDiff = float(mLastTarget.color.a) - float(mCurrentTarget.color.a);
-			float speed = bSpeed - (abs(alphaDiff) / 255);
-
-			// Calculate the angle toward the next target
-			// and then use this angle to create a mVelocity (the size of and angle of a "step")
-			mDistanceToTarget.x = mCurrentTarget.position.x - mPosition.x;
-			mDistanceToTarget.y = mCurrentTarget.position.y - mPosition.y;
-			float pointAngle = (float)atan2(mDistanceToTarget.y, mDistanceToTarget.x);
-			mVelocity = sf::Vector2f(cos(pointAngle), sin(pointAngle)) * speed;
-
-			// Calculate how many steps that has to be taken to reach the goal
-			// using pythagoras algorithm (the lenth of the distance vector / the length of the mVelocity vector)
-			float distanceLength = sqrt((mDistanceToTarget.x * mDistanceToTarget.x) + (mDistanceToTarget.y * mDistanceToTarget.y));
-			float mVelocityLength = sqrt(((mVelocity.x * mVelocity.x) + (mVelocity.y * mVelocity.y)));
-			mTotalSteps = distanceLength / mVelocityLength;
-			mAlphaPerStep = (alphaDiff / float(mTotalSteps));
-			mCurrentAlpha = float(mLastTarget.color.a);
-
-			mLastTarget = mCurrentTarget;
-			mTargetReached = false;
-			mCurrentPath.pop_back();
-		}
+		setFlip(true);
+		mPlayerAnimation.flip(mFlip);
+		if (!mIsBear)
+			mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
 		else
-		{
-			mDestinationReached = true;
-		}
+			mPlayerAnimation.load(RMI.getResource(Texture::BearWalk), Frames(6, 2), sf::milliseconds(800), sf::seconds(0), true);
+
+		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height);
+		mAnimationStyle = AnimationStyle::Right;
 	}
-
-	if (!mTargetReached && !mDestinationReached)
+	else if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x < -0.4 /*&& mVelocity.y >= 0*/ && mAnimationStyle != AnimationStyle::Left)
 	{
-		mStepsTaken++;
+		setFlip(false);
+		mPlayerAnimation.flip(mFlip);
+		if (!mIsBear)
+			mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		else
+			mPlayerAnimation.load(RMI.getResource(Texture::BearWalk), Frames(6, 2), sf::milliseconds(800), sf::seconds(0), true);
 
-		// Take a step (position + the angle and lenths of a step (mVelocity))
-		mPosition += mVelocity;
+		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height);
+		mAnimationStyle = AnimationStyle::Left;
+	}
+	/*else if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x < -0.4 && mVelocity.y < 0 && mAnimationStyle != AnimationStyle::UpLeft)
+	{
+		setFlip(false);
+		mPlayerAnimation.flip(mFlip);
+		mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalkUp), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		mAnimationStyle = AnimationStyle::UpLeft;
+	}
+	else if (type == AnimationType::Movement && !mDestinationReached && mVelocity.x > 0.4 && mVelocity.y < 0 && mAnimationStyle != AnimationStyle::UpRight)
+	{
+		setFlip(true);
+		mPlayerAnimation.flip(mFlip);
+		mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalkUp), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		mAnimationStyle = AnimationStyle::UpRight;
 
-		// Incrementally reduce/increase the alpha every step.
-		mCurrentAlpha -= mAlphaPerStep;
-		mScale.x = (1.f / 140.f) * mCurrentAlpha;
-		mScale.y = (1.f / 140.f) * mCurrentAlpha;
+	}*/
+	else if (type == AnimationType::Movement && mDestinationReached && mAnimationStyle != AnimationStyle::PlayerStop && mAnimationStyle != AnimationStyle::PlayerIdle && mAnimationStyle != AnimationStyle::PlayerPickup)
+	{
+		mPlayerAnimation.flip(mFlip);
+		mPlayerAnimation.load(RMI.getResource(Texture::UlfrStop), Frames(5, 5), sf::milliseconds(1300), sf::Time::Zero, false);
 
-		// Check if the total number if steps has been taken
-		// if it has then set the target as reached and reset the stepcounter
-		if (mStepsTaken >= mTotalSteps){
-			mTargetReached = true;
-			mStepsTaken = 0;
-		}
+		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
+		mAnimationStyle = AnimationStyle::PlayerStop;
+	}
+	else if (type == AnimationType::Idle && (mAnimationStyle != AnimationStyle::PlayerIdle))
+	{
+		mPlayerAnimation.flip(mFlip);
+		if (!mIsBear)
+			mPlayerAnimation.load(RMI.getResource(Texture::UlfrIdle), Frames(6, 3), sf::milliseconds(1300), sf::seconds(7), true);
+		else
+			mPlayerAnimation.load(RMI.getResource(Texture::BearIdle), Frames(1, 1), sf::milliseconds(1300), sf::seconds(7), true);
+
+		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
+		mAnimationStyle = AnimationStyle::PlayerIdle;
+	}
+	/*else if (type == AnimationType::Movement && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y < 0 && mAnimationStyle != AnimationStyle::Up)
+	{
+		mPlayerAnimation.flip(mFlip);
+		mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalkUp), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		mAnimationStyle = AnimationStyle::Up;
+	}*/
+	else if (type == AnimationType::Movement && !mDestinationReached && (mVelocity.x < 0 && mVelocity.x > -0.3 || mVelocity.x > 0 && mVelocity.x < 0.3) && mVelocity.y > 0 && mAnimationStyle != AnimationStyle::Down)
+	{
+		mPlayerAnimation.flip(mFlip);
+		if (!mIsBear)
+			mPlayerAnimation.load(RMI.getResource(Texture::UlfrWalk), Frames(5, 5), sf::milliseconds(1200), sf::seconds(0), true);
+		else
+			mPlayerAnimation.load(RMI.getResource(Texture::BearWalk), Frames(6, 2), sf::milliseconds(800), sf::seconds(0), true);
+
+		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
+		mAnimationStyle = AnimationStyle::Down;
+	}
+	else if (type == AnimationType::TalkToNpc && mAnimationStyle != AnimationStyle::PlayerTalk)
+	{
+		mPlayerAnimation.flip(mFlip);
+		if (!mIsBear)
+			mPlayerAnimation.load(RMI.getResource(Texture::UlfrTalkToNpc), Frames(5, 2), sf::milliseconds(800), sf::Time::Zero, true);
+		else
+			mPlayerAnimation.load(RMI.getResource(Texture::BearIdle), Frames(1, 1), sf::milliseconds(1300), sf::seconds(7), true);
+
+		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
+		mAnimationStyle = AnimationStyle::PlayerTalk;
+	}
+	else if (type == AnimationType::TalkToPlayer && mAnimationStyle != AnimationStyle::PlayerMonolog)
+	{
+		/*setFlip(false);
+		mPlayerAnimation.flip(mFlip);
+		mPlayerAnimation.load(RMI.getResource(Texture::UlfrTalkToPlayer), Frames(4, 1), sf::milliseconds(600), sf::seconds(0), true);
+
+		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
+		mAnimationStyle = AnimationStyle::PlayerMonolog;*/
+		mPlayerAnimation.flip(mFlip);
+		mPlayerAnimation.load(RMI.getResource(Texture::UlfrTalkToNpc), Frames(5, 2), sf::milliseconds(800), sf::Time::Zero, true);
+
+		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
+		mAnimationStyle = AnimationStyle::PlayerTalk;
+	}
+	else if (type == AnimationType::Pickup && mAnimationStyle != AnimationStyle::PlayerPickup)
+	{
+		mPlayerAnimation.flip(mFlip);
+		mPlayerAnimation.load(RMI.getResource(Texture::UlfrPickup), Frames(5, 5), sf::milliseconds(1400), sf::seconds(0), false);
+
+		mPlayerAnimation.getSprite().setOrigin(abs(mPlayerAnimation.getSprite().getTextureRect().width / 2), mPlayerAnimation.getSprite().getTextureRect().height - mPlayerPadding);
+		mAnimationStyle = AnimationStyle::PlayerPickup;
 	}
 }
 
-void Player::render(IndexRenderer &iRenderer)
+std::string & Player::getName()
 {
-	mISprite.getSprite().setOrigin(mWidth / 2, (mHeight -10));
-	mISprite.getSprite().setPosition(mPosition);
-	mISprite.getSprite().setScale(mScale);
-	iRenderer.addISprite(mISprite);
+	return mName;
+}
+float & Player::getCurrentAlpha()
+{
+	return mCurrentAlpha;
+}
+void Player::setFlip(bool value)
+{
+	mFlip = value;
+	mPlayerAnimation.flip(mFlip);
+}
+void Player::setFootsteps(Footsteps::ID footsteps)
+{
+	mFootsteps = footsteps;
+}
+void Player::setBearCostume(bool value)
+{
+	mIsBear = value;
+}
+void Player::UpdateAnimationStyle()
+{
+	if (!mAnimationStyle != AnimationStyle::PlayerIdle)
+	{
+		mAnimationStyle = AnimationStyle::Update;
+		setAnimationStyle(AnimationType::Idle);
+	}
 }

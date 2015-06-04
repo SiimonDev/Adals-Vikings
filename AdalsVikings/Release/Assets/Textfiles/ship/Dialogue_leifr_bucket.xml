@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why would anyone want to use Him?" />
+	<lookText lookText="Seems like they are fighting over something." />
+	<text character="Ulfr" say="Can you fill this with water for me?" timer="2.5" />
+	<text character="Leifr" say="Of course!" timer="2.3" />
+	<text character="Leifr" say="Just have to reach down and...." timer="2.3" />
+	<stopConversation />
+</conversation>

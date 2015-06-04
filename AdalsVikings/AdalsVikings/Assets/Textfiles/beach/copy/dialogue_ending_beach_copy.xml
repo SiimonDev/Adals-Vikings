@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why would I use Brandr?" />
+	<lookText lookText="Our *great* leader, Brandr. I wonder what trouble he’ll get us into next, the idiot." />
+	<text character="Ulfr" timer="0.01" turned="false" />
+	<text character="Brandr" turned="true" timer="2.4" say="Great Vikings of Adal." />
+	<text character="Brandr" say="There is a wide land before us." timer="3.3" />
+	<text character="Brandr" say="With riches of many kinds." timer="3.3" />
+	<text character="Brandr" say="..." timer="1.8" />
+	<text character="Brandr" timer="2.8" say="IT IS FOR OUR TAKING!" />
+	<text character="Brandr" say="..." timer="1.2" />
+	<text character="Brandr" say="And so I say," timer="2.2" />
+	<text character="Brandr" say="as the son of our great chief," timer="2.8" />
+	<text character="Brandr" say="and as your leader," timer="3.3" />
+	<text character="Brandr" say="WE ATTACK THE FO-" timer="1.8" />
+	<text character="Brynja" say="Brandr." timer="1.8" />
+	<text character="Brandr" say="..." timer="1.2" turned="true" />
+	<text character="Brandr" say="Uh, yes?" timer="1.8" />
+	<text character="Brynja" say="*Whisper*" timer="1.8" />
+	<text character="Brandr" say="*Whisper*" timer="1.4" turned="false" />
+	<text character="Brynja" say="*Whisper*" timer="1.5" turned="true" />
+	<text character="Brandr" say="Ahem." timer="2.2" turned="true" />
+	<text character="Brandr" say="New plan!" timer="2.3" />
+	<text character="Brandr" say="We split up and scout the area, then regroup and make camp!" timer="4" />
+	<text character="Brandr" say="Uh..." timer="1.8" />
+	<text character="Brandr" say="..." timer="1.2" />
+	<text character="Brandr" say="Brynja will take Valdis and Leifr to find us a nice place for a..." timer="4" />
+	<text character="Brandr" say="... camp." timer="2.2" />
+	<text character="Brandr" say="A camp." timer="1.8" />
+	<text character="Brandr" say="Yes." timer="1.8" />
+	<text character="Brandr" say="Yngvarr, Dagny, Finnr, and Alfr," timer="3.5" />
+	<text character="Brandr" say="With me!" timer="2.2" />
+	<text character="Brandr" say="We will raid some building down the coast." timer="3.5" />
+	<text character="Brandr" say="Yeah." timer="1.8" />
+	<text character="Brandr" say="..." timer="1.2" />
+	<text character="Brandr" say="MOVE OUT!" timer="2.2" />
+	<text character="Brynja" say="And Brandr." timer="2.3" />
+	<text character="Brandr" say="Yes?" timer="1.8" />
+	<text say="Find a new axe, will you? Your old one can barely cut bread." timer="4.2" character="Brynja" />
+	<text character="Brandr" say="..." timer="1.2" />
+	<text character="Brandr" say="Yes, Brynja." timer="2.5" />
+	<text character="Brandr" say="And you." timer="1.8" />
+	<text character="Brandr" say="Ulfr" timer="1.5" />
+	<text character="Brandr" say="Go check out that bigger building down the road." timer="3.8" />
+	<text character="Ulfr" say="Uh." timer="2" turned="false" />
+	<text character="Ulfr" say="All alone?" timer="2.2" />
+	<text character="Brandr" say="What?" timer="2.2" turned="true" />
+	<text character="Brandr" say="Are you scared?" timer="2.5" />
+	<text character="Ulfr" say="... Sure." timer="2.6" turned="false" />
+	<text character="Ulfr" say="See you at camp." timer="3.3" />
+	<stopConversation />
+</conversation>

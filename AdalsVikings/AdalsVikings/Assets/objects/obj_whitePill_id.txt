@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $whitePill$
+*Name: White Pill
+*ispickupable: True
+*pickup: "A white ball of... something." ~2,0
+*lookat: "I really shouldn't put this in my mouth. Just saying." ~2,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_whitePill_id.png"

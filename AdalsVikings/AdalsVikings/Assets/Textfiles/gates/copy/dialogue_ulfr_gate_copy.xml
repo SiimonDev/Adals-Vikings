@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Err... pass?" />
+	<lookText lookText="He DOES have the black eyes of murder..." />
+	<text character="Ulfr" say="Good job Ulfr, yet again you make stupid promises." timer="2.3" turnedPlayer="true" />
+	<text character="Ulfr" say="*Sigh*" timer="1.5" turnedPlayer="true" />
+	<text character="Ulfr" say="Guess I'll just go and kill some dangerous mercenaries then..." timer="3.3" turnedPlayer="true" />
+	<stopConversation />
+</conversation>

@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $boatsHills$
+*Name: Docks
+*ispickupable: False
+*pickup: "I really can't do that." ~2,0
+*lookat: "That's a lot of boats" ~2,0
+*deny: "I can't do that" ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:100   Y:50

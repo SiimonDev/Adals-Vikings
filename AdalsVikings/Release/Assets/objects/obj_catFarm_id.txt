@@ -1,0 +1,12 @@
+*Type: animated
+*ID: $catFarm$
+*Name: Cat
+*ispickupable: False
+*pickup: "I cat do that." ~2,0
+*lookat: "What a nice kitty." ~2,0
+*deny: "Meow?" ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_catFarm_id.png"
+*animation: X:4  Y:1  ~1,5 ~3,0

@@ -7,12 +7,18 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AdalsVikings", "AdalsViking
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug Static|Win32 = Debug Static|Win32
 		Debug|Win32 = Debug|Win32
+		Release Static|Win32 = Release Static|Win32
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E6078BF-5E94-40B5-8F88-6FBDC7F73B99}.Debug Static|Win32.ActiveCfg = Debug Static|Win32
+		{9E6078BF-5E94-40B5-8F88-6FBDC7F73B99}.Debug Static|Win32.Build.0 = Debug Static|Win32
 		{9E6078BF-5E94-40B5-8F88-6FBDC7F73B99}.Debug|Win32.ActiveCfg = Debug|Win32
 		{9E6078BF-5E94-40B5-8F88-6FBDC7F73B99}.Debug|Win32.Build.0 = Debug|Win32
+		{9E6078BF-5E94-40B5-8F88-6FBDC7F73B99}.Release Static|Win32.ActiveCfg = Release Static|Win32
+		{9E6078BF-5E94-40B5-8F88-6FBDC7F73B99}.Release Static|Win32.Build.0 = Release Static|Win32
 		{9E6078BF-5E94-40B5-8F88-6FBDC7F73B99}.Release|Win32.ActiveCfg = Release|Win32
 		{9E6078BF-5E94-40B5-8F88-6FBDC7F73B99}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection

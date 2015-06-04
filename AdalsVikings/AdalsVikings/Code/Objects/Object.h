@@ -1,48 +1,99 @@
 #pragma once
+#include "..\Logics\ResourceManager.h"
+#include "..\Logics\IndexRenderer.h"
+#include "..\Logics\RoundedRectangleShape.h"
+#include "..\Dialog\Dialog.h"
+#include "..\Logics\Animation.h"
 #include <SFML\Graphics.hpp>
 #include <string>
 #include <vector>
-#include "..\Logics\ResourceManager.h"
-#include "ObjectHandler.h"
+
+enum ObjectType
+{
+	Standard,
+	Animated,
+	Invisible
+};
 
 class Object
 {
 public:
-	
-
-	Object(std::string objectID, std::string filePath, Textures::ID textureID);
-	~Object();
-
-	void render(sf::RenderWindow &window);
-	void update(sf::Time &time);
+	Object(Font::ID font, std::string filePath);
 
 	void load();
 	void unload();
 
-	bool interactWithItem(Object *object);
-	std::string combineObjects(Object *object);
+	void update(sf::Time &frameTime);
+	void render(IndexRenderer &IRenderer);
+
+	void setInteractionPosition(sf::Vector2f &interPos);
+	void setIndex(int index);
+	void setPosition(sf::Vector2f &position);
+	void setCollisionRect(sf::IntRect &rect);
+	void setScale(sf::Vector2f &scale);
+	void setScaleFromWidth(float width);
+	void setScaleFromHeight(float height);
+	void setDescription(std::string description);
+	void enableCollision(bool active);
+	void enableDescription(bool active);
+	void enableObject(bool value);
 
 	std::string getObjID();
 	std::string getName();
-	std::string getLookAtDialog();
-	float getLookAtDialogTimer();
-	std::string getUseDialog();
-	float getUseDialogTimer();
-	std::string getCantUseDialog();
-	float getCantUseDialogTimer();
-	bool getCanPickUp();
+
+	CombineDialog combineWithObject(std::string id);
+	Dialog interactWithObject(std::string id);
+	Dialog getDenyDialog(std::string id);
+	Dialog getPickupDialog();
+	Dialog getLookAtDialog();
+
+	sf::Vector2f &getPosition();
+	sf::Vector2f &getInteractionPosition();
+	sf::Vector2f getSize();
+	sf::Vector2f getScale();
+	sf::IntRect &getCollisionRect();
+	sf::Sprite &getSprite();
+
+	int getIndex();
+	bool isInside(sf::Vector2i &pos);
+	bool isPickupable();
+	bool hasCollision();
+	bool getIsWorking();
+
 private:
+	void readVariablesFromFile();
+	void updateDescription();
+
+	std::string mName;
 	std::string mObjectID;
 	std::string mFileID;
+	std::string mFolderPath;
 	std::string mFilePath;
-	Textures::ID mTextureID;
-	std::string mName, mLookAtDialog, mUseDialog, mCantUseDialog;
-	float mLookAtDialogTimer, mUseDialogTimer, mCantUseDialogTimer;
+	std::string mImagePath;
+
+	Dialog mLookAtDialog, mPickupDialog, mDenyDialog;
+
+	ObjectType mType;
+	Animation mAnimation;
+	sf::RoundedRectangleShape mTextRect;
+	sf::RectangleShape mRect;
+	sf::Vector2f mPosition;
+	sf::Vector2f mInteractionPosition;
+	sf::Vector2f mScale;
+	sf::Vector2i mSize;
 	sf::Sprite mSprite;
+	sf::IntRect mCollisionRect;
+	sf::Text mDescription;
+
+	bool mCollision;
 	bool mCanPickUp;
-	std::vector<std::string> mInteractableWith;
-	std::map<std::string, std::string> mCreatedObjects; //key: itemID of item combined with; value: itemID of created item
-	std::map<std::string, std::string> mSpecificCantUseDialog;
-	void readVariables();
+	bool mDisplayDescription;
+	bool mIsWorking;
+	
+	int mIndex;
+
+	std::map<std::string, Dialog> mInteractDialogs;
+	std::map<std::string, Dialog> mDenyDialogs;
+	std::map<std::string, CombineDialog> mCombineObjects;
 };
 

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="I don't think im strong enough to do that. " />
+	<lookText lookText="My buddy Leifr. He's the most peaceful dude I know, and he's always there to help." />
+	<text character="Leifr" default="false" disabled="false" say="Why are you looking so down Ulfr?" timer="2.8" turned="true" />
+	<text character="Ulfr" default="false" disabled="false" say="There are Druids in that forest." timer="2.4" turned="false" />
+	<text character="Ulfr" default="false" disabled="false" say="And they got this great fire that we could use to light our campfire." timer="3.5" turned="false" />
+	<text character="Ulfr" default="false" disabled="false" say="But they won't let me take the fire..." timer="2.4" turned="false" />
+	<text character="Leifr" default="false" disabled="false" say="Well that is awfully rude of them." timer="2.3" turned="true" />
+	<text character="Ulfr" default="false" disabled="false" say="Yes! They say that it's for &quot;Ursa Vercus&quot;" timer="2.4" turned="false" />
+	<text character="Ulfr" default="false" disabled="false" say="The Bear Deer... God." timer="2.4" turned="false" />
+	<text character="Leifr" default="false" disabled="false" say="That does indeed sound like a valid reason to not lend you their fire." timer="3.3" turned="true" />
+	<text character="Ulfr" default="false" disabled="false" say="You're kidding, right?" timer="2.4" turned="false" />
+	<text character="Leifr" default="false" disabled="false" say="Uh... Tell you what, if you manage to find a way to trick those druids." timer="3.3" turned="true" />
+	<text character="Leifr" default="false" disabled="false" say="I'll help you out!" timer="2.4" turned="true" />
+	<text character="Ulfr" default="false" disabled="false" say="Uh... Right." timer="2.4" turned="false" />
+	<text character="Leifr" default="false" disabled="false" say="Just come talk to me when you figured something out!" timer="3.0" turned="true" />
+	<text character="Leifr" default="true" disabled="true" say="Found a way to trick the druids yet?" timer="2.4" turned="true" />
+	<text character="Ulfr" default="true" disabled="true" say="Not yet, maybe if I could pretend to be the bear deer." timer="3.0" turned="false" />
+	<text character="Leifr" default="true" disabled="true" say="That might actualy work!" timer="2.4" turned="true" />
+	<text character="Ulfr" default="true" disabled="true" say="Just have to figure out how..." timer="2.4" turnedPlayer="true" />
+	<stopConversation />
+</conversation>

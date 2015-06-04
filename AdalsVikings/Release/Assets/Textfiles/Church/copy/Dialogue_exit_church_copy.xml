@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why? Just why?" />
+	<lookText lookText="The postman looks rather distressed. " />
+	<text character="Ulfr" turnedPlayer="true" timer="3.5" say="Now when I've checked the place out I should go back." />
+	<text character="Ulfr" turnedPlayer="true" timer="3.0" say="I wonder what place Brynja chose for our camp." />
+	<stopConversation />
+</conversation>

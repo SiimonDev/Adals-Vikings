@@ -1,0 +1,8 @@
+############
+*id: $helmet
+position: $X:1430 $Y:770
+interactPosition: $X:0 $Y:0
+index: $4
+scale: $1.0
+hascollision: $false
+############

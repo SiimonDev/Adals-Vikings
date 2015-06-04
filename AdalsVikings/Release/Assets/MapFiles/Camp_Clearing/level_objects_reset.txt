@@ -1,0 +1,29 @@
+############
+*id: $firePlaceCamp1
+position: $X:945 $Y:805
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
+*id: $boxInCamp
+position: $X:720 $Y:800
+interactPosition: $X:0 $Y:0
+index: $99
+scale: $1.0
+hascollision: $false
+############
+*id: $cloth
+position: $X:710 $Y:752
+interactPosition: $X:0 $Y:0
+index: $10
+scale: $1.0
+hascollision: $false
+############
+*id: $oilBarrel
+position: $X:1410 $Y:530
+interactPosition: $X:-60 $Y:0
+index: $1
+scale: $0.4
+hascollision: $false
+############

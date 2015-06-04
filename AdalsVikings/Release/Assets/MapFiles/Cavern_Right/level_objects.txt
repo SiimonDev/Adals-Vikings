@@ -1,0 +1,8 @@
+############
+*id: $gold
+position: $X:500 $Y:400
+interactPosition: $X:0 $Y:0
+index: $1
+scale: $1
+hascollision: $false
+############

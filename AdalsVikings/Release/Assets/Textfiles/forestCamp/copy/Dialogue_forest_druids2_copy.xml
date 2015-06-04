@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="That's not how it works." />
+	<lookText lookText="These guys are so weird." />
+	<text character="Druid Leader" disabled="false" default="false" say="...by all that's holy..." timer="2.4" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="URSA VERCUS! Oh, holy URSA CERVUS!" timer="2.6" turned="false" />
+	<text character="Druids" disabled="false" default="false" say="URSA CERVUS!" timer="1.5" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="No, you idiots!" timer="2.4" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="He has come!" timer="2.0" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="Oh, great god of the forest." timer="2.6" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" say="We have taken this wood from your enemy's hand." timer="2.6" turned="false" />
+	<text character="Druid Leader" disabled="false" default="false" timer="2.5" turned="false" say="And burned it in your righteous fire." />
+	<text character="Druid Leader" disabled="false" default="false" say="What we wish for in return, is naught but your blessing." timer="2.9" turned="false" />
+	<option_container disabled="false">
+		<option choice_text="So... NOW THAT I'VE BLESSED YOU GUYS..." disabled="true">
+			<text character="Ulfr" disablePrevious="false" say="So... NOW THAT I'VE BLESSED YOU GUYS..." timer="2.2" />
+			<text character="Ulfr" disablePrevious="false" say="WHAT ARE YOU GOING TO DO NOW?" timer="2.9" />
+			<text character="Hipster Druid" disabled="false" default="false" timer="2.0" turned="false" say="Barbeque!" />
+			<text character="Druids" disabled="false" default="false" say="BARBEQUE!" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="or... perhaps something more fitting." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="A feast, with ritualistic offerings." timer="2.0" turned="false" />
+			<text character="Ulfr" disablePrevious="false" say="Alright." timer="1.2" />
+			<text character="Ulfr" disablePrevious="false" say="WHAT ARE YOU OFFERING!?" timer="2.8" />
+			<text character="Druid Leader" disabled="false" default="false" say="Uh..." timer="2.0" turned="false" />
+			<text character="Socially Awkward Druid" disabled="false" default="false" timer="2.0" turned="false" say="Lamb?" />
+			<text character="Handsome Druid" disabled="false" default="false" timer="2.0" turned="false" say="Honestly, I'd kill for some steak right about now..." />
+			<text character="Irish Druid" disabled="false" default="false" timer="2.0" turned="false" say="No one for chicken?" />
+			<text character="Irish Druid" disabled="false" default="false" timer="2.0" turned="false" say="I haven't had that for weeks." />
+			<text character="Druids" disabled="false" default="false" say="CHICKEN IT IS" timer="2.0" turned="false" />
+			<text character="Ulfr" disablePrevious="false" say="Just... food?" timer="2.6" turned="false" />
+			<text character="Ulfr" disablePrevious="false" say="Figured it'd be something more exciting." timer="3.2" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Who do you think we are?" timer="2.3" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Vikings?" timer="2.2" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="We don't deal with blood." timer="2.5" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Dennis can't stand it." timer="1.8" turned="false" />
+			<text character="Dennis" disabled="false" default="false" say="I really can't." timer="2.3" turned="false" />
+			<text character="Ulfr" disablePrevious="false" say="But... you're druids!" timer="2.2" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Doesn't mean we have to be barbaric." timer="2.7" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="But hey, thanks for the blessing." timer="2.5" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="We'll see you around" timer="2.6" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Come on guys, last one to town is a rotten egg!" timer="2.0" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="Yeah!" timer="1.5" turned="false" />
+			<stopConversation />
+		</option>
+		<option choice_text="Holy words?" disabled="true">
+			<text character="Ulfr" disablePrevious="false" say="...Holy words?" timer="2.4" turned="false" disabled="false" />
+			<text character="Ulfr" disablePrevious="false" say="I mean..." timer="2.0" turned="false" disabled="false" />
+			<text character="Ulfr" disablePrevious="false" say="HOLY WORDS?" timer="2.6" turned="false" disabled="false" />
+			<text character="Druid Leader" disabled="false" default="false" timer="2.4" turned="false" say="The holy words!" />
+			<text character="Ulfr" disablePrevious="false" say="Uh." timer="2.0" turned="false" disabled="false" />
+			<text character="Ulfr" disablePrevious="false" say="I SEEM TO HAVE FORGOTTEN." timer="2.4" turned="false" disabled="false" />
+			<text character="Druid Leader" disabled="false" default="false" timer="2.0" turned="false" say="...You've forgotten the words?" />
+			<text character="Ulfr" disablePrevious="false" say="INDEED." timer="2.0" turned="false" disabled="false" />
+			<text character="Ulfr" disablePrevious="false" say="I CAN'T KEEP TRACK OF ALL THOSE PESKY SPELLS." timer="2.4" turned="false" disabled="false" />
+			<text character="Ulfr" disablePrevious="false" say="AFTER ALL, I'VE GOT MORE IMPORTANT BEAR-DEER BUSINESS TO TAKE CARE OF." timer="2.8" turned="false" disabled="false" />
+			<text character="Leifr" disabled="false" default="false" say="*Bear-deer business?!*" timer="2.0" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="*Shut up, I'm improvising.*" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" timer="2.5" turned="false" say="Well, that's not good at all." />
+			<text character="Druid Leader" disabled="false" default="false" timer="2.6" turned="false" say="If you don't have the words, then..." />
+			<text character="Druid Leader" disabled="false" default="false" timer="1.5" turned="false" say="Then..." />
+			<text character="Ulfr" disablePrevious="false" say="CAN'T I JUST MAKE NEW WORDS?" timer="2.8" turned="false" disabled="false" />
+			<text character="Ulfr" disablePrevious="false" say="..." timer="1.4" turned="false" disabled="false" />
+			<text character="Druid Leader" disabled="false" default="false" timer="2.4" turned="false" say="Uh." />
+			<text character="Ulfr" disablePrevious="false" say="I AM A GOD, AM I NOT?" timer="2.9" turned="false" disabled="false" />
+			<text character="Druid Leader" disabled="false" default="false" timer="2.0" turned="false" say="Yeah, sure." />
+			<text character="Druid Leader" disabled="false" default="false" timer="2.6" turned="false" say="I guess we could do that." />
+			<text character="Ulfr" disablePrevious="false" say="WELL THEN." timer="2.2" turned="false" disabled="false" />
+			<text character="Ulfr" disablePrevious="false" say="UH." timer="1.8" turned="false" disabled="false" />
+			<text character="Leifr" disabled="false" default="false" say="*What are you doing?*" timer="2.5" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="*Don't worry, I'll make something up.*" timer="2.0" turned="false" />
+			<text character="Ulfr" disablePrevious="false" say="CONFITEOR TIBI." timer="2.5" turned="false" disabled="false" />
+			<text character="Ulfr" disablePrevious="false" say="HOMINES PEREGRINUS" timer="2.8" turned="false" disabled="false" />
+			<text character="Ulfr" disablePrevious="false" say="..." timer="2.2" turned="false" disabled="false" />
+			<text character="Ulfr" disablePrevious="false" say="HAPPY NOW?" timer="2.4" turned="false" disabled="false" />
+			<text character="Druid Leader" disabled="false" default="false" timer="2.6" turned="false" say="Oh thank you, dear bear-deer god of the forest, watcher of the night..." />
+			<text character="Druid Leader" enable="So... NOW THAT I'VE BLESSED YOU GUYS..." disabled="false" default="false" timer="2.6" turned="false" say="Now we can finally go back to town." disablePrevious="true" />
+			<gotoBaseContainer />
+		</option>
+		<option choice_text="I WILL NOW GRANT YOU MY BLESSING" disabled="false">
+			<text character="Ulfr" disablePrevious="false" say="I WILL NOW GRANT YOU MY BLESSING." timer="2.2" />
+			<text character="Ulfr" disablePrevious="false" say="..." timer="2.2" />
+			<text character="Leifr" disabled="false" default="false" say="*Did he buy it?*" timer="2.4" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="*Quiet!*" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Wonderful, oh Ursa Cervus." timer="2.6" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="URSA CERVUS" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="...feel free to start any time." timer="2.2" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="..." timer="2.0" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="*How do I give a blessing?*" timer="2.6" turned="false" />
+			<text character="Leifr" disabled="false" default="false" say="*Why would I know?!*" timer="2.2" turned="false" />
+			<text character="Ulfr" disablePrevious="false" say="UH... HOW WOULD A GOD GIVE HIS BLESSING TO MORTALS LIKE THEE?" timer="2.6" />
+			<text character="Ulfr" disablePrevious="false" say="IT'S BEEN A WHILE YOU SEE..." timer="2.6" />
+			<text character="Leifr" disabled="false" default="false" say="*Hey that rhymed!*" timer="1.8" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="*Shush!*" timer="1.5" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Oh great, Ursa Cervus" timer="2.8" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="URSA CERVUS!" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="You need only step into this sacred flame of yours, and join in with its heat." timer="3.4" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="We will then feast on your vessel's flesh, and gain your holy strength." timer="3.6" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="*I can't do that!*" timer="1.6" turned="false" />
+			<text character="Leifr" disabled="false" default="false" say="*You can't do that!*" timer="1.6" turned="false" />
+			<text character="Ulfr" disabled="false" default="false" say="*That's what I said!*" timer="1.6" turned="false" />
+			<text character="Ulfr" disablePrevious="false" say="RIGHT." timer="1.5" />
+			<text character="Ulfr" disablePrevious="false" say="I'VE BEEN THINKING" timer="2.5" />
+			<text character="Ulfr" disablePrevious="false" say="AND THAT TYPE OF BLESSING IS A BIT OLD-SCHOOL" timer="2.2" />
+			<text character="Druid Leader" disabled="false" default="false" say="...old-school?" timer="2.0" turned="false" />
+			<text character="Ulfr" disablePrevious="false" say="YES." timer="2.2" />
+			<text character="Ulfr" disablePrevious="false" say="INSTEAD, WE SHALL DO THE OTHER BLESSING- THING" timer="2.0" />
+			<text character="Druid Leader" disabled="false" default="false" say="Oh, right!" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="The other blessing!" timer="2.0" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="THE OTHER BLESSING" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Dennis! Bring out the steak-knives!" timer="2.0" turned="false" />
+			<text character="Ulfr" disablePrevious="false" say="HOW ABOUT THE THIRD BLESSING?" timer="2.0" />
+			<text character="Druid Leader" disabled="false" default="false" say="The third?" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Well, alright." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="A bit boring, but if that's what you want." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Just speak the holy words." timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" enable="Holy words?" default="false" say="Whenever you're ready." timer="2.0" turned="false" disablePrevious="true" />
+			<gotoContainer />
+		</option>
+		<option choice_text="YOU HAVE MADE ME A NICE FIRE." disabled="false">
+			<text character="Ulfr" disablePrevious="false" say="YOU HAVE MADE ME A NICE FIRE." timer="2.2" />
+			<text character="Druid Leader" disabled="false" default="false" say="All for you, of course, Ursa Cervus..." timer="1.8" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="URSA CERVUS!" timer="2.0" turned="false" />
+			<text character="Ulfr" disablePrevious="false" say="THAT'S GREAT, REALLY." timer="2.2" />
+			<text character="Ulfr" disablePrevious="false" say="COULD I HAVE SOME OF IT?" timer="2.2" />
+			<text character="Druid Leader" disabled="false" default="false" say="Surely, oh great god of the forest." timer="2.6" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Once you've blessed us, that is." timer="2.5" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Oh great god." timer="1.5" turned="false" disablePrevious="true" />
+			<gotoContainer />
+		</option>
+		<option choice_text="HOW COME IT'S SO DARK OUT HERE?" disabled="false">
+			<text character="Ulfr" disablePrevious="false" say="HOW COME IT'S SO DARK OUT HERE?" timer="2.2" />
+			<text character="Druid Leader" disabled="false" default="false" say="Well, that would be because of your excellent power, my god!" timer="2.0" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="Protecting this forest with your divine strength." timer="2.4" turned="false" />
+			<text character="Druid Leader" disabled="false" default="false" say="It's so nice of you." timer="2.2" turned="false" />
+			<text character="Druids" disabled="false" default="false" say="SO NICE" timer="1.8" turned="false" disablePrevious="true" />
+			<gotoContainer />
+		</option>
+		<stopOption />
+	</option_container>
+	<stopConversation />
+</conversation>

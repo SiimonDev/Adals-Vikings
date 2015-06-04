@@ -1,24 +1,35 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 
+namespace CursorType
+{
+	enum ID
+	{
+		Default,
+		Arrow,
+		Interact
+	};
+}
+
 class MouseState
 {
 public:
-	static void initialize(sf::RenderWindow &window);
+	static void initialize();
+	static void update(sf::Time frameTime);
+	static void render();
+	static void checkEvents(sf::Event::EventType event);
+	static void setIsWorking(bool value);
+
+	static void setCursorType(CursorType::ID id, float rotation = 0);
+
 	static sf::Vector2i getMousePosition();
-	bool isDown(sf::Mouse::Button button, double seconds);
-	bool isDown(sf::Mouse::Button button);
-	bool isClicked(sf::Mouse::Button button);
-	bool isReleased(sf::Mouse::Button button, double seconds);
-	bool isReleased(sf::Mouse::Button button);
+	static bool isClicked(sf::Mouse::Button button);
+	static bool isReleased(sf::Mouse::Button button);
+	static bool isReleased(sf::Mouse::Button button, double seconds);
+	static bool isPressed(sf::Mouse::Button button, double seconds = 0);
 
 private:
-	bool oldIsButtonHeld = false;
-	bool oldIsButtonPressed = false;
-
-	sf::Clock holdClock;
-	sf::Clock releaseClock;
-
-	double holdTimePassed;
-	double releaseTimePassed;
+	MouseState();
+	MouseState(const MouseState&);
+	void operator=(const MouseState&);
 };

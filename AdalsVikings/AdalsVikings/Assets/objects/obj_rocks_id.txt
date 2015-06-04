@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $rocks$
+*Name: Rocks
+*ispickupable: False
+*pickup: "Yeah... I'm still too carry weak to carry these types of things." ~4,0
+*lookat: "Shiny beach rocks." ~1,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:    Y:

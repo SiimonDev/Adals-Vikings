@@ -2,22 +2,71 @@
 #include "Portal.h"
 #include <map>
 
+typedef std::unique_ptr<Portal> PortalPtr;
+
 enum PortalId
 {
-	Portal1,
-	Portal2
+	Ship1ToShip2,
+	Ship2ToShip1,
+	BeachToRoad,
+	BeachToBeachHill,
+	HillBeachToBeach,
+	RoadToBeach,
+	RoadToOutside_Chuch,
+	RoadToFarm,
+	FarmToRoad,
+	Farm1ToFarm2,
+	Farm2ToFarm1,
+	RoadToGates,
+	GatesToRoad,
+	CampToForestRoad,
+	ForestRoadToCamp,
+	ForestCampToForestRoad,
+	ForestRoadToForestCamp,
+	ForestCampToRoad,
+	Outside_ChurchToRoad,
+	Outside_ChurchToChurch,
+	ChurchToOutside_Church,
+	RoadToCamp,
+	CampToRoad,
+	BeachToTavernOutside,
+	TavernOutsideToBeach,
+	TavernOutsideToTavernInside,
+	TavernInsideToTavernOutside,
+	CampFinishedToCampClearing,
+	CampClearingToCamPFinished,
+	CampFinishedToRoad,
+	RoadToCampFinished,
+	GatesToCliffs,
+	CliffsToGates,
+	CliffsToRuins,
+	CliffsTopToCliffsBottom,
+	CliffsBottomToCliffsTop,
+	CliffsToCaverns,
+	CavernsToCliffs,
+	CavernsRightToLeft,
+	CavernsLeftToRight,
+	FarmToHills,
+	HillsToFarm,
+	RuinsToCliffs,
+	CavernToCavernRuinsRight,
+	CRuinsRightToCRuinsLeft,
+	CRuinsLeftToCRuinsRight,
+	CRuinsToCLiffs,
+	CliffsToCRuins,
 };
 class PortalLoader
 {
 public:
-	PortalLoader();
-	~PortalLoader();
+	static void load();
+	static void unload();
 
-	void load();
-	Portal& getPortal(PortalId id);
+	static std::map<PortalId, PortalPtr> &getPortals();
+	static Portal &getPortal(PortalId id);
 
 private:
-	//std::vector<Portal> mPortalVector;
-	std::map<PortalId, Portal> mPortalMap;
+	PortalLoader();
+	PortalLoader(PortalLoader&);
+	void operator=(PortalLoader&);
 };
 

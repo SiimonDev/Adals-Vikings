@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $waves$
+*Name: Waves
+*ispickupable: False
+*pickup: "That's... no. Just no." ~2,0
+*lookat: "We've really come a far way from home." ~3,5
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:400  Y:300

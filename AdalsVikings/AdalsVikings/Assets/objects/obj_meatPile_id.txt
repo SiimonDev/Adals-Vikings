@@ -1,0 +1,11 @@
+*Type: standard
+*ID: $meatPile$
+*Name: Pile of meat
+*ispickupable: True
+*pickup: "I'm a terrible person." ~2,0
+*lookat: "I hope this isn't... people." ~2,5
+*deny: "Please no, I'm not a psycopath." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_meatPile_id.png"

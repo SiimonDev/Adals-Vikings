@@ -1,0 +1,12 @@
+*Type: animated
+*ID: $sheepAtRoad$
+*Name: Sheep
+*ispickupable: False
+*pickup: "Uh... I don't want to get bitten." ~3,0
+*lookat: "What a pretty sheep." ~2,0
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*texture: "img_sheepAtRoad_id.png"
+*animation: X:7      Y:3      ~5,0 ~2,0

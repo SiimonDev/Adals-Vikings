@@ -1,0 +1,11 @@
+*Type: invisible
+*ID: $vegetation$
+*Name: Vegetation
+*ispickupable: False
+*pickup: "Can't reach it." ~2,0
+*lookat: "Nature sure has had its way with this place." ~3,0
+*deny: "I can't do that." ~1,5
+*denywith: 
+*combine: 
+*interact: 
+*invisible: X:200 Y:200

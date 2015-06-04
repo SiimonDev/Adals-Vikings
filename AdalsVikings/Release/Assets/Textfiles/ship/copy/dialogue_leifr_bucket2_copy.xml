@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Why would anyone want to use Him?" />
+	<lookText lookText="Seems like they are fighting over something." />
+	<text character="Leifr" say="Sorry Ulfr..." timer="2.3" />
+	<text character="Leifr" say="I... sort of.... broke it..." timer="2.3" />
+	<text character="Ulfr" say="You broke it?..." timer="2.5" />
+	<text character="Ulfr" say="How..." timer="1.5" />
+	<text character="Ulfr" say="I..." timer="1.5" />
+	<text character="Ulfr" say="You know what never mind." timer="3.3" />
+	<text character="Leifr" say="You still want the bucket?" timer="2.3" />
+	<text character="Ulfr" say="Yea, if I'm lucky I might find some us for it later." timer="2.4" />
+	<stopConversation />
+</conversation>

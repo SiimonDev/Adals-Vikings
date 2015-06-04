@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<conversation>
+	<useText useText="Well I can't exactly huff and puff his house down.." />
+	<lookText lookText="Seems like someone likes to stay at home." />
+	<text character="Parrik" say="Who are you? Go away!" disabled="false" default="true" timer="2.3" turned="true"></text>
+	<text character="Ulfr" say="Uh... hey." disabled="false" default="true" timer="2.0" turned="true"></text>
+	<text character="Ulfr" say="My name is Ulfr." disabled="false" default="true" timer="2.4" turned="true"></text>
+	<text character="Parrik" say="Oh really? How interesting. Now bugger off!" disabled="false" default="true" timer="2.5" turned="true"></text>
+	<option_container disabled="false">
+		<option choice_text="Is that any way of treating a guest?" disabled="false">
+			<text character="Ulfr" say="Is that any way of treating a guest?" timer="2.4" turned="true" default="false" disabled="false"></text>
+			<text character="Parrik" say="You're not in my home yet, trespasser." disabled="false" default="true" timer="2.4" turned="true"></text>
+			<text character="Ulfr" say="Trespasser?" timer="2.4" turned="true" default="false" disabled="false"></text>
+			<text character="Ulfr" say="I'm merely passing through!" timer="2.4" turned="true" default="false" disabled="false"></text>
+			<text character="Parrik" say="..." disabled="false" default="true" timer="1.7" turned="true"></text>
+			<text character="Parrik" say="Well in that case..." disabled="false" default="true" timer="2.4" turned="true"></text>
+			<text character="Parrik" say="I apologize." disabled="false" default="true" timer="2.4" turned="true"></text>
+			<text character="Parrik" say="Now please leave." disabled="false" default="true" timer="2.4" turned="true" disablePrevious="true"></text>
+			<gotoBaseContainer></gotoBaseContainer>
+			
+		</option>
+		<option choice_text="Your neighbor just told me to steal some of your hay." disabled="true">
+			<text character="Ulfr" say="Your neighbor just told me to steal some of your hay." timer="2.8" turned="true" default="false" disabled="false"></text>
+			<text character="Ulfr" say="All of it, in fact." timer="2.4" turned="true" default="false" disabled="false"></text>
+			<text character="Parrik" say="He WHAT!?" disabled="false" default="true" timer="2.4" turned="true"></text>
+			<text character="Ulfr" say="He..." timer="2.3" turned="true" default="false" disabled="false"></text>
+			<text character="Ulfr" say="He told me to steal your hay." timer="2.4" turned="true" default="false" disabled="false"></text>
+			<text character="Ulfr" say="I just told you." timer="2.3" turned="true" default="false" disabled="false"></text>
+			<text character="Parrik" say="..." disabled="false" default="true" timer="1.6" turned="true"></text>
+			<text character="Parrik" say="...are you going to do it?" disabled="false" default="true" timer="2.4" turned="true"></text>
+			<text character="Ulfr" say="Nah." timer="2.3" turned="true" default="false" disabled="false"></text>
+			<text character="Ulfr" say="I'm no thief." timer="2.4" turned="true" default="false" disabled="false"></text>
+			<text character="Ulfr" say="I'm a Viking." timer="2.3" turned="true" default="false" disabled="false"></text>
+			<text character="Parrik" say="HAHAHA!" disabled="false" default="true" timer="2.3" turned="true"></text>
+			<text character="Parrik" say="That's a good one!" disabled="false" default="true" timer="2.4" turned="true"></text>
+			<text character="Parrik" say="HAH!" disabled="false" default="true" timer="1.6" turned="true"></text>
+			<text character="Parrik" say="You must be that jester fellow I've heard so much about!" disabled="false" default="true" timer="2.4" turned="true"></text>
+			<text character="Ulfr" say="..." timer="1.6" turned="true" default="false" disabled="false"></text>
+			<text character="Ulfr" say="Yeah sure." timer="2.4" turned="true" default="false" disabled="false"></text>
+			<text character="Ulfr" say="Why not." timer="2.3" turned="true" default="false" disabled="false"></text>
+			<text character="Parrik" say="I got to say, jester, it was nice of you to come with this to me." disabled="false" default="true" timer="3.2" turned="true"></text>
+			<text character="Parrik" say="I really just want to be at peace with that bastard Jacob." disabled="false" default="true" timer="2.8" turned="true"></text>
+			<text character="Ulfr" say="He told me you stole his hay." timer="2.4" turned="true" default="false" disabled="false"></text>
+			<text character="Parrik" say="I never even touched his hay!" disabled="false" default="true" timer="2.5" turned="true"></text>
+			<text character="Parrik" say="It was the damn wind that carried it away!" disabled="false" default="true" timer="2.5" turned="true"></text>
+			<text character="Parrik" say="That idiot can't even keep his things stored properly." disabled="false" default="true" timer="2.7" turned="true"></text>
+			<text character="Parrik" say="You must be that jester fellow I've heard so much about!" disabled="false" default="true" timer="2.4" turned="true"></text>
+			<text character="Ulfr" say="I could go talk to him." timer="2.4" turned="true" default="false" disabled="false"></text>
+			<text character="Ulfr" say="Make him see his wrong." timer="2.4" turned="true" default="false" disabled="false"></text>
+			<text character="Parrik" say="Hah." disabled="false" default="true" timer="1.7" turned="true"></text>
+			<text character="Parrik" say="Yeah, you do that." disabled="false" default="true" timer="2.4" turned="true"></text>
+			<text character="Parrik" say="I'll be amazed if you succeed." disabled="false" default="true" timer="2.4" turned="true"></text>
+			<text character="Ulfr" say="Hey, don't write me off yet." timer="2.4" turned="true" default="false" disabled="false"></text>
+			<text character="Ulfr" say="I'm not a world famous jester for nothing." timer="2.4" turned="true" default="false" disabled="false" disablePrevious="true"></text>
+			<gotoContainer></gotoContainer>
+		</option>
+		<option choice_text="Bye, I guess." disabled="false">
+			<text character="Ulfr" say="Bye, I guess." timer="2.2" turned="true" default="false" disabled="false"></text>
+			<stopConversation></stopConversation>
+		</option>
+		
+		<stopOption />
+	</option_container>
+	<stopConversation />
+</conversation>
