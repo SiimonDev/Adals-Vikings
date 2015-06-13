@@ -25,7 +25,6 @@ void Level_Beach::restartSounds()
 
 void Level_Beach::update(sf::Time &frameTime)
 {
-
 	if (Act1Events::hasBeenTriggered(Act1Event::IntroScreen) && !Act1Events::hasBeenHandled(Act1Event::IntroScreen))
 	{
 		mHud->displayHelp(true);

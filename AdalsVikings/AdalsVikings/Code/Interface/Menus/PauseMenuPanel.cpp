@@ -36,7 +36,7 @@ void PauseMenuPanel::load()
 	saveButton.setDescriptionStyle(sf::Text::Bold);
 	saveButton.setDescriptionPosition(sf::Vector2f(200, 0));
 	saveButton.setIndex(mIndex + 1);
-	saveButton.setEnabled(true);
+	saveButton.setEnabled(false);
 
 	optionButton = Button(Texture::PauseMenuOptionsButton, sf::Vector2f());
 	optionButton.setPosition(sf::Vector2f(960, 569));

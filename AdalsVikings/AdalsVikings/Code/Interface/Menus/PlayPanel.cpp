@@ -27,6 +27,7 @@ void PlayPanel::load()
 	loadButton.setPosition(sf::Vector2f(905, 715));
 	loadButton.setOrigin(ButtonOrigin::Center);
 	loadButton.setIndex(mIndex + 1);
+	loadButton.setEnabled(false);
 
 	menuButton = Button(Texture::PlayMenuMenuButton, sf::Vector2f());
 	menuButton.setPosition(sf::Vector2f(1540, 720));
